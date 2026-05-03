@@ -1,6 +1,8 @@
 # TimeCopilot Accuracy Tracker
 
-Track how well TimeCopilot's probabilistic forecasts hold up against real market data.
+**Live dashboard:** [romankostin25-code.github.io/timecopilot-tracker/dashboard.html](https://romankostin25-code.github.io/timecopilot-tracker/dashboard.html)
+
+Track how well probabilistic forecasts hold up against real market data — Gold, Silver, Oil, Natural Gas, and major currency pairs.
 
 ---
 
