@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TimeCopilot — Accuracy Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+  :root {
+    --bg:      #0a0a0f;
+    --surface: #13131a;
+    --border:  #1e1e2e;
+    --text:    #c9d1d9;
+    --muted:   #58606e;
+    --green:   #00ff88;
+    --amber:   #ffaa00;
+    --red:     #ff4455;
+    --blue:    #4d9de0;
+    --purple:  #a78bfa;
+    --mono:    'JetBrains Mono', monospace;
+    --sans:    'Inter', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .logo {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: .04em;
+  }
+  .logo span { color: var(--muted); }
+  #last-updated { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* ── Layout ── */
+  .page { max-width: 1280px; margin: 0 auto; padding: 24px; }
+
+  /* ── Upload zone ── */
+  #drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    margin-bottom: 28px;
+  }
+  #drop-zone.drag-over { border-color: var(--green); background: rgba(0,255,136,.04); }
+  #drop-zone p { color: var(--muted); font-size: 13px; }
+  #drop-zone strong { color: var(--green); }
+  #file-input { display: none; }
+  .btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 18px;
+    background: var(--border);
+    color: var(--text);
+    border: 1px solid #2a2a3e;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 12px;
+    transition: background .15s;
+  }
+  .btn:hover { background: #22223a; }
+  .btn-green { background: rgba(0,255,136,.12); color: var(--green); border-color: rgba(0,255,136,.3); }
+  .btn-green:hover { background: rgba(0,255,136,.2); }
+
+  /* ── Summary cards ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .card-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .card-sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-family: var(--mono); }
+  .green { color: var(--green); }
+  .amber { color: var(--amber); }
+  .red   { color: var(--red); }
+  .blue  { color: var(--blue); }
+  .purple{ color: var(--purple); }
+
+  /* ── Section heading ── */
+  .section-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  /* ── Chart ── */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  #forecastChart { width: 100% !important; max-height: 360px; }
+
+  /* ── Table ── */
+  .table-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: var(--mono);
+    transition: all .15s;
+  }
+  .filter-btn.active { color: var(--green); border-color: var(--green); background: rgba(0,255,136,.08); }
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #0f0f18; }
+  th {
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border);
+  }
+  th:first-child, th:nth-child(2), th:nth-child(3) { text-align: left; }
+  td {
+    padding: 9px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-align: right;
+    border-bottom: 1px solid rgba(30,30,46,.6);
+    white-space: nowrap;
+  }
+  td:first-child, td:nth-child(2), td:nth-child(3) { text-align: left; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .badge-hit     { background: rgba(0,255,136,.12); color: var(--green); }
+  .badge-miss    { background: rgba(255,68,85,.12);  color: var(--red); }
+  .badge-pending { background: rgba(255,170,0,.10);  color: var(--amber); }
+
+  /* ── Manual input form ── */
+  .form-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .form-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin-top: 12px; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group label { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .form-group input, .form-group select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 7px 10px;
+    min-width: 140px;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--green); }
+
+  /* ── Empty state ── */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+  .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+  .empty-state p { font-size: 14px; }
+
+  /* ── Responsive ── */
+  @media(max-width: 640px) {
+    .cards { grid-template-columns: 1fr 1fr; }
+    td, th { padding: 8px 8px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TIME<span>COPILOT</span> // ACCURACY TRACKER</div>
+  <div id="last-updated">no data loaded</div>
+</header>
+
+<div class="page">
+
+  <!-- Upload -->
+  <div id="drop-zone" onclick="document.getElementById('file-input').click()">
+    <div class="icon" style="font-size:32px;margin-bottom:8px;">📂</div>
+    <p>Drag &amp; drop <strong>forecasts.csv</strong> here, or click to select</p>
+    <p style="margin-top:6px;font-size:11px;">The file never leaves your browser — processed locally.</p>
+    <span class="btn btn-green">Choose File</span>
+    <input type="file" id="file-input" accept=".csv" />
+  </div>
+
+  <!-- Summary cards -->
+  <div class="cards" id="cards">
+    <div class="card">
+      <div class="card-label">Total Forecasts</div>
+      <div class="card-value blue" id="c-total">—</div>
+      <div class="card-sub">rows in CSV</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Coverage</div>
+      <div class="card-value purple" id="c-coverage">—</div>
+      <div class="card-sub">have actual result</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Calibration</div>
+      <div class="card-value green" id="c-calibration">—</div>
+      <div class="card-sub">P10–P90 hit rate</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Median MAE</div>
+      <div class="card-value amber" id="c-mae">—</div>
+      <div class="card-sub">vs P50 forecast</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Last Forecast</div>
+      <div class="card-value" style="font-size:16px" id="c-lastdate">—</div>
+      <div class="card-sub" id="c-lastticker">—</div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <p class="section-title">Forecast vs Actuals</p>
+  <div class="chart-wrap" id="chart-section">
+    <div class="empty-state" id="chart-empty">
+      <div class="icon">📈</div>
+      <p>Load a CSV to see the chart</p>
+    </div>
+    <canvas id="forecastChart" style="display:none"></canvas>
+  </div>
+
+  <!-- Table toolbar -->
+  <p class="section-title">Forecast Log</p>
+  <div class="table-toolbar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="hit">Hit</button>
+    <button class="filter-btn" data-filter="miss">Miss</button>
+    <button class="filter-btn" data-filter="pending">Pending</button>
+    <button class="btn" onclick="exportCSV()" style="margin-left:auto">Export CSV</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Forecast Date</th>
+          <th>Target Date</th>
+          <th>Ticker</th>
+          <th>P10</th>
+          <th>P50</th>
+          <th>P90</th>
+          <th>Actual</th>
+          <th>Status</th>
+          <th>Model</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr>
+          <td colspan="9">
+            <div class="empty-state">
+              <div class="icon">⏳</div>
+              <p>No data — drop a forecasts.csv file above</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Manual input -->
+  <p class="section-title">Manual Actual Entry</p>
+  <div class="form-wrap">
+    <p style="color:var(--muted);font-size:12px;">Override or fill in an actual price manually (saved in browser localStorage — reload CSV to persist to file).</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Target Date</label>
+        <input type="date" id="f-date" />
+      </div>
+      <div class="form-group">
+        <label>Ticker</label>
+        <input type="text" id="f-ticker" placeholder="SPY" style="min-width:90px" />
+      </div>
+      <div class="form-group">
+        <label>Actual Price</label>
+        <input type="number" step="0.0001" id="f-actual" placeholder="523.45" />
+      </div>
+      <button class="btn btn-green" onclick="applyManual()">Apply</button>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────
+let allRows = [];       // parsed CSV rows (objects)
+let overrides = {};     // { "YYYY-MM-DD|TICKER": actual } from localStorage
+let activeFilter = "all";
+let chartInstance = null;
+
+// ── localStorage overrides ────────────────────────────────────────────────
+function loadOverrides() {
+  try { overrides = JSON.parse(localStorage.getItem("tc_overrides") || "{}"); }
+  catch { overrides = {}; }
+}
+function saveOverrides() {
+  localStorage.setItem("tc_overrides", JSON.stringify(overrides));
+}
+
+// ── CSV Parser ────────────────────────────────────────────────────────────
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/);
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(",").map(h => h.trim().toLowerCase().replace(/"/g, ""));
+  return lines.slice(1).map(line => {
+    const vals = line.split(",").map(v => v.trim().replace(/^"|"$/g, ""));
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = vals[i] ?? "");
+    return obj;
+  });
+}
+
+// ── Enrich row with override & status ────────────────────────────────────
+function enrichRow(row) {
+  const key = `${row.target_date}|${(row.ticker||"").toUpperCase()}`;
+  const override = overrides[key];
+  const actualRaw = override !== undefined ? override : row.actual;
+  const actual = actualRaw !== "" && actualRaw !== undefined ? parseFloat(actualRaw) : null;
+  const p10 = parseFloat(row.p10), p50 = parseFloat(row.p50), p90 = parseFloat(row.p90);
+
+  let status = "pending";
+  if (actual !== null && !isNaN(actual)) {
+    status = (actual >= p10 && actual <= p90) ? "hit" : "miss";
+  }
+  return { ...row, _actual: actual, _p10: p10, _p50: p50, _p90: p90, _status: status };
+}
+
+// ── Render summary cards ──────────────────────────────────────────────────
+function renderCards(rows) {
+  const scored = rows.filter(r => r._actual !== null && !isNaN(r._actual));
+  const total = rows.length;
+  const coverage = total ? Math.round(scored.length / total * 100) : 0;
+  const hits = scored.filter(r => r._status === "hit").length;
+  const calibration = scored.length ? Math.round(hits / scored.length * 100) : null;
+  const mae = scored.length
+    ? (scored.reduce((s, r) => s + Math.abs(r._actual - r._p50), 0) / scored.length).toFixed(2)
+    : null;
+
+  document.getElementById("c-total").textContent = total || "—";
+  document.getElementById("c-coverage").textContent = total ? coverage + "%" : "—";
+
+  const calEl = document.getElementById("c-calibration");
+  calEl.textContent = calibration !== null ? calibration + "%" : "—";
+  calEl.className = "card-value " +
+    (calibration === null ? "green" : calibration >= 70 ? "green" : calibration >= 50 ? "amber" : "red");
+
+  document.getElementById("c-mae").textContent = mae !== null ? mae : "—";
+
+  const sorted = [...rows].sort((a, b) => b.forecast_date.localeCompare(a.forecast_date));
+  if (sorted.length) {
+    document.getElementById("c-lastdate").textContent = sorted[0].forecast_date;
+    document.getElementById("c-lastticker").textContent = sorted[0].ticker;
+  }
+}
+
+// ── Render table ──────────────────────────────────────────────────────────
+function renderTable(rows) {
+  const filtered = activeFilter === "all" ? rows : rows.filter(r => r._status === activeFilter);
+  const tbody = document.getElementById("table-body");
+
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="9"><div class="empty-state"><div class="icon">🔍</div><p>No rows match this filter</p></div></td></tr>`;
+    return;
+  }
+
+  // Sort newest forecast first, then by target date
+  const sorted = [...filtered].sort((a, b) => {
+    const fd = b.forecast_date.localeCompare(a.forecast_date);
+    return fd !== 0 ? fd : a.target_date.localeCompare(b.target_date);
+  });
+
+  tbody.innerHTML = sorted.map(r => {
+    const statusBadge =
+      r._status === "hit"     ? `<span class="badge badge-hit">HIT</span>` :
+      r._status === "miss"    ? `<span class="badge badge-miss">MISS</span>` :
+                                `<span class="badge badge-pending">PENDING</span>`;
+    const actualDisplay = r._actual !== null ? r._actual.toFixed(2) : `<span style="color:var(--muted)">—</span>`;
+    return `<tr>
+      <td>${r.forecast_date}</td>
+      <td>${r.target_date}</td>
+      <td>${r.ticker}</td>
+      <td>${isNaN(r._p10) ? "—" : r._p10.toFixed(2)}</td>
+      <td>${isNaN(r._p50) ? "—" : r._p50.toFixed(2)}</td>
+      <td>${isNaN(r._p90) ? "—" : r._p90.toFixed(2)}</td>
+      <td>${actualDisplay}</td>
+      <td>${statusBadge}</td>
+      <td style="color:var(--muted)">${r.model_used || "—"}</td>
+    </tr>`;
+  }).join("");
+}
+
+// ── Render chart ──────────────────────────────────────────────────────────
+function renderChart(rows) {
+  const canvas = document.getElementById("forecastChart");
+  const empty  = document.getElementById("chart-empty");
+
+  if (!rows.length) { canvas.style.display = "none"; empty.style.display = "block"; return; }
+  canvas.style.display = "block";
+  empty.style.display  = "none";
+
+  // Take most recent forecast_date group
+  const latestFD = rows.map(r => r.forecast_date).sort().reverse()[0];
+  const subset = rows.filter(r => r.forecast_date === latestFD)
+    .sort((a, b) => a.target_date.localeCompare(b.target_date));
+
+  const labels  = subset.map(r => r.target_date);
+  const p50     = subset.map(r => isNaN(r._p50) ? null : r._p50);
+  const p10     = subset.map(r => isNaN(r._p10) ? null : r._p10);
+  const p90     = subset.map(r => isNaN(r._p90) ? null : r._p90);
+  const actuals = subset.map(r => r._actual);
+
+  // Band fill: use two fill datasets
+  const bandTop    = p90;
+  const bandBottom = p10;
+
+  if (chartInstance) { chartInstance.destroy(); }
+
+  chartInstance = new Chart(canvas.getContext("2d"), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "P90 (upper bound)",
+          data: bandTop,
+          borderColor: "transparent",
+          backgroundColor: "rgba(77,157,224,0.10)",
+          fill: "+1",
+          pointRadius: 0,
+          tension: 0.3,
+        },
+        {
+          label: "P10 (lower bound)",
+          data: bandBottom,
+          borderColor: "transparent",
+          backgroundColor: "rgba(77,157,224,0.10)",
+          fill: false,
+          pointRadius: 0,
+          tension: 0.3,
+        },
+        {
+          label: "P50 Forecast",
+          data: p50,
+          borderColor: "#4d9de0",
+          borderDash: [6, 3],
+          borderWidth: 2,
+          backgroundColor: "transparent",
+          pointRadius: 3,
+          pointBackgroundColor: "#4d9de0",
+          tension: 0.3,
+          fill: false,
+        },
+        {
+          label: "Actual",
+          data: actuals,
+          borderColor: "#00ff88",
+          borderWidth: 2,
+          backgroundColor: subset.map(r =>
+            r._status === "hit" ? "#00ff88" : r._status === "miss" ? "#ff4455" : "#ffaa00"
+          ),
+          pointRadius: 6,
+          pointStyle: "circle",
+          tension: 0.3,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: "#58606e", font: { family: "'JetBrains Mono'" }, boxWidth: 16 }
+        },
+        tooltip: {
+          backgroundColor: "#13131a",
+          borderColor: "#1e1e2e",
+          borderWidth: 1,
+          titleColor: "#c9d1d9",
+          bodyColor: "#c9d1d9",
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y !== null ? ctx.parsed.y.toFixed(2) : "n/a"}`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: { color: "#58606e", font: { family: "'JetBrains Mono'", size: 11 } },
+          grid:  { color: "#1e1e2e" },
+        },
+        y: {
+          ticks: { color: "#58606e", font: { family: "'JetBrains Mono'", size: 11 } },
+          grid:  { color: "#1e1e2e" },
+        },
+      },
+    },
+  });
+}
+
+// ── Full re-render ─────────────────────────────────────────────────────────
+function rerender() {
+  const enriched = allRows.map(enrichRow);
+  renderCards(enriched);
+  renderTable(enriched);
+  renderChart(enriched);
+}
+
+// ── Load CSV text ──────────────────────────────────────────────────────────
+function loadCSVText(text, filename) {
+  allRows = parseCSV(text);
+  document.getElementById("last-updated").textContent =
+    `${filename} — ${allRows.length} rows — ${new Date().toLocaleTimeString()}`;
+  rerender();
+}
+
+// ── File input / drag-and-drop ─────────────────────────────────────────────
+const dropZone = document.getElementById("drop-zone");
+const fileInput = document.getElementById("file-input");
+
+dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
+dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+dropZone.addEventListener("drop", e => {
+  e.preventDefault();
+  dropZone.classList.remove("drag-over");
+  const file = e.dataTransfer.files[0];
+  if (file) readFile(file);
+});
+fileInput.addEventListener("change", e => { if (e.target.files[0]) readFile(e.target.files[0]); });
+
+function readFile(file) {
+  const reader = new FileReader();
+  reader.onload = ev => loadCSVText(ev.target.result, file.name);
+  reader.readAsText(file);
+}
+
+// ── Filter buttons ─────────────────────────────────────────────────────────
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    renderTable(allRows.map(enrichRow));
+  });
+});
+
+// ── Manual actual entry ────────────────────────────────────────────────────
+function applyManual() {
+  const d = document.getElementById("f-date").value;
+  const t = document.getElementById("f-ticker").value.trim().toUpperCase();
+  const v = parseFloat(document.getElementById("f-actual").value);
+  if (!d || !t || isNaN(v)) { alert("Please fill in all fields."); return; }
+  overrides[`${d}|${t}`] = v;
+  saveOverrides();
+  rerender();
+  document.getElementById("f-actual").value = "";
+}
+
+// ── Export CSV ─────────────────────────────────────────────────────────────
+function exportCSV() {
+  const enriched = allRows.map(enrichRow);
+  const header = "forecast_date,target_date,ticker,p10,p50,p90,actual,status,model_used,notes";
+  const lines = enriched.map(r =>
+    [r.forecast_date, r.target_date, r.ticker, r.p10, r.p50, r.p90,
+     r._actual ?? "", r._status, r.model_used || "", r.notes || ""].join(",")
+  );
+  const blob = new Blob([header + "\n" + lines.join("\n")], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `forecasts_export_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+loadOverrides();
+</script>
+</body>
+</html>
