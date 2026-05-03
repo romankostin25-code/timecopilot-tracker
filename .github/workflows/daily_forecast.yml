@@ -2,8 +2,11 @@ name: Daily Forecast Update
 
 on:
   schedule:
-    - cron: '0 22 * * 1-5'   # 22:00 UTC = 18:00 ET, weekdays
-  workflow_dispatch:           # manual trigger from GitHub UI
+    # Morning run (14:00 UTC = 10:00 ET): fill in actuals from previous close
+    - cron: '0 14 * * 1-5'
+    # Evening run (22:00 UTC = 18:00 ET): new forecasts + actuals
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   forecast:
@@ -13,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -35,9 +40,9 @@ jobs:
 
       - name: Commit updated forecasts.csv
         run: |
-          git config user.name  "TimeCopilot Bot"
-          git config user.email "bot@users.noreply.github.com"
+          git config user.name  "Roman Kostin"
+          git config user.email "Roman@hirz.ai"
           git add forecasts.csv
           git diff --cached --quiet || \
-            git commit -m "chore: update forecasts $(date -u +%Y-%m-%d)" && \
+            git commit -m "data: update forecasts $(date -u +%Y-%m-%d\ %H:%M\ UTC)" && \
             git push

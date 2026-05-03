@@ -21,7 +21,11 @@ header{display:flex;align-items:center;justify-content:space-between;padding:12p
 .logo{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--green);letter-spacing:.05em}
 .logo em{color:var(--muted2);font-style:normal}
 .header-right{display:flex;align-items:center;gap:16px}
-#last-updated{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.status-pill{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:background .3s}
+.pulse.live{background:var(--green);box-shadow:0 0 6px var(--green);animation:blink 2s ease-in-out infinite}
+.pulse.fetching{background:var(--amber);animation:blink .5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 .upload-btn{padding:6px 14px;background:rgba(0,255,136,.1);color:var(--green);border:1px solid rgba(0,255,136,.25);border-radius:6px;font-family:var(--mono);font-size:11px;cursor:pointer;transition:background .15s;white-space:nowrap}
 .upload-btn:hover{background:rgba(0,255,136,.2)}
 
@@ -125,8 +129,11 @@ footer a:hover{color:var(--text)}
 <header>
   <div class="logo">TIME<em>COPILOT</em> <em style="color:var(--border2)">//</em> FORECAST TRACKER</div>
   <div class="header-right">
-    <span id="last-updated">no data</span>
-    <label class="upload-btn" for="file-input">Load CSV</label>
+    <div class="status-pill">
+      <span class="pulse" id="pulse"></span>
+      <span id="last-updated">connecting…</span>
+    </div>
+    <label class="upload-btn" for="file-input">Override CSV</label>
   </div>
 </header>
 
@@ -376,25 +383,77 @@ function rerender(){
   renderHero(e);renderChips(e);renderTable(e);renderChart(e);
 }
 
-function loadCSVText(txt,name){
-  allRows=parseCSV(txt);
-  document.getElementById("last-updated").textContent=`${name} · ${allRows.length} rows · ${new Date().toLocaleTimeString()}`;
-  rerender();
+// ── Status indicator helpers ──────────────────────────────────────────────
+const pulse=document.getElementById("pulse");
+const statusEl=document.getElementById("last-updated");
+function setStatus(state,msg){
+  pulse.className="pulse"+(state==="live"?" live":state==="fetching"?" fetching":"");
+  statusEl.textContent=msg;
 }
 
-// ── Auto-fetch from same origin (GitHub Pages) ────────────────────────────
-async function tryAutoLoad(){
+// ── Last data timestamp from CSV content ──────────────────────────────────
+function latestDate(rows){
+  return rows.map(r=>r.forecast_date).filter(Boolean).sort().reverse()[0]||null;
+}
+
+let manualOverride=false; // true when user loaded their own file
+
+function loadCSVText(txt,name,silent=false){
+  const parsed=parseCSV(txt);
+  if(!parsed.length)return;
+  // only update if data changed (compare row count + latest date)
+  const ld=latestDate(parsed);
+  if(!silent||parsed.length!==allRows.length||ld!==latestDate(allRows)){
+    allRows=parsed;
+    rerender();
+  }
+  const t=new Date().toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"});
+  setStatus("live",`${name} · ${allRows.length} rows · updated ${t}`);
+}
+
+// ── Auto-fetch & poll ─────────────────────────────────────────────────────
+const POLL_MS = 5 * 60 * 1000; // refresh every 5 minutes
+let countdown = POLL_MS / 1000;
+let pollTimer, countdownTimer;
+
+async function fetchCSV(silent=false){
+  if(manualOverride) return;
+  if(!silent) setStatus("fetching","refreshing…");
   try{
-    const r=await fetch("./forecasts.csv",{cache:"no-cache"});
-    if(!r.ok)return;
+    const r=await fetch("./forecasts.csv?_="+Date.now()); // cache-bust
+    if(!r.ok){ setStatus("","no data — drop a CSV or check the repo"); return; }
     const txt=await r.text();
-    if(txt.includes("forecast_date"))loadCSVText(txt,"forecasts.csv");
-  }catch(_){}
+    if(txt.includes("forecast_date")) loadCSVText(txt,"live data",silent);
+  }catch(_){
+    if(allRows.length===0) setStatus("","offline — drop forecasts.csv to load manually");
+  }
+  resetCountdown();
 }
 
-// ── File input / drag-drop ────────────────────────────────────────────────
+function resetCountdown(){
+  clearInterval(countdownTimer);
+  clearTimeout(pollTimer);
+  countdown=POLL_MS/1000;
+  pollTimer=setTimeout(()=>fetchCSV(true),POLL_MS);
+  countdownTimer=setInterval(()=>{
+    countdown--;
+    if(allRows.length>0){
+      const m=Math.floor(countdown/60), s=String(countdown%60).padStart(2,"0");
+      const t=latestDate(allRows)||"—";
+      statusEl.textContent=`live data · ${allRows.length} rows · data: ${t} · refresh in ${m}:${s}`;
+    }
+    if(countdown<=0) clearInterval(countdownTimer);
+  },1000);
+}
+
+// ── File input / drag-drop (manual override) ──────────────────────────────
 document.getElementById("file-input").addEventListener("change",e=>{if(e.target.files[0])readFile(e.target.files[0]);});
-function readFile(f){const fr=new FileReader();fr.onload=ev=>loadCSVText(ev.target.result,f.name);fr.readAsText(f);}
+function readFile(f){
+  manualOverride=true;
+  const fr=new FileReader();
+  fr.onload=ev=>loadCSVText(ev.target.result,f.name);
+  fr.readAsText(f);
+}
 
 document.addEventListener("dragenter",e=>{if(e.dataTransfer.types.includes("Files"))document.body.classList.add("dragging");});
 document.addEventListener("dragleave",e=>{if(!e.relatedTarget)document.body.classList.remove("dragging");});
@@ -421,14 +480,15 @@ function applyManual(){
 function exportCSV(){
   const e=allRows.map(enrich);
   const hdr="forecast_date,target_date,ticker,p10,p50,p90,actual,error_vs_p50,pct_error,status,model_used";
-  const lines=e.map(r=>[r.forecast_date,r.target_date,r.ticker,r.p10,r.p50,r.p90,r._a??"",r._e!==null?r._e.toFixed(6):"",r._e!==null?(r._e/Math.abs(r._p50)*100).toFixed(4)+"":""  ,r._s,r.model_used||""].join(","));
+  const lines=e.map(r=>[r.forecast_date,r.target_date,r.ticker,r.p10,r.p50,r.p90,r._a??"",r._e!==null?r._e.toFixed(6):"",r._e!==null?(r._e/Math.abs(r._p50)*100).toFixed(4)+"":"",r._s,r.model_used||""].join(","));
   const blob=new Blob([hdr+"\n"+lines.join("\n")],{type:"text/csv"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);
   a.download=`tc_export_${new Date().toISOString().slice(0,10)}.csv`;a.click();
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────
-loadOv();tryAutoLoad();
+loadOv();
+fetchCSV();
 </script>
 </body>
 </html>
