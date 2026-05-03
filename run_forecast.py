@@ -1,197 +1,197 @@
-"""Runs TimeCopilot ensemble forecast for all configured tickers."""
+"""Trading Co-Pilot — TimeCopilot ensemble forecasting engine."""
 
 import os
-import sys
 import warnings
-from datetime import date
-
 import pandas as pd
+import numpy as np
+import yfinance as yf
+from datetime import datetime, timedelta, date
 from dotenv import load_dotenv
 
 load_dotenv()
 warnings.filterwarnings("ignore")
 
-FORECASTS_CSV = "forecasts.csv"
+TICKERS  = [t.strip() for t in os.getenv("ASSET_TICKERS", "").split(",") if t.strip()]
+HORIZON  = int(os.getenv("FORECAST_HORIZON", 10))
+FREQ     = os.getenv("FORECAST_FREQUENCY", "B")
+CSV_PATH = "forecasts.csv"
 
 CSV_COLUMNS = [
     "forecast_date", "target_date", "ticker",
     "p10", "p50", "p90",
-    "actual", "model_used", "notes",
+    "actual", "model_used",
+    "direction", "signal_strength", "conviction_score",
+    "error_abs", "error_pct", "hit", "direction_correct",
+    "graded_at", "notes",
 ]
 
 
-def _load_or_create_csv(path: str) -> pd.DataFrame:
-    if os.path.exists(path):
-        return pd.read_csv(path)
-    return pd.DataFrame(columns=CSV_COLUMNS)
-
-
-def _run_statsforecast(df: pd.DataFrame, horizon: int, freq: str):
+def _build_models():
+    """Assemble available TimeCopilot models; skip any that fail to import."""
+    from timecopilot.models.stats import AutoARIMA, AutoETS
+    models = [AutoARIMA(), AutoETS()]
     try:
-        from statsforecast import StatsForecast
-        from statsforecast.models import AutoARIMA, SeasonalNaive, AutoETS
-
-        sf_models = []
-        for cls, kwargs in [(AutoARIMA, {}), (SeasonalNaive, {"season_length": 5}), (AutoETS, {})]:
-            try:
-                sf_models.append(cls(**kwargs))
-            except Exception:
-                pass
-        if not sf_models:
-            return None
-
-        sf_df = df.copy()
-        sf_df["unique_id"] = "asset"
-        sf_df["ds"] = pd.to_datetime(sf_df["ds"])
-        sf = StatsForecast(models=sf_models, freq=freq, n_jobs=1)
-        sf.fit(sf_df)
-        return sf.predict(h=horizon, level=[80])
+        from timecopilot.models.ml import AutoLGBM
+        models.append(AutoLGBM())
+        print("  + AutoLGBM")
     except Exception as e:
-        print(f"  StatsForecast error: {e}")
-        return None
-
-
-def _run_lgbm_simple(df: pd.DataFrame, horizon: int):
+        print(f"  - AutoLGBM skipped: {e}")
     try:
-        import numpy as np
-        from lightgbm import LGBMRegressor
-
-        y = df["y"].values
-        n_lags = min(30, len(y) // 2)
-        X, Y = [], []
-        for i in range(n_lags, len(y)):
-            X.append(y[i - n_lags:i])
-            Y.append(y[i])
-        X, Y = __import__("numpy").array(X), __import__("numpy").array(Y)
-        model = LGBMRegressor(n_estimators=300, verbose=-1)
-        model.fit(X, Y)
-        preds, window = [], list(y[-n_lags:])
-        for _ in range(horizon):
-            x = __import__("numpy").array(window[-n_lags:]).reshape(1, -1)
-            p = float(model.predict(x)[0])
-            preds.append(p)
-            window.append(p)
-        return preds
+        from timecopilot.models.foundation.chronos import Chronos
+        models.append(Chronos())
+        print("  + Chronos")
     except Exception as e:
-        print(f"  LightGBM error: {e}")
-        return None
+        print(f"  - Chronos skipped: {e}")
+    try:
+        from timecopilot.models.foundation.toto import Toto
+        models.append(Toto())
+        print("  + Toto")
+    except Exception as e:
+        print(f"  - Toto skipped: {e}")
+    return models
 
 
-def forecast_ticker(ticker: str, horizon: int, freq: str,
-                    existing: pd.DataFrame, csv_path: str) -> int:
-    import numpy as np
+def fetch_price_data(ticker: str, years: int = 2) -> pd.DataFrame:
+    end   = datetime.today()
+    start = end - timedelta(days=365 * years)
+    raw = yf.download(ticker, start=start.strftime("%Y-%m-%d"),
+                      end=end.strftime("%Y-%m-%d"), auto_adjust=True, progress=False)
+    if raw.empty:
+        raw = yf.download(ticker, period="2y", auto_adjust=True, progress=False)
+    if raw.empty:
+        raise ValueError(f"No data for {ticker}")
+    if isinstance(raw.columns, pd.MultiIndex):
+        raw.columns = raw.columns.get_level_values(0)
+    df = raw[["Close"]].reset_index()
+    df.columns = ["ds", "y"]
+    df["unique_id"] = ticker
+    df["ds"] = pd.to_datetime(df["ds"]).dt.tz_localize(None).dt.normalize()
+    df = df.dropna().sort_values("ds").reset_index(drop=True)
+    # Resample to business-day frequency so TimeCopilot can infer freq cleanly
+    df = df.set_index("ds")
+    df = df.resample("B").last().ffill()
+    df = df.reset_index()
+    df["unique_id"] = ticker
+    return df
+
+
+def _ensemble_quantiles(fcst: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Derive P10/P50/P90 by taking median across all model outputs."""
+    # Point forecast columns (no '-lo-' or '-hi-')
+    pt_cols  = [c for c in fcst.columns if c not in ("unique_id", "ds")
+                and "-lo-" not in c and "-hi-" not in c]
+    lo_cols  = [c for c in fcst.columns if "-lo-80" in c]
+    hi_cols  = [c for c in fcst.columns if "-hi-80" in c]
+
+    p50 = fcst[pt_cols].median(axis=1).values
+    p10 = fcst[lo_cols].median(axis=1).values if lo_cols else p50 * 0.98
+    p90 = fcst[hi_cols].median(axis=1).values if hi_cols else p50 * 1.02
+    return p10, p50, p90
+
+
+def compute_signals(p10_d1, p50_d1, p50_d5, p90_d1, last_price):
+    ret_d1 = (p50_d1 - last_price) / last_price
+    ret_d5 = (p50_d5 - last_price) / last_price
+    direction = (
+        "BULLISH" if ret_d1 > 0.003 else
+        "BEARISH" if ret_d1 < -0.003 else
+        "NEUTRAL"
+    )
+    signal_strength  = round(abs(ret_d5) * 100, 4)
+    band_width       = (p90_d1 - p10_d1) / abs(last_price)
+    conviction_score = round(max(0.0, 1.0 - band_width / 0.05), 4)
+    return direction, signal_strength, conviction_score
+
+
+def forecast_ticker(ticker: str, models, existing: pd.DataFrame) -> list[dict]:
+    from timecopilot import TimeCopilotForecaster
     from pandas.tseries.offsets import BDay
 
     today_str = str(date.today())
-
-    # Skip if already done today
-    if not existing.empty and "forecast_date" in existing.columns:
+    if not existing.empty:
         dupe = existing[
             (existing["forecast_date"].astype(str) == today_str) &
             (existing["ticker"] == ticker)
         ]
         if not dupe.empty:
             print(f"  [{ticker}] already forecasted today — skipping.")
-            return 0
+            return []
 
-    from data_fetcher import fetch_historical_data
-    try:
-        df = fetch_historical_data(ticker)
-    except Exception as e:
-        print(f"  [{ticker}] data fetch failed: {e}")
-        return 0
-
-    sf_pred  = _run_statsforecast(df, horizon, freq)
-    lgbm_pts = _run_lgbm_simple(df, horizon)
-
-    last_date  = pd.Timestamp(df["ds"].max())
+    df = fetch_price_data(ticker)
     last_price = float(df["y"].iloc[-1])
+    print(f"  [{ticker}] {len(df)} pts, last={last_price:.4f} — running TimeCopilot…")
 
-    if freq.upper() in ("B", "D"):
-        target_dates = [last_date + BDay(i + 1) for i in range(horizon)]
-    else:
-        target_dates = pd.date_range(start=last_date, periods=horizon + 1, freq=freq)[1:]
+    tcf  = TimeCopilotForecaster(models=models)
+    fcst = tcf.forecast(df=df, h=HORIZON, level=[80])
+
+    p10_vals, p50_vals, p90_vals = _ensemble_quantiles(fcst)
+
+    last_date    = pd.Timestamp(df["ds"].max())
+    target_dates = [last_date + BDay(i + 1) for i in range(HORIZON)]
 
     rows = []
     for i, tgt in enumerate(target_dates):
-        points = []
-        if sf_pred is not None:
-            try:
-                step_row = sf_pred[sf_pred["unique_id"] == "asset"].iloc[i]
-                model_cols = [c for c in sf_pred.columns
-                              if c not in ("unique_id", "ds")
-                              and "-lo-" not in c and "-hi-" not in c]
-                for col in model_cols:
-                    v = step_row[col]
-                    if pd.notna(v):
-                        points.append(float(v))
-            except Exception:
-                pass
-        if lgbm_pts and i < len(lgbm_pts):
-            points.append(lgbm_pts[i])
-        if not points:
-            points = [last_price * (1 + np.random.normal(0, 0.005))]
-
-        median_pred = float(np.median(points))
-        spread      = abs(median_pred - last_price) * max(1.0, (i + 1) ** 0.5)
-        std_approx  = max(last_price * 0.004, spread * 0.5)
-
+        p10 = round(float(p10_vals[i]), 6)
+        p50 = round(float(p50_vals[i]), 6)
+        p90 = round(float(p90_vals[i]), 6)
+        p50_d5 = float(p50_vals[min(4, len(p50_vals) - 1)])
+        direction, sig_str, conviction = compute_signals(p10, p50, p50_d5, p90, last_price)
         rows.append({
-            "forecast_date": today_str,
-            "target_date":   tgt.date().isoformat(),
-            "ticker":        ticker,
-            "p10":  round(median_pred - 1.28 * std_approx, 6),
-            "p50":  round(median_pred, 6),
-            "p90":  round(median_pred + 1.28 * std_approx, 6),
-            "actual":     "",
-            "model_used": "MedianEnsemble",
-            "notes":      "",
+            "forecast_date":    today_str,
+            "target_date":      tgt.date().isoformat(),
+            "ticker":           ticker,
+            "p10":              p10,
+            "p50":              p50,
+            "p90":              p90,
+            "actual":           "",
+            "model_used":       "TimeCopilot_MedianEnsemble",
+            "direction":        direction,
+            "signal_strength":  sig_str,
+            "conviction_score": conviction,
+            "error_abs":        "",
+            "error_pct":        "",
+            "hit":              "",
+            "direction_correct": "",
+            "graded_at":        "",
+            "notes":            "",
         })
 
-    # Print table for this ticker
-    print(f"\n  {'Target Date':<13} {'P10':>10} {'P50':>10} {'P90':>10}")
-    print(f"  {'─'*46}")
-    for r in rows:
-        print(f"  {r['target_date']:<13} {r['p10']:>10.4f} {r['p50']:>10.4f} {r['p90']:>10.4f}")
-    return len(rows), rows
+    print(f"  [{ticker}] ✓ direction={direction} conviction={conviction}")
+    return rows
 
 
-def run_forecast(csv_path: str = FORECASTS_CSV) -> int:
-    tickers_raw = os.getenv("ASSET_TICKERS", os.getenv("ASSET_TICKER", "SPY"))
-    tickers = [t.strip() for t in tickers_raw.split(",") if t.strip()]
-    horizon = int(os.getenv("FORECAST_HORIZON", "10"))
-    freq    = os.getenv("FORECAST_FREQUENCY", "B")
+def run_all_forecasts():
+    print("=== Trading Co-Pilot: Forecast Run ===")
+    print("Building model stack…")
+    models  = _build_models()
+    existing = pd.read_csv(CSV_PATH) if os.path.exists(CSV_PATH) else pd.DataFrame()
 
-    api_key = os.getenv("LLM_API_KEY", "")
-    if api_key and api_key != "your_api_key_here":
-        print("LLM API key present — agent mode available.")
-    else:
-        print("No LLM API key — using statistical/ML models only.")
-
-    existing = _load_or_create_csv(csv_path)
-    all_rows = []
-    total_new = 0
-
-    for ticker in tickers:
-        print(f"\n{'═'*50}")
-        print(f"  {ticker}  |  horizon={horizon}  |  freq={freq}")
-        print(f"{'═'*50}")
-        result = forecast_ticker(ticker, horizon, freq, existing, csv_path)
-        if isinstance(result, tuple):
-            n, rows = result
-            total_new += n
+    all_rows, skipped = [], []
+    for ticker in TICKERS:
+        try:
+            rows = forecast_ticker(ticker, models, existing)
             all_rows.extend(rows)
+        except Exception as e:
+            print(f"  [{ticker}] ✗ FAILED: {e}")
+            skipped.append(ticker)
 
     if all_rows:
-        new_df = pd.DataFrame(all_rows, columns=CSV_COLUMNS)
+        new_df   = pd.DataFrame(all_rows, columns=CSV_COLUMNS)
         combined = pd.concat([existing, new_df], ignore_index=True)
-        combined.to_csv(csv_path, index=False)
-        print(f"\nAdded {total_new} new rows to {csv_path}")
+        # Ensure all columns exist (migrate old CSV)
+        for col in CSV_COLUMNS:
+            if col not in combined.columns:
+                combined[col] = ""
+        combined = combined[CSV_COLUMNS + [c for c in combined.columns if c not in CSV_COLUMNS]]
+        combined.to_csv(CSV_PATH, index=False)
+        print(f"\n✓ {len(all_rows)} new rows written to {CSV_PATH}")
     else:
         print("\nNo new rows added.")
 
-    return total_new
+    if skipped:
+        print(f"Skipped: {skipped}")
+    return len(all_rows)
 
 
 if __name__ == "__main__":
-    run_forecast()
+    run_all_forecasts()

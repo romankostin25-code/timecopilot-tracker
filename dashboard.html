@@ -3,236 +3,361 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>TimeCopilot — Forecast Tracker</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<title>Trading Co-Pilot</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root{
-  --bg:#07070d;--surface:#0f0f18;--surface2:#14141f;
-  --border:#1c1c2e;--border2:#252538;
-  --text:#d4daf0;--muted:#4a5068;--muted2:#6b7494;
-  --green:#00ff88;--amber:#ffaa00;--red:#ff4455;--blue:#4d9de0;--purple:#a78bfa;
-  --mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;
+  --bg:#080c10; --surface:#0d1117; --surface2:#161b22; --surface3:#1c2128;
+  --border:#21262d; --border2:#30363d;
+  --text:#e6edf3; --muted:#8b949e; --muted2:#6e7681;
+  --cyan:#00d4ff; --green:#00ff88; --red:#ff3355; --amber:#ffaa00;
+  --purple:#a855f7; --orange:#f97316; --blue:#4d9de0;
+  --mono:'IBM Plex Mono',monospace; --sans:'IBM Plex Sans',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.5;min-height:100vh}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13px;display:flex;flex-direction:column}
 
-header{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:100}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--green);letter-spacing:.05em}
-.logo em{color:var(--muted2);font-style:normal}
-.header-right{display:flex;align-items:center;gap:16px}
-.status-pill{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--muted)}
-.pulse{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:background .3s}
-.pulse.live{background:var(--green);box-shadow:0 0 6px var(--green);animation:blink 2s ease-in-out infinite}
-.pulse.fetching{background:var(--amber);animation:blink .5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-.upload-btn{padding:6px 14px;background:rgba(0,255,136,.1);color:var(--green);border:1px solid rgba(0,255,136,.25);border-radius:6px;font-family:var(--mono);font-size:11px;cursor:pointer;transition:background .15s;white-space:nowrap}
-.upload-btn:hover{background:rgba(0,255,136,.2)}
+/* ── App shell ── */
+.app{display:flex;flex:1;overflow:hidden}
 
-.page{max-width:1400px;margin:0 auto;padding:24px 28px}
+/* ── Left rail ── */
+.rail{
+  width:240px;flex-shrink:0;background:var(--surface);
+  border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;
+}
+.rail-header{padding:14px 16px;border-bottom:1px solid var(--border)}
+.rail-logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.04em}
+.rail-logo em{color:var(--muted2);font-style:normal}
+.status-row{display:flex;align-items:center;gap:6px;margin-top:6px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0}
+.pulse.live{background:var(--green);box-shadow:0 0 5px var(--green);animation:blink 2s ease-in-out infinite}
+.pulse.fetching{background:var(--amber);animation:blink .4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.status-txt{font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.3}
 
-/* Hero */
-.hero{display:grid;grid-template-columns:220px 1px 1fr;gap:28px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:24px;align-items:center}
-.hero-score{text-align:center}
-.hero-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);margin-bottom:6px;font-family:var(--mono)}
-.hero-number{font-family:var(--mono);font-size:76px;font-weight:700;line-height:1}
-.hero-number.g{color:var(--green)}.hero-number.a{color:var(--amber)}.hero-number.r{color:var(--red)}.hero-number.d{color:var(--muted)}
-.hero-sub{font-size:11px;color:var(--muted2);margin-top:6px;font-family:var(--mono)}
-.hero-divider{width:1px;height:80px;background:var(--border);align-self:center}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.hstat{padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:10px}
-.hstat-label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
-.hstat-value{font-family:var(--mono);font-size:26px;font-weight:700;line-height:1}
-.hstat-sub{font-size:10px;color:var(--muted);margin-top:3px}
-.cb{color:var(--blue)}.cp{color:var(--purple)}.cg{color:var(--green)}.ca{color:var(--amber)}
+.rail-assets{flex:1;overflow-y:auto;padding:8px}
+.rail-assets::-webkit-scrollbar{width:3px}
+.rail-assets::-webkit-scrollbar-thumb{background:var(--border2)}
 
-/* Ticker chips */
-.ticker-grid{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
-.chip{display:flex;align-items:center;gap:7px;padding:7px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .15s;user-select:none}
-.chip.active{border-color:var(--green);background:rgba(0,255,136,.07)}
-.chip:hover:not(.active){border-color:var(--border2)}
-.chip-name{font-weight:700}
-.chip-rate{font-size:11px}
-.chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.dg{color:var(--green)}.da{color:var(--amber)}.dr{color:var(--red)}.dd{color:var(--muted)}
-.bg{background:var(--green)}.ba{background:var(--amber)}.br{background:var(--red)}.bd{background:var(--muted)}
+.asset-card{
+  padding:10px 11px;border-radius:7px;border:1px solid var(--border);
+  margin-bottom:5px;cursor:pointer;transition:all .15s;background:transparent;
+}
+.asset-card:hover{border-color:var(--border2);background:var(--surface2)}
+.asset-card.active{border-color:var(--cyan);background:rgba(0,212,255,.06)}
+.ac-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.ac-ticker{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text)}
+.ac-name{font-size:10px;color:var(--muted);margin-bottom:5px;line-height:1.2}
+.ac-price{font-family:var(--mono);font-size:11px;color:var(--cyan)}
+.ac-chg{font-family:var(--mono);font-size:10px}
+.ac-chg.pos{color:var(--green)}.ac-chg.neg{color:var(--red)}
+.ac-badges{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.03em}
+.b-bull{background:rgba(0,255,136,.12);color:var(--green)}
+.b-bear{background:rgba(255,51,85,.12);color:var(--red)}
+.b-neut{background:rgba(255,170,0,.10);color:var(--amber)}
+.b-poly{background:rgba(168,85,247,.12);color:var(--purple)}
+.b-hit{background:rgba(0,255,136,.10);color:var(--green)}
+.b-miss{background:rgba(255,51,85,.10);color:var(--red)}
+.b-pend{background:rgba(255,170,0,.08);color:var(--amber)}
+.b-align{background:rgba(0,212,255,.10);color:var(--cyan)}
+.b-div{background:rgba(255,51,85,.10);color:var(--red)}
 
-/* Chart */
-.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:22px}
-.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.section-title{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2)}
-.chart-select{background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:6px;outline:none}
-#forecastChart{max-height:300px}
+/* ── Main panel ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 
-/* Toolbar */
-.toolbar{display:flex;align-items:center;gap:9px;margin-bottom:11px;flex-wrap:wrap}
-.filter-btn{padding:5px 13px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted2);font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
-.filter-btn.active{color:var(--green);border-color:var(--green);background:rgba(0,255,136,.08)}
-.filter-btn:hover:not(.active){border-color:var(--border2);color:var(--text)}
-.ml-auto{margin-left:auto}
-.btn{padding:6px 13px;background:var(--border);color:var(--text);border:1px solid var(--border2);border-radius:6px;cursor:pointer;font-family:var(--mono);font-size:12px;transition:background .15s}
-.btn:hover{background:var(--border2)}
-.btn-g{background:rgba(0,255,136,.12);color:var(--green);border-color:rgba(0,255,136,.3)}
-.btn-g:hover{background:rgba(0,255,136,.2)}
+/* ── Global header ── */
+.gheader{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:10px 20px;flex-shrink:0;
+}
+.metric-row{display:flex;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.metric{
+  padding:7px 12px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;min-width:120px;
+}
+.metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;font-family:var(--mono)}
+.metric-value{font-family:var(--mono);font-size:18px;font-weight:700;line-height:1}
+.cv-g{color:var(--green)}.cv-a{color:var(--amber)}.cv-r{color:var(--red)}.cv-c{color:var(--cyan)}.cv-p{color:var(--purple)}.cv-d{color:var(--muted)}
+.macro-row{display:flex;gap:8px;flex-wrap:wrap}
+.macro-pill{
+  padding:3px 9px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:4px;font-family:var(--mono);font-size:10px;display:flex;gap:5px;align-items:center;
+}
+.macro-key{color:var(--muted)}.macro-val{color:var(--orange);font-weight:600}
+.regime-pill{padding:3px 8px;border-radius:4px;font-family:var(--mono);font-size:10px;font-weight:700}
+.rp-riskoff{background:rgba(255,51,85,.12);color:var(--red)}
+.rp-riskon{background:rgba(0,255,136,.10);color:var(--green)}
+.rp-neut{background:rgba(255,170,0,.08);color:var(--amber)}
+.rp-hawk{background:rgba(255,51,85,.10);color:var(--red)}
+.rp-dove{background:rgba(0,255,136,.10);color:var(--green)}
+.rp-dstr{background:rgba(0,212,255,.10);color:var(--cyan)}
+.rp-dweak{background:rgba(168,85,247,.10);color:var(--purple)}
 
-/* Table */
-.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:22px}
+/* ── Signal row ── */
+.signal-row{
+  display:flex;gap:10px;padding:8px 20px;
+  background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap;
+}
+.sig-box{
+  flex:1;min-width:160px;padding:8px 12px;border-radius:7px;
+  border:1px solid var(--border);background:var(--surface2);
+}
+.sig-box.aligned{border-color:var(--cyan);background:rgba(0,212,255,.04)}
+.sig-box.divergent{border-color:var(--red);background:rgba(255,51,85,.04)}
+.sig-label{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-family:var(--mono);margin-bottom:4px}
+.sig-main{font-family:var(--mono);font-size:14px;font-weight:700}
+.sig-sub{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ── Tabs ── */
+.tab-bar{
+  display:flex;gap:0;padding:0 20px;background:var(--surface);
+  border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.tab{
+  padding:9px 16px;font-family:var(--mono);font-size:11px;color:var(--muted);
+  cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;
+}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--cyan);border-color:var(--cyan)}
+
+/* ── Tab content ── */
+.tab-content{flex:1;overflow:hidden;display:none;flex-direction:column}
+.tab-content.active{display:flex}
+.scroll-area{flex:1;overflow-y:auto;padding:16px 20px}
+.scroll-area::-webkit-scrollbar{width:4px}
+.scroll-area::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* ── Charts ── */
+.chart-container{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:14px}
+.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.chart-title{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+canvas{max-height:260px}
+
+/* ── Tables ── */
+.table-wrap{background:var(--surface2);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:14px}
 table{width:100%;border-collapse:collapse}
 thead tr{background:rgba(0,0,0,.3)}
-th{padding:10px 13px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:right;white-space:nowrap;border-bottom:1px solid var(--border)}
-th:first-child,th:nth-child(2),th:nth-child(3){text-align:left}
-td{padding:9px 13px;font-family:var(--mono);font-size:12px;text-align:right;border-bottom:1px solid rgba(28,28,46,.5);white-space:nowrap}
-td:first-child,td:nth-child(2),td:nth-child(3){text-align:left}
+th{padding:8px 12px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+th:first-child,th:nth-child(2){text-align:left}
+td{padding:8px 12px;font-family:var(--mono);font-size:11px;text-align:right;border-bottom:1px solid rgba(33,38,45,.5);white-space:nowrap}
+td:first-child,td:nth-child(2){text-align:left}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:rgba(255,255,255,.015)}
-.td-tick{font-weight:700;letter-spacing:.03em}
-.td-range{color:var(--muted2)}
-.td-p50{color:var(--blue)}
-.td-hit{color:var(--green)}.td-miss{color:var(--red)}.td-pend{color:var(--muted)}
-.td-ep{color:var(--green);font-size:11px}.td-en{color:var(--red);font-size:11px}.td-e0{color:var(--muted);font-size:11px}
-.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.04em}
-.bh{background:rgba(0,255,136,.12);color:var(--green)}
-.bm{background:rgba(255,68,85,.12);color:var(--red)}
-.bp{background:rgba(255,170,0,.10);color:var(--amber)}
+tr:hover td{background:rgba(255,255,255,.01)}
+.td-hit{color:var(--green)}.td-miss{color:var(--red)}.td-pend{color:var(--amber)}.td-muted{color:var(--muted)}
 
-/* Drop overlay */
-#drop-overlay{position:fixed;inset:0;background:rgba(0,255,136,.04);border:3px dashed var(--green);z-index:9999;display:none;align-items:center;justify-content:center;font-family:var(--mono);font-size:22px;color:var(--green);pointer-events:none}
-body.dragging #drop-overlay{display:flex}
-#file-input{display:none}
+/* ── Grid layouts ── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
 
-/* Empty */
-.empty{text-align:center;padding:50px 20px;color:var(--muted)}
-.empty .ico{font-size:36px;margin-bottom:10px}
-.empty p{font-size:13px}
+/* ── Info cards ── */
+.info-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px}
+.info-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
+.info-value{font-family:var(--mono);font-size:20px;font-weight:700}
+.info-sub{font-size:10px;color:var(--muted);margin-top:3px}
 
-/* Manual */
-.manual-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px}
-.form-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-top:12px}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fg label{font-size:10px;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
-.fg input,.fg select{background:var(--bg);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:13px;padding:7px 10px;min-width:120px;outline:none}
-.fg input:focus{border-color:var(--green)}
+/* ── Annotation callout ── */
+.callout{
+  background:var(--surface2);border:1px solid var(--border2);border-radius:6px;
+  padding:10px 14px;margin-bottom:14px;font-family:var(--mono);font-size:11px;
+}
+.callout-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px}
 
-footer{text-align:center;padding:22px;color:var(--muted);font-family:var(--mono);font-size:11px;border-top:1px solid var(--border)}
-footer a{color:var(--muted2);text-decoration:none}
-footer a:hover{color:var(--text)}
+/* ── Explanation card ── */
+.explain-card{
+  background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);
+  border-radius:8px;padding:14px;margin-bottom:14px;
+}
+.explain-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px;font-family:var(--mono)}
+.explain-text{font-size:12px;line-height:1.6;color:var(--text)}
 
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-divider{display:none}.hero-number{font-size:56px}.hero-stats{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.page{padding:14px}.hero-stats{grid-template-columns:1fr 1fr}td,th{padding:7px 8px;font-size:11px}}
+/* ── Polymarket ── */
+.poly-signal-box{
+  border-radius:8px;padding:14px;margin-bottom:12px;
+  border:1px solid rgba(168,85,247,.3);background:rgba(168,85,247,.06);
+}
+.poly-question{font-size:11px;color:var(--text);line-height:1.5;margin-bottom:6px}
+.poly-url{font-size:10px;color:var(--purple)}
+.poly-url a{color:var(--purple)}
+
+/* ── Curve bars ── */
+.curve-bar-wrap{display:flex;align-items:flex-end;gap:6px;height:120px;margin:12px 0}
+.curve-bar-col{display:flex;flex-direction:column;align-items:center;flex:1}
+.curve-bar{width:100%;border-radius:3px 3px 0 0;transition:height .3s}
+.curve-bar.contango{background:rgba(255,51,85,.7)}
+.curve-bar.backwardation{background:rgba(0,255,136,.7)}
+.curve-bar.flat{background:rgba(255,170,0,.5)}
+.curve-bar-label{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:4px}
+.curve-bar-val{font-family:var(--mono);font-size:9px;color:var(--text);margin-top:2px}
+
+/* ── Streak table ── */
+.streak-row{display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid rgba(33,38,45,.4)}
+.streak-row:last-child{border-bottom:none}
+.streak-ticker{font-family:var(--mono);font-size:11px;font-weight:700;width:90px;flex-shrink:0}
+.streak-dots{display:flex;gap:3px}
+.sdot{width:8px;height:8px;border-radius:50%}
+.sdot.h{background:var(--green)}.sdot.m{background:var(--red)}.sdot.p{background:var(--amber)}
+
+/* ── Export ── */
+.export-btn{
+  padding:7px 16px;background:rgba(0,212,255,.1);color:var(--cyan);
+  border:1px solid rgba(0,212,255,.25);border-radius:6px;
+  font-family:var(--mono);font-size:11px;cursor:pointer;
+}
+.export-btn:hover{background:rgba(0,212,255,.2)}
+
+/* ── Empty / loading states ── */
+.empty{text-align:center;padding:40px;color:var(--muted);font-family:var(--mono);font-size:12px}
 </style>
 </head>
 <body>
 
-<div id="drop-overlay">Drop forecasts.csv to load</div>
-<input type="file" id="file-input" accept=".csv"/>
+<!-- App shell -->
+<div class="app">
 
-<header>
-  <div class="logo">TIME<em>COPILOT</em> <em style="color:var(--border2)">//</em> FORECAST TRACKER</div>
-  <div class="header-right">
-    <div class="status-pill">
-      <span class="pulse" id="pulse"></span>
-      <span id="last-updated">connecting…</span>
-    </div>
-    <label class="upload-btn" for="file-input">Override CSV</label>
-  </div>
-</header>
-
-<div class="page">
-
-  <!-- Hero accuracy score -->
-  <div class="hero">
-    <div class="hero-score">
-      <div class="hero-label">Model Accuracy</div>
-      <div class="hero-number d" id="hero-pct">—</div>
-      <div class="hero-sub" id="hero-sub">% predictions within P10–P90 band</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stats">
-      <div class="hstat">
-        <div class="hstat-label">Total Predictions</div>
-        <div class="hstat-value cb" id="h-total">—</div>
-        <div class="hstat-sub">all tickers combined</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-label">With Actuals</div>
-        <div class="hstat-value cp" id="h-scored">—</div>
-        <div class="hstat-sub" id="h-cov">awaiting market data</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-label">Hits</div>
-        <div class="hstat-value cg" id="h-hits">—</div>
-        <div class="hstat-sub">actual inside P10–P90</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-label">Median MAE</div>
-        <div class="hstat-value ca" id="h-mae">—</div>
-        <div class="hstat-sub">vs P50 forecast</div>
+  <!-- Left rail -->
+  <div class="rail">
+    <div class="rail-header">
+      <div class="rail-logo">TRADING<em> CO-PILOT</em></div>
+      <div class="status-row">
+        <span class="pulse" id="pulse"></span>
+        <span class="status-txt" id="status-txt">connecting…</span>
       </div>
     </div>
-  </div>
-
-  <!-- Per-ticker accuracy chips -->
-  <div class="ticker-grid" id="ticker-grid"></div>
-
-  <!-- Chart -->
-  <div class="chart-wrap">
-    <div class="chart-header">
-      <span class="section-title">Prediction vs Reality</span>
-      <select class="chart-select" id="chart-sel" onchange="renderChart(allRows.map(enrich))"></select>
-    </div>
-    <div id="chart-empty" class="empty" style="padding:30px"><div class="ico">📈</div><p>Load a CSV to see the chart</p></div>
-    <canvas id="forecastChart" style="display:none"></canvas>
-  </div>
-
-  <!-- Table -->
-  <div class="toolbar">
-    <span class="section-title" style="margin-bottom:0">Forecast Log</span>
-    <button class="filter-btn active" data-f="all">All</button>
-    <button class="filter-btn" data-f="hit">Hit</button>
-    <button class="filter-btn" data-f="miss">Miss</button>
-    <button class="filter-btn" data-f="pending">Pending</button>
-    <button class="btn ml-auto" onclick="exportCSV()">Export CSV</button>
-  </div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th>Ticker</th><th>Forecast Date</th><th>Target Date</th>
-        <th>P10 (Low)</th><th>P50 (Median)</th><th>P90 (High)</th>
-        <th>Actual</th><th>Error vs P50</th><th>Status</th>
-      </tr></thead>
-      <tbody id="table-body">
-        <tr><td colspan="9"><div class="empty"><div class="ico">⏳</div><p>Drop <strong>forecasts.csv</strong> anywhere on this page, or click <strong>Load CSV</strong></p></div></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Manual entry -->
-  <div class="manual-wrap">
-    <div class="section-title">Manual Actual Entry</div>
-    <p style="color:var(--muted);font-size:12px;margin-top:6px">Fill in or override an actual price — stored in browser localStorage, does not modify the source CSV.</p>
-    <div class="form-row">
-      <div class="fg"><label>Target Date</label><input type="date" id="f-date"/></div>
-      <div class="fg"><label>Ticker</label><input type="text" id="f-ticker" placeholder="GC=F" style="min-width:90px"/></div>
-      <div class="fg"><label>Actual Price</label><input type="number" step="any" id="f-actual" placeholder="3300.00"/></div>
-      <button class="btn btn-g" onclick="applyManual()">Apply</button>
+    <div class="rail-assets" id="rail-assets">
+      <div class="empty">Loading assets…</div>
     </div>
   </div>
 
-</div>
+  <!-- Main panel -->
+  <div class="main">
 
-<footer>TimeCopilot Tracker &mdash; all processing is local, no data leaves your browser &nbsp;&middot;&nbsp; <a href="https://github.com/romankostin25-code/timecopilot-tracker" target="_blank">GitHub</a></footer>
+    <!-- Global header -->
+    <div class="gheader">
+      <div class="metric-row" id="global-metrics">
+        <div class="metric"><div class="metric-label">Calibration 7d</div><div class="metric-value cv-d" id="m-cal7">—</div></div>
+        <div class="metric"><div class="metric-label">Directional 7d</div><div class="metric-value cv-d" id="m-dir7">—</div></div>
+        <div class="metric"><div class="metric-label">Yesterday Score</div><div class="metric-value cv-d" id="m-yest">—</div></div>
+        <div class="metric"><div class="metric-label">Trend</div><div class="metric-value cv-d" id="m-trend">—</div></div>
+      </div>
+      <div class="macro-row" id="macro-row">
+        <div class="macro-pill"><span class="macro-key">Loading macro…</span></div>
+      </div>
+    </div>
+
+    <!-- Signal row -->
+    <div class="signal-row" id="signal-row">
+      <div class="sig-box" id="sig-model">
+        <div class="sig-label">Model Signal</div>
+        <div class="sig-main cv-d">—</div>
+        <div class="sig-sub">Select an asset</div>
+      </div>
+      <div class="sig-box" id="sig-poly">
+        <div class="sig-label">Polymarket</div>
+        <div class="sig-main cv-p">—</div>
+        <div class="sig-sub">prediction market odds</div>
+      </div>
+      <div class="sig-box" id="sig-align">
+        <div class="sig-label">Alignment</div>
+        <div class="sig-main cv-d">—</div>
+        <div class="sig-sub">model vs market</div>
+      </div>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="tab-bar">
+      <div class="tab active" data-tab="forecast">01 FORECAST</div>
+      <div class="tab" data-tab="accuracy">02 ACCURACY</div>
+      <div class="tab" data-tab="curve">03 CURVE</div>
+      <div class="tab" data-tab="polymarket">04 POLYMARKET</div>
+      <div class="tab" data-tab="distribution">05 DISTRIBUTION</div>
+    </div>
+
+    <!-- TAB 1: FORECAST -->
+    <div class="tab-content active" id="tab-forecast">
+      <div class="scroll-area">
+        <div id="yesterday-callout"></div>
+        <div class="chart-container">
+          <div class="chart-header">
+            <span class="chart-title" id="forecast-chart-title">Price Forecast</span>
+          </div>
+          <canvas id="forecastChart"></canvas>
+        </div>
+        <div id="explain-container"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: ACCURACY -->
+    <div class="tab-content" id="tab-accuracy">
+      <div class="scroll-area">
+        <div id="yesterday-scorecard"></div>
+        <div class="grid2">
+          <div class="chart-container">
+            <div class="chart-header"><span class="chart-title">Calibration Over Time (7d rolling hit rate)</span></div>
+            <canvas id="calChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <div class="chart-header"><span class="chart-title">Directional Accuracy Over Time</span></div>
+            <canvas id="dirChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-title" style="margin-bottom:8px;padding:0 2px">Streak Tracker</div>
+        <div class="table-wrap" id="streak-table"></div>
+      </div>
+    </div>
+
+    <!-- TAB 3: CURVE -->
+    <div class="tab-content" id="tab-curve">
+      <div class="scroll-area">
+        <div id="curve-content"></div>
+      </div>
+    </div>
+
+    <!-- TAB 4: POLYMARKET -->
+    <div class="tab-content" id="tab-polymarket">
+      <div class="scroll-area">
+        <div id="poly-content"></div>
+      </div>
+    </div>
+
+    <!-- TAB 5: DISTRIBUTION -->
+    <div class="tab-content" id="tab-distribution">
+      <div class="scroll-area">
+        <div class="chart-container">
+          <div class="chart-header">
+            <span class="chart-title">Historical Return Distribution (actual closes)</span>
+            <button class="export-btn" onclick="exportCSV()">Export CSV</button>
+          </div>
+          <canvas id="distChart"></canvas>
+        </div>
+        <div id="dist-stats"></div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
 
 <script>
-// ── State ─────────────────────────────────────────────────────────────────
-let allRows=[], overrides={}, activeFilter="all", activeTicker="all", chartInst=null;
+// ══════════════════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════════════════
+let forecasts=[], polyData=[], curveData=[], macroData=[], scorecard={}, signals={};
+let activeTicker = null;
+let charts = {};
+const POLL_MS = 5*60*1000;
 
-const LABELS={"NG=F":"Nat Gas","GC=F":"Gold","SI=F":"Silver","CL=F":"Oil WTI","EURUSD=X":"EUR/USD","GBPUSD=X":"GBP/USD","USDJPY=X":"USD/JPY","AUDUSD=X":"AUD/USD","USDCHF=X":"USD/CHF","SPY":"S&P 500"};
-const lbl=t=>LABELS[t]||t;
+const ASSET_NAMES = {
+  "NG=F":"Natural Gas","GC=F":"Gold","SI=F":"Silver","CL=F":"Oil WTI","HG=F":"Copper",
+  "EURUSD=X":"EUR/USD","GBPUSD=X":"GBP/USD","USDJPY=X":"USD/JPY","AUDUSD=X":"AUD/USD",
+  "USDCHF=X":"USD/CHF","DX-Y.NYB":"DXY","^TNX":"US 10Y","^GSPC":"S&P 500",
+};
+const COMMODITY_TICKERS = new Set(["NG=F","GC=F","SI=F","CL=F","HG=F"]);
 
-function loadOv(){try{overrides=JSON.parse(localStorage.getItem("tc2_ov")||"{}");}catch{overrides={};}}
-function saveOv(){localStorage.setItem("tc2_ov",JSON.stringify(overrides));}
-
-// ── CSV parse ─────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════
+// DATA LOADING
+// ══════════════════════════════════════════════════════════════════════════
 function parseCSV(txt){
   const lines=txt.trim().split(/\r?\n/);
   if(lines.length<2)return[];
@@ -243,252 +368,758 @@ function parseCSV(txt){
   });
 }
 
-// ── Enrich row ────────────────────────────────────────────────────────────
-function enrich(r){
-  const key=`${r.target_date}|${(r.ticker||"").toUpperCase()}`;
-  const ov=overrides[key];
-  const ar=ov!==undefined?ov:r.actual;
-  const actual=(ar!==""&&ar!==undefined)?parseFloat(ar):null;
-  const p10=parseFloat(r.p10),p50=parseFloat(r.p50),p90=parseFloat(r.p90);
-  let status="pending";
-  if(actual!==null&&!isNaN(actual)) status=(actual>=p10&&actual<=p90)?"hit":"miss";
-  const err=(actual!==null&&!isNaN(actual)&&!isNaN(p50))?actual-p50:null;
-  return{...r,_a:actual,_p10:p10,_p50:p50,_p90:p90,_s:status,_e:err};
+async function fetchFile(name){
+  try{
+    const r=await fetch("./"+name+"?_="+Date.now());
+    if(!r.ok)return null;
+    return await r.text();
+  }catch{return null;}
 }
 
-function calCls(p){if(p===null)return"d";if(p>=70)return"g";if(p>=50)return"a";return"r";}
+async function loadAll(silent=false){
+  if(!silent) setStatus("fetching","refreshing…");
+  const [fc,po,cu,mc,sc,sg]=await Promise.all([
+    fetchFile("forecasts.csv"),
+    fetchFile("polymarket_data.csv"),
+    fetchFile("futures_curve.csv"),
+    fetchFile("macro_context.csv"),
+    fetchFile("scorecard.json"),
+    fetchFile("signals.json"),
+  ]);
+  if(fc && fc.includes("forecast_date")) forecasts=parseCSV(fc);
+  if(po && po.includes("ticker"))        polyData=parseCSV(po);
+  if(cu && cu.includes("ticker"))        curveData=parseCSV(cu);
+  if(mc && mc.includes("date"))          macroData=parseCSV(mc);
+  try{ if(sc) scorecard=JSON.parse(sc); }catch{}
+  try{ if(sg) signals=JSON.parse(sg);   }catch{}
 
-// ── Hero ──────────────────────────────────────────────────────────────────
-function renderHero(rows){
-  const sc=rows.filter(r=>r._a!==null&&!isNaN(r._a));
-  const hits=sc.filter(r=>r._s==="hit").length;
-  const pct=sc.length?Math.round(hits/sc.length*100):null;
-  const mae=sc.length?(sc.reduce((s,r)=>s+Math.abs(r._a-r._p50),0)/sc.length).toFixed(3):null;
-
-  const el=document.getElementById("hero-pct");
-  el.textContent=pct!==null?pct+"%":"—";
-  el.className="hero-number "+calCls(pct);
-  document.getElementById("h-total").textContent=rows.length||"—";
-  document.getElementById("h-scored").textContent=sc.length||"—";
-  document.getElementById("h-cov").textContent=rows.length?Math.round(sc.length/rows.length*100)+"% coverage":"awaiting data";
-  document.getElementById("h-hits").textContent=sc.length?hits:"—";
-  document.getElementById("h-mae").textContent=mae||"—";
+  if(forecasts.length){
+    setStatus("live","live · "+forecasts.length+" rows · "+new Date().toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"}));
+    renderAll();
+  } else {
+    setStatus("","no data — waiting for first forecast run");
+  }
+  scheduleRefresh();
 }
 
-// ── Ticker chips + chart select ───────────────────────────────────────────
-function renderChips(rows){
-  const tickers=[...new Set(rows.map(r=>r.ticker))].sort();
-  const grid=document.getElementById("ticker-grid");
-  const sel=document.getElementById("chart-sel");
-
-  let html=`<div class="chip ${activeTicker==="all"?"active":""}" data-t="all"><span class="chip-dot ${activeTicker==="all"?"bg":"bd"}"></span><span class="chip-name">ALL</span></div>`;
-  let selHtml=`<option value="all">All tickers</option>`;
-
-  tickers.forEach(t=>{
-    const sub=rows.filter(r=>r.ticker===t);
-    const sc=sub.filter(r=>r._a!==null&&!isNaN(r._a));
-    const rate=sc.length?Math.round(sc.filter(r=>r._s==="hit").length/sc.length*100):null;
-    const cls=rate===null?"d":rate>=70?"g":rate>=50?"a":"r";
-    const act=activeTicker===t;
-    html+=`<div class="chip ${act?"active":""}" data-t="${t}">
-      <span class="chip-dot ${act?"b"+cls:"bd"}"></span>
-      <span class="chip-name">${lbl(t)}</span>
-      <span class="chip-rate d${cls}">${rate!==null?rate+"%":"—"}</span>
-    </div>`;
-    selHtml+=`<option value="${t}" ${activeTicker===t?"selected":""}>${lbl(t)} (${t})</option>`;
-  });
-
-  grid.innerHTML=html;
-  sel.innerHTML=selHtml;
-  grid.querySelectorAll(".chip").forEach(el=>el.addEventListener("click",()=>{activeTicker=el.dataset.t;rerender();}));
+let refreshTimer;
+function scheduleRefresh(){
+  clearTimeout(refreshTimer);
+  refreshTimer=setTimeout(()=>loadAll(true),POLL_MS);
 }
 
-// ── Table ─────────────────────────────────────────────────────────────────
-function renderTable(rows){
-  let filtered=rows;
-  if(activeTicker!=="all") filtered=filtered.filter(r=>r.ticker===activeTicker);
-  if(activeFilter!=="all") filtered=filtered.filter(r=>r._s===activeFilter);
-
-  const tbody=document.getElementById("table-body");
-  if(!filtered.length){tbody.innerHTML=`<tr><td colspan="9"><div class="empty"><div class="ico">🔍</div><p>No rows match this filter</p></div></td></tr>`;return;}
-
-  const sorted=[...filtered].sort((a,b)=>{const d=b.forecast_date.localeCompare(a.forecast_date);return d||b.target_date.localeCompare(a.target_date);});
-
-  tbody.innerHTML=sorted.map(r=>{
-    const badge=r._s==="hit"?`<span class="badge bh">HIT</span>`:r._s==="miss"?`<span class="badge bm">MISS</span>`:`<span class="badge bp">PENDING</span>`;
-    const actCls=r._s==="hit"?"td-hit":r._s==="miss"?"td-miss":"td-pend";
-    const actStr=r._a!==null?r._a.toFixed(4):`<span class="td-pend">—</span>`;
-    let errStr=`<span class="td-e0">—</span>`;
-    if(r._e!==null){
-      const sign=r._e>=0?"+":"";
-      const pct=(r._e/Math.abs(r._p50)*100);
-      errStr=`<span class="${r._e>=0?"td-ep":"td-en"}">${sign}${r._e.toFixed(4)} (${sign}${pct.toFixed(2)}%)</span>`;
-    }
-    return`<tr>
-      <td class="td-tick">${r.ticker}</td>
-      <td>${r.forecast_date}</td><td>${r.target_date}</td>
-      <td class="td-range">${isNaN(r._p10)?"—":r._p10.toFixed(4)}</td>
-      <td class="td-p50">${isNaN(r._p50)?"—":r._p50.toFixed(4)}</td>
-      <td class="td-range">${isNaN(r._p90)?"—":r._p90.toFixed(4)}</td>
-      <td class="${actCls}">${actStr}</td>
-      <td>${errStr}</td><td>${badge}</td>
-    </tr>`;
-  }).join("");
-}
-
-// ── Chart ─────────────────────────────────────────────────────────────────
-function renderChart(rows){
-  const canvas=document.getElementById("forecastChart");
-  const empty=document.getElementById("chart-empty");
-  const selT=document.getElementById("chart-sel").value;
-
-  let sub=selT==="all"?rows:rows.filter(r=>r.ticker===selT);
-  if(!sub.length){canvas.style.display="none";empty.style.display="block";return;}
-  const latestFD=[...new Set(sub.map(r=>r.forecast_date))].sort().reverse()[0];
-  sub=sub.filter(r=>r.forecast_date===latestFD).sort((a,b)=>a.target_date.localeCompare(b.target_date));
-  if(!sub.length){canvas.style.display="none";empty.style.display="block";return;}
-
-  canvas.style.display="block";empty.style.display="none";
-  if(chartInst){chartInst.destroy();}
-
-  chartInst=new Chart(canvas.getContext("2d"),{
-    type:"line",
-    data:{
-      labels:sub.map(r=>r.target_date),
-      datasets:[
-        {label:"P90",data:sub.map(r=>isNaN(r._p90)?null:r._p90),borderColor:"transparent",backgroundColor:"rgba(77,157,224,.10)",fill:"+1",pointRadius:0,tension:.3},
-        {label:"P10",data:sub.map(r=>isNaN(r._p10)?null:r._p10),borderColor:"transparent",fill:false,pointRadius:0,tension:.3},
-        {label:"P50 Forecast",data:sub.map(r=>isNaN(r._p50)?null:r._p50),borderColor:"#4d9de0",borderDash:[5,3],borderWidth:2,backgroundColor:"transparent",pointRadius:3,pointBackgroundColor:"#4d9de0",tension:.3,fill:false},
-        {label:"Actual",data:sub.map(r=>r._a),borderColor:"rgba(0,255,136,.35)",borderWidth:2,backgroundColor:sub.map(r=>r._s==="hit"?"#00ff88":r._s==="miss"?"#ff4455":"#ffaa00"),pointRadius:6,tension:.3,fill:false},
-      ],
-    },
-    options:{
-      responsive:true,interaction:{mode:"index",intersect:false},
-      plugins:{
-        legend:{labels:{color:"#4a5068",font:{family:"'JetBrains Mono'"},boxWidth:14,padding:14}},
-        tooltip:{backgroundColor:"#0f0f18",borderColor:"#1c1c2e",borderWidth:1,titleColor:"#d4daf0",bodyColor:"#d4daf0",padding:10,
-          callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y!==null?ctx.parsed.y.toFixed(4):"—"}`}},
-      },
-      scales:{
-        x:{ticks:{color:"#4a5068",font:{family:"'JetBrains Mono'",size:10}},grid:{color:"#1c1c2e"}},
-        y:{ticks:{color:"#4a5068",font:{family:"'JetBrains Mono'",size:10}},grid:{color:"#1c1c2e"}},
-      },
-    },
-  });
-}
-
-// ── Full rerender ─────────────────────────────────────────────────────────
-function rerender(){
-  const e=allRows.map(enrich);
-  renderHero(e);renderChips(e);renderTable(e);renderChart(e);
-}
-
-// ── Status indicator helpers ──────────────────────────────────────────────
-const pulse=document.getElementById("pulse");
-const statusEl=document.getElementById("last-updated");
 function setStatus(state,msg){
-  pulse.className="pulse"+(state==="live"?" live":state==="fetching"?" fetching":"");
-  statusEl.textContent=msg;
+  const p=document.getElementById("pulse");
+  p.className="pulse"+(state==="live"?" live":state==="fetching"?" fetching":"");
+  document.getElementById("status-txt").textContent=msg;
 }
 
-// ── Last data timestamp from CSV content ──────────────────────────────────
-function latestDate(rows){
+// ══════════════════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════════════════
+function n(v,dec=2){return (v===null||v===undefined||v===""||isNaN(+v))?"—":(+v).toFixed(dec);}
+function pct(v){return v===null||v===undefined||v===""?"—":Math.round(+v*100)+"%";}
+function fmtPct(v){return v===null||v===undefined||v===""?"—":(+v).toFixed(2)+"%";}
+function calCls(v){ if(v===null||v==="")return"cv-d"; const x=+v; return x>=.70?"cv-g":x>=.60?"cv-a":"cv-r"; }
+function dirCls(v){ if(v===null||v==="")return"cv-d"; const x=+v; return x>=.55?"cv-g":x>=.50?"cv-a":"cv-r"; }
+function sigCls(s){ return s==="BULLISH"?"cv-g":s==="BEARISH"?"cv-r":"cv-a"; }
+function badgeDir(d){ return d==="BULLISH"?`<span class="badge b-bull">▲ BULL</span>`:d==="BEARISH"?`<span class="badge b-bear">▼ BEAR</span>`:`<span class="badge b-neut">◆ NEUT</span>`; }
+function badgeHit(h){ return h==="1"||h===1?`<span class="badge b-hit">✓ HIT</span>`:h==="0"||h===0?`<span class="badge b-miss">✗ MISS</span>`:`<span class="badge b-pend">⏳</span>`; }
+
+function enrichRow(r){
+  const actual=(r.actual!==""&&r.actual!==undefined)?parseFloat(r.actual):null;
+  const p10=parseFloat(r.p10),p50=parseFloat(r.p50),p90=parseFloat(r.p90);
+  const hit=actual!==null?((actual>=p10&&actual<=p90)?1:0):null;
+  const err=actual!==null?(actual-p50):null;
+  const errPct=actual!==null&&p50?((actual-p50)/Math.abs(p50)*100):null;
+  return{...r,_actual:actual,_p10:p10,_p50:p50,_p90:p90,_hit:hit,_err:err,_errPct:errPct};
+}
+
+function latestForecastDate(rows){
   return rows.map(r=>r.forecast_date).filter(Boolean).sort().reverse()[0]||null;
 }
 
-let manualOverride=false; // true when user loaded their own file
-
-function loadCSVText(txt,name,silent=false){
-  const parsed=parseCSV(txt);
-  if(!parsed.length)return;
-  // only update if data changed (compare row count + latest date)
-  const ld=latestDate(parsed);
-  if(!silent||parsed.length!==allRows.length||ld!==latestDate(allRows)){
-    allRows=parsed;
-    rerender();
-  }
-  const t=new Date().toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"});
-  setStatus("live",`${name} · ${allRows.length} rows · updated ${t}`);
+function getTickerRows(ticker){
+  return forecasts.filter(r=>r.ticker===ticker).map(enrichRow);
 }
 
-// ── Auto-fetch & poll ─────────────────────────────────────────────────────
-const POLL_MS = 5 * 60 * 1000; // refresh every 5 minutes
-let countdown = POLL_MS / 1000;
-let pollTimer, countdownTimer;
-
-async function fetchCSV(silent=false){
-  if(manualOverride) return;
-  if(!silent) setStatus("fetching","refreshing…");
-  try{
-    const r=await fetch("./forecasts.csv?_="+Date.now()); // cache-bust
-    if(!r.ok){ setStatus("","no data — drop a CSV or check the repo"); return; }
-    const txt=await r.text();
-    if(txt.includes("forecast_date")) loadCSVText(txt,"live data",silent);
-  }catch(_){
-    if(allRows.length===0) setStatus("","offline — drop forecasts.csv to load manually");
-  }
-  resetCountdown();
+function getLatestForecast(ticker){
+  const rows=getTickerRows(ticker);
+  const ld=latestForecastDate(rows.filter(r=>r.ticker===ticker));
+  return rows.filter(r=>r.forecast_date===ld).sort((a,b)=>a.target_date.localeCompare(b.target_date));
 }
 
-function resetCountdown(){
-  clearInterval(countdownTimer);
-  clearTimeout(pollTimer);
-  countdown=POLL_MS/1000;
-  pollTimer=setTimeout(()=>fetchCSV(true),POLL_MS);
-  countdownTimer=setInterval(()=>{
-    countdown--;
-    if(allRows.length>0){
-      const m=Math.floor(countdown/60), s=String(countdown%60).padStart(2,"0");
-      const t=latestDate(allRows)||"—";
-      statusEl.textContent=`live data · ${allRows.length} rows · data: ${t} · refresh in ${m}:${s}`;
+function getPolyForTicker(ticker){
+  const today=polyData.filter(r=>r.ticker===ticker);
+  if(!today.length)return null;
+  return today.sort((a,b)=>b.date.localeCompare(a.date))[0];
+}
+
+function getCurveForTicker(ticker){
+  const rows=curveData.filter(r=>r.ticker===ticker);
+  if(!rows.length)return null;
+  return rows.sort((a,b)=>b.date.localeCompare(a.date))[0];
+}
+
+function getLatestMacro(){
+  if(!macroData.length)return null;
+  return macroData.sort((a,b)=>b.date.localeCompare(a.date))[0];
+}
+
+function destroyChart(id){
+  if(charts[id]){charts[id].destroy();delete charts[id];}
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// RENDER ALL
+// ══════════════════════════════════════════════════════════════════════════
+function renderAll(){
+  renderRail();
+  renderGlobalHeader();
+  renderMacroRow();
+  if(activeTicker) renderAsset(activeTicker);
+  renderAccuracyTab();
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// RAIL
+// ══════════════════════════════════════════════════════════════════════════
+function renderRail(){
+  const tickers=[...new Set(forecasts.map(r=>r.ticker))];
+  const rail=document.getElementById("rail-assets");
+  if(!tickers.length){rail.innerHTML='<div class="empty">No data</div>';return;}
+  if(!activeTicker) activeTicker=tickers[0];
+
+  rail.innerHTML=tickers.map(t=>{
+    const rows=getTickerRows(t);
+    const scored=rows.filter(r=>r._hit!==null);
+    const latestFcst=getLatestForecast(t);
+    const first=latestFcst[0]||null;
+    const p50=first?first._p50:null;
+    const dir=first?(first.direction||"NEUTRAL"):"NEUTRAL";
+    const poly=getPolyForTicker(t);
+    const polySignal=poly?poly.poly_signal:"NO_DATA";
+    // alignment
+    const aligned=poly&&poly.poly_signal!=="NO_DATA"&&poly.poly_signal===dir;
+    const diverged=poly&&poly.poly_signal!=="NO_DATA"&&poly.poly_signal!==dir&&dir!=="NEUTRAL"&&poly.poly_signal!=="NEUTRAL";
+    // yesterday result from scorecard
+    const sc=scorecard.by_asset&&scorecard.by_asset[t];
+    const yHit=sc?sc.yesterday_hit:null;
+
+    return `<div class="asset-card ${activeTicker===t?"active":""}" onclick="selectTicker('${t}')">
+      <div class="ac-top">
+        <span class="ac-ticker">${t}</span>
+        <span class="ac-chg">${p50?n(p50,4):""}</span>
+      </div>
+      <div class="ac-name">${ASSET_NAMES[t]||t}</div>
+      <div class="ac-badges">
+        ${badgeDir(dir)}
+        ${polySignal!=="NO_DATA"?`<span class="badge b-poly">⬡ PM</span>`:""}
+        ${aligned?`<span class="badge b-align">ALIGNED</span>`:""}
+        ${diverged?`<span class="badge b-div">DIVERG</span>`:""}
+        ${badgeHit(yHit)}
+      </div>
+    </div>`;
+  }).join("");
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// GLOBAL HEADER
+// ══════════════════════════════════════════════════════════════════════════
+function renderGlobalHeader(){
+  const g=scorecard.global||{};
+  const cal7=g.calibration_7d;
+  const dir7=g.directional_accuracy_7d;
+  const yestN=g.forecasts_graded_yesterday||0;
+  // yesterday hits from by_asset
+  let yestHits=0;
+  if(scorecard.by_asset){
+    Object.values(scorecard.by_asset).forEach(a=>{if(a.yesterday_hit===1)yestHits++;});
+  }
+  const trend=g.trend||"—";
+
+  document.getElementById("m-cal7").textContent=cal7!==null&&cal7!==undefined?pct(cal7):"—";
+  document.getElementById("m-cal7").className="metric-value "+calCls(cal7);
+  document.getElementById("m-dir7").textContent=dir7!==null&&dir7!==undefined?pct(dir7):"—";
+  document.getElementById("m-dir7").className="metric-value "+dirCls(dir7);
+  document.getElementById("m-yest").textContent=yestN>0?`${yestHits}/${yestN}`:"—";
+  document.getElementById("m-yest").className="metric-value "+(yestN>0?(yestHits/yestN>=.7?"cv-g":yestHits/yestN>=.5?"cv-a":"cv-r"):"cv-d");
+  document.getElementById("m-trend").textContent=trend==="IMPROVING"?"▲ UP":trend==="DECLINING"?"▼ DOWN":"—";
+  document.getElementById("m-trend").className="metric-value "+(trend==="IMPROVING"?"cv-g":trend==="DECLINING"?"cv-r":"cv-d");
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// MACRO ROW
+// ══════════════════════════════════════════════════════════════════════════
+function renderMacroRow(){
+  const m=getLatestMacro();
+  if(!m){document.getElementById("macro-row").innerHTML='<div class="macro-pill"><span class="macro-key">No macro data</span></div>';return;}
+  const rr=m.risk_regime||"";
+  const dr=m.dollar_regime||"";
+  const ratr=m.rate_regime||"";
+  const rrCls=rr==="RISK_OFF"?"rp-riskoff":rr==="RISK_ON"?"rp-riskon":"rp-neut";
+  const drCls=dr.includes("STRENGTH")?"rp-dstr":dr.includes("WEAKNESS")?"rp-dweak":"rp-neut";
+  const ratCls=ratr==="HAWKISH"?"rp-hawk":ratr==="DOVISH"?"rp-dove":"rp-neut";
+
+  document.getElementById("macro-row").innerHTML=`
+    ${m.dxy?`<div class="macro-pill"><span class="macro-key">DXY</span><span class="macro-val">${n(m.dxy,2)}</span></div>`:""}
+    ${m.vix?`<div class="macro-pill"><span class="macro-key">VIX</span><span class="macro-val">${n(m.vix,2)}</span></div>`:""}
+    ${m.us10y?`<div class="macro-pill"><span class="macro-key">10Y</span><span class="macro-val">${n(m.us10y,3)}%</span></div>`:""}
+    ${m.gold?`<div class="macro-pill"><span class="macro-key">Gold</span><span class="macro-val">${n(m.gold,0)}</span></div>`:""}
+    ${m.oil?`<div class="macro-pill"><span class="macro-key">Oil</span><span class="macro-val">${n(m.oil,2)}</span></div>`:""}
+    ${rr?`<span class="regime-pill ${rrCls}">${rr}</span>`:""}
+    ${dr?`<span class="regime-pill ${drCls}">${dr}</span>`:""}
+    ${ratr?`<span class="regime-pill ${ratCls}">${ratr}</span>`:""}
+    <span class="macro-pill" style="margin-left:auto"><span class="macro-key">updated</span><span class="macro-val" style="color:var(--muted)">${m.date||"—"}</span></span>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// SELECT TICKER
+// ══════════════════════════════════════════════════════════════════════════
+function selectTicker(t){
+  activeTicker=t;
+  document.querySelectorAll(".asset-card").forEach(el=>{
+    el.classList.toggle("active",el.onclick.toString().includes(`'${t}'`));
+  });
+  renderAsset(t);
+}
+
+function renderAsset(t){
+  renderSignalRow(t);
+  const activeTab=document.querySelector(".tab.active").dataset.tab;
+  if(activeTab==="forecast")    renderForecastTab(t);
+  if(activeTab==="curve")       renderCurveTab(t);
+  if(activeTab==="polymarket")  renderPolyTab(t);
+  if(activeTab==="distribution")renderDistTab(t);
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// SIGNAL ROW
+// ══════════════════════════════════════════════════════════════════════════
+function renderSignalRow(t){
+  const latestFcst=getLatestForecast(t);
+  const first=latestFcst[0]||null;
+  const dir=first?(first.direction||"NEUTRAL"):"NEUTRAL";
+  const sig=first?parseFloat(first.signal_strength||0):0;
+  const conv=first?parseFloat(first.conviction_score||0):0;
+  const convLabel=conv>0.6?"HIGH":conv>0.3?"MED":"LOW";
+  const convCls=conv>0.6?"cv-g":conv>0.3?"cv-a":"cv-r";
+
+  const poly=getPolyForTicker(t);
+  const polyBull=poly?parseFloat(poly.poly_prob_bullish||0):null;
+  const polySignal=poly?(poly.poly_signal||"NO_DATA"):"NO_DATA";
+  const polyVol=poly?parseFloat(poly.poly_total_volume_usd||0):0;
+
+  const aligned=polySignal!=="NO_DATA"&&polySignal!=="INSUFFICIENT_VOLUME"&&(polySignal===dir||(dir==="NEUTRAL"&&polySignal==="NEUTRAL"));
+  const diverged=polySignal!=="NO_DATA"&&polySignal!=="INSUFFICIENT_VOLUME"&&!aligned&&dir!=="NEUTRAL";
+
+  const mBox=document.getElementById("sig-model");
+  mBox.innerHTML=`<div class="sig-label">Model Signal</div>
+    <div class="sig-main ${sigCls(dir)}">${dir}</div>
+    <div class="sig-sub">${fmtPct(sig)} move expected · conviction <span class="${convCls}">${convLabel}</span></div>`;
+
+  const pBox=document.getElementById("sig-poly");
+  pBox.innerHTML=`<div class="sig-label">Polymarket</div>
+    <div class="sig-main" style="color:var(--purple)">${polySignal}</div>
+    <div class="sig-sub">${polyBull!==null?Math.round(polyBull*100)+"% bull":"no data"} · $${(polyVol/1000).toFixed(0)}k vol</div>`;
+
+  const aBox=document.getElementById("sig-align");
+  aBox.className="sig-box"+(aligned?" aligned":diverged?" divergent":"");
+  aBox.innerHTML=`<div class="sig-label">Alignment</div>
+    <div class="sig-main ${aligned?"cv-c":diverged?"cv-r":"cv-d"}">${aligned?"ALIGNED":diverged?"DIVERGENT":"NEUTRAL"}</div>
+    <div class="sig-sub">${aligned?"Highest confidence":diverged?"Treat with caution":"Insufficient PM data"}</div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 1: FORECAST
+// ══════════════════════════════════════════════════════════════════════════
+function renderForecastTab(t){
+  document.getElementById("forecast-chart-title").textContent=`${t} — ${ASSET_NAMES[t]||t} Forecast`;
+  const allRows=getTickerRows(t).sort((a,b)=>a.target_date.localeCompare(b.target_date));
+  const latestFcst=getLatestForecast(t);
+
+  // Yesterday callout
+  const sc=scorecard.by_asset&&scorecard.by_asset[t];
+  let calloutHTML="";
+  if(sc&&sc.yesterday_p50!==null&&sc.yesterday_actual!==null){
+    const hit=sc.yesterday_hit===1;
+    const dc=sc.yesterday_direction_correct===1;
+    calloutHTML=`<div class="callout">
+      <div class="callout-label">Yesterday's Result — ${scorecard.yesterday||""}</div>
+      Forecast P50: <span style="color:var(--cyan)">${n(sc.yesterday_p50,4)}</span>
+      &nbsp;→&nbsp; Actual: <span style="color:${hit?"var(--green)":"var(--red)"}">${n(sc.yesterday_actual,4)}</span>
+      &nbsp;|&nbsp; Error: <span style="color:var(--amber)">${fmtPct(sc.yesterday_error_pct)}</span>
+      &nbsp;|&nbsp; ${badgeHit(sc.yesterday_hit)}
+      &nbsp;|&nbsp; Direction <span style="color:${dc?"var(--green)":"var(--red)"}">${dc?"✓":"✗"}</span>
+    </div>`;
+  }
+  document.getElementById("yesterday-callout").innerHTML=calloutHTML;
+
+  // Explanation
+  const sig=signals[t];
+  const explHTML=`<div class="explain-card">
+    <div class="explain-label">AI Signal Explanation — ${sig?sig.name:t}</div>
+    <div class="explain-text">${sig?sig.explanation:"Add OPENAI_API_KEY to .env to enable AI explanations."}</div>
+  </div>`;
+  document.getElementById("explain-container").innerHTML=explHTML;
+
+  // Chart: last 60 days history + forecast
+  // Historical actuals from graded rows
+  const graded=allRows.filter(r=>r._actual!==null).sort((a,b)=>a.target_date.localeCompare(b.target_date));
+  const histLabels=graded.map(r=>r.target_date);
+  const histPrices=graded.map(r=>r._actual);
+
+  const fLabels=latestFcst.map(r=>r.target_date);
+  const fP50=latestFcst.map(r=>isNaN(r._p50)?null:r._p50);
+  const fP10=latestFcst.map(r=>isNaN(r._p10)?null:r._p10);
+  const fP90=latestFcst.map(r=>isNaN(r._p90)?null:r._p90);
+  const fActuals=latestFcst.map(r=>r._actual);
+  const ptColors=latestFcst.map(r=>r._hit===1?"#00ff88":r._hit===0?"#ff3355":"#ffaa00");
+
+  const allLabels=[...histLabels,...fLabels.filter(l=>!histLabels.includes(l))];
+  const histData=allLabels.map(l=>histLabels.includes(l)?histPrices[histLabels.indexOf(l)]:null);
+  const fcstP50=allLabels.map(l=>fLabels.includes(l)?fP50[fLabels.indexOf(l)]:null);
+  const fcstP10=allLabels.map(l=>fLabels.includes(l)?fP10[fLabels.indexOf(l)]:null);
+  const fcstP90=allLabels.map(l=>fLabels.includes(l)?fP90[fLabels.indexOf(l)]:null);
+  const fcstAct=allLabels.map(l=>fLabels.includes(l)?fActuals[fLabels.indexOf(l)]:null);
+  const fcstColors=allLabels.map(l=>fLabels.includes(l)?ptColors[fLabels.indexOf(l)]:null);
+
+  destroyChart("forecast");
+  const ctx=document.getElementById("forecastChart").getContext("2d");
+  charts.forecast=new Chart(ctx,{
+    type:"line",
+    data:{
+      labels:allLabels,
+      datasets:[
+        {label:"P90",data:fcstP90,borderColor:"transparent",backgroundColor:"rgba(0,212,255,.08)",fill:"+1",pointRadius:0,tension:.3},
+        {label:"P10",data:fcstP10,borderColor:"transparent",fill:false,pointRadius:0,tension:.3},
+        {label:"History",data:histData,borderColor:"#00d4ff",borderWidth:1.5,backgroundColor:"transparent",pointRadius:0,tension:.3,fill:false},
+        {label:"P50 Forecast",data:fcstP50,borderColor:"rgba(0,212,255,.5)",borderDash:[4,3],borderWidth:1.5,backgroundColor:"transparent",pointRadius:3,pointBackgroundColor:"#00d4ff",tension:.3,fill:false},
+        {label:"Actual",data:fcstAct,borderColor:"transparent",borderWidth:0,backgroundColor:fcstColors,pointRadius:6,fill:false,tension:.3},
+      ],
+    },
+    options:chartOpts(),
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 2: ACCURACY
+// ══════════════════════════════════════════════════════════════════════════
+function renderAccuracyTab(){
+  // Yesterday scorecard table
+  const yest=scorecard.yesterday||"";
+  const byAsset=scorecard.by_asset||{};
+  const tickers=Object.keys(byAsset);
+
+  let tableHTML=`<div class="chart-title" style="margin-bottom:8px">Yesterday's Scorecard — ${yest}</div>
+  <div class="table-wrap" style="margin-bottom:14px"><table>
+    <thead><tr>
+      <th>Asset</th><th>Name</th><th>Forecast P50</th><th>Actual</th>
+      <th>Error %</th><th>Direction</th><th>Band Hit</th>
+    </tr></thead><tbody>`;
+
+  tickers.forEach(t=>{
+    const a=byAsset[t];
+    if(a.yesterday_p50===null) return;
+    const hit=a.yesterday_hit;
+    const dc=a.yesterday_direction_correct;
+    const rowCls=hit===1&&dc===1?"td-hit":hit===1?"td-pend":hit===0?"td-miss":"";
+    tableHTML+=`<tr>
+      <td class="td-muted">${t}</td>
+      <td>${ASSET_NAMES[t]||t}</td>
+      <td class="td-muted">${n(a.yesterday_p50,4)}</td>
+      <td class="${hit===1?"td-hit":hit===0?"td-miss":"td-pend"}">${n(a.yesterday_actual,4)}</td>
+      <td class="td-muted">${fmtPct(a.yesterday_error_pct)}</td>
+      <td class="${dc===1?"td-hit":"td-miss"}">${dc===1?"✓":"✗"}</td>
+      <td>${badgeHit(hit)}</td>
+    </tr>`;
+  });
+  tableHTML+="</tbody></table></div>";
+  document.getElementById("yesterday-scorecard").innerHTML=tableHTML;
+
+  // Build time-series data for calibration/direction charts
+  const allRows=forecasts.map(enrichRow).filter(r=>r._hit!==null);
+  const dates=[...new Set(allRows.map(r=>r.target_date))].sort();
+  const assetList=[...new Set(allRows.map(r=>r.ticker))];
+
+  // 7-day rolling calibration per asset
+  function rollingRate(rows,col,asOf,days=7){
+    const cutoff=new Date(asOf);cutoff.setDate(cutoff.getDate()-days);
+    const recent=rows.filter(r=>new Date(r.target_date)>=cutoff&&new Date(r.target_date)<=new Date(asOf));
+    if(!recent.length)return null;
+    const vals=recent.map(r=>+r[col]).filter(v=>!isNaN(v));
+    return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
+  }
+
+  const palette=["#00d4ff","#00ff88","#ff3355","#ffaa00","#a855f7","#f97316","#4d9de0","#ff6b6b","#51cf66","#ffd43b","#74c0fc","#f783ac","#a9e34b"];
+  const calDatasets=assetList.map((t,i)=>({
+    label:t,
+    data:dates.map(d=>rollingRate(allRows.filter(r=>r.ticker===t),"_hit",d)),
+    borderColor:palette[i%palette.length],borderWidth:1.5,
+    backgroundColor:"transparent",pointRadius:0,tension:.3,fill:false,
+  }));
+  const dirDatasets=assetList.map((t,i)=>({
+    label:t,
+    data:dates.map(d=>rollingRate(allRows.filter(r=>r.ticker===t),"direction_correct",d)),
+    borderColor:palette[i%palette.length],borderWidth:1.5,
+    backgroundColor:"transparent",pointRadius:0,tension:.3,fill:false,
+  }));
+
+  destroyChart("cal");
+  destroyChart("dir");
+
+  const calCtx=document.getElementById("calChart").getContext("2d");
+  charts.cal=new Chart(calCtx,{
+    type:"line",
+    data:{labels:dates,datasets:[...calDatasets,
+      {label:"Target 80%",data:dates.map(()=>0.8),borderColor:"rgba(0,255,136,.4)",borderDash:[6,3],borderWidth:1,pointRadius:0,fill:false},
+      {label:"Warn 60%",data:dates.map(()=>0.6),borderColor:"rgba(255,170,0,.3)",borderDash:[3,3],borderWidth:1,pointRadius:0,fill:false},
+    ]},
+    options:{...chartOpts(),scales:{...chartOpts().scales,y:{...chartOpts().scales.y,min:0,max:1}}},
+  });
+
+  const dirCtx=document.getElementById("dirChart").getContext("2d");
+  charts.dir=new Chart(dirCtx,{
+    type:"line",
+    data:{labels:dates,datasets:[...dirDatasets,
+      {label:"Target 55%",data:dates.map(()=>0.55),borderColor:"rgba(0,255,136,.4)",borderDash:[6,3],borderWidth:1,pointRadius:0,fill:false},
+      {label:"Baseline 50%",data:dates.map(()=>0.5),borderColor:"rgba(255,170,0,.3)",borderDash:[3,3],borderWidth:1,pointRadius:0,fill:false},
+    ]},
+    options:{...chartOpts(),scales:{...chartOpts().scales,y:{...chartOpts().scales.y,min:0,max:1}}},
+  });
+
+  // Streak table
+  let streakHTML="<div>";
+  assetList.forEach(t=>{
+    const a=byAsset[t];
+    const tRows=allRows.filter(r=>r.ticker===t).sort((a,b)=>a.target_date.localeCompare(b.target_date));
+    const last10=tRows.slice(-10);
+    const cal7=a?a.calibration_7d:null;
+    const dir7=a?a.directional_accuracy_7d:null;
+    const consec=a?a.consecutive_hits:0;
+    streakHTML+=`<div class="streak-row">
+      <div class="streak-ticker">${t}</div>
+      <div class="streak-dots">${last10.map(r=>`<div class="sdot ${r._hit===1?"h":r._hit===0?"m":"p"}" title="${r.target_date}"></div>`).join("")}</div>
+      <div style="margin-left:12px;font-family:var(--mono);font-size:10px;color:var(--muted)">
+        cal7d <span class="${calCls(cal7)}">${cal7!==null?pct(cal7):"—"}</span>
+        &nbsp; dir7d <span class="${dirCls(dir7)}">${dir7!==null?pct(dir7):"—"}</span>
+        &nbsp; streak <span style="color:var(--cyan)">${consec}✓</span>
+      </div>
+    </div>`;
+  });
+  streakHTML+="</div>";
+  document.getElementById("streak-table").innerHTML=streakHTML;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 3: CURVE
+// ══════════════════════════════════════════════════════════════════════════
+function renderCurveTab(t){
+  if(!COMMODITY_TICKERS.has(t)){
+    document.getElementById("curve-content").innerHTML=`<div class="empty">Futures curve not available for ${t} (FX / index).</div>`;
+    return;
+  }
+  const curve=getCurveForTicker(t);
+  if(!curve){
+    document.getElementById("curve-content").innerHTML=`<div class="empty">No curve data yet for ${t}. Runs after first evening pipeline.</div>`;
+    return;
+  }
+
+  const regime=curve.regime||"UNKNOWN";
+  const regimeCls=regime==="BACKWARDATION"?"cv-g":regime==="CONTANGO"?"cv-r":"cv-a";
+  const rollYield=parseFloat(curve.roll_yield_annualized_pct||0);
+  const rollMsg=rollYield>0?`+${rollYield.toFixed(2)}%/yr favorable for longs`:`${rollYield.toFixed(2)}%/yr cost for longs`;
+  const rollCls=rollYield>0?"cv-g":"cv-r";
+
+  const months=["Spot","M1","M2","M3","M4","M5"];
+  const vals=[curve.spot,curve.m1,curve.m2,curve.m3,curve.m4,curve.m5].map(v=>v!==undefined&&v!==""?parseFloat(v):null);
+  const maxV=Math.max(...vals.filter(Boolean));
+  const barsCls=regime==="BACKWARDATION"?"backwardation":regime==="CONTANGO"?"contango":"flat";
+
+  let barsHTML="<div class='curve-bar-wrap'>";
+  months.forEach((m,i)=>{
+    const v=vals[i];
+    const h=v?Math.round((v/maxV)*100):0;
+    barsHTML+=`<div class="curve-bar-col">
+      <div class="curve-bar ${barsCls}" style="height:${h}%"></div>
+      <div class="curve-bar-label">${m}</div>
+      <div class="curve-bar-val">${v?n(v,2):"—"}</div>
+    </div>`;
+  });
+  barsHTML+="</div>";
+
+  document.getElementById("curve-content").innerHTML=`
+    <div class="grid3" style="margin-bottom:14px">
+      <div class="info-card">
+        <div class="info-label">Regime</div>
+        <div class="info-value ${regimeCls}">${regime}</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Roll Yield</div>
+        <div class="info-value ${rollCls}">${rollYield.toFixed(2)}%/yr</div>
+        <div class="info-sub">${rollMsg}</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Curve Slope (M1→M3)</div>
+        <div class="info-value cv-a">${curve.curve_slope?fmtPct(parseFloat(curve.curve_slope)):"—"}</div>
+      </div>
+    </div>
+    <div class="chart-container">
+      <div class="chart-header"><span class="chart-title">${t} Futures Term Structure — ${curve.date}</span></div>
+      ${barsHTML}
+    </div>
+    <div class="callout">
+      <div class="callout-label">Interpretation</div>
+      ${regime==="BACKWARDATION"?"Backwardation: spot > futures. Suggests near-term supply tightness or high demand. Historically bullish for longs.":
+        regime==="CONTANGO"?"Contango: futures > spot. Storage cost priced in. Negative roll yield for long holders. Bearish carry.":
+        "Flat curve: minimal carry cost or reward. Direction signal from fundamentals."}
+      &nbsp; Roll yield: <span class="${rollCls}">${rollMsg}</span>.
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 4: POLYMARKET
+// ══════════════════════════════════════════════════════════════════════════
+function renderPolyTab(t){
+  const poly=getPolyForTicker(t);
+  if(!poly||poly.poly_signal==="NO_DATA"){
+    document.getElementById("poly-content").innerHTML=`<div class="empty">No Polymarket data for ${t}. Runs nightly — check back tomorrow.</div>`;
+    return;
+  }
+
+  const bull=poly.poly_prob_bullish!==null?Math.round(parseFloat(poly.poly_prob_bullish)*100):null;
+  const bear=poly.poly_prob_bearish!==null?Math.round(parseFloat(poly.poly_prob_bearish)*100):null;
+  const sig=poly.poly_signal||"—";
+  const vol=parseFloat(poly.poly_total_volume_usd||0);
+  const cnt=parseInt(poly.poly_market_count||0);
+
+  // Historical poly prob chart
+  const histPoly=polyData.filter(r=>r.ticker===t).sort((a,b)=>a.date.localeCompare(b.date));
+  const polyDates=histPoly.map(r=>r.date);
+  const polyBullHist=histPoly.map(r=>r.poly_prob_bullish!==null?parseFloat(r.poly_prob_bullish):null);
+
+  destroyChart("poly");
+  setTimeout(()=>{
+    const polyCtx=document.getElementById("polyHistChart");
+    if(polyCtx&&polyDates.length>1){
+      charts.poly=new Chart(polyCtx.getContext("2d"),{
+        type:"line",
+        data:{
+          labels:polyDates,
+          datasets:[
+            {label:"Bullish Probability",data:polyBullHist,borderColor:"#a855f7",borderWidth:2,backgroundColor:"rgba(168,85,247,.08)",fill:true,tension:.3,pointRadius:0},
+            {label:"Neutral 50%",data:polyDates.map(()=>0.5),borderColor:"rgba(255,170,0,.3)",borderDash:[4,3],borderWidth:1,pointRadius:0,fill:false},
+          ],
+        },
+        options:{...chartOpts(),scales:{...chartOpts().scales,y:{...chartOpts().scales.y,min:0,max:1}}},
+      });
     }
-    if(countdown<=0) clearInterval(countdownTimer);
-  },1000);
+  },50);
+
+  // Top 5 markets
+  let marketsJSON=[];
+  try{marketsJSON=JSON.parse(poly.all_markets_json||"[]");}catch{}
+
+  const latestFcst=getLatestForecast(t);
+  const first=latestFcst[0];
+  const modelDir=first?(first.direction||"NEUTRAL"):"NEUTRAL";
+  const aligned=sig!=="NO_DATA"&&sig!=="INSUFFICIENT_VOLUME"&&sig===modelDir;
+  const diverged=sig!=="NO_DATA"&&sig!=="INSUFFICIENT_VOLUME"&&!aligned&&modelDir!=="NEUTRAL";
+
+  document.getElementById("poly-content").innerHTML=`
+    <div class="grid3" style="margin-bottom:14px">
+      <div class="info-card">
+        <div class="info-label">Poly Signal</div>
+        <div class="info-value" style="color:var(--purple)">${sig}</div>
+        <div class="info-sub">${bull!==null?bull+"% bull / "+bear+"% bear":"—"}</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Market Volume</div>
+        <div class="info-value cv-c">$${(vol/1000).toFixed(0)}k</div>
+        <div class="info-sub">${cnt} qualifying markets</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">vs Model</div>
+        <div class="info-value ${aligned?"cv-g":diverged?"cv-r":"cv-d"}">${aligned?"ALIGNED":diverged?"DIVERGENT":"NEUTRAL"}</div>
+        <div class="info-sub">${aligned?"Highest confidence":diverged?"Treat with extra caution":"Not enough signal"}</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-bottom:14px">
+      <div class="callout-label">How to use Polymarket data</div>
+      When <strong>ALIGNED</strong>: model and crowd agree — highest confidence trades.
+      When <strong>DIVERGENT</strong>: crowd disagrees with model — treat signal with caution or wait.
+      Weight by volume: markets under $50k are noise. Over $500k carry signal.
+    </div>
+
+    <div class="table-wrap" style="margin-bottom:14px">
+      <table><thead><tr><th>Question</th><th>YES %</th><th>Volume</th><th>Ends</th></tr></thead>
+      <tbody>${marketsJSON.map(m=>`<tr>
+        <td style="text-align:left;max-width:300px;white-space:normal">
+          <a href="${m.url}" target="_blank" style="color:var(--purple)">${m.question}</a>
+        </td>
+        <td>${Math.round(m.prob_yes*100)}%</td>
+        <td>$${(m.volume_usd/1000).toFixed(0)}k</td>
+        <td class="td-muted">${m.end_date?m.end_date.slice(0,10):"—"}</td>
+      </tr>`).join("")}</tbody></table>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-header"><span class="chart-title">Historical Polymarket Bullish Probability — ${t}</span></div>
+      <canvas id="polyHistChart"></canvas>
+    </div>
+  `;
 }
 
-// ── File input / drag-drop (manual override) ──────────────────────────────
-document.getElementById("file-input").addEventListener("change",e=>{if(e.target.files[0])readFile(e.target.files[0]);});
-function readFile(f){
-  manualOverride=true;
-  const fr=new FileReader();
-  fr.onload=ev=>loadCSVText(ev.target.result,f.name);
-  fr.readAsText(f);
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 5: DISTRIBUTION
+// ══════════════════════════════════════════════════════════════════════════
+function renderDistTab(t){
+  const rows=getTickerRows(t).filter(r=>r._actual!==null).sort((a,b)=>a.target_date.localeCompare(b.target_date));
+  if(rows.length<5){
+    document.getElementById("dist-stats").innerHTML="";
+    destroyChart("dist");
+    return;
+  }
+
+  // Compute 5-day forward returns from actuals
+  const rets=[];
+  for(let i=5;i<rows.length;i++){
+    const base=rows[i-5]._actual, cur=rows[i]._actual;
+    if(base&&cur) rets.push((cur-base)/base*100);
+  }
+
+  function histogram(data,bins=20){
+    const min=Math.min(...data),max=Math.max(...data);
+    const w=(max-min)/bins;
+    const edges=Array.from({length:bins},(_,i)=>min+i*w);
+    const counts=edges.map(e=>data.filter(d=>d>=e&&d<e+w).length);
+    const labels=edges.map(e=>e.toFixed(2)+"%");
+    return{labels,counts,edges,w};
+  }
+
+  function histFor(data,bins=20){
+    return histogram(data,bins);
+  }
+
+  // 30/60/90 day lookbacks
+  const now=rows.length;
+  const subsets={
+    "90d":rets.slice(-90),
+    "60d":rets.slice(-60),
+    "30d":rets.slice(-30),
+  };
+  const colors={"90d":"rgba(77,157,224,.4)","60d":"rgba(0,212,255,.6)","30d":"rgba(0,255,136,.7)"};
+
+  const allRets=rets;
+  const {labels,counts,edges,w}=histFor(allRets);
+  const mean=allRets.reduce((a,b)=>a+b,0)/allRets.length;
+  const variance=allRets.reduce((a,b)=>a+(b-mean)**2,0)/allRets.length;
+  const skew=allRets.reduce((a,b)=>a+((b-mean)/Math.sqrt(variance))**3,0)/allRets.length;
+
+  destroyChart("dist");
+  const ctx=document.getElementById("distChart").getContext("2d");
+  charts.dist=new Chart(ctx,{
+    type:"bar",
+    data:{
+      labels,
+      datasets:Object.entries(subsets).map(([k,d])=>{
+        const{counts:c}=histFor(d,20);
+        const max=Math.max(...c);
+        return{
+          label:k,
+          data:c.map(v=>max>0?v/max*100:0),
+          backgroundColor:colors[k],
+          borderRadius:2,
+        };
+      }),
+    },
+    options:{
+      ...chartOpts(),
+      plugins:{...chartOpts().plugins,legend:{labels:{color:"#8b949e",font:{family:"'IBM Plex Mono'"},boxWidth:14}}},
+    },
+  });
+
+  document.getElementById("dist-stats").innerHTML=`
+    <div class="grid3">
+      <div class="info-card"><div class="info-label">Mean 5d Return</div>
+        <div class="info-value ${mean>=0?"cv-g":"cv-r"}">${mean.toFixed(2)}%</div></div>
+      <div class="info-card"><div class="info-label">Volatility (σ)</div>
+        <div class="info-value cv-a">${Math.sqrt(variance).toFixed(2)}%</div></div>
+      <div class="info-card"><div class="info-label">Skew</div>
+        <div class="info-value ${skew>0?"cv-g":"cv-r"}">${skew.toFixed(2)}</div>
+        <div class="info-sub">${skew>0.2?"Right tail (upside surprises)":skew<-0.2?"Left tail (downside risk)":"Symmetric"}</div>
+      </div>
+    </div>`;
 }
 
-document.addEventListener("dragenter",e=>{if(e.dataTransfer.types.includes("Files"))document.body.classList.add("dragging");});
-document.addEventListener("dragleave",e=>{if(!e.relatedTarget)document.body.classList.remove("dragging");});
-document.addEventListener("dragover",e=>e.preventDefault());
-document.addEventListener("drop",e=>{e.preventDefault();document.body.classList.remove("dragging");const f=e.dataTransfer.files[0];if(f)readFile(f);});
-
-// ── Filter buttons ────────────────────────────────────────────────────────
-document.querySelectorAll(".filter-btn").forEach(btn=>btn.addEventListener("click",()=>{
-  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");activeFilter=btn.dataset.f;renderTable(allRows.map(enrich));
-}));
-
-// ── Manual entry ──────────────────────────────────────────────────────────
-function applyManual(){
-  const d=document.getElementById("f-date").value;
-  const t=document.getElementById("f-ticker").value.trim().toUpperCase();
-  const v=parseFloat(document.getElementById("f-actual").value);
-  if(!d||!t||isNaN(v)){alert("Fill in all fields.");return;}
-  overrides[`${d}|${t}`]=v;saveOv();rerender();
-  document.getElementById("f-actual").value="";
+// ══════════════════════════════════════════════════════════════════════════
+// CHART DEFAULT OPTIONS
+// ══════════════════════════════════════════════════════════════════════════
+function chartOpts(){
+  return{
+    responsive:true,
+    interaction:{mode:"index",intersect:false},
+    plugins:{
+      legend:{labels:{color:"#6e7681",font:{family:"'IBM Plex Mono'"},boxWidth:12,padding:12}},
+      tooltip:{
+        backgroundColor:"#0d1117",borderColor:"#21262d",borderWidth:1,
+        titleColor:"#e6edf3",bodyColor:"#e6edf3",padding:9,
+        callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y!==null?(+ctx.parsed.y).toFixed(4):"—"}`},
+      },
+    },
+    scales:{
+      x:{ticks:{color:"#6e7681",font:{family:"'IBM Plex Mono'",size:9},maxRotation:45},grid:{color:"#161b22"}},
+      y:{ticks:{color:"#6e7681",font:{family:"'IBM Plex Mono'",size:9}},grid:{color:"#161b22"}},
+    },
+  };
 }
 
-// ── Export ────────────────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════
+// TABS
+// ══════════════════════════════════════════════════════════════════════════
+document.querySelectorAll(".tab").forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+    const id="tab-"+tab.dataset.tab;
+    document.getElementById(id).classList.add("active");
+    if(activeTicker){
+      if(tab.dataset.tab==="forecast")    renderForecastTab(activeTicker);
+      if(tab.dataset.tab==="accuracy")    renderAccuracyTab();
+      if(tab.dataset.tab==="curve")       renderCurveTab(activeTicker);
+      if(tab.dataset.tab==="polymarket")  renderPolyTab(activeTicker);
+      if(tab.dataset.tab==="distribution")renderDistTab(activeTicker);
+    }
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// EXPORT
+// ══════════════════════════════════════════════════════════════════════════
 function exportCSV(){
-  const e=allRows.map(enrich);
-  const hdr="forecast_date,target_date,ticker,p10,p50,p90,actual,error_vs_p50,pct_error,status,model_used";
-  const lines=e.map(r=>[r.forecast_date,r.target_date,r.ticker,r.p10,r.p50,r.p90,r._a??"",r._e!==null?r._e.toFixed(6):"",r._e!==null?(r._e/Math.abs(r._p50)*100).toFixed(4)+"":"",r._s,r.model_used||""].join(","));
+  const rows=forecasts.map(enrichRow);
+  const hdr="forecast_date,target_date,ticker,p10,p50,p90,actual,direction,signal_strength,conviction_score,error_abs,error_pct,hit,direction_correct,model_used";
+  const lines=rows.map(r=>[
+    r.forecast_date,r.target_date,r.ticker,r.p10,r.p50,r.p90,r._actual??"",
+    r.direction||"",r.signal_strength||"",r.conviction_score||"",
+    r._err!==null?r._err.toFixed(6):"",r._errPct!==null?r._errPct.toFixed(4):"",
+    r._hit??"",r.direction_correct||"",r.model_used||"",
+  ].join(","));
   const blob=new Blob([hdr+"\n"+lines.join("\n")],{type:"text/csv"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
-  a.download=`tc_export_${new Date().toISOString().slice(0,10)}.csv`;a.click();
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=`trading-copilot-export-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
 }
 
-// ── Init ──────────────────────────────────────────────────────────────────
-loadOv();
-fetchCSV();
+// ══════════════════════════════════════════════════════════════════════════
+// BOOT
+// ══════════════════════════════════════════════════════════════════════════
+loadAll();
 </script>
 </body>
 </html>

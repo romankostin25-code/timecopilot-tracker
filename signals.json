@@ -1,0 +1,80 @@
+{
+  "NG=F": {
+    "ticker": "NG=F",
+    "name": "Natural Gas",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027648"
+  },
+  "GC=F": {
+    "ticker": "GC=F",
+    "name": "Gold Futures",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027656"
+  },
+  "SI=F": {
+    "ticker": "SI=F",
+    "name": "Silver Futures",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027657"
+  },
+  "CL=F": {
+    "ticker": "CL=F",
+    "name": "WTI Crude Oil",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027658"
+  },
+  "HG=F": {
+    "ticker": "HG=F",
+    "name": "Copper Futures",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027659"
+  },
+  "EURUSD=X": {
+    "ticker": "EURUSD=X",
+    "name": "Euro / US Dollar",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027660"
+  },
+  "GBPUSD=X": {
+    "ticker": "GBPUSD=X",
+    "name": "British Pound / US Dollar",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027661"
+  },
+  "USDJPY=X": {
+    "ticker": "USDJPY=X",
+    "name": "US Dollar / Japanese Yen",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027662"
+  },
+  "AUDUSD=X": {
+    "ticker": "AUDUSD=X",
+    "name": "Australian Dollar / US Dollar",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027663"
+  },
+  "USDCHF=X": {
+    "ticker": "USDCHF=X",
+    "name": "US Dollar / Swiss Franc",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027664"
+  },
+  "DX-Y.NYB": {
+    "ticker": "DX-Y.NYB",
+    "name": "US Dollar Index (DXY)",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027665"
+  },
+  "^TNX": {
+    "ticker": "^TNX",
+    "name": "US 10-Year Treasury Yield",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027666"
+  },
+  "^GSPC": {
+    "ticker": "^GSPC",
+    "name": "S&P 500",
+    "explanation": "Add OPENAI_API_KEY to .env to enable AI explanations.",
+    "generated_at": "2026-05-03T23:21:09.027667"
+  }
+}

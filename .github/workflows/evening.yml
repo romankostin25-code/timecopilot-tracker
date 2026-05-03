@@ -1,0 +1,48 @@
+name: Evening Forecast Run
+
+on:
+  schedule:
+    - cron: '0 22 * * 1-5'   # 6:00 PM ET (UTC-4 summer)
+  workflow_dispatch:
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run full auto
+        env:
+          ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'NG=F,GC=F,SI=F,CL=F,HG=F,EURUSD=X,GBPUSD=X,USDJPY=X,AUDUSD=X,USDCHF=X,DX-Y.NYB,^TNX,^GSPC' }}
+          FORECAST_HORIZON: '10'
+          FORECAST_FREQUENCY: 'B'
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          VIX_RISKOFF_THRESHOLD: '25'
+          POLYMARKET_FETCH: 'true'
+          POLYMARKET_MIN_VOLUME: '50000'
+          CALIBRATION_TARGET: '0.80'
+          CALIBRATION_WARN: '0.60'
+          DIRECTIONAL_TARGET: '0.55'
+          DIRECTIONAL_WARN: '0.50'
+        run: python main.py --auto
+
+      - name: Commit all updated data
+        run: |
+          git config user.name  "Roman Kostin"
+          git config user.email "Roman@hirz.ai"
+          git add forecasts.csv futures_curve.csv polymarket_data.csv macro_context.csv scorecard.json signals.json || true
+          git diff --cached --quiet || \
+            git commit -m "data: evening forecast $(date -u +'%Y-%m-%d %H:%M UTC')" && \
+            git push
