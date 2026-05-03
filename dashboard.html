@@ -1,661 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TimeCopilot — Accuracy Tracker</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TimeCopilot — Forecast Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <style>
-  :root {
-    --bg:      #0a0a0f;
-    --surface: #13131a;
-    --border:  #1e1e2e;
-    --text:    #c9d1d9;
-    --muted:   #58606e;
-    --green:   #00ff88;
-    --amber:   #ffaa00;
-    --red:     #ff4455;
-    --blue:    #4d9de0;
-    --purple:  #a78bfa;
-    --mono:    'JetBrains Mono', monospace;
-    --sans:    'Inter', sans-serif;
-  }
+:root{
+  --bg:#07070d;--surface:#0f0f18;--surface2:#14141f;
+  --border:#1c1c2e;--border2:#252538;
+  --text:#d4daf0;--muted:#4a5068;--muted2:#6b7494;
+  --green:#00ff88;--amber:#ffaa00;--red:#ff4455;--blue:#4d9de0;--purple:#a78bfa;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.5;min-height:100vh}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:100}
+.logo{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--green);letter-spacing:.05em}
+.logo em{color:var(--muted2);font-style:normal}
+.header-right{display:flex;align-items:center;gap:16px}
+#last-updated{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.upload-btn{padding:6px 14px;background:rgba(0,255,136,.1);color:var(--green);border:1px solid rgba(0,255,136,.25);border-radius:6px;font-family:var(--mono);font-size:11px;cursor:pointer;transition:background .15s;white-space:nowrap}
+.upload-btn:hover{background:rgba(0,255,136,.2)}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 100vh;
-  }
+.page{max-width:1400px;margin:0 auto;padding:24px 28px}
 
-  /* ── Header ── */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 24px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-  }
-  .logo {
-    font-family: var(--mono);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--green);
-    letter-spacing: .04em;
-  }
-  .logo span { color: var(--muted); }
-  #last-updated { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+/* Hero */
+.hero{display:grid;grid-template-columns:220px 1px 1fr;gap:28px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:24px;align-items:center}
+.hero-score{text-align:center}
+.hero-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);margin-bottom:6px;font-family:var(--mono)}
+.hero-number{font-family:var(--mono);font-size:76px;font-weight:700;line-height:1}
+.hero-number.g{color:var(--green)}.hero-number.a{color:var(--amber)}.hero-number.r{color:var(--red)}.hero-number.d{color:var(--muted)}
+.hero-sub{font-size:11px;color:var(--muted2);margin-top:6px;font-family:var(--mono)}
+.hero-divider{width:1px;height:80px;background:var(--border);align-self:center}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.hstat{padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:10px}
+.hstat-label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
+.hstat-value{font-family:var(--mono);font-size:26px;font-weight:700;line-height:1}
+.hstat-sub{font-size:10px;color:var(--muted);margin-top:3px}
+.cb{color:var(--blue)}.cp{color:var(--purple)}.cg{color:var(--green)}.ca{color:var(--amber)}
 
-  /* ── Layout ── */
-  .page { max-width: 1280px; margin: 0 auto; padding: 24px; }
+/* Ticker chips */
+.ticker-grid{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
+.chip{display:flex;align-items:center;gap:7px;padding:7px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .15s;user-select:none}
+.chip.active{border-color:var(--green);background:rgba(0,255,136,.07)}
+.chip:hover:not(.active){border-color:var(--border2)}
+.chip-name{font-weight:700}
+.chip-rate{font-size:11px}
+.chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dg{color:var(--green)}.da{color:var(--amber)}.dr{color:var(--red)}.dd{color:var(--muted)}
+.bg{background:var(--green)}.ba{background:var(--amber)}.br{background:var(--red)}.bd{background:var(--muted)}
 
-  /* ── Upload zone ── */
-  #drop-zone {
-    border: 2px dashed var(--border);
-    border-radius: 10px;
-    padding: 32px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color .2s, background .2s;
-    margin-bottom: 28px;
-  }
-  #drop-zone.drag-over { border-color: var(--green); background: rgba(0,255,136,.04); }
-  #drop-zone p { color: var(--muted); font-size: 13px; }
-  #drop-zone strong { color: var(--green); }
-  #file-input { display: none; }
-  .btn {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 8px 18px;
-    background: var(--border);
-    color: var(--text);
-    border: 1px solid #2a2a3e;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: var(--mono);
-    font-size: 12px;
-    transition: background .15s;
-  }
-  .btn:hover { background: #22223a; }
-  .btn-green { background: rgba(0,255,136,.12); color: var(--green); border-color: rgba(0,255,136,.3); }
-  .btn-green:hover { background: rgba(0,255,136,.2); }
+/* Chart */
+.chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:22px}
+.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-title{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2)}
+.chart-select{background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:6px;outline:none}
+#forecastChart{max-height:300px}
 
-  /* ── Summary cards ── */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
-  }
-  .card-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    margin-bottom: 6px;
-  }
-  .card-value {
-    font-family: var(--mono);
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .card-sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-family: var(--mono); }
-  .green { color: var(--green); }
-  .amber { color: var(--amber); }
-  .red   { color: var(--red); }
-  .blue  { color: var(--blue); }
-  .purple{ color: var(--purple); }
+/* Toolbar */
+.toolbar{display:flex;align-items:center;gap:9px;margin-bottom:11px;flex-wrap:wrap}
+.filter-btn{padding:5px 13px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted2);font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
+.filter-btn.active{color:var(--green);border-color:var(--green);background:rgba(0,255,136,.08)}
+.filter-btn:hover:not(.active){border-color:var(--border2);color:var(--text)}
+.ml-auto{margin-left:auto}
+.btn{padding:6px 13px;background:var(--border);color:var(--text);border:1px solid var(--border2);border-radius:6px;cursor:pointer;font-family:var(--mono);font-size:12px;transition:background .15s}
+.btn:hover{background:var(--border2)}
+.btn-g{background:rgba(0,255,136,.12);color:var(--green);border-color:rgba(0,255,136,.3)}
+.btn-g:hover{background:rgba(0,255,136,.2)}
 
-  /* ── Section heading ── */
-  .section-title {
-    font-family: var(--mono);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
+/* Table */
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:22px}
+table{width:100%;border-collapse:collapse}
+thead tr{background:rgba(0,0,0,.3)}
+th{padding:10px 13px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:right;white-space:nowrap;border-bottom:1px solid var(--border)}
+th:first-child,th:nth-child(2),th:nth-child(3){text-align:left}
+td{padding:9px 13px;font-family:var(--mono);font-size:12px;text-align:right;border-bottom:1px solid rgba(28,28,46,.5);white-space:nowrap}
+td:first-child,td:nth-child(2),td:nth-child(3){text-align:left}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.015)}
+.td-tick{font-weight:700;letter-spacing:.03em}
+.td-range{color:var(--muted2)}
+.td-p50{color:var(--blue)}
+.td-hit{color:var(--green)}.td-miss{color:var(--red)}.td-pend{color:var(--muted)}
+.td-ep{color:var(--green);font-size:11px}.td-en{color:var(--red);font-size:11px}.td-e0{color:var(--muted);font-size:11px}
+.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.04em}
+.bh{background:rgba(0,255,136,.12);color:var(--green)}
+.bm{background:rgba(255,68,85,.12);color:var(--red)}
+.bp{background:rgba(255,170,0,.10);color:var(--amber)}
 
-  /* ── Chart ── */
-  .chart-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 28px;
-    position: relative;
-  }
-  #forecastChart { width: 100% !important; max-height: 360px; }
+/* Drop overlay */
+#drop-overlay{position:fixed;inset:0;background:rgba(0,255,136,.04);border:3px dashed var(--green);z-index:9999;display:none;align-items:center;justify-content:center;font-family:var(--mono);font-size:22px;color:var(--green);pointer-events:none}
+body.dragging #drop-overlay{display:flex}
+#file-input{display:none}
 
-  /* ── Table ── */
-  .table-toolbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
-  .filter-btn {
-    padding: 5px 14px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: transparent;
-    color: var(--muted);
-    font-size: 12px;
-    cursor: pointer;
-    font-family: var(--mono);
-    transition: all .15s;
-  }
-  .filter-btn.active { color: var(--green); border-color: var(--green); background: rgba(0,255,136,.08); }
-  .table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 28px;
-  }
-  table { width: 100%; border-collapse: collapse; }
-  thead tr { background: #0f0f18; }
-  th {
-    padding: 10px 14px;
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--muted);
-    text-align: right;
-    white-space: nowrap;
-    border-bottom: 1px solid var(--border);
-  }
-  th:first-child, th:nth-child(2), th:nth-child(3) { text-align: left; }
-  td {
-    padding: 9px 14px;
-    font-family: var(--mono);
-    font-size: 12px;
-    text-align: right;
-    border-bottom: 1px solid rgba(30,30,46,.6);
-    white-space: nowrap;
-  }
-  td:first-child, td:nth-child(2), td:nth-child(3) { text-align: left; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,.02); }
+/* Empty */
+.empty{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty .ico{font-size:36px;margin-bottom:10px}
+.empty p{font-size:13px}
 
-  .badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .04em;
-  }
-  .badge-hit     { background: rgba(0,255,136,.12); color: var(--green); }
-  .badge-miss    { background: rgba(255,68,85,.12);  color: var(--red); }
-  .badge-pending { background: rgba(255,170,0,.10);  color: var(--amber); }
+/* Manual */
+.manual-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px}
+.form-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-top:12px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:10px;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.fg input,.fg select{background:var(--bg);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:13px;padding:7px 10px;min-width:120px;outline:none}
+.fg input:focus{border-color:var(--green)}
 
-  /* ── Manual input form ── */
-  .form-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin-bottom: 28px;
-  }
-  .form-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin-top: 12px; }
-  .form-group { display: flex; flex-direction: column; gap: 5px; }
-  .form-group label { font-size: 11px; color: var(--muted); font-family: var(--mono); }
-  .form-group input, .form-group select {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13px;
-    padding: 7px 10px;
-    min-width: 140px;
-    outline: none;
-  }
-  .form-group input:focus, .form-group select:focus { border-color: var(--green); }
+footer{text-align:center;padding:22px;color:var(--muted);font-family:var(--mono);font-size:11px;border-top:1px solid var(--border)}
+footer a{color:var(--muted2);text-decoration:none}
+footer a:hover{color:var(--text)}
 
-  /* ── Empty state ── */
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-  }
-  .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
-  .empty-state p { font-size: 14px; }
-
-  /* ── Responsive ── */
-  @media(max-width: 640px) {
-    .cards { grid-template-columns: 1fr 1fr; }
-    td, th { padding: 8px 8px; font-size: 11px; }
-  }
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-divider{display:none}.hero-number{font-size:56px}.hero-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.page{padding:14px}.hero-stats{grid-template-columns:1fr 1fr}td,th{padding:7px 8px;font-size:11px}}
 </style>
 </head>
 <body>
 
+<div id="drop-overlay">Drop forecasts.csv to load</div>
+<input type="file" id="file-input" accept=".csv"/>
+
 <header>
-  <div class="logo">TIME<span>COPILOT</span> // ACCURACY TRACKER</div>
-  <div id="last-updated">no data loaded</div>
+  <div class="logo">TIME<em>COPILOT</em> <em style="color:var(--border2)">//</em> FORECAST TRACKER</div>
+  <div class="header-right">
+    <span id="last-updated">no data</span>
+    <label class="upload-btn" for="file-input">Load CSV</label>
+  </div>
 </header>
 
 <div class="page">
 
-  <!-- Upload -->
-  <div id="drop-zone" onclick="document.getElementById('file-input').click()">
-    <div class="icon" style="font-size:32px;margin-bottom:8px;">📂</div>
-    <p>Drag &amp; drop <strong>forecasts.csv</strong> here, or click to select</p>
-    <p style="margin-top:6px;font-size:11px;">The file never leaves your browser — processed locally.</p>
-    <span class="btn btn-green">Choose File</span>
-    <input type="file" id="file-input" accept=".csv" />
+  <!-- Hero accuracy score -->
+  <div class="hero">
+    <div class="hero-score">
+      <div class="hero-label">Model Accuracy</div>
+      <div class="hero-number d" id="hero-pct">—</div>
+      <div class="hero-sub" id="hero-sub">% predictions within P10–P90 band</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-label">Total Predictions</div>
+        <div class="hstat-value cb" id="h-total">—</div>
+        <div class="hstat-sub">all tickers combined</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-label">With Actuals</div>
+        <div class="hstat-value cp" id="h-scored">—</div>
+        <div class="hstat-sub" id="h-cov">awaiting market data</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-label">Hits</div>
+        <div class="hstat-value cg" id="h-hits">—</div>
+        <div class="hstat-sub">actual inside P10–P90</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-label">Median MAE</div>
+        <div class="hstat-value ca" id="h-mae">—</div>
+        <div class="hstat-sub">vs P50 forecast</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Summary cards -->
-  <div class="cards" id="cards">
-    <div class="card">
-      <div class="card-label">Total Forecasts</div>
-      <div class="card-value blue" id="c-total">—</div>
-      <div class="card-sub">rows in CSV</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Coverage</div>
-      <div class="card-value purple" id="c-coverage">—</div>
-      <div class="card-sub">have actual result</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Calibration</div>
-      <div class="card-value green" id="c-calibration">—</div>
-      <div class="card-sub">P10–P90 hit rate</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Median MAE</div>
-      <div class="card-value amber" id="c-mae">—</div>
-      <div class="card-sub">vs P50 forecast</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Last Forecast</div>
-      <div class="card-value" style="font-size:16px" id="c-lastdate">—</div>
-      <div class="card-sub" id="c-lastticker">—</div>
-    </div>
-  </div>
+  <!-- Per-ticker accuracy chips -->
+  <div class="ticker-grid" id="ticker-grid"></div>
 
   <!-- Chart -->
-  <p class="section-title">Forecast vs Actuals</p>
-  <div class="chart-wrap" id="chart-section">
-    <div class="empty-state" id="chart-empty">
-      <div class="icon">📈</div>
-      <p>Load a CSV to see the chart</p>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <span class="section-title">Prediction vs Reality</span>
+      <select class="chart-select" id="chart-sel" onchange="renderChart(allRows.map(enrich))"></select>
     </div>
+    <div id="chart-empty" class="empty" style="padding:30px"><div class="ico">📈</div><p>Load a CSV to see the chart</p></div>
     <canvas id="forecastChart" style="display:none"></canvas>
   </div>
 
-  <!-- Table toolbar -->
-  <p class="section-title">Forecast Log</p>
-  <div class="table-toolbar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="hit">Hit</button>
-    <button class="filter-btn" data-filter="miss">Miss</button>
-    <button class="filter-btn" data-filter="pending">Pending</button>
-    <button class="btn" onclick="exportCSV()" style="margin-left:auto">Export CSV</button>
-  </div>
-
   <!-- Table -->
+  <div class="toolbar">
+    <span class="section-title" style="margin-bottom:0">Forecast Log</span>
+    <button class="filter-btn active" data-f="all">All</button>
+    <button class="filter-btn" data-f="hit">Hit</button>
+    <button class="filter-btn" data-f="miss">Miss</button>
+    <button class="filter-btn" data-f="pending">Pending</button>
+    <button class="btn ml-auto" onclick="exportCSV()">Export CSV</button>
+  </div>
   <div class="table-wrap">
     <table>
-      <thead>
-        <tr>
-          <th>Forecast Date</th>
-          <th>Target Date</th>
-          <th>Ticker</th>
-          <th>P10</th>
-          <th>P50</th>
-          <th>P90</th>
-          <th>Actual</th>
-          <th>Status</th>
-          <th>Model</th>
-        </tr>
-      </thead>
+      <thead><tr>
+        <th>Ticker</th><th>Forecast Date</th><th>Target Date</th>
+        <th>P10 (Low)</th><th>P50 (Median)</th><th>P90 (High)</th>
+        <th>Actual</th><th>Error vs P50</th><th>Status</th>
+      </tr></thead>
       <tbody id="table-body">
-        <tr>
-          <td colspan="9">
-            <div class="empty-state">
-              <div class="icon">⏳</div>
-              <p>No data — drop a forecasts.csv file above</p>
-            </div>
-          </td>
-        </tr>
+        <tr><td colspan="9"><div class="empty"><div class="ico">⏳</div><p>Drop <strong>forecasts.csv</strong> anywhere on this page, or click <strong>Load CSV</strong></p></div></td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Manual input -->
-  <p class="section-title">Manual Actual Entry</p>
-  <div class="form-wrap">
-    <p style="color:var(--muted);font-size:12px;">Override or fill in an actual price manually (saved in browser localStorage — reload CSV to persist to file).</p>
+  <!-- Manual entry -->
+  <div class="manual-wrap">
+    <div class="section-title">Manual Actual Entry</div>
+    <p style="color:var(--muted);font-size:12px;margin-top:6px">Fill in or override an actual price — stored in browser localStorage, does not modify the source CSV.</p>
     <div class="form-row">
-      <div class="form-group">
-        <label>Target Date</label>
-        <input type="date" id="f-date" />
-      </div>
-      <div class="form-group">
-        <label>Ticker</label>
-        <input type="text" id="f-ticker" placeholder="SPY" style="min-width:90px" />
-      </div>
-      <div class="form-group">
-        <label>Actual Price</label>
-        <input type="number" step="0.0001" id="f-actual" placeholder="523.45" />
-      </div>
-      <button class="btn btn-green" onclick="applyManual()">Apply</button>
+      <div class="fg"><label>Target Date</label><input type="date" id="f-date"/></div>
+      <div class="fg"><label>Ticker</label><input type="text" id="f-ticker" placeholder="GC=F" style="min-width:90px"/></div>
+      <div class="fg"><label>Actual Price</label><input type="number" step="any" id="f-actual" placeholder="3300.00"/></div>
+      <button class="btn btn-g" onclick="applyManual()">Apply</button>
     </div>
   </div>
 
-</div><!-- /page -->
+</div>
+
+<footer>TimeCopilot Tracker &mdash; all processing is local, no data leaves your browser &nbsp;&middot;&nbsp; <a href="https://github.com/romankostin25-code/timecopilot-tracker" target="_blank">GitHub</a></footer>
 
 <script>
 // ── State ─────────────────────────────────────────────────────────────────
-let allRows = [];       // parsed CSV rows (objects)
-let overrides = {};     // { "YYYY-MM-DD|TICKER": actual } from localStorage
-let activeFilter = "all";
-let chartInstance = null;
+let allRows=[], overrides={}, activeFilter="all", activeTicker="all", chartInst=null;
 
-// ── localStorage overrides ────────────────────────────────────────────────
-function loadOverrides() {
-  try { overrides = JSON.parse(localStorage.getItem("tc_overrides") || "{}"); }
-  catch { overrides = {}; }
-}
-function saveOverrides() {
-  localStorage.setItem("tc_overrides", JSON.stringify(overrides));
-}
+const LABELS={"NG=F":"Nat Gas","GC=F":"Gold","SI=F":"Silver","CL=F":"Oil WTI","EURUSD=X":"EUR/USD","GBPUSD=X":"GBP/USD","USDJPY=X":"USD/JPY","AUDUSD=X":"AUD/USD","USDCHF=X":"USD/CHF","SPY":"S&P 500"};
+const lbl=t=>LABELS[t]||t;
 
-// ── CSV Parser ────────────────────────────────────────────────────────────
-function parseCSV(text) {
-  const lines = text.trim().split(/\r?\n/);
-  if (lines.length < 2) return [];
-  const headers = lines[0].split(",").map(h => h.trim().toLowerCase().replace(/"/g, ""));
-  return lines.slice(1).map(line => {
-    const vals = line.split(",").map(v => v.trim().replace(/^"|"$/g, ""));
-    const obj = {};
-    headers.forEach((h, i) => obj[h] = vals[i] ?? "");
-    return obj;
+function loadOv(){try{overrides=JSON.parse(localStorage.getItem("tc2_ov")||"{}");}catch{overrides={};}}
+function saveOv(){localStorage.setItem("tc2_ov",JSON.stringify(overrides));}
+
+// ── CSV parse ─────────────────────────────────────────────────────────────
+function parseCSV(txt){
+  const lines=txt.trim().split(/\r?\n/);
+  if(lines.length<2)return[];
+  const hdrs=lines[0].split(",").map(h=>h.trim().toLowerCase().replace(/"/g,""));
+  return lines.slice(1).filter(l=>l.trim()).map(line=>{
+    const vals=line.split(",").map(v=>v.trim().replace(/^"|"$/g,""));
+    const o={};hdrs.forEach((h,i)=>o[h]=vals[i]??"");return o;
   });
 }
 
-// ── Enrich row with override & status ────────────────────────────────────
-function enrichRow(row) {
-  const key = `${row.target_date}|${(row.ticker||"").toUpperCase()}`;
-  const override = overrides[key];
-  const actualRaw = override !== undefined ? override : row.actual;
-  const actual = actualRaw !== "" && actualRaw !== undefined ? parseFloat(actualRaw) : null;
-  const p10 = parseFloat(row.p10), p50 = parseFloat(row.p50), p90 = parseFloat(row.p90);
-
-  let status = "pending";
-  if (actual !== null && !isNaN(actual)) {
-    status = (actual >= p10 && actual <= p90) ? "hit" : "miss";
-  }
-  return { ...row, _actual: actual, _p10: p10, _p50: p50, _p90: p90, _status: status };
+// ── Enrich row ────────────────────────────────────────────────────────────
+function enrich(r){
+  const key=`${r.target_date}|${(r.ticker||"").toUpperCase()}`;
+  const ov=overrides[key];
+  const ar=ov!==undefined?ov:r.actual;
+  const actual=(ar!==""&&ar!==undefined)?parseFloat(ar):null;
+  const p10=parseFloat(r.p10),p50=parseFloat(r.p50),p90=parseFloat(r.p90);
+  let status="pending";
+  if(actual!==null&&!isNaN(actual)) status=(actual>=p10&&actual<=p90)?"hit":"miss";
+  const err=(actual!==null&&!isNaN(actual)&&!isNaN(p50))?actual-p50:null;
+  return{...r,_a:actual,_p10:p10,_p50:p50,_p90:p90,_s:status,_e:err};
 }
 
-// ── Render summary cards ──────────────────────────────────────────────────
-function renderCards(rows) {
-  const scored = rows.filter(r => r._actual !== null && !isNaN(r._actual));
-  const total = rows.length;
-  const coverage = total ? Math.round(scored.length / total * 100) : 0;
-  const hits = scored.filter(r => r._status === "hit").length;
-  const calibration = scored.length ? Math.round(hits / scored.length * 100) : null;
-  const mae = scored.length
-    ? (scored.reduce((s, r) => s + Math.abs(r._actual - r._p50), 0) / scored.length).toFixed(2)
-    : null;
+function calCls(p){if(p===null)return"d";if(p>=70)return"g";if(p>=50)return"a";return"r";}
 
-  document.getElementById("c-total").textContent = total || "—";
-  document.getElementById("c-coverage").textContent = total ? coverage + "%" : "—";
+// ── Hero ──────────────────────────────────────────────────────────────────
+function renderHero(rows){
+  const sc=rows.filter(r=>r._a!==null&&!isNaN(r._a));
+  const hits=sc.filter(r=>r._s==="hit").length;
+  const pct=sc.length?Math.round(hits/sc.length*100):null;
+  const mae=sc.length?(sc.reduce((s,r)=>s+Math.abs(r._a-r._p50),0)/sc.length).toFixed(3):null;
 
-  const calEl = document.getElementById("c-calibration");
-  calEl.textContent = calibration !== null ? calibration + "%" : "—";
-  calEl.className = "card-value " +
-    (calibration === null ? "green" : calibration >= 70 ? "green" : calibration >= 50 ? "amber" : "red");
-
-  document.getElementById("c-mae").textContent = mae !== null ? mae : "—";
-
-  const sorted = [...rows].sort((a, b) => b.forecast_date.localeCompare(a.forecast_date));
-  if (sorted.length) {
-    document.getElementById("c-lastdate").textContent = sorted[0].forecast_date;
-    document.getElementById("c-lastticker").textContent = sorted[0].ticker;
-  }
+  const el=document.getElementById("hero-pct");
+  el.textContent=pct!==null?pct+"%":"—";
+  el.className="hero-number "+calCls(pct);
+  document.getElementById("h-total").textContent=rows.length||"—";
+  document.getElementById("h-scored").textContent=sc.length||"—";
+  document.getElementById("h-cov").textContent=rows.length?Math.round(sc.length/rows.length*100)+"% coverage":"awaiting data";
+  document.getElementById("h-hits").textContent=sc.length?hits:"—";
+  document.getElementById("h-mae").textContent=mae||"—";
 }
 
-// ── Render table ──────────────────────────────────────────────────────────
-function renderTable(rows) {
-  const filtered = activeFilter === "all" ? rows : rows.filter(r => r._status === activeFilter);
-  const tbody = document.getElementById("table-body");
+// ── Ticker chips + chart select ───────────────────────────────────────────
+function renderChips(rows){
+  const tickers=[...new Set(rows.map(r=>r.ticker))].sort();
+  const grid=document.getElementById("ticker-grid");
+  const sel=document.getElementById("chart-sel");
 
-  if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="9"><div class="empty-state"><div class="icon">🔍</div><p>No rows match this filter</p></div></td></tr>`;
-    return;
-  }
+  let html=`<div class="chip ${activeTicker==="all"?"active":""}" data-t="all"><span class="chip-dot ${activeTicker==="all"?"bg":"bd"}"></span><span class="chip-name">ALL</span></div>`;
+  let selHtml=`<option value="all">All tickers</option>`;
 
-  // Sort newest forecast first, then by target date
-  const sorted = [...filtered].sort((a, b) => {
-    const fd = b.forecast_date.localeCompare(a.forecast_date);
-    return fd !== 0 ? fd : a.target_date.localeCompare(b.target_date);
+  tickers.forEach(t=>{
+    const sub=rows.filter(r=>r.ticker===t);
+    const sc=sub.filter(r=>r._a!==null&&!isNaN(r._a));
+    const rate=sc.length?Math.round(sc.filter(r=>r._s==="hit").length/sc.length*100):null;
+    const cls=rate===null?"d":rate>=70?"g":rate>=50?"a":"r";
+    const act=activeTicker===t;
+    html+=`<div class="chip ${act?"active":""}" data-t="${t}">
+      <span class="chip-dot ${act?"b"+cls:"bd"}"></span>
+      <span class="chip-name">${lbl(t)}</span>
+      <span class="chip-rate d${cls}">${rate!==null?rate+"%":"—"}</span>
+    </div>`;
+    selHtml+=`<option value="${t}" ${activeTicker===t?"selected":""}>${lbl(t)} (${t})</option>`;
   });
 
-  tbody.innerHTML = sorted.map(r => {
-    const statusBadge =
-      r._status === "hit"     ? `<span class="badge badge-hit">HIT</span>` :
-      r._status === "miss"    ? `<span class="badge badge-miss">MISS</span>` :
-                                `<span class="badge badge-pending">PENDING</span>`;
-    const actualDisplay = r._actual !== null ? r._actual.toFixed(2) : `<span style="color:var(--muted)">—</span>`;
-    return `<tr>
-      <td>${r.forecast_date}</td>
-      <td>${r.target_date}</td>
-      <td>${r.ticker}</td>
-      <td>${isNaN(r._p10) ? "—" : r._p10.toFixed(2)}</td>
-      <td>${isNaN(r._p50) ? "—" : r._p50.toFixed(2)}</td>
-      <td>${isNaN(r._p90) ? "—" : r._p90.toFixed(2)}</td>
-      <td>${actualDisplay}</td>
-      <td>${statusBadge}</td>
-      <td style="color:var(--muted)">${r.model_used || "—"}</td>
+  grid.innerHTML=html;
+  sel.innerHTML=selHtml;
+  grid.querySelectorAll(".chip").forEach(el=>el.addEventListener("click",()=>{activeTicker=el.dataset.t;rerender();}));
+}
+
+// ── Table ─────────────────────────────────────────────────────────────────
+function renderTable(rows){
+  let filtered=rows;
+  if(activeTicker!=="all") filtered=filtered.filter(r=>r.ticker===activeTicker);
+  if(activeFilter!=="all") filtered=filtered.filter(r=>r._s===activeFilter);
+
+  const tbody=document.getElementById("table-body");
+  if(!filtered.length){tbody.innerHTML=`<tr><td colspan="9"><div class="empty"><div class="ico">🔍</div><p>No rows match this filter</p></div></td></tr>`;return;}
+
+  const sorted=[...filtered].sort((a,b)=>{const d=b.forecast_date.localeCompare(a.forecast_date);return d||b.target_date.localeCompare(a.target_date);});
+
+  tbody.innerHTML=sorted.map(r=>{
+    const badge=r._s==="hit"?`<span class="badge bh">HIT</span>`:r._s==="miss"?`<span class="badge bm">MISS</span>`:`<span class="badge bp">PENDING</span>`;
+    const actCls=r._s==="hit"?"td-hit":r._s==="miss"?"td-miss":"td-pend";
+    const actStr=r._a!==null?r._a.toFixed(4):`<span class="td-pend">—</span>`;
+    let errStr=`<span class="td-e0">—</span>`;
+    if(r._e!==null){
+      const sign=r._e>=0?"+":"";
+      const pct=(r._e/Math.abs(r._p50)*100);
+      errStr=`<span class="${r._e>=0?"td-ep":"td-en"}">${sign}${r._e.toFixed(4)} (${sign}${pct.toFixed(2)}%)</span>`;
+    }
+    return`<tr>
+      <td class="td-tick">${r.ticker}</td>
+      <td>${r.forecast_date}</td><td>${r.target_date}</td>
+      <td class="td-range">${isNaN(r._p10)?"—":r._p10.toFixed(4)}</td>
+      <td class="td-p50">${isNaN(r._p50)?"—":r._p50.toFixed(4)}</td>
+      <td class="td-range">${isNaN(r._p90)?"—":r._p90.toFixed(4)}</td>
+      <td class="${actCls}">${actStr}</td>
+      <td>${errStr}</td><td>${badge}</td>
     </tr>`;
   }).join("");
 }
 
-// ── Render chart ──────────────────────────────────────────────────────────
-function renderChart(rows) {
-  const canvas = document.getElementById("forecastChart");
-  const empty  = document.getElementById("chart-empty");
+// ── Chart ─────────────────────────────────────────────────────────────────
+function renderChart(rows){
+  const canvas=document.getElementById("forecastChart");
+  const empty=document.getElementById("chart-empty");
+  const selT=document.getElementById("chart-sel").value;
 
-  if (!rows.length) { canvas.style.display = "none"; empty.style.display = "block"; return; }
-  canvas.style.display = "block";
-  empty.style.display  = "none";
+  let sub=selT==="all"?rows:rows.filter(r=>r.ticker===selT);
+  if(!sub.length){canvas.style.display="none";empty.style.display="block";return;}
+  const latestFD=[...new Set(sub.map(r=>r.forecast_date))].sort().reverse()[0];
+  sub=sub.filter(r=>r.forecast_date===latestFD).sort((a,b)=>a.target_date.localeCompare(b.target_date));
+  if(!sub.length){canvas.style.display="none";empty.style.display="block";return;}
 
-  // Take most recent forecast_date group
-  const latestFD = rows.map(r => r.forecast_date).sort().reverse()[0];
-  const subset = rows.filter(r => r.forecast_date === latestFD)
-    .sort((a, b) => a.target_date.localeCompare(b.target_date));
+  canvas.style.display="block";empty.style.display="none";
+  if(chartInst){chartInst.destroy();}
 
-  const labels  = subset.map(r => r.target_date);
-  const p50     = subset.map(r => isNaN(r._p50) ? null : r._p50);
-  const p10     = subset.map(r => isNaN(r._p10) ? null : r._p10);
-  const p90     = subset.map(r => isNaN(r._p90) ? null : r._p90);
-  const actuals = subset.map(r => r._actual);
-
-  // Band fill: use two fill datasets
-  const bandTop    = p90;
-  const bandBottom = p10;
-
-  if (chartInstance) { chartInstance.destroy(); }
-
-  chartInstance = new Chart(canvas.getContext("2d"), {
-    type: "line",
-    data: {
-      labels,
-      datasets: [
-        {
-          label: "P90 (upper bound)",
-          data: bandTop,
-          borderColor: "transparent",
-          backgroundColor: "rgba(77,157,224,0.10)",
-          fill: "+1",
-          pointRadius: 0,
-          tension: 0.3,
-        },
-        {
-          label: "P10 (lower bound)",
-          data: bandBottom,
-          borderColor: "transparent",
-          backgroundColor: "rgba(77,157,224,0.10)",
-          fill: false,
-          pointRadius: 0,
-          tension: 0.3,
-        },
-        {
-          label: "P50 Forecast",
-          data: p50,
-          borderColor: "#4d9de0",
-          borderDash: [6, 3],
-          borderWidth: 2,
-          backgroundColor: "transparent",
-          pointRadius: 3,
-          pointBackgroundColor: "#4d9de0",
-          tension: 0.3,
-          fill: false,
-        },
-        {
-          label: "Actual",
-          data: actuals,
-          borderColor: "#00ff88",
-          borderWidth: 2,
-          backgroundColor: subset.map(r =>
-            r._status === "hit" ? "#00ff88" : r._status === "miss" ? "#ff4455" : "#ffaa00"
-          ),
-          pointRadius: 6,
-          pointStyle: "circle",
-          tension: 0.3,
-          fill: false,
-        },
+  chartInst=new Chart(canvas.getContext("2d"),{
+    type:"line",
+    data:{
+      labels:sub.map(r=>r.target_date),
+      datasets:[
+        {label:"P90",data:sub.map(r=>isNaN(r._p90)?null:r._p90),borderColor:"transparent",backgroundColor:"rgba(77,157,224,.10)",fill:"+1",pointRadius:0,tension:.3},
+        {label:"P10",data:sub.map(r=>isNaN(r._p10)?null:r._p10),borderColor:"transparent",fill:false,pointRadius:0,tension:.3},
+        {label:"P50 Forecast",data:sub.map(r=>isNaN(r._p50)?null:r._p50),borderColor:"#4d9de0",borderDash:[5,3],borderWidth:2,backgroundColor:"transparent",pointRadius:3,pointBackgroundColor:"#4d9de0",tension:.3,fill:false},
+        {label:"Actual",data:sub.map(r=>r._a),borderColor:"rgba(0,255,136,.35)",borderWidth:2,backgroundColor:sub.map(r=>r._s==="hit"?"#00ff88":r._s==="miss"?"#ff4455":"#ffaa00"),pointRadius:6,tension:.3,fill:false},
       ],
     },
-    options: {
-      responsive: true,
-      interaction: { mode: "index", intersect: false },
-      plugins: {
-        legend: {
-          labels: { color: "#58606e", font: { family: "'JetBrains Mono'" }, boxWidth: 16 }
-        },
-        tooltip: {
-          backgroundColor: "#13131a",
-          borderColor: "#1e1e2e",
-          borderWidth: 1,
-          titleColor: "#c9d1d9",
-          bodyColor: "#c9d1d9",
-          callbacks: {
-            label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y !== null ? ctx.parsed.y.toFixed(2) : "n/a"}`,
-          },
-        },
+    options:{
+      responsive:true,interaction:{mode:"index",intersect:false},
+      plugins:{
+        legend:{labels:{color:"#4a5068",font:{family:"'JetBrains Mono'"},boxWidth:14,padding:14}},
+        tooltip:{backgroundColor:"#0f0f18",borderColor:"#1c1c2e",borderWidth:1,titleColor:"#d4daf0",bodyColor:"#d4daf0",padding:10,
+          callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y!==null?ctx.parsed.y.toFixed(4):"—"}`}},
       },
-      scales: {
-        x: {
-          ticks: { color: "#58606e", font: { family: "'JetBrains Mono'", size: 11 } },
-          grid:  { color: "#1e1e2e" },
-        },
-        y: {
-          ticks: { color: "#58606e", font: { family: "'JetBrains Mono'", size: 11 } },
-          grid:  { color: "#1e1e2e" },
-        },
+      scales:{
+        x:{ticks:{color:"#4a5068",font:{family:"'JetBrains Mono'",size:10}},grid:{color:"#1c1c2e"}},
+        y:{ticks:{color:"#4a5068",font:{family:"'JetBrains Mono'",size:10}},grid:{color:"#1c1c2e"}},
       },
     },
   });
 }
 
-// ── Full re-render ─────────────────────────────────────────────────────────
-function rerender() {
-  const enriched = allRows.map(enrichRow);
-  renderCards(enriched);
-  renderTable(enriched);
-  renderChart(enriched);
+// ── Full rerender ─────────────────────────────────────────────────────────
+function rerender(){
+  const e=allRows.map(enrich);
+  renderHero(e);renderChips(e);renderTable(e);renderChart(e);
 }
 
-// ── Load CSV text ──────────────────────────────────────────────────────────
-function loadCSVText(text, filename) {
-  allRows = parseCSV(text);
-  document.getElementById("last-updated").textContent =
-    `${filename} — ${allRows.length} rows — ${new Date().toLocaleTimeString()}`;
+function loadCSVText(txt,name){
+  allRows=parseCSV(txt);
+  document.getElementById("last-updated").textContent=`${name} · ${allRows.length} rows · ${new Date().toLocaleTimeString()}`;
   rerender();
 }
 
-// ── File input / drag-and-drop ─────────────────────────────────────────────
-const dropZone = document.getElementById("drop-zone");
-const fileInput = document.getElementById("file-input");
-
-dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
-dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
-dropZone.addEventListener("drop", e => {
-  e.preventDefault();
-  dropZone.classList.remove("drag-over");
-  const file = e.dataTransfer.files[0];
-  if (file) readFile(file);
-});
-fileInput.addEventListener("change", e => { if (e.target.files[0]) readFile(e.target.files[0]); });
-
-function readFile(file) {
-  const reader = new FileReader();
-  reader.onload = ev => loadCSVText(ev.target.result, file.name);
-  reader.readAsText(file);
+// ── Auto-fetch from same origin (GitHub Pages) ────────────────────────────
+async function tryAutoLoad(){
+  try{
+    const r=await fetch("./forecasts.csv",{cache:"no-cache"});
+    if(!r.ok)return;
+    const txt=await r.text();
+    if(txt.includes("forecast_date"))loadCSVText(txt,"forecasts.csv");
+  }catch(_){}
 }
 
-// ── Filter buttons ─────────────────────────────────────────────────────────
-document.querySelectorAll(".filter-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    activeFilter = btn.dataset.filter;
-    renderTable(allRows.map(enrichRow));
-  });
-});
+// ── File input / drag-drop ────────────────────────────────────────────────
+document.getElementById("file-input").addEventListener("change",e=>{if(e.target.files[0])readFile(e.target.files[0]);});
+function readFile(f){const fr=new FileReader();fr.onload=ev=>loadCSVText(ev.target.result,f.name);fr.readAsText(f);}
 
-// ── Manual actual entry ────────────────────────────────────────────────────
-function applyManual() {
-  const d = document.getElementById("f-date").value;
-  const t = document.getElementById("f-ticker").value.trim().toUpperCase();
-  const v = parseFloat(document.getElementById("f-actual").value);
-  if (!d || !t || isNaN(v)) { alert("Please fill in all fields."); return; }
-  overrides[`${d}|${t}`] = v;
-  saveOverrides();
-  rerender();
-  document.getElementById("f-actual").value = "";
+document.addEventListener("dragenter",e=>{if(e.dataTransfer.types.includes("Files"))document.body.classList.add("dragging");});
+document.addEventListener("dragleave",e=>{if(!e.relatedTarget)document.body.classList.remove("dragging");});
+document.addEventListener("dragover",e=>e.preventDefault());
+document.addEventListener("drop",e=>{e.preventDefault();document.body.classList.remove("dragging");const f=e.dataTransfer.files[0];if(f)readFile(f);});
+
+// ── Filter buttons ────────────────────────────────────────────────────────
+document.querySelectorAll(".filter-btn").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");activeFilter=btn.dataset.f;renderTable(allRows.map(enrich));
+}));
+
+// ── Manual entry ──────────────────────────────────────────────────────────
+function applyManual(){
+  const d=document.getElementById("f-date").value;
+  const t=document.getElementById("f-ticker").value.trim().toUpperCase();
+  const v=parseFloat(document.getElementById("f-actual").value);
+  if(!d||!t||isNaN(v)){alert("Fill in all fields.");return;}
+  overrides[`${d}|${t}`]=v;saveOv();rerender();
+  document.getElementById("f-actual").value="";
 }
 
-// ── Export CSV ─────────────────────────────────────────────────────────────
-function exportCSV() {
-  const enriched = allRows.map(enrichRow);
-  const header = "forecast_date,target_date,ticker,p10,p50,p90,actual,status,model_used,notes";
-  const lines = enriched.map(r =>
-    [r.forecast_date, r.target_date, r.ticker, r.p10, r.p50, r.p90,
-     r._actual ?? "", r._status, r.model_used || "", r.notes || ""].join(",")
-  );
-  const blob = new Blob([header + "\n" + lines.join("\n")], { type: "text/csv" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `forecasts_export_${new Date().toISOString().slice(0,10)}.csv`;
-  a.click();
+// ── Export ────────────────────────────────────────────────────────────────
+function exportCSV(){
+  const e=allRows.map(enrich);
+  const hdr="forecast_date,target_date,ticker,p10,p50,p90,actual,error_vs_p50,pct_error,status,model_used";
+  const lines=e.map(r=>[r.forecast_date,r.target_date,r.ticker,r.p10,r.p50,r.p90,r._a??"",r._e!==null?r._e.toFixed(6):"",r._e!==null?(r._e/Math.abs(r._p50)*100).toFixed(4)+"":""  ,r._s,r.model_used||""].join(","));
+  const blob=new Blob([hdr+"\n"+lines.join("\n")],{type:"text/csv"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download=`tc_export_${new Date().toISOString().slice(0,10)}.csv`;a.click();
 }
 
-// ── Init ───────────────────────────────────────────────────────────────────
-loadOverrides();
+// ── Init ──────────────────────────────────────────────────────────────────
+loadOv();tryAutoLoad();
 </script>
 </body>
 </html>

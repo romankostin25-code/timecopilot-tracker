@@ -1,0 +1,43 @@
+name: Daily Forecast Update
+
+on:
+  schedule:
+    - cron: '0 22 * * 1-5'   # 22:00 UTC = 18:00 ET, weekdays
+  workflow_dispatch:           # manual trigger from GitHub UI
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet \
+            yfinance pandas numpy python-dotenv \
+            statsforecast lightgbm
+
+      - name: Run forecast + update actuals
+        env:
+          ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'NG=F,GC=F,SI=F,CL=F,EURUSD=X,GBPUSD=X,USDJPY=X,AUDUSD=X,USDCHF=X' }}
+          FORECAST_HORIZON: '10'
+          FORECAST_FREQUENCY: 'B'
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: python main.py --auto
+
+      - name: Commit updated forecasts.csv
+        run: |
+          git config user.name  "TimeCopilot Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add forecasts.csv
+          git diff --cached --quiet || \
+            git commit -m "chore: update forecasts $(date -u +%Y-%m-%d)" && \
+            git push

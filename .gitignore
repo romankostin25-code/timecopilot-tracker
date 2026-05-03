@@ -1,5 +1,5 @@
 .env
-forecasts.csv
+# forecasts.csv is tracked and served via GitHub Pages
 logs/
 __pycache__/
 *.pyc
