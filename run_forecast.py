@@ -30,12 +30,7 @@ def _build_models():
     """Assemble available TimeCopilot models; skip any that fail to import."""
     from timecopilot.models.stats import AutoARIMA, AutoETS
     models = [AutoARIMA(), AutoETS()]
-    try:
-        from timecopilot.models.ml import AutoLGBM
-        models.append(AutoLGBM())
-        print("  + AutoLGBM")
-    except Exception as e:
-        print(f"  - AutoLGBM skipped: {e}")
+    # AutoLGBM excluded — does not support level/quantile intervals
     try:
         from timecopilot.models.foundation.chronos import Chronos
         models.append(Chronos())
