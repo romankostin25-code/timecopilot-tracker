@@ -14,23 +14,23 @@ MIN_VOLUME = float(os.getenv("POLYMARKET_MIN_VOLUME", 50000))
 CSV_PATH   = "polymarket_data.csv"
 
 POLYMARKET_KEYWORDS = {
-    "GC=F":      ["gold"],
-    "SI=F":      ["silver"],
-    "CL=F":      ["oil", "crude", "wti", "brent"],
-    "NG=F":      ["natural gas", "gas price"],
-    "HG=F":      ["copper"],
-    "EURUSD=X":  ["euro", "eur/usd", "eurusd"],
-    "GBPUSD=X":  ["pound", "gbp", "sterling"],
-    "USDJPY=X":  ["yen", "usdjpy", "usd/jpy"],
-    "AUDUSD=X":  ["australian dollar", "aud"],
-    "USDCHF=X":  ["swiss franc", "chf"],
-    "DX-Y.NYB":  ["dollar index", "dxy"],
-    "^TNX":      ["federal reserve", "fed rate", "interest rate", "fomc", "rate cut", "treasury"],
-    "^GSPC":     ["s&p", "sp500", "stock market", "recession", "nasdaq"],
+    "GC=F":      ["gold price", "gold futures", "gold above", "gold below", "gold hits", "gold reaches"],
+    "SI=F":      ["silver price", "silver futures", "silver above", "silver below"],
+    "CL=F":      ["crude oil", "oil price", "wti", "brent", "oil above", "oil below", "barrel"],
+    "NG=F":      ["natural gas", "gas price", "natgas"],
+    "HG=F":      ["copper price", "copper futures", "copper above", "copper below"],
+    "EURUSD=X":  ["eur/usd", "eurusd", "euro dollar", "euro above", "euro below"],
+    "GBPUSD=X":  ["gbp/usd", "gbpusd", "pound dollar", "sterling"],
+    "USDJPY=X":  ["usd/jpy", "usdjpy", "dollar yen", "yen above", "yen below"],
+    "AUDUSD=X":  ["aud/usd", "audusd", "aussie dollar", "australian dollar"],
+    "USDCHF=X":  ["usd/chf", "usdchf", "swiss franc", "franc above"],
+    "DX-Y.NYB":  ["dollar index", "dxy above", "dxy below"],
+    "^TNX":      ["federal reserve", "fed rate", "interest rate", "fomc", "rate cut", "fed cut", "10-year", "10 year yield", "treasury yield"],
+    "^GSPC":     ["s&p 500", "sp 500", "stock market crash", "recession", "nasdaq above", "dow jones"],
 }
 
 # Fetch markets in small pages to avoid rate limits
-def _fetch_page(offset: int = 0, limit: int = 20) -> list[dict]:
+def _fetch_page(offset: int = 0, limit: int = 50) -> list[dict]:
     try:
         resp = requests.get(
             "https://gamma-api.polymarket.com/markets",
@@ -65,17 +65,17 @@ def _fetch_page(offset: int = 0, limit: int = 20) -> list[dict]:
 
 
 def _load_all_markets(pages: int = 5) -> list[dict]:
-    """Fetch up to pages*20 markets in small batches."""
+    """Fetch up to pages*50 markets in batches of 50."""
     markets, seen = [], set()
     for i in range(pages):
-        batch = _fetch_page(offset=i * 20, limit=20)
+        batch = _fetch_page(offset=i * 50, limit=50)
         if not batch:
             break
         for m in batch:
             if m["market_id"] not in seen:
                 seen.add(m["market_id"])
                 markets.append(m)
-        if len(batch) < 20:
+        if len(batch) < 50:
             break
         time.sleep(0.3)
     print(f"  [polymarket] loaded {len(markets)} active markets")
@@ -129,7 +129,7 @@ def fetch_all_polymarket():
     rows    = []
     tickers = [t.strip() for t in os.getenv("ASSET_TICKERS", "").split(",") if t.strip()]
 
-    all_markets = _load_all_markets(pages=10)  # ~200 markets max
+    all_markets = _load_all_markets(pages=20)  # ~1000 markets max
 
     for ticker in tickers:
         keywords = POLYMARKET_KEYWORDS.get(ticker, [ticker])
