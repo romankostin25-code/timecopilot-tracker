@@ -273,6 +273,7 @@ tr:hover td{background:rgba(255,255,255,.01)}
       <div class="tab" data-tab="curve">03 CURVE</div>
       <div class="tab" data-tab="polymarket">04 POLYMARKET</div>
       <div class="tab" data-tab="distribution">05 DISTRIBUTION</div>
+      <div class="tab" data-tab="intelligence">06 INTELLIGENCE</div>
     </div>
 
     <!-- TAB 1: FORECAST -->
@@ -336,6 +337,16 @@ tr:hover td{background:rgba(255,255,255,.01)}
       </div>
     </div>
 
+    <!-- TAB 6: INTELLIGENCE -->
+    <div class="tab-content" id="tab-intelligence">
+      <div class="scroll-area">
+        <div id="intel-scorecard"></div>
+        <div id="intel-spikes"></div>
+        <div id="intel-correlations"></div>
+        <div id="intel-aggregator"></div>
+      </div>
+    </div>
+
   </div><!-- /main -->
 </div><!-- /app -->
 
@@ -344,6 +355,7 @@ tr:hover td{background:rgba(255,255,255,.01)}
 // STATE
 // ══════════════════════════════════════════════════════════════════════════
 let forecasts=[], polyData=[], curveData=[], macroData=[], scorecard={}, signals={};
+let polySignals={}, polySpikes=[], polyCorrelations=[], aggForecasts=[];
 let activeTicker = null;
 let charts = {};
 const POLL_MS = 5*60*1000;
@@ -378,13 +390,17 @@ async function fetchFile(name){
 
 async function loadAll(silent=false){
   if(!silent) setStatus("fetching","refreshing…");
-  const [fc,po,cu,mc,sc,sg]=await Promise.all([
+  const [fc,po,cu,mc,sc,sg,ps,pk,pa,af]=await Promise.all([
     fetchFile("forecasts.csv"),
     fetchFile("polymarket_data.csv"),
     fetchFile("futures_curve.csv"),
     fetchFile("macro_context.csv"),
     fetchFile("scorecard.json"),
     fetchFile("signals.json"),
+    fetchFile("data/poly_signals.json"),
+    fetchFile("data/poly_spikes.csv"),
+    fetchFile("data/poly_correlations.csv"),
+    fetchFile("aggregator_forecasts.csv"),
   ]);
   if(fc && fc.includes("forecast_date")) forecasts=parseCSV(fc);
   if(po && po.includes("ticker"))        polyData=parseCSV(po);
@@ -392,6 +408,10 @@ async function loadAll(silent=false){
   if(mc && mc.includes("date"))          macroData=parseCSV(mc);
   try{ if(sc) scorecard=JSON.parse(sc); }catch{}
   try{ if(sg) signals=JSON.parse(sg);   }catch{}
+  try{ if(ps) polySignals=JSON.parse(ps); }catch{}
+  if(pk && pk.includes("event_type"))    polySpikes=parseCSV(pk);
+  if(pa && pa.includes("event_type"))    polyCorrelations=parseCSV(pa);
+  if(af && af.includes("agg_direction")) aggForecasts=parseCSV(af);
 
   if(forecasts.length){
     setStatus("live","live · "+forecasts.length+" rows · "+new Date().toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"}));
@@ -479,6 +499,8 @@ function renderAll(){
   renderMacroRow();
   if(activeTicker) renderAsset(activeTicker);
   renderAccuracyTab();
+  const activeTab=document.querySelector(".tab.active");
+  if(activeTab&&activeTab.dataset.tab==="intelligence") renderIntelTab();
 }
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -883,9 +905,35 @@ function renderCurveTab(t){
 // TAB 4: POLYMARKET
 // ══════════════════════════════════════════════════════════════════════════
 function renderPolyTab(t){
+  // Show spike-based signal panel first
+  const spikeSig=polySignals[t];
+  let spikePanel="";
+  if(spikeSig&&spikeSig.direction!=="NEUTRAL"&&spikeSig.direction!=="NO_SIGNAL"){
+    const sCls=spikeSig.direction==="BULLISH"?"cv-g":"cv-r";
+    const score=parseFloat(spikeSig.composite_score||0);
+    spikePanel=`<div class="poly-signal-box" style="margin-bottom:12px">
+      <div class="callout-label" style="color:var(--purple)">SPIKE INTELLIGENCE SIGNAL</div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:8px;flex-wrap:wrap">
+        <div><div style="font-size:9px;color:var(--muted);font-family:var(--mono)">DIRECTION</div>
+          <div style="font-family:var(--mono);font-size:18px;font-weight:700;class=${sCls}">${spikeSig.direction}</div></div>
+        <div><div style="font-size:9px;color:var(--muted);font-family:var(--mono)">COMPOSITE</div>
+          <div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--cyan)">${score>=0?"+":""}${score.toFixed(3)}</div></div>
+        <div><div style="font-size:9px;color:var(--muted);font-family:var(--mono)">CONFIDENCE</div>
+          <div style="font-family:var(--mono);font-size:14px;font-weight:700">${spikeSig.confidence_label||"—"}</div></div>
+        <div><div style="font-size:9px;color:var(--muted);font-family:var(--mono)">EVENTS</div>
+          <div style="font-family:var(--mono);font-size:14px;font-weight:700">${spikeSig.contributing_events||0}</div></div>
+      </div>
+      ${spikeSig.top_question?`<div style="margin-top:8px;font-size:10px;color:var(--muted)">Top market: ${spikeSig.top_question.slice(0,80)}</div>`:""}
+    </div>`;
+  }
+
   const poly=getPolyForTicker(t);
   if(!poly||poly.poly_signal==="NO_DATA"){
-    document.getElementById("poly-content").innerHTML=`<div class="empty">No Polymarket data for ${t}. Runs nightly — check back tomorrow.</div>`;
+    document.getElementById("poly-content").innerHTML=spikePanel+`<div class="callout">
+      <div class="callout-label">Direct-match Polymarket</div>
+      No Polymarket direct-match data for ${t}. Polymarket doesn't currently have active price/direction markets for this asset.
+      Spike intelligence (above) uses macro event markets instead — see 06 INTELLIGENCE for full spike feed.
+    </div>`;
     return;
   }
 
@@ -928,7 +976,7 @@ function renderPolyTab(t){
   const aligned=sig!=="NO_DATA"&&sig!=="INSUFFICIENT_VOLUME"&&sig===modelDir;
   const diverged=sig!=="NO_DATA"&&sig!=="INSUFFICIENT_VOLUME"&&!aligned&&modelDir!=="NEUTRAL";
 
-  document.getElementById("poly-content").innerHTML=`
+  document.getElementById("poly-content").innerHTML=spikePanel+`
     <div class="grid3" style="margin-bottom:14px">
       <div class="info-card">
         <div class="info-label">Poly Signal</div>
@@ -1088,14 +1136,204 @@ document.querySelectorAll(".tab").forEach(tab=>{
     const id="tab-"+tab.dataset.tab;
     document.getElementById(id).classList.add("active");
     if(activeTicker){
-      if(tab.dataset.tab==="forecast")    renderForecastTab(activeTicker);
-      if(tab.dataset.tab==="accuracy")    renderAccuracyTab();
-      if(tab.dataset.tab==="curve")       renderCurveTab(activeTicker);
-      if(tab.dataset.tab==="polymarket")  renderPolyTab(activeTicker);
-      if(tab.dataset.tab==="distribution")renderDistTab(activeTicker);
+      if(tab.dataset.tab==="forecast")      renderForecastTab(activeTicker);
+      if(tab.dataset.tab==="accuracy")      renderAccuracyTab();
+      if(tab.dataset.tab==="curve")         renderCurveTab(activeTicker);
+      if(tab.dataset.tab==="polymarket")    renderPolyTab(activeTicker);
+      if(tab.dataset.tab==="distribution")  renderDistTab(activeTicker);
+      if(tab.dataset.tab==="intelligence")  renderIntelTab();
     }
   });
 });
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 6: INTELLIGENCE (3-way accuracy + spike feed + aggregator)
+// ══════════════════════════════════════════════════════════════════════════
+function renderIntelTab(){
+
+  // ── 1. Three-way accuracy scorecard ───────────────────────────────────
+  const graded=forecasts.map(enrichRow).filter(r=>r._hit!==null);
+  const tcCal  = graded.length ? graded.filter(r=>r._hit===1).length/graded.length : null;
+  const tcDir  = graded.length ? graded.filter(r=>r.direction_correct==="1"||r.direction_correct===1).length/graded.length : null;
+  const tcN    = graded.length;
+
+  // Polymarket spike correlations accuracy
+  const resolvedPoly = polyCorrelations.filter(r=>r.direction_correct!=="");
+  const polyDirAcc = resolvedPoly.length ? resolvedPoly.filter(r=>r.direction_correct==="True"||r.direction_correct==="true"||r.direction_correct==="1").length/resolvedPoly.length : null;
+  const polyN = resolvedPoly.length;
+
+  // Aggregator accuracy
+  const gradedAgg = aggForecasts.filter(r=>r.agg_direction_correct!=="");
+  const aggDirAcc = gradedAgg.length ? gradedAgg.filter(r=>r.agg_direction_correct==="1").length/gradedAgg.length : null;
+  const aggN = gradedAgg.length;
+
+  const scorecardHTML=`
+    <div class="chart-title" style="margin-bottom:10px">Model Accuracy Comparison — All-Time</div>
+    <div class="grid3" style="margin-bottom:14px">
+      <div class="info-card" style="border-color:rgba(0,212,255,.3)">
+        <div class="info-label" style="color:var(--cyan)">TimeCopilot</div>
+        <div class="info-value ${dirCls(tcDir)}">${tcDir!==null?pct(tcDir):"—"}</div>
+        <div class="info-sub">directional accuracy · ${tcN} graded</div>
+        <div style="margin-top:6px;font-family:var(--mono);font-size:10px">
+          Band calibration: <span class="${calCls(tcCal)}">${tcCal!==null?pct(tcCal):"—"}</span>
+        </div>
+      </div>
+      <div class="info-card" style="border-color:rgba(168,85,247,.3)">
+        <div class="info-label" style="color:var(--purple)">Polymarket Spikes</div>
+        <div class="info-value ${dirCls(polyDirAcc)}">${polyDirAcc!==null?pct(polyDirAcc):"—"}</div>
+        <div class="info-sub">directional accuracy · ${polyN} spike outcomes</div>
+        <div style="margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--muted)">
+          ${polyN<10?"Collecting data — need 10+ spike outcomes":"Based on resolved spike events"}
+        </div>
+      </div>
+      <div class="info-card" style="border-color:rgba(0,255,136,.3)">
+        <div class="info-label" style="color:var(--green)">Aggregator</div>
+        <div class="info-value ${dirCls(aggDirAcc)}">${aggDirAcc!==null?pct(aggDirAcc):"—"}</div>
+        <div class="info-sub">directional accuracy · ${aggN} graded</div>
+        <div style="margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--muted)">
+          ${aggN===0?"Building training data — needs 30 graded rows/ticker":"LightGBM meta-model"}
+        </div>
+      </div>
+    </div>
+    <div class="callout" style="margin-bottom:14px">
+      <div class="callout-label">How to read these numbers</div>
+      <strong>TimeCopilot</strong>: AutoARIMA+AutoETS ensemble forecasts. Target ≥55% directional, ≥80% calibration.
+      <strong>Polymarket Spikes</strong>: macro event probability moves mapped causally to assets. Builds accuracy over 2-4 weeks.
+      <strong>Aggregator</strong>: LightGBM trained on all signals + macro. Generates independent prediction once ≥30 graded rows exist per ticker. Needs ~2 weeks of operation.
+    </div>
+  `;
+  document.getElementById("intel-scorecard").innerHTML=scorecardHTML;
+
+  // ── 2. Active spike feed ────────────────────────────────────────────────
+  const recentSpikes=polySpikes.slice(-20).reverse();
+  let spikesHTML=`<div class="chart-title" style="margin-bottom:10px">Recent Polymarket Spikes (Latest 20)</div>`;
+  if(!recentSpikes.length){
+    spikesHTML+=`<div class="callout" style="margin-bottom:14px">
+      <div class="callout-label">No spikes yet</div>
+      The hourly spike detection workflow is running. Spike detection requires 24h of probability snapshots before it can compare current vs historical values. Check back tomorrow.
+    </div>`;
+  } else {
+    spikesHTML+=`<div class="table-wrap" style="margin-bottom:14px"><table>
+      <thead><tr>
+        <th>Detected</th><th style="text-align:left">Event Type</th><th style="text-align:left;max-width:250px">Question</th>
+        <th>Shift</th><th>Velocity/hr</th><th>Conviction</th><th>Volume</th>
+      </tr></thead><tbody>`;
+    recentSpikes.forEach(s=>{
+      const chg=parseFloat(s.prob_change||0);
+      const chgCls=chg>0?"td-hit":"td-miss";
+      const convCls=s.conviction_label==="HIGH"?"td-hit":s.conviction_label==="MEDIUM"?"td-pend":"td-muted";
+      const dt=s.detected_at?s.detected_at.slice(0,16).replace("T"," "):"—";
+      const vol=parseFloat(s.volume_usd||0);
+      spikesHTML+=`<tr>
+        <td class="td-muted" style="font-size:9px">${dt}</td>
+        <td style="text-align:left;font-size:10px;color:var(--cyan)">${s.event_type||"—"}</td>
+        <td style="text-align:left;white-space:normal;max-width:250px;font-size:10px">${(s.question||"").slice(0,80)}</td>
+        <td class="${chgCls}">${chg>=0?"+":""}${(chg*100).toFixed(1)}%</td>
+        <td class="td-muted">${parseFloat(s.velocity_per_hour||0).toFixed(3)}/hr</td>
+        <td class="${convCls}">${s.conviction_label||"—"}</td>
+        <td class="td-muted">$${(vol/1000).toFixed(0)}k</td>
+      </tr>`;
+    });
+    spikesHTML+="</tbody></table></div>";
+  }
+
+  // Current signals per asset from poly_signals.json
+  const activeSigs=Object.entries(polySignals).filter(([,v])=>v.direction&&v.direction!=="NEUTRAL");
+  if(activeSigs.length){
+    spikesHTML+=`<div class="chart-title" style="margin-bottom:10px">Active Polymarket Spike Signals</div>
+    <div class="table-wrap" style="margin-bottom:14px"><table>
+      <thead><tr><th>Asset</th><th>Direction</th><th>Composite Score</th><th>Confidence</th><th>Events</th><th style="text-align:left">Top Market</th></tr></thead>
+      <tbody>`;
+    activeSigs.forEach(([ticker,sig])=>{
+      const dirCls2=sig.direction==="BULLISH"?"td-hit":"td-miss";
+      const score=parseFloat(sig.composite_score||0);
+      spikesHTML+=`<tr>
+        <td class="td-muted">${ticker}</td>
+        <td class="${dirCls2}">${sig.direction}</td>
+        <td class="${score>=0?"td-hit":"td-miss"}">${score>=0?"+":""}${score.toFixed(3)}</td>
+        <td>${sig.confidence_label||"—"}</td>
+        <td class="td-muted">${sig.contributing_events||0}</td>
+        <td style="text-align:left;white-space:normal;font-size:10px">${(sig.top_question||"No active markets").slice(0,70)}</td>
+      </tr>`;
+    });
+    spikesHTML+="</tbody></table></div>";
+  }
+  document.getElementById("intel-spikes").innerHTML=spikesHTML;
+
+  // ── 3. Correlation stats table ──────────────────────────────────────────
+  let corrHTML=`<div class="chart-title" style="margin-bottom:10px">Historical Spike→Price Correlations</div>`;
+  if(!polyCorrelations.length){
+    corrHTML+=`<div class="callout" style="margin-bottom:14px">
+      <div class="callout-label">No correlation data yet</div>
+      Correlations are built after spike events resolve (10+ business days after detection). Data will appear automatically as spikes accumulate and resolve.
+    </div>`;
+  } else {
+    // Group by event_type+ticker+horizon and compute stats
+    const corMap={};
+    polyCorrelations.forEach(r=>{
+      const k=`${r.event_type}|${r.ticker}|${r.horizon_days}`;
+      if(!corMap[k]) corMap[k]={event_type:r.event_type,ticker:r.ticker,horizon:r.horizon_days,n:0,correct:0,returns:[]};
+      corMap[k].n++;
+      const dc=r.direction_correct==="True"||r.direction_correct==="true"||r.direction_correct==="1";
+      if(dc) corMap[k].correct++;
+      const ret=parseFloat(r.price_return_pct||0);
+      corMap[k].returns.push(ret);
+    });
+    const corrRows=Object.values(corMap).map(c=>({
+      ...c,
+      dir_acc:c.n?c.correct/c.n:0,
+      avg_ret:c.returns.reduce((a,b)=>a+b,0)/c.returns.length,
+    })).sort((a,b)=>b.dir_acc-a.dir_acc).slice(0,20);
+
+    corrHTML+=`<div class="table-wrap" style="margin-bottom:14px"><table>
+      <thead><tr><th>Event Type</th><th>Asset</th><th>Horizon</th><th>Samples</th><th>Dir Acc</th><th>Avg Return</th></tr></thead>
+      <tbody>`;
+    corrRows.forEach(r=>{
+      const daCls=r.dir_acc>=0.6?"td-hit":r.dir_acc>=0.5?"td-pend":"td-miss";
+      const retCls=r.avg_ret>=0?"td-hit":"td-miss";
+      corrHTML+=`<tr>
+        <td style="color:var(--cyan);font-size:10px">${r.event_type}</td>
+        <td class="td-muted">${r.ticker}</td>
+        <td class="td-muted">${r.horizon}d</td>
+        <td class="td-muted">${r.n}</td>
+        <td class="${daCls}">${(r.dir_acc*100).toFixed(0)}%</td>
+        <td class="${retCls}">${r.avg_ret>=0?"+":""}${r.avg_ret.toFixed(2)}%</td>
+      </tr>`;
+    });
+    corrHTML+="</tbody></table></div>";
+  }
+  document.getElementById("intel-correlations").innerHTML=corrHTML;
+
+  // ── 4. Aggregator predictions table ────────────────────────────────────
+  let aggHTML=`<div class="chart-title" style="margin-bottom:10px">Aggregator Predictions</div>`;
+  if(!aggForecasts.length){
+    aggHTML+=`<div class="callout">
+      <div class="callout-label">Aggregator not yet active</div>
+      The LightGBM aggregator needs ≥30 graded forecast rows per ticker before it can generate predictions. This typically takes 6-8 weeks of daily operation. Once active, its predictions will appear here automatically.
+    </div>`;
+  } else {
+    const latestAggDate=aggForecasts.map(r=>r.forecast_date).sort().reverse()[0];
+    const latestAgg=aggForecasts.filter(r=>r.forecast_date===latestAggDate);
+    aggHTML+=`<div class="table-wrap"><table>
+      <thead><tr><th>Ticker</th><th>Direction</th><th>Confidence</th><th>Target Date</th><th>Actual</th><th>Correct?</th></tr></thead>
+      <tbody>`;
+    latestAgg.forEach(r=>{
+      const dCls=r.agg_direction==="BULLISH"?"td-hit":r.agg_direction==="BEARISH"?"td-miss":"td-pend";
+      const dcVal=r.agg_direction_correct;
+      const dcCls=dcVal==="1"?"td-hit":dcVal==="0"?"td-miss":"td-pend";
+      aggHTML+=`<tr>
+        <td class="td-muted">${r.ticker}</td>
+        <td class="${dCls}">${r.agg_direction}</td>
+        <td class="td-muted">${parseFloat(r.agg_confidence||0).toFixed(2)}</td>
+        <td class="td-muted">${r.target_date}</td>
+        <td class="td-muted">${r.actual||"—"}</td>
+        <td class="${dcCls}">${dcVal==="1"?"✓":dcVal==="0"?"✗":"⏳"}</td>
+      </tr>`;
+    });
+    aggHTML+="</tbody></table></div>";
+  }
+  document.getElementById("intel-aggregator").innerHTML=aggHTML;
+}
 
 // ══════════════════════════════════════════════════════════════════════════
 // EXPORT
@@ -1123,3 +1361,6 @@ loadAll();
 </script>
 </body>
 </html>
+
+
+
