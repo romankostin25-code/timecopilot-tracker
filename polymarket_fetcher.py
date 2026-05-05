@@ -83,12 +83,15 @@ def _load_all_markets(pages: int = 5) -> list[dict]:
 
 
 def _search_markets(keywords: list[str], all_markets: list[dict]) -> list[dict]:
+    import re
     matched, seen = [], set()
+    # Word-boundary patterns prevent "gold" matching "golden", "aud" matching "saudi"
+    patterns = [re.compile(r'\b' + re.escape(kw.lower()) + r'\b') for kw in keywords]
     for m in all_markets:
         if m["market_id"] in seen:
             continue
         q = m["question"].lower()
-        if any(kw.lower() in q for kw in keywords):
+        if any(p.search(q) for p in patterns):
             seen.add(m["market_id"])
             matched.append(m)
     return matched
