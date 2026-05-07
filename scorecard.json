@@ -1,188 +1,265 @@
 {
-  "generated_at": "2026-05-06T19:16:58.765025",
-  "yesterday": "2026-05-05",
+  "generated_at": "2026-05-07T08:19:57.598639",
+  "yesterday": "2026-05-06",
   "global": {
-    "forecasts_graded_total": 65,
+    "forecasts_graded_total": 104,
     "forecasts_graded_yesterday": 39,
-    "calibration_7d": 0.8,
-    "calibration_30d": 0.8,
-    "calibration_alltime": 0.8,
-    "directional_accuracy_7d": 0.1231,
-    "directional_accuracy_30d": 0.1231,
-    "directional_accuracy_alltime": 0.1231,
+    "calibration_7d": 0.75,
+    "calibration_30d": 0.75,
+    "calibration_alltime": 0.75,
+    "directional_accuracy_7d": 0.125,
+    "directional_accuracy_30d": 0.125,
+    "directional_accuracy_alltime": 0.125,
     "trend": "DECLINING"
   },
   "by_asset": {
     "NG=F": {
-      "calibration_7d": 0.8,
-      "calibration_30d": 0.8,
-      "directional_accuracy_7d": 0.4,
-      "directional_accuracy_30d": 0.4,
-      "consecutive_hits": 3,
-      "yesterday_hit": 1,
+      "calibration_7d": 0.75,
+      "calibration_30d": 0.75,
+      "directional_accuracy_7d": 0.25,
+      "directional_accuracy_30d": 0.25,
+      "consecutive_hits": 0,
+      "yesterday_hit": 0,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.279,
-      "yesterday_p50": 2.7958,
-      "yesterday_actual": 2.788
+      "yesterday_error_pct": 2.5452,
+      "yesterday_p50": 2.8013,
+      "yesterday_actual": 2.73
     },
     "GC=F": {
-      "calibration_7d": 0.4,
-      "calibration_30d": 0.4,
-      "directional_accuracy_7d": 0.0,
-      "directional_accuracy_30d": 0.0,
+      "calibration_7d": 0.375,
+      "calibration_30d": 0.375,
+      "directional_accuracy_7d": 0.125,
+      "directional_accuracy_30d": 0.125,
       "consecutive_hits": 0,
       "yesterday_hit": 0,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 2.014,
-      "yesterday_p50": 4649.4394,
-      "yesterday_actual": 4555.7998
+      "yesterday_error_pct": 0.5977,
+      "yesterday_p50": 4654.0813,
+      "yesterday_actual": 4681.8999
     },
     "SI=F": {
-      "calibration_7d": 0.8,
-      "calibration_30d": 0.8,
-      "directional_accuracy_7d": 0.4,
-      "directional_accuracy_30d": 0.4,
-      "consecutive_hits": 3,
-      "yesterday_hit": 1,
+      "calibration_7d": 0.625,
+      "calibration_30d": 0.625,
+      "directional_accuracy_7d": 0.375,
+      "directional_accuracy_30d": 0.375,
+      "consecutive_hits": 0,
+      "yesterday_hit": 0,
       "yesterday_direction_correct": 1,
-      "yesterday_error_pct": 1.6997,
-      "yesterday_p50": 74.3721,
-      "yesterday_actual": 73.108
+      "yesterday_error_pct": 4.1389,
+      "yesterday_p50": 73.7582,
+      "yesterday_actual": 76.811
     },
     "CL=F": {
-      "calibration_7d": 0.6,
-      "calibration_30d": 0.6,
-      "directional_accuracy_7d": 0.4,
-      "directional_accuracy_30d": 0.4,
+      "calibration_7d": 0.375,
+      "calibration_30d": 0.375,
+      "directional_accuracy_7d": 0.5,
+      "directional_accuracy_30d": 0.5,
       "consecutive_hits": 0,
       "yesterday_hit": 0,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 1.3225,
-      "yesterday_p50": 100.9352,
-      "yesterday_actual": 102.27
+      "yesterday_error_pct": 7.8057,
+      "yesterday_p50": 103.13,
+      "yesterday_actual": 95.08
     },
     "EURUSD=X": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 5,
+      "consecutive_hits": 8,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.2648,
+      "yesterday_error_pct": 0.0615,
       "yesterday_p50": 1.1723,
-      "yesterday_actual": 1.1692
+      "yesterday_actual": 1.1716
     },
     "GBPUSD=X": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 5,
+      "consecutive_hits": 8,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.5061,
-      "yesterday_p50": 1.36,
-      "yesterday_actual": 1.3531
+      "yesterday_error_pct": 0.1805,
+      "yesterday_p50": 1.3593,
+      "yesterday_actual": 1.3569
     },
     "USDJPY=X": {
-      "calibration_7d": 0.8,
-      "calibration_30d": 0.8,
-      "directional_accuracy_7d": 0.2,
-      "directional_accuracy_30d": 0.2,
-      "consecutive_hits": 3,
+      "calibration_7d": 0.875,
+      "calibration_30d": 0.875,
+      "directional_accuracy_7d": 0.125,
+      "directional_accuracy_30d": 0.125,
+      "consecutive_hits": 6,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.2554,
-      "yesterday_p50": 157.5965,
-      "yesterday_actual": 157.194
+      "yesterday_error_pct": 0.0087,
+      "yesterday_p50": 157.6907,
+      "yesterday_actual": 157.677
     },
     "AUDUSD=X": {
-      "calibration_7d": 0.8,
-      "calibration_30d": 0.8,
-      "directional_accuracy_7d": 0.2,
-      "directional_accuracy_30d": 0.2,
-      "consecutive_hits": 3,
+      "calibration_7d": 0.875,
+      "calibration_30d": 0.875,
+      "directional_accuracy_7d": 0.25,
+      "directional_accuracy_30d": 0.25,
+      "consecutive_hits": 6,
       "yesterday_hit": 1,
-      "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.3505,
-      "yesterday_p50": 0.7193,
-      "yesterday_actual": 0.7167
+      "yesterday_direction_correct": 1,
+      "yesterday_error_pct": 0.1887,
+      "yesterday_p50": 0.719,
+      "yesterday_actual": 0.7204
     },
     "USDCHF=X": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 5,
+      "consecutive_hits": 8,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.3173,
+      "yesterday_error_pct": 0.0141,
       "yesterday_p50": 0.7815,
-      "yesterday_actual": 0.784
+      "yesterday_actual": 0.7814
     },
     "HG=F": {
-      "calibration_7d": 0.6,
-      "calibration_30d": 0.6,
+      "calibration_7d": 0.5,
+      "calibration_30d": 0.5,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 3,
+      "consecutive_hits": 1,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.6004,
+      "yesterday_error_pct": 2.6367,
       "yesterday_p50": 5.9789,
-      "yesterday_actual": 5.943
+      "yesterday_actual": 6.1365
     },
     "DX-Y.NYB": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 5,
+      "consecutive_hits": 8,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.2749,
+      "yesterday_error_pct": 0.1935,
       "yesterday_p50": 98.21,
-      "yesterday_actual": 98.48
+      "yesterday_actual": 98.02
     },
     "^TNX": {
-      "calibration_7d": 0.6,
-      "calibration_30d": 0.6,
+      "calibration_7d": 0.75,
+      "calibration_30d": 0.75,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 3,
+      "consecutive_hits": 6,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.868,
+      "yesterday_error_pct": 0.5025,
       "yesterday_p50": 4.378,
-      "yesterday_actual": 4.416
+      "yesterday_actual": 4.356
     },
     "^GSPC": {
-      "calibration_7d": 1.0,
-      "calibration_30d": 1.0,
+      "calibration_7d": 0.625,
+      "calibration_30d": 0.625,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 5,
-      "yesterday_hit": 1,
+      "consecutive_hits": 0,
+      "yesterday_hit": 0,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.353,
-      "yesterday_p50": 7233.6857,
-      "yesterday_actual": 7259.2202
+      "yesterday_error_pct": 1.7885,
+      "yesterday_p50": 7235.7072,
+      "yesterday_actual": 7365.1201
     }
   },
   "yesterday_misses": [
     {
+      "ticker": "NG=F",
+      "p50": 2.8013,
+      "actual": 2.73,
+      "error_pct": 2.5452,
+      "direction_correct": 0.0
+    },
+    {
       "ticker": "GC=F",
-      "p50": 4649.439368,
-      "actual": 4555.799805,
-      "error_pct": 2.014,
+      "p50": 4654.081332,
+      "actual": 4681.899902,
+      "error_pct": 0.5977,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "SI=F",
+      "p50": 73.758226,
+      "actual": 76.810997,
+      "error_pct": 4.1389,
+      "direction_correct": 1.0
+    },
+    {
+      "ticker": "CL=F",
+      "p50": 103.130042,
+      "actual": 95.080002,
+      "error_pct": 7.8057,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "^GSPC",
+      "p50": 7235.707159,
+      "actual": 7365.120117,
+      "error_pct": 1.7885,
       "direction_correct": 0.0
     },
     {
       "ticker": "CL=F",
-      "p50": 100.935158,
-      "actual": 102.269997,
-      "error_pct": 1.3225,
+      "p50": 101.193058,
+      "actual": 95.080002,
+      "error_pct": 6.041,
+      "direction_correct": 1.0
+    },
+    {
+      "ticker": "HG=F",
+      "p50": 5.931273,
+      "actual": 6.1365,
+      "error_pct": 3.4601,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "^GSPC",
+      "p50": 7235.568778,
+      "actual": 7365.120117,
+      "error_pct": 1.7905,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "GC=F",
+      "p50": 4541.534737,
+      "actual": 4681.899902,
+      "error_pct": 3.0907,
+      "direction_correct": 1.0
+    },
+    {
+      "ticker": "SI=F",
+      "p50": 73.009903,
+      "actual": 76.810997,
+      "error_pct": 5.2063,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "CL=F",
+      "p50": 106.063823,
+      "actual": 95.080002,
+      "error_pct": 10.3559,
+      "direction_correct": 1.0
+    },
+    {
+      "ticker": "HG=F",
+      "p50": 5.807763,
+      "actual": 6.1365,
+      "error_pct": 5.6603,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "^GSPC",
+      "p50": 7205.206214,
+      "actual": 7365.120117,
+      "error_pct": 2.2194,
       "direction_correct": 0.0
     }
   ]
