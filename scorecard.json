@@ -1,265 +1,258 @@
 {
-  "generated_at": "2026-05-07T20:00:08.621739",
-  "yesterday": "2026-05-06",
+  "generated_at": "2026-05-08T06:03:37.156659",
+  "yesterday": "2026-05-07",
   "global": {
-    "forecasts_graded_total": 104,
-    "forecasts_graded_yesterday": 39,
-    "calibration_7d": 0.75,
-    "calibration_30d": 0.75,
-    "calibration_alltime": 0.75,
-    "directional_accuracy_7d": 0.125,
-    "directional_accuracy_30d": 0.125,
-    "directional_accuracy_alltime": 0.125,
+    "forecasts_graded_total": 156,
+    "forecasts_graded_yesterday": 52,
+    "calibration_7d": 0.7564,
+    "calibration_30d": 0.7564,
+    "calibration_alltime": 0.7564,
+    "directional_accuracy_7d": 0.141,
+    "directional_accuracy_30d": 0.141,
+    "directional_accuracy_alltime": 0.141,
     "trend": "DECLINING"
   },
   "by_asset": {
     "NG=F": {
       "calibration_7d": 0.75,
       "calibration_30d": 0.75,
-      "directional_accuracy_7d": 0.25,
-      "directional_accuracy_30d": 0.25,
-      "consecutive_hits": 0,
-      "yesterday_hit": 0,
-      "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 2.5452,
-      "yesterday_p50": 2.8013,
-      "yesterday_actual": 2.73
-    },
-    "GC=F": {
-      "calibration_7d": 0.375,
-      "calibration_30d": 0.375,
-      "directional_accuracy_7d": 0.125,
-      "directional_accuracy_30d": 0.125,
-      "consecutive_hits": 0,
-      "yesterday_hit": 0,
-      "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.5977,
-      "yesterday_p50": 4654.0813,
-      "yesterday_actual": 4681.8999
-    },
-    "SI=F": {
-      "calibration_7d": 0.625,
-      "calibration_30d": 0.625,
-      "directional_accuracy_7d": 0.375,
-      "directional_accuracy_30d": 0.375,
+      "directional_accuracy_7d": 0.4167,
+      "directional_accuracy_30d": 0.4167,
       "consecutive_hits": 0,
       "yesterday_hit": 0,
       "yesterday_direction_correct": 1,
-      "yesterday_error_pct": 4.1389,
-      "yesterday_p50": 73.7582,
-      "yesterday_actual": 76.811
+      "yesterday_error_pct": 0.955,
+      "yesterday_p50": 2.7957,
+      "yesterday_actual": 2.769
     },
-    "CL=F": {
-      "calibration_7d": 0.375,
-      "calibration_30d": 0.375,
-      "directional_accuracy_7d": 0.5,
-      "directional_accuracy_30d": 0.5,
+    "GC=F": {
+      "calibration_7d": 0.4167,
+      "calibration_30d": 0.4167,
+      "directional_accuracy_7d": 0.1667,
+      "directional_accuracy_30d": 0.1667,
       "consecutive_hits": 0,
       "yesterday_hit": 0,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 7.8057,
-      "yesterday_p50": 103.13,
-      "yesterday_actual": 95.08
+      "yesterday_error_pct": 0.8817,
+      "yesterday_p50": 4658.7233,
+      "yesterday_actual": 4699.7998
+    },
+    "SI=F": {
+      "calibration_7d": 0.5,
+      "calibration_30d": 0.5,
+      "directional_accuracy_7d": 0.3333,
+      "directional_accuracy_30d": 0.3333,
+      "consecutive_hits": 0,
+      "yesterday_hit": 0,
+      "yesterday_direction_correct": 1,
+      "yesterday_error_pct": 6.9089,
+      "yesterday_p50": 74.5504,
+      "yesterday_actual": 79.701
+    },
+    "CL=F": {
+      "calibration_7d": 0.4167,
+      "calibration_30d": 0.4167,
+      "directional_accuracy_7d": 0.4167,
+      "directional_accuracy_30d": 0.4167,
+      "consecutive_hits": 0,
+      "yesterday_hit": 0,
+      "yesterday_direction_correct": 0,
+      "yesterday_error_pct": 7.509,
+      "yesterday_p50": 102.5073,
+      "yesterday_actual": 94.81
     },
     "EURUSD=X": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 8,
+      "consecutive_hits": 12,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.0615,
+      "yesterday_error_pct": 0.2086,
       "yesterday_p50": 1.1723,
-      "yesterday_actual": 1.1716
+      "yesterday_actual": 1.1747
     },
     "GBPUSD=X": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 8,
+      "consecutive_hits": 12,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.1805,
-      "yesterday_p50": 1.3593,
-      "yesterday_actual": 1.3569
+      "yesterday_error_pct": 0.0346,
+      "yesterday_p50": 1.3596,
+      "yesterday_actual": 1.3592
     },
     "USDJPY=X": {
-      "calibration_7d": 0.875,
-      "calibration_30d": 0.875,
-      "directional_accuracy_7d": 0.125,
-      "directional_accuracy_30d": 0.125,
-      "consecutive_hits": 6,
-      "yesterday_hit": 1,
-      "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.0087,
-      "yesterday_p50": 157.6907,
-      "yesterday_actual": 157.677
-    },
-    "AUDUSD=X": {
-      "calibration_7d": 0.875,
-      "calibration_30d": 0.875,
-      "directional_accuracy_7d": 0.25,
-      "directional_accuracy_30d": 0.25,
-      "consecutive_hits": 6,
+      "calibration_7d": 0.8333,
+      "calibration_30d": 0.8333,
+      "directional_accuracy_7d": 0.1667,
+      "directional_accuracy_30d": 0.1667,
+      "consecutive_hits": 3,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 1,
-      "yesterday_error_pct": 0.1887,
-      "yesterday_p50": 0.719,
-      "yesterday_actual": 0.7204
+      "yesterday_error_pct": 0.3793,
+      "yesterday_p50": 157.1038,
+      "yesterday_actual": 156.508
+    },
+    "AUDUSD=X": {
+      "calibration_7d": 0.8333,
+      "calibration_30d": 0.8333,
+      "directional_accuracy_7d": 0.25,
+      "directional_accuracy_30d": 0.25,
+      "consecutive_hits": 0,
+      "yesterday_hit": 0,
+      "yesterday_direction_correct": 1,
+      "yesterday_error_pct": 1.0092,
+      "yesterday_p50": 0.7163,
+      "yesterday_actual": 0.7235
     },
     "USDCHF=X": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 8,
+      "consecutive_hits": 12,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.0141,
+      "yesterday_error_pct": 0.3365,
       "yesterday_p50": 0.7815,
-      "yesterday_actual": 0.7814
+      "yesterday_actual": 0.7789
     },
     "HG=F": {
-      "calibration_7d": 0.5,
-      "calibration_30d": 0.5,
-      "directional_accuracy_7d": 0.0,
-      "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 1,
+      "calibration_7d": 0.5833,
+      "calibration_30d": 0.5833,
+      "directional_accuracy_7d": 0.0833,
+      "directional_accuracy_30d": 0.0833,
+      "consecutive_hits": 2,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 2.6367,
+      "yesterday_error_pct": 2.4861,
       "yesterday_p50": 5.9789,
-      "yesterday_actual": 6.1365
+      "yesterday_actual": 6.1275
     },
     "DX-Y.NYB": {
       "calibration_7d": 1.0,
       "calibration_30d": 1.0,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 8,
+      "consecutive_hits": 12,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.1935,
+      "yesterday_error_pct": 0.0407,
       "yesterday_p50": 98.21,
-      "yesterday_actual": 98.02
+      "yesterday_actual": 98.25
     },
     "^TNX": {
-      "calibration_7d": 0.75,
-      "calibration_30d": 0.75,
+      "calibration_7d": 0.8333,
+      "calibration_30d": 0.8333,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 6,
+      "consecutive_hits": 10,
       "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 0.5025,
+      "yesterday_error_pct": 0.3198,
       "yesterday_p50": 4.378,
-      "yesterday_actual": 4.356
+      "yesterday_actual": 4.392
     },
     "^GSPC": {
-      "calibration_7d": 0.625,
-      "calibration_30d": 0.625,
+      "calibration_7d": 0.6667,
+      "calibration_30d": 0.6667,
       "directional_accuracy_7d": 0.0,
       "directional_accuracy_30d": 0.0,
-      "consecutive_hits": 0,
-      "yesterday_hit": 0,
+      "consecutive_hits": 2,
+      "yesterday_hit": 1,
       "yesterday_direction_correct": 0,
-      "yesterday_error_pct": 1.7885,
-      "yesterday_p50": 7235.7072,
-      "yesterday_actual": 7365.1201
+      "yesterday_error_pct": 1.3731,
+      "yesterday_p50": 7237.7286,
+      "yesterday_actual": 7337.1099
     }
   },
   "yesterday_misses": [
     {
       "ticker": "NG=F",
-      "p50": 2.8013,
-      "actual": 2.73,
-      "error_pct": 2.5452,
-      "direction_correct": 0.0
+      "p50": 2.7957,
+      "actual": 2.769,
+      "error_pct": 0.955,
+      "direction_correct": 1.0
     },
     {
       "ticker": "GC=F",
-      "p50": 4654.081332,
-      "actual": 4681.899902,
-      "error_pct": 0.5977,
+      "p50": 4658.723296,
+      "actual": 4699.799805,
+      "error_pct": 0.8817,
       "direction_correct": 0.0
     },
     {
       "ticker": "SI=F",
-      "p50": 73.758226,
-      "actual": 76.810997,
-      "error_pct": 4.1389,
+      "p50": 74.550393,
+      "actual": 79.700996,
+      "error_pct": 6.9089,
       "direction_correct": 1.0
     },
     {
       "ticker": "CL=F",
-      "p50": 103.130042,
-      "actual": 95.080002,
-      "error_pct": 7.8057,
+      "p50": 102.50727,
+      "actual": 94.809998,
+      "error_pct": 7.509,
       "direction_correct": 0.0
     },
     {
-      "ticker": "^GSPC",
-      "p50": 7235.707159,
-      "actual": 7365.120117,
-      "error_pct": 1.7885,
-      "direction_correct": 0.0
-    },
-    {
-      "ticker": "CL=F",
-      "p50": 101.193058,
-      "actual": 95.080002,
-      "error_pct": 6.041,
+      "ticker": "AUDUSD=X",
+      "p50": 0.716281,
+      "actual": 0.72351,
+      "error_pct": 1.0092,
       "direction_correct": 1.0
-    },
-    {
-      "ticker": "HG=F",
-      "p50": 5.931273,
-      "actual": 6.1365,
-      "error_pct": 3.4601,
-      "direction_correct": 0.0
-    },
-    {
-      "ticker": "^GSPC",
-      "p50": 7235.568778,
-      "actual": 7365.120117,
-      "error_pct": 1.7905,
-      "direction_correct": 0.0
     },
     {
       "ticker": "GC=F",
-      "p50": 4541.534737,
-      "actual": 4681.899902,
-      "error_pct": 3.0907,
+      "p50": 4542.963575,
+      "actual": 4699.799805,
+      "error_pct": 3.4523,
       "direction_correct": 1.0
     },
     {
       "ticker": "SI=F",
-      "p50": 73.009903,
-      "actual": 76.810997,
-      "error_pct": 5.2063,
+      "p50": 73.280793,
+      "actual": 79.700996,
+      "error_pct": 8.7611,
       "direction_correct": 0.0
     },
     {
       "ticker": "CL=F",
-      "p50": 106.063823,
-      "actual": 95.080002,
-      "error_pct": 10.3559,
+      "p50": 105.922915,
+      "actual": 94.809998,
+      "error_pct": 10.4915,
       "direction_correct": 1.0
     },
     {
       "ticker": "HG=F",
-      "p50": 5.807763,
-      "actual": 6.1365,
-      "error_pct": 5.6603,
+      "p50": 5.807862,
+      "actual": 6.1275,
+      "error_pct": 5.5035,
       "direction_correct": 0.0
     },
     {
       "ticker": "^GSPC",
-      "p50": 7205.206214,
-      "actual": 7365.120117,
-      "error_pct": 2.2194,
+      "p50": 7213.537156,
+      "actual": 7337.109863,
+      "error_pct": 1.7131,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "SI=F",
+      "p50": 76.519526,
+      "actual": 79.700996,
+      "error_pct": 4.1577,
+      "direction_correct": 0.0
+    },
+    {
+      "ticker": "USDJPY=X",
+      "p50": 157.841629,
+      "actual": 156.507996,
+      "error_pct": 0.8449,
       "direction_correct": 0.0
     }
   ]
