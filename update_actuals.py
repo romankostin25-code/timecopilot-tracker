@@ -153,7 +153,7 @@ def _regenerate_scorecard(df: pd.DataFrame):
 
     misses = yest_graded[yest_graded["hit"] == 0][
         ["ticker", "p50", "actual", "error_pct", "direction_correct"]
-    ].to_dict(orient="records")
+    ].where(pd.notnull, None).to_dict(orient="records")
 
     scorecard = {
         "generated_at": datetime.now().isoformat(),
@@ -173,8 +173,13 @@ def _regenerate_scorecard(df: pd.DataFrame):
         "yesterday_misses": misses,
     }
 
+    def _nan_to_none(obj):
+        if isinstance(obj, float) and (obj != obj):  # NaN check
+            return None
+        raise TypeError(type(obj))
+
     with open("scorecard.json", "w") as f:
-        json.dump(scorecard, f, indent=2, default=str)
+        json.dump(scorecard, f, indent=2, default=_nan_to_none)
     print("✓ scorecard.json regenerated.")
 
 
