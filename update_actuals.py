@@ -73,20 +73,23 @@ def fill_actuals_and_grade():
                     df.loc[idx, "error_pct"] = round(abs(actual - p50) / abs(p50) * 100, 4)
                     df.loc[idx, "hit"]        = 1 if p10 <= actual <= p90 else 0
 
-                    # Direction correctness vs prev available actual
-                    prev_rows = df[
-                        (df["ticker"] == ticker) &
-                        (df["target_date"] < target) &
-                        (~df["actual"].isna()) &
-                        (df["actual"].astype(str).str.strip() != "")
-                    ]
-                    if not prev_rows.empty:
-                        prev_close = float(prev_rows.sort_values("target_date").iloc[-1]["actual"])
-                    else:
-                        prev_close = p50
-                    actual_dir = "BULLISH" if actual > prev_close else "BEARISH"
+                    # Direction correctness — only scored when model made a directional call
                     called_dir = str(df.loc[idx, "direction"]) if "direction" in df.columns else "NEUTRAL"
-                    df.loc[idx, "direction_correct"] = 1 if called_dir == actual_dir else 0
+                    if called_dir not in ("BULLISH", "BEARISH"):
+                        df.loc[idx, "direction_correct"] = ""  # NEUTRAL = no call, not wrong
+                    else:
+                        prev_rows = df[
+                            (df["ticker"] == ticker) &
+                            (df["target_date"] < target) &
+                            (~df["actual"].isna()) &
+                            (df["actual"].astype(str).str.strip() != "")
+                        ]
+                        if not prev_rows.empty:
+                            prev_close = float(prev_rows.sort_values("target_date").iloc[-1]["actual"])
+                        else:
+                            prev_close = p50
+                        actual_dir = "BULLISH" if actual > prev_close else "BEARISH"
+                        df.loc[idx, "direction_correct"] = 1 if called_dir == actual_dir else 0
                     df.loc[idx, "graded_at"] = datetime.now().isoformat()
                     updated += 1
 
@@ -103,20 +106,23 @@ def _regenerate_scorecard(df: pd.DataFrame):
     df["hit"]               = pd.to_numeric(df["hit"], errors="coerce")
     df["direction_correct"] = pd.to_numeric(df["direction_correct"], errors="coerce")
     graded  = df[df["hit"].notna()].copy()
+    # Only include rows where a directional call was made (not NEUTRAL)
+    dir_graded = graded[graded["direction"].isin(["BULLISH", "BEARISH"])].copy()
     today   = date.today()
     yesterday = today - timedelta(days=1)
 
     def rolling_rate(subset, col, days):
         cutoff = today - timedelta(days=days)
         recent = subset[pd.to_datetime(subset["target_date"]).dt.date >= cutoff]
-        return round(float(recent[col].mean()), 4) if not recent.empty else None
+        valid  = recent[recent[col].notna()]
+        return round(float(valid[col].mean()), 4) if not valid.empty else None
 
     cal_7d   = rolling_rate(graded, "hit", 7)
     cal_30d  = rolling_rate(graded, "hit", 30)
     cal_all  = round(float(graded["hit"].mean()), 4) if not graded.empty else None
-    dir_7d   = rolling_rate(graded, "direction_correct", 7)
-    dir_30d  = rolling_rate(graded, "direction_correct", 30)
-    dir_all  = round(float(graded["direction_correct"].mean()), 4) if not graded.empty else None
+    dir_7d   = rolling_rate(dir_graded, "direction_correct", 7)
+    dir_30d  = rolling_rate(dir_graded, "direction_correct", 30)
+    dir_all  = round(float(dir_graded["direction_correct"].mean()), 4) if not dir_graded.empty else None
     trend    = "IMPROVING" if (cal_7d or 0) > (cal_30d or 0) else "DECLINING"
 
     yest_graded = graded[pd.to_datetime(graded["target_date"]).dt.date == yesterday]
@@ -124,6 +130,7 @@ def _regenerate_scorecard(df: pd.DataFrame):
     by_asset = {}
     for ticker in graded["ticker"].unique():
         t    = graded[graded["ticker"] == ticker]
+        td   = t[t["direction"].isin(["BULLISH", "BEARISH"])]
         yt   = yest_graded[yest_graded["ticker"] == ticker]
         consec = 0
         for val in t.sort_values("target_date", ascending=False)["hit"].values:
@@ -134,8 +141,8 @@ def _regenerate_scorecard(df: pd.DataFrame):
         by_asset[str(ticker)] = {
             "calibration_7d":            rolling_rate(t, "hit", 7),
             "calibration_30d":           rolling_rate(t, "hit", 30),
-            "directional_accuracy_7d":   rolling_rate(t, "direction_correct", 7),
-            "directional_accuracy_30d":  rolling_rate(t, "direction_correct", 30),
+            "directional_accuracy_7d":   rolling_rate(td, "direction_correct", 7),
+            "directional_accuracy_30d":  rolling_rate(td, "direction_correct", 30),
             "consecutive_hits":          consec,
             "yesterday_hit":             int(yt["hit"].iloc[0]) if not yt.empty else None,
             "yesterday_direction_correct": int(yt["direction_correct"].iloc[0]) if not yt.empty else None,

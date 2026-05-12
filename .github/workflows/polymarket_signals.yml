@@ -8,6 +8,9 @@ on:
 jobs:
   polymarket:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -16,51 +19,15 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install --quiet requests pandas numpy scipy yfinance python-dotenv
+        run: pip install --quiet requests pandas numpy scipy yfinance python-dotenv
 
-      - name: Poll Polymarket markets
-        run: python -c "
-import sys; sys.path.insert(0, '.')
-from polymarket_predictions.poller import fetch_all_snapshots
-fetch_all_snapshots()
-"
-
-      - name: Detect spikes
-        run: python -c "
-import sys; sys.path.insert(0, '.')
-from polymarket_predictions.spike_detector import detect_spikes
-spikes = detect_spikes()
-print(f'Spikes detected: {len(spikes)}')
-"
-
-      - name: Generate signals
-        run: python -c "
-import sys; sys.path.insert(0, '.')
-from polymarket_predictions.signal_generator import generate_all_signals
-sigs = generate_all_signals()
-active = [k for k,v in sigs.items() if v['direction'] != 'NEUTRAL']
-print(f'Active signals: {active}')
-"
-
-      - name: Build correlations (backfill outcomes)
-        run: python -c "
-import sys; sys.path.insert(0, '.')
-from polymarket_predictions.correlation_engine import build_all_correlations
-build_all_correlations()
-"
-
-      - name: Apply adjustments to forecasts
-        run: python -c "
-import sys; sys.path.insert(0, '.')
-from polymarket_predictions.integrator import apply_to_forecast_csv
-apply_to_forecast_csv()
-"
+      - name: Run poly-signals pipeline
+        run: python main.py --poly-signals
 
       - name: Commit updated signal files
         run: |
-          git config --global user.name  "Trading Co-Pilot Bot"
-          git config --global user.email "bot@trading-copilot.internal"
+          git config user.name  "Trading Co-Pilot Bot"
+          git config user.email "bot@trading-copilot.internal"
           git add data/ forecasts.csv || true
-          git diff --cached --quiet || git commit -m "Polymarket signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git diff --cached --quiet || git commit -m "poly-signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push || true
