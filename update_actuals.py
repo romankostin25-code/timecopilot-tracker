@@ -173,13 +173,18 @@ def _regenerate_scorecard(df: pd.DataFrame):
         "yesterday_misses": misses,
     }
 
-    def _nan_to_none(obj):
-        if isinstance(obj, float) and (obj != obj):  # NaN check
+    def _clean_nan(obj):
+        """Recursively replace float NaN with None so JSON stays valid."""
+        if isinstance(obj, float) and obj != obj:
             return None
-        raise TypeError(type(obj))
+        if isinstance(obj, dict):
+            return {k: _clean_nan(v) for k, v in obj.items()}
+        if isinstance(obj, list):
+            return [_clean_nan(v) for v in obj]
+        return obj
 
     with open("scorecard.json", "w") as f:
-        json.dump(scorecard, f, indent=2, default=_nan_to_none)
+        json.dump(_clean_nan(scorecard), f, indent=2)
     print("✓ scorecard.json regenerated.")
 
 
