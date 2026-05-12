@@ -17,16 +17,20 @@ POLYMARKET_KEYWORDS = {
     "GC=F":      ["gold price", "gold futures", "gold above", "gold below", "gold hits", "gold reaches"],
     "SI=F":      ["silver price", "silver futures", "silver above", "silver below"],
     "CL=F":      ["crude oil", "oil price", "wti", "brent", "oil above", "oil below", "barrel"],
-    "NG=F":      ["natural gas", "gas price", "natgas"],
+    "NG=F":      ["natural gas", "gas price", "natgas", "henry hub"],
     "HG=F":      ["copper price", "copper futures", "copper above", "copper below"],
+    "HO=F":      ["heating oil", "heating oil futures", "distillate", "home heating"],
+    "PA=F":      ["palladium", "palladium price", "palladium above", "palladium below"],
     "EURUSD=X":  ["eur/usd", "eurusd", "euro dollar", "euro above", "euro below"],
     "GBPUSD=X":  ["gbp/usd", "gbpusd", "pound dollar", "sterling"],
     "USDJPY=X":  ["usd/jpy", "usdjpy", "dollar yen", "yen above", "yen below"],
     "AUDUSD=X":  ["aud/usd", "audusd", "aussie dollar", "australian dollar"],
-    "USDCHF=X":  ["usd/chf", "usdchf", "swiss franc", "franc above"],
-    "DX-Y.NYB":  ["dollar index", "dxy above", "dxy below"],
+    "DX-Y.NYB":  ["dollar index", "dxy above", "dxy below", "us dollar index"],
     "^TNX":      ["federal reserve", "fed rate", "interest rate", "fomc", "rate cut", "fed cut", "10-year", "10 year yield", "treasury yield"],
+    "^IRX":      ["3-month treasury", "t-bill", "short-term rate", "fed funds", "money market rate"],
     "^GSPC":     ["s&p 500", "sp 500", "stock market crash", "recession", "nasdaq above", "dow jones"],
+    "^VIX":      ["vix", "volatility index", "fear index", "market volatility", "vix above", "vix below"],
+    "HYG":       ["high yield", "junk bond", "credit spread", "hyg", "corporate bond", "hy bond"],
 }
 
 # Fetch markets in small pages to avoid rate limits

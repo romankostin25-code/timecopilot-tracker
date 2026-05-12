@@ -1,0 +1,48 @@
+name: Weekly Classifier Retrain
+
+on:
+  schedule:
+    - cron: '0 4 * * 0'   # Sunday 04:00 UTC (midnight ET)
+  workflow_dispatch:
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install dependencies
+        run: uv pip install --system -r requirements.txt
+
+      - name: Retrain directional classifiers
+        env:
+          ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'NG=F,GC=F,SI=F,CL=F,HG=F,HO=F,PA=F,EURUSD=X,GBPUSD=X,USDJPY=X,AUDUSD=X,DX-Y.NYB,^TNX,^IRX,^GSPC,^VIX,HYG' }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python main.py --retrain
+
+      - name: Run walk-forward backtest report
+        env:
+          ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'NG=F,GC=F,SI=F,CL=F,HG=F,HO=F,PA=F,EURUSD=X,GBPUSD=X,USDJPY=X,AUDUSD=X,DX-Y.NYB,^TNX,^IRX,^GSPC,^VIX,HYG' }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python main.py --backtest
+
+      - name: Commit retrained models and results
+        run: |
+          git config user.name  "Trading Co-Pilot Bot"
+          git config user.email "bot@trading-copilot.internal"
+          git add data/clf_models/ data/retrain_results.json data/backtest_results.csv || true
+          if ! git diff --cached --quiet; then
+            git commit -m "retrain: weekly classifier update $(date -u +'%Y-%m-%d')"
+            git push || (git stash --include-untracked && git pull --rebase origin main && git stash pop && git push)
+          fi

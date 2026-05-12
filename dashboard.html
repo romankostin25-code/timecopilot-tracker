@@ -250,13 +250,17 @@ tr:hover td{background:rgba(255,255,255,.01)}
     <!-- Signal row -->
     <div class="signal-row" id="signal-row">
       <div class="sig-box" id="sig-model">
-        <div class="sig-label">Model Signal</div>
+        <div class="sig-label">Combined Signal</div>
         <div class="sig-main cv-d">—</div>
         <div class="sig-sub">Select an asset</div>
       </div>
+      <div class="sig-box" id="sig-arms">
+        <div class="sig-label">3-Arm Breakdown</div>
+        <div class="sig-main cv-d" id="arms-display" style="font-size:11px;line-height:1.6">—</div>
+      </div>
       <div class="sig-box" id="sig-poly">
         <div class="sig-label">Polymarket</div>
-        <div class="sig-main cv-p">—</div>
+        <div class="sig-main" style="color:var(--purple)">—</div>
         <div class="sig-sub">prediction market odds</div>
       </div>
       <div class="sig-box" id="sig-align">
@@ -362,10 +366,12 @@ const POLL_MS = 5*60*1000;
 
 const ASSET_NAMES = {
   "NG=F":"Natural Gas","GC=F":"Gold","SI=F":"Silver","CL=F":"Oil WTI","HG=F":"Copper",
+  "HO=F":"Heating Oil","PA=F":"Palladium",
   "EURUSD=X":"EUR/USD","GBPUSD=X":"GBP/USD","USDJPY=X":"USD/JPY","AUDUSD=X":"AUD/USD",
-  "USDCHF=X":"USD/CHF","DX-Y.NYB":"DXY","^TNX":"US 10Y","^GSPC":"S&P 500",
+  "DX-Y.NYB":"DXY","^TNX":"US 10Y","^IRX":"US 3M T-Bill","^GSPC":"S&P 500",
+  "^VIX":"VIX (Fear Index)","HYG":"High Yield Bonds",
 };
-const COMMODITY_TICKERS = new Set(["NG=F","GC=F","SI=F","CL=F","HG=F"]);
+const COMMODITY_TICKERS = new Set(["NG=F","GC=F","SI=F","CL=F","HG=F","HO=F","PA=F"]);
 
 // ══════════════════════════════════════════════════════════════════════════
 // DATA LOADING
@@ -628,6 +634,11 @@ function renderSignalRow(t){
   const convLabel=conv>0.6?"HIGH":conv>0.3?"MED":"LOW";
   const convCls=conv>0.6?"cv-g":conv>0.3?"cv-a":"cv-r";
 
+  // 3-arm probs (arm_tc_prob, arm_clf_prob, arm_poly_prob — present in new CSV only)
+  const tcProb  = first&&first.arm_tc_prob!==undefined&&first.arm_tc_prob!==""  ? parseFloat(first.arm_tc_prob)  : null;
+  const clfProb = first&&first.arm_clf_prob!==undefined&&first.arm_clf_prob!=="" ? parseFloat(first.arm_clf_prob) : null;
+  const armPoly = first&&first.arm_poly_prob!==undefined&&first.arm_poly_prob!==""? parseFloat(first.arm_poly_prob): null;
+
   const poly=getPolyForTicker(t);
   const polyBull=poly?parseFloat(poly.poly_prob_bullish||0):null;
   const polySignal=poly?(poly.poly_signal||"NO_DATA"):"NO_DATA";
@@ -637,9 +648,24 @@ function renderSignalRow(t){
   const diverged=polySignal!=="NO_DATA"&&polySignal!=="INSUFFICIENT_VOLUME"&&!aligned&&dir!=="NEUTRAL";
 
   const mBox=document.getElementById("sig-model");
-  mBox.innerHTML=`<div class="sig-label">Model Signal</div>
+  mBox.innerHTML=`<div class="sig-label">Combined Signal</div>
     <div class="sig-main ${sigCls(dir)}">${dir}</div>
     <div class="sig-sub">${fmtPct(sig)} move expected · conviction <span class="${convCls}">${convLabel}</span></div>`;
+
+  // Arms breakdown
+  function probBar(p){
+    if(p===null||isNaN(p)) return '<span style="color:var(--muted)">n/a</span>';
+    const pct2=Math.round(p*100);
+    const cls=pct2>55?"cv-g":pct2<45?"cv-r":"cv-a";
+    return `<span class="${cls}">${pct2}%↑</span>`;
+  }
+  const armsBox=document.getElementById("sig-arms");
+  armsBox.innerHTML=`<div class="sig-label">3-Arm Breakdown</div>
+    <div style="font-family:var(--mono);font-size:10px;line-height:1.7">
+      <span style="color:var(--muted)">TC  (35%)</span> ${probBar(tcProb)}<br>
+      <span style="color:var(--muted)">CLF (45%)</span> ${probBar(clfProb)}<br>
+      <span style="color:var(--muted)">PM  (20%)</span> ${probBar(armPoly)}
+    </div>`;
 
   const pBox=document.getElementById("sig-poly");
   pBox.innerHTML=`<div class="sig-label">Polymarket</div>
@@ -1199,10 +1225,11 @@ function renderIntelTab(){
       </div>
     </div>
     <div class="callout" style="margin-bottom:14px">
-      <div class="callout-label">How to read these numbers</div>
-      <strong>TimeCopilot</strong>: AutoARIMA+AutoETS ensemble forecasts. Target ≥55% directional, ≥80% calibration.
-      <strong>Polymarket Spikes</strong>: macro event probability moves mapped causally to assets. Builds accuracy over 2-4 weeks.
-      <strong>Aggregator</strong>: LightGBM trained on all signals + macro. Generates independent prediction once ≥30 graded rows exist per ticker. Needs ~2 weeks of operation.
+      <div class="callout-label">3-Arm Signal Combiner</div>
+      Each direction call is a weighted blend: <strong>ARM 1 — TimeCopilot</strong> (35%, AutoARIMA+AutoETS probabilistic forecast, ATR-based threshold) +
+      <strong>ARM 2 — DirectionalCLF</strong> (45%, XGBoost+LightGBM+Logit walk-forward ML ensemble, trains weekly) +
+      <strong>ARM 3 — Polymarket</strong> (20%, Platt-calibrated crowd probability). Conviction gate per forecastability tier prevents low-confidence calls.
+      Targets: TIER_1 ≥72%, TIER_2 ≥65%, TIER_3 ≥60% directional accuracy.
     </div>
   `;
   document.getElementById("intel-scorecard").innerHTML=scorecardHTML;
