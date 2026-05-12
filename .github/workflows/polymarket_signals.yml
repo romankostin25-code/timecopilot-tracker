@@ -34,6 +34,5 @@ jobs:
           git add data/ forecasts.csv || true
           if ! git diff --cached --quiet; then
             git commit -m "poly-signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase origin main
-            git push
+            git push || (git stash --include-untracked && git pull --rebase origin main && git stash pop && git push)
           fi
