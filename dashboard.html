@@ -753,7 +753,7 @@ function renderAccuracyTab(){
       <td class="td-muted">${n(a.yesterday_p50,4)}</td>
       <td class="${hit===1?"td-hit":hit===0?"td-miss":"td-pend"}">${n(a.yesterday_actual,4)}</td>
       <td class="td-muted">${fmtPct(a.yesterday_error_pct)}</td>
-      <td class="${dc===1?"td-hit":"td-miss"}">${dc===1?"✓":"✗"}</td>
+      <td class="${dc===1?"td-hit":dc===0?"td-miss":"td-muted"}">${dc===1?"✓":dc===0?"✗":"—"}</td>
       <td>${badgeHit(hit)}</td>
     </tr>`;
   });
@@ -770,7 +770,8 @@ function renderAccuracyTab(){
     const cutoff=new Date(asOf);cutoff.setDate(cutoff.getDate()-days);
     const recent=rows.filter(r=>new Date(r.target_date)>=cutoff&&new Date(r.target_date)<=new Date(asOf));
     if(!recent.length)return null;
-    const vals=recent.map(r=>+r[col]).filter(v=>!isNaN(v));
+    // Exclude empty/null values (NEUTRAL direction_correct rows)
+    const vals=recent.filter(r=>r[col]!==""&&r[col]!==null&&r[col]!==undefined).map(r=>+r[col]).filter(v=>!isNaN(v));
     return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
   }
 
@@ -1154,7 +1155,9 @@ function renderIntelTab(){
   // ── 1. Three-way accuracy scorecard ───────────────────────────────────
   const graded=forecasts.map(enrichRow).filter(r=>r._hit!==null);
   const tcCal  = graded.length ? graded.filter(r=>r._hit===1).length/graded.length : null;
-  const tcDir  = graded.length ? graded.filter(r=>r.direction_correct==="1"||r.direction_correct===1).length/graded.length : null;
+  // Only count rows where a directional call was made (not NEUTRAL/empty)
+  const dirGraded = graded.filter(r=>r.direction_correct!==""&&r.direction_correct!==null&&r.direction_correct!==undefined);
+  const tcDir  = dirGraded.length ? dirGraded.filter(r=>parseFloat(r.direction_correct)===1).length/dirGraded.length : null;
   const tcN    = graded.length;
 
   // Polymarket spike correlations accuracy
@@ -1173,7 +1176,7 @@ function renderIntelTab(){
       <div class="info-card" style="border-color:rgba(0,212,255,.3)">
         <div class="info-label" style="color:var(--cyan)">TimeCopilot</div>
         <div class="info-value ${dirCls(tcDir)}">${tcDir!==null?pct(tcDir):"—"}</div>
-        <div class="info-sub">directional accuracy · ${tcN} graded</div>
+        <div class="info-sub">directional accuracy · ${dirGraded.length} calls · ${tcN} graded</div>
         <div style="margin-top:6px;font-family:var(--mono);font-size:10px">
           Band calibration: <span class="${calCls(tcCal)}">${tcCal!==null?pct(tcCal):"—"}</span>
         </div>
