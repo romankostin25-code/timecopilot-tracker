@@ -1,4 +1,4 @@
-"""Trading Co-Pilot — TimeCopilot ensemble forecasting engine."""
+"""Trading Co-Pilot — statsforecast ensemble forecasting engine."""
 
 import os
 import warnings
@@ -27,22 +27,9 @@ CSV_COLUMNS = [
 
 
 def _build_models():
-    """Assemble available TimeCopilot models; skip any that fail to import."""
-    from timecopilot.models.stats import AutoARIMA, AutoETS
+    from statsforecast.models import AutoARIMA, AutoETS
     models = [AutoARIMA(), AutoETS()]
-    # AutoLGBM excluded — does not support level/quantile intervals
-    try:
-        from timecopilot.models.foundation.chronos import Chronos
-        models.append(Chronos())
-        print("  + Chronos")
-    except Exception as e:
-        print(f"  - Chronos skipped: {e}")
-    try:
-        from timecopilot.models.foundation.toto import Toto
-        models.append(Toto())
-        print("  + Toto")
-    except Exception as e:
-        print(f"  - Toto skipped: {e}")
+    print(f"  Models: AutoARIMA + AutoETS")
     return models
 
 
@@ -99,7 +86,7 @@ def compute_signals(p10_d1, p50_d1, p50_d5, p90_d1, last_price):
 
 
 def forecast_ticker(ticker: str, models, existing: pd.DataFrame) -> list[dict]:
-    from timecopilot import TimeCopilotForecaster
+    from statsforecast import StatsForecast
     from pandas.tseries.offsets import BDay
 
     today_str = str(date.today())
@@ -114,10 +101,10 @@ def forecast_ticker(ticker: str, models, existing: pd.DataFrame) -> list[dict]:
 
     df = fetch_price_data(ticker)
     last_price = float(df["y"].iloc[-1])
-    print(f"  [{ticker}] {len(df)} pts, last={last_price:.4f} — running TimeCopilot…")
+    print(f"  [{ticker}] {len(df)} pts, last={last_price:.4f} — running statsforecast…")
 
-    tcf  = TimeCopilotForecaster(models=models)
-    fcst = tcf.forecast(df=df, h=HORIZON, level=[80])
+    sf   = StatsForecast(models=models, freq=FREQ, n_jobs=-1)
+    fcst = sf.forecast(df=df, h=HORIZON, level=[80])
 
     p10_vals, p50_vals, p90_vals = _ensemble_quantiles(fcst)
 
