@@ -238,7 +238,11 @@ tr:hover td{background:rgba(255,255,255,.01)}
     <div class="gheader">
       <div class="metric-row" id="global-metrics">
         <div class="metric"><div class="metric-label">Calibration 7d</div><div class="metric-value cv-d" id="m-cal7">—</div></div>
-        <div class="metric"><div class="metric-label">Directional 7d</div><div class="metric-value cv-d" id="m-dir7">—</div></div>
+        <div class="metric">
+          <div class="metric-label">CLF Backtest OOS <span style="color:var(--muted2);font-weight:400;font-size:9px">(3yr walk-fwd)</span></div>
+          <div class="metric-value cv-d" id="m-bt-oos">—</div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:2px" id="m-dir7-sub">live 7d: —</div>
+        </div>
         <div class="metric"><div class="metric-label">Yesterday Score</div><div class="metric-value cv-d" id="m-yest">—</div></div>
         <div class="metric"><div class="metric-label">Trend</div><div class="metric-value cv-d" id="m-trend">—</div></div>
       </div>
@@ -345,6 +349,7 @@ tr:hover td{background:rgba(255,255,255,.01)}
     <div class="tab-content" id="tab-intelligence">
       <div class="scroll-area">
         <div id="intel-scorecard"></div>
+        <div id="intel-backtest"></div>
         <div id="intel-spikes"></div>
         <div id="intel-correlations"></div>
         <div id="intel-aggregator"></div>
@@ -359,7 +364,7 @@ tr:hover td{background:rgba(255,255,255,.01)}
 // STATE
 // ══════════════════════════════════════════════════════════════════════════
 let forecasts=[], polyData=[], curveData=[], macroData=[], scorecard={}, signals={};
-let polySignals={}, polySpikes=[], polyCorrelations=[], aggForecasts=[];
+let polySignals={}, polySpikes=[], polyCorrelations=[], aggForecasts=[], backtestResults=[];
 let activeTicker = null;
 let charts = {};
 const POLL_MS = 5*60*1000;
@@ -396,7 +401,7 @@ async function fetchFile(name){
 
 async function loadAll(silent=false){
   if(!silent) setStatus("fetching","refreshing…");
-  const [fc,po,cu,mc,sc,sg,ps,pk,pa,af]=await Promise.all([
+  const [fc,po,cu,mc,sc,sg,ps,pk,pa,af,bt]=await Promise.all([
     fetchFile("forecasts.csv"),
     fetchFile("polymarket_data.csv"),
     fetchFile("futures_curve.csv"),
@@ -407,6 +412,7 @@ async function loadAll(silent=false){
     fetchFile("data/poly_spikes.csv"),
     fetchFile("data/poly_correlations.csv"),
     fetchFile("aggregator_forecasts.csv"),
+    fetchFile("data/backtest_results.csv"),
   ]);
   if(fc && fc.includes("forecast_date")) forecasts=parseCSV(fc);
   if(po && po.includes("ticker"))        polyData=parseCSV(po);
@@ -418,6 +424,7 @@ async function loadAll(silent=false){
   if(pk && pk.includes("event_type"))    polySpikes=parseCSV(pk);
   if(pa && pa.includes("event_type"))    polyCorrelations=parseCSV(pa);
   if(af && af.includes("agg_direction")) aggForecasts=parseCSV(af);
+  if(bt && bt.includes("ticker"))        backtestResults=parseCSV(bt);
 
   if(forecasts.length){
     setStatus("live","live · "+forecasts.length+" rows · "+new Date().toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"}));
@@ -559,17 +566,35 @@ function renderGlobalHeader(){
   const cal7=g.calibration_7d;
   const dir7=g.directional_accuracy_7d;
   const yestN=g.forecasts_graded_yesterday||0;
-  // yesterday hits from by_asset
   let yestHits=0;
   if(scorecard.by_asset){
     Object.values(scorecard.by_asset).forEach(a=>{if(a.yesterday_hit===1)yestHits++;});
   }
   const trend=g.trend||"—";
 
+  // CLF backtest OOS: average across all tickers with valid oos_accuracy
+  let btAvg=null, btBest=null, btBestTicker="";
+  if(backtestResults.length){
+    const valid=backtestResults.filter(r=>r.oos_accuracy&&r.oos_accuracy!=="");
+    if(valid.length){
+      btAvg=valid.reduce((s,r)=>s+parseFloat(r.oos_accuracy),0)/valid.length;
+      const best=valid.slice().sort((a,b)=>parseFloat(b.oos_accuracy)-parseFloat(a.oos_accuracy))[0];
+      btBest=parseFloat(best.oos_accuracy);
+      btBestTicker=best.ticker;
+    }
+  }
+
   document.getElementById("m-cal7").textContent=cal7!==null&&cal7!==undefined?pct(cal7):"—";
   document.getElementById("m-cal7").className="metric-value "+calCls(cal7);
-  document.getElementById("m-dir7").textContent=dir7!==null&&dir7!==undefined?pct(dir7):"—";
-  document.getElementById("m-dir7").className="metric-value "+dirCls(dir7);
+
+  // Backtest OOS metric (replaces noisy live Directional 7d as primary signal)
+  const btEl=document.getElementById("m-bt-oos");
+  btEl.textContent=btAvg!==null?pct(btAvg):"—";
+  btEl.className="metric-value "+dirCls(btAvg);
+  // Live 7d as secondary (small, for tracking)
+  document.getElementById("m-dir7-sub").textContent=
+    `live 7d: ${dir7!==null&&dir7!==undefined?pct(dir7):"—"}${btBest?`  best: ${btBestTicker} ${pct(btBest)}`:""}`;
+
   document.getElementById("m-yest").textContent=yestN>0?`${yestHits}/${yestN}`:"—";
   document.getElementById("m-yest").className="metric-value "+(yestN>0?(yestHits/yestN>=.7?"cv-g":yestHits/yestN>=.5?"cv-a":"cv-r"):"cv-d");
   document.getElementById("m-trend").textContent=trend==="IMPROVING"?"▲ UP":trend==="DECLINING"?"▼ DOWN":"—";
@@ -1233,6 +1258,71 @@ function renderIntelTab(){
     </div>
   `;
   document.getElementById("intel-scorecard").innerHTML=scorecardHTML;
+
+  // ── 1b. CLF backtest OOS per-ticker table ────────────────────────────────
+  let btHTML=`<div class="chart-title" style="margin-bottom:8px">CLF Walk-Forward OOS Accuracy — 3yr Backtest (no lookahead)</div>`;
+  if(!backtestResults.length){
+    btHTML+=`<div class="callout" style="margin-bottom:14px">
+      <div class="callout-label">No backtest data</div>
+      Run python main.py --backtest to generate results.
+    </div>`;
+  } else {
+    // Group by tier for display
+    const tierOrder=["TIER_1","TIER_2","TIER_3"];
+    const byTier={};
+    backtestResults.forEach(r=>{
+      const t=r.tier||"TIER_2";
+      if(!byTier[t]) byTier[t]=[];
+      byTier[t].push(r);
+    });
+    btHTML+=`<div class="table-wrap" style="margin-bottom:14px"><table>
+      <thead><tr>
+        <th style="text-align:left">Asset</th>
+        <th style="text-align:left">Tier</th>
+        <th>OOS Dir Acc</th>
+        <th>Confident Calls</th>
+        <th>Total OOS</th>
+        <th>vs Baseline</th>
+      </tr></thead><tbody>`;
+    tierOrder.forEach(tier=>{
+      const rows=(byTier[tier]||[]).sort((a,b)=>parseFloat(b.oos_accuracy||0)-parseFloat(a.oos_accuracy||0));
+      rows.forEach(r=>{
+        const acc=r.oos_accuracy&&r.oos_accuracy!==""?parseFloat(r.oos_accuracy):null;
+        const conf=r.confident_n||"—";
+        const total=r.oos_n||"—";
+        const edge=acc!==null?acc-0.5:null;
+        const aCls=acc!==null?(acc>=0.65?"td-hit":acc>=0.55?"td-pend":acc<0.50?"td-miss":"td-muted"):"td-muted";
+        const eCls=edge!==null?(edge>0.1?"td-hit":edge>0?"td-pend":"td-miss"):"td-muted";
+        btHTML+=`<tr>
+          <td style="text-align:left">${r.ticker||"—"}</td>
+          <td style="text-align:left;color:var(--muted)">${tier}</td>
+          <td class="${aCls}">${acc!==null?pct(acc):"—"}</td>
+          <td class="td-muted">${conf}</td>
+          <td class="td-muted">${total}</td>
+          <td class="${eCls}">${edge!==null?(edge>=0?"+":"")+pct(edge)+" vs random":"—"}</td>
+        </tr>`;
+      });
+    });
+    // Totals row
+    const allValid=backtestResults.filter(r=>r.oos_accuracy&&r.oos_accuracy!=="");
+    const avgAcc=allValid.length?allValid.reduce((s,r)=>s+parseFloat(r.oos_accuracy),0)/allValid.length:null;
+    if(avgAcc!==null){
+      btHTML+=`<tr style="border-top:1px solid var(--border2)">
+        <td style="text-align:left;font-weight:700">AVERAGE</td>
+        <td style="text-align:left;color:var(--muted)">all tiers</td>
+        <td class="${dirCls(avgAcc)}" style="font-weight:700">${pct(avgAcc)}</td>
+        <td class="td-muted" colspan="2">${allValid.length} tickers</td>
+        <td class="${avgAcc>0.5?"td-hit":"td-miss"}" style="font-weight:700">${avgAcc>=0.5?"+":""} ${pct(avgAcc-0.5)} vs random</td>
+      </tr>`;
+    }
+    btHTML+=`</tbody></table></div>
+    <div class="callout" style="margin-bottom:14px">
+      <div class="callout-label">What this number means</div>
+      Walk-forward OOS: train on 252 trading days, predict next 21, advance — repeated over 3 years of history. Only counts "confident" predictions (probability &gt;55% or &lt;45%). Updated every Sunday via weekly_retrain workflow.
+      <strong>Not a weekly accuracy</strong> — this is the 3-year simulation accuracy for the DirectionalCLF arm specifically.
+    </div>`;
+  }
+  document.getElementById("intel-backtest").innerHTML=btHTML;
 
   // ── 2. Active spike feed ────────────────────────────────────────────────
   const recentSpikes=polySpikes.slice(-20).reverse();
