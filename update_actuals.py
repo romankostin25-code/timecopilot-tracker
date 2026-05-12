@@ -76,7 +76,7 @@ def fill_actuals_and_grade():
                     # Direction correctness — only scored when model made a directional call
                     called_dir = str(df.loc[idx, "direction"]) if "direction" in df.columns else "NEUTRAL"
                     if called_dir not in ("BULLISH", "BEARISH"):
-                        df.loc[idx, "direction_correct"] = ""  # NEUTRAL = no call, not wrong
+                        df.loc[idx, "direction_correct"] = np.nan  # NEUTRAL = no call, not wrong
                     else:
                         prev_rows = df[
                             (df["ticker"] == ticker) &
@@ -144,8 +144,8 @@ def _regenerate_scorecard(df: pd.DataFrame):
             "directional_accuracy_7d":   rolling_rate(td, "direction_correct", 7),
             "directional_accuracy_30d":  rolling_rate(td, "direction_correct", 30),
             "consecutive_hits":          consec,
-            "yesterday_hit":             int(yt["hit"].iloc[0]) if not yt.empty else None,
-            "yesterday_direction_correct": int(yt["direction_correct"].iloc[0]) if not yt.empty else None,
+            "yesterday_hit":             (int(yt["hit"].iloc[0]) if pd.notna(yt["hit"].iloc[0]) else None) if not yt.empty else None,
+            "yesterday_direction_correct": (int(yt["direction_correct"].iloc[0]) if pd.notna(yt["direction_correct"].iloc[0]) else None) if not yt.empty else None,
             "yesterday_error_pct":       round(float(yt["error_pct"].iloc[0]), 4) if not yt.empty else None,
             "yesterday_p50":             round(float(yt["p50"].iloc[0]), 4) if not yt.empty else None,
             "yesterday_actual":          round(float(yt["actual"].iloc[0]), 4) if not yt.empty else None,
