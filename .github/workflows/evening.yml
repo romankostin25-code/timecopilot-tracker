@@ -47,6 +47,8 @@ jobs:
           git config user.email "Roman@hirz.ai"
           git add forecasts.csv futures_curve.csv polymarket_data.csv macro_context.csv scorecard.json signals.json || true
           git add aggregator_forecasts.csv data/ || true
-          git diff --cached --quiet || \
-            git commit -m "data: evening forecast $(date -u +'%Y-%m-%d %H:%M UTC')" && \
+          if ! git diff --cached --quiet; then
+            git commit -m "data: evening forecast $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin main
             git push
+          fi

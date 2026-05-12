@@ -32,5 +32,8 @@ jobs:
           git config user.name  "Trading Co-Pilot Bot"
           git config user.email "bot@trading-copilot.internal"
           git add data/ forecasts.csv || true
-          git diff --cached --quiet || git commit -m "poly-signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push || true
+          if ! git diff --cached --quiet; then
+            git commit -m "poly-signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin main
+            git push
+          fi
