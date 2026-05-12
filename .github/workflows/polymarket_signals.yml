@@ -18,8 +18,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install uv
+        run: pip install uv
+
       - name: Install dependencies
-        run: pip install --quiet requests pandas numpy scipy yfinance python-dotenv
+        run: uv pip install --system requests pandas numpy scipy yfinance python-dotenv
 
       - name: Run poly-signals pipeline
         run: python main.py --poly-signals
