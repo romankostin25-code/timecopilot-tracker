@@ -2,79 +2,79 @@
   "NG=F": {
     "ticker": "NG=F",
     "name": "Natural Gas",
-    "explanation": "The directional outlook for Natural Gas is bearish, but there is a divergence as the model's conviction is low and Polymarket data is unavailable. The neutral risk and rate regimes, combined with a flat futures curve, do not provide strong macro support for a bearish trend. The biggest risk to this forecast is a sudden geopolitical event or supply disruption that could sharply increase natural gas prices.",
-    "generated_at": "2026-05-12T10:59:16.884322"
+    "explanation": "The directional outlook for Natural Gas is bearish, with the model indicating low conviction and a lack of data from Polymarket to confirm or challenge this view. The neutral macro context, including a stable VIX and DXY, suggests limited external pressures on natural gas prices, while the flat futures curve indicates no significant market expectations for price movement. The biggest risk to this forecast would be an unexpected geopolitical event or supply disruption that sharply impacts natural gas availability or demand.",
+    "generated_at": "2026-05-12T11:01:31.596451"
   },
   "GC=F": {
     "ticker": "GC=F",
     "name": "Gold Futures",
-    "explanation": "The directional outlook for Gold Futures is neutral, and there is no Polymarket data to confirm or diverge from this model's view. The neutral stance is supported by a stable risk environment, indicated by a moderate VIX, and a flat futures curve, suggesting no immediate directional bias. The single biggest risk to this forecast is an unexpected shift in the US dollar or interest rates, which could alter the demand for gold as a safe-haven asset.",
-    "generated_at": "2026-05-12T10:59:19.538658"
+    "explanation": "The directional outlook for Gold Futures is neutral, with no data from Polymarket to confirm or contradict the model's forecast. Key macro drivers such as a neutral risk regime indicated by the VIX and a stable dollar and rate environment support this view. The single biggest risk that could invalidate this forecast is an unexpected geopolitical event that significantly shifts market risk sentiment.",
+    "generated_at": "2026-05-12T11:01:32.853095"
   },
   "SI=F": {
     "ticker": "SI=F",
     "name": "Silver Futures",
-    "explanation": "The directional outlook for Silver Futures is bearish, but there is a divergence as the model's conviction is low and Polymarket data is unavailable. The neutral risk, dollar, and rate regimes suggest limited macro pressure on silver, with the flat futures curve indicating no significant term structure bias. A sudden shift in the US dollar strength or unexpected geopolitical tensions could invalidate this forecast.",
-    "generated_at": "2026-05-12T10:59:20.563094"
+    "explanation": "The directional outlook for Silver Futures is bearish, but there is a divergence between the model's bearish forecast and the lack of data from Polymarket, which leaves crowd sentiment unclear. The neutral risk and dollar regimes, along with stable interest rates, do not provide strong macro drivers to support a significant move in silver prices, aligning with the low conviction score. The single biggest risk to this bearish forecast is a sudden geopolitical event or economic shock that increases demand for safe-haven assets like silver.",
+    "generated_at": "2026-05-12T11:01:34.671235"
   },
   "CL=F": {
     "ticker": "CL=F",
     "name": "WTI Crude Oil",
-    "explanation": "The directional outlook for WTI Crude Oil is neutral, with the model indicating no strong conviction and Polymarket data unavailable to confirm or contradict this view. The current macro context, characterized by a neutral risk regime and stable dollar and interest rate environments, supports the neutral outlook by suggesting limited immediate pressures on oil prices. The single biggest risk to this forecast is a sudden geopolitical event that could disrupt supply and sharply affect oil prices.",
-    "generated_at": "2026-05-12T10:59:22.319940"
+    "explanation": "The directional outlook for WTI Crude Oil is neutral, and there is no data from Polymarket to confirm or contradict this model forecast. The neutral stance is supported by a stable risk environment indicated by the VIX and a flat futures curve, while the neutral dollar and rate regimes suggest limited external pressures on oil prices. The single biggest risk to this forecast is a sudden geopolitical event that could disrupt supply chains or significantly alter market sentiment.",
+    "generated_at": "2026-05-12T11:01:38.869725"
   },
   "HG=F": {
     "ticker": "HG=F",
     "name": "Copper Futures",
-    "explanation": "The directional outlook for Copper Futures is neutral, and the absence of Polymarket data means there is no crowd sentiment to confirm or contradict the model's view. The neutral risk and dollar regimes, along with a flat futures curve, suggest a lack of strong macroeconomic drivers influencing copper prices at the moment. A significant shift in global economic growth forecasts or unexpected geopolitical tensions could pose the biggest risk to this neutral forecast.",
-    "generated_at": "2026-05-12T10:59:23.510203"
+    "explanation": "The directional outlook for Copper Futures is neutral, and the absence of Polymarket data means there's no clear agreement or divergence between the model and crowd sentiment. The neutral risk, dollar, and rate regimes, along with the current backwardation in the futures curve, support a balanced view without strong directional bias. The single biggest risk to this forecast is unexpected geopolitical events that could disrupt supply chains or demand dynamics in the copper market.",
+    "generated_at": "2026-05-12T11:01:40.458947"
   },
   "EURUSD=X": {
     "ticker": "EURUSD=X",
     "name": "Euro / US Dollar",
-    "explanation": "The directional outlook for EUR/USD is neutral, and there is no data from Polymarket to confirm or contradict this view. The key macro drivers supporting this neutral stance are the neutral risk, dollar, and rate regimes, along with a stable US 10Y yield and DXY index. The single biggest risk that could invalidate this forecast is an unexpected shift in US monetary policy or geopolitical events that significantly alter market sentiment.",
-    "generated_at": "2026-05-12T10:59:24.864857"
+    "explanation": "The directional outlook for EUR/USD is neutral, and the absence of Polymarket data means there is no divergence or agreement between the model and crowd sentiment. The key macro drivers supporting this neutral view are the neutral risk and dollar regimes, as well as stable interest rates, which suggest limited volatility and directional bias in the near term. The single biggest risk that could invalidate this forecast is a sudden geopolitical event or unexpected economic data release that significantly shifts market sentiment or economic fundamentals.",
+    "generated_at": "2026-05-12T11:01:42.496681"
   },
   "GBPUSD=X": {
     "ticker": "GBPUSD=X",
     "name": "British Pound / US Dollar",
-    "explanation": "The directional outlook for GBP/USD is neutral, and the absence of Polymarket data means there's no clear crowd sentiment to compare against the model's view. The neutral risk regime, characterized by a moderate VIX and stable dollar and rate environments, supports this balanced outlook. The single biggest risk to this forecast would be an unexpected shift in US monetary policy that significantly impacts the US dollar's strength.",
-    "generated_at": "2026-05-12T10:59:26.506759"
+    "explanation": "The directional outlook for GBP/USD is neutral, and there is no Polymarket data available to confirm or diverge from this model's view. The key macro drivers supporting this neutral stance are the neutral risk regime indicated by the VIX and the stable dollar and rate regimes, suggesting limited volatility or directional bias in the near term. The single biggest risk that could invalidate this forecast is an unexpected geopolitical event or economic data release that significantly impacts market sentiment or currency valuations.",
+    "generated_at": "2026-05-12T11:01:44.463207"
   },
   "USDJPY=X": {
     "ticker": "USDJPY=X",
     "name": "US Dollar / Japanese Yen",
-    "explanation": "The directional outlook for USD/JPY is neutral, and due to the absence of Polymarket data, there is no clear agreement or divergence between the model and crowd sentiment. The key macro drivers supporting this view are the neutral risk and dollar regimes, alongside stable rate conditions, as indicated by the VIX at 18.93 and DXY at 98.264. The single biggest risk that could invalidate this forecast is an unexpected shift in US monetary policy, leading to significant changes in interest rates or dollar strength.",
-    "generated_at": "2026-05-12T10:59:27.832280"
+    "explanation": "The directional outlook for USD/JPY is neutral, and the lack of data from Polymarket means there's no divergence or agreement to consider. The key macro drivers supporting this view are the neutral risk and dollar regimes, alongside stable US Treasury yields, which suggest limited volatility and directional bias. The biggest risk to this forecast is unexpected geopolitical developments that could cause sudden shifts in risk sentiment or currency flows.",
+    "generated_at": "2026-05-12T11:01:45.631663"
   },
   "AUDUSD=X": {
     "ticker": "AUDUSD=X",
     "name": "Australian Dollar / US Dollar",
-    "explanation": "The directional outlook for AUD/USD is neutral, and the absence of Polymarket data means there is no crowd sentiment to compare against the model's view. The neutral risk regime indicated by the VIX and the stable US dollar and rate regimes suggest limited volatility and directional bias in the currency pair. The single biggest risk that could invalidate this forecast is an unexpected shift in US monetary policy or geopolitical events impacting global risk sentiment.",
-    "generated_at": "2026-05-12T10:59:30.472208"
+    "explanation": "The directional outlook for AUD/USD is neutral, and the absence of Polymarket data means there is no crowd sentiment to compare with the model's forecast. The key macro drivers supporting this view are the neutral risk and dollar regimes, alongside stable interest rates, which suggest limited volatility and directional bias. The single biggest risk that could invalidate this forecast is an unexpected shift in US monetary policy that significantly alters interest rate expectations or dollar strength.",
+    "generated_at": "2026-05-12T11:01:46.896185"
   },
   "USDCHF=X": {
     "ticker": "USDCHF=X",
     "name": "US Dollar / Swiss Franc",
-    "explanation": "The directional outlook for USD/CHF is neutral, and with no data from Polymarket, there is no crowd sentiment available to confirm or diverge from the model's view. The key macro drivers supporting this neutral stance are the stable risk environment indicated by the VIX and the neutral positions of both the dollar and interest rate regimes. The single biggest risk that could invalidate this forecast is a sudden shift in US interest rates or a significant geopolitical event impacting global risk sentiment.",
-    "generated_at": "2026-05-12T10:59:32.150069"
+    "explanation": "The directional outlook for USD/CHF is neutral, and there is no divergence between the model and Polymarket as the latter provides no data. The key macro drivers supporting this view are the neutral risk, dollar, and rate regimes, alongside a stable US 10Y yield and DXY index. The single biggest risk that could invalidate this forecast is an unexpected geopolitical event causing a sharp increase in market volatility.",
+    "generated_at": "2026-05-12T11:01:48.160516"
   },
   "DX-Y.NYB": {
     "ticker": "DX-Y.NYB",
     "name": "US Dollar Index (DXY)",
-    "explanation": "The directional outlook for the US Dollar Index is neutral, and there is no divergence or agreement from Polymarket due to the absence of data. The key macro drivers supporting this neutral view are the neutral risk regime indicated by the VIX and the stable interest rate environment, as reflected by the US 10Y yield and the dollar regime. The single biggest risk that could invalidate this forecast is a sudden shift in geopolitical tensions or unexpected economic data that significantly impacts market sentiment or interest rate expectations.",
-    "generated_at": "2026-05-12T10:59:33.444054"
+    "explanation": "The directional outlook for the US Dollar Index (DXY) is neutral, with the model indicating a neutral stance and no data from Polymarket to confirm or diverge from this view. The key macro driver supporting this neutral outlook is the stable risk environment indicated by the VIX and the neutral stance in both the dollar and rate regimes. The single biggest risk that could invalidate this forecast is an unexpected shift in US monetary policy that significantly impacts interest rates or market sentiment.",
+    "generated_at": "2026-05-12T11:01:49.510665"
   },
   "^TNX": {
     "ticker": "^TNX",
     "name": "US 10-Year Treasury Yield",
-    "explanation": "The directional outlook for the US 10-Year Treasury Yield is neutral, with a divergence between the model's neutral stance and Polymarket's bullish sentiment. Current macro drivers, such as the neutral risk, dollar, and rate regimes, support the model's neutral outlook by indicating a stable macro environment without significant pressure on yields. The single biggest risk that could invalidate this forecast is a sudden shift in inflation expectations or Federal Reserve policy that could cause yields to move sharply.",
-    "generated_at": "2026-05-12T10:59:34.612019"
+    "explanation": "The directional outlook for the US 10-Year Treasury Yield is neutral, with a divergence between the model's neutral stance and Polymarket's bullish sentiment. The current macro context, featuring a neutral risk regime with the VIX at 18.93 and a stable dollar and rate environment, supports a lack of strong directional movement in yields. The single biggest risk to this forecast is an unexpected shift in Federal Reserve policy that could lead to significant rate changes.",
+    "generated_at": "2026-05-12T11:01:53.539071"
   },
   "^GSPC": {
     "ticker": "^GSPC",
     "name": "S&P 500",
-    "explanation": "The directional outlook for the S&P 500 is neutral, and the model does not have sufficient data from Polymarket to confirm or contradict this view. Key macro drivers supporting this neutral stance include a stable VIX at 18.93, indicating moderate market volatility, and a neutral stance in both the dollar and rate regimes, suggesting balanced economic conditions. The single biggest risk that could invalidate this forecast is an unexpected geopolitical event or economic data release that significantly shifts market sentiment or volatility.",
-    "generated_at": "2026-05-12T10:59:39.022558"
+    "explanation": "The directional outlook for the S&P 500 is neutral, and the model's forecast aligns with the lack of a clear signal from Polymarket due to insufficient volume. The neutral risk regime indicated by the VIX, along with stable dollar and rate regimes, supports a balanced view without significant directional bias. The single biggest risk to this forecast is an unexpected macroeconomic shock that could disrupt the current equilibrium, such as a sudden change in Federal Reserve policy or geopolitical tensions.",
+    "generated_at": "2026-05-12T11:01:54.549433"
   }
 }
