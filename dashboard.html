@@ -243,7 +243,6 @@ tr:hover td{background:rgba(255,255,255,.01)}
           <div class="metric-value cv-d" id="m-bt-oos">—</div>
           <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:2px" id="m-dir7-sub">live 7d: —</div>
         </div>
-        <div class="metric"><div class="metric-label">Yesterday Score</div><div class="metric-value cv-d" id="m-yest">—</div></div>
         <div class="metric"><div class="metric-label">Trend</div><div class="metric-value cv-d" id="m-trend">—</div></div>
       </div>
       <div class="macro-row" id="macro-row">
@@ -595,8 +594,6 @@ function renderGlobalHeader(){
   document.getElementById("m-dir7-sub").textContent=
     `live 7d: ${dir7!==null&&dir7!==undefined?pct(dir7):"—"}${btBest?`  best: ${btBestTicker} ${pct(btBest)}`:""}`;
 
-  document.getElementById("m-yest").textContent=yestN>0?`${yestHits}/${yestN}`:"—";
-  document.getElementById("m-yest").className="metric-value "+(yestN>0?(yestHits/yestN>=.7?"cv-g":yestHits/yestN>=.5?"cv-a":"cv-r"):"cv-d");
   document.getElementById("m-trend").textContent=trend==="IMPROVING"?"▲ UP":trend==="DECLINING"?"▼ DOWN":"—";
   document.getElementById("m-trend").className="metric-value "+(trend==="IMPROVING"?"cv-g":trend==="DECLINING"?"cv-r":"cv-d");
 }
