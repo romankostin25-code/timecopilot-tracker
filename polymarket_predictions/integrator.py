@@ -87,6 +87,15 @@ def apply_to_forecast_csv(forecast_csv_path: str | None = None):
         return
 
     df = pd.read_csv(path)
+
+    # Ensure string columns have object dtype so empty-string assignment doesn't
+    # fail when the column was previously read as float64 (all-NaN).
+    for col in ["poly_signal", "poly_confidence", "poly_alignment", "poly_top_question"]:
+        if col not in df.columns:
+            df[col] = ""
+        else:
+            df[col] = df[col].astype(object)
+
     mask = df["actual"].isna() | (df["actual"] == "")
 
     count = 0
