@@ -155,7 +155,7 @@ def fetch_all_snapshots() -> list[dict]:
             existing = pd.read_csv(SNAPSHOT_PATH)
             combined = pd.concat([existing, new_df], ignore_index=True)
             # Keep only the last 30 days of snapshots to avoid unbounded growth
-            combined["timestamp"] = pd.to_datetime(combined["timestamp"], utc=True)
+            combined["timestamp"] = pd.to_datetime(combined["timestamp"], utc=True, format="ISO8601")
             cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=30)
             combined = combined[combined["timestamp"] >= cutoff]
         else:

@@ -22,7 +22,7 @@ def load_snapshots() -> pd.DataFrame:
         return pd.DataFrame()
     df = pd.read_csv(SNAPSHOT_PATH)
     df = df[df["market_id"] != "__heartbeat__"]
-    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True, format="ISO8601")
     return df
 
 
