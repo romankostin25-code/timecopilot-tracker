@@ -1,0 +1,4 @@
+forecast_date,target_date,ticker,agg_p50,agg_direction,agg_confidence,actual,agg_hit,agg_direction_correct,model_version,graded_at
+2026-05-16,2026-05-18,NG=F,2.958975,BEARISH,0.356,,,,lgbm_v1,
+2026-05-16,2026-05-18,SI=F,78.318424,BEARISH,0.9477,,,,lgbm_v1,
+2026-05-16,2026-05-18,CL=F,105.419786,BULLISH,0.6622,,,,lgbm_v1,
