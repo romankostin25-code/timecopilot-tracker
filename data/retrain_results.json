@@ -1,104 +1,104 @@
 [
   {
     "ticker": "NG=F",
-    "oos_accuracy": 0.519,
-    "oos_n": 550,
-    "confident_n": 420
-  },
-  {
-    "ticker": "GC=F",
-    "oos_accuracy": 0.5274,
-    "oos_n": 550,
-    "confident_n": 419
-  },
-  {
-    "ticker": "SI=F",
-    "oos_accuracy": 0.5,
-    "oos_n": 550,
-    "confident_n": 414
-  },
-  {
-    "ticker": "CL=F",
-    "oos_accuracy": 0.5381,
-    "oos_n": 550,
-    "confident_n": 446
-  },
-  {
-    "ticker": "HG=F",
-    "oos_accuracy": 0.5183,
-    "oos_n": 550,
-    "confident_n": 436
-  },
-  {
-    "ticker": "HO=F",
-    "oos_accuracy": 0.4977,
-    "oos_n": 550,
+    "oos_accuracy": 0.4932,
+    "oos_n": 551,
     "confident_n": 440
   },
   {
+    "ticker": "GC=F",
+    "oos_accuracy": 0.5189,
+    "oos_n": 551,
+    "confident_n": 424
+  },
+  {
+    "ticker": "SI=F",
+    "oos_accuracy": 0.5089,
+    "oos_n": 551,
+    "confident_n": 448
+  },
+  {
+    "ticker": "CL=F",
+    "oos_accuracy": 0.5361,
+    "oos_n": 551,
+    "confident_n": 429
+  },
+  {
+    "ticker": "HG=F",
+    "oos_accuracy": 0.5119,
+    "oos_n": 551,
+    "confident_n": 420
+  },
+  {
+    "ticker": "HO=F",
+    "oos_accuracy": 0.5022,
+    "oos_n": 551,
+    "confident_n": 456
+  },
+  {
     "ticker": "PA=F",
-    "oos_accuracy": 0.5078,
-    "oos_n": 550,
-    "confident_n": 451
+    "oos_accuracy": 0.5079,
+    "oos_n": 551,
+    "confident_n": 443
   },
   {
     "ticker": "EURUSD=X",
-    "oos_accuracy": 0.7365,
-    "oos_n": 550,
-    "confident_n": 482
-  },
-  {
-    "ticker": "GBPUSD=X",
-    "oos_accuracy": 0.6687,
-    "oos_n": 550,
+    "oos_accuracy": 0.7337,
+    "oos_n": 551,
     "confident_n": 492
   },
   {
+    "ticker": "GBPUSD=X",
+    "oos_accuracy": 0.673,
+    "oos_n": 551,
+    "confident_n": 477
+  },
+  {
     "ticker": "USDJPY=X",
-    "oos_accuracy": 0.6145,
-    "oos_n": 550,
-    "confident_n": 441
+    "oos_accuracy": 0.5991,
+    "oos_n": 551,
+    "confident_n": 454
   },
   {
     "ticker": "AUDUSD=X",
-    "oos_accuracy": 0.6493,
-    "oos_n": 550,
-    "confident_n": 479
+    "oos_accuracy": 0.6409,
+    "oos_n": 551,
+    "confident_n": 465
   },
   {
     "ticker": "DX-Y.NYB",
-    "oos_accuracy": 0.4788,
-    "oos_n": 550,
-    "confident_n": 401
+    "oos_accuracy": 0.4722,
+    "oos_n": 551,
+    "confident_n": 396
   },
   {
     "ticker": "^TNX",
-    "oos_accuracy": 0.5137,
-    "oos_n": 550,
-    "confident_n": 401
+    "oos_accuracy": 0.4963,
+    "oos_n": 551,
+    "confident_n": 409
   },
   {
     "ticker": "^IRX",
-    "oos_accuracy": 0.5856,
-    "oos_n": 550,
-    "confident_n": 444
+    "oos_accuracy": 0.5911,
+    "oos_n": 551,
+    "confident_n": 450
   },
   {
     "ticker": "^GSPC",
-    "oos_accuracy": 0.5297,
-    "oos_n": 550,
-    "confident_n": 438
+    "oos_accuracy": 0.5183,
+    "oos_n": 551,
+    "confident_n": 436
   },
   {
     "ticker": "^VIX",
-    "oos_accuracy": 0.5479,
-    "oos_n": 550,
-    "confident_n": 449
+    "oos_accuracy": 0.5795,
+    "oos_n": 551,
+    "confident_n": 459
   },
   {
     "ticker": "HYG",
-    "oos_accuracy": 0.5424,
-    "oos_n": 550,
-    "confident_n": 448
+    "oos_accuracy": 0.523,
+    "oos_n": 551,
+    "confident_n": 434
   }
 ]
