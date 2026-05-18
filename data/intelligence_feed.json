@@ -5655,7 +5655,38 @@
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T20:56:19.755382+00:00"
+  },
+  {
+    "id": "6800d958213efd40",
+    "source": "The Block",
+    "source_type": "crypto",
+    "headline": "Ostium\u2019s onchain perpetuals exchange to be \u2018powered\u2019 by Nasdaq data",
+    "url": "https://www.theblock.co/post/401743/ostiums-onchain-perpetuals-exchange-nasdaq-data?utm_source=rss&utm_medium=rss",
+    "summary_raw": "<p>Ostium says this tie-up makes it the \"first onchain trading venue to offer equity perpetual products powered by Nasdaq data.\"</p>",
+    "published_at": "Mon, 18 May 2026 15:56:30 -0400",
+    "fetched_at": "2026-05-18T20:54:51.509148+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Onchain perpetuals exchange integrates Nasdaq data, bridging TradFi and DeFi.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.35
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T20:56:22.344913+00:00"
   },
   {
     "id": "998a9de781102ada",
