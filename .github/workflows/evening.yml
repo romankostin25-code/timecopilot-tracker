@@ -32,5 +32,5 @@ jobs:
           git add data/ || true
           if ! git diff --cached --quiet; then
             git commit -m "data: evening forecast $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push || (git stash && git pull --rebase origin main && git stash pop && git push)
+            git push || (git pull --rebase origin main && git push)
           fi
