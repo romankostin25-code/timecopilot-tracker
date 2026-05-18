@@ -2643,6 +2643,447 @@
     "nlp_processed_at": "2026-05-18T19:21:58.327456+00:00"
   },
   {
+    "id": "00c5c890a75544c0",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "CFTC appoints DJ Hennes as Director of Market Participants Division",
+    "url": "https://cryptobriefing.com/cftc-appoints-dj-hennes-market-participants/",
+    "summary_raw": "<p>DJ Hennes' appointment could enhance regulatory oversight and adapt CFTC's approach to evolving market dynamics, including crypto assets.</p>\n<p>The post <a href=\"https://cryptobriefing.com/cftc-appoints-dj-hennes-market-participants/\">CFTC appoints DJ Hennes as Director of Market Participants Division</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Mon, 18 May 2026 19:52:12 +0000",
+    "fetched_at": "2026-05-18T19:55:45.769390+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.35,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "CFTC leadership appointment may tighten crypto regulatory oversight.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2,
+      "SOL-USD": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:55:48.694089+00:00"
+  },
+  {
+    "id": "442f04b97d261e47",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Hedge funds boost semiconductor stocks to 19% of market exposure, the highest level ever recorded",
+    "url": "https://cryptobriefing.com/hedge-funds-semiconductor-stocks-record-exposure/",
+    "summary_raw": "<p>Hedge funds' heavy semiconductor focus heightens vulnerability to AI market shifts, risking significant portfolio impacts from sector-specific shocks.</p>\n<p>The post <a href=\"https://cryptobriefing.com/hedge-funds-semiconductor-stocks-record-exposure/\">Hedge funds boost semiconductor stocks to 19% of market exposure, the highest level ever recorded</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Mon, 18 May 2026 19:52:08 +0000",
+    "fetched_at": "2026-05-18T19:55:45.769411+00:00",
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Record hedge fund semiconductor concentration raises systemic correction risk.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "SPY": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.6,
+      "XLK": 0.65,
+      "SPY": 0.4,
+      "^VIX": 0.5
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:55:51.629933+00:00"
+  },
+  {
+    "id": "27096badd1ddabe3",
+    "source": "Decrypt",
+    "source_type": "crypto",
+    "headline": "Swan Bitcoin Hit With Nearly $1 Billion Lawsuit Over Prime Trust Collapse",
+    "url": "https://decrypt.co/368244/swan-bitcoin-nearly-1-billion-lawsuit-prime-trust-collapse",
+    "summary_raw": "The lawsuit alleges that the Bitcoin-centric financial services firm took advantage of insider information to escape major losses.",
+    "published_at": "Mon, 18 May 2026 19:48:36 +0000",
+    "fetched_at": "2026-05-18T19:55:44.096862+00:00",
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Swan Bitcoin lawsuit alleges insider trading amid Prime Trust collapse.",
+    "signal_direction": {
+      "BTC-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.25
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:55:53.894278+00:00"
+  },
+  {
+    "id": "d65b2500d3061ad9",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "Trump\u2019s IRS settlement features a $1.8 billion \u2018anti-weaponization\u2019 fund for allies. Here\u2019s who may get the money.",
+    "url": "https://www.marketwatch.com/story/trumps-irs-settlement-features-a-1-8-billion-anti-weaponization-fund-for-allies-heres-who-may-get-the-money-266e876d?mod=mw_rss_topstories",
+    "summary_raw": "Critics blast the potential taxpayer-funded payouts to Trump supporters and make an effort to stop them",
+    "published_at": "Mon, 18 May 2026 19:44:00 GMT",
+    "fetched_at": "2026-05-18T19:55:12.396718+00:00",
+    "assets_affected": [
+      "SPY",
+      "TLT",
+      "^VIX"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "IRS settlement creates political controversy with limited direct market impact.",
+    "signal_direction": {
+      "SPY": -1,
+      "TLT": 1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "SPY": 0.15,
+      "TLT": 0.1,
+      "^VIX": 0.15
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:55:56.784735+00:00"
+  },
+  {
+    "id": "92124204ddb4dd3a",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "Trump says he's postponing 'scheduled attack of Iran tomorrow' at Middle East leaders' request",
+    "url": "https://www.cnbc.com/2026/05/18/trump-iran-attack-saudi-uae-qatar-deal.html",
+    "summary_raw": "President Donald Trump said he is calling off a plan to attack Iran on Tuesday after the heads of three regional powers in the Middle East asked him to \"hold off.\"",
+    "published_at": "Mon, 18 May 2026 19:43:25 GMT",
+    "fetched_at": "2026-05-18T19:55:12.008759+00:00",
+    "assets_affected": [
+      "GLD",
+      "GC=F",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "SPY",
+      "QQQ",
+      "TLT",
+      "DX-Y.NYB",
+      "XLE"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Attack postponement reduces immediate war risk, easing safe-haven demand.",
+    "signal_direction": {
+      "GLD": -1,
+      "GC=F": -1,
+      "CL=F": -1,
+      "^VIX": -1,
+      "UVXY": -1,
+      "SPY": 1,
+      "QQQ": 1,
+      "TLT": -1,
+      "DX-Y.NYB": -1,
+      "XLE": -1
+    },
+    "signal_strength": {
+      "GLD": 0.55,
+      "GC=F": 0.55,
+      "CL=F": 0.65,
+      "^VIX": 0.6,
+      "UVXY": 0.6,
+      "SPY": 0.5,
+      "QQQ": 0.45,
+      "TLT": 0.4,
+      "DX-Y.NYB": 0.35,
+      "XLE": 0.5
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:07.747939+00:00"
+  },
+  {
+    "id": "044325f3e89d2109",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "U.S. physician tests positive for Ebola: He and six other Americans in Congo will be moved to Germany.",
+    "url": "https://www.marketwatch.com/story/u-s-plans-to-move-physicians-exposed-to-rare-ebola-virus-to-germany-122af3f4?mod=mw_rss_topstories",
+    "summary_raw": "The government is also banning entry for people without U.S. passports who were recently in Congo, Uganda or South Sudan.",
+    "published_at": "Mon, 18 May 2026 19:40:00 GMT",
+    "fetched_at": "2026-05-18T19:55:12.396740+00:00",
+    "assets_affected": [
+      "^VIX",
+      "UVXY",
+      "SPY",
+      "EEM",
+      "GLD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Ebola case sparks minor risk-off sentiment; limited market contagion expected.",
+    "signal_direction": {
+      "^VIX": 1,
+      "UVXY": 1,
+      "SPY": -1,
+      "EEM": -1,
+      "GLD": 1
+    },
+    "signal_strength": {
+      "^VIX": 0.35,
+      "UVXY": 0.35,
+      "SPY": 0.25,
+      "EEM": 0.4,
+      "GLD": 0.25
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:11.454087+00:00"
+  },
+  {
+    "id": "bc54e9ae17dfe37d",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "Nvidia bulls mount uphill battle into earnings",
+    "url": "https://www.cnbc.com/2026/05/18/nvidia-bulls-mount-uphill-battle-into-earnings.html",
+    "summary_raw": "Call volume outpaced puts by more than double on Monday, though more calls were exchanged at the bid or below, meaning likely sold.",
+    "published_at": "Mon, 18 May 2026 19:35:33 GMT",
+    "fetched_at": "2026-05-18T19:55:12.008889+00:00",
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "^VIX"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Nvidia options show heavy call selling, suggesting cautious pre-earnings sentiment.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.35,
+      "XLK": 0.4,
+      "^VIX": 0.3
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:14.516169+00:00"
+  },
+  {
+    "id": "20f628698f0c91c4",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "These 4 market sectors look frothy \u2014 and Nvidia\u2019s isn\u2019t even the biggest bubble",
+    "url": "https://www.marketwatch.com/story/these-4-market-sectors-look-frothy-and-nvidias-isnt-even-the-biggest-bubble-d740acf7?mod=mw_rss_topstories",
+    "summary_raw": "S&amp;P 500 has a 30% chance of crashing over the next two years. That\u2019s the good news.",
+    "published_at": "Mon, 18 May 2026 19:31:00 GMT",
+    "fetched_at": "2026-05-18T19:55:12.396759+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "XLK",
+      "^VIX",
+      "UVXY",
+      "IWM"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "Multiple S&P 500 sectors flagged as frothy with 30% crash probability.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "XLK": -1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "IWM": -1
+    },
+    "signal_strength": {
+      "SPY": 0.5,
+      "QQQ": 0.55,
+      "XLK": 0.6,
+      "^VIX": 0.45,
+      "UVXY": 0.4,
+      "IWM": 0.4
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:18.030046+00:00"
+  },
+  {
+    "id": "916787208ba220de",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Trump: Fed rate cuts may wait until Iran conflict ends",
+    "url": "https://cryptobriefing.com/trump-fed-rate-cuts-may-wait-until-iran-conflict-ends/",
+    "summary_raw": "<p>Geopolitical instability may prolong economic uncertainty, influencing Federal Reserve policy and delaying potential interest rate adjustments.</p>\n<p>The post <a href=\"https://cryptobriefing.com/trump-fed-rate-cuts-may-wait-until-iran-conflict-ends/\">Trump: Fed rate cuts may wait until Iran conflict ends</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Mon, 18 May 2026 19:30:40 +0000",
+    "fetched_at": "2026-05-18T19:55:45.769421+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "TLT",
+      "IEF",
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "BTC-USD",
+      "ETH-USD",
+      "DX-Y.NYB",
+      "^TNX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran conflict may delay Fed rate cuts, prolonging higher-for-longer rate environment.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "IWM": -1,
+      "TLT": -1,
+      "IEF": -1,
+      "GLD": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "DX-Y.NYB": 1,
+      "^TNX": 1
+    },
+    "signal_strength": {
+      "SPY": 0.55,
+      "QQQ": 0.58,
+      "IWM": 0.62,
+      "TLT": 0.65,
+      "IEF": 0.6,
+      "GLD": 0.7,
+      "CL=F": 0.65,
+      "^VIX": 0.6,
+      "BTC-USD": 0.45,
+      "ETH-USD": 0.45,
+      "DX-Y.NYB": 0.55,
+      "^TNX": 0.6
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:22.678432+00:00"
+  },
+  {
+    "id": "627b2d828262fe35",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Galaxy secures New York BitLicense to expand institutional crypto services",
+    "url": "https://cryptobriefing.com/galaxy-secures-new-york-bitlicense/",
+    "summary_raw": "<p>Galaxy secured NYDFS approval to offer regulated crypto services in New York as GLXY shares fell 7% Monday afternoon.</p>\n<p>The post <a href=\"https://cryptobriefing.com/galaxy-secures-new-york-bitlicense/\">Galaxy secures New York BitLicense to expand institutional crypto services</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Mon, 18 May 2026 19:27:06 +0000",
+    "fetched_at": "2026-05-18T19:55:45.769430+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Galaxy gains NY BitLicense, boosting institutional crypto access in New York.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.4,
+      "ETH-USD": 0.35,
+      "SOL-USD": 0.3
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:26.426800+00:00"
+  },
+  {
+    "id": "e1209fa5bf2dfdb2",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "What to expect from the Federal Reserve under Kevin Warsh",
+    "url": "https://cryptobriefing.com/federal-reserve-kevin-warsh-priorities/",
+    "summary_raw": "<p>Kevin Warsh's hawkish stance at the Federal Reserve could lead to prolonged high interest rates, impacting bond yields and market dynamics.</p>\n<p>The post <a href=\"https://cryptobriefing.com/federal-reserve-kevin-warsh-priorities/\">What to expect from the Federal Reserve under Kevin Warsh</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Mon, 18 May 2026 19:25:36 +0000",
+    "fetched_at": "2026-05-18T19:55:45.769437+00:00",
+    "assets_affected": [
+      "TLT",
+      "IEF",
+      "^TNX",
+      "SPY",
+      "QQQ",
+      "BIL",
+      "DX-Y.NYB",
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "Hawkish Warsh Fed leadership signals prolonged high rates, pressuring bonds and equities.",
+    "signal_direction": {
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "BIL": 1,
+      "DX-Y.NYB": 1,
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "TLT": 0.65,
+      "IEF": 0.55,
+      "^TNX": 0.65,
+      "SPY": 0.5,
+      "QQQ": 0.55,
+      "BIL": 0.6,
+      "DX-Y.NYB": 0.5,
+      "BTC-USD": 0.45,
+      "ETH-USD": 0.45
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:31.204067+00:00"
+  },
+  {
     "id": "6f759243f65dc793",
     "source": "MarketWatch",
     "source_type": "macro",
@@ -3456,6 +3897,48 @@
     "nlp_processed_at": "2026-05-18T19:23:26.368781+00:00"
   },
   {
+    "id": "35dd4af29442b12b",
+    "source": "Financial Times",
+    "source_type": "macro",
+    "headline": "US eases Russian oil sanctions in bid to contain Iran price surge",
+    "url": "https://www.ft.com/content/df5fca22-d057-444f-b430-32623b196d00",
+    "summary_raw": "Renewal of 30-day licence comes as high fuel costs hit American consumers",
+    "published_at": "Mon, 18 May 2026 18:13:08 GMT",
+    "fetched_at": "2026-05-18T19:55:13.001606+00:00",
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "SPY",
+      "GLD",
+      "DX-Y.NYB",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.7,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "US eases Russian oil sanctions to reduce fuel costs for consumers.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "SPY": 1,
+      "GLD": -1,
+      "DX-Y.NYB": 1,
+      "^VIX": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.7,
+      "XLE": 0.65,
+      "SPY": 0.4,
+      "GLD": 0.3,
+      "DX-Y.NYB": 0.35,
+      "^VIX": 0.4
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:34.593726+00:00"
+  },
+  {
     "id": "288f279e0fbcf28f",
     "source": "MarketWatch",
     "source_type": "macro",
@@ -3554,16 +4037,29 @@
     "summary_raw": "<p>India's tightened silver import rules could stabilize the rupee but may disrupt domestic industries reliant on silver, affecting economic growth.</p>\n<p>The post <a href=\"https://cryptobriefing.com/india-silver-import-rules-rupee/\">India tightens silver import rules to defend rupee amid energy shock</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 17:58:18 +0000",
     "fetched_at": "2026-05-18T19:17:46.413741+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SLV",
+      "SI=F",
+      "EEM"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "India restricts silver imports, reducing demand and pressuring global silver prices.",
+    "signal_direction": {
+      "SLV": -1,
+      "SI=F": -1,
+      "EEM": -1
+    },
+    "signal_strength": {
+      "SLV": 0.55,
+      "SI=F": 0.55,
+      "EEM": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:37.648199+00:00"
   },
   {
     "id": "e2582582774f70ee",
@@ -3575,15 +4071,16 @@
     "published_at": "Mon, 18 May 2026 17:57:23 +0000",
     "fetched_at": "2026-05-18T19:17:46.413749+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Small crypto startup funding, no impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:39.780548+00:00"
   },
   {
     "id": "99d48e22a72ea227",
@@ -3594,16 +4091,26 @@
     "summary_raw": "<p>The ruling underscores the importance of timely legal action and may influence future corporate governance and investment strategies.</p>\n<p>The post <a href=\"https://cryptobriefing.com/elon-musk-loses-lawsuit-openai-case-claims-filed-too-late/\">Elon Musk loses case against OpenAI, Sam Altman after jury finds claims filed too late</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 17:52:26 +0000",
     "fetched_at": "2026-05-18T19:17:46.413757+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Musk loses OpenAI lawsuit; limited direct market impact expected.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.15,
+      "XLK": 0.15
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:43.022154+00:00"
   },
   {
     "id": "94314e4ff1e44da2",
@@ -3614,16 +4121,26 @@
     "summary_raw": "The legal battle between Elon Musk and OpenAI has ended in a win for the company he co-founded, following a jury decision.",
     "published_at": "Mon, 18 May 2026 17:47:34 +0000",
     "fetched_at": "2026-05-18T19:17:44.602310+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "OpenAI wins lawsuit, limited direct impact on broad tech markets.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.15,
+      "XLK": 0.15
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:45.452432+00:00"
   },
   {
     "id": "a228116024120427",
@@ -3634,16 +4151,29 @@
     "summary_raw": "Seagate CEO Dave Mosley's comment sent shares sinking, along with those of Micron, SanDisk and Western Digital.",
     "published_at": "Mon, 18 May 2026 17:46:51 GMT",
     "fetched_at": "2026-05-18T19:17:12.630636+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Memory sector sell-off on supply constraint concerns drags tech stocks lower.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "SPY": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.45,
+      "XLK": 0.5,
+      "SPY": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:48.236487+00:00"
   },
   {
     "id": "6d0331f02bd8fc44",
@@ -3654,16 +4184,32 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Minnesota legalizes crypto custody services for banks, credit unions  \" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS1pY2UtcHVzaGVzLWZvci1iYWtrdC1iaXRjb2luLWN1c3RvZHktbGljZW5zZS1jZnRjLWFwcHJvdmFsLWltbWluZW50MjIuanBn.jpg\" /></p><p>Minnesota-based banking institutions and credit unions will be authorized to provide digital asset",
     "published_at": "Mon, 18 May 2026 17:45:18 +0000",
     "fetched_at": "2026-05-18T19:17:44.461789+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "XLF"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Minnesota allows banks to custody crypto, expanding institutional adoption pathways.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1,
+      "XLF": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.55,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.45,
+      "XLF": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:51.637766+00:00"
   },
   {
     "id": "e3f2336529c53537",
@@ -3674,16 +4220,26 @@
     "summary_raw": "<p>Stripe-backed Tempo adds Morphos lending marketplace as the stablecoin payments chain expands into DeFi yield and borrowing.</p>\n<p>The post <a href=\"https://cryptobriefing.com/tempo-defi-integration-morpho/\">Stripe-linked Tempo brings Morpho lending markets to its payments chain</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 17:44:45 +0000",
     "fetched_at": "2026-05-18T19:17:46.413765+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Stripe-backed Tempo integrates Morpho DeFi lending, expanding crypto utility.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:54.229544+00:00"
   },
   {
     "id": "54007ad53e6f8388",
@@ -3694,16 +4250,35 @@
     "summary_raw": "Oil futures climbed on Monday, getting a boost after President Donald Trump warned that the \u201cclock is ticking\u201d on Iran, but a loss of the buffers used to cushion supply disruptions could spark the next significant move higher for prices.",
     "published_at": "Mon, 18 May 2026 17:44:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152287+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Iran tensions and shrinking supply buffers drive oil prices higher.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.75,
+      "XLE": 0.65,
+      "GLD": 0.45,
+      "^VIX": 0.4,
+      "DX-Y.NYB": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:56:57.464208+00:00"
   },
   {
     "id": "f8be428f6b817fd7",
@@ -3714,16 +4289,38 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/05/White-House-Says-Strategic-Bitcoin-Reserve-Announcement-Is-Imminent-A-Breakthrough.jpg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/white-house-strategic-bitcoin-reserve\" rel=\"nofollow\">White House Says Strategic Bitcoin Reserve Announcement Is Imminent: &#8216;A Breakthrough&#8217;</a></p>\n<p>The Whit",
     "published_at": "Mon, 18 May 2026 17:41:53 +0000",
     "fetched_at": "2026-05-18T19:17:45.373322+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "GLD",
+      "DX-Y.NYB",
+      "SLV"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.88,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "US Strategic Bitcoin Reserve imminent, major bullish catalyst for crypto assets.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1,
+      "GLD": 1,
+      "SLV": 1,
+      "DX-Y.NYB": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.92,
+      "ETH-USD": 0.75,
+      "SOL-USD": 0.7,
+      "GLD": 0.35,
+      "SLV": 0.25,
+      "DX-Y.NYB": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:01.390890+00:00"
   },
   {
     "id": "8d06720a3b6867fb",
@@ -3734,16 +4331,29 @@
     "summary_raw": "",
     "published_at": "Mon, 18 May 2026 17:35:27 +0000",
     "fetched_at": "2026-05-18T19:17:44.933920+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SOL-USD",
+      "ETH-USD",
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Institutional capital flows into Solana signal ecosystem maturation and broader adoption.",
+    "signal_direction": {
+      "SOL-USD": 1,
+      "ETH-USD": -1,
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "SOL-USD": 0.78,
+      "ETH-USD": 0.35,
+      "BTC-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:04.393419+00:00"
   },
   {
     "id": "749a015bb48ea2d2",
@@ -3754,16 +4364,29 @@
     "summary_raw": "Vitalik Buterin said mathematically verified software may help protect cryptographic infrastructures as AI improves both code generation and vulnerability discovery.",
     "published_at": "Mon, 18 May 2026 17:34:57 +0000",
     "fetched_at": "2026-05-18T19:17:44.602319+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_rally",
+    "impact_horizon": "LONG",
+    "summary": "Buterin touts AI verification to enhance crypto network security and resilience.",
+    "signal_direction": {
+      "ETH-USD": 1,
+      "BTC-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.5,
+      "BTC-USD": 0.25,
+      "SOL-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:07.171799+00:00"
   },
   {
     "id": "6ad2bb5eaa4af987",
@@ -3774,16 +4397,26 @@
     "summary_raw": "",
     "published_at": "Mon, 18 May 2026 17:34:36 +0000",
     "fetched_at": "2026-05-18T19:17:44.933930+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Ethereum Foundation leadership exodus signals governance instability, pressuring ETH price.",
+    "signal_direction": {
+      "ETH-USD": -1,
+      "BTC-USD": -1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.7,
+      "BTC-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:10.829777+00:00"
   },
   {
     "id": "b356e4d83c67f6e3",
@@ -3795,15 +4428,16 @@
     "published_at": "Mon, 18 May 2026 17:30:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152295+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "GLP-1 drug response variability research has no direct market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:12.936145+00:00"
   },
   {
     "id": "523986a2256ae561",
@@ -3815,15 +4449,16 @@
     "published_at": "Mon, 18 May 2026 17:28:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152303+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Lululemon founder dispute has no macro market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:15.565169+00:00"
   },
   {
     "id": "cac5f6e0ff3a0cf7",
@@ -3834,16 +4469,32 @@
     "summary_raw": "Both Nvidia's earnings and its commentary on its financial report are expected to be big tests for U.S. equities.",
     "published_at": "Mon, 18 May 2026 17:18:54 GMT",
     "fetched_at": "2026-05-18T19:17:12.630713+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "SPY",
+      "XLK",
+      "^VIX"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.55,
+    "event_type": "trump_tariffs",
+    "impact_horizon": "SHORT",
+    "summary": "Nvidia earnings and China chip commentary pose key test for US equities.",
+    "signal_direction": {
+      "QQQ": 1,
+      "SPY": 1,
+      "XLK": 1,
+      "^VIX": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.6,
+      "SPY": 0.5,
+      "XLK": 0.6,
+      "^VIX": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:18.376757+00:00"
   },
   {
     "id": "a61aa701e9588982",
@@ -3854,16 +4505,26 @@
     "summary_raw": "<p>DefiLlama\u2019s RWA category data puts the RWA tokenization market near $30 billion on-chain, with only $2.47 billion appearing as DeFi active TVL, the value actually deposited or pooled inside third-party DeFi protocols the platform tracks. The rest of the tokenized real-world assets market sits outside the lending markets and collateral vaults that make crypto assets [&#8230;]</p>\n<p>The post <a href=\"https://cryptoslate.com/rwa-tokenization-defi-composability-gap/\">Why the $30 billion RWA toke",
     "published_at": "Mon, 18 May 2026 17:05:29 +0000",
     "fetched_at": "2026-05-18T19:17:46.207717+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "RWA tokenization growth largely isolated from DeFi composability ecosystem.",
+    "signal_direction": {
+      "ETH-USD": 1,
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.3,
+      "BTC-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:21.251808+00:00"
   },
   {
     "id": "d0d015221d2ff05e",
@@ -3874,16 +4535,29 @@
     "summary_raw": "Application-software stocks are getting more love from Wall Street.",
     "published_at": "Mon, 18 May 2026 17:05:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152310+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "earnings_beat",
+    "impact_horizon": "SHORT",
+    "summary": "ServiceNow surge signals bullish momentum for broader software sector.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.6,
+      "XLK": 0.65,
+      "SPY": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:26.445027+00:00"
   },
   {
     "id": "46e60757b675659b",
@@ -3894,16 +4568,26 @@
     "summary_raw": "",
     "published_at": "Mon, 18 May 2026 17:01:32 +0000",
     "fetched_at": "2026-05-18T17:02:07.386537+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Galaxy BitLicense approval signals regulatory progress for institutional crypto adoption.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.5,
+      "ETH-USD": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:57:29.231979+00:00"
   },
   {
     "id": "e25b9e4e4589f025",
@@ -4797,6 +5481,26 @@
     "nlp_processed_at": "2026-05-18T16:17:12.168619+00:00"
   },
   {
+    "id": "16fb52202f509b8b",
+    "source": "The Block",
+    "source_type": "crypto",
+    "headline": "Zerohash secures first EMI license under MiCA for stablecoin and brokerage services in Europe",
+    "url": "https://www.theblock.co/post/401741/zerohash-first-emi-license-mica-stablecoin-brokerage-services-europe?utm_source=rss&utm_medium=rss",
+    "summary_raw": "<p>Zerohash Europe is the first firm licensed under Europe\u2019s flagship MiCA crypto regulation to also hold full EMI status.</p>",
+    "published_at": "Mon, 18 May 2026 15:27:36 -0400",
+    "fetched_at": "2026-05-18T19:55:44.906088+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "2079504a575e016e",
     "source": "Crypto Briefing",
     "source_type": "crypto",
@@ -5318,6 +6022,26 @@
     "nlp_processed": false
   },
   {
+    "id": "87ee72efa66d6a3b",
+    "source": "OilPrice",
+    "source_type": "energy",
+    "headline": "Grid Bottlenecks Could Slow Southeast Asia\u2019s Power Demand Surge",
+    "url": "https://oilprice.com/Latest-Energy-News/World-News/Grid-Bottlenecks-Could-Slow-Southeast-Asias-Power-Demand-Surge.html",
+    "summary_raw": "Data centers, electric vehicles (EVs), and green industrial clusters are expected to lead to about 100 terawatt-hours (TWh) of incremental power demand in Southeast Asia by 2030, but slower grid infrastructure development could slow the rollout, a report by Bain & Company and Standard Chartered showed on Monday. The incremental demand from data centers/AI, green industrial parks and EV infrastructure is enormous, with the expected growth tripled compared to about 30 TWh in additional demand in t",
+    "published_at": "Mon, 18 May 2026 14:30:00 -0500",
+    "fetched_at": "2026-05-18T19:55:33.277142+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "e802c21b78ec7139",
     "source": "CoinDesk",
     "source_type": "crypto",
@@ -5706,6 +6430,26 @@
     "summary_raw": "<p>The card will be usable anywhere Visa and Mastercard are accepted, and will first roll out firm in the UK and EEA.</p>",
     "published_at": "Mon, 18 May 2026 13:30:14 -0400",
     "fetched_at": "2026-05-18T19:17:45.583478+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "7a11b16451faad1e",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "Bank of England does not need to hike interest rates, says IMF \u2014 it may even need to cut",
+    "url": "https://www.cnbc.com/2026/05/18/bank-of-england-interest-rates-inflation-imf-gdp.html",
+    "summary_raw": "The Bank of England is expected to hold and even potentially hike interest rates this year in response to resurgent inflation sparked by the Iran war.",
+    "published_at": "Mon, 18 May 2026 13:22:15 GMT",
+    "fetched_at": "2026-05-18T19:55:12.008806+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -9298,6 +10042,166 @@
     "nlp_processed": false
   },
   {
+    "id": "28a8d92e056e69f4",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Instant View: California jury sides with OpenAI over Musk lawsuit",
+    "url": "https://www.investing.com/news/stock-market-news/instant-view-california-jury-sides-with-openai-over-musk-lawsuit-4696757",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:48:35",
+    "fetched_at": "2026-05-18T19:55:23.648312+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "28d4c36ceba72e12",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Nvidia\u2019s Huang expects China to open market for US AI chips",
+    "url": "https://www.investing.com/news/stock-market-news/nvidias-huang-expects-china-to-open-market-for-us-ai-chips-4696753",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:46:05",
+    "fetched_at": "2026-05-18T19:55:23.648337+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "01dc18db6fd1924a",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Clear Street CEO steps down as firm cuts over 50 jobs",
+    "url": "https://www.investing.com/news/stock-market-news/clear-street-ceo-steps-down-as-firm-cuts-over-50-jobs-93CH-4696751",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:45:33",
+    "fetched_at": "2026-05-18T19:55:23.648348+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "51103f44e17ed0cd",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Why Tesla stock is falling: SpaceX IPO threatens the \u2019Muskonomy\u2019 premium",
+    "url": "https://www.investing.com/news/stock-market-news/why-tesla-stock-is-falling-spacex-ipo-threatens-the-muskonomy-premium-4696750",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:43:46",
+    "fetched_at": "2026-05-18T19:55:23.648356+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "d2629828479f56bb",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Key moments in the Musk vs OpenAI trial",
+    "url": "https://www.investing.com/news/stock-market-news/key-moments-in-the-musk-vs-openai-trial-4696747",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:42:32",
+    "fetched_at": "2026-05-18T19:55:23.648364+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "c5293ef77f85a70e",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Planet Fitness shares tick higher as top executives buy stock",
+    "url": "https://www.investing.com/news/stock-market-news/planet-fitness-shares-tick-higher-as-top-executives-buy-stock-4696735",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:32:32",
+    "fetched_at": "2026-05-18T19:55:23.648380+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "c3c1d88eb87d2221",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Exclusive-Meta lays out plans for May 20 layoffs, restructuring, internal document says",
+    "url": "https://www.investing.com/news/stock-market-news/exclusivemeta-lays-out-plans-for-may-20-layoffs-restructuring-internal-document-says-4696710",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:24:33",
+    "fetched_at": "2026-05-18T19:55:23.648388+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "8323c0305d816cc1",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Google tests home listing ads challenging Zillow and CoStar",
+    "url": "https://www.investing.com/news/stock-market-news/google-tests-home-listing-ads-challenging-zillow-and-costar-93CH-4696711",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:19:10",
+    "fetched_at": "2026-05-18T19:55:23.648403+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "f15f40a895877abf",
     "source": "Investing.com Stocks",
     "source_type": "equities",
@@ -9906,6 +10810,46 @@
     "summary_raw": "",
     "published_at": "2026-05-17T12:00:00Z",
     "fetched_at": "2026-05-18T19:17:12.909325+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "3af4a2ef9db549de",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "There's a Mammoth Disagreement Brewing Within the Federal Reserve Over Artificial Intelligence (AI) -- and It May Reshape Monetary Policy",
+    "url": "https://finance.yahoo.com/economy/policy/articles/theres-mammoth-disagreement-brewing-within-105600445.html",
+    "summary_raw": "",
+    "published_at": "2026-05-17T10:56:00Z",
+    "fetched_at": "2026-05-18T19:55:12.087394+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "fd26f1dbd6671c93",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Trump Mobile Finally Starts Shipping $499 T1 Smartphones After Months Of Delays",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/trump-mobile-finally-starts-shipping-104718745.html",
+    "summary_raw": "",
+    "published_at": "2026-05-17T10:47:18Z",
+    "fetched_at": "2026-05-18T19:55:12.087348+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
