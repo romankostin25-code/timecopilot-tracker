@@ -1,0 +1,8 @@
+*.py
+*.csv
+*.pkl
+*.joblib
+models/
+polymarket_predictions/
+__pycache__/
+.env

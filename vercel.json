@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "routes": [
+    { "src": "/",     "dest": "/dashboard.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
