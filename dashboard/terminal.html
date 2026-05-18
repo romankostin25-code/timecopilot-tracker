@@ -365,7 +365,7 @@ const POLL_MS   = 15 * 60 * 1000;
 
 let forecasts=[], allForecasts=[], scorecard={}, signals={}, macroData=[], prices={},
     feed=[], polyRegimes={}, polyNarratives={}, calendar={},
-    curveData=[], activeTicker="SPY", activeTab="forecast",
+    curveData=[], priceHistory=[], activeTicker="SPY", activeTab="forecast",
     feedFilter="all", refreshTimer, countdown=POLL_MS/1000,
     mainChart=null, accChart1=null, accChart2=null, curveChart=null;
 
@@ -422,7 +422,7 @@ function parseCSV(text){
 
 async function loadAll(silent=false){
   if(!silent) updateStatus("fetching");
-  const [fc, sc, sg, pr, pn, mac, cal, cu, pl] = await Promise.all([
+  const [fc, sc, sg, pr, pn, mac, cal, cu, pl, ph] = await Promise.all([
     fetchCSV("data/forecasts.csv"),
     fetchJSON("data/scorecard.json"),
     fetchJSON("data/signals.json"),
@@ -432,6 +432,7 @@ async function loadAll(silent=false){
     fetchJSON("data/economic_calendar.json"),
     fetchCSV("data/futures_curve.csv"),
     fetchJSON("data/prices_live.json"),
+    fetchCSV("data/price_history.csv"),
   ]);
 
   if(fc && fc.includes("forecast_date")){
@@ -449,6 +450,7 @@ async function loadAll(silent=false){
   if(cal) calendar = cal;
   if(cu && cu.includes("ticker")) curveData = parseCSV(cu);
   if(pl) prices = pl;
+  if(ph && ph.includes("ticker")) priceHistory = parseCSV(ph);
 
   updateHeader();
   buildAssetList();
@@ -782,25 +784,36 @@ function drawForecastChart(){
     if(h===90){ p50_90[idx]=p50; p10_90[idx]=p10; p90_90[idx]=p90; }
   });
 
-  // Historical actuals (graded rows — use target_date + actual price)
+  // Historical actual prices from price_history.csv (primary source)
   const actuals=new Array(labels.length).fill(null);
-  const histP50=new Array(labels.length).fill(null); // historic 5d P50 predictions
+  const histP50_5 =new Array(labels.length).fill(null);
+  const histP50_30=new Array(labels.length).fill(null);
+  const todayStr  = now.toISOString().slice(0,10);
 
-  // Deduplicate by target_date — take highest-confidence (first seen per date)
-  const seenAct=new Set(), seenP50=new Set();
+  // Fill actuals from price_history.csv
+  priceHistory.filter(r=>r.ticker===activeTicker).forEach(r=>{
+    const idx=labels.indexOf(r.date);
+    if(idx>=0) actuals[idx]=parseFloat(r.price)||null;
+  });
+  // Fallback: fill any gaps from graded forecast actuals
+  historic.forEach(row=>{
+    if(row.actual && row.actual!=="nan" && row.actual!==""){
+      const idx=labels.indexOf(row.target_date);
+      if(idx>=0 && actuals[idx]==null) actuals[idx]=parseFloat(row.actual)||null;
+    }
+  });
+
+  // Historical 5d and 30d P50 prognoses (all past forecast dates)
+  const seenP50_5=new Set(), seenP50_30=new Set();
   historic.forEach(row=>{
     const h=parseInt(row.horizon||5);
-    // Actual prices at target_date
-    if(row.actual && row.actual!=="nan" && !seenAct.has(row.target_date)){
-      const idx=labels.indexOf(row.target_date);
-      if(idx>=0){ actuals[idx]=parseFloat(row.actual); seenAct.add(row.target_date); }
+    const tIdx=labels.indexOf(row.target_date);
+    if(tIdx<0 || row.target_date>=todayStr) return;
+    if(h===5 && row.p50 && !seenP50_5.has(row.target_date)){
+      histP50_5[tIdx]=parseFloat(row.p50); seenP50_5.add(row.target_date);
     }
-    // Historic 5D P50 predictions at target_date
-    if(h===5 && row.p50 && !seenP50.has(row.target_date)){
-      const idx=labels.indexOf(row.target_date);
-      if(idx>=0 && idx<labels.indexOf(now.toISOString().slice(0,10))){
-        histP50[idx]=parseFloat(row.p50); seenP50.add(row.target_date);
-      }
+    if(h===30 && row.p50 && !seenP50_30.has(row.target_date)){
+      histP50_30[tIdx]=parseFloat(row.p50); seenP50_30.add(row.target_date);
     }
   });
 
@@ -811,12 +824,15 @@ function drawForecastChart(){
     data:{
       labels,
       datasets:[
-        // Historical actuals (solid white line)
-        {label:"Actual",data:actuals,borderColor:"#c8d6e580",backgroundColor:"transparent",
-         borderWidth:1.5,fill:false,pointRadius:2,pointBackgroundColor:"#c8d6e5",tension:.3,spanGaps:false},
-        // Historic P50 5d predictions (dashed, dimmed)
-        {label:"P50 5d (hist)",data:histP50,borderColor:"#00d4ff50",backgroundColor:"transparent",
-         borderWidth:1,borderDash:[2,4],fill:false,pointRadius:1,tension:.3,spanGaps:false},
+        // Historical actual prices (solid line)
+        {label:"Actual Price",data:actuals,borderColor:"#c8d6e5a0",backgroundColor:"transparent",
+         borderWidth:2,fill:false,pointRadius:0,tension:.3,spanGaps:true},
+        // Historic 5d P50 prognoses (dots at target dates)
+        {label:"Past P50 5D",data:histP50_5,borderColor:"#00d4ff60",backgroundColor:"#00d4ff60",
+         borderWidth:0,fill:false,pointRadius:3,pointStyle:"circle",showLine:false,spanGaps:false},
+        // Historic 30d P50 prognoses (triangles)
+        {label:"Past P50 30D",data:histP50_30,borderColor:"#a855f760",backgroundColor:"#a855f760",
+         borderWidth:0,fill:false,pointRadius:3,pointStyle:"triangle",showLine:false,spanGaps:false},
         // Future bands
         {label:"90d band hi",data:p90_90,borderColor:"transparent",backgroundColor:"#00d4ff08",fill:"+1",pointRadius:0,tension:.3},
         {label:"90d band lo",data:p10_90,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},

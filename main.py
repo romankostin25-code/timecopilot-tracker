@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--explain",    action="store_true", help="Generate Claude signal explanations")
     parser.add_argument("--calendar",   action="store_true", help="Save upcoming economic events")
     parser.add_argument("--alerts",     action="store_true", help="Check and dispatch signal alerts")
+    parser.add_argument("--history",    action="store_true", help="Fetch 90-day historical closing prices for all tickers")
     parser.add_argument("--poll",       action="store_true", help="15-min price + news poll (for local testing)")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="[v2] Retrain directional classifiers")
@@ -45,6 +46,10 @@ def main():
         run_regime_engine()
         score_narratives()
         combine_signals()
+
+    if args.auto or args.history:
+        from engine.fetch_price_history import fetch_price_history
+        fetch_price_history()
 
     if args.auto or args.forecast:
         from engine.run_forecast import run_all_forecasts
