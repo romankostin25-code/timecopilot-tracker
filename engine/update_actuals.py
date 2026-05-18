@@ -15,6 +15,9 @@ SCORECARD_PATH = "data/scorecard.json"
 
 
 def fill_actuals_and_grade():
+    if not os.path.exists(CSV_PATH):
+        print("No forecasts.csv found — skipping grading.")
+        return
     df = pd.read_csv(CSV_PATH)
     df["target_date"] = pd.to_datetime(df["target_date"]).dt.date
     df["forecast_date"] = pd.to_datetime(df["forecast_date"]).dt.date
