@@ -25,7 +25,7 @@ def handler(request):
         try:
             raw = yf.download(ticker, period="5d", auto_adjust=True, progress=False)
             if not raw.empty:
-                closes = raw["Close"].dropna()
+                closes = raw["Close"].squeeze().dropna()
                 current = float(closes.iloc[-1])
                 prev    = float(closes.iloc[-2]) if len(closes) >= 2 else current
                 prices[ticker] = {

@@ -803,6 +803,22 @@ function drawForecastChart(){
     }
   });
 
+  const todayIdx = labels.indexOf(todayStr);
+
+  // Find last known price to anchor forecast bands starting from today
+  let lastKnownPrice = null;
+  const searchEnd = todayIdx >= 0 ? todayIdx : n - 1;
+  for(let i = searchEnd; i >= 0; i--){
+    if(actuals[i] !== null){ lastKnownPrice = actuals[i]; break; }
+  }
+  if(!lastKnownPrice && px.price) lastKnownPrice = parseFloat(px.price)||null;
+
+  // Anchor all forecast arrays at todayIdx so Chart.js draws band from now → target
+  if(lastKnownPrice !== null && todayIdx >= 0){
+    [p50_5,p10_5,p90_5, p50_30,p10_30,p90_30, p50_90,p10_90,p90_90]
+      .forEach(arr => { if(arr[todayIdx]===null) arr[todayIdx]=lastKnownPrice; });
+  }
+
   // Past prognoses: all historical P50s at their target dates (before today)
   const histP50_5=mk(), histP50_30=mk(), histP50_90=mk();
   const seen5=new Set(), seen30=new Set(), seen90=new Set();
@@ -814,8 +830,6 @@ function drawForecastChart(){
     if(h===30 && !seen30.has(row.target_date)) { histP50_30[idx]=parseFloat(row.p50); seen30.add(row.target_date); }
     if(h===90 && !seen90.has(row.target_date)) { histP50_90[idx]=parseFloat(row.p50); seen90.add(row.target_date); }
   });
-
-  const todayIdx = labels.indexOf(todayStr);
 
   // Build datasets: always show history, conditionally show horizon bands
   const datasets = [
@@ -842,23 +856,23 @@ function drawForecastChart(){
   // ── Future forecast bands ─────────────────────────────────────────────
   if(show90){
     datasets.push(
-      {label:"90d band hi",data:p90_90,borderColor:"transparent",backgroundColor:"#00d4ff08",fill:"+1",pointRadius:0,tension:.3},
-      {label:"90d band lo",data:p10_90,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
-      {label:"P50 90d",data:p50_90,borderColor:"#00d4ff40",borderWidth:1.5,borderDash:[4,4],fill:false,pointRadius:0,tension:.3}
+      {label:"90d band hi",data:p90_90,borderColor:"transparent",backgroundColor:"#00d4ff08",fill:"+1",pointRadius:0,tension:.3,spanGaps:true},
+      {label:"90d band lo",data:p10_90,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3,spanGaps:true},
+      {label:"P50 90d",data:p50_90,borderColor:"#00d4ff40",borderWidth:1.5,borderDash:[4,4],fill:false,pointRadius:0,tension:.3,spanGaps:true}
     );
   }
   if(show30){
     datasets.push(
-      {label:"30d band hi",data:p90_30,borderColor:"transparent",backgroundColor:"#a855f714",fill:"+1",pointRadius:0,tension:.3},
-      {label:"30d band lo",data:p10_30,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
-      {label:"P50 30d",data:p50_30,borderColor:"#a855f780",borderWidth:1.5,borderDash:[3,3],fill:false,pointRadius:0,tension:.3}
+      {label:"30d band hi",data:p90_30,borderColor:"transparent",backgroundColor:"#a855f714",fill:"+1",pointRadius:0,tension:.3,spanGaps:true},
+      {label:"30d band lo",data:p10_30,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3,spanGaps:true},
+      {label:"P50 30d",data:p50_30,borderColor:"#a855f780",borderWidth:1.5,borderDash:[3,3],fill:false,pointRadius:0,tension:.3,spanGaps:true}
     );
   }
   if(show5){
     datasets.push(
-      {label:"5d band hi",data:p90_5,borderColor:"transparent",backgroundColor:"#00ff8818",fill:"+1",pointRadius:0,tension:.3},
-      {label:"5d band lo",data:p10_5,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
-      {label:"P50 5d",data:p50_5,borderColor:"#00ff88",borderWidth:2,fill:false,pointRadius:2,tension:.3}
+      {label:"5d band hi",data:p90_5,borderColor:"transparent",backgroundColor:"#00ff8818",fill:"+1",pointRadius:0,tension:.3,spanGaps:true},
+      {label:"5d band lo",data:p10_5,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3,spanGaps:true},
+      {label:"P50 5d",data:p50_5,borderColor:"#00ff88",borderWidth:2,fill:false,pointRadius:2,tension:.3,spanGaps:true}
     );
   }
 
