@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-05-18T16:18:17.899665",
+  "global": {
+    "forecasts_graded_total": 0,
+    "trend": "DECLINING"
+  },
+  "by_horizon": {
+    "5": {
+      "calibration_7d": null,
+      "calibration_30d": null,
+      "calibration_alltime": null,
+      "directional_accuracy_7d": null,
+      "directional_accuracy_30d": null,
+      "directional_accuracy_alltime": null,
+      "forecasts_graded": 0
+    },
+    "30": {
+      "calibration_7d": null,
+      "calibration_30d": null,
+      "calibration_alltime": null,
+      "directional_accuracy_7d": null,
+      "directional_accuracy_30d": null,
+      "directional_accuracy_alltime": null,
+      "forecasts_graded": 0
+    },
+    "90": {
+      "calibration_7d": null,
+      "calibration_30d": null,
+      "calibration_alltime": null,
+      "directional_accuracy_7d": null,
+      "directional_accuracy_30d": null,
+      "directional_accuracy_alltime": null,
+      "forecasts_graded": 0
+    }
+  },
+  "by_asset": {}
+}

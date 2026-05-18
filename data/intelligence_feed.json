@@ -1050,16 +1050,29 @@
     "summary_raw": "Arc is a new layer-1 blockchain developed by USDC issuer Circle, designed specifically for stablecoin-native finance.",
     "published_at": "Sun, 17 May 2026 20:32:07 +0000",
     "fetched_at": "2026-05-18T16:08:58.425089+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Circle launches stablecoin-native blockchain, boosting crypto ecosystem credibility.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.45,
+      "SOL-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:15:45.072556+00:00"
   },
   {
     "id": "a37af8ed63d0e9b4",
@@ -1070,16 +1083,50 @@
     "summary_raw": "The world is running out of oil. Implausible three months ago, the likelihood of a crude shortage on a global scale is becoming increasingly realistic with each day that the Strait of Hormuz remains almost completely blocked. Analysts are no longer modeling for a swift end to the war between the United States, Israel, and Iran. They are now also allowing for an extended period of severe energy flow disruptions\u2014and it is not looking good. Kpler reported earlier this month the cumulative loss of o",
     "published_at": "Sun, 17 May 2026 18:00:00 -0500",
     "fetched_at": "2026-05-18T16:08:58.213332+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "NG=F",
+      "GLD",
+      "SPY",
+      "QQQ",
+      "DX-Y.NYB",
+      "^VIX",
+      "UVXY",
+      "TLT"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.88,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Strait of Hormuz blockade threatens global crude shortage amid US-Israel-Iran war.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "NG=F": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "TLT": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.92,
+      "XLE": 0.85,
+      "NG=F": 0.7,
+      "GLD": 0.75,
+      "^VIX": 0.82,
+      "UVXY": 0.8,
+      "SPY": 0.78,
+      "QQQ": 0.75,
+      "TLT": 0.65,
+      "DX-Y.NYB": 0.6
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:15:49.941604+00:00"
   },
   {
     "id": "9d607962e393b426",
@@ -1090,16 +1137,44 @@
     "summary_raw": "Supply squeeze due to the Iran war will get worse before it gets better",
     "published_at": "Sun, 17 May 2026 17:00:07 GMT",
     "fetched_at": "2026-05-18T16:09:08.443394+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "NG=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "DX-Y.NYB",
+      "SPY",
+      "QQQ"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.75,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran war-driven supply squeeze to worsen, spiking energy prices broadly.",
+    "signal_direction": {
+      "CL=F": 1,
+      "NG=F": 1,
+      "XLE": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": 1,
+      "SPY": -1,
+      "QQQ": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.82,
+      "NG=F": 0.65,
+      "XLE": 0.7,
+      "GLD": 0.6,
+      "^VIX": 0.65,
+      "DX-Y.NYB": 0.45,
+      "SPY": 0.6,
+      "QQQ": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:15:54.314852+00:00"
   },
   {
     "id": "01f554c8ef142a1e",
@@ -1110,16 +1185,50 @@
     "summary_raw": "Emergency measures spread to nearly 80 countries as oil stockpiles run low on back of Middle East conflict",
     "published_at": "Sun, 17 May 2026 17:00:07 GMT",
     "fetched_at": "2026-05-18T16:09:08.443401+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "UVXY",
+      "TLT",
+      "SPY",
+      "QQQ",
+      "EEM",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.82,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Global oil supply crisis spreads as Middle East conflict depletes stockpiles worldwide.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "TLT": -1,
+      "SPY": -1,
+      "QQQ": -1,
+      "EEM": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.88,
+      "XLE": 0.8,
+      "GLD": 0.72,
+      "^VIX": 0.78,
+      "UVXY": 0.75,
+      "TLT": 0.65,
+      "SPY": 0.7,
+      "QQQ": 0.65,
+      "EEM": 0.72,
+      "DX-Y.NYB": 0.6
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:15:59.053226+00:00"
   },
   {
     "id": "68e0cfa1cd3b00e6",
@@ -1130,16 +1239,53 @@
     "summary_raw": "G7 finance ministers are due to meet in Paris on Monday and Tuesday as long-term borrowing costs surge.",
     "published_at": "Sun, 17 May 2026 12:14:30 GMT",
     "fetched_at": "2026-05-18T16:08:56.662357+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "NG=F",
+      "GLD",
+      "XLE",
+      "SPY",
+      "QQQ",
+      "TLT",
+      "^TNX",
+      "^VIX",
+      "DX-Y.NYB",
+      "HYG"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.75,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Hormuz closure risk drives oil surge, equity weakness, and rising long-term yields.",
+    "signal_direction": {
+      "CL=F": 1,
+      "NG=F": 1,
+      "GLD": 1,
+      "XLE": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "TLT": -1,
+      "^TNX": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": -1,
+      "HYG": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.85,
+      "NG=F": 0.7,
+      "GLD": 0.72,
+      "XLE": 0.75,
+      "SPY": 0.65,
+      "QQQ": 0.6,
+      "TLT": 0.68,
+      "^TNX": 0.68,
+      "^VIX": 0.72,
+      "DX-Y.NYB": 0.45,
+      "HYG": 0.6
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:03.884472+00:00"
   },
   {
     "id": "cc597e8980dcd405",
@@ -1151,15 +1297,16 @@
     "published_at": "Sun, 17 May 2026 11:54:56 +0000",
     "fetched_at": "2026-05-18T16:08:58.946706+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Turkish demographic policy has no direct impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:05.729188+00:00"
   },
   {
     "id": "5f9d37f8fa6e9a8b",
@@ -1170,16 +1317,32 @@
     "summary_raw": "There were no big breakthroughs but also no blunders, and the summit positioned Xi Jinping as a leader at the height of his power seeking global stability.",
     "published_at": "Sun, 17 May 2026 09:00:00 +0000",
     "fetched_at": "2026-05-18T16:09:08.023206+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "FXI",
+      "EEM",
+      "DX-Y.NYB",
+      "SPY"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Xi-Trump summit yields no breakthroughs, modest stability signal for markets.",
+    "signal_direction": {
+      "FXI": 1,
+      "EEM": 1,
+      "DX-Y.NYB": -1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "FXI": 0.4,
+      "EEM": 0.3,
+      "DX-Y.NYB": 0.2,
+      "SPY": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:09.246888+00:00"
   },
   {
     "id": "20147d9a6907fd77",
@@ -1191,15 +1354,16 @@
     "published_at": "Sun, 17 May 2026 08:39:25 +0000",
     "fetched_at": "2026-05-18T16:08:58.946727+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "North Korean soccer visit has no material market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:11.337453+00:00"
   },
   {
     "id": "2bc3256143c1bbbf",
@@ -1210,16 +1374,29 @@
     "summary_raw": "Buyout firm raised $2.1bn more from external investors than had been targeted",
     "published_at": "Sun, 17 May 2026 04:00:12 GMT",
     "fetched_at": "2026-05-18T16:09:08.443408+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "EEM",
+      "FXI",
+      "EFA"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "Bain Capital raises $10.5bn Asia fund, signaling strong institutional appetite.",
+    "signal_direction": {
+      "EEM": 1,
+      "FXI": 1,
+      "EFA": 1
+    },
+    "signal_strength": {
+      "EEM": 0.3,
+      "FXI": 0.3,
+      "EFA": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:14.061566+00:00"
   },
   {
     "id": "98e56fd503d64a70",
@@ -1231,15 +1408,16 @@
     "published_at": "Sun, 17 May 2026 04:00:12 GMT",
     "fetched_at": "2026-05-18T16:09:08.443415+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "LONG",
+    "summary": "UK energy bill policy discussion, no direct market impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:16.279127+00:00"
   },
   {
     "id": "e263613860ec6c32",
@@ -1250,16 +1428,38 @@
     "summary_raw": "Fund managers say country\u2019s investors will sell out of US Treasuries to invest in JGBs",
     "published_at": "Sun, 17 May 2026 04:00:12 GMT",
     "fetched_at": "2026-05-18T16:09:08.443422+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "TLT",
+      "IEF",
+      "^TNX",
+      "DX-Y.NYB",
+      "EFA",
+      "BIL"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.78,
+    "event_type": "boj_rate_hike",
+    "impact_horizon": "MEDIUM",
+    "summary": "Japanese repatriation flows threaten US Treasury demand, pushing yields higher.",
+    "signal_direction": {
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "DX-Y.NYB": -1,
+      "EFA": 1,
+      "BIL": 1
+    },
+    "signal_strength": {
+      "TLT": 0.75,
+      "IEF": 0.7,
+      "^TNX": 0.75,
+      "DX-Y.NYB": 0.65,
+      "EFA": 0.55,
+      "BIL": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:19.966134+00:00"
   },
   {
     "id": "87e047f1d6f18a6b",
@@ -1270,16 +1470,26 @@
     "summary_raw": "DayOne aims to raise $5bn using new rules intended to boost Asian listings in city-state",
     "published_at": "Sun, 17 May 2026 04:00:03 GMT",
     "fetched_at": "2026-05-18T16:09:08.443429+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "FXI",
+      "EEM"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Chinese data centre spin-off seeks $5bn dual IPO in Singapore and US.",
+    "signal_direction": {
+      "FXI": 1,
+      "EEM": 1
+    },
+    "signal_strength": {
+      "FXI": 0.3,
+      "EEM": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:22.273375+00:00"
   },
   {
     "id": "cdda12541a398c2d",
@@ -1291,15 +1501,16 @@
     "published_at": "Sun, 10 May 2026 15:00:00 +0200",
     "fetched_at": "2026-05-18T16:08:57.377630+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "irrelevant",
+    "impact_horizon": "LONG",
+    "summary": "ECB-RBI MOU has negligible direct impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:24.414130+00:00"
   },
   {
     "id": "f32d000427a6322f",
@@ -1311,15 +1522,16 @@
     "published_at": "Sat, 16 May 2026 23:06:05 +0000",
     "fetched_at": "2026-05-18T16:09:08.023215+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.95,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Death of Rwandan genocide financier has no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:26.774712+00:00"
   },
   {
     "id": "747588dfa6b3c91c",
@@ -1330,16 +1542,23 @@
     "summary_raw": "The micronation honored Vitalik Buterin during ETH Prague 2026 as it continued promoting blockchain-based governance and digital citizenship.",
     "published_at": "Sat, 16 May 2026 17:34:01 +0000",
     "fetched_at": "2026-05-18T16:08:58.425096+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Symbolic honor for Buterin has negligible market impact on ETH.",
+    "signal_direction": {
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.05
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:29.081573+00:00"
   },
   {
     "id": "ab02e3ec2b8917e1",
@@ -1351,15 +1570,16 @@
     "published_at": "Sat, 16 May 2026 13:01:02 +0000",
     "fetched_at": "2026-05-18T16:08:58.425103+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Informational AI jailbreaking explainer with no direct market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:31.181078+00:00"
   },
   {
     "id": "d12bdf34cd125401",
@@ -1370,16 +1590,128 @@
     "summary_raw": "Crypto exchange OKX reconsiders sponsorship of Consensus Miami after \u2018immature\u2019 official after-party event",
     "published_at": "Sat, 16 May 2026 11:00:03 GMT",
     "fetched_at": "2026-05-18T16:09:08.443436+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.15,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "OKX sponsor controversy at Consensus Miami hurts crypto industry image.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.05,
+      "ETH-USD": 0.05,
+      "SOL-USD": 0.05
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:33.928873+00:00"
+  },
+  {
+    "id": "e2c7725ca3d1d4eb",
+    "source": "MarketWatch",
+    "source_type": "equities",
+    "headline": "5 money moves that made this 32-year-old dad a millionaire in just 9 years",
+    "url": "https://www.marketwatch.com/story/5-money-moves-that-made-this-32-year-old-dad-a-millionaire-in-just-9-years-3725c0ed?mod=mw_rss_topstories",
+    "summary_raw": "A low starting salary, global pandemic, unaffordable housing market, graduate school and two kids didn\u2019t stop Blake Edwards and his wife from becoming millionaires by their early 30s.",
+    "published_at": "Mon, 18 May 2026 16:13:00 GMT",
+    "fetched_at": "2026-05-18T16:15:30.457452+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Personal finance story with no market-moving implications.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:36.342296+00:00"
+  },
+  {
+    "id": "d7e406a21482135c",
+    "source": "MarketWatch",
+    "source_type": "equities",
+    "headline": "Ford takes its first big step toward being an energy business",
+    "url": "https://www.marketwatch.com/story/ford-takes-its-first-big-step-toward-being-an-energy-business-b1d72bc2?mod=mw_rss_topstories",
+    "summary_raw": "Ford just inked a deal with a French electric-utility company.",
+    "published_at": "Mon, 18 May 2026 16:13:00 GMT",
+    "fetched_at": "2026-05-18T16:15:30.457469+00:00",
+    "assets_affected": [
+      "XLE",
+      "EFA"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.35,
+    "event_type": "energy_transition",
+    "impact_horizon": "LONG",
+    "summary": "Ford partners with French utility, signaling EV energy business expansion.",
+    "signal_direction": {
+      "XLE": 1,
+      "EFA": 1
+    },
+    "signal_strength": {
+      "XLE": 0.2,
+      "EFA": 0.15
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:41.064693+00:00"
+  },
+  {
+    "id": "8548f3774f0f692c",
+    "source": "MarketWatch",
+    "source_type": "equities",
+    "headline": "The oil market is reaching a \u2018tipping point\u2019 that could create problems for stocks, according to this Wall Street legend",
+    "url": "https://www.marketwatch.com/story/the-oil-market-is-reaching-a-tipping-point-that-could-create-problems-for-stocks-according-to-this-wall-street-legend-8e7f9d62?mod=mw_rss_topstories",
+    "summary_raw": "Evercore\u2019s Roger Altman said in a CNBC interview on Monday that a sharp rise in crude could destabilize markets before it may trigger \u201cthe second big inflation shock of this decade after COVID,\u201d especially if oil prices climb toward $150 a barrel or higher.",
+    "published_at": "Mon, 18 May 2026 16:10:00 GMT",
+    "fetched_at": "2026-05-18T16:15:30.457478+00:00",
+    "assets_affected": [
+      "CL=F",
+      "SPY",
+      "QQQ",
+      "XLE",
+      "GLD",
+      "TLT",
+      "^VIX",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Oil price surge toward $150 risks second inflation shock, destabilizing equities.",
+    "signal_direction": {
+      "CL=F": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "XLE": 1,
+      "GLD": 1,
+      "TLT": -1,
+      "^VIX": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.75,
+      "SPY": 0.7,
+      "QQQ": 0.68,
+      "XLE": 0.65,
+      "GLD": 0.6,
+      "TLT": 0.72,
+      "^VIX": 0.7,
+      "DX-Y.NYB": 0.5
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:45.423582+00:00"
   },
   {
     "id": "4af541be4db71fb9",
@@ -1390,16 +1722,26 @@
     "summary_raw": "Bitcoin ETFs bore the brunt of a geopolitically driven sell-off, CoinShares said, though altcoin funds largely held their ground.",
     "published_at": "Mon, 18 May 2026 16:00:29 +0000",
     "fetched_at": "2026-05-18T16:08:58.425010+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.78,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Crypto ETFs shed $1.07B ending 6-week inflow streak on geopolitical fears.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.75,
+      "ETH-USD": 0.6
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:47.905673+00:00"
   },
   {
     "id": "998a9de781102ada",
@@ -1410,16 +1752,47 @@
     "summary_raw": "The president has sought to force Iran to accept his terms on its nuclear program or else face renewed war. An emboldened Iran has rebuffed Trump\u2019s demands.",
     "published_at": "Mon, 18 May 2026 15:50:26 +0000",
     "fetched_at": "2026-05-18T16:08:58.946662+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "GC=F",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "DX-Y.NYB",
+      "XLE",
+      "SPY",
+      "TLT"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Iran nuclear standoff escalates, boosting safe havens and oil risk premium.",
+    "signal_direction": {
+      "GLD": 1,
+      "GC=F": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "XLE": 1,
+      "TLT": 1,
+      "DX-Y.NYB": 1,
+      "SPY": -1
+    },
+    "signal_strength": {
+      "GLD": 0.72,
+      "GC=F": 0.72,
+      "CL=F": 0.68,
+      "^VIX": 0.65,
+      "UVXY": 0.65,
+      "XLE": 0.55,
+      "TLT": 0.45,
+      "DX-Y.NYB": 0.4,
+      "SPY": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:52.638120+00:00"
   },
   {
     "id": "c39f32cd4cb084ab",
@@ -1430,16 +1803,47 @@
     "summary_raw": "European stocks rebounded on Monday as investors react to the latest developments in the U.S.-Iran war.",
     "published_at": "Mon, 18 May 2026 15:49:39 GMT",
     "fetched_at": "2026-05-18T16:08:56.662350+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "EFA",
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "TLT",
+      "XLE"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "U.S.-Iran tensions spike risk-off sentiment, boosting safe havens and oil.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "EFA": -1,
+      "GLD": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "TLT": 1,
+      "XLE": 1
+    },
+    "signal_strength": {
+      "SPY": 0.55,
+      "QQQ": 0.55,
+      "EFA": 0.5,
+      "GLD": 0.7,
+      "CL=F": 0.75,
+      "^VIX": 0.65,
+      "UVXY": 0.65,
+      "TLT": 0.5,
+      "XLE": 0.6
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:16:56.824108+00:00"
   },
   {
     "id": "ac778d3eb0b2ebcf",
@@ -1450,16 +1854,62 @@
     "summary_raw": "Ryanair said it has plans for an \"armageddon situation,\" amid the jet fuel crisis.",
     "published_at": "Mon, 18 May 2026 15:43:34 GMT",
     "fetched_at": "2026-05-18T16:08:56.662327+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "CL=F",
+      "EFA"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Jet fuel crunch threatens weaker European carriers, Ryanair prepares contingency plans.",
+    "signal_direction": {
+      "XLE": 1,
+      "CL=F": 1,
+      "EFA": -1
+    },
+    "signal_strength": {
+      "XLE": 0.4,
+      "CL=F": 0.45,
+      "EFA": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:00.094878+00:00"
+  },
+  {
+    "id": "46cb6870ff2411ab",
+    "source": "CoinTelegraph",
+    "source_type": "crypto",
+    "headline": "Ethereum traders say bears \u2018in control\u2019 after ETH price drop to $2K",
+    "url": "https://cointelegraph.com/markets/ethereum-traders-say-bears-in-control-eth-price-drop-2k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Ethereum traders say bears \u2018in control\u2019 after ETH price drop to $2K\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9iZWFyLW1hcmtldC0xNC5qcGc=.jpg\" /></p><p>Ether price fell sharply below $2,100 as increasing sell pressure on Binance and persistent ETF outflows fueled bearish momentum.</p>",
+    "published_at": "Mon, 18 May 2026 15:36:04 +0000",
+    "fetched_at": "2026-05-18T16:15:32.121038+00:00",
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.82,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "ETH drops below $2,100 amid Binance sell pressure and ETF outflows.",
+    "signal_direction": {
+      "ETH-USD": -1,
+      "BTC-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.85,
+      "BTC-USD": 0.55,
+      "SOL-USD": 0.6
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:02.651540+00:00"
   },
   {
     "id": "0deec95b0bc71c08",
@@ -1470,16 +1920,26 @@
     "summary_raw": "Arm is destined to play a starring role in the market for server CPUs, which could quadruple to $137 billion by the end of the decade, according to Bernstein.",
     "published_at": "Mon, 18 May 2026 15:33:00 GMT",
     "fetched_at": "2026-05-18T16:08:56.862955+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "earnings_beat",
+    "impact_horizon": "LONG",
+    "summary": "Arm poised for server CPU dominance as market set to quadruple.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:04.817768+00:00"
   },
   {
     "id": "cd1de9dc131e0db9",
@@ -1490,16 +1950,29 @@
     "summary_raw": "Meta is starting layoffs this week, with 8,000 jobs expected to be cut, as employees brace for a new era of AI.",
     "published_at": "Mon, 18 May 2026 15:30:53 GMT",
     "fetched_at": "2026-05-18T16:08:56.662245+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Meta cuts 8,000 jobs signaling AI-driven restructuring across tech sector.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.3,
+      "SPY": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:07.704946+00:00"
   },
   {
     "id": "bdb3df422e1cbf72",
@@ -1510,16 +1983,26 @@
     "summary_raw": "Berkshire Hathaway took a $2.6 billion stake in Delta Airlines and increased its shares in Alphabet by 224%.",
     "published_at": "Mon, 18 May 2026 15:29:50 GMT",
     "fetched_at": "2026-05-18T16:08:56.662219+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Buffett buys Delta stake and boosts Alphabet position significantly.",
+    "signal_direction": {
+      "QQQ": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.45,
+      "SPY": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:10.325917+00:00"
   },
   {
     "id": "9ff05791d05efb91",
@@ -1531,15 +2014,16 @@
     "published_at": "Mon, 18 May 2026 15:29:06 +0000",
     "fetched_at": "2026-05-18T16:08:58.946670+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "FIFA corruption scandal has no material impact on tracked financial assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:12.168619+00:00"
   },
   {
     "id": "9e6a80fc38a49985",
@@ -1551,15 +2035,16 @@
     "published_at": "Mon, 18 May 2026 15:26:23 +0000",
     "fetched_at": "2026-05-18T16:08:58.946737+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "No material market impact from this political/humanitarian news.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T16:17:14.275223+00:00"
   },
   {
     "id": "e86de6f4ccb6d7ae",
@@ -3902,6 +4387,26 @@
     "nlp_processed": false
   },
   {
+    "id": "37a8c149bf519b53",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "XRP, Ethereum, or Solana? AI Picks Which Crypto Will 10x Faster",
+    "url": "https://finance.yahoo.com/markets/crypto/articles/xrp-ethereum-solana-ai-picks-160320688.html",
+    "summary_raw": "",
+    "published_at": "2026-05-18T16:03:20Z",
+    "fetched_at": "2026-05-18T16:15:30.261478+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "1b411098498c3f9d",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -3930,6 +4435,26 @@
     "summary_raw": "",
     "published_at": "2026-05-18T15:54:04Z",
     "fetched_at": "2026-05-18T16:08:56.719967+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "31b25e95516cd3c5",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Barfresh: Q1 Revenue Beats Expectations Amid Customer Recovery  \u2013 Quarterly Update Report",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/barfresh-q1-revenue-beats-expectations-155348778.html",
+    "summary_raw": "",
+    "published_at": "2026-05-18T15:53:48Z",
+    "fetched_at": "2026-05-18T16:15:30.261461+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -4250,6 +4775,26 @@
     "summary_raw": "",
     "published_at": "2026-05-18T11:57:32Z",
     "fetched_at": "2026-05-18T16:08:56.720040+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "f96f981764e4caad",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Tech stocks today: Tech stocks fall as investors gear up for Nvidia earnings, OpenAI v. Elon Musk trial decision",
+    "url": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-tech-stocks-fall-as-investors-gear-up-for-nvidia-earnings-openai-v-elon-musk-trial-decision-111103131.html",
+    "summary_raw": "",
+    "published_at": "2026-05-18T11:11:03Z",
+    "fetched_at": "2026-05-18T16:15:30.261443+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
