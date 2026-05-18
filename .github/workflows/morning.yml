@@ -1,51 +1,41 @@
-name: Morning Update — Grade Actuals
-
+name: Morning Update — Grade + Signals
 on:
   schedule:
-    - cron: '0 14 * * 1-5'   # 10:00 AM ET (UTC-4 summer)
+    - cron: '0 14 * * 1-5'   # 10:00 AM ET
   workflow_dispatch:
-
 jobs:
-  update:
+  morning:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run morning update
+      - run: pip install -r requirements.txt
+      - name: Grade actuals + macro + news + polymarket
         env:
-          ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'NG=F,GC=F,SI=F,CL=F,HG=F,EURUSD=X,GBPUSD=X,USDJPY=X,AUDUSD=X,USDCHF=X,DX-Y.NYB,^TNX,^GSPC' }}
-          FORECAST_HORIZON: '10'
-          FORECAST_FREQUENCY: 'B'
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-          VIX_RISKOFF_THRESHOLD: '25'
-          POLYMARKET_FETCH: 'true'
-          POLYMARKET_MIN_VOLUME: '50000'
-          CALIBRATION_TARGET: '0.80'
-          CALIBRATION_WARN: '0.60'
-          DIRECTIONAL_TARGET: '0.55'
-          DIRECTIONAL_WARN: '0.50'
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FRED_API_KEY:      ${{ secrets.FRED_API_KEY }}
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+          ALERT_EMAIL:       ${{ secrets.ALERT_EMAIL }}
+          ASSET_TICKERS:     ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
+          FORECAST_HORIZONS: '5,30,90'
+          POLYMARKET_MIN_VOLUME: '25000'
         run: |
           python main.py --update
           python main.py --macro
+          python main.py --news
           python main.py --polymarket
-
+          python main.py --calendar
+          python main.py --alerts
       - name: Commit updated data
         run: |
-          git config user.name  "Roman Kostin"
-          git config user.email "Roman@hirz.ai"
-          git add forecasts.csv scorecard.json macro_context.csv polymarket_data.csv || true
+          git config user.name  "Trading Co-Pilot Bot"
+          git config user.email "bot@trading-copilot.com"
+          git add data/ || true
           git diff --cached --quiet || \
             git commit -m "data: morning update $(date -u +'%Y-%m-%d %H:%M UTC')" && \
             git push

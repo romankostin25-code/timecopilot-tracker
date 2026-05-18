@@ -4,7 +4,9 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "routes": [
-    { "src": "/",     "dest": "/dashboard.html" },
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/",              "dest": "/dashboard/index.html" },
+    { "src": "/terminal",      "dest": "/dashboard/terminal.html" },
+    { "src": "/terminal.html", "dest": "/dashboard/terminal.html" },
+    { "src": "/(.*)",          "dest": "/$1" }
   ]
 }

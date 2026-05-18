@@ -1,0 +1,158 @@
+"""Daily grading engine — fills actuals and scores forecasts at all horizons."""
+
+import os
+import json
+import pandas as pd
+import numpy as np
+import yfinance as yf
+from datetime import datetime, timedelta, date
+from dotenv import load_dotenv
+
+load_dotenv()
+
+CSV_PATH = "data/forecasts.csv"
+SCORECARD_PATH = "data/scorecard.json"
+
+
+def fill_actuals_and_grade():
+    df = pd.read_csv(CSV_PATH)
+    df["target_date"] = pd.to_datetime(df["target_date"]).dt.date
+    df["forecast_date"] = pd.to_datetime(df["forecast_date"]).dt.date
+    today = date.today()
+    updated = 0
+
+    needs = df[
+        (df["actual"].isna() | (df["actual"].astype(str) == "")) &
+        (df["target_date"] < today)
+    ]
+
+    if needs.empty:
+        print("No rows need actuals.")
+    else:
+        for ticker, group in needs.groupby("ticker"):
+            dates = group["target_date"].tolist()
+            min_d = min(dates) - timedelta(days=5)
+            max_d = max(dates) + timedelta(days=5)
+            try:
+                raw = yf.download(ticker.strip(), start=min_d,
+                                  end=max_d + timedelta(days=1),
+                                  auto_adjust=True, progress=False)
+                if raw.empty:
+                    continue
+                prices = raw["Close"].reset_index()
+                prices.columns = ["date", "price"]
+                prices["date"] = pd.to_datetime(prices["date"]).dt.date
+
+                for idx in group.index:
+                    target = df.loc[idx, "target_date"]
+                    actual = None
+                    for offset in range(4):
+                        m = prices[prices["date"] == target + timedelta(days=offset)]
+                        if not m.empty:
+                            actual = round(float(m["price"].iloc[0]), 6)
+                            break
+                    if actual is None:
+                        continue
+
+                    p10 = float(df.loc[idx, "p10"])
+                    p50 = float(df.loc[idx, "p50"])
+                    p90 = float(df.loc[idx, "p90"])
+
+                    df.loc[idx, "actual"]    = actual
+                    df.loc[idx, "error_abs"] = round(abs(actual - p50), 6)
+                    df.loc[idx, "error_pct"] = round(abs(actual - p50) / p50 * 100, 4)
+                    df.loc[idx, "hit"]       = 1 if p10 <= actual <= p90 else 0
+
+                    # Direction correct: compare to forecast-date close (use 5d horizon baseline)
+                    h5 = df[
+                        (df["ticker"] == ticker) &
+                        (df["forecast_date"] == df.loc[idx, "forecast_date"]) &
+                        (df["horizon"].astype(str) == "5")
+                    ]
+                    baseline = p50
+                    if not h5.empty:
+                        b_actual = str(h5.iloc[0].get("actual", ""))
+                        if b_actual not in ("", "nan", "None"):
+                            try:
+                                baseline = float(b_actual)
+                            except ValueError:
+                                pass
+
+                    actual_dir = "BULLISH" if actual > baseline else "BEARISH"
+                    df.loc[idx, "direction_correct"] = 1 if str(df.loc[idx, "direction"]) == actual_dir else 0
+                    df.loc[idx, "graded_at"] = datetime.now().isoformat()
+                    updated += 1
+
+            except Exception as e:
+                print(f"[{ticker}] Error: {e}")
+
+    df.to_csv(CSV_PATH, index=False)
+    print(f"✓ Graded {updated} forecasts.")
+    _regenerate_scorecard(df)
+
+
+def _regenerate_scorecard(df):
+    df["hit"]              = pd.to_numeric(df["hit"], errors="coerce")
+    df["direction_correct"] = pd.to_numeric(df["direction_correct"], errors="coerce")
+    df["horizon"]          = pd.to_numeric(df["horizon"], errors="coerce")
+    graded = df[df["hit"].notna()]
+    today  = date.today()
+
+    def rolling(subset, col, days):
+        cutoff = today - timedelta(days=days)
+        recent = subset[pd.to_datetime(subset["target_date"]).dt.date >= cutoff]
+        if recent.empty or recent[col].isna().all():
+            return None
+        return round(recent[col].mean(), 4)
+
+    by_horizon = {}
+    for h in [5, 30, 90]:
+        hg = graded[graded["horizon"] == h]
+        by_horizon[str(h)] = {
+            "calibration_7d":            rolling(hg, "hit", 7),
+            "calibration_30d":           rolling(hg, "hit", 30),
+            "calibration_alltime":       round(hg["hit"].mean(), 4) if not hg.empty else None,
+            "directional_accuracy_7d":   rolling(hg, "direction_correct", 7),
+            "directional_accuracy_30d":  rolling(hg, "direction_correct", 30),
+            "directional_accuracy_alltime": round(hg["direction_correct"].mean(), 4) if not hg.empty else None,
+            "forecasts_graded":          len(hg),
+        }
+
+    by_asset = {}
+    for ticker in graded["ticker"].unique():
+        t = graded[(graded["ticker"] == ticker) & (graded["horizon"] == 5)]
+        consecutive = 0
+        for val in t.sort_values("target_date", ascending=False)["hit"].values:
+            if val == 1:
+                consecutive += 1
+            else:
+                break
+        by_asset[ticker] = {
+            "calibration_7d":           rolling(t, "hit", 7),
+            "calibration_30d":          rolling(t, "hit", 30),
+            "directional_accuracy_7d":  rolling(t, "direction_correct", 7),
+            "directional_accuracy_30d": rolling(t, "direction_correct", 30),
+            "consecutive_hits":         consecutive,
+        }
+
+    h5 = by_horizon.get("5", {})
+    trend = "IMPROVING" if (h5.get("calibration_7d") or 0) > (h5.get("calibration_30d") or 0) else "DECLINING"
+
+    scorecard = {
+        "generated_at": datetime.now().isoformat(),
+        "global": {
+            "forecasts_graded_total": len(graded),
+            "trend": trend,
+        },
+        "by_horizon": by_horizon,
+        "by_asset":   by_asset,
+    }
+
+    os.makedirs("data", exist_ok=True)
+    with open(SCORECARD_PATH, "w") as f:
+        json.dump(scorecard, f, indent=2, default=str)
+    print("✓ scorecard.json regenerated.")
+
+
+if __name__ == "__main__":
+    fill_actuals_and_grade()

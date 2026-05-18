@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Trading Co-Pilot v3.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:      #080c10;
+  --bg2:     #0d1420;
+  --bg3:     #ffffff06;
+  --border:  #1a2840;
+  --text:    #c8d6e5;
+  --muted:   #6b8ab0;
+  --cyan:    #00d4ff;
+  --green:   #00ff88;
+  --red:     #ff3355;
+  --amber:   #ffaa00;
+  --purple:  #a855f7;
+  --orange:  #f97316;
+  --mono:    'IBM Plex Mono',monospace;
+  --sans:    'IBM Plex Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13px}
+
+/* ── HEADER ── */
+#header{
+  position:fixed;top:0;left:0;right:0;height:48px;
+  background:#0a0f18;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 16px;gap:20px;z-index:100;
+  font-family:var(--mono);font-size:11px;
+}
+#header .logo{color:var(--cyan);font-size:14px;font-weight:600;white-space:nowrap;margin-right:8px}
+.hstat{display:flex;flex-direction:column;line-height:1.2;white-space:nowrap}
+.hstat .lbl{color:var(--muted);font-size:9px;text-transform:uppercase}
+.hstat .val{color:var(--text)}
+.hstat .val.up{color:var(--green)}
+.hstat .val.dn{color:var(--red)}
+.hstat .val.cy{color:var(--cyan)}
+#header-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;animation:blink 2s infinite;margin-right:4px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── LAYOUT ── */
+#layout{
+  position:fixed;top:48px;left:0;right:0;bottom:0;
+  display:grid;grid-template-columns:240px 1fr 320px;
+  overflow:hidden;
+}
+
+/* ── LEFT RAIL ── */
+#left{
+  background:var(--bg2);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+#search-wrap{padding:10px 12px;border-bottom:1px solid var(--border)}
+#search{
+  width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  padding:6px 10px;color:var(--text);font-size:12px;font-family:var(--mono);outline:none;
+}
+#search:focus{border-color:var(--cyan)}
+#asset-list{flex:1;overflow-y:auto}
+#asset-list::-webkit-scrollbar{width:4px}
+#asset-list::-webkit-scrollbar-track{background:transparent}
+#asset-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+.group-header{
+  padding:8px 12px 4px;font-size:9px;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.08em;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--border);
+}
+.group-header:first-child{border-top:none}
+.group-toggle{font-size:8px;opacity:.5}
+
+.asset-row{
+  display:flex;align-items:center;padding:5px 12px;cursor:pointer;gap:6px;
+  transition:background .1s;border-radius:0;
+}
+.asset-row:hover{background:var(--bg3)}
+.asset-row.active{background:#00d4ff12;border-left:2px solid var(--cyan)}
+.asset-row:not(.active){border-left:2px solid transparent}
+.sig-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sig-dot.bull{background:var(--green)}
+.sig-dot.bear{background:var(--red)}
+.sig-dot.neu{background:var(--muted)}
+.asset-ticker{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--cyan);width:56px;flex-shrink:0}
+.asset-name{flex:1;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.asset-chg{font-family:var(--mono);font-size:10px;width:48px;text-align:right;flex-shrink:0}
+.asset-chg.up{color:var(--green)}
+.asset-chg.dn{color:var(--red)}
+.asset-chg.neu{color:var(--muted)}
+.hit-badge{font-size:9px;width:12px;text-align:center;flex-shrink:0}
+
+#refresh-bar{
+  padding:8px 12px;border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:10px;color:var(--muted);
+  display:flex;align-items:center;gap:6px;
+}
+#refresh-countdown{color:var(--cyan)}
+
+/* ── CENTER ── */
+#center{
+  display:flex;flex-direction:column;overflow:hidden;background:var(--bg);
+}
+#tabs{
+  display:flex;border-bottom:1px solid var(--border);background:var(--bg2);
+  flex-shrink:0;
+}
+.tab{
+  padding:12px 18px;font-size:11px;font-family:var(--mono);color:var(--muted);
+  cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;
+}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+#asset-title{
+  padding:12px 20px 0;font-family:var(--mono);font-size:13px;
+  display:flex;align-items:center;gap:12px;flex-shrink:0;
+}
+#asset-title .ticker{color:var(--cyan);font-size:16px;font-weight:600}
+#asset-title .name{color:var(--muted)}
+#asset-title .price{margin-left:auto;font-size:16px;color:var(--text)}
+#asset-title .change{font-size:12px}
+#tab-content{flex:1;overflow-y:auto;padding:16px 20px}
+#tab-content::-webkit-scrollbar{width:4px}
+#tab-content::-webkit-scrollbar-thumb{background:var(--border)}
+
+/* ── CHART ── */
+#chart-wrap{position:relative;height:320px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:16px}
+#main-chart{width:100%;height:100%}
+
+/* ── HORIZON BTNS ── */
+.horizon-btns{display:flex;gap:6px;margin-bottom:12px}
+.hbtn{
+  padding:4px 12px;font-family:var(--mono);font-size:11px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+  color:var(--muted);cursor:pointer;transition:all .15s;
+}
+.hbtn:hover{border-color:var(--cyan);color:var(--cyan)}
+.hbtn.active{background:#00d4ff18;border-color:var(--cyan);color:var(--cyan)}
+
+/* ── SIGNAL ROW ── */
+.signal-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;
+}
+.sig-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:12px;
+}
+.sig-card .sig-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.sig-card .sig-dir{font-family:var(--mono);font-size:14px;font-weight:600}
+.sig-card .sig-dir.bull{color:var(--green)}
+.sig-card .sig-dir.bear{color:var(--red)}
+.sig-card .sig-dir.neu{color:var(--muted)}
+.sig-card .sig-sub{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ── ANALYSIS CARD ── */
+.analysis-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:6px;
+  padding:16px;margin-bottom:16px;
+}
+.analysis-card h3{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.analysis-card .summary{color:var(--text);line-height:1.6;margin-bottom:12px}
+.drivers-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.driver-row{display:flex;align-items:center;gap:8px;font-size:11px}
+.driver-weight{width:40px;height:3px;border-radius:2px;flex-shrink:0}
+.driver-weight.high{background:var(--cyan)}
+.driver-weight.medium{background:var(--muted)}
+.driver-weight.low{background:var(--border)}
+.driver-impact.bull{color:var(--green)}
+.driver-impact.bear{color:var(--red)}
+.driver-impact.neu{color:var(--muted)}
+.scenarios{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.scenario{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:10px}
+.scenario .slbl{font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.scenario.base .slbl{color:var(--cyan)}
+.scenario.bull .slbl{color:var(--green)}
+.scenario.bear .slbl{color:var(--red)}
+.scenario .sprob{font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:4px}
+.scenario .stext{font-size:11px;color:var(--muted);line-height:1.4}
+.risks-list{display:flex;flex-direction:column;gap:4px}
+.risk-item{font-size:11px;color:var(--muted);display:flex;align-items:flex-start;gap:6px}
+.risk-item::before{content:"⚠";font-size:10px;color:var(--amber);flex-shrink:0;margin-top:1px}
+
+/* ── ACCURACY TAB ── */
+.acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.acc-chart-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px;height:200px}
+.acc-table{width:100%;border-collapse:collapse;font-size:11px;font-family:var(--mono)}
+.acc-table th{color:var(--muted);text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);font-size:10px;text-transform:uppercase}
+.acc-table td{padding:6px 10px;border-bottom:1px solid #1a284040}
+.acc-table tr:hover td{background:var(--bg3)}
+.badge{display:inline-block;padding:2px 6px;border-radius:3px;font-size:9px;font-weight:600}
+.badge.hit{background:#00ff8820;color:var(--green)}
+.badge.miss{background:#ff335520;color:var(--red)}
+.badge.bull{background:#00ff8818;color:var(--green)}
+.badge.bear{background:#ff335518;color:var(--red)}
+.badge.neu{background:#6b8ab020;color:var(--muted)}
+
+/* ── POLY TAB ── */
+.regime-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.regime-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:12px}
+.regime-item .rname{font-family:var(--mono);font-size:11px;color:var(--purple);margin-bottom:4px}
+.regime-item .rdesc{font-size:11px;color:var(--muted);margin-bottom:8px}
+.regime-bar-wrap{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.regime-bar{height:100%;background:var(--purple);border-radius:3px;transition:width .4s}
+.regime-prob{font-family:var(--mono);font-size:12px;color:var(--purple);margin-top:4px}
+
+/* ── CURVE TAB ── */
+#curve-chart-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px;height:260px;margin-bottom:16px}
+
+/* ── INTELLIGENCE FEED (RIGHT RAIL) ── */
+#right{
+  background:var(--bg2);border-left:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+#right-header{
+  padding:12px 14px;border-bottom:1px solid var(--border);
+  font-size:10px;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+#feed-filters{
+  display:flex;gap:4px;padding:8px 12px;border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap;
+}
+.ffbtn{
+  padding:2px 8px;font-size:9px;font-family:var(--mono);background:transparent;
+  border:1px solid var(--border);border-radius:3px;color:var(--muted);cursor:pointer;transition:all .1s;
+}
+.ffbtn.active,.ffbtn:hover{border-color:var(--cyan);color:var(--cyan);background:#00d4ff0a}
+#feed-list{flex:1;overflow-y:auto;padding:8px 0}
+#feed-list::-webkit-scrollbar{width:4px}
+#feed-list::-webkit-scrollbar-thumb{background:var(--border)}
+
+.feed-item{
+  padding:10px 14px;border-bottom:1px solid #1a284040;cursor:pointer;
+  transition:background .1s;border-left:2px solid transparent;
+}
+.feed-item:hover{background:var(--bg3)}
+.feed-item.bull-item{border-left-color:var(--green)}
+.feed-item.bear-item{border-left-color:var(--red)}
+.feed-item .fi-source{font-size:9px;color:var(--muted);font-family:var(--mono);margin-bottom:3px;display:flex;justify-content:space-between}
+.feed-item .fi-headline{font-size:11px;color:var(--text);line-height:1.4;margin-bottom:5px}
+.feed-item .fi-assets{display:flex;gap:4px;flex-wrap:wrap}
+.asset-pill{
+  display:inline-block;padding:1px 5px;font-size:9px;font-family:var(--mono);
+  background:#00d4ff12;color:var(--cyan);border-radius:3px;
+}
+.feed-item .fi-detail{display:none;font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5;padding-top:8px;border-top:1px solid var(--border)}
+.feed-item.expanded .fi-detail{display:block}
+
+#cal-section{border-top:1px solid var(--border);padding:10px 14px;flex-shrink:0}
+#cal-section h4{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.cal-event{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:10px;font-family:var(--mono)}
+.cal-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.cal-dot.high{background:var(--red)}
+.cal-dot.med{background:var(--amber)}
+.cal-dot.low{background:var(--muted)}
+.cal-date{color:var(--muted);width:44px}
+.cal-name{color:var(--text);flex:1}
+.cal-days{color:var(--muted);font-size:9px}
+
+/* ── SCROLLBAR GLOBAL ── */
+*::-webkit-scrollbar{width:4px;height:4px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ── MISC ── */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:12px}
+.section-title{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.mono{font-family:var(--mono)}
+.up{color:var(--green)}.dn{color:var(--red)}.cy{color:var(--cyan)}.am{color:var(--amber)}.pu{color:var(--purple)}
+.align-div{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;margin-bottom:12px}
+.align-div.aligned{border-color:var(--green)}
+.align-div.divergent{border-color:var(--red)}
+.align-div .al-lbl{font-size:10px;font-family:var(--mono);font-weight:600}
+.align-div.aligned .al-lbl{color:var(--green)}
+.align-div.divergent .al-lbl{color:var(--red)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.stat-box{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:10px;text-align:center}
+.stat-box .sv{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--cyan)}
+.stat-box .sl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
+<div id="header">
+  <div class="logo">⚡ Trading Co-Pilot</div>
+  <div class="hstat"><span class="lbl">5D Acc</span><span class="val cy" id="h-5d-acc">—</span></div>
+  <div class="hstat"><span class="lbl">30D Acc</span><span class="val" id="h-30d-acc">—</span></div>
+  <div class="hstat"><span class="lbl">Signals</span><span class="val cy" id="h-signals">—</span></div>
+  <div class="hstat"><span class="lbl">VIX</span><span class="val" id="h-vix">—</span></div>
+  <div class="hstat"><span class="lbl">DXY</span><span class="val" id="h-dxy">—</span></div>
+  <div class="hstat"><span class="lbl">10Y</span><span class="val" id="h-10y">—</span></div>
+  <div class="hstat"><span class="lbl">Regime</span><span class="val" id="h-regime">—</span></div>
+  <div id="header-right">
+    <span style="font-size:11px;color:var(--muted)" id="h-time">—</span>
+    <span id="h-status"><span class="pulse-dot"></span><span style="color:var(--green);font-size:10px">LIVE</span></span>
+  </div>
+</div>
+
+<!-- ══ LAYOUT ══════════════════════════════════════════════════════════════ -->
+<div id="layout">
+
+  <!-- LEFT RAIL -->
+  <div id="left">
+    <div id="search-wrap">
+      <input id="search" type="text" placeholder="Search ticker or name…" oninput="filterAssets(this.value)">
+    </div>
+    <div id="asset-list"></div>
+    <div id="refresh-bar">
+      <span class="pulse-dot" style="width:4px;height:4px"></span>
+      Next refresh in <span id="refresh-countdown">—</span>s
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div id="center">
+    <div id="tabs">
+      <div class="tab active" onclick="switchTab('forecast',this)">Forecast</div>
+      <div class="tab" onclick="switchTab('accuracy',this)">Accuracy</div>
+      <div class="tab" onclick="switchTab('curve',this)">Futures Curve</div>
+      <div class="tab" onclick="switchTab('polymarket',this)">Polymarket</div>
+      <div class="tab" onclick="switchTab('distribution',this)">Distribution</div>
+    </div>
+    <div id="asset-title">
+      <span class="ticker" id="at-ticker">—</span>
+      <span class="name" id="at-name">Select an asset</span>
+      <span class="price mono" id="at-price">—</span>
+      <span class="change mono" id="at-change">—</span>
+    </div>
+    <div id="tab-content"></div>
+  </div>
+
+  <!-- RIGHT RAIL -->
+  <div id="right">
+    <div id="right-header">
+      <span>Intelligence Feed</span>
+      <span id="feed-count" style="color:var(--cyan)">0 items</span>
+    </div>
+    <div id="feed-filters">
+      <button class="ffbtn active" onclick="setFeedFilter('all',this)">All</button>
+      <button class="ffbtn" onclick="setFeedFilter('macro',this)">Macro</button>
+      <button class="ffbtn" onclick="setFeedFilter('crypto',this)">Crypto</button>
+      <button class="ffbtn" onclick="setFeedFilter('energy',this)">Energy</button>
+      <button class="ffbtn" onclick="setFeedFilter('equities',this)">Equities</button>
+      <button class="ffbtn" onclick="setFeedFilter('central_bank',this)">CB</button>
+    </div>
+    <div id="feed-list"></div>
+    <div id="cal-section">
+      <h4>Economic Calendar</h4>
+      <div id="cal-list"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+// DATA & STATE
+// ══════════════════════════════════════════════════════════════════════════
+const REPO_BASE = "https://raw.githubusercontent.com/romankostin25-code/timecopilot-tracker/main/";
+const POLL_MS   = 15 * 60 * 1000;
+
+let forecasts=[], scorecard={}, signals={}, macroData=[], prices={},
+    feed=[], polyRegimes={}, polyNarratives={}, calendar={},
+    curveData=[], activeTicker="SPY", activeTab="forecast",
+    feedFilter="all", refreshTimer, countdown=POLL_MS/1000,
+    mainChart=null, accChart1=null, accChart2=null, curveChart=null;
+
+const ASSET_GROUPS = {
+  "Equity ETFs":  ["SPY","QQQ","IWM","XLE","XLF","XLK","GLD","SLV"],
+  "Fixed Income": ["TLT","IEF","HYG","LQD","BIL","^TNX"],
+  "Commodities":  ["GC=F","SI=F","CL=F","NG=F","HG=F","ZW=F","ZC=F"],
+  "Volatility":   ["^VIX","UVXY"],
+  "Macro":        ["DX-Y.NYB","^IRX"],
+  "Crypto":       ["BTC-USD","ETH-USD","SOL-USD"],
+  "International":["EEM","EFA","FXI"],
+};
+const UNIVERSE = {
+  "SPY":"S&P 500 ETF","QQQ":"Nasdaq 100 ETF","IWM":"Russell 2000 ETF",
+  "XLE":"Energy ETF","XLF":"Financials ETF","XLK":"Technology ETF",
+  "GLD":"Gold ETF","SLV":"Silver ETF","TLT":"20Y+ Treasury ETF",
+  "IEF":"7-10Y Treasury ETF","HYG":"High Yield Bond ETF","LQD":"IG Bond ETF",
+  "BIL":"T-Bill ETF","^TNX":"US 10Y Yield","GC=F":"Gold Futures",
+  "SI=F":"Silver Futures","CL=F":"WTI Crude Oil","NG=F":"Natural Gas",
+  "HG=F":"Copper Futures","ZW=F":"Wheat Futures","ZC=F":"Corn Futures",
+  "^VIX":"VIX Index","UVXY":"Ultra VIX ETF","DX-Y.NYB":"US Dollar Index",
+  "^IRX":"13W T-Bill Yield","BTC-USD":"Bitcoin","ETH-USD":"Ethereum",
+  "SOL-USD":"Solana","EEM":"Emerging Markets ETF","EFA":"EAFE ETF","FXI":"China ETF",
+};
+
+// ══════════════════════════════════════════════════════════════════════════
+// DATA LOADING
+// ══════════════════════════════════════════════════════════════════════════
+async function fetchJSON(path){
+  try{
+    const r = await fetch(REPO_BASE+path+"?_="+Date.now());
+    if(!r.ok) return null;
+    return await r.json();
+  }catch{return null;}
+}
+async function fetchCSV(path){
+  try{
+    const r = await fetch(REPO_BASE+path+"?_="+Date.now());
+    if(!r.ok) return "";
+    return await r.text();
+  }catch{return "";}
+}
+function parseCSV(text){
+  const lines = text.trim().split("\n");
+  if(lines.length<2) return [];
+  const headers = lines[0].split(",").map(h=>h.trim());
+  return lines.slice(1).map(line=>{
+    const vals = line.split(",");
+    const obj = {};
+    headers.forEach((h,i)=>obj[h]=(vals[i]||"").trim());
+    return obj;
+  });
+}
+
+async function loadAll(silent=false){
+  if(!silent) updateStatus("fetching");
+  const [fc, sc, sg, pr, pn, mac, cal, cu, pl] = await Promise.all([
+    fetchCSV("data/forecasts.csv"),
+    fetchJSON("data/scorecard.json"),
+    fetchJSON("data/signals.json"),
+    fetchJSON("data/poly_regimes.json"),
+    fetchJSON("data/poly_narratives.json"),
+    fetchCSV("data/macro_context.csv"),
+    fetchJSON("data/economic_calendar.json"),
+    fetchCSV("data/futures_curve.csv"),
+    fetchJSON("data/prices_live.json"),
+  ]);
+
+  if(fc && fc.includes("forecast_date")){
+    const all = parseCSV(fc);
+    // Latest forecast_date only
+    const dates = [...new Set(all.map(r=>r.forecast_date))].sort();
+    const latest = dates[dates.length-1];
+    forecasts = all.filter(r=>r.forecast_date===latest);
+  }
+  if(sc) scorecard = sc;
+  if(sg) signals = sg;
+  if(pr) polyRegimes = pr;
+  if(pn) polyNarratives = pn;
+  if(mac && mac.includes("date")) macroData = parseCSV(mac);
+  if(cal) calendar = cal;
+  if(cu && cu.includes("ticker")) curveData = parseCSV(cu);
+  if(pl) prices = pl;
+
+  updateHeader();
+  buildAssetList();
+  renderActive();
+  renderFeed();
+  renderCalendar();
+  updateStatus("live");
+  scheduleRefresh();
+}
+
+function scheduleRefresh(){
+  clearInterval(refreshTimer);
+  countdown = POLL_MS/1000;
+  refreshTimer = setInterval(()=>{
+    countdown--;
+    const el = document.getElementById("refresh-countdown");
+    if(el) el.textContent = countdown;
+    if(countdown<=0){
+      clearInterval(refreshTimer);
+      loadAll(true);
+    }
+  },1000);
+}
+
+function updateStatus(state){
+  const el = document.getElementById("h-status");
+  if(state==="fetching") el.innerHTML='<span style="color:var(--amber);font-size:10px">LOADING…</span>';
+  else el.innerHTML='<span class="pulse-dot"></span><span style="color:var(--green);font-size:10px">LIVE</span>';
+  document.getElementById("h-time").textContent = new Date().toUTCString().slice(17,25)+" UTC";
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// HEADER
+// ══════════════════════════════════════════════════════════════════════════
+function updateHeader(){
+  const h5 = scorecard?.by_horizon?.["5"] || {};
+  const gl  = scorecard?.global || {};
+  const mac = macroData.length ? macroData[macroData.length-1] : {};
+
+  function pct(v){ return v!=null ? (v*100).toFixed(1)+"%" : "—"; }
+
+  setHdr("h-5d-acc",  pct(h5.directional_accuracy_7d));
+  setHdr("h-30d-acc", pct((scorecard?.by_horizon?.["30"]||{}).directional_accuracy_7d));
+  const active = Object.values(signals).filter(s=>(s.analysis||{}).scenarios).length;
+  setHdr("h-signals", active+"");
+  setHdr("h-vix",  mac.vix ? (+mac.vix).toFixed(1) : "—");
+  setHdr("h-dxy",  mac.dxy ? (+mac.dxy).toFixed(2) : "—");
+  setHdr("h-10y",  mac.us10y ? (+mac.us10y).toFixed(2)+"%" : "—");
+  setHdr("h-regime", mac.risk_regime||"—");
+}
+function setHdr(id,val){
+  const el=document.getElementById(id);
+  if(el) el.textContent=val;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// LEFT RAIL
+// ══════════════════════════════════════════════════════════════════════════
+function buildAssetList(filter=""){
+  const list = document.getElementById("asset-list");
+  list.innerHTML="";
+  for(const [group, tickers] of Object.entries(ASSET_GROUPS)){
+    const filtered = tickers.filter(t=>{
+      if(!filter) return true;
+      return t.toLowerCase().includes(filter.toLowerCase()) ||
+             (UNIVERSE[t]||"").toLowerCase().includes(filter.toLowerCase());
+    });
+    if(!filtered.length) continue;
+
+    const gh = document.createElement("div");
+    gh.className="group-header";
+    gh.innerHTML=`<span>${group}</span><span class="group-toggle">▾</span>`;
+    list.appendChild(gh);
+
+    filtered.forEach(ticker=>{
+      const px   = prices[ticker]||{};
+      const sig  = signals[ticker]||{};
+      const dir  = (sig.analysis||{}).scenarios?.base ? "neutral" :
+                   sig.explanation?.includes("bullish")||sig.explanation?.includes("BULLISH") ? "bull" : "neu";
+      const chg  = px.change_pct;
+      const row  = document.createElement("div");
+      row.className="asset-row"+(ticker===activeTicker?" active":"");
+      row.dataset.ticker=ticker;
+      row.innerHTML=`
+        <span class="sig-dot ${dir}"></span>
+        <span class="asset-ticker">${ticker}</span>
+        <span class="asset-name">${UNIVERSE[ticker]||ticker}</span>
+        <span class="asset-chg ${chg>0?'up':chg<0?'dn':'neu'}">${chg!=null?(chg>0?"+":"")+chg.toFixed(2)+"%":"—"}</span>
+      `;
+      row.onclick=()=>selectAsset(ticker);
+      list.appendChild(row);
+    });
+  }
+}
+function filterAssets(q){ buildAssetList(q); }
+
+function selectAsset(ticker){
+  activeTicker = ticker;
+  document.querySelectorAll(".asset-row").forEach(r=>{
+    r.classList.toggle("active", r.dataset.ticker===ticker);
+  });
+  // Update title
+  const px = prices[ticker]||{};
+  document.getElementById("at-ticker").textContent = ticker;
+  document.getElementById("at-name").textContent   = UNIVERSE[ticker]||"";
+  document.getElementById("at-price").textContent  = px.price ? "$"+px.price.toLocaleString(undefined,{maximumFractionDigits:4}) : "—";
+  const chg = px.change_pct;
+  const cel = document.getElementById("at-change");
+  cel.textContent = chg!=null ? (chg>=0?"+":"")+chg.toFixed(2)+"%" : "—";
+  cel.className = "change mono "+(chg>0?"up":chg<0?"dn":"");
+  renderActive();
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TABS
+// ══════════════════════════════════════════════════════════════════════════
+function switchTab(tab, el){
+  activeTab = tab;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  el.classList.add("active");
+  renderActive();
+}
+function renderActive(){
+  if(activeTab==="forecast")    renderForecast();
+  else if(activeTab==="accuracy")   renderAccuracy();
+  else if(activeTab==="curve")      renderCurve();
+  else if(activeTab==="polymarket") renderPolymarket();
+  else if(activeTab==="distribution") renderDistribution();
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 1 — FORECAST
+// ══════════════════════════════════════════════════════════════════════════
+function renderForecast(){
+  const tc = document.getElementById("tab-content");
+  const sig = signals[activeTicker]||{};
+  const analysis = sig.analysis||{};
+  const fcRows = forecasts.filter(r=>r.ticker===activeTicker);
+  const byHorizon={};
+  fcRows.forEach(r=>{ byHorizon[r.horizon]=r; });
+  const h5=byHorizon["5"]||{}, h30=byHorizon["30"]||{}, h90=byHorizon["90"]||{};
+
+  const polyS = {};
+  try{ Object.assign(polyS, JSON.parse(
+    document.getElementById("feed-list").dataset.polysignals||"{}"
+  ));}catch{}
+
+  // Alignment badge
+  const align = analysis.poly_alignment||"NEUTRAL";
+  const alignClass = align==="ALIGNED"?"aligned":align==="DIVERGENT"?"divergent":"";
+
+  tc.innerHTML=`
+    <div class="horizon-btns" id="hbns">
+      <button class="hbtn active" onclick="setHorizonView('all',this)">All Horizons</button>
+      <button class="hbtn" onclick="setHorizonView('5',this)">5D</button>
+      <button class="hbtn" onclick="setHorizonView('30',this)">30D</button>
+      <button class="hbtn" onclick="setHorizonView('90',this)">90D</button>
+    </div>
+    <div id="chart-wrap"><canvas id="main-chart"></canvas></div>
+
+    ${align!=="NEUTRAL"?`
+    <div class="align-div ${alignClass}">
+      <span class="al-lbl">${align==="ALIGNED"?"✓ ALIGNED":"⚡ DIVERGENT"}</span>
+      <span style="font-size:11px;color:var(--muted)">${analysis.poly_alignment_note||""}</span>
+    </div>`:""}
+
+    <div class="signal-row">
+      <div class="sig-card">
+        <div class="sig-lbl">Model Signal</div>
+        <div class="sig-dir ${h5.direction==='BULLISH'?'bull':h5.direction==='BEARISH'?'bear':'neu'}">${h5.direction||"—"}</div>
+        <div class="sig-sub">Conviction ${h5.conviction_score ? (+h5.conviction_score*100).toFixed(0)+"%" : "—"}</div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-lbl">Polymarket</div>
+        <div class="sig-dir ${(analysis.poly_alignment==='ALIGNED'&&h5.direction==='BULLISH')?'bull':(analysis.poly_alignment==='ALIGNED'&&h5.direction==='BEARISH')?'bear':'neu'}">${analysis.poly_alignment||"—"}</div>
+        <div class="sig-sub">${analysis.poly_alignment_note||"No data"}</div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-lbl">News Signal</div>
+        <div class="sig-dir neu">${h5.news_signal||"—"}</div>
+        <div class="sig-sub">Confidence ${h5.news_confidence||"—"}</div>
+      </div>
+    </div>
+
+    ${analysis.summary?`
+    <div class="analysis-card">
+      <h3>Analysis</h3>
+      <div class="summary">${analysis.summary||""}</div>
+      ${(analysis.key_drivers||[]).length?`
+      <div class="section-title">Key Drivers</div>
+      <div class="drivers-list">${(analysis.key_drivers||[]).map(d=>`
+        <div class="driver-row">
+          <div class="driver-weight ${(d.weight||'').toLowerCase()}"></div>
+          <span class="driver-impact ${d.impact==='BULLISH'?'bull':d.impact==='BEARISH'?'bear':'neu'}">${d.impact}</span>
+          <span style="color:var(--text)">${d.driver}</span>
+        </div>`).join("")}
+      </div>`:""}
+      ${analysis.scenarios?`
+      <div class="section-title">Scenarios</div>
+      <div class="scenarios">
+        <div class="scenario base">
+          <div class="slbl">Base</div>
+          <div class="sprob mono">${((analysis.scenarios.base?.probability||0)*100).toFixed(0)}%</div>
+          <div class="stext">${analysis.scenarios.base?.narrative||""}</div>
+        </div>
+        <div class="scenario bull">
+          <div class="slbl">Bull</div>
+          <div class="sprob mono up">${((analysis.scenarios.bull?.probability||0)*100).toFixed(0)}%</div>
+          <div class="stext">${analysis.scenarios.bull?.narrative||""}</div>
+        </div>
+        <div class="scenario bear">
+          <div class="slbl">Bear</div>
+          <div class="sprob mono dn">${((analysis.scenarios.bear?.probability||0)*100).toFixed(0)}%</div>
+          <div class="stext">${analysis.scenarios.bear?.narrative||""}</div>
+        </div>
+      </div>`:""}
+      ${(analysis.key_risks||[]).length?`
+      <div class="section-title">Key Risks</div>
+      <div class="risks-list">${(analysis.key_risks||[]).map(r=>`<div class="risk-item">${r}</div>`).join("")}</div>`:""}
+    </div>`:`
+    <div class="card"><div style="color:var(--muted);font-size:12px">${sig.explanation||"No analysis available."}</div></div>`}
+  `;
+  drawForecastChart();
+}
+
+function drawForecastChart(){
+  if(mainChart){ mainChart.destroy(); mainChart=null; }
+  const canvas = document.getElementById("main-chart");
+  if(!canvas) return;
+
+  const all = forecasts.filter(r=>r.ticker===activeTicker);
+  const px  = prices[activeTicker]||{};
+  const now = new Date();
+
+  // Build datasets
+  const labels = [];
+  const p50_5=[], p10_5=[], p90_5=[];
+  const p50_30=[], p10_30=[], p90_30=[];
+  const p50_90=[], p10_90=[], p90_90=[];
+
+  // Generate date range for x-axis
+  for(let i=-5;i<=90;i++){
+    const d = new Date(now);
+    d.setDate(d.getDate()+i);
+    labels.push(d.toISOString().slice(0,10));
+  }
+
+  all.forEach(row=>{
+    const d = row.target_date;
+    const h = parseInt(row.horizon||5);
+    const p50=parseFloat(row.p50)||null;
+    const p10=parseFloat(row.p10)||null;
+    const p90=parseFloat(row.p90)||null;
+    const idx = labels.indexOf(d);
+    if(idx<0) return;
+    if(h===5){  p50_5[idx]=p50;  p10_5[idx]=p10;  p90_5[idx]=p90;  }
+    if(h===30){ p50_30[idx]=p50; p10_30[idx]=p10; p90_30[idx]=p90; }
+    if(h===90){ p50_90[idx]=p50; p10_90[idx]=p10; p90_90[idx]=p90; }
+  });
+
+  // Today's price as the anchor
+  const todayIdx = labels.indexOf(now.toISOString().slice(0,10));
+
+  mainChart = new Chart(canvas, {
+    type:"line",
+    data:{
+      labels,
+      datasets:[
+        // Bands as area fills (pair datasets)
+        {label:"90d band",data:p90_90,borderColor:"transparent",backgroundColor:"#00d4ff08",fill:"+1",pointRadius:0,tension:.3},
+        {label:"90d band lo",data:p10_90,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
+        {label:"30d band",data:p90_30,borderColor:"transparent",backgroundColor:"#00d4ff14",fill:"+1",pointRadius:0,tension:.3},
+        {label:"30d band lo",data:p10_30,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
+        {label:"5d band",data:p90_5,borderColor:"transparent",backgroundColor:"#00d4ff22",fill:"+1",pointRadius:0,tension:.3},
+        {label:"5d band lo",data:p10_5,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
+        // P50 lines
+        {label:"P50 90d",data:p50_90,borderColor:"#00d4ff40",borderWidth:1.5,borderDash:[4,4],fill:false,pointRadius:0,tension:.3},
+        {label:"P50 30d",data:p50_30,borderColor:"#00d4ff70",borderWidth:1.5,borderDash:[3,3],fill:false,pointRadius:0,tension:.3},
+        {label:"P50 5d", data:p50_5, borderColor:"#00d4ff",  borderWidth:2,  fill:false,pointRadius:2,tension:.3},
+        // Today price dot
+        {label:"Now",data:labels.map((l,i)=>i===todayIdx?(px.price||null):null),
+         borderColor:"#ffaa00",backgroundColor:"#ffaa00",pointRadius:5,pointStyle:"circle",fill:false,showLine:false},
+      ],
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{
+        callbacks:{label:ctx=>{
+          if(ctx.dataset.label==="Now") return `Current: ${ctx.raw}`;
+          return `${ctx.dataset.label}: ${ctx.raw!=null?ctx.raw.toFixed(4):"—"}`;
+        }}
+      }},
+      scales:{
+        x:{ticks:{color:"#6b8ab0",maxRotation:0,maxTicksLimit:8,font:{size:9}},grid:{color:"#1a284040"}},
+        y:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},
+      },
+      interaction:{intersect:false,mode:"index"},
+    },
+  });
+}
+
+function setHorizonView(h, el){
+  document.querySelectorAll(".hbtn").forEach(b=>b.classList.remove("active"));
+  el.classList.add("active");
+  // TODO: filter chart bands by horizon
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 2 — ACCURACY
+// ══════════════════════════════════════════════════════════════════════════
+function renderAccuracy(){
+  const tc = document.getElementById("tab-content");
+  const h5  = scorecard?.by_horizon?.["5"]||{};
+  const h30 = scorecard?.by_horizon?.["30"]||{};
+  const h90 = scorecard?.by_horizon?.["90"]||{};
+  const ba  = scorecard?.by_asset||{};
+
+  function pct(v,digits=1){ return v!=null?(v*100).toFixed(digits)+"%":"—"; }
+
+  tc.innerHTML=`
+    <div class="stat-grid">
+      <div class="stat-box"><div class="sv">${pct(h5.calibration_7d)}</div><div class="sl">5D Calib 7d</div></div>
+      <div class="stat-box"><div class="sv">${pct(h5.directional_accuracy_7d)}</div><div class="sl">5D Dir 7d</div></div>
+      <div class="stat-box"><div class="sv">${scorecard?.global?.forecasts_graded_total||"—"}</div><div class="sl">Total Graded</div></div>
+    </div>
+    <div class="acc-grid">
+      <div class="acc-chart-wrap"><canvas id="acc-calib-chart"></canvas></div>
+      <div class="acc-chart-wrap"><canvas id="acc-dir-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="section-title">Per-Asset Performance (5D)</div>
+      <table class="acc-table">
+        <thead><tr>
+          <th>Asset</th><th>Calib 7d</th><th>Dir 7d</th><th>Calib 30d</th><th>Dir 30d</th><th>Streak</th>
+        </tr></thead>
+        <tbody>
+          ${Object.entries(ba).map(([t,s])=>`
+          <tr>
+            <td class="mono cy" style="cursor:pointer" onclick="selectAsset('${t}')">${t}</td>
+            <td>${pct(s.calibration_7d)}</td>
+            <td>${pct(s.directional_accuracy_7d)}</td>
+            <td>${pct(s.calibration_30d)}</td>
+            <td>${pct(s.directional_accuracy_30d)}</td>
+            <td class="mono">${s.consecutive_hits||0} 🔥</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+  drawAccCharts(h5, h30, h90);
+}
+
+function drawAccCharts(h5, h30, h90){
+  if(accChart1){accChart1.destroy();accChart1=null;}
+  if(accChart2){accChart2.destroy();accChart2=null;}
+  const c1=document.getElementById("acc-calib-chart");
+  const c2=document.getElementById("acc-dir-chart");
+  if(!c1||!c2) return;
+
+  const labels=["5D 7d","5D 30d","30D 7d","30D 30d","90D 7d","90D 30d"];
+  const h30d = scorecard?.by_horizon?.["30"]||{};
+  const h90d = scorecard?.by_horizon?.["90"]||{};
+
+  accChart1=new Chart(c1,{type:"bar",data:{labels,datasets:[{
+    label:"Calibration",
+    data:[h5.calibration_7d,h5.calibration_30d,h30d.calibration_7d,h30d.calibration_30d,h90d.calibration_7d,h90d.calibration_30d].map(v=>v!=null?v*100:null),
+    backgroundColor:"#00d4ff40",borderColor:"#00d4ff",borderWidth:1,
+  },{
+    label:"Target 80%",type:"line",
+    data:labels.map(()=>80),borderColor:"#ff3355",borderDash:[4,4],borderWidth:1,pointRadius:0,
+  }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:40,max:100,ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}});
+
+  accChart2=new Chart(c2,{type:"bar",data:{labels,datasets:[{
+    label:"Directional",
+    data:[h5.directional_accuracy_7d,h5.directional_accuracy_30d,h30d.directional_accuracy_7d,h30d.directional_accuracy_30d,h90d.directional_accuracy_7d,h90d.directional_accuracy_30d].map(v=>v!=null?v*100:null),
+    backgroundColor:"#a855f740",borderColor:"#a855f7",borderWidth:1,
+  },{
+    label:"Target 55%",type:"line",
+    data:labels.map(()=>55),borderColor:"#ffaa00",borderDash:[4,4],borderWidth:1,pointRadius:0,
+  }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:30,max:80,ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}});
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 3 — FUTURES CURVE
+// ══════════════════════════════════════════════════════════════════════════
+function renderCurve(){
+  const tc = document.getElementById("tab-content");
+  const rows = curveData.filter(r=>r.ticker===activeTicker);
+  const latest = rows.length ? rows[rows.length-1] : null;
+
+  const isCurve = ["GC=F","SI=F","CL=F","NG=F","HG=F","ZW=F","ZC=F"].includes(activeTicker);
+  if(!isCurve){
+    tc.innerHTML=`<div class="card" style="color:var(--muted)">Futures curve data not available for ${activeTicker}. Select a commodity.</div>`;
+    return;
+  }
+
+  const regime = latest?.regime||"N/A";
+  const regColor = regime==="BACKWARDATION"?"var(--green)":regime==="CONTANGO"?"var(--red)":"var(--muted)";
+
+  tc.innerHTML=`
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
+        <span style="font-family:var(--mono);font-size:22px;font-weight:600;color:${regColor}">${regime}</span>
+        <div>
+          <div style="font-size:11px;color:var(--muted)">Roll Yield (Ann.)</div>
+          <div class="mono" style="font-size:14px">${latest?.roll_yield_annualized_pct ? (+latest.roll_yield_annualized_pct).toFixed(2)+"%" : "—"}</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--muted)">M1 Spread</div>
+          <div class="mono" style="font-size:14px">${latest?.contango_m1_pct ? (+latest.contango_m1_pct).toFixed(3)+"%" : "—"}</div>
+        </div>
+      </div>
+    </div>
+    <div id="curve-chart-wrap"><canvas id="curve-chart"></canvas></div>
+  `;
+  if(curveChart){curveChart.destroy();curveChart=null;}
+  const cc=document.getElementById("curve-chart");
+  if(!cc||!latest) return;
+  const pts = ["spot","m1","m2","m3"].map((k,i)=>{
+    const v=parseFloat(latest[k]);
+    return isNaN(v)?null:v;
+  }).filter(v=>v!==null);
+  const labels=["Spot","M+1","M+2","M+3"].slice(0,pts.length);
+  const colors = pts.map((v,i)=>i===0?"#00d4ff":v>pts[0]?"#ff3355":"#00ff88");
+  curveChart=new Chart(cc,{type:"bar",data:{labels,datasets:[{data:pts,backgroundColor:colors,borderColor:colors,borderWidth:1}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{y:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0"},grid:{display:false}}}}
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 4 — POLYMARKET
+// ══════════════════════════════════════════════════════════════════════════
+function renderPolymarket(){
+  const tc = document.getElementById("tab-content");
+  const activeRegimes = polyRegimes?.active_regimes||{};
+  const narratives    = polyNarratives?.narratives||[];
+  const assetPrior    = polyRegimes?.asset_priors?.[activeTicker]||{};
+
+  const sortedRegimes = Object.entries(activeRegimes)
+    .filter(([,v])=>v.probability!=null)
+    .sort((a,b)=>b[1].probability-a[1].probability)
+    .slice(0,5);
+
+  tc.innerHTML=`
+    <div class="card">
+      <div class="section-title">Asset Signal — ${activeTicker}</div>
+      <div class="signal-row" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="sig-card">
+          <div class="sig-lbl">Regime Prior</div>
+          <div class="sig-dir ${assetPrior.direction==='BULLISH'?'bull':assetPrior.direction==='BEARISH'?'bear':'neu'}">${assetPrior.direction||"NEUTRAL"}</div>
+          <div class="sig-sub">Score ${assetPrior.score||0} · ${assetPrior.confidence||"NO_DATA"}</div>
+        </div>
+        <div class="sig-card">
+          <div class="sig-lbl">Top Regime</div>
+          <div class="mono pu" style="font-size:11px">${assetPrior.top_regime||"—"}</div>
+        </div>
+        <div class="sig-card">
+          <div class="sig-lbl">Combined Signal</div>
+          <div class="sig-dir ${assetPrior.direction==='BULLISH'?'bull':assetPrior.direction==='BEARISH'?'bear':'neu'}">${assetPrior.confidence||"—"}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Active Regimes (>30%)</div>
+      <div class="regime-list">
+        ${sortedRegimes.map(([key,data])=>`
+        <div class="regime-item">
+          <div class="rname">${key.replace("REGIME_","")}</div>
+          <div class="rdesc">${(data.top_markets||[])[0]?.question||""}</div>
+          <div class="regime-bar-wrap"><div class="regime-bar" style="width:${(data.probability*100).toFixed(0)}%"></div></div>
+          <div class="regime-prob">${(data.probability*100).toFixed(1)}% · ${data.market_count} markets · $${(data.total_volume/1000).toFixed(0)}k vol</div>
+        </div>`).join("")}
+        ${!sortedRegimes.length?'<div style="color:var(--muted);font-size:12px">No active regimes (>30%) detected.</div>':""}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Narrative Momentum</div>
+      <table class="acc-table">
+        <thead><tr><th>Theme</th><th>Momentum</th><th>Direction</th><th>Volume</th></tr></thead>
+        <tbody>
+          ${narratives.slice(0,8).map(n=>`
+          <tr>
+            <td class="mono pu">${n.regime?.replace("REGIME_","")}</td>
+            <td>${n.total_momentum?.toFixed(2)||"—"}</td>
+            <td class="${n.direction==='BULLISH'?'up':n.direction==='BEARISH'?'dn':''}">${n.direction||"—"}</td>
+            <td>$${(n.total_volume/1000).toFixed(0)}k</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// TAB 5 — DISTRIBUTION
+// ══════════════════════════════════════════════════════════════════════════
+function renderDistribution(){
+  const tc = document.getElementById("tab-content");
+  // Compute realized 5d forward returns from graded forecasts
+  const graded = forecasts.filter(r=>
+    r.ticker===activeTicker && r.actual && r.horizon==="5" && r.direction_correct!==""
+  );
+  tc.innerHTML=`
+    <div class="card">
+      <div class="section-title">Return Distribution — ${activeTicker} (5D Forward)</div>
+      <div style="height:220px"><canvas id="dist-chart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="section-title">Current Forecast Context</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;color:var(--muted)">
+        <div><div class="cy mono" style="font-size:16px">${graded.length}</div><div>Graded forecasts</div></div>
+        <div><div class="cy mono" style="font-size:16px">${graded.filter(r=>r.hit==="1").length}</div><div>P10-P90 hits</div></div>
+      </div>
+    </div>
+  `;
+  // Placeholder histogram
+  const canvas = document.getElementById("dist-chart");
+  if(!canvas) return;
+  const errors = graded.map(r=>parseFloat(r.error_pct)||0);
+  if(!errors.length) return;
+  const bins=Array(10).fill(0);
+  const min=0,max=10;
+  errors.forEach(e=>{ const b=Math.min(9,Math.floor(e/max*10)); bins[b]++; });
+  new Chart(canvas,{type:"bar",data:{
+    labels:bins.map((_,i)=>`${(i*max/10).toFixed(0)}-${((i+1)*max/10).toFixed(0)}%`),
+    datasets:[{data:bins,backgroundColor:"#00d4ff40",borderColor:"#00d4ff",borderWidth:1}]
+  },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{y:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// INTELLIGENCE FEED
+// ══════════════════════════════════════════════════════════════════════════
+async function renderFeed(){
+  try{
+    const data = await fetchJSON("data/intelligence_feed.json");
+    if(data) feed = data;
+  }catch{}
+  buildFeed();
+}
+function setFeedFilter(f, el){
+  feedFilter=f;
+  document.querySelectorAll(".ffbtn").forEach(b=>b.classList.remove("active"));
+  el.classList.add("active");
+  buildFeed();
+}
+function buildFeed(){
+  const list = document.getElementById("feed-list");
+  const filtered = feed.filter(a=>{
+    if(!a.nlp_processed) return false;
+    if(a.event_type==="irrelevant") return false;
+    if(feedFilter==="all") return true;
+    return a.source_type===feedFilter;
+  }).slice(0,50);
+
+  document.getElementById("feed-count").textContent = filtered.length+" items";
+  list.innerHTML = filtered.map(a=>{
+    const sent = a.sentiment;
+    const cls  = sent==="BULLISH"?"bull-item":sent==="BEARISH"?"bear-item":"";
+    const ago  = timeAgo(a.fetched_at);
+    const assets = (a.assets_affected||[]).slice(0,4).map(t=>`<span class="asset-pill">${t}</span>`).join("");
+    return `
+    <div class="feed-item ${cls}" onclick="this.classList.toggle('expanded')">
+      <div class="fi-source"><span>${a.source}</span><span>${ago}</span></div>
+      <div class="fi-headline">${a.headline}</div>
+      ${assets?`<div class="fi-assets">${assets}</div>`:""}
+      <div class="fi-detail">${a.summary||""}<br><a href="${a.url}" target="_blank" style="color:var(--cyan);font-size:10px">Open →</a></div>
+    </div>`;
+  }).join("");
+}
+
+function timeAgo(iso){
+  if(!iso) return "";
+  try{
+    const diff = (Date.now()-new Date(iso.replace("Z","+00:00")).getTime())/1000;
+    if(diff<60) return Math.floor(diff)+"s";
+    if(diff<3600) return Math.floor(diff/60)+"m";
+    if(diff<86400) return Math.floor(diff/3600)+"h";
+    return Math.floor(diff/86400)+"d";
+  }catch{return "";}
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// ECONOMIC CALENDAR
+// ══════════════════════════════════════════════════════════════════════════
+function renderCalendar(){
+  const list = document.getElementById("cal-list");
+  const events = (calendar?.upcoming_7d||[]).slice(0,6);
+  list.innerHTML = events.map(ev=>{
+    const hi = ["FOMC","CPI","NFP"].includes(ev.event);
+    const med = ["GDP","PCE","EIA_OIL"].includes(ev.event);
+    const dot = hi?"high":med?"med":"low";
+    return `
+    <div class="cal-event">
+      <div class="cal-dot ${dot}"></div>
+      <div class="cal-date">${ev.date?.slice(5)||""}</div>
+      <div class="cal-name">${ev.event}</div>
+      <div class="cal-days">${ev.days_until===0?"today":ev.days_until+"d"}</div>
+    </div>`;
+  }).join("") || '<div style="color:var(--muted);font-size:11px;padding:4px 0">No events in next 7 days.</div>';
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// BOOT
+// ══════════════════════════════════════════════════════════════════════════
+selectAsset("SPY");
+loadAll();
+setInterval(()=>{
+  document.getElementById("h-time").textContent =
+    new Date().toUTCString().slice(17,25)+" UTC";
+}, 1000);
+</script>
+</body>
+</html>
