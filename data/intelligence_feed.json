@@ -2492,16 +2492,26 @@
     "summary_raw": "Companies with good payouts are now the hottest bet in China markets.",
     "published_at": "Mon, 27 Jan 2025 05:30:00 -0500",
     "fetched_at": "2026-05-18T17:01:48.170663+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "FXI",
+      "EEM"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Chinese investors rotate into dividend stocks amid limited alternatives.",
+    "signal_direction": {
+      "FXI": 1,
+      "EEM": 1
+    },
+    "signal_strength": {
+      "FXI": 0.4,
+      "EEM": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:21:46.834159+00:00"
   },
   {
     "id": "35b1f574a4d66ec0",
@@ -2512,16 +2522,32 @@
     "summary_raw": "The 10-year U.S. Treasury yield fell and ING said the the long end of the Treasury curve will continue trading at higher yields even as Trump hasn\u2019t delivered anything to shock markets so far.",
     "published_at": "Mon, 27 Jan 2025 05:02:00 -0500",
     "fetched_at": "2026-05-18T17:01:48.170670+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "TLT",
+      "IEF",
+      "^TNX",
+      "BIL"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Long-end Treasury yields expected to remain elevated despite short-term dip.",
+    "signal_direction": {
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "BIL": 1
+    },
+    "signal_strength": {
+      "TLT": 0.6,
+      "IEF": 0.45,
+      "^TNX": 0.6,
+      "BIL": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:21:50.049306+00:00"
   },
   {
     "id": "40803a61b2ecb566",
@@ -2532,16 +2558,32 @@
     "summary_raw": "Oil edged lower in early trade as Goldman Sachs said the latest round of U.S. sanctions against Russia haven\u2019t had a significant impact on the country\u2019s oil exports.",
     "published_at": "Mon, 27 Jan 2025 04:46:00 -0500",
     "fetched_at": "2026-05-18T17:01:48.170677+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "Russian crude exports stable despite sanctions, reducing supply disruption premium.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "GLD": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.6,
+      "XLE": 0.5,
+      "GLD": 0.3,
+      "DX-Y.NYB": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:21:53.054736+00:00"
   },
   {
     "id": "db88f905a2c94239",
@@ -2552,16 +2594,32 @@
     "summary_raw": "There is little sign of crimped demand for equities among individual investors, who remain bullish after two years of blockbuster gains.",
     "published_at": "Mon, 27 Jan 2025 01:05:00 -0500",
     "fetched_at": "2026-05-18T17:01:48.170684+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "TLT",
+      "^TNX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Equity risk premium vanishes, stocks vs bonds attractiveness deteriorates structurally.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "TLT": 1,
+      "^TNX": -1
+    },
+    "signal_strength": {
+      "SPY": 0.5,
+      "QQQ": 0.5,
+      "TLT": 0.45,
+      "^TNX": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:21:56.130947+00:00"
   },
   {
     "id": "6028f09eccf170df",
@@ -2573,15 +2631,67 @@
     "published_at": "Mon, 20 Apr 2026 10:00:00 +0100",
     "fetched_at": "2026-05-18T17:01:49.649889+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "MEDIUM",
+    "summary": "UK FPC bank capital review has no direct impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:21:58.327456+00:00"
+  },
+  {
+    "id": "6f759243f65dc793",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "Kevin Warsh will be the first Fed chair sworn in at the White House in almost 40 years",
+    "url": "https://www.marketwatch.com/story/kevin-warsh-will-be-the-first-fed-chair-sworn-in-at-the-white-house-in-almost-40-years-55254337?mod=mw_rss_topstories",
+    "summary_raw": "President Donald Trump will host a swearing-in ceremony for incoming Federal Reserve Chair Kevin Warsh at the White House on Friday, a White House official said.",
+    "published_at": "Mon, 18 May 2026 19:16:00 GMT",
+    "fetched_at": "2026-05-18T19:21:12.045970+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "TLT",
+      "IEF",
+      "^TNX",
+      "DX-Y.NYB",
+      "GLD",
+      "BIL",
+      "^IRX"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Warsh Fed chair swearing-in signals potential hawkish policy shift ahead.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "DX-Y.NYB": 1,
+      "GLD": -1,
+      "BIL": 1,
+      "^IRX": 1
+    },
+    "signal_strength": {
+      "SPY": 0.35,
+      "QQQ": 0.35,
+      "TLT": 0.4,
+      "IEF": 0.35,
+      "^TNX": 0.4,
+      "DX-Y.NYB": 0.35,
+      "GLD": 0.3,
+      "BIL": 0.3,
+      "^IRX": 0.3
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:05.222248+00:00"
   },
   {
     "id": "883806475f458004",
@@ -2593,15 +2703,16 @@
     "published_at": "Mon, 18 May 2026 19:13:41 +0000",
     "fetched_at": "2026-05-18T19:17:44.602274+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "On-device AI agent announcement has no direct market impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:07.442584+00:00"
   },
   {
     "id": "2ca5a4c2dcbe0c0e",
@@ -2612,16 +2723,41 @@
     "summary_raw": "<p>Geopolitical tensions may escalate, impacting diplomatic efforts and potentially driving oil prices higher, affecting global markets.</p>\n<p>The post <a href=\"https://cryptobriefing.com/trump-delays-iran-attack-after-qatar-request-oil-prices-may-rise/\">Trump delays Iran attack after Qatar request, oil prices may rise</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 19:11:05 +0000",
     "fetched_at": "2026-05-18T19:17:46.413619+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "SPY",
+      "TLT",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Iran attack delay raises geopolitical risk, oil prices expected to rise.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "SPY": -1,
+      "TLT": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.72,
+      "XLE": 0.65,
+      "GLD": 0.6,
+      "^VIX": 0.65,
+      "SPY": 0.55,
+      "TLT": 0.45,
+      "DX-Y.NYB": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:11.706306+00:00"
   },
   {
     "id": "2efa1d72cb0c4202",
@@ -2632,16 +2768,47 @@
     "summary_raw": "<p>The decision to halt military action may foster diplomatic dialogue, reducing immediate conflict risks and influencing market perceptions.</p>\n<p>The post <a href=\"https://cryptobriefing.com/trump-cancels-scheduled-military-strike-on-iran-easing-tensions/\">Trump cancels scheduled military strike on Iran, easing tensions</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 19:11:02 +0000",
     "fetched_at": "2026-05-18T19:17:46.413641+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "GC=F",
+      "^VIX",
+      "UVXY",
+      "SPY",
+      "QQQ",
+      "TLT",
+      "XLE"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Cancelled Iran strike reduces geopolitical risk, boosting equities and pressuring safe havens.",
+    "signal_direction": {
+      "CL=F": -1,
+      "GLD": -1,
+      "GC=F": -1,
+      "^VIX": -1,
+      "UVXY": -1,
+      "SPY": 1,
+      "QQQ": 1,
+      "TLT": -1,
+      "XLE": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.75,
+      "GLD": 0.65,
+      "GC=F": 0.65,
+      "^VIX": 0.7,
+      "UVXY": 0.7,
+      "SPY": 0.6,
+      "QQQ": 0.58,
+      "TLT": 0.4,
+      "XLE": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:18.569734+00:00"
   },
   {
     "id": "ddac8a0c575bf8cb",
@@ -2652,16 +2819,44 @@
     "summary_raw": "<p>The delay in military action highlights the precarious balance of diplomacy and conflict, with potential for regional instability and economic impact.</p>\n<p>The post <a href=\"https://cryptobriefing.com/trump-delays-iran-strike-at-gulf-states-request-amid-rising-tensions/\">Trump delays Iran strike at Gulf states&#8217; request amid rising tensions</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 19:10:18 +0000",
     "fetched_at": "2026-05-18T19:17:46.413666+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "^VIX",
+      "UVXY",
+      "XLE",
+      "SPY",
+      "TLT",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Iran strike delay signals regional instability, boosting safe havens and oil.",
+    "signal_direction": {
+      "CL=F": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "XLE": 1,
+      "SPY": -1,
+      "TLT": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.72,
+      "GLD": 0.68,
+      "^VIX": 0.65,
+      "UVXY": 0.62,
+      "XLE": 0.55,
+      "SPY": 0.55,
+      "TLT": 0.5,
+      "DX-Y.NYB": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:23.197563+00:00"
   },
   {
     "id": "5558428e0f2153e4",
@@ -2672,16 +2867,38 @@
     "summary_raw": "<p>Iran's uranium transfer proposal to Russia could reshape geopolitical dynamics, impacting US-Iran relations and global energy stability.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-uranium-transfer-russia-peace-plan/\">Iran proposes transferring enriched uranium to Russia in revised peace plan</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 19:00:27 +0000",
     "fetched_at": "2026-05-18T19:17:46.413676+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "GC=F",
+      "CL=F",
+      "^VIX",
+      "SPY",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.55,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran uranium transfer proposal to Russia may ease nuclear tensions slightly.",
+    "signal_direction": {
+      "GLD": -1,
+      "GC=F": -1,
+      "CL=F": -1,
+      "^VIX": -1,
+      "SPY": 1,
+      "DX-Y.NYB": -1
+    },
+    "signal_strength": {
+      "GLD": 0.35,
+      "GC=F": 0.35,
+      "CL=F": 0.4,
+      "^VIX": 0.3,
+      "SPY": 0.25,
+      "DX-Y.NYB": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:27.400034+00:00"
   },
   {
     "id": "fa0e1bc855e65dd3",
@@ -2692,16 +2909,26 @@
     "summary_raw": "Musk intends to appeal the verdict, according to his lawyer.",
     "published_at": "Mon, 18 May 2026 18:59:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152221+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Musk loses OpenAI lawsuit; minimal direct market impact expected.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.1,
+      "XLK": 0.1
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:30.099238+00:00"
   },
   {
     "id": "b19ed12e971f2e3b",
@@ -2712,16 +2939,32 @@
     "summary_raw": "<p>Strengthened US-China tech ties could boost AMD's market presence, but geopolitical tensions and export controls pose ongoing challenges.</p>\n<p>The post <a href=\"https://cryptobriefing.com/china-vice-premier-meets-amd-ceo-tech-cooperation/\">China&#8217;s vice premier He Lifeng meets AMD CEO Lisa Su to discuss tech cooperation</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 18:58:23 +0000",
     "fetched_at": "2026-05-18T19:17:46.413685+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "FXI",
+      "EEM"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.52,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "US-China tech diplomacy signals easing tensions, boosting semiconductor sector outlook.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "FXI": 1,
+      "EEM": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.35,
+      "XLK": 0.45,
+      "FXI": 0.4,
+      "EEM": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:36.431031+00:00"
   },
   {
     "id": "b93965a88080923a",
@@ -2732,16 +2975,35 @@
     "summary_raw": "Interlinked Polymarket accounts have made millions betting on U.S. military actions in Iran\u2014and won 98% of the time, analysts say.",
     "published_at": "Mon, 18 May 2026 18:55:17 +0000",
     "fetched_at": "2026-05-18T19:17:44.602299+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "GC=F"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Insider trading suspicions on Iran bets signal elevated geopolitical risk ahead.",
+    "signal_direction": {
+      "GLD": 1,
+      "GC=F": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "UVXY": 1
+    },
+    "signal_strength": {
+      "GLD": 0.5,
+      "GC=F": 0.5,
+      "CL=F": 0.55,
+      "^VIX": 0.45,
+      "UVXY": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:39.824716+00:00"
   },
   {
     "id": "68d1b0a015f09b18",
@@ -2752,16 +3014,41 @@
     "summary_raw": "<p>Heightened control over the Strait of Hormuz by Iran exacerbates regional tensions, complicating diplomatic efforts and peace prospects.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-tightens-strait-of-hormuz-control-amid-us-iran-diplomatic-tensions/\">Iran tightens Strait of Hormuz control amid US-Iran diplomatic tensions</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 18:46:37 +0000",
     "fetched_at": "2026-05-18T19:17:46.413693+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "SPY",
+      "TLT",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.75,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Iran Hormuz control tightening spikes oil prices and risk-off sentiment.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "SPY": -1,
+      "TLT": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.8,
+      "XLE": 0.65,
+      "GLD": 0.6,
+      "^VIX": 0.7,
+      "SPY": 0.55,
+      "TLT": 0.4,
+      "DX-Y.NYB": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:43.513098+00:00"
   },
   {
     "id": "3255f7a3f8222514",
@@ -2772,16 +3059,47 @@
     "summary_raw": "Tough talk from the Federal Reserve about rate hikes may be needed to ease the Treasury market\u2019s rout.",
     "published_at": "Mon, 18 May 2026 18:46:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152243+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "TLT",
+      "IEF",
+      "^TNX",
+      "BIL",
+      "^IRX",
+      "SPY",
+      "QQQ",
+      "GLD",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.82,
+    "event_type": "cpi_above_target",
+    "impact_horizon": "MEDIUM",
+    "summary": "Bond market rout signals Fed must hike rates, pressuring equities and Treasuries.",
+    "signal_direction": {
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "BIL": 1,
+      "^IRX": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "GLD": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "TLT": 0.82,
+      "IEF": 0.75,
+      "^TNX": 0.85,
+      "BIL": 0.65,
+      "^IRX": 0.65,
+      "SPY": 0.65,
+      "QQQ": 0.7,
+      "GLD": 0.55,
+      "DX-Y.NYB": 0.68
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:48.166857+00:00"
   },
   {
     "id": "4a9ba4cc1a4212e0",
@@ -2792,16 +3110,29 @@
     "summary_raw": "Early surveillance and testing failed to identify Bundibugyo, a rare species of Ebola responsible for the current outbreak.",
     "published_at": "Mon, 18 May 2026 18:44:46 +0000",
     "fetched_at": "2026-05-18T19:17:14.096086+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "EEM",
+      "GLD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Ebola outbreak in Congo raises emerging market risk sentiment concerns.",
+    "signal_direction": {
+      "EEM": -1,
+      "GLD": 1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "EEM": 0.3,
+      "GLD": 0.2,
+      "^VIX": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:51.479301+00:00"
   },
   {
     "id": "6e3b05bd0aa7ed80",
@@ -2813,15 +3144,16 @@
     "published_at": "Mon, 18 May 2026 18:36:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152254+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Personal finance retirement advice, no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:53.584820+00:00"
   },
   {
     "id": "b13c5760a6d10813",
@@ -2832,16 +3164,26 @@
     "summary_raw": "<p>President Donald Trump-themed TRUMP coin is dangling luxury suite tickets to the 2026 World Cup final in a bid to arrest its severe market collapse. The initiative, organized through the &#8220;TRUMP Coin Club,&#8221; represents the latest attempt to inject liquidity and consumer interest into a digital asset that has lost roughly 97% of its value [&#8230;]</p>\n<p>The post <a href=\"https://cryptoslate.com/trump-coin-world-cup-insider-sale-terms/\">TRUMP coin World Cup VIP offer lets insiders s",
     "published_at": "Mon, 18 May 2026 18:35:04 +0000",
     "fetched_at": "2026-05-18T19:17:46.207692+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "TRUMP meme coin down 97%, insider selling scheme damages crypto sentiment.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:22:56.164863+00:00"
   },
   {
     "id": "d8445f330d840daa",
@@ -2853,15 +3195,16 @@
     "published_at": "Mon, 18 May 2026 18:31:56 +0000",
     "fetched_at": "2026-05-18T19:17:46.413701+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Polymarket fee milestone has no direct impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:00.823849+00:00"
   },
   {
     "id": "8a9d50e35e48bc97",
@@ -2872,16 +3215,47 @@
     "summary_raw": "<p>Inflation risks could undermine the S&#38;P 500 rally, affecting investor sentiment, corporate margins, and interest rate expectations.</p>\n<p>The post <a href=\"https://cryptobriefing.com/sp500-rally-inflation-risk-wall-street/\">S&amp;P 500 rally faces pressure as Wall Street warns of inflation risks</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 18:31:22 +0000",
     "fetched_at": "2026-05-18T19:17:46.413709+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "TLT",
+      "IEF",
+      "^VIX",
+      "^TNX",
+      "HYG",
+      "LQD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "cpi_above_target",
+    "impact_horizon": "MEDIUM",
+    "summary": "Inflation risks threaten S&P 500 rally, pressuring equities and bonds.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "IWM": -1,
+      "TLT": -1,
+      "IEF": -1,
+      "HYG": -1,
+      "LQD": -1,
+      "^VIX": 1,
+      "^TNX": 1
+    },
+    "signal_strength": {
+      "SPY": 0.6,
+      "QQQ": 0.6,
+      "IWM": 0.55,
+      "TLT": 0.65,
+      "IEF": 0.6,
+      "HYG": 0.5,
+      "LQD": 0.5,
+      "^VIX": 0.6,
+      "^TNX": 0.65
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:05.390531+00:00"
   },
   {
     "id": "212d512d840005a6",
@@ -2892,16 +3266,41 @@
     "summary_raw": "<p>Potential US-Iran oil sanctions relief could impact global oil markets, influence inflation, and affect crypto market dynamics and regulations.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-us-oil-sanctions-relief-negotiations/\">Iran claims US agrees to discuss oil sanctions relief in negotiations</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 18:30:29 +0000",
     "fetched_at": "2026-05-18T19:17:46.413717+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "TLT",
+      "DX-Y.NYB",
+      "BTC-USD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran sanctions relief talks could boost oil supply, pressuring crude prices.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "GLD": -1,
+      "TLT": 1,
+      "DX-Y.NYB": -1,
+      "BTC-USD": 1,
+      "^VIX": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.65,
+      "XLE": 0.6,
+      "GLD": 0.35,
+      "TLT": 0.3,
+      "DX-Y.NYB": 0.3,
+      "BTC-USD": 0.25,
+      "^VIX": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:09.436253+00:00"
   },
   {
     "id": "9345ba8e94e7d32a",
@@ -2912,16 +3311,29 @@
     "summary_raw": "",
     "published_at": "Mon, 18 May 2026 18:30:15 +0000",
     "fetched_at": "2026-05-18T19:17:44.933897+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Revolut crypto payment card boosts mainstream adoption sentiment broadly.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.25,
+      "SOL-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:12.181959+00:00"
   },
   {
     "id": "423d107b311f88ce",
@@ -2932,16 +3344,26 @@
     "summary_raw": "Trump, at a White House event Monday, is expected to announce an expansion of the number of discounted prescription drugs offered through TrumpRX.",
     "published_at": "Mon, 18 May 2026 18:28:05 GMT",
     "fetched_at": "2026-05-18T19:17:12.630606+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY",
+      "XLF"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Trump pivots to domestic affordability agenda with prescription drug pricing expansion.",
+    "signal_direction": {
+      "SPY": 1,
+      "XLF": -1
+    },
+    "signal_strength": {
+      "SPY": 0.2,
+      "XLF": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:14.834931+00:00"
   },
   {
     "id": "5cdf4522a1677257",
@@ -2952,16 +3374,26 @@
     "summary_raw": "<p>OpenAI and Dell partnership enables Codex's on-premises AI deployment, enhancing security and broadening enterprise workflows.</p>\n<p>The post <a href=\"https://cryptobriefing.com/openai-dell-partnership-enterprise-ai/\">OpenAI and Dell partner to bring Codex into enterprise AI systems</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 18:24:29 +0000",
     "fetched_at": "2026-05-18T19:17:46.413725+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "OpenAI-Dell enterprise AI partnership boosts tech sector sentiment.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:17.502251+00:00"
   },
   {
     "id": "0e90bbc154a60c17",
@@ -2972,16 +3404,26 @@
     "summary_raw": "A jury in Oakland, California, ruled against Elon Musk in his dramatic court battle with Sam Altman and OpenAI.",
     "published_at": "Mon, 18 May 2026 18:18:33 GMT",
     "fetched_at": "2026-05-18T19:17:12.630594+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Musk loses OpenAI lawsuit; limited broad market impact expected.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.1,
+      "XLK": 0.1
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:20.565223+00:00"
   },
   {
     "id": "2982c31aa7972d0f",
@@ -2992,16 +3434,26 @@
     "summary_raw": "Morgan Stanley is looking to see how Nvidia is managing the memory crunch and whether it can generate significant revenue outside of GPUs.",
     "published_at": "Mon, 18 May 2026 18:17:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152263+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Nvidia earnings overshadowed by memory supply and revenue diversification concerns.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:26.368781+00:00"
   },
   {
     "id": "288f279e0fbcf28f",
@@ -3013,15 +3465,16 @@
     "published_at": "Mon, 18 May 2026 18:05:00 GMT",
     "fetched_at": "2026-05-18T19:17:13.152271+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.0,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Personal finance dating advice with no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:28.162840+00:00"
   },
   {
     "id": "f7ade056ef608392",
@@ -3032,16 +3485,26 @@
     "summary_raw": "<p>Bitwise will hold HYPE from Hyperliquid ETF fees as HYPE funds pass $5.6M in inflows after 21Shares and BHYP launches.</p>\n<p>The post <a href=\"https://cryptobriefing.com/bitwise-hype-etf-strategy/\">Bitwise to hold HYPE from ETF fees as Hyperliquid funds top $5.6 million in inflows</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Mon, 18 May 2026 17:59:16 +0000",
     "fetched_at": "2026-05-18T19:17:46.413733+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Hyperliquid ETF inflows signal growing institutional crypto product demand.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:30.790973+00:00"
   },
   {
     "id": "9cec833b33ff7c3f",
@@ -3052,16 +3515,35 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Price predictions 5/18: SPX, DXY, BTC, ETH, XRP, BNB, SOL, DOGE, HYPE, ADA\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9hbmFseXNpcy1hbmFseXRpY3Mtc2NyZWVuLXJlZC1mYWxsMzIuanBn.jpg\" /></p><p>Bitcoin dropped to the crucial $76,000 support level while large-cap altcoins sold off sharply. Do technical charts suggest that traders will ",
     "published_at": "Mon, 18 May 2026 17:58:29 +0000",
     "fetched_at": "2026-05-18T19:17:44.461769+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "SPY",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.5,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Bitcoin tests $76K support as altcoins sell off sharply.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1,
+      "SPY": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.6,
+      "ETH-USD": 0.6,
+      "SOL-USD": 0.55,
+      "SPY": 0.3,
+      "DX-Y.NYB": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "nlp_processed_at": "2026-05-18T19:23:34.673561+00:00"
   },
   {
     "id": "38f17d967b032032",
@@ -8816,6 +9298,86 @@
     "nlp_processed": false
   },
   {
+    "id": "f15f40a895877abf",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Analysis-US small caps, consumer stocks, housing shares could bear brunt of yield spike",
+    "url": "https://www.investing.com/news/stock-market-news/analysisus-small-caps-consumer-stocks-housing-shares-could-bear-brunt-of-yield-spike-4696702",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:13:03",
+    "fetched_at": "2026-05-18T19:21:22.029468+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "27c7882466f57871",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "U.S. State Department approves possible sale of Apache helicopter support services to India",
+    "url": "https://www.investing.com/news/stock-market-news/us-state-department-approves-possible-sale-of-apache-helicopter-support-services-to-india-4696699",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:06:32",
+    "fetched_at": "2026-05-18T19:21:22.029479+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "673e71e022f60bb1",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Edison International stock falls on California wildfire concerns",
+    "url": "https://www.investing.com/news/stock-market-news/edison-international-stock-falls-on-california-wildfire-concerns-93CH-4696698",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:05:22",
+    "fetched_at": "2026-05-18T19:21:22.029487+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "5f22c7391ddd7f12",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Nvidia CEO says he believes China market will open over time",
+    "url": "https://www.investing.com/news/stock-market-news/nvidia-ceo-says-he-believes-china-market-will-open-over-time-4696684",
+    "summary_raw": "",
+    "published_at": "2026-05-18 19:00:33",
+    "fetched_at": "2026-05-18T19:21:22.029495+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "540bd6709d118e15",
     "source": "Investing.com Stocks",
     "source_type": "equities",
@@ -9236,6 +9798,26 @@
     "nlp_processed": false
   },
   {
+    "id": "eafba04e1f3f7021",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Cerebras Stock Opened Trading with a Wild Rally. It Still Has a Lot of Runway Before It Catches Up with Nvidia and AMD.",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/cerebras-stock-opened-trading-wild-130003072.html",
+    "summary_raw": "",
+    "published_at": "2026-05-17T13:00:03Z",
+    "fetched_at": "2026-05-18T19:21:11.867995+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "3dbcfea4acace594",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -9384,6 +9966,26 @@
     "summary_raw": "",
     "published_at": "2026-05-17T10:17:39Z",
     "fetched_at": "2026-05-18T19:17:12.909251+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "b01d666abacb3c8a",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Billionaire Bill Miller Beat the S&P 500 for 15 Consecutive Years. Here Are His Fund's Top 3 Ultra-High-Yield Dividend Stocks Now.",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-miller-beat-p-101200378.html",
+    "summary_raw": "",
+    "published_at": "2026-05-17T10:12:00Z",
+    "fetched_at": "2026-05-18T19:21:11.867943+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
