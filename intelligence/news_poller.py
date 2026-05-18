@@ -1,4 +1,4 @@
-"""RSS news ingestion — 17 feeds, 48h window."""
+"""RSS news ingestion — expanded feeds across crypto, energy, equities, CB."""
 
 import feedparser
 import hashlib
@@ -11,24 +11,51 @@ FEED_PATH.parent.mkdir(exist_ok=True)
 MAX_AGE_HOURS = 48
 
 FEEDS = [
-    {"url": "https://feeds.reuters.com/reuters/businessNews",        "source": "Reuters",          "type": "macro"},
-    {"url": "https://www.cnbc.com/id/100727362/device/rss/rss.html", "source": "CNBC",             "type": "macro"},
-    {"url": "https://finance.yahoo.com/news/rssindex",               "source": "Yahoo Finance",    "type": "macro"},
-    {"url": "https://feeds.marketwatch.com/marketwatch/topstories",  "source": "MarketWatch",      "type": "equities"},
-    {"url": "https://www.federalreserve.gov/feeds/press_all.xml",    "source": "Federal Reserve",  "type": "central_bank"},
-    {"url": "https://www.ecb.europa.eu/rss/press.html",              "source": "ECB",              "type": "central_bank"},
-    {"url": "https://www.eia.gov/rss/news.xml",                      "source": "EIA",              "type": "energy"},
-    {"url": "https://feeds.reuters.com/reuters/commoditiesNews",     "source": "Reuters Commodities", "type": "commodities"},
-    {"url": "https://oilprice.com/rss/main",                         "source": "OilPrice",         "type": "energy"},
-    {"url": "https://cointelegraph.com/rss",                         "source": "CoinTelegraph",    "type": "crypto"},
-    {"url": "https://decrypt.co/feed",                               "source": "Decrypt",          "type": "crypto"},
-    {"url": "https://feeds.marketwatch.com/marketwatch/realtimeheadlines", "source": "MarketWatch RT", "type": "macro"},
+    # ── MACRO / GENERAL ──────────────────────────────────────────────────────
+    {"url": "https://feeds.reuters.com/reuters/businessNews",           "source": "Reuters Business",     "type": "macro"},
+    {"url": "https://www.cnbc.com/id/100727362/device/rss/rss.html",   "source": "CNBC Markets",          "type": "macro"},
+    {"url": "https://finance.yahoo.com/news/rssindex",                  "source": "Yahoo Finance",         "type": "macro"},
+    {"url": "https://feeds.marketwatch.com/marketwatch/topstories",     "source": "MarketWatch",           "type": "macro"},
+    {"url": "https://feeds.marketwatch.com/marketwatch/realtimeheadlines","source":"MarketWatch RT",       "type": "macro"},
+    {"url": "https://www.ft.com/markets?format=rss",                    "source": "Financial Times",       "type": "macro"},
+    {"url": "https://feeds.reuters.com/Reuters/worldNews",              "source": "Reuters World",         "type": "geopolitics"},
+    {"url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",  "source": "NYT World",             "type": "geopolitics"},
+    {"url": "https://feeds.washingtonpost.com/rss/world",              "source": "WashPost World",        "type": "geopolitics"},
+
+    # ── EQUITIES ─────────────────────────────────────────────────────────────
+    {"url": "https://feeds.reuters.com/reuters/companyNews",            "source": "Reuters Companies",     "type": "equities"},
+    {"url": "https://www.investing.com/rss/news_25.rss",               "source": "Investing.com Stocks",  "type": "equities"},
+    {"url": "https://www.investors.com/feed/",                         "source": "IBD",                   "type": "equities"},
+    {"url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",          "source": "WSJ Markets",           "type": "equities"},
+    {"url": "https://www.barrons.com/xml/rss/3_7520.xml",             "source": "Barron's",              "type": "equities"},
     {"url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&output=atom",
-                                                                     "source": "SEC EDGAR 8-K",    "type": "sec"},
-    {"url": "https://feeds.reuters.com/Reuters/worldNews",           "source": "Reuters World",    "type": "geopolitics"},
-    {"url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml","source": "NYT World",        "type": "geopolitics"},
-    {"url": "https://feeds.washingtonpost.com/rss/world",            "source": "WashPost World",   "type": "geopolitics"},
-    {"url": "https://www.ft.com/markets?format=rss",                 "source": "FT",               "type": "macro"},
+                                                                        "source": "SEC EDGAR 8-K",         "type": "sec"},
+
+    # ── CENTRAL BANKS ────────────────────────────────────────────────────────
+    {"url": "https://www.federalreserve.gov/feeds/press_all.xml",      "source": "Federal Reserve",       "type": "central_bank"},
+    {"url": "https://www.ecb.europa.eu/rss/press.html",                "source": "ECB",                   "type": "central_bank"},
+    {"url": "https://www.bankofengland.co.uk/rss/news",                "source": "Bank of England",       "type": "central_bank"},
+    {"url": "https://www.bis.org/doclist/speeches.rss",                "source": "BIS Speeches",          "type": "central_bank"},
+    {"url": "https://www.imf.org/en/News/RSS",                         "source": "IMF",                   "type": "central_bank"},
+    {"url": "https://www.boj.or.jp/en/announcements/release_2024/rss.xml","source":"Bank of Japan",       "type": "central_bank"},
+
+    # ── ENERGY ───────────────────────────────────────────────────────────────
+    {"url": "https://www.eia.gov/rss/news.xml",                        "source": "EIA",                   "type": "energy"},
+    {"url": "https://feeds.reuters.com/reuters/commoditiesNews",       "source": "Reuters Commodities",   "type": "energy"},
+    {"url": "https://oilprice.com/rss/main",                           "source": "OilPrice",              "type": "energy"},
+    {"url": "https://www.rigzone.com/news/rss/rigzone_latest.aspx",    "source": "Rigzone",               "type": "energy"},
+    {"url": "https://www.naturalgasintelligence.com/feed/",            "source": "NGI",                   "type": "energy"},
+    {"url": "https://www.spglobal.com/commodityinsights/en/rss-feed/oil", "source":"S&P Global Oil",      "type": "energy"},
+    {"url": "https://www.energymonitor.ai/feed/",                      "source": "Energy Monitor",        "type": "energy"},
+
+    # ── CRYPTO ───────────────────────────────────────────────────────────────
+    {"url": "https://cointelegraph.com/rss",                           "source": "CoinTelegraph",         "type": "crypto"},
+    {"url": "https://decrypt.co/feed",                                 "source": "Decrypt",               "type": "crypto"},
+    {"url": "https://www.coindesk.com/arc/outboundfeeds/rss/",        "source": "CoinDesk",              "type": "crypto"},
+    {"url": "https://bitcoinmagazine.com/.rss/full/",                  "source": "Bitcoin Magazine",      "type": "crypto"},
+    {"url": "https://theblock.co/rss.xml",                            "source": "The Block",             "type": "crypto"},
+    {"url": "https://cryptoslate.com/feed/",                          "source": "CryptoSlate",           "type": "crypto"},
+    {"url": "https://cryptobriefing.com/feed/",                       "source": "Crypto Briefing",       "type": "crypto"},
 ]
 
 
@@ -38,7 +65,7 @@ def fetch_all_feeds():
     for feed_cfg in FEEDS:
         try:
             feed = feedparser.parse(feed_cfg["url"])
-            for entry in feed.entries[:20]:
+            for entry in feed.entries[:15]:
                 url = entry.get("link", "")
                 if not url:
                     continue

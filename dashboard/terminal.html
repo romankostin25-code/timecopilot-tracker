@@ -363,7 +363,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 const REPO_BASE = "https://raw.githubusercontent.com/romankostin25-code/timecopilot-tracker/main/";
 const POLL_MS   = 15 * 60 * 1000;
 
-let forecasts=[], scorecard={}, signals={}, macroData=[], prices={},
+let forecasts=[], allForecasts=[], scorecard={}, signals={}, macroData=[], prices={},
     feed=[], polyRegimes={}, polyNarratives={}, calendar={},
     curveData=[], activeTicker="SPY", activeTab="forecast",
     feedFilter="all", refreshTimer, countdown=POLL_MS/1000,
@@ -435,11 +435,11 @@ async function loadAll(silent=false){
   ]);
 
   if(fc && fc.includes("forecast_date")){
-    const all = parseCSV(fc);
-    // Latest forecast_date only
-    const dates = [...new Set(all.map(r=>r.forecast_date))].sort();
+    allForecasts = parseCSV(fc);
+    // Latest forecast_date for signals panel
+    const dates = [...new Set(allForecasts.map(r=>r.forecast_date))].sort();
     const latest = dates[dates.length-1];
-    forecasts = all.filter(r=>r.forecast_date===latest);
+    forecasts = allForecasts.filter(r=>r.forecast_date===latest);
   }
   if(sc) scorecard = sc;
   if(sg) signals = sg;
@@ -600,7 +600,41 @@ function renderForecast(){
   const align = analysis.poly_alignment||"NEUTRAL";
   const alignClass = align==="ALIGNED"?"aligned":align==="DIVERGENT"?"divergent":"";
 
+  // Accuracy summary bar
+  const h5sc  = scorecard?.by_horizon?.["5"]||{};
+  const h30sc = scorecard?.by_horizon?.["30"]||{};
+  const assetSc = scorecard?.by_asset?.[activeTicker]||{};
+  function pctFmt(v){ return v!=null?(v*100).toFixed(1)+"%":"—"; }
+  const trend = scorecard?.global?.trend||"";
+  const trendCol = trend==="IMPROVING"?"var(--green)":"var(--red)";
+
   tc.innerHTML=`
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <div class="stat-box" style="flex:1;min-width:80px">
+        <div class="sv" style="font-size:14px">${pctFmt(h5sc.directional_accuracy_7d)}</div>
+        <div class="sl">5D Dir 7d</div>
+      </div>
+      <div class="stat-box" style="flex:1;min-width:80px">
+        <div class="sv" style="font-size:14px">${pctFmt(h5sc.calibration_7d)}</div>
+        <div class="sl">5D Calib 7d</div>
+      </div>
+      <div class="stat-box" style="flex:1;min-width:80px">
+        <div class="sv" style="font-size:14px">${pctFmt(h30sc.directional_accuracy_7d)}</div>
+        <div class="sl">30D Dir 7d</div>
+      </div>
+      <div class="stat-box" style="flex:1;min-width:80px">
+        <div class="sv" style="font-size:14px;color:${trendCol}">${trend||"—"}</div>
+        <div class="sl">Trend</div>
+      </div>
+      <div class="stat-box" style="flex:1;min-width:80px">
+        <div class="sv" style="font-size:14px">${assetSc.consecutive_hits||0}🔥</div>
+        <div class="sl">${activeTicker} Streak</div>
+      </div>
+      <div class="stat-box" style="flex:1;min-width:80px">
+        <div class="sv" style="font-size:14px">${scorecard?.global?.forecasts_graded_total||"—"}</div>
+        <div class="sl">Total Graded</div>
+      </div>
+    </div>
     <div class="horizon-btns" id="hbns">
       <button class="hbtn active" onclick="setHorizonView('all',this)">All Horizons</button>
       <button class="hbtn" onclick="setHorizonView('5',this)">5D</button>
@@ -670,8 +704,44 @@ function renderForecast(){
       <div class="risks-list">${(analysis.key_risks||[]).map(r=>`<div class="risk-item">${r}</div>`).join("")}</div>`:""}
     </div>`:`
     <div class="card"><div style="color:var(--muted);font-size:12px">${sig.explanation||"No analysis available."}</div></div>`}
+
+    ${buildHistoryTable(activeTicker)}
   `;
   drawForecastChart();
+}
+
+function buildHistoryTable(ticker){
+  const rows = allForecasts
+    .filter(r=>r.ticker===ticker && r.horizon==="5" && r.actual && r.actual!=="nan" && r.actual!=="")
+    .sort((a,b)=>b.forecast_date.localeCompare(a.forecast_date))
+    .slice(0,15);
+  if(!rows.length) return "";
+  const tableRows = rows.map(r=>{
+    const hit = r.hit==="1";
+    const dirOk = r.direction_correct==="1";
+    const err = r.error_pct ? (+r.error_pct).toFixed(2)+"%" : "—";
+    const p50v = r.p50 ? "$"+parseFloat(r.p50).toFixed(2) : "—";
+    const actv = r.actual ? "$"+parseFloat(r.actual).toFixed(2) : "—";
+    return `<tr>
+      <td class="mono" style="color:var(--muted)">${r.forecast_date}</td>
+      <td class="mono" style="color:var(--muted)">${r.target_date}</td>
+      <td class="mono">${p50v}</td>
+      <td class="mono ${hit?"up":"dn"}">${actv}</td>
+      <td><span class="badge ${hit?"hit":"miss"}">${hit?"HIT":"MISS"}</span></td>
+      <td><span class="badge ${dirOk?"bull":"bear"}">${dirOk?"✓":"✗"}</span></td>
+      <td class="mono" style="color:var(--muted)">${err}</td>
+    </tr>`;
+  }).join("");
+  return `
+  <div class="card" style="margin-top:4px">
+    <div class="section-title">Forecast History — ${ticker} (5D, last 15)</div>
+    <table class="acc-table">
+      <thead><tr>
+        <th>Forecast</th><th>Target</th><th>P50</th><th>Actual</th><th>Band</th><th>Dir</th><th>Err%</th>
+      </tr></thead>
+      <tbody>${tableRows}</tbody>
+    </table>
+  </div>`;
 }
 
 function drawForecastChart(){
@@ -679,37 +749,61 @@ function drawForecastChart(){
   const canvas = document.getElementById("main-chart");
   if(!canvas) return;
 
-  const all = forecasts.filter(r=>r.ticker===activeTicker);
+  const latest  = forecasts.filter(r=>r.ticker===activeTicker);
+  const historic = allForecasts.filter(r=>r.ticker===activeTicker);
   const px  = prices[activeTicker]||{};
   const now = new Date();
 
-  // Build datasets
+  // x-axis: 30 days back → 90 days forward
   const labels = [];
-  const p50_5=[], p10_5=[], p90_5=[];
-  const p50_30=[], p10_30=[], p90_30=[];
-  const p50_90=[], p10_90=[], p90_90=[];
-
-  // Generate date range for x-axis
-  for(let i=-5;i<=90;i++){
+  for(let i=-30;i<=90;i++){
     const d = new Date(now);
     d.setDate(d.getDate()+i);
     labels.push(d.toISOString().slice(0,10));
   }
 
-  all.forEach(row=>{
-    const d = row.target_date;
-    const h = parseInt(row.horizon||5);
-    const p50=parseFloat(row.p50)||null;
-    const p10=parseFloat(row.p10)||null;
-    const p90=parseFloat(row.p90)||null;
-    const idx = labels.indexOf(d);
-    if(idx<0) return;
+  // Future forecast bands (latest forecast date only)
+  const p50_5=new Array(labels.length).fill(null);
+  const p10_5=new Array(labels.length).fill(null);
+  const p90_5=new Array(labels.length).fill(null);
+  const p50_30=new Array(labels.length).fill(null);
+  const p10_30=new Array(labels.length).fill(null);
+  const p90_30=new Array(labels.length).fill(null);
+  const p50_90=new Array(labels.length).fill(null);
+  const p10_90=new Array(labels.length).fill(null);
+  const p90_90=new Array(labels.length).fill(null);
+
+  latest.forEach(row=>{
+    const idx=labels.indexOf(row.target_date); if(idx<0) return;
+    const h=parseInt(row.horizon||5);
+    const p50=parseFloat(row.p50)||null, p10=parseFloat(row.p10)||null, p90=parseFloat(row.p90)||null;
     if(h===5){  p50_5[idx]=p50;  p10_5[idx]=p10;  p90_5[idx]=p90;  }
     if(h===30){ p50_30[idx]=p50; p10_30[idx]=p10; p90_30[idx]=p90; }
     if(h===90){ p50_90[idx]=p50; p10_90[idx]=p10; p90_90[idx]=p90; }
   });
 
-  // Today's price as the anchor
+  // Historical actuals (graded rows — use target_date + actual price)
+  const actuals=new Array(labels.length).fill(null);
+  const histP50=new Array(labels.length).fill(null); // historic 5d P50 predictions
+
+  // Deduplicate by target_date — take highest-confidence (first seen per date)
+  const seenAct=new Set(), seenP50=new Set();
+  historic.forEach(row=>{
+    const h=parseInt(row.horizon||5);
+    // Actual prices at target_date
+    if(row.actual && row.actual!=="nan" && !seenAct.has(row.target_date)){
+      const idx=labels.indexOf(row.target_date);
+      if(idx>=0){ actuals[idx]=parseFloat(row.actual); seenAct.add(row.target_date); }
+    }
+    // Historic 5D P50 predictions at target_date
+    if(h===5 && row.p50 && !seenP50.has(row.target_date)){
+      const idx=labels.indexOf(row.target_date);
+      if(idx>=0 && idx<labels.indexOf(now.toISOString().slice(0,10))){
+        histP50[idx]=parseFloat(row.p50); seenP50.add(row.target_date);
+      }
+    }
+  });
+
   const todayIdx = labels.indexOf(now.toISOString().slice(0,10));
 
   mainChart = new Chart(canvas, {
@@ -717,33 +811,39 @@ function drawForecastChart(){
     data:{
       labels,
       datasets:[
-        // Bands as area fills (pair datasets)
-        {label:"90d band",data:p90_90,borderColor:"transparent",backgroundColor:"#00d4ff08",fill:"+1",pointRadius:0,tension:.3},
+        // Historical actuals (solid white line)
+        {label:"Actual",data:actuals,borderColor:"#c8d6e580",backgroundColor:"transparent",
+         borderWidth:1.5,fill:false,pointRadius:2,pointBackgroundColor:"#c8d6e5",tension:.3,spanGaps:false},
+        // Historic P50 5d predictions (dashed, dimmed)
+        {label:"P50 5d (hist)",data:histP50,borderColor:"#00d4ff50",backgroundColor:"transparent",
+         borderWidth:1,borderDash:[2,4],fill:false,pointRadius:1,tension:.3,spanGaps:false},
+        // Future bands
+        {label:"90d band hi",data:p90_90,borderColor:"transparent",backgroundColor:"#00d4ff08",fill:"+1",pointRadius:0,tension:.3},
         {label:"90d band lo",data:p10_90,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
-        {label:"30d band",data:p90_30,borderColor:"transparent",backgroundColor:"#00d4ff14",fill:"+1",pointRadius:0,tension:.3},
+        {label:"30d band hi",data:p90_30,borderColor:"transparent",backgroundColor:"#00d4ff14",fill:"+1",pointRadius:0,tension:.3},
         {label:"30d band lo",data:p10_30,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
-        {label:"5d band",data:p90_5,borderColor:"transparent",backgroundColor:"#00d4ff22",fill:"+1",pointRadius:0,tension:.3},
-        {label:"5d band lo",data:p10_5,borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
-        // P50 lines
+        {label:"5d band hi", data:p90_5, borderColor:"transparent",backgroundColor:"#00d4ff22",fill:"+1",pointRadius:0,tension:.3},
+        {label:"5d band lo", data:p10_5, borderColor:"transparent",backgroundColor:"transparent",fill:false,pointRadius:0,tension:.3},
+        // Future P50 lines
         {label:"P50 90d",data:p50_90,borderColor:"#00d4ff40",borderWidth:1.5,borderDash:[4,4],fill:false,pointRadius:0,tension:.3},
         {label:"P50 30d",data:p50_30,borderColor:"#00d4ff70",borderWidth:1.5,borderDash:[3,3],fill:false,pointRadius:0,tension:.3},
         {label:"P50 5d", data:p50_5, borderColor:"#00d4ff",  borderWidth:2,  fill:false,pointRadius:2,tension:.3},
-        // Today price dot
+        // Today price anchor
         {label:"Now",data:labels.map((l,i)=>i===todayIdx?(px.price||null):null),
-         borderColor:"#ffaa00",backgroundColor:"#ffaa00",pointRadius:5,pointStyle:"circle",fill:false,showLine:false},
+         borderColor:"#ffaa00",backgroundColor:"#ffaa00",pointRadius:6,pointStyle:"circle",fill:false,showLine:false},
       ],
     },
     options:{
       responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{
         callbacks:{label:ctx=>{
-          if(ctx.dataset.label==="Now") return `Current: ${ctx.raw}`;
-          return `${ctx.dataset.label}: ${ctx.raw!=null?ctx.raw.toFixed(4):"—"}`;
+          if(ctx.dataset.label==="Now") return `Current: $${ctx.raw}`;
+          return `${ctx.dataset.label}: ${ctx.raw!=null?"$"+ctx.raw.toFixed(2):"—"}`;
         }}
       }},
       scales:{
-        x:{ticks:{color:"#6b8ab0",maxRotation:0,maxTicksLimit:8,font:{size:9}},grid:{color:"#1a284040"}},
-        y:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},
+        x:{ticks:{color:"#6b8ab0",maxRotation:0,maxTicksLimit:10,font:{size:9}},grid:{color:"#1a284040"}},
+        y:{ticks:{color:"#6b8ab0",font:{size:9},callback:v=>"$"+v.toLocaleString()},grid:{color:"#1a284040"}},
       },
       interaction:{intersect:false,mode:"index"},
     },
