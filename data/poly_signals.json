@@ -1,171 +1,312 @@
 {
-  "GC=F": {
-    "ticker": "GC=F",
-    "signal": "NO_SIGNAL",
+  "SPY": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770314+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "SI=F": {
-    "ticker": "SI=F",
-    "signal": "NO_SIGNAL",
+  "QQQ": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770327+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "CL=F": {
-    "ticker": "CL=F",
-    "signal": "NO_SIGNAL",
+  "IWM": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770333+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "NG=F": {
-    "ticker": "NG=F",
-    "signal": "NO_SIGNAL",
+  "XLE": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770338+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "HG=F": {
-    "ticker": "HG=F",
-    "signal": "NO_SIGNAL",
+  "XLF": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770343+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "EURUSD=X": {
-    "ticker": "EURUSD=X",
-    "signal": "NO_SIGNAL",
+  "XLK": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770347+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "GBPUSD=X": {
-    "ticker": "GBPUSD=X",
-    "signal": "NO_SIGNAL",
+  "GLD": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770351+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "USDJPY=X": {
-    "ticker": "USDJPY=X",
-    "signal": "NO_SIGNAL",
+  "SLV": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770362+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "AUDUSD=X": {
-    "ticker": "AUDUSD=X",
-    "signal": "NO_SIGNAL",
+  "TLT": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770367+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "USDCHF=X": {
-    "ticker": "USDCHF=X",
-    "signal": "NO_SIGNAL",
+  "IEF": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770370+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "DX-Y.NYB": {
-    "ticker": "DX-Y.NYB",
-    "signal": "NO_SIGNAL",
+  "HYG": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770375+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "LQD": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "BIL": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
   "^TNX": {
-    "ticker": "^TNX",
-    "signal": "NO_SIGNAL",
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770380+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   },
-  "^GSPC": {
-    "ticker": "^GSPC",
-    "signal": "NO_SIGNAL",
+  "GC=F": {
     "direction": "NEUTRAL",
-    "composite_score": 0,
-    "confidence": 0,
-    "confidence_label": "NO_DATA",
-    "contributing_events": 0,
-    "top_contributing_event": null,
-    "top_question": null,
-    "alignment_with_model": "UNKNOWN",
-    "generated_at": "2026-05-18T12:52:00.770385+00:00"
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "SI=F": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "CL=F": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "NG=F": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "HG=F": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "ZW=F": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "ZC=F": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "^VIX": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "UVXY": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "DX-Y.NYB": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "^IRX": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "BTC-USD": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "ETH-USD": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "SOL-USD": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "EEM": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "EFA": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
+  },
+  "FXI": {
+    "direction": "NEUTRAL",
+    "signal": "POLY_NEUTRAL",
+    "composite_score": 0.0,
+    "confidence": "LOW",
+    "arm1_regime_score": 0.0,
+    "arm1_top_regime": null,
+    "arm2_narrative_boost": 0.0,
+    "arm1_confidence": "NO_DATA"
   }
 }

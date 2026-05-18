@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-05-18T16:10:56.603346+00:00",
+  "regime_probabilities": {
+    "REGIME_EASING": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_TIGHTENING": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_RECESSION": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_INFLATION": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_DISINFLATION": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_GEOPOLITICAL": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_CRYPTO_RISK": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_CRYPTO_BULL": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    },
+    "REGIME_ELECTION": {
+      "probability": null,
+      "market_count": 0,
+      "total_volume": 0,
+      "top_markets": []
+    }
+  },
+  "asset_priors": {
+    "SPY": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "QQQ": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "IWM": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "XLE": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "XLF": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "XLK": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "GLD": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "SLV": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "TLT": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "IEF": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "HYG": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "LQD": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "BIL": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "^TNX": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "GC=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "SI=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "CL=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "NG=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "HG=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "ZW=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "ZC=F": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "^VIX": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "UVXY": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "DX-Y.NYB": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "^IRX": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "BTC-USD": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "ETH-USD": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "SOL-USD": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "EEM": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "EFA": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    },
+    "FXI": {
+      "score": 0,
+      "direction": "NEUTRAL",
+      "confidence": "NO_DATA",
+      "top_regime": null
+    }
+  },
+  "active_regimes": {}
+}
