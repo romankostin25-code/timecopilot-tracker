@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '0 22 * * 1-5'   # 6:00 PM ET
   workflow_dispatch:
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
 jobs:
   evening:
     runs-on: ubuntu-latest
@@ -16,19 +21,21 @@ jobs:
           cache: pip
       - name: Install uv + deps
         run: pip install uv && uv pip install --system -r requirements.txt
+
       - name: Generate auth config
         env:
           DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
         run: |
           python -c "
-          import os, hashlib, json
+          import os, hashlib, json, pathlib
           pw = os.environ.get('DASHBOARD_PASSWORD', '')
           h = hashlib.sha256(pw.encode()).hexdigest()
-          import pathlib; pathlib.Path('data').mkdir(exist_ok=True)
+          pathlib.Path('data').mkdir(exist_ok=True)
           with open('data/auth_config.json', 'w') as f:
               json.dump({'password_hash': h}, f)
           print('auth_config.json written')
           "
+
       - name: Full auto run
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -38,6 +45,7 @@ jobs:
           FORECAST_HORIZONS: '5,30,90'
           POLYMARKET_MIN_VOLUME: '25000'
         run: python main.py --auto
+
       - name: Commit all data
         run: |
           git config user.name  "Trading Co-Pilot Bot"

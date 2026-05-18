@@ -5,6 +5,10 @@ on:
     - cron: '0 * * * 1-5'   # every hour on weekdays UTC
   workflow_dispatch:
 
+concurrency:
+  group: repo-write
+  cancel-in-progress: true   # Drop stale polymarket polls if a longer job is running
+
 jobs:
   polymarket:
     runs-on: ubuntu-latest
@@ -18,21 +22,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install uv
-        run: pip install uv
+      - name: Install deps
+        run: pip install uv && uv pip install --system requests pandas numpy scipy yfinance python-dotenv
 
-      - name: Install dependencies
-        run: uv pip install --system requests pandas numpy scipy yfinance python-dotenv
-
-      - name: Run poly-signals pipeline
-        run: python main.py --poly-signals
+      - name: Run polymarket signals
+        run: python main.py --polymarket
 
       - name: Commit updated signal files
         run: |
           git config user.name  "Trading Co-Pilot Bot"
-          git config user.email "bot@trading-copilot.internal"
-          git add data/ forecasts.csv || true
+          git config user.email "bot@trading-copilot.com"
+          git add data/ || true
           if ! git diff --cached --quiet; then
             git commit -m "poly-signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push || (git stash --include-untracked && git pull --rebase origin main && git stash pop && git push)
+            git push || (git pull --rebase origin main && git push)
           fi

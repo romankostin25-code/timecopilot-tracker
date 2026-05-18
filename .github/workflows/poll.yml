@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '*/15 9-21 * * 1-5'   # Every 15 min, 9am-9pm ET weekdays
   workflow_dispatch:
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: true   # Drop stale price polls if a longer job is running
+
 jobs:
   poll:
     runs-on: ubuntu-latest
@@ -24,6 +29,7 @@ jobs:
           git config user.name  "Trading Co-Pilot Bot"
           git config user.email "bot@trading-copilot.com"
           git add data/prices_live.json data/intelligence_feed.json || true
-          git diff --cached --quiet || \
-            git commit -m "poll: prices $(date -u +'%H:%M UTC')" && \
-            git push
+          if ! git diff --cached --quiet; then
+            git commit -m "poll: prices $(date -u +'%H:%M UTC')"
+            git push || (git pull --rebase origin main && git push)
+          fi

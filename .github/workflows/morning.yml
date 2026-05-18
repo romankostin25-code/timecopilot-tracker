@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '0 14 * * 1-5'   # 10:00 AM ET
   workflow_dispatch:
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
 jobs:
   morning:
     runs-on: ubuntu-latest
