@@ -16,6 +16,19 @@ jobs:
           cache: pip
       - name: Install uv + deps
         run: pip install uv && uv pip install --system -r requirements.txt
+      - name: Generate auth config
+        env:
+          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+        run: |
+          python -c "
+          import os, hashlib, json
+          pw = os.environ.get('DASHBOARD_PASSWORD', '')
+          h = hashlib.sha256(pw.encode()).hexdigest()
+          import pathlib; pathlib.Path('data').mkdir(exist_ok=True)
+          with open('data/auth_config.json', 'w') as f:
+              json.dump({'password_hash': h}, f)
+          print('auth_config.json written')
+          "
       - name: Full auto run
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

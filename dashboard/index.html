@@ -39,32 +39,47 @@
   </div>
 
   <script>
+    const REPO_BASE = 'https://raw.githubusercontent.com/romankostin25-code/timecopilot-tracker/main/';
+
+    async function sha256hex(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
     async function login() {
-      const pw  = document.getElementById('pw').value;
+      const pw  = document.getElementById('pw').value.trim();
       const btn = document.querySelector('button');
+      const err = document.getElementById('err');
+      err.style.display = 'none';
       btn.textContent = 'Authenticating…';
       btn.disabled = true;
 
       try {
-        const res = await fetch('/api/auth', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({password: pw}),
-        });
-        if (res.ok) {
-          const data = await res.json();
-          sessionStorage.setItem('tcp_token', data.token);
-          window.location.href = '/terminal.html';
-        } else {
-          document.getElementById('err').style.display = 'block';
-          btn.textContent = 'Enter Terminal';
-          btn.disabled = false;
+        const resp = await fetch(REPO_BASE + 'data/auth_config.json?_=' + Date.now());
+        if (!resp.ok) throw new Error('no_config');
+        const config = await resp.json();
+        const hash = await sha256hex(pw);
+        if (hash === config.password_hash) {
+          sessionStorage.setItem('tcp_token', hash);
+          window.location.href = 'terminal.html';
+          return;
         }
-      } catch {
-        // Fallback: skip auth if API not available (static deployment)
-        sessionStorage.setItem('tcp_token', 'static');
-        window.location.href = 'terminal.html';
+        err.textContent = 'Invalid password.';
+        err.style.display = 'block';
+      } catch (e) {
+        if (e.message === 'no_config') {
+          err.textContent = 'Auth config not found — run the morning workflow first.';
+          err.style.display = 'block';
+        } else {
+          // Network error — skip auth on static deployment without config
+          sessionStorage.setItem('tcp_token', 'static');
+          window.location.href = 'terminal.html';
+          return;
+        }
       }
+
+      btn.textContent = 'Enter Terminal';
+      btn.disabled = false;
     }
 
     document.getElementById('pw').addEventListener('keydown', e => {
