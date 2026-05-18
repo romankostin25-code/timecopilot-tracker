@@ -35,21 +35,41 @@ def fetch_price_data(ticker, years=3):
     return df
 
 
-def _build_forecaster():
+CRYPTO_TICKERS = {"BTC-USD", "ETH-USD", "SOL-USD"}
+
+def _freq_for(ticker):
+    return "D" if ticker in CRYPTO_TICKERS else FREQ
+
+
+def _build_tc_forecaster():
+    """Try TimeCopilot. Returns (forecaster, name) or (None, None)."""
     try:
         from timecopilot import TimeCopilotForecaster
-        from timecopilot.models.foundation.chronos import Chronos
-        from timecopilot.models.foundation.toto import Toto
         from timecopilot.models.stats import AutoARIMA, AutoETS
         from timecopilot.models.ml import AutoLGBM
         from timecopilot.models.ensembles import MedianEnsemble
-        return TimeCopilotForecaster(
-            models=[Chronos(), Toto(), AutoARIMA(), AutoETS(), AutoLGBM(), MedianEnsemble()]
-        ), "TimeCopilot_MedianEnsemble"
-    except ImportError:
-        from statsforecast import StatsForecast
-        from statsforecast.models import AutoARIMA, AutoETS
-        return StatsForecast(models=[AutoARIMA(), AutoETS()], freq=FREQ, n_jobs=-1), "StatsForecast_Ensemble"
+        models = [AutoARIMA(), AutoETS(), AutoLGBM(), MedianEnsemble()]
+        for cls_path, label in [
+            ("timecopilot.models.foundation.chronos.Chronos", "Chronos"),
+            ("timecopilot.models.foundation.toto.Toto",       "Toto"),
+        ]:
+            try:
+                mod_name, cls_name = cls_path.rsplit(".", 1)
+                import importlib
+                models.insert(0, getattr(importlib.import_module(mod_name), cls_name)())
+                print(f"[forecaster] {label} loaded")
+            except Exception as e:
+                print(f"[forecaster] {label} unavailable: {e}")
+        return TimeCopilotForecaster(models=models), "TimeCopilot_Ensemble"
+    except Exception as e:
+        print(f"[forecaster] TimeCopilot unavailable: {e}")
+        return None, None
+
+
+def _sf_forecaster(freq):
+    from statsforecast import StatsForecast
+    from statsforecast.models import AutoARIMA, AutoETS, AutoTheta
+    return StatsForecast(models=[AutoARIMA(), AutoETS(), AutoTheta()], freq=freq, n_jobs=1)
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon):
@@ -71,7 +91,7 @@ def run_all_forecasts():
     from engine.universe import ALL_TICKERS
     tickers = [t.strip() for t in os.getenv("ASSET_TICKERS", ",".join(ALL_TICKERS)).split(",") if t.strip()]
 
-    forecaster, model_name = _build_forecaster()
+    tc_forecaster, tc_name = _build_tc_forecaster()
     forecast_date = datetime.today().date()
     new_rows, skipped = [], []
 
@@ -80,13 +100,22 @@ def run_all_forecasts():
         try:
             df = fetch_price_data(ticker)
             last_price = df["y"].iloc[-1]
-            print(f"[{ticker}] Forecasting {MAX_HORIZON}d ({len(df)} pts)...")
+            freq = _freq_for(ticker)
+            print(f"[{ticker}] Forecasting {MAX_HORIZON}d ({len(df)} pts, freq={freq})...")
 
-            # Single forecast call — extract all horizons from result
-            try:
-                fcst = forecaster.forecast(df=df, h=MAX_HORIZON)
-            except TypeError:
-                # statsforecast path
+            if tc_forecaster is not None:
+                forecaster  = tc_forecaster
+                model_name  = tc_name
+                try:
+                    fcst = forecaster.forecast(df=df, h=MAX_HORIZON)
+                except Exception as e:
+                    print(f"[{ticker}] TimeCopilot failed: {e} — falling back to StatsForecast")
+                    forecaster = _sf_forecaster(freq)
+                    model_name = f"StatsForecast_{freq}"
+                    fcst = forecaster.forecast(df=df, h=MAX_HORIZON, level=[80])
+            else:
+                forecaster = _sf_forecaster(freq)
+                model_name = f"StatsForecast_{freq}"
                 fcst = forecaster.forecast(df=df, h=MAX_HORIZON, level=[80])
 
             fcst_rows = fcst.reset_index(drop=True)
