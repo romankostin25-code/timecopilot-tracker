@@ -11,15 +11,27 @@ load_dotenv()
 CSV_PATH = "data/futures_curve.csv"
 _MONTH_CODES = "FGHJKMNQUVXZ"
 
+# Valid delivery months per exchange (only these exist on Yahoo Finance)
+_VALID_MONTHS = {
+    "NYM": list(range(1, 13)),        # CL, NG — every month
+    "CMX": [2, 4, 6, 8, 10, 12],     # GC, SI, HG — even months
+    "CBT": [3, 5, 7, 9, 12],         # ZW, ZC — Mar/May/Jul/Sep/Dec
+}
 
-def _contract_codes(base_code, exchange_suffix, n=5):
+
+def _contract_codes(base_code, exchange_suffix, n=3):
     today = date.today()
+    valid = _VALID_MONTHS.get(exchange_suffix, list(range(1, 13)))
     codes = []
     month, year = today.month, today.year
-    for _ in range(n):
+    checked = 0
+    while len(codes) < n and checked < 24:
         month += 1
         if month > 12:
             month, year = 1, year + 1
+        checked += 1
+        if month not in valid:
+            continue
         yr2 = str(year)[-2:]
         codes.append(f"{base_code}{_MONTH_CODES[month - 1]}{yr2}.{exchange_suffix}")
     return codes
@@ -27,8 +39,8 @@ def _contract_codes(base_code, exchange_suffix, n=5):
 
 def _build_curve_tickers():
     return {
-        "CL=F": ["CL=F"] + _contract_codes("CL", "NYM", 5),
-        "GC=F": ["GC=F"] + _contract_codes("GC", "CMX", 4),
+        "CL=F": ["CL=F"] + _contract_codes("CL", "NYM", 4),
+        "GC=F": ["GC=F"] + _contract_codes("GC", "CMX", 3),
         "NG=F": ["NG=F"] + _contract_codes("NG", "NYM", 4),
         "SI=F": ["SI=F"] + _contract_codes("SI", "CMX", 3),
         "HG=F": ["HG=F"] + _contract_codes("HG", "CMX", 3),
@@ -39,7 +51,13 @@ def _build_curve_tickers():
 
 def _price(ticker):
     try:
-        raw = yf.download(ticker, period="5d", auto_adjust=True, progress=False)
+        import sys, io
+        _stderr = sys.stderr
+        sys.stderr = io.StringIO()
+        try:
+            raw = yf.download(ticker, period="5d", auto_adjust=True, progress=False)
+        finally:
+            sys.stderr = _stderr
         if raw.empty:
             return None
         if isinstance(raw.columns, pd.MultiIndex):
