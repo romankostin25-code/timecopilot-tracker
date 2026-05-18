@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: repo-write
-  cancel-in-progress: true   # Drop stale polymarket polls if a longer job is running
+  group: repo-write-poly
+  cancel-in-progress: true   # Drop stale polymarket polls; separate group from morning/evening
 
 jobs:
   polymarket:
@@ -35,5 +35,6 @@ jobs:
           git add data/ || true
           if ! git diff --cached --quiet; then
             git commit -m "poly-signals: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push || (git pull --rebase origin main && git push)
+            git pull --rebase -X ours origin main
+            git push
           fi

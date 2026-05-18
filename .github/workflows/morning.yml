@@ -75,5 +75,6 @@ jobs:
           git add data/ || true
           if ! git diff --cached --quiet; then
             git commit -m "data: morning update $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push || (git pull --rebase origin main && git push)
+            git pull --rebase -X ours origin main
+            git push
           fi

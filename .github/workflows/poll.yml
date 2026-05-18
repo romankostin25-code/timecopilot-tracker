@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: repo-write
-  cancel-in-progress: true   # Drop stale price polls if a longer job is running
+  group: repo-write-poll
+  cancel-in-progress: true   # Drop stale price polls; separate group from morning/evening
 
 jobs:
   poll:
@@ -31,5 +31,6 @@ jobs:
           git add data/prices_live.json data/intelligence_feed.json || true
           if ! git diff --cached --quiet; then
             git commit -m "poll: prices $(date -u +'%H:%M UTC')"
-            git push || (git pull --rebase origin main && git push)
+            git pull --rebase -X ours origin main
+            git push
           fi
