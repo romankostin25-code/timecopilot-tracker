@@ -25,7 +25,8 @@ def fetch_price_data(ticker, years=3):
         raw = yf.download(ticker, start=start, end=end, auto_adjust=True, progress=False)
     if raw.empty:
         raise ValueError(f"No data for {ticker}")
-    df = raw[["Close"]].reset_index()
+    close = raw["Close"].squeeze()
+    df = close.reset_index()
     df.columns = ["ds", "y"]
     df["unique_id"] = ticker
     df["ds"] = pd.to_datetime(df["ds"]).dt.tz_localize(None).dt.normalize()
@@ -47,8 +48,9 @@ def _build_tc_forecaster():
         from timecopilot import TimeCopilotForecaster
         from timecopilot.models.stats import AutoARIMA, AutoETS
         from timecopilot.models.ml import AutoLGBM
-        from timecopilot.models.ensembles import MedianEnsemble
-        models = [AutoARIMA(), AutoETS(), AutoLGBM(), MedianEnsemble()]
+
+        models = [AutoARIMA(), AutoETS(), AutoLGBM()]
+
         for cls_path, label in [
             ("timecopilot.models.foundation.chronos.Chronos", "Chronos"),
             ("timecopilot.models.foundation.toto.Toto",       "Toto"),
@@ -60,16 +62,56 @@ def _build_tc_forecaster():
                 print(f"[forecaster] {label} loaded")
             except Exception as e:
                 print(f"[forecaster] {label} unavailable: {e}")
+
+        loaded = [type(m).__name__ for m in models]
+        print(f"[forecaster] TimeCopilot ready with: {loaded}")
         return TimeCopilotForecaster(models=models), "TimeCopilot_Ensemble"
     except Exception as e:
         print(f"[forecaster] TimeCopilot unavailable: {e}")
         return None, None
 
 
-def _sf_forecaster(freq):
+def _sf_forecast(df, freq, h):
+    """StatsForecast ensemble: median of AutoARIMA + AutoETS + AutoTheta.
+    Returns DataFrame with columns: unique_id, ds, p10, p50, p90."""
     from statsforecast import StatsForecast
     from statsforecast.models import AutoARIMA, AutoETS, AutoTheta
-    return StatsForecast(models=[AutoARIMA(), AutoETS(), AutoTheta()], freq=freq, n_jobs=1)
+    sf = StatsForecast(
+        models=[AutoARIMA(), AutoETS(), AutoTheta()],
+        freq=freq,
+        n_jobs=1,
+    )
+    raw = sf.forecast(df=df, h=h, level=[80]).reset_index(drop=True)
+    lo_cols = [c for c in raw.columns if "-lo-80" in c]
+    hi_cols = [c for c in raw.columns if "-hi-80" in c]
+    pt_cols = [c for c in raw.columns if c not in ("unique_id", "ds")
+               and "-lo-" not in c and "-hi-" not in c]
+    base = raw[["unique_id", "ds"]] if "unique_id" in raw.columns else raw[["ds"]]
+    out = base.copy()
+    out["p50"] = raw[pt_cols].median(axis=1) if pt_cols else raw.iloc[:, 2]
+    out["p10"] = raw[lo_cols].median(axis=1) if lo_cols else out["p50"] * 0.99
+    out["p90"] = raw[hi_cols].median(axis=1) if hi_cols else out["p50"] * 1.01
+    return out
+
+
+def _extract_quantiles(fcst_rows):
+    """Extract (p50_vals, p10_vals, p90_vals) arrays from any forecaster output DataFrame."""
+    cols = [c for c in fcst_rows.columns if c not in ("unique_id", "ds")]
+    # Clean p10/p50/p90 columns already present (from _sf_forecast or TC with quantiles)
+    if "p50" in cols:
+        p50 = fcst_rows["p50"].values
+        p10 = fcst_rows["p10"].values if "p10" in cols else p50 * 0.99
+        p90 = fcst_rows["p90"].values if "p90" in cols else p50 * 1.01
+        return p50, p10, p90
+    # Generic column detection for TimeCopilotForecaster output
+    p10_col = next((c for c in cols if any(k in c.lower() for k in ["lo", "q10", "p10", "0.1"])), None)
+    p50_col = next((c for c in cols if any(k in c.lower() for k in ["median", "q50", "p50", "mean", "0.5"])), cols[0])
+    p90_col = next((c for c in cols if any(k in c.lower() for k in ["hi", "q90", "p90", "0.9"])), None)
+    print(f"[forecaster] TC columns detected — p10:{p10_col}  p50:{p50_col}  p90:{p90_col}")
+    p50 = fcst_rows[p50_col].values
+    p10 = fcst_rows[p10_col].values if p10_col else p50 * 0.99
+    p90 = fcst_rows[p90_col].values if p90_col else p50 * 1.01
+    return p50, p10, p90
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon):
@@ -99,34 +141,24 @@ def run_all_forecasts():
         print(f"\n[{ticker}] Fetching data...")
         try:
             df = fetch_price_data(ticker)
-            last_price = df["y"].iloc[-1]
+            last_price = float(df["y"].iloc[-1])
             freq = _freq_for(ticker)
             print(f"[{ticker}] Forecasting {MAX_HORIZON}d ({len(df)} pts, freq={freq})...")
 
             if tc_forecaster is not None:
-                forecaster  = tc_forecaster
-                model_name  = tc_name
                 try:
-                    fcst = forecaster.forecast(df=df, h=MAX_HORIZON)
+                    fcst = tc_forecaster.forecast(df=df, h=MAX_HORIZON)
+                    model_name = tc_name
+                    print(f"[{ticker}] TimeCopilot OK — cols: {list(fcst.columns)}")
                 except Exception as e:
                     print(f"[{ticker}] TimeCopilot failed: {e} — falling back to StatsForecast")
-                    forecaster = _sf_forecaster(freq)
+                    fcst = _sf_forecast(df, freq, MAX_HORIZON)
                     model_name = f"StatsForecast_{freq}"
-                    fcst = forecaster.forecast(df=df, h=MAX_HORIZON, level=[80])
             else:
-                forecaster = _sf_forecaster(freq)
+                fcst = _sf_forecast(df, freq, MAX_HORIZON)
                 model_name = f"StatsForecast_{freq}"
-                fcst = forecaster.forecast(df=df, h=MAX_HORIZON, level=[80])
 
-            fcst_rows = fcst.reset_index(drop=True)
-            all_cols = [c for c in fcst_rows.columns if c not in ["unique_id", "ds"]]
-            p10_col = next((c for c in all_cols if any(k in c.lower() for k in ["lo", "q10", "p10", "10"])), None)
-            p50_col = next((c for c in all_cols if any(k in c.lower() for k in ["median", "q50", "p50", "mean", "50"])), all_cols[0])
-            p90_col = next((c for c in all_cols if any(k in c.lower() for k in ["hi", "q90", "p90", "90"])), None)
-
-            p50_vals = fcst_rows[p50_col].values
-            p10_vals = fcst_rows[p10_col].values if p10_col else p50_vals * 0.99
-            p90_vals = fcst_rows[p90_col].values if p90_col else p50_vals * 1.01
+            p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
 
             for horizon in HORIZONS:
                 h_idx = min(horizon - 1, len(p50_vals) - 1)
@@ -159,7 +191,7 @@ def run_all_forecasts():
                     "direction_correct": "", "graded_at": "", "notes": "",
                 })
 
-            print(f"[{ticker}] ✓ {len(HORIZONS)} horizons | last={last_price:.4f}")
+            print(f"[{ticker}] ✓ {len(HORIZONS)} horizons | last={last_price:.4f} | {model_name}")
 
         except Exception as e:
             print(f"[{ticker}] ✗ {e}")
@@ -174,7 +206,6 @@ def run_all_forecasts():
             existing[col] = existing[col].astype(str)
             new_df[col] = new_df[col].astype(str)
         key_cols = ["ticker", "forecast_date", "target_date", "horizon"]
-        # Only keep new rows whose keys don't exist yet
         if all(c in existing.columns for c in key_cols) and all(c in new_df.columns for c in key_cols):
             existing_keys = set(
                 zip(existing["ticker"], existing["forecast_date"].astype(str),

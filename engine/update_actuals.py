@@ -42,7 +42,7 @@ def fill_actuals_and_grade():
                                   auto_adjust=True, progress=False)
                 if raw.empty:
                     continue
-                prices = raw["Close"].reset_index()
+                prices = raw["Close"].squeeze().reset_index()
                 prices.columns = ["date", "price"]
                 prices["date"] = pd.to_datetime(prices["date"]).dt.date
 
