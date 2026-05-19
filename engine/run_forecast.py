@@ -42,14 +42,37 @@ def _freq_for(ticker):
     return "D" if ticker in CRYPTO_TICKERS else FREQ
 
 
+def _ensure_regular_freq(df, freq):
+    """Reindex to a gapless frequency so TimeCopilot can infer the interval.
+
+    yfinance data has holiday gaps on business-day series which cause
+    TimeCopilot's frequency detector to fail. Forward-filling to a complete
+    date range removes those gaps without distorting the series.
+    """
+    ts = df[["ds", "y", "unique_id"]].copy()
+    ts["ds"] = pd.to_datetime(ts["ds"])
+    ts = ts.set_index("ds").sort_index()
+    if freq == "B":
+        idx = pd.bdate_range(ts.index.min(), ts.index.max())
+    elif freq == "D":
+        idx = pd.date_range(ts.index.min(), ts.index.max(), freq="D")
+    else:
+        return df
+    ts = ts.reindex(idx).ffill().dropna()
+    ts.index.name = "ds"
+    out = ts.reset_index()[["ds", "y", "unique_id"]]
+    out["ds"] = pd.to_datetime(out["ds"]).dt.tz_localize(None).dt.normalize()
+    return out
+
+
 def _build_tc_forecaster():
     """Try TimeCopilot. Returns (forecaster, name) or (None, None)."""
     try:
         from timecopilot import TimeCopilotForecaster
         from timecopilot.models.stats import AutoARIMA, AutoETS
-        from timecopilot.models.ml import AutoLGBM
 
-        models = [AutoARIMA(), AutoETS(), AutoLGBM()]
+        # AutoLGBM excluded: known LightGBM "feature index -1" bug in this env
+        models = [AutoARIMA(), AutoETS()]
 
         for cls_path, label in [
             ("timecopilot.models.foundation.chronos.Chronos", "Chronos"),
@@ -147,7 +170,8 @@ def run_all_forecasts():
 
             if tc_forecaster is not None:
                 try:
-                    fcst = tc_forecaster.forecast(df=df, h=MAX_HORIZON)
+                    df_tc = _ensure_regular_freq(df, freq)
+                    fcst = tc_forecaster.forecast(df=df_tc, h=MAX_HORIZON)
                     model_name = tc_name
                     print(f"[{ticker}] TimeCopilot OK — cols: {list(fcst.columns)}")
                 except Exception as e:
