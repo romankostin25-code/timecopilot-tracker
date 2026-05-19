@@ -926,34 +926,62 @@ function renderAccuracy(){
   const h30 = scorecard?.by_horizon?.["30"]||{};
   const h90 = scorecard?.by_horizon?.["90"]||{};
   const ba  = scorecard?.by_asset||{};
+  const trend = scorecard?.global?.trend||"";
+  const trendCol = trend==="IMPROVING"?"var(--green)":"var(--red)";
 
   function pct(v,digits=1){ return v!=null?(v*100).toFixed(digits)+"%":"—"; }
+  function badge(v, target){
+    if(v==null) return '<span style="color:var(--muted)">—</span>';
+    const ok = v*100 >= target;
+    return `<span style="color:${ok?"var(--green)":"var(--red)"};font-weight:600">${(v*100).toFixed(1)}%</span>`;
+  }
 
   tc.innerHTML=`
-    <div class="stat-grid">
-      <div class="stat-box"><div class="sv">${pct(h5.calibration_7d)}</div><div class="sl">5D Calib 7d</div></div>
-      <div class="stat-box"><div class="sv">${pct(h5.directional_accuracy_7d)}</div><div class="sl">5D Dir 7d</div></div>
-      <div class="stat-box"><div class="sv">${scorecard?.global?.forecasts_graded_total||"—"}</div><div class="sl">Total Graded</div></div>
+    <div class="section-title" style="margin-bottom:8px">2-Week Performance (14d)</div>
+    <div class="stat-grid" style="margin-bottom:16px">
+      <div class="stat-box">
+        <div class="sv" style="font-size:18px;color:${h5.directional_accuracy_14d!=null&&h5.directional_accuracy_14d>=0.68?"var(--green)":"var(--red)"}">${pct(h5.directional_accuracy_14d)}</div>
+        <div class="sl">5D Direction 14d</div>
+        <div style="font-size:9px;color:var(--muted);margin-top:2px">target ≥68%</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv" style="font-size:18px;color:${h5.calibration_14d!=null&&h5.calibration_14d>=0.70?"var(--green)":"var(--red)"}">${pct(h5.calibration_14d)}</div>
+        <div class="sl">5D Band Hit 14d</div>
+        <div style="font-size:9px;color:var(--muted);margin-top:2px">target ≥70%</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv" style="font-size:18px;color:${h30.directional_accuracy_14d!=null&&h30.directional_accuracy_14d>=0.68?"var(--green)":"var(--red)"}">${pct(h30.directional_accuracy_14d)}</div>
+        <div class="sl">30D Direction 14d</div>
+        <div style="font-size:9px;color:var(--muted);margin-top:2px">target ≥68%</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv" style="font-size:18px;color:${trendCol}">${trend||"—"}</div>
+        <div class="sl">Trend</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv" style="font-size:18px">${scorecard?.global?.forecasts_graded_total||"—"}</div>
+        <div class="sl">Total Graded</div>
+      </div>
     </div>
     <div class="acc-grid">
       <div class="acc-chart-wrap"><canvas id="acc-calib-chart"></canvas></div>
       <div class="acc-chart-wrap"><canvas id="acc-dir-chart"></canvas></div>
     </div>
     <div class="card">
-      <div class="section-title">Per-Asset Performance (5D)</div>
+      <div class="section-title">Per-Asset Performance (5D, past 14d)</div>
       <table class="acc-table">
         <thead><tr>
-          <th>Asset</th><th>Calib 7d</th><th>Dir 7d</th><th>Calib 30d</th><th>Dir 30d</th><th>Streak</th>
+          <th>Asset</th><th>Dir 14d</th><th>Band 14d</th><th>Dir 7d</th><th>Band 7d</th><th>Streak</th>
         </tr></thead>
         <tbody>
-          ${Object.entries(ba).map(([t,s])=>`
+          ${Object.entries(ba).sort((a,b)=>(b[1].directional_accuracy_14d||0)-(a[1].directional_accuracy_14d||0)).map(([t,s])=>`
           <tr>
             <td class="mono cy" style="cursor:pointer" onclick="selectAsset('${t}')">${t}</td>
-            <td>${pct(s.calibration_7d)}</td>
+            <td>${badge(s.directional_accuracy_14d, 68)}</td>
+            <td>${badge(s.calibration_14d, 70)}</td>
             <td>${pct(s.directional_accuracy_7d)}</td>
-            <td>${pct(s.calibration_30d)}</td>
-            <td>${pct(s.directional_accuracy_30d)}</td>
-            <td class="mono">${s.consecutive_hits||0} 🔥</td>
+            <td>${pct(s.calibration_7d)}</td>
+            <td class="mono">${s.consecutive_hits||0}🔥</td>
           </tr>`).join("")}
         </tbody>
       </table>
@@ -969,27 +997,27 @@ function drawAccCharts(h5, h30, h90){
   const c2=document.getElementById("acc-dir-chart");
   if(!c1||!c2) return;
 
-  const labels=["5D 7d","5D 30d","30D 7d","30D 30d","90D 7d","90D 30d"];
+  const labels=["5D 14d","5D 30d","30D 14d","30D 30d","90D 14d","90D 30d"];
   const h30d = scorecard?.by_horizon?.["30"]||{};
   const h90d = scorecard?.by_horizon?.["90"]||{};
 
   accChart1=new Chart(c1,{type:"bar",data:{labels,datasets:[{
-    label:"Calibration",
-    data:[h5.calibration_7d,h5.calibration_30d,h30d.calibration_7d,h30d.calibration_30d,h90d.calibration_7d,h90d.calibration_30d].map(v=>v!=null?v*100:null),
+    label:"Band Hit Rate",
+    data:[h5.calibration_14d,h5.calibration_30d,h30d.calibration_14d,h30d.calibration_30d,h90d.calibration_14d,h90d.calibration_30d].map(v=>v!=null?v*100:null),
     backgroundColor:"#00d4ff40",borderColor:"#00d4ff",borderWidth:1,
   },{
-    label:"Target 80%",type:"line",
-    data:labels.map(()=>80),borderColor:"#ff3355",borderDash:[4,4],borderWidth:1,pointRadius:0,
-  }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:40,max:100,ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}});
+    label:"Target 70%",type:"line",
+    data:labels.map(()=>70),borderColor:"#ff3355",borderDash:[4,4],borderWidth:1,pointRadius:0,
+  }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#6b8ab0",font:{size:9}}}},scales:{y:{min:0,max:100,ticks:{color:"#6b8ab0",font:{size:9},callback:v=>v+"%"},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}});
 
   accChart2=new Chart(c2,{type:"bar",data:{labels,datasets:[{
-    label:"Directional",
-    data:[h5.directional_accuracy_7d,h5.directional_accuracy_30d,h30d.directional_accuracy_7d,h30d.directional_accuracy_30d,h90d.directional_accuracy_7d,h90d.directional_accuracy_30d].map(v=>v!=null?v*100:null),
+    label:"Directional Accuracy",
+    data:[h5.directional_accuracy_14d,h5.directional_accuracy_30d,h30d.directional_accuracy_14d,h30d.directional_accuracy_30d,h90d.directional_accuracy_14d,h90d.directional_accuracy_30d].map(v=>v!=null?v*100:null),
     backgroundColor:"#a855f740",borderColor:"#a855f7",borderWidth:1,
   },{
-    label:"Target 55%",type:"line",
-    data:labels.map(()=>55),borderColor:"#ffaa00",borderDash:[4,4],borderWidth:1,pointRadius:0,
-  }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:30,max:80,ticks:{color:"#6b8ab0",font:{size:9}},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}});
+    label:"Target 68%",type:"line",
+    data:labels.map(()=>68),borderColor:"#ffaa00",borderDash:[4,4],borderWidth:1,pointRadius:0,
+  }]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#6b8ab0",font:{size:9}}}},scales:{y:{min:0,max:100,ticks:{color:"#6b8ab0",font:{size:9},callback:v=>v+"%"},grid:{color:"#1a284040"}},x:{ticks:{color:"#6b8ab0",font:{size:9}},grid:{display:false}}}}});
 }
 
 // ══════════════════════════════════════════════════════════════════════════

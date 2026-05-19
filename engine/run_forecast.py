@@ -120,20 +120,30 @@ def _sf_forecast(df, freq, h):
 def _extract_quantiles(fcst_rows):
     """Extract (p50_vals, p10_vals, p90_vals) arrays from any forecaster output DataFrame."""
     cols = [c for c in fcst_rows.columns if c not in ("unique_id", "ds")]
-    # Clean p10/p50/p90 columns already present (from _sf_forecast or TC with quantiles)
+    # Clean p10/p50/p90 columns already present (from _sf_forecast)
     if "p50" in cols:
         p50 = fcst_rows["p50"].values
         p10 = fcst_rows["p10"].values if "p10" in cols else p50 * 0.99
         p90 = fcst_rows["p90"].values if "p90" in cols else p50 * 1.01
         return p50, p10, p90
-    # Generic column detection for TimeCopilotForecaster output
+    # Explicit quantile column detection (lo/hi bands from individual models)
     p10_col = next((c for c in cols if any(k in c.lower() for k in ["lo", "q10", "p10", "0.1"])), None)
-    p50_col = next((c for c in cols if any(k in c.lower() for k in ["median", "q50", "p50", "mean", "0.5"])), cols[0])
+    p50_col = next((c for c in cols if any(k in c.lower() for k in ["median", "q50", "p50", "mean", "0.5"])), None)
     p90_col = next((c for c in cols if any(k in c.lower() for k in ["hi", "q90", "p90", "0.9"])), None)
-    print(f"[forecaster] TC columns detected — p10:{p10_col}  p50:{p50_col}  p90:{p90_col}")
-    p50 = fcst_rows[p50_col].values
-    p10 = fcst_rows[p10_col].values if p10_col else p50 * 0.99
-    p90 = fcst_rows[p90_col].values if p90_col else p50 * 1.01
+    if p50_col:
+        p50 = fcst_rows[p50_col].values
+        p10 = fcst_rows[p10_col].values if p10_col else p50 * 0.99
+        p90 = fcst_rows[p90_col].values if p90_col else p50 * 1.01
+        print(f"[forecaster] quantile cols — p10:{p10_col}  p50:{p50_col}  p90:{p90_col}")
+        return p50, p10, p90
+    # TimeCopilot returns individual model point forecasts as separate columns.
+    # Build ensemble: P50=median, P10/P90 from model spread (mean ± 1.28σ).
+    arr = fcst_rows[cols].apply(pd.to_numeric, errors="coerce").values
+    p50 = np.median(arr, axis=1)
+    spread = np.std(arr, axis=1)
+    p10 = p50 - 1.28 * spread
+    p90 = p50 + 1.28 * spread
+    print(f"[forecaster] TC ensemble spread across: {cols}")
     return p50, p10, p90
 
 

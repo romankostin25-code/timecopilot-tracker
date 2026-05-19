@@ -112,13 +112,15 @@ def _regenerate_scorecard(df):
     for h in [5, 30, 90]:
         hg = graded[graded["horizon"] == h]
         by_horizon[str(h)] = {
-            "calibration_7d":            rolling(hg, "hit", 7),
-            "calibration_30d":           rolling(hg, "hit", 30),
-            "calibration_alltime":       round(hg["hit"].mean(), 4) if not hg.empty else None,
-            "directional_accuracy_7d":   rolling(hg, "direction_correct", 7),
-            "directional_accuracy_30d":  rolling(hg, "direction_correct", 30),
+            "calibration_7d":              rolling(hg, "hit", 7),
+            "calibration_14d":             rolling(hg, "hit", 14),
+            "calibration_30d":             rolling(hg, "hit", 30),
+            "calibration_alltime":         round(hg["hit"].mean(), 4) if not hg.empty else None,
+            "directional_accuracy_7d":     rolling(hg, "direction_correct", 7),
+            "directional_accuracy_14d":    rolling(hg, "direction_correct", 14),
+            "directional_accuracy_30d":    rolling(hg, "direction_correct", 30),
             "directional_accuracy_alltime": round(hg["direction_correct"].mean(), 4) if not hg.empty else None,
-            "forecasts_graded":          len(hg),
+            "forecasts_graded":            len(hg),
         }
 
     by_asset = {}
@@ -131,11 +133,13 @@ def _regenerate_scorecard(df):
             else:
                 break
         by_asset[ticker] = {
-            "calibration_7d":           rolling(t, "hit", 7),
-            "calibration_30d":          rolling(t, "hit", 30),
-            "directional_accuracy_7d":  rolling(t, "direction_correct", 7),
-            "directional_accuracy_30d": rolling(t, "direction_correct", 30),
-            "consecutive_hits":         consecutive,
+            "calibration_7d":            rolling(t, "hit", 7),
+            "calibration_14d":           rolling(t, "hit", 14),
+            "calibration_30d":           rolling(t, "hit", 30),
+            "directional_accuracy_7d":   rolling(t, "direction_correct", 7),
+            "directional_accuracy_14d":  rolling(t, "direction_correct", 14),
+            "directional_accuracy_30d":  rolling(t, "direction_correct", 30),
+            "consecutive_hits":          consecutive,
         }
 
     h5 = by_horizon.get("5", {})
