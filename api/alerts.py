@@ -63,11 +63,15 @@ def check_and_dispatch_alerts():
             _send_webhook(msg, ticker=ticker, signal=direction, conviction="HIGH")
             fired.append({"type": "high_conviction", "ticker": ticker})
 
-    # Accuracy drop alert
-    dir_acc = scorecard.get("by_horizon", {}).get("5", {}).get("directional_accuracy_7d")
-    if dir_acc and dir_acc < ACCURACY_THRESHOLD:
-        msg = (f"ACCURACY ALERT: 7d directional accuracy = {dir_acc:.1%} "
-               f"(threshold: {ACCURACY_THRESHOLD:.0%})")
+    # Accuracy drop alert — use 14d metric (more stable than 7d) and require
+    # enough graded forecasts to avoid noise from sparse/freshly-regraded data
+    h5 = scorecard.get("by_horizon", {}).get("5", {})
+    dir_acc   = h5.get("directional_accuracy_14d")
+    n_graded  = h5.get("forecasts_graded", 0)
+    MIN_GRADED = 30
+    if dir_acc is not None and n_graded >= MIN_GRADED and dir_acc < ACCURACY_THRESHOLD:
+        msg = (f"ACCURACY ALERT: 14d directional accuracy = {dir_acc:.1%} "
+               f"(threshold: {ACCURACY_THRESHOLD:.0%}, n={n_graded})")
         _send_webhook(msg, signal="ACCURACY_DROP", conviction="SYSTEM")
         fired.append({"type": "accuracy_drop", "value": dir_acc})
 
