@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-05-18T20:40:39.828562",
+  "generated_at": "2026-05-19T09:46:22.946919",
   "global": {
-    "forecasts_graded_total": 0,
+    "forecasts_graded_total": 341,
     "trend": "DECLINING"
   },
   "by_horizon": {
     "5": {
-      "calibration_7d": null,
-      "calibration_30d": null,
-      "calibration_alltime": null,
-      "directional_accuracy_7d": null,
-      "directional_accuracy_30d": null,
-      "directional_accuracy_alltime": null,
-      "forecasts_graded": 0
+      "calibration_7d": 0.7355,
+      "calibration_30d": 0.783,
+      "calibration_alltime": 0.783,
+      "directional_accuracy_7d": 0.0452,
+      "directional_accuracy_30d": 0.044,
+      "directional_accuracy_alltime": 0.044,
+      "forecasts_graded": 341
     },
     "30": {
       "calibration_7d": null,
@@ -33,5 +33,223 @@
       "forecasts_graded": 0
     }
   },
-  "by_asset": {}
+  "by_asset": {
+    "BIL": {
+      "calibration_7d": 0.4,
+      "calibration_30d": 0.6364,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "BTC-USD": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "CL=F": {
+      "calibration_7d": 0.2,
+      "calibration_30d": 0.4545,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0909,
+      "consecutive_hits": 0
+    },
+    "DX-Y.NYB": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "EEM": {
+      "calibration_7d": 0.6,
+      "calibration_30d": 0.5455,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "EFA": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 0.8182,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 7
+    },
+    "ETH-USD": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "FXI": {
+      "calibration_7d": 0.8,
+      "calibration_30d": 0.9091,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "GC=F": {
+      "calibration_7d": 0.4,
+      "calibration_30d": 0.5455,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "GLD": {
+      "calibration_7d": 0.4,
+      "calibration_30d": 0.5455,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "HG=F": {
+      "calibration_7d": 0.4,
+      "calibration_30d": 0.4545,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "HYG": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "IEF": {
+      "calibration_7d": 0.8,
+      "calibration_30d": 0.9091,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 2
+    },
+    "IWM": {
+      "calibration_7d": 0.8,
+      "calibration_30d": 0.9091,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 2
+    },
+    "LQD": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "NG=F": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "QQQ": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 0.7273,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 6
+    },
+    "SI=F": {
+      "calibration_7d": 0.0,
+      "calibration_30d": 0.2727,
+      "directional_accuracy_7d": 0.4,
+      "directional_accuracy_30d": 0.2727,
+      "consecutive_hits": 0
+    },
+    "SLV": {
+      "calibration_7d": 0.0,
+      "calibration_30d": 0.2727,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "SOL-USD": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "SPY": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 0.9091,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 7
+    },
+    "TLT": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "UVXY": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_30d": 1.0,
+      "consecutive_hits": 11
+    },
+    "XLE": {
+      "calibration_7d": 0.2,
+      "calibration_30d": 0.3636,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 0
+    },
+    "XLF": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "XLK": {
+      "calibration_7d": 0.8,
+      "calibration_30d": 0.4545,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 4
+    },
+    "ZC=F": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "ZW=F": {
+      "calibration_7d": 0.4,
+      "calibration_30d": 0.7273,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 2
+    },
+    "^IRX": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    },
+    "^TNX": {
+      "calibration_7d": 0.6,
+      "calibration_30d": 0.8182,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 1
+    },
+    "^VIX": {
+      "calibration_7d": 1.0,
+      "calibration_30d": 1.0,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_30d": 0.0,
+      "consecutive_hits": 11
+    }
+  }
 }
