@@ -20,6 +20,7 @@ def main():
     parser.add_argument("--calendar",   action="store_true", help="Save upcoming economic events")
     parser.add_argument("--alerts",     action="store_true", help="Check and dispatch signal alerts")
     parser.add_argument("--history",    action="store_true", help="Fetch 90-day historical closing prices for all tickers")
+    parser.add_argument("--backfill",   action="store_true", help="Walk-forward backfill: re-run model on past 14 trading days + grade")
     parser.add_argument("--poll",       action="store_true", help="15-min price + news poll (for local testing)")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="[v2] Retrain directional classifiers")
@@ -72,6 +73,10 @@ def main():
     if args.auto or args.alerts:
         from api.alerts import check_and_dispatch_alerts
         check_and_dispatch_alerts()
+
+    if args.backfill:
+        from engine.backfill_forecasts import backfill_forecasts
+        backfill_forecasts()
 
     if args.poll:
         from api.poll import handler

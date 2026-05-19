@@ -1,0 +1,50 @@
+name: Backfill Historical Forecasts
+on:
+  workflow_dispatch:
+    inputs:
+      days_back:
+        description: 'Trading days to backfill (default 14)'
+        required: false
+        default: '14'
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
+      FORECAST_HORIZONS: '5,30,90'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run backfill
+        run: |
+          python -c "
+          import os
+          os.environ['DAYS_BACK'] = '${{ github.event.inputs.days_back }}'
+          from engine.backfill_forecasts import backfill_forecasts
+          backfill_forecasts(int(os.environ.get('DAYS_BACK', 14)))
+          "
+        timeout-minutes: 40
+
+      - name: Commit backfilled data
+        run: |
+          git config user.name  "Trading Co-Pilot Bot"
+          git config user.email "bot@trading-copilot.com"
+          git add data/forecasts.csv data/scorecard.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "data: backfill historical forecasts $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase -X ours origin main
+            git push
+          fi
