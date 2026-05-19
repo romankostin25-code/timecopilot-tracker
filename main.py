@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--history",    action="store_true", help="Fetch 90-day historical closing prices for all tickers")
     parser.add_argument("--backfill",   action="store_true", help="Walk-forward backfill: re-run model on past 14 trading days + grade")
     parser.add_argument("--poll",       action="store_true", help="15-min price + news poll (for local testing)")
+    parser.add_argument("--regrade",    action="store_true", help="Re-grade direction_correct for all historical rows with corrected baseline")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="[v2] Retrain directional classifiers")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
@@ -77,6 +78,10 @@ def main():
     if args.backfill:
         from engine.backfill_forecasts import backfill_forecasts
         backfill_forecasts()
+
+    if args.regrade:
+        from engine.update_actuals import regrade_direction_correct
+        regrade_direction_correct()
 
     if args.poll:
         from api.poll import handler

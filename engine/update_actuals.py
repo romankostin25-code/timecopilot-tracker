@@ -173,5 +173,83 @@ def _regenerate_scorecard(df):
     print("✓ scorecard.json regenerated.")
 
 
+def regrade_direction_correct():
+    """Re-grade direction_correct for all rows that already have actuals.
+
+    Run once after fixing the direction grading baseline bug. Uses the same
+    corrected logic as fill_actuals_and_grade() (forecast_date price as baseline,
+    NEUTRAL mapped to p50 vs baseline).
+    """
+    if not os.path.exists(CSV_PATH):
+        print("No forecasts.csv — nothing to re-grade.")
+        return
+    df = pd.read_csv(CSV_PATH)
+    df["target_date"]   = pd.to_datetime(df["target_date"]).dt.date
+    df["forecast_date"] = pd.to_datetime(df["forecast_date"]).dt.date
+    today = date.today()
+
+    has_actual = (
+        df["actual"].notna() &
+        (~df["actual"].astype(str).str.strip().isin(["", "nan", "None"]))
+    )
+    to_regrade = df[has_actual & (df["target_date"] < today)]
+
+    if to_regrade.empty:
+        print("No rows to re-grade.")
+        _regenerate_scorecard(df)
+        return
+
+    updated = 0
+    for ticker, group in to_regrade.groupby("ticker"):
+        fc_dates     = [pd.to_datetime(d).date() for d in group["forecast_date"].tolist()]
+        target_dates = group["target_date"].tolist()
+        min_d = min(min(target_dates), min(fc_dates)) - timedelta(days=5)
+        max_d = max(target_dates) + timedelta(days=5)
+        try:
+            raw = yf.download(ticker.strip(), start=min_d,
+                              end=max_d + timedelta(days=1),
+                              auto_adjust=True, progress=False)
+            if raw.empty:
+                continue
+            prices = raw["Close"].squeeze().reset_index()
+            prices.columns = ["date", "price"]
+            prices["date"] = pd.to_datetime(prices["date"]).dt.date
+
+            for idx in group.index:
+                actual = float(df.loc[idx, "actual"])
+                p50    = float(df.loc[idx, "p50"])
+
+                stored_lp = df.loc[idx, "last_price"] if "last_price" in df.columns else None
+                baseline = None
+                if stored_lp not in (None, "", "nan", float("nan")):
+                    try:
+                        baseline = float(stored_lp)
+                    except (ValueError, TypeError):
+                        pass
+                if baseline is None:
+                    fc_date = pd.to_datetime(df.loc[idx, "forecast_date"]).date()
+                    for offset in range(4):
+                        m_fc = prices[prices["date"] == fc_date + timedelta(days=offset)]
+                        if not m_fc.empty:
+                            baseline = float(m_fc["price"].iloc[0])
+                            break
+                if baseline is None:
+                    baseline = p50
+
+                actual_dir = "BULLISH" if actual > baseline else "BEARISH"
+                pred_dir   = str(df.loc[idx, "direction"])
+                if pred_dir == "NEUTRAL":
+                    pred_dir = "BULLISH" if p50 >= baseline else "BEARISH"
+                df.loc[idx, "direction_correct"] = 1 if pred_dir == actual_dir else 0
+                updated += 1
+
+        except Exception as e:
+            print(f"[{ticker}] Error: {e}")
+
+    df.to_csv(CSV_PATH, index=False)
+    print(f"✓ Re-graded direction_correct for {updated} rows.")
+    _regenerate_scorecard(df)
+
+
 if __name__ == "__main__":
     fill_actuals_and_grade()

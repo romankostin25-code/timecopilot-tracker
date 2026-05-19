@@ -1,0 +1,38 @@
+name: Re-grade Direction Accuracy
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  regrade:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      FORECAST_HORIZONS: '5,30,90'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Re-grade direction_correct
+        run: python main.py --regrade
+        timeout-minutes: 20
+
+      - name: Commit regraded data
+        run: |
+          git config user.name  "Trading Co-Pilot Bot"
+          git config user.email "bot@trading-copilot.com"
+          git add data/forecasts.csv data/scorecard.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "data: regrade direction_correct with corrected baseline $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase -X ours origin main
+            git push
+          fi
