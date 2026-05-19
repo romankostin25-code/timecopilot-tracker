@@ -23,6 +23,7 @@ jobs:
     env:
       ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
       FORECAST_HORIZONS: '5,30,90'
+      ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -54,3 +55,44 @@ jobs:
             git pull --rebase -X ours origin main
             git push
           fi
+
+      - name: Notify Discord
+        if: always()
+        run: |
+          python - <<'EOF'
+          import json, os, sys
+          try:
+              import requests
+          except ImportError:
+              sys.exit(0)
+          url = os.getenv("ALERT_WEBHOOK_URL", "")
+          if not url:
+              print("No webhook URL — skipping Discord notify")
+              sys.exit(0)
+          try:
+              sc   = json.load(open("data/scorecard.json"))
+              h5   = sc.get("by_horizon", {}).get("5", {})
+              total = sc["global"]["forecasts_graded_total"]
+              acc14 = h5.get("directional_accuracy_14d")
+              acc7  = h5.get("directional_accuracy_7d")
+              cal14 = h5.get("calibration_14d")
+              def pct(v): return f"{v:.1%}" if v is not None else "—"
+              ok = acc14 is not None and acc14 >= 0.55
+              color = 0x00d084 if ok else 0xff4444
+              status = "✅ On target" if ok else "⚠️ Below 55% target"
+              payload = {"embeds": [{"title": f"Backfill complete — accuracy updated",
+                "description": status,
+                "fields": [
+                  {"name": "5D Direction 14d", "value": pct(acc14), "inline": True},
+                  {"name": "5D Direction 7d",  "value": pct(acc7),  "inline": True},
+                  {"name": "5D Band Hit 14d",  "value": pct(cal14), "inline": True},
+                  {"name": "Forecasts graded", "value": str(total), "inline": True},
+                ],
+                "color": color,
+                "footer": {"text": "Trading Co-Pilot · backfill.yml"}
+              }]}
+              r = requests.post(url, json=payload, timeout=5)
+              print(f"Discord notify: HTTP {r.status_code}")
+          except Exception as e:
+              print(f"Discord notify failed: {e}")
+          EOF
