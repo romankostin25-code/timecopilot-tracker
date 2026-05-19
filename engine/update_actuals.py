@@ -33,9 +33,13 @@ def fill_actuals_and_grade():
         print("No rows need actuals.")
     else:
         for ticker, group in needs.groupby("ticker"):
-            dates = group["target_date"].tolist()
-            min_d = min(dates) - timedelta(days=5)
-            max_d = max(dates) + timedelta(days=5)
+            target_dates  = group["target_date"].tolist()
+            fc_dates_raw  = group["forecast_date"].tolist()
+            fc_dates      = [pd.to_datetime(d).date() for d in fc_dates_raw]
+            # Download range must cover both forecast dates (for direction baseline)
+            # and target dates (for actual grading)
+            min_d = min(min(target_dates), min(fc_dates)) - timedelta(days=5)
+            max_d = max(target_dates) + timedelta(days=5)
             try:
                 raw = yf.download(ticker.strip(), start=min_d,
                                   end=max_d + timedelta(days=1),
@@ -66,23 +70,31 @@ def fill_actuals_and_grade():
                     df.loc[idx, "error_pct"] = round(abs(actual - p50) / p50 * 100, 4)
                     df.loc[idx, "hit"]       = 1 if p10 <= actual <= p90 else 0
 
-                    # Direction correct: compare to forecast-date close (use 5d horizon baseline)
-                    h5 = df[
-                        (df["ticker"] == ticker) &
-                        (df["forecast_date"] == df.loc[idx, "forecast_date"]) &
-                        (df["horizon"].astype(str) == "5")
-                    ]
-                    baseline = p50
-                    if not h5.empty:
-                        b_actual = str(h5.iloc[0].get("actual", ""))
-                        if b_actual not in ("", "nan", "None"):
-                            try:
-                                baseline = float(b_actual)
-                            except ValueError:
-                                pass
+                    # Direction baseline = closing price on forecast_date
+                    # (stored as last_price if available, otherwise look up from prices)
+                    stored_lp = df.loc[idx, "last_price"] if "last_price" in df.columns else None
+                    baseline = None
+                    if stored_lp not in (None, "", "nan", float("nan")):
+                        try:
+                            baseline = float(stored_lp)
+                        except (ValueError, TypeError):
+                            pass
+                    if baseline is None:
+                        fc_date = pd.to_datetime(df.loc[idx, "forecast_date"]).date()
+                        for offset in range(4):
+                            m_fc = prices[prices["date"] == fc_date + timedelta(days=offset)]
+                            if not m_fc.empty:
+                                baseline = float(m_fc["price"].iloc[0])
+                                break
+                    if baseline is None:
+                        baseline = p50  # last resort
 
                     actual_dir = "BULLISH" if actual > baseline else "BEARISH"
-                    df.loc[idx, "direction_correct"] = 1 if str(df.loc[idx, "direction"]) == actual_dir else 0
+                    # NEUTRAL was never BULLISH/BEARISH — infer direction from p50 vs baseline
+                    pred_dir = str(df.loc[idx, "direction"])
+                    if pred_dir == "NEUTRAL":
+                        pred_dir = "BULLISH" if p50 >= baseline else "BEARISH"
+                    df.loc[idx, "direction_correct"] = 1 if pred_dir == actual_dir else 0
                     df.loc[idx, "graded_at"] = datetime.now().isoformat()
                     updated += 1
 

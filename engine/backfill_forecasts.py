@@ -75,14 +75,18 @@ def backfill_forecasts(days_back=14):
                 for horizon in HORIZONS:
                     if (ticker, fd_str, str(horizon)) in existing_keys:
                         continue
-                    h_idx = min(horizon - 1, len(p50_vals) - 1)
+                    target_date = fd + timedelta(days=horizon)
+                    if freq == "B":
+                        from engine.run_forecast import _bday_h_idx
+                        h_idx = _bday_h_idx(fd, target_date, len(p50_vals) - 1)
+                    else:
+                        h_idx = min(horizon - 1, len(p50_vals) - 1)
                     p50_h = round(float(p50_vals[h_idx]), 6)
                     p10_h = round(float(p10_vals[h_idx]), 6)
                     p90_h = round(float(p90_vals[h_idx]), 6)
                     p50_d1 = float(p50_vals[0])
                     p10_d1 = float(p10_vals[0])
                     p90_d1 = float(p90_vals[0])
-                    target_date = fd + timedelta(days=horizon)
                     direction, strength, conviction = compute_signals(
                         p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon
                     )
@@ -91,6 +95,7 @@ def backfill_forecasts(days_back=14):
                         "target_date":   str(target_date),
                         "ticker":        ticker,
                         "horizon":       horizon,
+                        "last_price":    round(last_price, 6),
                         "p10": p10_h, "p50": p50_h, "p90": p90_h,
                         "actual": "",
                         "model_used":       f"StatsForecast_{freq}",

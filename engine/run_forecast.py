@@ -147,15 +147,27 @@ def _extract_quantiles(fcst_rows):
     return p50, p10, p90
 
 
-def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon):
-    thresholds = {5: 0.003, 30: 0.008, 90: 0.015}
-    threshold = thresholds.get(horizon, 0.005)
-    forecast_return = (p50_target - last_price) / last_price
-    direction = (
-        "BULLISH" if forecast_return > threshold else
-        "BEARISH" if forecast_return < -threshold else
-        "NEUTRAL"
+def _bday_h_idx(forecast_date, target_date, max_idx):
+    """0-based step index for a business-day StatsForecast output.
+
+    Counts actual business days from forecast_date (exclusive) to the first
+    trading day >= target_date (inclusive), so the correct model step is used
+    regardless of whether target_date lands on a weekend or holiday.
+    """
+    t = pd.Timestamp(target_date)
+    if t.dayofweek >= 5:  # weekend → advance to Monday
+        t = t + pd.tseries.offsets.BDay(1)
+    bdays = pd.bdate_range(
+        start=str((pd.Timestamp(forecast_date) + timedelta(days=1)).date()),
+        end=str(t.date()),
     )
+    return min(max(len(bdays) - 1, 0), max_idx)
+
+
+def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon):
+    forecast_return = (p50_target - last_price) / last_price
+    # Always make a directional call — NEUTRAL abstains and always scores 0
+    direction = "BULLISH" if forecast_return >= 0 else "BEARISH"
     signal_strength = round(abs(forecast_return) * 100, 4)
     band_width = (p90_d1 - p10_d1) / last_price
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
@@ -195,7 +207,12 @@ def run_all_forecasts():
             p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
 
             for horizon in HORIZONS:
-                h_idx = min(horizon - 1, len(p50_vals) - 1)
+                target_date = (datetime.today() + timedelta(days=horizon)).date()
+                # Use actual business-day step matching the calendar target_date
+                if freq == "B":
+                    h_idx = _bday_h_idx(forecast_date, target_date, len(p50_vals) - 1)
+                else:
+                    h_idx = min(horizon - 1, len(p50_vals) - 1)
                 p50_h = round(float(p50_vals[h_idx]), 6)
                 p10_h = round(float(p10_vals[h_idx]), 6)
                 p90_h = round(float(p90_vals[h_idx]), 6)
@@ -203,7 +220,6 @@ def run_all_forecasts():
                 p10_d1 = float(p10_vals[0])
                 p90_d1 = float(p90_vals[0])
 
-                target_date = (datetime.today() + timedelta(days=horizon)).date()
                 direction, signal_strength, conviction = compute_signals(
                     p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon
                 )
@@ -212,6 +228,7 @@ def run_all_forecasts():
                     "target_date":   str(target_date),
                     "ticker":        ticker,
                     "horizon":       horizon,
+                    "last_price":    round(last_price, 6),
                     "p10": p10_h, "p50": p50_h, "p90": p90_h,
                     "actual": "",
                     "model_used":       model_name,
