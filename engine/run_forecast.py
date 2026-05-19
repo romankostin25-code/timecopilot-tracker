@@ -36,7 +36,10 @@ def fetch_price_data(ticker, years=3):
     return df
 
 
-CRYPTO_TICKERS = {"BTC-USD", "ETH-USD", "SOL-USD"}
+CRYPTO_TICKERS  = {"BTC-USD", "ETH-USD", "SOL-USD"}
+EQUITY_ETFS     = {"SPY", "QQQ", "IWM", "XLE", "XLF", "XLK", "EEM", "EFA", "FXI"}
+BOND_ETFS       = {"TLT", "IEF", "HYG", "LQD", "BIL"}
+COMMODITY_TICKS = {"GC=F", "SI=F", "CL=F", "NG=F", "HG=F", "ZW=F", "ZC=F", "GLD", "SLV"}
 
 def _freq_for(ticker):
     return "D" if ticker in CRYPTO_TICKERS else FREQ
@@ -128,6 +131,118 @@ def _compute_trend_signal(price_arr):
     return "BULLISH" if ema10 > ema30 else "BEARISH"
 
 
+def _compute_tech_score(price_arr, horizon):
+    """RSI + momentum score in [-1, 1]. Horizon-weighted."""
+    s = pd.Series(price_arr, dtype=float)
+    n = len(s)
+    signals = {}
+
+    # RSI-14: overbought/oversold
+    if n >= 15:
+        delta = s.diff()
+        gain  = delta.clip(lower=0).rolling(14).mean()
+        loss  = (-delta.clip(upper=0)).rolling(14).mean()
+        rsi   = (100 - 100 / (1 + gain / loss.replace(0, 1e-10))).iloc[-1]
+        if rsi > 70:
+            signals["rsi"] = -0.8
+        elif rsi < 30:
+            signals["rsi"] = 0.8
+        else:
+            signals["rsi"] = (50 - rsi) / 50 * 0.3
+
+    # 5-day momentum
+    if n >= 5:
+        mom5 = (s.iloc[-1] / s.iloc[-5] - 1)
+        signals["mom5"] = float(np.clip(mom5 / 0.03, -1.0, 1.0))
+
+    # 20-day momentum
+    if n >= 20:
+        mom20 = (s.iloc[-1] / s.iloc[-20] - 1)
+        signals["mom20"] = float(np.clip(mom20 / 0.10, -1.0, 1.0))
+
+    if not signals:
+        return 0.0
+
+    if horizon == 5:
+        w = {"rsi": 0.30, "mom5": 0.50, "mom20": 0.20}
+    elif horizon == 30:
+        w = {"rsi": 0.20, "mom5": 0.20, "mom20": 0.60}
+    else:
+        w = {"rsi": 0.10, "mom5": 0.10, "mom20": 0.80}
+
+    return float(np.clip(sum(w.get(k, 0) * v for k, v in signals.items()), -1.0, 1.0))
+
+
+def _load_macro_signals():
+    """Load latest macro context row. Returns dict or {}."""
+    try:
+        df = pd.read_csv("data/macro_context.csv")
+        if df.empty:
+            return {}
+        row = df.iloc[-1]
+        return {
+            "vix":          float(row.get("vix", 20)),
+            "risk_regime":  str(row.get("risk_regime",  "NEUTRAL")),
+            "dollar_regime":str(row.get("dollar_regime","NEUTRAL")),
+            "rate_regime":  str(row.get("rate_regime",  "NEUTRAL")),
+        }
+    except Exception:
+        return {}
+
+
+def _macro_score(ticker, macro):
+    """Asset-class-aware macro signal in [-1, 1]."""
+    if not macro:
+        return 0.0
+    vix    = macro.get("vix", 20)
+    risk   = macro.get("risk_regime",   "NEUTRAL")
+    dollar = macro.get("dollar_regime", "NEUTRAL")
+    rate   = macro.get("rate_regime",   "NEUTRAL")
+    score  = 0.0
+
+    if ticker in EQUITY_ETFS:
+        score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
+        score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
+        score -= 0.10 if rate == "HAWKISH" else (-0.10 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker in BOND_ETFS:
+        score -= 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker in COMMODITY_TICKS:
+        score -= 0.25 if dollar == "DOLLAR_STRENGTH" else (-0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+    elif ticker in CRYPTO_TICKERS:
+        score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
+        score -= 0.15 if vix > 25 else 0.0
+    elif ticker in ("^VIX", "UVXY"):
+        score += 0.30 if risk == "RISK_OFF" else (-0.20 if risk == "RISK_ON" else 0.0)
+    elif ticker == "DX-Y.NYB":
+        score += 0.20 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
+        score += 0.10 if risk == "RISK_OFF" else 0.0
+
+    return float(np.clip(score, -1.0, 1.0))
+
+
+def _load_claude_signals():
+    """Load signals.json (Claude per-ticker analysis). Returns dict or {}."""
+    try:
+        import json
+        return json.load(open("data/signals.json"))
+    except Exception:
+        return {}
+
+
+def _claude_score(ticker, claude_signals):
+    """Score from Claude key_drivers: HIGH=1.0, MEDIUM=0.5, LOW=0.25. Returns [-1, 1]."""
+    if not claude_signals or ticker not in claude_signals:
+        return 0.0
+    drivers = claude_signals[ticker].get("analysis", {}).get("key_drivers", [])
+    if not drivers:
+        return 0.0
+    weights = {"HIGH": 1.0, "MEDIUM": 0.5, "LOW": 0.25}
+    bull = sum(weights.get(d.get("weight", ""), 0) for d in drivers if d.get("impact") == "BULLISH")
+    bear = sum(weights.get(d.get("weight", ""), 0) for d in drivers if d.get("impact") == "BEARISH")
+    total = bull + bear
+    return float((bull - bear) / total) if total else 0.0
+
+
 def _extract_quantiles(fcst_rows):
     """Extract (p50_vals, p10_vals, p90_vals) arrays from any forecaster output DataFrame."""
     cols = [c for c in fcst_rows.columns if c not in ("unique_id", "ds")]
@@ -175,19 +290,40 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon, trend_signal=None):
+def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
+                    trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0):
+    """5-signal weighted ensemble → BULLISH or BEARISH direction.
+
+    Signals (all normalised to [-1, 1]):
+      model  — time-series p50 vs last_price
+      ema    — EMA10/EMA30 crossover
+      tech   — RSI-14 + 5d/20d momentum
+      macro  — VIX / regime / dollar context
+      claude — Claude key_driver bull/bear balance
+
+    Horizon-dependent weights give more weight to short-term momentum for 5d
+    and more to trend + macro for 30d/90d.
+    """
     forecast_return = (p50_target - last_price) / last_price
-    model_dir = "BULLISH" if forecast_return >= 0 else "BEARISH"
+    model_sc  = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
+    ema_sc    = 1.0 if trend_signal == "BULLISH" else (-1.0 if trend_signal == "BEARISH" else 0.0)
 
-    # Blend: when model contradicts EMA trend, only override if model is confident
-    if trend_signal and model_dir != trend_signal:
-        min_confidence = {5: 0.40, 30: 1.00, 90: 2.00}.get(horizon, 0.50)
-        direction = model_dir if abs(forecast_return) * 100 >= min_confidence else trend_signal
+    if horizon == 5:
+        w = {"model": 0.25, "ema": 0.20, "tech": 0.25, "macro": 0.20, "claude": 0.10}
+    elif horizon == 30:
+        w = {"model": 0.30, "ema": 0.25, "tech": 0.15, "macro": 0.20, "claude": 0.10}
     else:
-        direction = model_dir
+        w = {"model": 0.35, "ema": 0.30, "tech": 0.10, "macro": 0.15, "claude": 0.10}
 
+    combined = (w["model"]  * model_sc   +
+                w["ema"]    * ema_sc      +
+                w["tech"]   * tech_score  +
+                w["macro"]  * macro_score +
+                w["claude"] * claude_score)
+
+    direction      = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength = round(abs(forecast_return) * 100, 4)
-    band_width = (p90_d1 - p10_d1) / last_price
+    band_width      = (p90_d1 - p10_d1) / last_price
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
     return direction, signal_strength, conviction_score
 
@@ -197,7 +333,9 @@ def run_all_forecasts():
     tickers = [t.strip() for t in os.getenv("ASSET_TICKERS", ",".join(ALL_TICKERS)).split(",") if t.strip()]
 
     tc_forecaster, tc_name = _build_tc_forecaster()
-    forecast_date = datetime.today().date()
+    forecast_date  = datetime.today().date()
+    macro          = _load_macro_signals()
+    claude_signals = _load_claude_signals()
     new_rows, skipped = [], []
 
     for ticker in tickers:
@@ -223,7 +361,10 @@ def run_all_forecasts():
                 model_name = f"StatsForecast_{freq}"
 
             p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
-            trend_signal = _compute_trend_signal(df["y"].values)
+            trend_signal  = _compute_trend_signal(df["y"].values)
+            macro_sc      = _macro_score(ticker, macro)
+            claude_sc     = _claude_score(ticker, claude_signals)
+            print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f}")
 
             for horizon in HORIZONS:
                 target_date = (datetime.today() + timedelta(days=horizon)).date()
@@ -240,7 +381,11 @@ def run_all_forecasts():
                 p90_d1 = float(p90_vals[0])
 
                 direction, signal_strength, conviction = compute_signals(
-                    p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon, trend_signal
+                    p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon,
+                    trend_signal=trend_signal,
+                    tech_score=_compute_tech_score(df["y"].values, horizon),
+                    macro_score=macro_sc,
+                    claude_score=claude_sc,
                 )
                 new_rows.append({
                     "forecast_date": str(forecast_date),

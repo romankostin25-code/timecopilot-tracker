@@ -21,8 +21,13 @@ def backfill_forecasts(days_back=14, force=False):
     from engine.universe import ALL_TICKERS
     from engine.run_forecast import (
         fetch_price_data, _sf_forecast, _extract_quantiles,
-        compute_signals, _freq_for, _bday_h_idx, _compute_trend_signal,
+        compute_signals, _freq_for, _bday_h_idx,
+        _compute_trend_signal, _compute_tech_score,
+        _load_macro_signals, _macro_score,
+        _load_claude_signals, _claude_score,
     )
+    macro          = _load_macro_signals()
+    claude_signals = _load_claude_signals()
 
     tickers = [
         t.strip()
@@ -80,6 +85,8 @@ def backfill_forecasts(days_back=14, force=False):
                 fcst = _sf_forecast(df_trunc, freq, max(HORIZONS))
                 p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
                 trend_signal = _compute_trend_signal(df_trunc["y"].values)
+                macro_sc     = _macro_score(ticker, macro)
+                claude_sc    = _claude_score(ticker, claude_signals)
 
                 for horizon in HORIZONS:
                     if (ticker, fd_str, str(horizon)) in existing_keys:
@@ -96,7 +103,11 @@ def backfill_forecasts(days_back=14, force=False):
                     p10_d1 = float(p10_vals[0])
                     p90_d1 = float(p90_vals[0])
                     direction, strength, conviction = compute_signals(
-                        p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon, trend_signal
+                        p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon,
+                        trend_signal=trend_signal,
+                        tech_score=_compute_tech_score(df_trunc["y"].values, horizon),
+                        macro_score=macro_sc,
+                        claude_score=claude_sc,
                     )
                     new_rows.append({
                         "forecast_date": fd_str,
