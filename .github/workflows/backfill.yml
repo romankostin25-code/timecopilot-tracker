@@ -6,6 +6,10 @@ on:
         description: 'Trading days to backfill (default 14)'
         required: false
         default: '14'
+      force:
+        description: 'Clear old backfill rows and regenerate (true/false)'
+        required: false
+        default: 'false'
 
 concurrency:
   group: repo-write
@@ -32,9 +36,11 @@ jobs:
         run: |
           python -c "
           import os
-          os.environ['DAYS_BACK'] = '${{ github.event.inputs.days_back }}'
           from engine.backfill_forecasts import backfill_forecasts
-          backfill_forecasts(int(os.environ.get('DAYS_BACK', 14)))
+          backfill_forecasts(
+              days_back=int('${{ github.event.inputs.days_back }}' or 14),
+              force='${{ github.event.inputs.force }}' == 'true',
+          )
           "
         timeout-minutes: 40
 

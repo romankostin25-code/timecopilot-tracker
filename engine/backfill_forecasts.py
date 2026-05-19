@@ -1,9 +1,9 @@
 """Walk-forward backfill: re-run current model on past trading days.
 
 For each historical forecast_date, truncates price history to what was
-available on that day, runs StatsForecast ensemble, and saves 5d/30d/90d
-rows. Existing rows are skipped. After adding rows, triggers grading so
-any matured forecasts get scored immediately.
+available on that day, runs StatsForecast ensemble + EMA trend signal,
+and saves 5d/30d/90d rows. Existing rows are skipped unless force=True.
+After adding rows, triggers grading so any matured forecasts get scored.
 """
 
 import os
@@ -17,11 +17,11 @@ CSV_PATH = "data/forecasts.csv"
 HORIZONS = [5, 30, 90]
 
 
-def backfill_forecasts(days_back=14):
+def backfill_forecasts(days_back=14, force=False):
     from engine.universe import ALL_TICKERS
     from engine.run_forecast import (
         fetch_price_data, _sf_forecast, _extract_quantiles,
-        compute_signals, _freq_for,
+        compute_signals, _freq_for, _bday_h_idx, _compute_trend_signal,
     )
 
     tickers = [
@@ -40,6 +40,14 @@ def backfill_forecasts(days_back=14):
     forecast_dates.reverse()
 
     existing = pd.read_csv(CSV_PATH) if os.path.exists(CSV_PATH) else pd.DataFrame()
+
+    if force and not existing.empty:
+        today_str = str(today)
+        keep = existing[existing["forecast_date"].astype(str) == today_str]
+        keep.to_csv(CSV_PATH, index=False)
+        print(f"[force] Cleared {len(existing) - len(keep)} historical rows, kept {len(keep)} today's forecasts.")
+        existing = keep
+
     if not existing.empty:
         existing_keys = set(
             zip(
@@ -71,13 +79,13 @@ def backfill_forecasts(days_back=14):
                 freq = _freq_for(ticker)
                 fcst = _sf_forecast(df_trunc, freq, max(HORIZONS))
                 p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
+                trend_signal = _compute_trend_signal(df_trunc["y"].values)
 
                 for horizon in HORIZONS:
                     if (ticker, fd_str, str(horizon)) in existing_keys:
                         continue
                     target_date = fd + timedelta(days=horizon)
                     if freq == "B":
-                        from engine.run_forecast import _bday_h_idx
                         h_idx = _bday_h_idx(fd, target_date, len(p50_vals) - 1)
                     else:
                         h_idx = min(horizon - 1, len(p50_vals) - 1)
@@ -88,7 +96,7 @@ def backfill_forecasts(days_back=14):
                     p10_d1 = float(p10_vals[0])
                     p90_d1 = float(p90_vals[0])
                     direction, strength, conviction = compute_signals(
-                        p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon
+                        p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon, trend_signal
                     )
                     new_rows.append({
                         "forecast_date": fd_str,
@@ -109,7 +117,7 @@ def backfill_forecasts(days_back=14):
                         "direction_correct": "", "graded_at": "", "notes": "",
                     })
 
-                print(f"  [{ticker}] ✓ {fd_str} last={last_price:.4f} freq={freq}")
+                print(f"  [{ticker}] ✓ {fd_str} last={last_price:.4f} freq={freq} trend={trend_signal}")
 
             except Exception as e:
                 print(f"  [{ticker}] ✗ {e}")

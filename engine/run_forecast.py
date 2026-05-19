@@ -96,6 +96,7 @@ def _build_tc_forecaster():
 
 def _sf_forecast(df, freq, h):
     """StatsForecast ensemble: median of AutoARIMA + AutoETS + AutoTheta.
+    Uses 68% CI (±1σ) for tighter, more actionable forecast bands.
     Returns DataFrame with columns: unique_id, ds, p10, p50, p90."""
     from statsforecast import StatsForecast
     from statsforecast.models import AutoARIMA, AutoETS, AutoTheta
@@ -104,9 +105,9 @@ def _sf_forecast(df, freq, h):
         freq=freq,
         n_jobs=1,
     )
-    raw = sf.forecast(df=df, h=h, level=[80]).reset_index(drop=True)
-    lo_cols = [c for c in raw.columns if "-lo-80" in c]
-    hi_cols = [c for c in raw.columns if "-hi-80" in c]
+    raw = sf.forecast(df=df, h=h, level=[68]).reset_index(drop=True)
+    lo_cols = [c for c in raw.columns if "-lo-68" in c]
+    hi_cols = [c for c in raw.columns if "-hi-68" in c]
     pt_cols = [c for c in raw.columns if c not in ("unique_id", "ds")
                and "-lo-" not in c and "-hi-" not in c]
     base = raw[["unique_id", "ds"]] if "unique_id" in raw.columns else raw[["ds"]]
@@ -115,6 +116,16 @@ def _sf_forecast(df, freq, h):
     out["p10"] = raw[lo_cols].median(axis=1) if lo_cols else out["p50"] * 0.99
     out["p90"] = raw[hi_cols].median(axis=1) if hi_cols else out["p50"] * 1.01
     return out
+
+
+def _compute_trend_signal(price_arr):
+    """EMA10/EMA30 crossover — 'BULLISH' if short EMA above long, else 'BEARISH'."""
+    if len(price_arr) < 30:
+        return None
+    s = pd.Series(price_arr, dtype=float)
+    ema10 = s.ewm(span=10, adjust=False).mean().iloc[-1]
+    ema30 = s.ewm(span=30, adjust=False).mean().iloc[-1]
+    return "BULLISH" if ema10 > ema30 else "BEARISH"
 
 
 def _extract_quantiles(fcst_rows):
@@ -164,10 +175,17 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon):
+def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon, trend_signal=None):
     forecast_return = (p50_target - last_price) / last_price
-    # Always make a directional call — NEUTRAL abstains and always scores 0
-    direction = "BULLISH" if forecast_return >= 0 else "BEARISH"
+    model_dir = "BULLISH" if forecast_return >= 0 else "BEARISH"
+
+    # Blend: when model contradicts EMA trend, only override if model is confident
+    if trend_signal and model_dir != trend_signal:
+        min_confidence = {5: 0.40, 30: 1.00, 90: 2.00}.get(horizon, 0.50)
+        direction = model_dir if abs(forecast_return) * 100 >= min_confidence else trend_signal
+    else:
+        direction = model_dir
+
     signal_strength = round(abs(forecast_return) * 100, 4)
     band_width = (p90_d1 - p10_d1) / last_price
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
@@ -205,6 +223,7 @@ def run_all_forecasts():
                 model_name = f"StatsForecast_{freq}"
 
             p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
+            trend_signal = _compute_trend_signal(df["y"].values)
 
             for horizon in HORIZONS:
                 target_date = (datetime.today() + timedelta(days=horizon)).date()
@@ -221,7 +240,7 @@ def run_all_forecasts():
                 p90_d1 = float(p90_vals[0])
 
                 direction, signal_strength, conviction = compute_signals(
-                    p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon
+                    p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon, trend_signal
                 )
                 new_rows.append({
                     "forecast_date": str(forecast_date),

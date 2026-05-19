@@ -74,11 +74,12 @@ def fill_actuals_and_grade():
                     # (stored as last_price if available, otherwise look up from prices)
                     stored_lp = df.loc[idx, "last_price"] if "last_price" in df.columns else None
                     baseline = None
-                    if stored_lp not in (None, "", "nan", float("nan")):
-                        try:
-                            baseline = float(stored_lp)
-                        except (ValueError, TypeError):
-                            pass
+                    try:
+                        _lp = float(stored_lp) if stored_lp is not None else None
+                        if _lp is not None and not pd.isna(_lp):
+                            baseline = _lp
+                    except (ValueError, TypeError):
+                        pass
                     if baseline is None:
                         fc_date = pd.to_datetime(df.loc[idx, "forecast_date"]).date()
                         for offset in range(4):
