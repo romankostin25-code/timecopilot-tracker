@@ -113,10 +113,19 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
         )
 
     train_dataset = make_dataset(train_df)
-    val_dataset   = TimeSeriesDataSet.from_dataset(train_dataset, val_df, predict=True, stop_randomization=True)
+    # Use full labeled data for val so encoder can look back into training history.
+    # predict=True selects only the last window per ticker automatically.
+    val_dataset   = TimeSeriesDataSet.from_dataset(train_dataset, labeled, predict=True, stop_randomization=True)
+
+    def _safe_collate(batch):
+        batch = [b for b in batch if b is not None]
+        if not batch:
+            raise StopIteration
+        from torch.utils.data.dataloader import default_collate
+        return default_collate(batch)
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True,  num_workers=0)
-    val_loader   = DataLoader(val_dataset,   batch_size=batch_size, shuffle=False, num_workers=0)
+    val_loader   = DataLoader(val_dataset,   batch_size=batch_size, shuffle=False, num_workers=0, collate_fn=_safe_collate)
 
     tft = TemporalFusionTransformer.from_dataset(
         train_dataset,
@@ -152,12 +161,16 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
         pickle.dump(train_dataset, f)
     print(f"[TFT] Dataset template saved → {template_path}")
 
-    # Quick validation accuracy
-    preds = trainer.predict(tft, dataloaders=val_loader, return_predictions=True)
-    y_pred = np.argmax(np.vstack([p.numpy() for p in preds]), axis=1)
-    y_true = val_df[target_col].values[-len(y_pred):]
-    acc = (y_pred == y_true[:len(y_pred)]).mean()
-    print(f"[TFT] Horizon {horizon}d val accuracy: {acc:.3f}  saved → {ckpt_path}")
+    # Quick validation accuracy — one prediction per ticker (last window)
+    try:
+        preds = trainer.predict(tft, dataloaders=val_loader, return_predictions=True)
+        y_pred = np.argmax(np.vstack([p.numpy() for p in preds]), axis=1)
+        last_per_ticker = labeled.groupby("ticker")[target_col].last().values
+        y_true = last_per_ticker[:len(y_pred)]
+        acc = (y_pred == y_true).mean()
+        print(f"[TFT] Horizon {horizon}d val accuracy: {acc:.3f}  saved → {ckpt_path}")
+    except Exception as e:
+        print(f"[TFT] Val accuracy skipped ({e})  saved → {ckpt_path}")
     return ckpt_path
 
 
