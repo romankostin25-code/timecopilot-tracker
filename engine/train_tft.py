@@ -14,6 +14,7 @@ Usage:
 """
 
 import os
+import pickle
 import argparse
 import numpy as np
 import pandas as pd
@@ -140,10 +141,16 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
     )
     trainer.fit(tft, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
-    # Save checkpoint
     os.makedirs(CHECKPOINT_DIR, exist_ok=True)
-    ckpt_path = os.path.join(CHECKPOINT_DIR, f"tft_h{horizon}.ckpt")
+    ckpt_path     = os.path.join(CHECKPOINT_DIR, f"tft_h{horizon}.ckpt")
+    template_path = os.path.join(CHECKPOINT_DIR, f"dataset_h{horizon}.pkl")
+
     trainer.save_checkpoint(ckpt_path)
+
+    # Save dataset template (with scalers) so inference can normalise identically
+    with open(template_path, "wb") as f:
+        pickle.dump(train_dataset, f)
+    print(f"[TFT] Dataset template saved → {template_path}")
 
     # Quick validation accuracy
     preds = trainer.predict(tft, dataloaders=val_loader, return_predictions=True)

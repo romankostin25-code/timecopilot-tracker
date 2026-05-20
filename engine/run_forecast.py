@@ -318,46 +318,53 @@ _TRENDING_COMMS = {"NG=F", "ZW=F", "SI=F", "SLV", "XLE", "ZC=F"}
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                     trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0,
-                    ticker=None):
-    """Direction via trained meta-learner or asset-class-specific weighted ensemble.
+                    ticker=None, tft_score=None):
+    """Direction signal — TFT when trained, else asset-class weighted ensemble.
 
-    Asset-class weights:
-      Equities/bonds/default  — model(60%) macro(25%) claude(15%)
-      Crypto                  — trend(35%) model(20%) macro(30%) claude(15%)
-      Trending commodities    — trend(30%) model(30%) macro(25%) claude(15%)
-      VIX/UVXY               — macro(80%) model(20%)  [ARIMA mean-reversion wrong for vol]
-
-    If data/direction_model.pkl has a trained model for this horizon, uses it for
-    the model component and applies macro/claude as additive adjustments.
+    With TFT:  tft(55%) + macro(25%) + claude(15%) + stat-model(5%)
+    Without TFT (by asset class):
+      VIX/UVXY            — macro(80%) + model(20%)
+      Crypto              — trend(35%) + macro(30%) + model(20%) + claude(15%)
+      Trending commodities — trend(30%) + macro(25%) + model(30%) + claude(15%)
+      Equities/bonds       — model(60%) + macro(25%) + claude(15%)
     """
     forecast_return = (p50_target - last_price) / last_price
     band_width      = (p90_d1 - p10_d1) / last_price
     model_sc        = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
 
-    # Use trained meta-learner model_sc if available
-    pipe = _load_direction_model().get(str(horizon))
-    if pipe is not None:
-        model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1  # [0,1] → [-1,1]
+    # Use LR meta-learner as model_sc if available and no TFT
+    if tft_score is None:
+        pipe = _load_direction_model().get(str(horizon))
+        if pipe is not None:
+            model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1
 
     trend_sc = 1.0 if trend_signal == "BULLISH" else (-1.0 if trend_signal == "BEARISH" else model_sc)
 
-    if ticker in _VOL_TICKERS:
-        # VIX/UVXY: ARIMA mean-reversion is systematically wrong in trending regimes
+    if tft_score is not None:
+        # TFT is trained — use it as primary signal
+        tft_sc   = float(tft_score) * 2 - 1  # [0,1] → [-1,1]
+        combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
+    elif ticker in _VOL_TICKERS:
         combined = 0.20 * model_sc + 0.80 * macro_score
     elif ticker in CRYPTO_TICKERS:
-        # Crypto trends persistently — weight momentum + macro over mean-reversion
         combined = 0.20 * model_sc + 0.35 * trend_sc + 0.30 * macro_score + 0.15 * claude_score
     elif ticker in _TRENDING_COMMS:
-        # Energy/ag/silver: respect the trend but still give model some weight
         combined = 0.30 * model_sc + 0.30 * trend_sc + 0.25 * macro_score + 0.15 * claude_score
     else:
-        # Equities, bonds, default: mean-reversion model is most reliable
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
     direction        = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength  = round(abs(forecast_return) * 100, 4)
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
     return direction, signal_strength, conviction_score
+
+
+def _load_news_sentiment() -> pd.DataFrame | None:
+    """Load latest news sentiment parquet for TFT inference."""
+    try:
+        return pd.read_parquet("data/news_sentiment.parquet")
+    except Exception:
+        return None
 
 
 def run_all_forecasts():
@@ -368,15 +375,45 @@ def run_all_forecasts():
     forecast_date  = datetime.today().date()
     macro          = _load_macro_signals()
     claude_signals = _load_claude_signals()
+    news_df        = _load_news_sentiment()
     new_rows, skipped = [], []
 
+    # Pre-fetch all price arrays for TFT batch inference
+    price_arrays: dict = {}
+    price_frames: dict = {}
     for ticker in tickers:
-        print(f"\n[{ticker}] Fetching data...")
         try:
             df = fetch_price_data(ticker)
+            price_arrays[ticker] = df["y"].values
+            price_frames[ticker] = df
+        except Exception as e:
+            print(f"[{ticker}] fetch failed: {e}")
+
+    # TFT batch inference — runs once for all tickers/horizons
+    tft_scores: dict = {}
+    try:
+        from engine.tft_inference import precompute_tft_scores
+        tft_scores = precompute_tft_scores(
+            tickers=list(price_arrays.keys()),
+            price_data=price_arrays,
+            macro=macro,
+            news_df=news_df,
+        )
+        if any(tft_scores.values()):
+            n = sum(len(v) for v in tft_scores.values())
+            print(f"[TFT] Pre-scored {n} ticker×horizon pairs")
+    except Exception as e:
+        print(f"[TFT] Skipped ({e})")
+
+    for ticker in tickers:
+        if ticker not in price_frames:
+            continue
+        print(f"\n[{ticker}] Forecasting...")
+        try:
+            df = price_frames[ticker]
             last_price = float(df["y"].iloc[-1])
             freq = _freq_for(ticker)
-            print(f"[{ticker}] Forecasting {MAX_HORIZON}d ({len(df)} pts, freq={freq})...")
+            print(f"[{ticker}] {len(df)} pts, freq={freq}")
 
             if tc_forecaster is not None:
                 try:
@@ -400,7 +437,6 @@ def run_all_forecasts():
 
             for horizon in HORIZONS:
                 target_date = (datetime.today() + timedelta(days=horizon)).date()
-                # Use actual business-day step matching the calendar target_date
                 if freq == "B":
                     h_idx = _bday_h_idx(forecast_date, target_date, len(p50_vals) - 1)
                 else:
@@ -412,6 +448,7 @@ def run_all_forecasts():
                 p10_d1 = float(p10_vals[0])
                 p90_d1 = float(p90_vals[0])
 
+                tft_p = tft_scores.get(ticker, {}).get(horizon)
                 direction, signal_strength, conviction = compute_signals(
                     p10_d1, p50_d1, p50_h, p90_d1, last_price, horizon,
                     trend_signal=trend_signal,
@@ -419,6 +456,7 @@ def run_all_forecasts():
                     macro_score=macro_sc,
                     claude_score=claude_sc,
                     ticker=ticker,
+                    tft_score=tft_p,
                 )
                 new_rows.append({
                     "forecast_date": str(forecast_date),

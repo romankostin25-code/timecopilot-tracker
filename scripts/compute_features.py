@@ -29,69 +29,27 @@ MACRO_TICKERS = {"^VIX": "vix", "^TNX": "yield_10y", "^IRX": "yield_3m",
                  "DX-Y.NYB": "dxy"}
 
 
-def _compute_rsi(s: pd.Series, period: int = 14) -> pd.Series:
-    delta = s.diff()
-    gain = delta.clip(lower=0).rolling(period).mean()
-    loss = (-delta.clip(upper=0)).rolling(period).mean()
-    rs = gain / loss.replace(0, 1e-10)
-    return 100 - 100 / (1 + rs)
-
-
-def _compute_macd_signal(s: pd.Series) -> pd.Series:
-    ema12 = s.ewm(span=12, adjust=False).mean()
-    ema26 = s.ewm(span=26, adjust=False).mean()
-    macd = ema12 - ema26
-    return macd.ewm(span=9, adjust=False).mean()
-
-
 def _compute_features_for_ticker(ticker: str, price_df: pd.DataFrame) -> pd.DataFrame:
-    df = price_df.copy()
-    df = df.sort_values("date").reset_index(drop=True)
-    close = df["close"]
-    volume = df.get("volume", pd.Series(np.nan, index=df.index))
+    from engine.feature_builder import compute_price_features
+    df = compute_price_features(price_df, ticker)
 
-    # Log returns
-    log_ret = np.log(close / close.shift(1))
-    df["log_ret_1d"]  = log_ret
-    df["log_ret_5d"]  = np.log(close / close.shift(5))
-    df["log_ret_20d"] = np.log(close / close.shift(20))
-    df["log_ret_60d"] = np.log(close / close.shift(60))
-
-    # Realised volatility (annualised)
-    df["vol_20d"] = log_ret.rolling(20).std() * np.sqrt(252)
-    df["vol_60d"] = log_ret.rolling(60).std() * np.sqrt(252)
-
-    # Technical
-    df["rsi_14"]      = _compute_rsi(close, 14)
-    df["macd_signal"] = _compute_macd_signal(close)
-    bb_mid   = close.rolling(20).mean()
-    bb_std   = close.rolling(20).std()
-    df["bb_pos"] = (close - bb_mid) / (2 * bb_std.replace(0, np.nan))  # -1..+1 approx
-
-    # Volume ratio
-    if not volume.isna().all():
-        vol_ma = volume.rolling(20).mean()
-        df["vol_ratio_20d"] = volume / vol_ma.replace(0, np.nan)
-    else:
-        df["vol_ratio_20d"] = np.nan
-
-    # Forward returns (targets — will be NaN at end of series until future fills in)
+    # Forward returns (targets)
+    close = df["close"].astype(float)
     df["fwd_ret_5d"]  = np.log(close.shift(-5)  / close)
     df["fwd_ret_30d"] = np.log(close.shift(-30) / close)
     df["fwd_ret_90d"] = np.log(close.shift(-90) / close)
     df["actual_bullish_5d"]  = (df["fwd_ret_5d"]  > 0).astype(float)
     df["actual_bullish_30d"] = (df["fwd_ret_30d"] > 0).astype(float)
     df["actual_bullish_90d"] = (df["fwd_ret_90d"] > 0).astype(float)
-    # Mark future targets as NaN (not yet knowable)
-    today = date.today()
-    cutoff_5  = pd.Timestamp(today - timedelta(days=5))
-    cutoff_30 = pd.Timestamp(today - timedelta(days=30))
-    cutoff_90 = pd.Timestamp(today - timedelta(days=90))
-    df.loc[pd.to_datetime(df["date"]) >= cutoff_5,  ["fwd_ret_5d",  "actual_bullish_5d"]]  = np.nan
-    df.loc[pd.to_datetime(df["date"]) >= cutoff_30, ["fwd_ret_30d", "actual_bullish_30d"]] = np.nan
-    df.loc[pd.to_datetime(df["date"]) >= cutoff_90, ["fwd_ret_90d", "actual_bullish_90d"]] = np.nan
 
-    df["ticker"] = ticker
+    # Mark unknowable future targets as NaN
+    today = date.today()
+    df.loc[pd.to_datetime(df["date"]).dt.date >= today - timedelta(days=5),
+           ["fwd_ret_5d",  "actual_bullish_5d"]]  = np.nan
+    df.loc[pd.to_datetime(df["date"]).dt.date >= today - timedelta(days=30),
+           ["fwd_ret_30d", "actual_bullish_30d"]] = np.nan
+    df.loc[pd.to_datetime(df["date"]).dt.date >= today - timedelta(days=90),
+           ["fwd_ret_90d", "actual_bullish_90d"]] = np.nan
     return df
 
 

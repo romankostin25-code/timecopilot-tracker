@@ -24,6 +24,8 @@ def main():
     parser.add_argument("--poll",       action="store_true", help="15-min price + news poll (for local testing)")
     parser.add_argument("--regrade",    action="store_true", help="Re-grade direction_correct for all historical rows with corrected baseline")
     parser.add_argument("--train",      action="store_true", help="Train direction meta-learner (logistic regression) on graded history")
+    parser.add_argument("--pipeline",   action="store_true", help="Run full ML data pipeline: pull news, compute features, assemble dataset")
+    parser.add_argument("--news-update",action="store_true", help="Incremental news + features update (last 3 days, for daily inference)")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="Retrain directional classifiers (alias for --train)")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
@@ -87,6 +89,20 @@ def main():
     if args.train or args.retrain:
         from engine.train_direction_model import train_direction_model
         train_direction_model()
+
+    if args.pipeline:
+        import subprocess, sys
+        for script in ["scripts/pull_historical_news.py",
+                       "scripts/compute_features.py",
+                       "scripts/assemble_training_data.py"]:
+            print(f"\n=== {script} ===")
+            subprocess.run([sys.executable, script], check=True)
+
+    if getattr(args, "news_update", False):
+        import subprocess, sys
+        print("\n=== Incremental news + features update (3d) ===")
+        subprocess.run([sys.executable, "scripts/pull_historical_news.py", "--days", "3"], check=False)
+        subprocess.run([sys.executable, "scripts/compute_features.py", "--days", "3"], check=False)
 
     if args.poll:
         from api.poll import handler

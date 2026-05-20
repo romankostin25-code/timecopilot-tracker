@@ -17,6 +17,7 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       FRED_API_KEY:      ${{ secrets.FRED_API_KEY }}
       ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+      POLYGON_API_KEY:   ${{ secrets.POLYGON_API_KEY }}
       ASSET_TICKERS:     ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
       FORECAST_HORIZONS: '5,30,90'
       POLYMARKET_MIN_VOLUME: '25000'
@@ -45,6 +46,10 @@ jobs:
 
       - name: Grade actuals
         run: python main.py --update
+        continue-on-error: true
+
+      - name: Update today's news sentiment (Polygon, incremental)
+        run: python main.py --news-update
         continue-on-error: true
 
       - name: Fetch price history

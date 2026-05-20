@@ -15,3 +15,6 @@ build/
 data/features.parquet
 data/news_sentiment.parquet
 data/training_dataset.parquet
+# TFT checkpoints committed by retrain, ignore locally to avoid accidental large pushes
+# (only ignored if not already tracked by git)
+
