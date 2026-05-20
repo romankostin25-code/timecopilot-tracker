@@ -292,34 +292,16 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                     trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0):
-    """5-signal weighted ensemble → BULLISH or BEARISH direction.
+    """Direction signal: model(60%) + macro(25%) + Claude(15%).
 
-    Signals (all normalised to [-1, 1]):
-      model  — time-series p50 vs last_price
-      ema    — EMA10/EMA30 crossover
-      tech   — RSI-14 + 5d/20d momentum
-      macro  — VIX / regime / dollar context
-      claude — Claude key_driver bull/bear balance
-
-    Horizon-dependent weights give more weight to short-term momentum for 5d
-    and more to trend + macro for 30d/90d.
+    EMA and momentum (tech) removed — they systematically bias BULLISH from
+    trend-following during post-rally corrections, causing <50% accuracy.
+    Model is mean-reverting so it self-corrects; macro and Claude add regime context.
     """
     forecast_return = (p50_target - last_price) / last_price
-    model_sc  = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
-    ema_sc    = 1.0 if trend_signal == "BULLISH" else (-1.0 if trend_signal == "BEARISH" else 0.0)
+    model_sc = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
 
-    if horizon == 5:
-        w = {"model": 0.25, "ema": 0.20, "tech": 0.25, "macro": 0.20, "claude": 0.10}
-    elif horizon == 30:
-        w = {"model": 0.30, "ema": 0.25, "tech": 0.15, "macro": 0.20, "claude": 0.10}
-    else:
-        w = {"model": 0.35, "ema": 0.30, "tech": 0.10, "macro": 0.15, "claude": 0.10}
-
-    combined = (w["model"]  * model_sc   +
-                w["ema"]    * ema_sc      +
-                w["tech"]   * tech_score  +
-                w["macro"]  * macro_score +
-                w["claude"] * claude_score)
+    combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
     direction      = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength = round(abs(forecast_return) * 100, 4)
