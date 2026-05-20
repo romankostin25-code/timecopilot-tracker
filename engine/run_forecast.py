@@ -221,32 +221,45 @@ def _macro_score(ticker, macro):
     score  = 0.0
 
     if ticker == "BIL":
-        # T-bill ETF earns positive carry in high-rate environment → bullish unless FOMC cuts aggressively
         score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
     elif ticker == "NG=F":
-        # Natural gas: seasonal + storage driven, not dollar/rate. ARIMA systematically wrong.
-        # Shoulder season (spring/fall) bearish, winter/summer demand bullish — use risk as proxy
         score += 0.20 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
-        score -= 0.25 if dollar == "DOLLAR_STRENGTH" else (-0.10 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+        score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.10 if dollar == "DOLLAR_WEAKNESS" else 0.0)
     elif ticker == "^TNX":
-        # 10yr yield: rises in risk-on (bond selloff), falls in risk-off (flight to safety)
+        # Yield rises risk-on (bond selloff) + hawkish Fed; falls risk-off (flight to safety)
         score += 0.50 if risk == "RISK_ON" else (-0.50 if risk == "RISK_OFF" else 0.0)
         score += 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "CL=F":
+        # Crude oil: risk sentiment + dollar are the dominant drivers
+        score += 0.45 if risk == "RISK_ON" else (-0.45 if risk == "RISK_OFF" else 0.0)
+        score += 0.20 if dollar == "DOLLAR_WEAKNESS" else (-0.20 if dollar == "DOLLAR_STRENGTH" else 0.0)
+    elif ticker == "XLE":
+        # Energy sector tracks oil: risk-on bullish, strong dollar bearish
+        score += 0.40 if risk == "RISK_ON" else (-0.40 if risk == "RISK_OFF" else 0.0)
+        score += 0.15 if dollar == "DOLLAR_WEAKNESS" else (-0.15 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.10 if vix < 20 else (-0.10 if vix > 30 else 0.0)
+    elif ticker == "XLF":
+        # Financials: net interest margin expands with hawkish rates; risk-sensitive
+        score += 0.35 if rate == "HAWKISH" else (-0.15 if rate in ("DOVISH", "EASING") else 0.0)
+        score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
+    elif ticker == "XLK":
+        # Tech/growth: rate-sensitive (discount rate), high beta to risk
+        score -= 0.30 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
+        score += 0.30 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
     elif ticker in EQUITY_ETFS:
+        score += 0.10  # equities have structural upward drift
         score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
         score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
         score -= 0.10 if rate == "HAWKISH" else (-0.10 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in BOND_ETFS:
         score -= 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in COMMODITY_TICKS:
-        # Strong dollar → bearish commodities; weak dollar → bullish commodities
         score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
         score += 0.15 if risk == "RISK_ON" else (-0.15 if risk == "RISK_OFF" else 0.0)
     elif ticker in CRYPTO_TICKERS:
         score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
         score -= 0.15 if vix > 25 else 0.0
     elif ticker in ("^VIX", "UVXY"):
-        # VIX/UVXY are regime-driven, not mean-reverting — weight regime signal heavily
         score += 0.60 if risk == "RISK_OFF" else (-0.60 if risk == "RISK_ON" else 0.0)
         score += 0.20 if vix > 30 else (-0.20 if vix < 15 else 0.0)
     elif ticker == "DX-Y.NYB":
@@ -326,7 +339,7 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX"}
+_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX", "CL=F", "XLE"}
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
@@ -334,10 +347,10 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                     ticker=None, tft_score=None):
     """Direction signal — TFT when trained, else asset-class weighted ensemble.
 
-    With TFT:  tft(55%) + macro(25%) + claude(15%) + stat-model(5%)
-    Without TFT (by asset class):
-      VIX/UVXY / BIL — macro(80%) + model(20%)
-      All others      — model(60%) + macro(25%) + claude(15%)
+    With TFT:    tft(55%) + macro(25%) + claude(15%) + model(5%)
+    Macro-dom:   macro(80%) + model(20%)  [VIX/UVXY/BIL/NG=F/^TNX/CL=F/XLE]
+    Equities:    model(35%) + tech(30%) + macro(25%) + claude(10%)
+    Default:     model(60%) + macro(25%) + claude(15%)
     """
     forecast_return = (p50_target - last_price) / last_price
     band_width      = (p90_d1 - p10_d1) / last_price
@@ -350,16 +363,14 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
             model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1
 
     if tft_score is not None:
-        # TFT is trained — use it as primary signal
-        tft_sc   = float(tft_score) * 2 - 1  # [0,1] → [-1,1]
+        tft_sc   = float(tft_score) * 2 - 1
         combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
     elif ticker in _VOL_TICKERS:
-        # VIX/UVXY/BIL: stat-model mean-reversion is systematically wrong for these
         combined = 0.20 * model_sc + 0.80 * macro_score
+    elif ticker in EQUITY_ETFS:
+        # RSI + momentum (tech_score) beats ARIMA for short-term equity direction
+        combined = 0.35 * model_sc + 0.30 * tech_score + 0.25 * macro_score + 0.10 * claude_score
     else:
-        # All other assets (equities, bonds, crypto, commodities, FX):
-        # trend signals removed — EMA lags reversals and creates directional bias.
-        # TFT will learn asset-specific patterns; until then model + macro + claude.
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
     direction        = "BULLISH" if combined >= 0 else "BEARISH"
