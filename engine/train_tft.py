@@ -158,6 +158,9 @@ def train_all(horizons=(5, 30, 90), epochs=50):
     print(f"[TFT] Loading {DATASET_PATH}...")
     df = pd.read_parquet(DATASET_PATH)
     df["date"] = pd.to_datetime(df["date"])
+    # Rebuild time_idx to guarantee no gaps (dropna in assembly may create gaps)
+    df = df.sort_values(["ticker", "date"]).reset_index(drop=True)
+    df["time_idx"] = df.groupby("ticker").cumcount()
 
     results = {}
     for h in horizons:

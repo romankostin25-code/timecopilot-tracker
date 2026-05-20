@@ -92,13 +92,13 @@ def assemble():
         if col in merged.columns:
             merged[col] = merged[col].fillna(merged[col].median())
 
-    # Add time_idx (integer, required by pytorch-forecasting TFT)
-    merged = merged.sort_values(["ticker", "date"])
-    merged["time_idx"] = merged.groupby("ticker").cumcount()
-
     # Keep only rows where key features are not NaN
     key_features = ["log_ret_1d", "vol_20d", "rsi_14"]
     merged = merged.dropna(subset=key_features)
+
+    # Build time_idx AFTER dropna — must be consecutive integers per ticker (no gaps)
+    merged = merged.sort_values(["ticker", "date"]).reset_index(drop=True)
+    merged["time_idx"] = merged.groupby("ticker").cumcount()
 
     os.makedirs("data", exist_ok=True)
     merged.to_parquet(OUTPUT_PATH, index=False)
