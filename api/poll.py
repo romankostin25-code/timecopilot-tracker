@@ -42,13 +42,19 @@ def handler(request):
     PRICES_PATH.parent.mkdir(exist_ok=True)
     PRICES_PATH.write_text(json.dumps(prices, indent=2, default=str))
 
-    # Trigger news ingestion
+    # Trigger news ingestion + NLP processing
     try:
         from intelligence.news_poller import fetch_all_feeds, update_feed
         added = update_feed(fetch_all_feeds())
         print(f"[poll] +{len(added)} news articles")
     except Exception as e:
         print(f"[poll] News error: {e}")
+
+    try:
+        from intelligence.nlp_pipeline import process_feed
+        process_feed(max_batch=25)
+    except Exception as e:
+        print(f"[poll] NLP error: {e}")
 
     return {
         "statusCode": 200,

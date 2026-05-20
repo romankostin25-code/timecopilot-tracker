@@ -1190,25 +1190,38 @@ function setFeedFilter(f, el){
 }
 function buildFeed(){
   const list = document.getElementById("feed-list");
-  const filtered = feed.filter(a=>{
+
+  // Processed articles first — filtered by relevance and category
+  const processed = feed.filter(a=>{
     if(!a.nlp_processed) return false;
     if(a.event_type==="irrelevant") return false;
     if(feedFilter==="all") return true;
     return a.source_type===feedFilter;
-  }).slice(0,50);
+  });
 
-  document.getElementById("feed-count").textContent = filtered.length+" items";
-  list.innerHTML = filtered.map(a=>{
+  // Raw fallback: unprocessed articles matching the source_type filter
+  const raw = feed.filter(a=>{
+    if(a.nlp_processed) return false;
+    if(feedFilter==="all") return true;
+    return a.source_type===feedFilter;
+  });
+
+  // Show processed first, then fill remaining slots with raw headlines
+  const combined = [...processed, ...raw].slice(0, 60);
+
+  document.getElementById("feed-count").textContent = combined.length+" items";
+  list.innerHTML = combined.map(a=>{
     const sent = a.sentiment;
     const cls  = sent==="BULLISH"?"bull-item":sent==="BEARISH"?"bear-item":"";
     const ago  = timeAgo(a.fetched_at);
     const assets = (a.assets_affected||[]).slice(0,4).map(t=>`<span class="asset-pill">${t}</span>`).join("");
+    const pending = !a.nlp_processed ? `<span style="color:var(--muted);font-size:9px;font-family:var(--mono)"> · analyzing…</span>` : "";
     return `
     <div class="feed-item ${cls}" onclick="this.classList.toggle('expanded')">
-      <div class="fi-source"><span>${a.source}</span><span>${ago}</span></div>
+      <div class="fi-source"><span>${a.source}${pending}</span><span>${ago}</span></div>
       <div class="fi-headline">${a.headline}</div>
       ${assets?`<div class="fi-assets">${assets}</div>`:""}
-      <div class="fi-detail">${a.summary||""}<br><a href="${a.url}" target="_blank" style="color:var(--cyan);font-size:10px">Open →</a></div>
+      <div class="fi-detail">${a.summary||a.summary_raw||""}<br><a href="${a.url}" target="_blank" style="color:var(--cyan);font-size:10px">Open →</a></div>
     </div>`;
   }).join("");
 }

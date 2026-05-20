@@ -19,9 +19,10 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
-      - run: pip install yfinance pandas python-dotenv feedparser requests
+      - run: pip install -r requirements.txt
       - name: Poll prices + news
         env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
         run: python main.py --poll
       - name: Commit live prices
