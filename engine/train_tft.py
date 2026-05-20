@@ -89,7 +89,6 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
     val_df   = labeled[labeled["time_idx"] >= cutoff].copy()
 
     encoder_length = 60
-    decoder_length = 1  # binary classification, not sequence output
 
     def make_dataset(data: pd.DataFrame, predict: bool = False):
         return TimeSeriesDataSet(
@@ -97,7 +96,7 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
             time_idx="time_idx",
             target=target_col,
             group_ids=["ticker"],
-            min_encoder_length=encoder_length // 2,
+            min_encoder_length=encoder_length,
             max_encoder_length=encoder_length,
             min_prediction_length=1,
             max_prediction_length=1,
@@ -113,7 +112,7 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
         )
 
     train_dataset = make_dataset(train_df)
-    train_loader  = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0)
+    train_loader  = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
 
     tft = TemporalFusionTransformer.from_dataset(
         train_dataset,
