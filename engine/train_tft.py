@@ -56,6 +56,7 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
     try:
         import torch
         from pytorch_forecasting import TemporalFusionTransformer, TimeSeriesDataSet
+        from pytorch_forecasting.data import NaNLabelEncoder
         from pytorch_forecasting.metrics import CrossEntropy
         import lightning as L
         from torch.utils.data import DataLoader
@@ -104,7 +105,7 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
             static_reals=[],
             time_varying_known_reals=[],
             time_varying_unknown_reals=TIME_VARYING_UNKNOWN,
-            target_normalizer=None,
+            target_normalizer=NaNLabelEncoder(add_nan=False),
             add_relative_time_idx=True,
             add_target_scales=False,
             add_encoder_length=True,
