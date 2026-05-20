@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-20T11:55:24.879931",
+  "generated_at": "2026-05-20T12:37:38.941952",
   "global": {
     "forecasts_graded_total": 341,
     "trend": "DECLINING"
   },
   "by_horizon": {
     "5": {
-      "calibration_7d": 0.529,
-      "calibration_14d": 0.6065,
-      "calibration_30d": 0.6276,
-      "calibration_alltime": 0.6276,
+      "calibration_7d": 0.5355,
+      "calibration_14d": 0.6097,
+      "calibration_30d": 0.6305,
+      "calibration_alltime": 0.6305,
       "directional_accuracy_7d": 0.6839,
       "directional_accuracy_14d": 0.5355,
       "directional_accuracy_30d": 0.5337,
@@ -293,13 +293,13 @@
       "consecutive_hits": 3
     },
     "^IRX": {
-      "calibration_7d": 0.8,
-      "calibration_14d": 0.8,
-      "calibration_30d": 0.8182,
+      "calibration_7d": 1.0,
+      "calibration_14d": 0.9,
+      "calibration_30d": 0.9091,
       "directional_accuracy_7d": 0.8,
       "directional_accuracy_14d": 0.6,
       "directional_accuracy_30d": 0.5455,
-      "consecutive_hits": 1
+      "consecutive_hits": 9
     },
     "^TNX": {
       "calibration_7d": 0.0,
