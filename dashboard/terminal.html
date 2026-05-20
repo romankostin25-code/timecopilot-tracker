@@ -720,8 +720,8 @@ function buildHistoryTable(ticker){
     .slice(0,15);
   if(!rows.length) return "";
   const tableRows = rows.map(r=>{
-    const hit = r.hit==="1";
-    const dirOk = r.direction_correct==="1";
+    const hit = parseFloat(r.hit)===1;
+    const dirOk = parseFloat(r.direction_correct)===1;
     const err = r.error_pct ? (+r.error_pct).toFixed(2)+"%" : "—";
     const p50v = r.p50 ? "$"+parseFloat(r.p50).toFixed(2) : "—";
     const actv = r.actual ? "$"+parseFloat(r.actual).toFixed(2) : "—";
@@ -1152,7 +1152,7 @@ function renderDistribution(){
       <div class="section-title">Current Forecast Context</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;color:var(--muted)">
         <div><div class="cy mono" style="font-size:16px">${graded.length}</div><div>Graded forecasts</div></div>
-        <div><div class="cy mono" style="font-size:16px">${graded.filter(r=>r.hit==="1").length}</div><div>P10-P90 hits</div></div>
+        <div><div class="cy mono" style="font-size:16px">${graded.filter(r=>parseFloat(r.hit)===1).length}</div><div>P10-P90 hits</div></div>
       </div>
     </div>
   `;
