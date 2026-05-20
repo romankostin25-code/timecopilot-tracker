@@ -223,6 +223,15 @@ def _macro_score(ticker, macro):
     if ticker == "BIL":
         # T-bill ETF earns positive carry in high-rate environment → bullish unless FOMC cuts aggressively
         score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
+    elif ticker == "NG=F":
+        # Natural gas: seasonal + storage driven, not dollar/rate. ARIMA systematically wrong.
+        # Shoulder season (spring/fall) bearish, winter/summer demand bullish — use risk as proxy
+        score += 0.20 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
+        score -= 0.25 if dollar == "DOLLAR_STRENGTH" else (-0.10 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+    elif ticker == "^TNX":
+        # 10yr yield: rises in risk-on (bond selloff), falls in risk-off (flight to safety)
+        score += 0.50 if risk == "RISK_ON" else (-0.50 if risk == "RISK_OFF" else 0.0)
+        score += 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in EQUITY_ETFS:
         score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
         score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
@@ -230,7 +239,9 @@ def _macro_score(ticker, macro):
     elif ticker in BOND_ETFS:
         score -= 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in COMMODITY_TICKS:
-        score -= 0.25 if dollar == "DOLLAR_STRENGTH" else (-0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+        # Strong dollar → bearish commodities; weak dollar → bullish commodities
+        score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+        score += 0.15 if risk == "RISK_ON" else (-0.15 if risk == "RISK_OFF" else 0.0)
     elif ticker in CRYPTO_TICKERS:
         score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
         score -= 0.15 if vix > 25 else 0.0
@@ -315,7 +326,7 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-_VOL_TICKERS = {"^VIX", "UVXY", "BIL"}
+_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX"}
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
