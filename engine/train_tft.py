@@ -116,7 +116,9 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
     train_df_clean = train_df[[c for c in required_cols if c in train_df.columns]].reset_index(drop=True)
 
     train_dataset = make_dataset(train_df_clean)
-    train_loader  = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
+    # Use pytorch-forecasting's own to_dataloader — it has a custom collate_fn
+    # that handles the (target, None_weight) tuple that default_collate can't handle
+    train_loader  = train_dataset.to_dataloader(batch_size=batch_size, train=True, num_workers=0)
 
     tft = TemporalFusionTransformer.from_dataset(
         train_dataset,
