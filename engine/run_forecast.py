@@ -220,7 +220,10 @@ def _macro_score(ticker, macro):
     rate   = macro.get("rate_regime",   "NEUTRAL")
     score  = 0.0
 
-    if ticker in EQUITY_ETFS:
+    if ticker == "BIL":
+        # T-bill ETF earns positive carry in high-rate environment → bullish unless FOMC cuts aggressively
+        score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
+    elif ticker in EQUITY_ETFS:
         score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
         score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
         score -= 0.10 if rate == "HAWKISH" else (-0.10 if rate in ("DOVISH", "EASING") else 0.0)
@@ -312,8 +315,7 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-_VOL_TICKERS    = {"^VIX", "UVXY"}
-_TRENDING_COMMS = {"NG=F", "ZW=F", "SI=F", "SLV", "XLE", "ZC=F"}
+_VOL_TICKERS = {"^VIX", "UVXY", "BIL"}
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
@@ -323,10 +325,8 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
 
     With TFT:  tft(55%) + macro(25%) + claude(15%) + stat-model(5%)
     Without TFT (by asset class):
-      VIX/UVXY            — macro(80%) + model(20%)
-      Crypto              — trend(35%) + macro(30%) + model(20%) + claude(15%)
-      Trending commodities — trend(30%) + macro(25%) + model(30%) + claude(15%)
-      Equities/bonds       — model(60%) + macro(25%) + claude(15%)
+      VIX/UVXY / BIL — macro(80%) + model(20%)
+      All others      — model(60%) + macro(25%) + claude(15%)
     """
     forecast_return = (p50_target - last_price) / last_price
     band_width      = (p90_d1 - p10_d1) / last_price
@@ -338,19 +338,17 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
         if pipe is not None:
             model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1
 
-    trend_sc = 1.0 if trend_signal == "BULLISH" else (-1.0 if trend_signal == "BEARISH" else model_sc)
-
     if tft_score is not None:
         # TFT is trained — use it as primary signal
         tft_sc   = float(tft_score) * 2 - 1  # [0,1] → [-1,1]
         combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
     elif ticker in _VOL_TICKERS:
+        # VIX/UVXY/BIL: stat-model mean-reversion is systematically wrong for these
         combined = 0.20 * model_sc + 0.80 * macro_score
-    elif ticker in CRYPTO_TICKERS:
-        combined = 0.20 * model_sc + 0.35 * trend_sc + 0.30 * macro_score + 0.15 * claude_score
-    elif ticker in _TRENDING_COMMS:
-        combined = 0.30 * model_sc + 0.30 * trend_sc + 0.25 * macro_score + 0.15 * claude_score
     else:
+        # All other assets (equities, bonds, crypto, commodities, FX):
+        # trend signals removed — EMA lags reversals and creates directional bias.
+        # TFT will learn asset-specific patterns; until then model + macro + claude.
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
     direction        = "BULLISH" if combined >= 0 else "BEARISH"
