@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T12:37:38.941952",
+  "generated_at": "2026-05-20T12:50:00.243742",
   "global": {
     "forecasts_graded_total": 341,
     "trend": "DECLINING"
@@ -10,10 +10,10 @@
       "calibration_14d": 0.6097,
       "calibration_30d": 0.6305,
       "calibration_alltime": 0.6305,
-      "directional_accuracy_7d": 0.6839,
-      "directional_accuracy_14d": 0.5355,
-      "directional_accuracy_30d": 0.5337,
-      "directional_accuracy_alltime": 0.5337,
+      "directional_accuracy_7d": 0.6323,
+      "directional_accuracy_14d": 0.5516,
+      "directional_accuracy_30d": 0.5484,
+      "directional_accuracy_alltime": 0.5484,
       "forecasts_graded": 341
     },
     "30": {
@@ -80,18 +80,18 @@
       "calibration_7d": 0.4,
       "calibration_14d": 0.4,
       "calibration_30d": 0.3636,
-      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_7d": 0.4,
       "directional_accuracy_14d": 0.6,
-      "directional_accuracy_30d": 0.5455,
+      "directional_accuracy_30d": 0.6364,
       "consecutive_hits": 0
     },
     "EFA": {
       "calibration_7d": 0.8,
       "calibration_14d": 0.7,
       "calibration_30d": 0.7273,
-      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_7d": 0.4,
       "directional_accuracy_14d": 0.6,
-      "directional_accuracy_30d": 0.6364,
+      "directional_accuracy_30d": 0.5455,
       "consecutive_hits": 0
     },
     "ETH-USD": {
@@ -107,9 +107,9 @@
       "calibration_7d": 0.0,
       "calibration_14d": 0.5,
       "calibration_30d": 0.5455,
-      "directional_accuracy_7d": 0.8,
+      "directional_accuracy_7d": 0.2,
       "directional_accuracy_14d": 0.5,
-      "directional_accuracy_30d": 0.5455,
+      "directional_accuracy_30d": 0.4545,
       "consecutive_hits": 0
     },
     "GC=F": {
@@ -161,7 +161,7 @@
       "calibration_7d": 0.2,
       "calibration_14d": 0.4,
       "calibration_30d": 0.4545,
-      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_7d": 0.6,
       "directional_accuracy_14d": 0.6,
       "directional_accuracy_30d": 0.5455,
       "consecutive_hits": 0
@@ -188,9 +188,9 @@
       "calibration_7d": 0.8,
       "calibration_14d": 0.4,
       "calibration_30d": 0.3636,
-      "directional_accuracy_7d": 0.6,
-      "directional_accuracy_14d": 0.4,
-      "directional_accuracy_30d": 0.3636,
+      "directional_accuracy_7d": 0.2,
+      "directional_accuracy_14d": 0.6,
+      "directional_accuracy_30d": 0.6364,
       "consecutive_hits": 0
     },
     "SI=F": {
@@ -270,8 +270,8 @@
       "calibration_14d": 0.4,
       "calibration_30d": 0.3636,
       "directional_accuracy_7d": 0.2,
-      "directional_accuracy_14d": 0.6,
-      "directional_accuracy_30d": 0.6364,
+      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_30d": 0.4545,
       "consecutive_hits": 0
     },
     "ZC=F": {
@@ -305,9 +305,9 @@
       "calibration_7d": 0.0,
       "calibration_14d": 0.5,
       "calibration_30d": 0.5455,
-      "directional_accuracy_7d": 0.0,
-      "directional_accuracy_14d": 0.3,
-      "directional_accuracy_30d": 0.2727,
+      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_14d": 0.7,
+      "directional_accuracy_30d": 0.7273,
       "consecutive_hits": 0
     },
     "^VIX": {
