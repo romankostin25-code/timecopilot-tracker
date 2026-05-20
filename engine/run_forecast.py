@@ -14,6 +14,26 @@ FREQ = os.getenv("FORECAST_FREQUENCY", "B")
 MAX_HORIZON = max(HORIZONS)
 CSV_PATH = "data/forecasts.csv"
 
+_DIR_MODEL_CACHE: dict | None = None
+_DIR_MODEL_LOADED = False
+
+
+def _load_direction_model() -> dict:
+    global _DIR_MODEL_CACHE, _DIR_MODEL_LOADED
+    if _DIR_MODEL_LOADED:
+        return _DIR_MODEL_CACHE or {}
+    _DIR_MODEL_LOADED = True
+    try:
+        import joblib
+        payload = joblib.load("data/direction_model.pkl")
+        _DIR_MODEL_CACHE = payload.get("models", {})
+        trained = [h for h, m in _DIR_MODEL_CACHE.items() if m is not None]
+        print(f"[forecaster] direction_model.pkl loaded — trained horizons: {trained}")
+    except Exception as e:
+        print(f"[forecaster] direction_model.pkl not available ({e}) — using fallback weights")
+        _DIR_MODEL_CACHE = {}
+    return _DIR_MODEL_CACHE
+
 
 def fetch_price_data(ticker, years=3):
     end = datetime.today()
@@ -292,20 +312,26 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                     trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0):
-    """Direction signal: model(60%) + macro(25%) + Claude(15%).
+    """Direction signal via trained meta-learner (logistic regression on graded history).
 
-    EMA and momentum (tech) removed — they systematically bias BULLISH from
-    trend-following during post-rally corrections, causing <50% accuracy.
-    Model is mean-reverting so it self-corrects; macro and Claude add regime context.
+    If data/direction_model.pkl has a trained model for this horizon, uses it:
+      P(bullish) = LR(forecast_return, band_width) adjusted by macro(±0.15) + claude(±0.10)
+    Falls back to model(60%) + macro(25%) + claude(15%) weighted sum when untrained.
     """
     forecast_return = (p50_target - last_price) / last_price
-    model_sc = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
-
-    combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
-
-    direction      = "BULLISH" if combined >= 0 else "BEARISH"
-    signal_strength = round(abs(forecast_return) * 100, 4)
     band_width      = (p90_d1 - p10_d1) / last_price
+
+    pipe = _load_direction_model().get(str(horizon))
+    if pipe is not None:
+        p_bullish = float(pipe.predict_proba([[forecast_return, band_width]])[0][1])
+        p_bullish = float(np.clip(p_bullish + 0.15 * macro_score + 0.10 * claude_score, 0.05, 0.95))
+        direction = "BULLISH" if p_bullish > 0.5 else "BEARISH"
+    else:
+        model_sc = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
+        combined  = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
+        direction = "BULLISH" if combined >= 0 else "BEARISH"
+
+    signal_strength  = round(abs(forecast_return) * 100, 4)
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
     return direction, signal_strength, conviction_score
 

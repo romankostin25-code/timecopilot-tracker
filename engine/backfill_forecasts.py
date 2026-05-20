@@ -146,6 +146,11 @@ def backfill_forecasts(days_back=14, force=False):
     from engine.update_actuals import fill_actuals_and_grade
     fill_actuals_and_grade()
 
+    # Retrain direction model on updated history
+    print("\n--- Retraining direction model ---")
+    from engine.train_direction_model import train_direction_model
+    train_direction_model()
+
 
 if __name__ == "__main__":
     backfill_forecasts()

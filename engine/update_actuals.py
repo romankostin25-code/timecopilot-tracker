@@ -105,6 +105,9 @@ def fill_actuals_and_grade():
     df.to_csv(CSV_PATH, index=False)
     print(f"✓ Graded {updated} forecasts.")
     _regenerate_scorecard(df)
+    if updated > 0:
+        from engine.train_direction_model import train_direction_model
+        train_direction_model()
 
 
 def _regenerate_scorecard(df):

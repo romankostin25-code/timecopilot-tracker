@@ -23,8 +23,9 @@ def main():
     parser.add_argument("--backfill",   action="store_true", help="Walk-forward backfill: re-run model on past 14 trading days + grade")
     parser.add_argument("--poll",       action="store_true", help="15-min price + news poll (for local testing)")
     parser.add_argument("--regrade",    action="store_true", help="Re-grade direction_correct for all historical rows with corrected baseline")
+    parser.add_argument("--train",      action="store_true", help="Train direction meta-learner (logistic regression) on graded history")
     # Legacy v2 flags — still supported
-    parser.add_argument("--retrain",    action="store_true", help="[v2] Retrain directional classifiers")
+    parser.add_argument("--retrain",    action="store_true", help="Retrain directional classifiers (alias for --train)")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
     parser.add_argument("--aggregator", action="store_true", help="[v2] Run learning aggregator")
     args = parser.parse_args()
@@ -83,6 +84,10 @@ def main():
         from engine.update_actuals import regrade_direction_correct
         regrade_direction_correct()
 
+    if args.train or args.retrain:
+        from engine.train_direction_model import train_direction_model
+        train_direction_model()
+
     if args.poll:
         from api.poll import handler
         handler(None)
@@ -90,20 +95,6 @@ def main():
     if args.curve and not args.forecast and not args.auto:
         from engine.futures_curve import fetch_all_curves
         fetch_all_curves()
-
-    # Legacy v2 flags
-    if args.retrain:
-        print("=== [v2] Retraining directional classifiers ===")
-        import pandas as pd
-        from pathlib import Path
-        from directional_classifier import retrain_ticker
-        macro_df = pd.read_csv("macro_context.csv") if Path("macro_context.csv").exists() else pd.DataFrame()
-        poly_df  = pd.read_csv("polymarket_data.csv") if Path("polymarket_data.csv").exists() else pd.DataFrame()
-        tickers  = [t.strip() for t in os.getenv("ASSET_TICKERS", "").split(",") if t.strip()]
-        for ticker in tickers:
-            r = retrain_ticker(ticker, macro_df, poly_df)
-            if r:
-                print(f"  {ticker}: OOS acc={r['oos_accuracy']:.3f}")
 
     if args.backtest:
         from backtester import run_all_backtests

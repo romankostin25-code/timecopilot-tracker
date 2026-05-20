@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name  "Trading Co-Pilot Bot"
           git config user.email "bot@trading-copilot.com"
-          git add data/forecasts.csv data/scorecard.json || true
+          git add data/forecasts.csv data/scorecard.json data/direction_model.pkl || true
           if ! git diff --cached --quiet; then
             git commit -m "data: backfill historical forecasts $(date -u +'%Y-%m-%d %H:%M UTC')"
             git pull --rebase -X ours origin main
