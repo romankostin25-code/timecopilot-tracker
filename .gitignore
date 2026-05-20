@@ -11,3 +11,7 @@ env/
 dist/
 build/
 .DS_Store
+# Large ML artifacts — committed only by weekly_retrain workflow
+data/features.parquet
+data/news_sentiment.parquet
+data/training_dataset.parquet

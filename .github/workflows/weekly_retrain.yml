@@ -1,16 +1,31 @@
-name: Weekly Classifier Retrain
+name: Weekly ML Retrain
 
 on:
   schedule:
     - cron: '0 4 * * 0'   # Sunday 04:00 UTC (midnight ET)
   workflow_dispatch:
+    inputs:
+      days_back:
+        description: 'Days of news/feature history to pull (default 1095 = 3yr)'
+        required: false
+        default: '1095'
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
 
 jobs:
   retrain:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    timeout-minutes: 60
+    timeout-minutes: 180
+
+    env:
+      POLYGON_API_KEY:  ${{ secrets.POLYGON_API_KEY }}
+      FRED_API_KEY:     ${{ secrets.FRED_API_KEY }}
+      ASSET_TICKERS:    ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
+      FORECAST_HORIZONS: '5,30,90'
 
     steps:
       - uses: actions/checkout@v4
@@ -18,23 +33,44 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: pip
 
-      - name: Install uv
-        run: pip install uv
+      - name: Install ML dependencies
+        run: pip install -r requirements-ml.txt
+        timeout-minutes: 20
 
-      - name: Install dependencies
-        run: uv pip install --system -r requirements.txt
+      - name: Pull historical news (Polygon)
+        run: |
+          python scripts/pull_historical_news.py \
+            --days ${{ github.event.inputs.days_back || '1095' }}
+        timeout-minutes: 60
 
-      - name: Retrain direction meta-learner
+      - name: Compute price + macro features
+        run: |
+          python scripts/compute_features.py \
+            --days ${{ github.event.inputs.days_back || '1095' }}
+        timeout-minutes: 30
+
+      - name: Assemble training dataset
+        run: python scripts/assemble_training_data.py
+        timeout-minutes: 10
+
+      - name: Train TFT models (all horizons)
+        run: python engine/train_tft.py --epochs 50
+        timeout-minutes: 90
+
+      - name: Retrain logistic meta-learner
         run: python main.py --train
 
-      - name: Commit trained model
+      - name: Commit models and datasets
         run: |
           git config user.name  "Trading Co-Pilot Bot"
           git config user.email "bot@trading-copilot.com"
-          git add data/direction_model.pkl || true
+          git add data/features.parquet data/news_sentiment.parquet \
+                  data/training_dataset.parquet data/tft_checkpoint/ \
+                  data/direction_model.pkl data/tft_training_log.json || true
           if ! git diff --cached --quiet; then
-            git commit -m "retrain: direction meta-learner $(date -u +'%Y-%m-%d')"
+            git commit -m "retrain: weekly ML update $(date -u +'%Y-%m-%d')"
             git pull --rebase -X ours origin main
             git push
           fi

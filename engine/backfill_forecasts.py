@@ -108,6 +108,7 @@ def backfill_forecasts(days_back=14, force=False):
                         tech_score=_compute_tech_score(df_trunc["y"].values, horizon),
                         macro_score=macro_sc,
                         claude_score=claude_sc,
+                        ticker=ticker,
                     )
                     new_rows.append({
                         "forecast_date": fd_str,

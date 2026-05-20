@@ -1,0 +1,8 @@
+# ML training dependencies — heavy, used only in weekly_retrain workflow and manual runs
+# Install with: pip install -r requirements-ml.txt
+-r requirements.txt
+
+torch>=2.1.0
+pytorch-forecasting>=1.1.0
+lightning>=2.2.0
+pyarrow>=14.0.0

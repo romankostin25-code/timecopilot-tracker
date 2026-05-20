@@ -232,7 +232,9 @@ def _macro_score(ticker, macro):
         score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
         score -= 0.15 if vix > 25 else 0.0
     elif ticker in ("^VIX", "UVXY"):
-        score += 0.30 if risk == "RISK_OFF" else (-0.20 if risk == "RISK_ON" else 0.0)
+        # VIX/UVXY are regime-driven, not mean-reverting — weight regime signal heavily
+        score += 0.60 if risk == "RISK_OFF" else (-0.60 if risk == "RISK_ON" else 0.0)
+        score += 0.20 if vix > 30 else (-0.20 if vix < 15 else 0.0)
     elif ticker == "DX-Y.NYB":
         score += 0.20 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.10 if risk == "RISK_OFF" else 0.0
@@ -310,27 +312,49 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
-                    trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0):
-    """Direction signal via trained meta-learner (logistic regression on graded history).
+_VOL_TICKERS    = {"^VIX", "UVXY"}
+_TRENDING_COMMS = {"NG=F", "ZW=F", "SI=F", "SLV", "XLE", "ZC=F"}
 
-    If data/direction_model.pkl has a trained model for this horizon, uses it:
-      P(bullish) = LR(forecast_return, band_width) adjusted by macro(±0.15) + claude(±0.10)
-    Falls back to model(60%) + macro(25%) + claude(15%) weighted sum when untrained.
+
+def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
+                    trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0,
+                    ticker=None):
+    """Direction via trained meta-learner or asset-class-specific weighted ensemble.
+
+    Asset-class weights:
+      Equities/bonds/default  — model(60%) macro(25%) claude(15%)
+      Crypto                  — trend(35%) model(20%) macro(30%) claude(15%)
+      Trending commodities    — trend(30%) model(30%) macro(25%) claude(15%)
+      VIX/UVXY               — macro(80%) model(20%)  [ARIMA mean-reversion wrong for vol]
+
+    If data/direction_model.pkl has a trained model for this horizon, uses it for
+    the model component and applies macro/claude as additive adjustments.
     """
     forecast_return = (p50_target - last_price) / last_price
     band_width      = (p90_d1 - p10_d1) / last_price
+    model_sc        = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
 
+    # Use trained meta-learner model_sc if available
     pipe = _load_direction_model().get(str(horizon))
     if pipe is not None:
-        p_bullish = float(pipe.predict_proba([[forecast_return, band_width]])[0][1])
-        p_bullish = float(np.clip(p_bullish + 0.15 * macro_score + 0.10 * claude_score, 0.05, 0.95))
-        direction = "BULLISH" if p_bullish > 0.5 else "BEARISH"
-    else:
-        model_sc = float(np.clip(forecast_return / 0.02, -1.0, 1.0))
-        combined  = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
-        direction = "BULLISH" if combined >= 0 else "BEARISH"
+        model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1  # [0,1] → [-1,1]
 
+    trend_sc = 1.0 if trend_signal == "BULLISH" else (-1.0 if trend_signal == "BEARISH" else model_sc)
+
+    if ticker in _VOL_TICKERS:
+        # VIX/UVXY: ARIMA mean-reversion is systematically wrong in trending regimes
+        combined = 0.20 * model_sc + 0.80 * macro_score
+    elif ticker in CRYPTO_TICKERS:
+        # Crypto trends persistently — weight momentum + macro over mean-reversion
+        combined = 0.20 * model_sc + 0.35 * trend_sc + 0.30 * macro_score + 0.15 * claude_score
+    elif ticker in _TRENDING_COMMS:
+        # Energy/ag/silver: respect the trend but still give model some weight
+        combined = 0.30 * model_sc + 0.30 * trend_sc + 0.25 * macro_score + 0.15 * claude_score
+    else:
+        # Equities, bonds, default: mean-reversion model is most reliable
+        combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
+
+    direction        = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength  = round(abs(forecast_return) * 100, 4)
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
     return direction, signal_strength, conviction_score
@@ -394,6 +418,7 @@ def run_all_forecasts():
                     tech_score=_compute_tech_score(df["y"].values, horizon),
                     macro_score=macro_sc,
                     claude_score=claude_sc,
+                    ticker=ticker,
                 )
                 new_rows.append({
                     "forecast_date": str(forecast_date),
