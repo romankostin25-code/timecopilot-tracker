@@ -111,30 +111,12 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
             predict_mode=predict,
         )
 
-    train_dataset = make_dataset(train_df)
+    # Only pass columns pytorch-forecasting needs — extra cols can corrupt internal conversion
+    required_cols = (["ticker", "time_idx", target_col] + TIME_VARYING_UNKNOWN)
+    train_df_clean = train_df[[c for c in required_cols if c in train_df.columns]].reset_index(drop=True)
 
-    # Pre-scan to filter indices where __getitem__ returns None (pytorch-forecasting bug)
-    def _has_none(obj):
-        if obj is None:
-            return True
-        if isinstance(obj, dict):
-            return any(_has_none(v) for v in obj.values())
-        if isinstance(obj, (list, tuple)):
-            return any(_has_none(v) for v in obj)
-        return False
-
-    print(f"[TFT] Scanning {len(train_dataset)} sequences for invalid indices...")
-    valid_idx = [i for i in range(len(train_dataset))
-                 if not _has_none(train_dataset[i])]
-    n_dropped = len(train_dataset) - len(valid_idx)
-    if n_dropped:
-        print(f"[TFT] Dropped {n_dropped} invalid sequences, {len(valid_idx)} remaining")
-        from torch.utils.data import Subset
-        train_dataset_use = Subset(train_dataset, valid_idx)
-    else:
-        train_dataset_use = train_dataset
-
-    train_loader = DataLoader(train_dataset_use, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
+    train_dataset = make_dataset(train_df_clean)
+    train_loader  = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True)
 
     tft = TemporalFusionTransformer.from_dataset(
         train_dataset,
