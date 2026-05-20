@@ -3,6 +3,6 @@
 -r requirements.txt
 
 torch>=2.1.0,<2.5.0
-pytorch-forecasting==1.0.0
+pytorch-forecasting==1.1.0
 lightning>=2.2.0,<2.5.0
 pyarrow>=14.0.0
