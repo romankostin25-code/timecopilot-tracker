@@ -57,9 +57,11 @@ def fetch_price_data(ticker, years=3):
 
 
 CRYPTO_TICKERS  = {"BTC-USD", "ETH-USD", "SOL-USD"}
-EQUITY_ETFS     = {"SPY", "QQQ", "IWM", "XLE", "XLF", "XLK", "EEM", "EFA", "FXI"}
+EQUITY_ETFS     = {"SPY", "QQQ", "IWM", "XLE", "XLF", "XLK"}
+INTL_ETFS       = {"EEM", "EFA", "FXI"}
 BOND_ETFS       = {"TLT", "IEF", "HYG", "LQD", "BIL"}
-COMMODITY_TICKS = {"GC=F", "SI=F", "CL=F", "NG=F", "HG=F", "ZW=F", "ZC=F", "GLD", "SLV"}
+COMMODITY_TICKS = {"GC=F", "SI=F", "CL=F", "NG=F", "HG=F", "GLD", "SLV"}
+GRAIN_TICKERS   = {"ZW=F", "ZC=F"}
 
 def _freq_for(ticker):
     return "D" if ticker in CRYPTO_TICKERS else FREQ
@@ -230,9 +232,10 @@ def _macro_score(ticker, macro):
         score += 0.50 if risk == "RISK_ON" else (-0.50 if risk == "RISK_OFF" else 0.0)
         score += 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker == "CL=F":
-        # Crude oil: risk sentiment + dollar are the dominant drivers
-        score += 0.45 if risk == "RISK_ON" else (-0.45 if risk == "RISK_OFF" else 0.0)
-        score += 0.20 if dollar == "DOLLAR_WEAKNESS" else (-0.20 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        # Crude: geopolitical risk + demand (risk regime) + dollar
+        score += 0.45 if risk == "RISK_ON" else (-0.55 if risk == "RISK_OFF" else 0.0)
+        score += 0.25 if dollar == "DOLLAR_WEAKNESS" else (-0.25 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += -0.20 if vix > 30 else (0.10 if vix < 18 else 0.0)
     elif ticker == "XLE":
         # Energy sector tracks oil: risk-on bullish, strong dollar bearish
         score += 0.40 if risk == "RISK_ON" else (-0.40 if risk == "RISK_OFF" else 0.0)
@@ -246,11 +249,31 @@ def _macro_score(ticker, macro):
         # Tech/growth: rate-sensitive (discount rate), high beta to risk
         score -= 0.30 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.30 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
+    elif ticker in GRAIN_TICKERS:
+        # Grains (corn/wheat): dollar is the #1 driver; geopolitical risk (supply) secondary
+        score += 0.40 if dollar == "DOLLAR_WEAKNESS" else (-0.40 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.15 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
+        score += -0.10 if rate == "HAWKISH" else (0.05 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in EQUITY_ETFS:
         score += 0.10  # equities have structural upward drift
         score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
         score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
         score -= 0.10 if rate == "HAWKISH" else (-0.10 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "FXI":
+        # China large-cap: dollar is key (USD strength → CNY weakness → capital outflow)
+        score += 0.35 if dollar == "DOLLAR_WEAKNESS" else (-0.40 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.20 if risk == "RISK_ON" else (-0.35 if risk == "RISK_OFF" else 0.0)
+        score += -0.15 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "EEM":
+        # EM broad: dollar and risk regime dominate for EM
+        score += 0.30 if dollar == "DOLLAR_WEAKNESS" else (-0.35 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.25 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
+        score += -0.10 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "EFA":
+        # EAFE developed ex-US: dollar + risk; less EM sensitivity than EEM
+        score += 0.25 if dollar == "DOLLAR_WEAKNESS" else (-0.25 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
+        score += 0.10 if vix < 20 else (-0.15 if vix > 28 else 0.0)
     elif ticker in BOND_ETFS:
         score -= 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in COMMODITY_TICKS:
@@ -339,7 +362,8 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX", "CL=F", "XLE"}
+_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX", "CL=F", "XLE",
+                "ZW=F", "ZC=F", "FXI", "EEM", "EFA"}
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
