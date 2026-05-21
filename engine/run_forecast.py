@@ -212,7 +212,17 @@ def _load_macro_signals():
         return {}
 
 
-def _macro_score(ticker, macro):
+def _load_cot() -> dict:
+    """Load COT positioning signals. Returns {ticker: signal} where signal in [-1,1]."""
+    try:
+        import json
+        data = json.load(open("data/cot_positioning.json"))
+        return {t: v["signal"] for t, v in data.get("positioning", {}).items()}
+    except Exception:
+        return {}
+
+
+def _macro_score(ticker, macro, cot: dict | None = None):
     """Asset-class-aware macro signal in [-1, 1]."""
     if not macro:
         return 0.0
@@ -220,7 +230,14 @@ def _macro_score(ticker, macro):
     risk   = macro.get("risk_regime",   "NEUTRAL")
     dollar = macro.get("dollar_regime", "NEUTRAL")
     rate   = macro.get("rate_regime",   "NEUTRAL")
+    slope  = macro.get("vix_term_slope", 0.0) or 0.0
     score  = 0.0
+
+    # COT contrarian overlay: extreme positioning is mean-reverting
+    cot_signal = (cot or {}).get(ticker, 0.0)
+    # Extreme longs (>0.6) → bearish pressure; extreme shorts (<-0.6) → bullish pressure
+    if abs(cot_signal) > 0.6:
+        score += -0.20 * cot_signal  # contrarian: fade extremes
 
     if ticker == "BIL":
         score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
@@ -288,6 +305,12 @@ def _macro_score(ticker, macro):
     elif ticker == "DX-Y.NYB":
         score += 0.20 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.10 if risk == "RISK_OFF" else 0.0
+
+    # VIX term structure overlay for risk assets: backwardation = extra bearish pressure
+    if slope < -0.15 and ticker not in ("^VIX", "UVXY", "BIL", "^IRX"):
+        score -= 0.10  # inverted VIX curve signals elevated near-term fear
+    elif slope > 0.20 and ticker not in ("^VIX", "UVXY"):
+        score += 0.05  # steep contango = calm/complacency, mild bullish
 
     return float(np.clip(score, -1.0, 1.0))
 
@@ -420,6 +443,7 @@ def run_all_forecasts():
     macro          = _load_macro_signals()
     claude_signals = _load_claude_signals()
     news_df        = _load_news_sentiment()
+    cot            = _load_cot()
     new_rows, skipped = [], []
 
     # Pre-fetch all price arrays for TFT batch inference
@@ -475,7 +499,7 @@ def run_all_forecasts():
 
             p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
             trend_signal  = _compute_trend_signal(df["y"].values)
-            macro_sc      = _macro_score(ticker, macro)
+            macro_sc      = _macro_score(ticker, macro, cot)
             claude_sc     = _claude_score(ticker, claude_signals)
             print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f}")
 

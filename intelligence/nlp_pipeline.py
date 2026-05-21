@@ -32,9 +32,11 @@ Return ONLY valid JSON with this exact structure:
                 "cpi_below_target" | "us_recession" | "middle_east_conflict" | "russia_ukraine" |
                 "ecb_rate_cut" | "boj_rate_hike" | "trump_tariffs" | "us_debt_ceiling" |
                 "earnings_beat" | "earnings_miss" | "crypto_regulation" | "crypto_rally" |
-                "oil_supply_disruption" | "energy_transition" | "macro_other" | "irrelevant",
+                "oil_supply_disruption" | "energy_transition" | "usda_crop_report" |
+                "macro_other" | "irrelevant",
   "impact_horizon": "SHORT" | "MEDIUM" | "LONG",
   "summary": "One sentence, max 15 words, market impact",
+  "fed_hawkishness": null or -1.0 to 1.0,
   "signal_direction": {{"TICKER": 1 or -1}},
   "signal_strength": {{"TICKER": 0.0 to 1.0}}
 }}
@@ -44,6 +46,9 @@ Rules:
 - Only include tickers clearly affected by this specific news
 - signal_direction: +1 bullish, -1 bearish
 - impact_horizon: SHORT=1-5d, MEDIUM=5-30d, LONG=30d+
+- fed_hawkishness: ONLY set for Fed/CB speech or minutes. +1.0=very hawkish (rate hike language,
+  "inflation concern", "not cutting soon"), -1.0=very dovish ("cutting rates", "easing", "below target").
+  null for non-Fed news.
 - If irrelevant to tracked assets, return empty arrays and event_type "irrelevant"
 - Return ONLY the JSON object"""
 
@@ -70,6 +75,7 @@ def process_article(article, client):
             "event_type":           parsed.get("event_type"),
             "impact_horizon":       parsed.get("impact_horizon"),
             "summary":              parsed.get("summary"),
+            "fed_hawkishness":      parsed.get("fed_hawkishness"),
             "signal_direction":     parsed.get("signal_direction", {}),
             "signal_strength":      parsed.get("signal_strength", {}),
             "nlp_processed":        True,

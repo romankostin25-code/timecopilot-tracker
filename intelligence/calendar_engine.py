@@ -17,20 +17,60 @@ EVENT_SENSITIVITY = {
     "RETAIL_SALES":   {"assets": ["SPY", "XLK", "XLF"], "band_widen_pct": 0.15},
     "EIA_OIL":        {"assets": ["CL=F", "NG=F", "XLE"], "band_widen_pct": 0.15},
     "EIA_GAS":        {"assets": ["NG=F", "XLE"], "band_widen_pct": 0.20},
+    "USDA_WASDE":     {"assets": ["ZC=F", "ZW=F", "SI=F"], "band_widen_pct": 0.25},
+    "USDA_CROP":      {"assets": ["ZC=F", "ZW=F"], "band_widen_pct": 0.15},
 }
 
-# Update monthly
 MANUAL_CALENDAR = [
-    {"event": "FOMC",    "date": "2025-06-11", "time_utc": "18:00"},
-    {"event": "CPI",     "date": "2025-06-11", "time_utc": "12:30"},
-    {"event": "NFP",     "date": "2025-07-03", "time_utc": "12:30"},
-    {"event": "EIA_OIL", "date": "2025-06-04", "time_utc": "14:30"},
-    {"event": "EIA_GAS", "date": "2025-06-05", "time_utc": "14:30"},
-    {"event": "PCE",     "date": "2025-05-30", "time_utc": "12:30"},
-    {"event": "GDP",     "date": "2025-05-29", "time_utc": "12:30"},
-    {"event": "FOMC",    "date": "2025-07-30", "time_utc": "18:00"},
-    {"event": "CPI",     "date": "2025-07-15", "time_utc": "12:30"},
-    {"event": "NFP",     "date": "2025-08-01", "time_utc": "12:30"},
+    # ── FOMC 2026 ────────────────────────────────────────────────────────────
+    {"event": "FOMC",         "date": "2026-06-17", "time_utc": "18:00"},
+    {"event": "FOMC",         "date": "2026-07-29", "time_utc": "18:00"},
+    {"event": "FOMC",         "date": "2026-09-16", "time_utc": "18:00"},
+    {"event": "FOMC",         "date": "2026-10-28", "time_utc": "18:00"},
+    {"event": "FOMC",         "date": "2026-12-09", "time_utc": "18:00"},
+    # ── CPI 2026 ─────────────────────────────────────────────────────────────
+    {"event": "CPI",          "date": "2026-06-10", "time_utc": "12:30"},
+    {"event": "CPI",          "date": "2026-07-14", "time_utc": "12:30"},
+    {"event": "CPI",          "date": "2026-08-12", "time_utc": "12:30"},
+    {"event": "CPI",          "date": "2026-09-11", "time_utc": "12:30"},
+    {"event": "CPI",          "date": "2026-10-13", "time_utc": "12:30"},
+    {"event": "CPI",          "date": "2026-11-12", "time_utc": "12:30"},
+    {"event": "CPI",          "date": "2026-12-10", "time_utc": "12:30"},
+    # ── NFP 2026 ─────────────────────────────────────────────────────────────
+    {"event": "NFP",          "date": "2026-06-05", "time_utc": "12:30"},
+    {"event": "NFP",          "date": "2026-07-02", "time_utc": "12:30"},
+    {"event": "NFP",          "date": "2026-08-07", "time_utc": "12:30"},
+    {"event": "NFP",          "date": "2026-09-04", "time_utc": "12:30"},
+    {"event": "NFP",          "date": "2026-10-02", "time_utc": "12:30"},
+    {"event": "NFP",          "date": "2026-11-06", "time_utc": "12:30"},
+    {"event": "NFP",          "date": "2026-12-04", "time_utc": "12:30"},
+    # ── PCE / GDP 2026 ───────────────────────────────────────────────────────
+    {"event": "PCE",          "date": "2026-05-29", "time_utc": "12:30"},
+    {"event": "GDP",          "date": "2026-05-28", "time_utc": "12:30"},
+    {"event": "PCE",          "date": "2026-06-26", "time_utc": "12:30"},
+    {"event": "GDP",          "date": "2026-06-25", "time_utc": "12:30"},
+    {"event": "PCE",          "date": "2026-07-31", "time_utc": "12:30"},
+    {"event": "GDP",          "date": "2026-07-30", "time_utc": "12:30"},
+    # ── EIA weekly (Wednesday for oil, Thursday for gas) ─────────────────────
+    {"event": "EIA_OIL",      "date": "2026-05-27", "time_utc": "14:30"},
+    {"event": "EIA_GAS",      "date": "2026-05-28", "time_utc": "14:30"},
+    {"event": "EIA_OIL",      "date": "2026-06-03", "time_utc": "14:30"},
+    {"event": "EIA_GAS",      "date": "2026-06-04", "time_utc": "14:30"},
+    {"event": "EIA_OIL",      "date": "2026-06-10", "time_utc": "14:30"},
+    {"event": "EIA_GAS",      "date": "2026-06-11", "time_utc": "14:30"},
+    # ── USDA WASDE (monthly crop supply/demand) ──────────────────────────────
+    {"event": "USDA_WASDE",   "date": "2026-06-11", "time_utc": "16:00"},
+    {"event": "USDA_WASDE",   "date": "2026-07-11", "time_utc": "16:00"},
+    {"event": "USDA_WASDE",   "date": "2026-08-12", "time_utc": "16:00"},
+    {"event": "USDA_WASDE",   "date": "2026-09-11", "time_utc": "16:00"},
+    {"event": "USDA_WASDE",   "date": "2026-10-09", "time_utc": "16:00"},
+    # ── USDA Crop Progress (Monday, growing season May–Nov) ──────────────────
+    {"event": "USDA_CROP",    "date": "2026-05-26", "time_utc": "20:00"},
+    {"event": "USDA_CROP",    "date": "2026-06-02", "time_utc": "20:00"},
+    {"event": "USDA_CROP",    "date": "2026-06-09", "time_utc": "20:00"},
+    {"event": "USDA_CROP",    "date": "2026-06-16", "time_utc": "20:00"},
+    {"event": "USDA_CROP",    "date": "2026-06-23", "time_utc": "20:00"},
+    {"event": "USDA_CROP",    "date": "2026-06-30", "time_utc": "20:00"},
 ]
 
 

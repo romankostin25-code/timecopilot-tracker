@@ -26,6 +26,7 @@ def main():
     parser.add_argument("--train",      action="store_true", help="Train direction meta-learner (logistic regression) on graded history")
     parser.add_argument("--pipeline",   action="store_true", help="Run full ML data pipeline: pull news, compute features, assemble dataset")
     parser.add_argument("--news-update",action="store_true", help="Incremental news + features update (last 3 days, for daily inference)")
+    parser.add_argument("--cot",        action="store_true", help="Fetch CFTC COT positioning data (weekly)")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="Retrain directional classifiers (alias for --train)")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
@@ -35,6 +36,10 @@ def main():
     if args.auto or args.macro:
         from engine.macro_fetcher import fetch_macro_context
         fetch_macro_context()
+
+    if args.auto or args.cot:
+        from scripts.fetch_cot import fetch_cot
+        fetch_cot()
 
     if args.auto or args.news:
         from intelligence.news_poller import fetch_all_feeds, update_feed
