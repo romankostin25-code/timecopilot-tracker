@@ -27,6 +27,7 @@ def main():
     parser.add_argument("--pipeline",   action="store_true", help="Run full ML data pipeline: pull news, compute features, assemble dataset")
     parser.add_argument("--news-update",action="store_true", help="Incremental news + features update (last 3 days, for daily inference)")
     parser.add_argument("--cot",        action="store_true", help="Fetch CFTC COT positioning data (weekly)")
+    parser.add_argument("--pcr",        action="store_true", help="Fetch CBOE equity put/call ratio (daily contrarian signal)")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="Retrain directional classifiers (alias for --train)")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
@@ -40,6 +41,10 @@ def main():
     if args.auto or args.cot:
         from scripts.fetch_cot import fetch_cot
         fetch_cot()
+
+    if args.auto or args.pcr:
+        from scripts.fetch_pcr import fetch_pcr
+        fetch_pcr()
 
     if args.auto or args.news:
         from intelligence.news_poller import fetch_all_feeds, update_feed
@@ -141,6 +146,8 @@ python main.py --explain     Generate Claude signal explanations
 python main.py --calendar    Save upcoming economic events
 python main.py --alerts      Check and dispatch signal alerts
 python main.py --poll        15-min price + news poll
+python main.py --cot         Fetch CFTC COT positioning data (weekly)
+python main.py --pcr         Fetch CBOE equity put/call ratio (daily)
 
 [v2 legacy]
 python main.py --retrain     Retrain directional classifiers

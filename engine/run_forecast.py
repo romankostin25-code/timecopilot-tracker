@@ -224,7 +224,17 @@ def _load_cot() -> dict:
         return {}
 
 
-def _macro_score(ticker, macro, cot: dict | None = None):
+def _load_pcr() -> float:
+    """Load CBOE equity put/call contrarian signal. Returns value in [-1,1] (positive=bullish)."""
+    try:
+        import json
+        data = json.load(open("data/pcr_signal.json"))
+        return float(data.get("signal", 0.0))
+    except Exception:
+        return 0.0
+
+
+def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0):
     """Asset-class-aware macro signal in [-1, 1]."""
     if not macro:
         return 0.0
@@ -240,6 +250,10 @@ def _macro_score(ticker, macro, cot: dict | None = None):
     # Extreme longs (>0.6) → bearish pressure; extreme shorts (<-0.6) → bullish pressure
     if abs(cot_signal) > 0.6:
         score += -0.20 * cot_signal  # contrarian: fade extremes
+
+    # CBOE equity put/call contrarian overlay (equities + crypto only)
+    if pcr != 0.0 and ticker in EQUITY_ETFS | CRYPTO_TICKERS | INTL_ETFS:
+        score += 0.15 * pcr  # pcr signal already inverted: high fear → positive
 
     if ticker == "BIL":
         score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
@@ -461,6 +475,7 @@ def run_all_forecasts():
     claude_signals = _load_claude_signals()
     news_df        = _load_news_sentiment()
     cot            = _load_cot()
+    pcr            = _load_pcr()
     new_rows, skipped = [], []
 
     # Pre-fetch all price arrays for TFT batch inference
@@ -516,7 +531,7 @@ def run_all_forecasts():
 
             p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
             trend_signal  = _compute_trend_signal(df["y"].values)
-            macro_sc      = _macro_score(ticker, macro, cot)
+            macro_sc      = _macro_score(ticker, macro, cot, pcr)
             claude_sc     = _claude_score(ticker, claude_signals)
             print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f}")
 
