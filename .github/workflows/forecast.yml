@@ -25,7 +25,7 @@ jobs:
 
       - name: Run forecasts
         run: python main.py --forecast
-        timeout-minutes: 25
+        timeout-minutes: 90
 
       - name: Commit forecast data
         run: |
