@@ -1,16 +1,60 @@
 """Macro context and regime classification."""
 
 import os
+import json
+import math
 import warnings
 import pandas as pd
 import yfinance as yf
-from datetime import datetime, date
+from datetime import datetime, date, timezone, timedelta
 from dotenv import load_dotenv
 
 load_dotenv()
 warnings.filterwarnings("ignore")
 
 CSV_PATH = "data/macro_context.csv"
+
+
+def _fed_hawkishness_signal(max_age_days: int = 7) -> float:
+    """Return a time-decayed average fed_hawkishness from recent NLP-processed articles.
+
+    Positive = hawkish (rate hike language), negative = dovish (easing language).
+    Returns 0.0 when no Fed speech data is available.
+    """
+    feed_path = "data/intelligence_feed.json"
+    if not os.path.exists(feed_path):
+        return 0.0
+    try:
+        articles = json.loads(open(feed_path).read())
+    except Exception:
+        return 0.0
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=max_age_days)
+    cutoff_str = cutoff.isoformat()
+
+    weighted_sum = 0.0
+    total_weight = 0.0
+    for a in articles:
+        hawk = a.get("fed_hawkishness")
+        if hawk is None:
+            continue
+        if not a.get("nlp_processed"):
+            continue
+        fetched = a.get("fetched_at", "")
+        if fetched < cutoff_str:
+            continue
+        try:
+            age_h = (datetime.now(timezone.utc) -
+                     datetime.fromisoformat(fetched.replace("Z", "+00:00"))).total_seconds() / 3600
+        except Exception:
+            continue
+        decay = math.exp(-0.05 * age_h)  # slower decay than news (Fed speeches stay relevant longer)
+        weighted_sum += float(hawk) * decay
+        total_weight += decay
+
+    if total_weight < 0.5:
+        return 0.0
+    return weighted_sum / total_weight
 
 
 def fetch_macro_context() -> dict:
@@ -74,8 +118,24 @@ def fetch_macro_context() -> dict:
 
     macro["risk_regime"]   = risk_regime
     macro["dollar_regime"] = "DOLLAR_STRENGTH" if dxy_chg > 0.5 else "DOLLAR_WEAKNESS" if dxy_chg < -0.5 else "DOLLAR_NEUTRAL"
-    macro["rate_regime"]   = "HAWKISH" if us10y > 4.5 else "DOVISH" if us10y < 3.5 else "NEUTRAL_RATES"
-    macro["generated_at"]  = datetime.now().isoformat()
+
+    # Base rate regime from yield level
+    rate_regime = "HAWKISH" if us10y > 4.5 else "DOVISH" if us10y < 3.5 else "NEUTRAL_RATES"
+
+    # Override with Fed speech hawkishness signal when strong enough
+    fed_hawk = _fed_hawkishness_signal()
+    macro["fed_hawkishness_avg"] = round(fed_hawk, 4)
+    if fed_hawk > 0.35:
+        rate_regime = "HAWKISH"
+    elif fed_hawk < -0.35:
+        rate_regime = "EASING"
+    elif fed_hawk > 0.20 and rate_regime == "NEUTRAL_RATES":
+        rate_regime = "HAWKISH"
+    elif fed_hawk < -0.20 and rate_regime == "NEUTRAL_RATES":
+        rate_regime = "DOVISH"
+
+    macro["rate_regime"]  = rate_regime
+    macro["generated_at"] = datetime.now().isoformat()
 
     os.makedirs("data", exist_ok=True)
     new_df = pd.DataFrame([macro])
@@ -87,7 +147,7 @@ def fetch_macro_context() -> dict:
         combined = new_df
     combined.to_csv(CSV_PATH, index=False)
 
-    print(f"✓ macro_context.csv | VIX={vix} | {macro['risk_regime']} | {macro['dollar_regime']} | {macro['rate_regime']}")
+    print(f"✓ macro_context.csv | VIX={vix} | {macro['risk_regime']} | {macro['dollar_regime']} | {macro['rate_regime']} | fed_hawk={macro['fed_hawkishness_avg']:+.3f}")
     return macro
 
 

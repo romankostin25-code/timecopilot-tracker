@@ -203,10 +203,12 @@ def _load_macro_signals():
             return {}
         row = df.iloc[-1]
         return {
-            "vix":          float(row.get("vix", 20)),
-            "risk_regime":  str(row.get("risk_regime",  "NEUTRAL")),
-            "dollar_regime":str(row.get("dollar_regime","NEUTRAL")),
-            "rate_regime":  str(row.get("rate_regime",  "NEUTRAL")),
+            "vix":               float(row.get("vix", 20)),
+            "risk_regime":       str(row.get("risk_regime",  "NEUTRAL")),
+            "dollar_regime":     str(row.get("dollar_regime","NEUTRAL")),
+            "rate_regime":       str(row.get("rate_regime",  "NEUTRAL")),
+            "vix_term_slope":    float(row.get("vix_term_slope", 0.0) or 0.0),
+            "fed_hawkishness_avg": float(row.get("fed_hawkishness_avg", 0.0) or 0.0),
         }
     except Exception:
         return {}
@@ -391,13 +393,18 @@ _VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX", "CL=F", "XLE",
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                     trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0,
-                    ticker=None, tft_score=None):
+                    ticker=None, tft_score=None, macro=None):
     """Direction signal — TFT when trained, else asset-class weighted ensemble.
 
-    With TFT:    tft(55%) + macro(25%) + claude(15%) + model(5%)
-    Macro-dom:   macro(80%) + model(20%)  [VIX/UVXY/BIL/NG=F/^TNX/CL=F/XLE]
-    Equities:    model(35%) + tech(30%) + macro(25%) + claude(10%)
-    Default:     model(60%) + macro(25%) + claude(15%)
+    Base weights (no TFT):
+      Macro-dom:  macro(80%) + model(20%)   [_VOL_TICKERS]
+      Equities:   model(35%) + tech(30%) + macro(25%) + claude(10%)
+      Default:    model(60%) + macro(25%) + claude(15%)
+
+    TFT weights adapt to volatility regime:
+      Crash  (VIX>30 or backwardation):  tft(30%) + macro(50%) + claude(15%) + model(5%)
+      Normal (default):                  tft(55%) + macro(25%) + claude(15%) + model(5%)
+      Calm   (VIX<18, slope>0.05):       tft(65%) + macro(15%) + claude(15%) + model(5%)
     """
     forecast_return = (p50_target - last_price) / last_price
     band_width      = (p90_d1 - p10_d1) / last_price
@@ -410,8 +417,18 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
             model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1
 
     if tft_score is not None:
-        tft_sc   = float(tft_score) * 2 - 1
-        combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
+        tft_sc     = float(tft_score) * 2 - 1
+        vix        = (macro or {}).get("vix", 20)
+        term_slope = (macro or {}).get("vix_term_slope", 0.0) or 0.0
+        if vix > 30 or term_slope < -0.15:
+            # Crash/panic regime: TFT trained on normal conditions — trust macro more
+            combined = 0.30 * tft_sc + 0.50 * macro_score + 0.15 * claude_score + 0.05 * model_sc
+        elif vix < 18 and term_slope > 0.05:
+            # Calm/trending regime: TFT signal is more reliable
+            combined = 0.65 * tft_sc + 0.15 * macro_score + 0.15 * claude_score + 0.05 * model_sc
+        else:
+            # Normal regime: standard weights
+            combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
     elif ticker in _VOL_TICKERS:
         combined = 0.20 * model_sc + 0.80 * macro_score
     elif ticker in EQUITY_ETFS:
@@ -525,6 +542,7 @@ def run_all_forecasts():
                     claude_score=claude_sc,
                     ticker=ticker,
                     tft_score=tft_p,
+                    macro=macro,
                 )
                 new_rows.append({
                     "forecast_date": str(forecast_date),
