@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    timeout-minutes: 240
+    timeout-minutes: 420
 
     env:
       PYTHONPATH:       '.'
@@ -57,8 +57,8 @@ jobs:
         timeout-minutes: 10
 
       - name: Train TFT models (all horizons)
-        run: python engine/train_tft.py --epochs 30
-        timeout-minutes: 120
+        run: python engine/train_tft.py --epochs 50
+        timeout-minutes: 200
 
       - name: Retrain logistic meta-learner
         run: python main.py --train
