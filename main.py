@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--news-update",action="store_true", help="Incremental news + features update (last 3 days, for daily inference)")
     parser.add_argument("--cot",        action="store_true", help="Fetch CFTC COT positioning data (weekly)")
     parser.add_argument("--pcr",        action="store_true", help="Fetch CBOE equity put/call ratio (daily contrarian signal)")
+    parser.add_argument("--ng-storage", action="store_true", help="Fetch EIA weekly natural gas storage signal for NG=F")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="Retrain directional classifiers (alias for --train)")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
@@ -45,6 +46,10 @@ def main():
     if args.auto or args.pcr:
         from scripts.fetch_pcr import fetch_pcr
         fetch_pcr()
+
+    if args.auto or getattr(args, "ng_storage", False):
+        from scripts.fetch_ng_storage import fetch_ng_storage
+        fetch_ng_storage()
 
     if args.auto or args.news:
         from intelligence.news_poller import fetch_all_feeds, update_feed

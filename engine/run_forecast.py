@@ -237,7 +237,17 @@ def _load_pcr() -> float:
         return 0.0
 
 
-def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0):
+def _load_ng_storage() -> float:
+    """Load EIA weekly NG storage YoY signal. Returns value in [-1,1] (positive=bullish for NG)."""
+    try:
+        import json
+        data = json.load(open("data/ng_storage.json"))
+        return float(data.get("signal", 0.0))
+    except Exception:
+        return 0.0
+
+
+def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_storage: float = 0.0):
     """Asset-class-aware macro signal in [-1, 1]."""
     if not macro:
         return 0.0
@@ -273,6 +283,9 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0):
         score += -0.12 if dollar == "DOLLAR_STRENGTH" else (0.05 if dollar == "DOLLAR_WEAKNESS" else 0.0)
         # Oil/energy complex correlation: when oil trends, NG tends to follow short-term
         score += float(np.clip(oil_mom / 6.0, -0.20, 0.20))
+        # EIA storage YoY: surplus=bearish, deficit=bullish (most predictive NG signal when available)
+        if ng_storage != 0.0:
+            score += 0.30 * ng_storage
     elif ticker == "^TNX":
         score += 0.50 if risk == "RISK_ON" else (-0.50 if risk == "RISK_OFF" else 0.0)
         score += 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
@@ -331,6 +344,12 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0):
         score += 0.10 if vix < 20 else (-0.15 if vix > 28 else 0.0)
     elif ticker in BOND_ETFS:
         score -= 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "HG=F":
+        # Copper ("Dr. Copper"): leading indicator of global industrial demand
+        # Primary drivers: global growth expectations (risk regime) + dollar + rates
+        score += 0.30 if risk == "RISK_ON" else (-0.35 if risk == "RISK_OFF" else 0.0)
+        score += -0.30 if dollar == "DOLLAR_STRENGTH" else (0.30 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+        score += -0.15 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in COMMODITY_TICKS:
         score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
         score += 0.15 if risk == "RISK_ON" else (-0.15 if risk == "RISK_OFF" else 0.0)
@@ -448,9 +467,20 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
 
     # Use LR meta-learner as model_sc if available and no TFT
     if tft_score is None:
-        pipe = _load_direction_model().get(str(horizon))
+        model_store = _load_direction_model()
+        pipe = model_store.get(str(horizon))
         if pipe is not None:
-            model_sc = float(pipe.predict_proba([[forecast_return, band_width]])[0][1]) * 2 - 1
+            feat_cols = model_store.get(f"{horizon}_features", ["forecast_return", "band_width"])
+            feat_vals = {
+                "forecast_return": forecast_return,
+                "band_width":      band_width,
+                "macro_sc":        macro_score,
+                "tft_score_raw":   0.5,  # no TFT → neutral prior
+                "cot_signal":      0.0,
+                "pcr_signal":      0.0,
+            }
+            X = [[feat_vals.get(c, 0.0) for c in feat_cols]]
+            model_sc = float(pipe.predict_proba(X)[0][1]) * 2 - 1
 
     if tft_score is not None:
         tft_sc     = float(tft_score) * 2 - 1
@@ -501,6 +531,7 @@ def run_all_forecasts():
     news_df        = _load_news_sentiment()
     cot            = _load_cot()
     pcr            = _load_pcr()
+    ng_storage     = _load_ng_storage()
     new_rows, skipped = [], []
 
     # Pre-fetch all price arrays for TFT batch inference
@@ -556,7 +587,7 @@ def run_all_forecasts():
 
             p50_vals, p10_vals, p90_vals = _extract_quantiles(fcst.reset_index(drop=True))
             trend_signal  = _compute_trend_signal(df["y"].values)
-            macro_sc      = _macro_score(ticker, macro, cot, pcr)
+            macro_sc      = _macro_score(ticker, macro, cot, pcr, ng_storage)
             claude_sc     = _claude_score(ticker, claude_signals)
             print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f}")
 
@@ -596,6 +627,12 @@ def run_all_forecasts():
                     "direction":        direction,
                     "signal_strength":  signal_strength,
                     "conviction_score": conviction,
+                    # Signal components — written at forecast time for meta-learner training
+                    "macro_sc":         round(macro_sc, 4),
+                    "tft_score_raw":    round(float(tft_p), 4) if tft_p is not None else "",
+                    "cot_signal":       round(float(cot.get(ticker, 0.0)), 4),
+                    "pcr_signal":       round(pcr, 4),
+                    "ng_storage_signal": round(ng_storage, 4) if ticker == "NG=F" else "",
                     "poly_signal": "", "poly_regime": "", "poly_confidence": "",
                     "poly_alignment": "", "poly_band_adj_pct": "",
                     "news_signal": "", "news_confidence": "", "news_top_headline": "",
