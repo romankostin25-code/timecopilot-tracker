@@ -448,7 +448,7 @@ _VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX", "CL=F", "XLE",
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                     trend_signal=None, tech_score=0.0, macro_score=0.0, claude_score=0.0,
-                    ticker=None, tft_score=None, macro=None):
+                    ticker=None, tft_score=None, macro=None, news_sc=0.0):
     """Direction signal — TFT when trained, else asset-class weighted ensemble.
 
     Base weights (no TFT):
@@ -478,6 +478,7 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                 "tft_score_raw":   0.5,  # no TFT → neutral prior
                 "cot_signal":      0.0,
                 "pcr_signal":      0.0,
+                "news_sc":         news_sc,
             }
             X = [[feat_vals.get(c, 0.0) for c in feat_cols]]
             model_sc = float(pipe.predict_proba(X)[0][1]) * 2 - 1
@@ -534,6 +535,15 @@ def run_all_forecasts():
     ng_storage     = _load_ng_storage()
     new_rows, skipped = [], []
 
+    # Pre-compute news signals from NLP feed (reads cache, no API calls)
+    news_signals: dict = {}
+    try:
+        from intelligence.nlp_pipeline import get_asset_signals_from_news
+        for t in tickers:
+            news_signals[t] = get_asset_signals_from_news(t, max_age_hours=36)
+    except Exception as e:
+        print(f"[forecaster] news signals unavailable: {e}")
+
     # Pre-fetch all price arrays for TFT batch inference
     price_arrays: dict = {}
     price_frames: dict = {}
@@ -589,7 +599,9 @@ def run_all_forecasts():
             trend_signal  = _compute_trend_signal(df["y"].values)
             macro_sc      = _macro_score(ticker, macro, cot, pcr, ng_storage)
             claude_sc     = _claude_score(ticker, claude_signals)
-            print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f}")
+            news_sig      = news_signals.get(ticker, {})
+            news_sc       = float(news_sig.get("net_score", 0.0) or 0.0)
+            print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f} news:{news_sc:+.2f}")
 
             for horizon in HORIZONS:
                 target_date = (datetime.today() + timedelta(days=horizon)).date()
@@ -614,6 +626,7 @@ def run_all_forecasts():
                     ticker=ticker,
                     tft_score=tft_p,
                     macro=macro,
+                    news_sc=news_sc,
                 )
                 new_rows.append({
                     "forecast_date": str(forecast_date),
@@ -635,7 +648,10 @@ def run_all_forecasts():
                     "ng_storage_signal": round(ng_storage, 4) if ticker == "NG=F" else "",
                     "poly_signal": "", "poly_regime": "", "poly_confidence": "",
                     "poly_alignment": "", "poly_band_adj_pct": "",
-                    "news_signal": "", "news_confidence": "", "news_top_headline": "",
+                    "news_signal":      news_sig.get("signal", ""),
+                    "news_confidence":  news_sig.get("confidence", ""),
+                    "news_top_headline": news_sig.get("top_headline", "")[:120] if news_sig.get("top_headline") else "",
+                    "news_sc":          round(news_sc, 4) if news_sc != 0.0 else "",
                     "error_abs": "", "error_pct": "", "hit": "",
                     "direction_correct": "", "graded_at": "", "notes": "",
                 })

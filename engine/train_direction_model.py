@@ -58,7 +58,7 @@ def train_direction_model():
     graded = graded.dropna(subset=["forecast_return", "band_width", "actual_bullish"])
 
     # Extended signal features — include when present in ≥50% of graded rows
-    EXTENDED_FEATURES = ["macro_sc", "tft_score_raw", "cot_signal", "pcr_signal"]
+    EXTENDED_FEATURES = ["macro_sc", "tft_score_raw", "cot_signal", "pcr_signal", "news_sc"]
     base_features = ["forecast_return", "band_width"]
     extra_features = []
     for col in EXTENDED_FEATURES:
