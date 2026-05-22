@@ -203,12 +203,15 @@ def _load_macro_signals():
             return {}
         row = df.iloc[-1]
         return {
-            "vix":               float(row.get("vix", 20)),
-            "risk_regime":       str(row.get("risk_regime",  "NEUTRAL")),
-            "dollar_regime":     str(row.get("dollar_regime","NEUTRAL")),
-            "rate_regime":       str(row.get("rate_regime",  "NEUTRAL")),
-            "vix_term_slope":    float(row.get("vix_term_slope", 0.0) or 0.0),
+            "vix":                 float(row.get("vix", 20)),
+            "risk_regime":         str(row.get("risk_regime",   "NEUTRAL")),
+            "dollar_regime":       str(row.get("dollar_regime", "NEUTRAL")),
+            "rate_regime":         str(row.get("rate_regime",   "NEUTRAL")),
+            "vix_term_slope":      float(row.get("vix_term_slope", 0.0) or 0.0),
             "fed_hawkishness_avg": float(row.get("fed_hawkishness_avg", 0.0) or 0.0),
+            "oil_5d_chg_pct":      float(row.get("oil_5d_chg_pct",   0.0) or 0.0),
+            "gold_5d_chg_pct":     float(row.get("gold_5d_chg_pct",  0.0) or 0.0),
+            "sp500_5d_chg_pct":    float(row.get("sp500_5d_chg_pct", 0.0) or 0.0),
         }
     except Exception:
         return {}
@@ -238,55 +241,74 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0):
     """Asset-class-aware macro signal in [-1, 1]."""
     if not macro:
         return 0.0
-    vix    = macro.get("vix", 20)
-    risk   = macro.get("risk_regime",   "NEUTRAL")
-    dollar = macro.get("dollar_regime", "NEUTRAL")
-    rate   = macro.get("rate_regime",   "NEUTRAL")
-    slope  = macro.get("vix_term_slope", 0.0) or 0.0
-    score  = 0.0
+    vix     = macro.get("vix", 20)
+    risk    = macro.get("risk_regime",   "NEUTRAL")
+    dollar  = macro.get("dollar_regime", "NEUTRAL")
+    rate    = macro.get("rate_regime",   "NEUTRAL")
+    slope   = macro.get("vix_term_slope", 0.0) or 0.0
+    oil_mom = macro.get("oil_5d_chg_pct", 0.0) or 0.0
+    month   = datetime.today().month
+    score   = 0.0
 
     # COT contrarian overlay: extreme positioning is mean-reverting
     cot_signal = (cot or {}).get(ticker, 0.0)
-    # Extreme longs (>0.6) → bearish pressure; extreme shorts (<-0.6) → bullish pressure
     if abs(cot_signal) > 0.6:
         score += -0.20 * cot_signal  # contrarian: fade extremes
 
     # CBOE equity put/call contrarian overlay (equities + crypto only)
     if pcr != 0.0 and ticker in EQUITY_ETFS | CRYPTO_TICKERS | INTL_ETFS:
-        score += 0.15 * pcr  # pcr signal already inverted: high fear → positive
+        score += 0.15 * pcr
 
     if ticker == "BIL":
         score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
     elif ticker == "NG=F":
-        score += 0.20 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
-        score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.10 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+        # NG is storage/seasonal/weather-driven — risk regime is largely irrelevant
+        # Injection season (Apr-Oct): bearish (storage fills up, demand low)
+        # Withdrawal season (Nov-Mar): bullish (heating demand, inventory draws)
+        if month in (4, 5, 6, 7, 8, 9, 10):
+            score -= 0.20
+        else:
+            score += 0.15
+        # Dollar has mild effect on NG (domestic US price, less FX-sensitive)
+        score += -0.12 if dollar == "DOLLAR_STRENGTH" else (0.05 if dollar == "DOLLAR_WEAKNESS" else 0.0)
+        # Oil/energy complex correlation: when oil trends, NG tends to follow short-term
+        score += float(np.clip(oil_mom / 6.0, -0.20, 0.20))
     elif ticker == "^TNX":
-        # Yield rises risk-on (bond selloff) + hawkish Fed; falls risk-off (flight to safety)
         score += 0.50 if risk == "RISK_ON" else (-0.50 if risk == "RISK_OFF" else 0.0)
         score += 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker == "CL=F":
-        # Crude: geopolitical risk + demand (risk regime) + dollar
-        score += 0.45 if risk == "RISK_ON" else (-0.55 if risk == "RISK_OFF" else 0.0)
-        score += 0.25 if dollar == "DOLLAR_WEAKNESS" else (-0.25 if dollar == "DOLLAR_STRENGTH" else 0.0)
-        score += -0.20 if vix > 30 else (0.10 if vix < 18 else 0.0)
+        # Crude: demand regime + dollar + price momentum (trend continuation)
+        score += 0.35 if risk == "RISK_ON" else (-0.45 if risk == "RISK_OFF" else 0.0)
+        score += 0.20 if dollar == "DOLLAR_WEAKNESS" else (-0.20 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += -0.15 if vix > 30 else (0.08 if vix < 18 else 0.0)
+        # Momentum: oil price has strong short-term trend persistence
+        score += float(np.clip(oil_mom / 4.0, -0.30, 0.30))
     elif ticker == "XLE":
-        # Energy sector tracks oil: risk-on bullish, strong dollar bearish
-        score += 0.40 if risk == "RISK_ON" else (-0.40 if risk == "RISK_OFF" else 0.0)
-        score += 0.15 if dollar == "DOLLAR_WEAKNESS" else (-0.15 if dollar == "DOLLAR_STRENGTH" else 0.0)
-        score += 0.10 if vix < 20 else (-0.10 if vix > 30 else 0.0)
+        # XLE's #1 driver is crude oil price momentum (correlation ~0.85)
+        score += float(np.clip(oil_mom / 3.5, -0.35, 0.35))
+        score += 0.25 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
+        score += 0.10 if dollar == "DOLLAR_WEAKNESS" else (-0.10 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.06 if vix < 20 else (-0.08 if vix > 30 else 0.0)
     elif ticker == "XLF":
-        # Financials: net interest margin expands with hawkish rates; risk-sensitive
         score += 0.35 if rate == "HAWKISH" else (-0.15 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
     elif ticker == "XLK":
-        # Tech/growth: rate-sensitive (discount rate), high beta to risk
         score -= 0.30 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.30 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
-    elif ticker in GRAIN_TICKERS:
-        # Grains (corn/wheat): dollar is the #1 driver; geopolitical risk (supply) secondary
+    elif ticker == "ZW=F":
+        # Wheat: dollar is #1 driver; RISK_OFF = geopolitical/supply disruption = mildly BULLISH
+        # (war/sanctions cut supply → wheat spikes, unlike most risk-off assets that fall)
         score += 0.40 if dollar == "DOLLAR_WEAKNESS" else (-0.40 if dollar == "DOLLAR_STRENGTH" else 0.0)
-        score += 0.15 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
-        score += -0.10 if rate == "HAWKISH" else (0.05 if rate in ("DOVISH", "EASING") else 0.0)
+        score += 0.15 if risk == "RISK_OFF" else (-0.10 if risk == "RISK_ON" else 0.0)
+        score += -0.08 if rate == "HAWKISH" else (0.05 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "ZC=F":
+        # Corn: dollar + seasonal planting pressure + demand (ethanol, China)
+        score += 0.40 if dollar == "DOLLAR_WEAKNESS" else (-0.40 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += 0.10 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
+        # Planting season (Apr-Jun): bearish as new crop supply expectations build in
+        if month in (4, 5, 6):
+            score -= 0.15
+        score += -0.08 if rate == "HAWKISH" else (0.05 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in EQUITY_ETFS:
         score += 0.10  # equities have structural upward drift
         score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
@@ -443,6 +465,9 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
         else:
             # Normal regime: standard weights
             combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
+    elif ticker == "NG=F":
+        # NG: momentum (tech) matters — it trends strongly; model less reliable on NG
+        combined = 0.15 * model_sc + 0.30 * tech_score + 0.55 * macro_score
     elif ticker in _VOL_TICKERS:
         combined = 0.20 * model_sc + 0.80 * macro_score
     elif ticker in EQUITY_ETFS:
