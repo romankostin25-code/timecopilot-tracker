@@ -2315,16 +2315,27 @@
     "summary_raw": "<p>HIP-4's integration into Hyperliquid's ecosystem enhances capital efficiency and could attract diverse traders, boosting platform activity and HYPE value.</p>\n<p>The post <a href=\"https://cryptobriefing.com/hyperliquid-hip-4-outcome-markets/\">Hyperliquid introduces HIP-4 to bring prediction markets into its trading ecosystem</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:20:53 +0000",
     "fetched_at": "2026-05-21T20:30:09.436840+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Hyperliquid adds prediction markets via HIP-4, boosting platform utility.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:49:45.062084+00:00"
   },
   {
     "id": "db53833bd0035a47",
@@ -2335,16 +2346,30 @@
     "summary_raw": "<p>Nvidia's retreat from China's AI chip market may spur innovation and investment in China's tech sector, altering global AI dynamics.</p>\n<p>The post <a href=\"https://cryptobriefing.com/nvidia-concedes-china-ai-chip-market-huawei/\">Nvidia concedes China&#8217;s AI chip market to Huawei, says CEO Jensen Huang</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:20:39 +0000",
     "fetched_at": "2026-05-21T20:30:09.436849+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "FXI"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "trump_tariffs",
+    "impact_horizon": "LONG",
+    "summary": "Nvidia cedes China AI chip market to Huawei, boosting Chinese tech sector.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "FXI": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.45,
+      "XLK": 0.55,
+      "FXI": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:49:52.400842+00:00"
   },
   {
     "id": "472896a28048e92f",
@@ -2356,15 +2381,17 @@
     "published_at": "Thu, 21 May 2026 20:20:24 +0000",
     "fetched_at": "2026-05-21T20:29:37.999054+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Turkish court ruling reshuffles opposition party leadership internally.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:49:55.291699+00:00"
   },
   {
     "id": "e7c8de22d5f8fb11",
@@ -2375,16 +2402,24 @@
     "summary_raw": "<p>The integration of Lightning Network by BitGo and Voltage could accelerate institutional crypto adoption by reducing transaction costs and time.</p>\n<p>The post <a href=\"https://cryptobriefing.com/bitgo-lightning-network-voltage-partnership/\">BitGo adds Lightning Network support for institutional clients through Voltage partnership</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:14:47 +0000",
     "fetched_at": "2026-05-21T20:30:09.436856+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "BitGo Lightning Network integration may boost institutional Bitcoin adoption.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:49:58.511915+00:00"
   },
   {
     "id": "a0c6b5ef15910417",
@@ -2395,16 +2430,27 @@
     "summary_raw": "Sixteen states are in legal proceedings against prediction market platforms, while one state has moved to ban them.",
     "published_at": "Thu, 21 May 2026 20:11:34 GMT",
     "fetched_at": "2026-05-21T20:29:36.558066+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "State-federal regulatory clash over prediction markets creates uncertainty for alternative assets.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:01.322680+00:00"
   },
   {
     "id": "6e8eb9ec9d1d6b3f",
@@ -2415,16 +2461,27 @@
     "summary_raw": "<p>World Liberty Financial\u2019s WLFI token is facing renewed scrutiny as the Donald Trump family-backed crypto project tries to rebuild demand and confidence after its recent slide to an all-time low. World Liberty Financial has responded with WLFI token burns, exchange integrations, and rewards programs tied to its USD1 stablecoin, a campaign aimed at restoring activity [&#8230;]</p>\n<p>The post <a href=\"https://cryptoslate.com/world-liberty-financial-wlfi-rebound-ai-financial-risk/\">World Liberty",
     "published_at": "Thu, 21 May 2026 20:10:45 +0000",
     "fetched_at": "2026-05-21T20:30:09.268561+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Trump-backed WLFI token faces survival risk, dampening broader crypto sentiment.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.25,
+      "ETH-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:04.626039+00:00"
   },
   {
     "id": "be7991ba015a197f",
@@ -2436,15 +2493,17 @@
     "published_at": "Thu, 21 May 2026 20:10:21 +0000",
     "fetched_at": "2026-05-21T20:30:09.436864+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "Republican fundraising dominance may shift 2026 midterm legislative control.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:06.831662+00:00"
   },
   {
     "id": "fe0d84aeff8e5e6c",
@@ -2455,16 +2514,42 @@
     "summary_raw": "<p>Iran's use of digital currencies for tolls in the Strait of Hormuz challenges global diplomacy, impacts energy prices, and pressures crypto regulation.</p>\n<p>The post <a href=\"https://cryptobriefing.com/rubio-iran-hormuz-tolling-crypto/\">Rubio warns Iran&#8217;s Hormuz tolling system would kill diplomatic deal as Tehran collects fees in Bitcoin and USDT</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:09:05 +0000",
     "fetched_at": "2026-05-21T20:30:09.436873+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "BTC-USD",
+      "ETH-USD",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran Hormuz tolling via crypto threatens diplomacy, disrupts oil supply routes.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "GLD": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.75,
+      "XLE": 0.65,
+      "BTC-USD": 0.6,
+      "ETH-USD": 0.5,
+      "GLD": 0.55,
+      "^VIX": 0.6,
+      "DX-Y.NYB": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:11.620439+00:00"
   },
   {
     "id": "087ef769dfc7eaa2",
@@ -2475,16 +2560,24 @@
     "summary_raw": "<p>The new product directory enhances visibility and accessibility for Solana projects, potentially accelerating innovation and investment in the ecosystem.</p>\n<p>The post <a href=\"https://cryptobriefing.com/colosseum-solana-frontier-hackathon-directory/\">Colosseum launches product directory for record-breaking Solana Frontier Hackathon</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:08:09 +0000",
     "fetched_at": "2026-05-21T20:30:09.436880+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Solana hackathon product directory boosts ecosystem visibility and innovation potential.",
+    "signal_direction": {
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "SOL-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:14.581320+00:00"
   },
   {
     "id": "db747659c3b5d66f",
@@ -2495,16 +2588,27 @@
     "summary_raw": "<p>Kraken's AVAX staking could boost user engagement and ecosystem growth, but investors must weigh convenience against potential centralized risks.</p>\n<p>The post <a href=\"https://cryptobriefing.com/kraken-avax-staking-10-percent-apy/\">Kraken launches AVAX staking, offering up to 10% APY</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:05:31 +0000",
     "fetched_at": "2026-05-21T20:30:09.436887+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Kraken adds AVAX staking at 10% APY, boosting ecosystem engagement.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:17.375788+00:00"
   },
   {
     "id": "f6a0f039289a2f36",
@@ -2515,16 +2619,30 @@
     "summary_raw": "<p>GitHub's instability threatens crypto project timelines, potentially impacting token valuations and prompting shifts to alternative platforms.</p>\n<p>The post <a href=\"https://cryptobriefing.com/github-outages-crypto-developer-impact/\">GitHub struggles for survival amid outages and leadership turmoil, and crypto developers are caught in the crossfire</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:04:47 +0000",
     "fetched_at": "2026-05-21T20:30:09.436894+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "GitHub instability threatens crypto project timelines and token valuations.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.3,
+      "SOL-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:20.528559+00:00"
   },
   {
     "id": "b8ddff6183a419c2",
@@ -2535,16 +2653,42 @@
     "summary_raw": "<p>Escalating US-Iran tensions could reshape nuclear diplomacy, impacting global non-proliferation efforts and regional geopolitical stability.</p>\n<p>The post <a href=\"https://cryptobriefing.com/trump-vows-us-will-retrieve-likely-destroy-irans-uranium-stockpile/\">Trump vows US will retrieve, likely destroy Iran&#8217;s uranium stockpile</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:03:02 +0000",
     "fetched_at": "2026-05-21T20:30:09.436901+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "DX-Y.NYB",
+      "SPY",
+      "GC=F"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "US-Iran tensions escalate, boosting safe havens and oil risk premium.",
+    "signal_direction": {
+      "GLD": 1,
+      "GC=F": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "SPY": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "GLD": 0.65,
+      "GC=F": 0.65,
+      "CL=F": 0.6,
+      "^VIX": 0.6,
+      "UVXY": 0.55,
+      "SPY": 0.45,
+      "DX-Y.NYB": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:25.854434+00:00"
   },
   {
     "id": "f9366d4f613af181",
@@ -2555,16 +2699,36 @@
     "summary_raw": "<p>Rising mortgage rates could strain household budgets, reducing disposable income and impacting investments in risk assets like crypto.</p>\n<p>The post <a href=\"https://cryptobriefing.com/freddie-mac-30-year-mortgage-rate-651/\">Freddie Mac reports 30-year fixed mortgage rate at 6.51%, highest since late August 2025</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:03:01 +0000",
     "fetched_at": "2026-05-21T20:30:09.436909+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SPY",
+      "XLF",
+      "TLT"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Rising mortgage rates at 6.51% strain budgets, pressuring risk assets.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SPY": -1,
+      "XLF": -1,
+      "TLT": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3,
+      "SPY": 0.3,
+      "XLF": 0.35,
+      "TLT": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:33.443057+00:00"
   },
   {
     "id": "c2547d05e8a39c0e",
@@ -2576,15 +2740,17 @@
     "published_at": "Thu, 21 May 2026 20:01:00 GMT",
     "fetched_at": "2026-05-21T20:29:36.965943+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "NYC World Cup ticket program has no material market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:35.450958+00:00"
   },
   {
     "id": "bd2854ae19354d14",
@@ -2595,16 +2761,33 @@
     "summary_raw": "<p>The Fed's move could democratize payment systems, potentially reshaping financial landscapes by integrating fintech and crypto firms more directly.</p>\n<p>The post <a href=\"https://cryptobriefing.com/fed-fintech-payment-access-public-comment/\">Federal Reserve seeks public comment on fintech payment access, opening the door for crypto firms</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 20:00:19 +0000",
     "fetched_at": "2026-05-21T20:30:09.436916+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "XLF"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "LONG",
+    "summary": "Fed opens door for crypto/fintech firms in payment systems via public comment.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1,
+      "XLF": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.5,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.45,
+      "XLF": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:42.978989+00:00"
   },
   {
     "id": "d82acd3e2bd59982",
@@ -2615,16 +2798,33 @@
     "summary_raw": "What happens when there are no more stockpiles?",
     "published_at": "Thu, 21 May 2026 20:00:00 GMT",
     "fetched_at": "2026-05-21T22:49:47.130052+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "LONG",
+    "summary": "Dwindling oil reserves could drive energy prices higher long-term.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "GLD": 1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.3,
+      "XLE": 0.3,
+      "GLD": 0.2,
+      "^VIX": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:46.527956+00:00"
   },
   {
     "id": "85e0d293cff440e2",
@@ -2635,16 +2835,27 @@
     "summary_raw": "The head of ConocoPhillips said Venezuela's initial steps to attract foreign oil companies that could help revive the nation's production are falling well short.",
     "published_at": "Thu, 21 May 2026 20:00:00 GMT",
     "fetched_at": "2026-05-21T22:50:04.210802+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Venezuela oil revival stalls as foreign firms find terms insufficient.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.3,
+      "XLE": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:49.624453+00:00"
   },
   {
     "id": "3c96b13b6c8af97e",
@@ -2655,16 +2866,30 @@
     "summary_raw": "The U.S. oil giant is negotiating a deal to pump oil in Venezuela, ending a standoff with its socialist rulers and marking a victory for President Trump.",
     "published_at": "Thu, 21 May 2026 19:58:31 +0000",
     "fetched_at": "2026-05-21T20:29:37.998939+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "CL=F",
+      "SPY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Exxon Venezuela deal could boost oil supply, pressuring crude prices.",
+    "signal_direction": {
+      "XLE": -1,
+      "CL=F": -1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "XLE": 0.4,
+      "CL=F": 0.5,
+      "SPY": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:52.806580+00:00"
   },
   {
     "id": "3855202f096c1ea2",
@@ -2675,16 +2900,28 @@
     "summary_raw": "Microsoft has not made the Maia 200 chips available to customers, but they are used in the company's data centers, offering better efficiency than other silicon.",
     "published_at": "Thu, 21 May 2026 19:53:21 GMT",
     "fetched_at": "2026-05-21T20:29:36.558048+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "MSFT"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Microsoft AI chip deal with Anthropic signals deepening AI infrastructure expansion.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.4,
+      "XLK": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:55.881440+00:00"
   },
   {
     "id": "2a79e926947e71e6",
@@ -2695,16 +2932,28 @@
     "summary_raw": "Crude settled lower amid hopes for a Strait of Hormuz reopening.",
     "published_at": "Thu, 21 May 2026 19:49:32 GMT",
     "fetched_at": "2026-05-21T22:50:04.210827+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "USO"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "Crude falls third day on hopes Strait of Hormuz may reopen.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.65,
+      "XLE": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:50:58.511161+00:00"
   },
   {
     "id": "4a2982a7b8d3ee8d",
@@ -2715,16 +2964,27 @@
     "summary_raw": "<p>OpenAI beat Anthropic by $1B in Q1 revenue, but stalled user growth, losses, and Anthropics SpaceX deal complicate the AI IPO race.</p>\n<p>The post <a href=\"https://cryptobriefing.com/openai-revenue-lead-over-anthropic/\">OpenAI tops Anthropic revenue by $1 billion in first quarter even as user growth stalls</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 19:45:49 +0000",
     "fetched_at": "2026-05-21T20:30:09.436924+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "OpenAI leads Anthropic in revenue but user growth stalls amid losses.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.25,
+      "XLK": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:01.264176+00:00"
   },
   {
     "id": "03d2d5c881626f52",
@@ -2735,16 +2995,30 @@
     "summary_raw": "\"The capex is at a trillion dollars, and it's growing toward the three to four [trillion-dollar mark],\" said Nvidia CEO Jensen Huang.",
     "published_at": "Thu, 21 May 2026 19:39:20 GMT",
     "fetched_at": "2026-05-21T20:29:36.558095+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.75,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "Nvidia CEO forecasts AI capex surging to $3-4 trillion, boosting tech sector.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.75,
+      "XLK": 0.8,
+      "SPY": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:04.508046+00:00"
   },
   {
     "id": "e6eedfdac2339222",
@@ -2755,16 +3029,24 @@
     "summary_raw": "<p>The recovery highlights enhanced law enforcement capabilities in crypto, reinforcing the legitimacy and security of regulated custody solutions.</p>\n<p>The post <a href=\"https://cryptobriefing.com/irish-authorities-recover-bitcoin-clifton-collins/\">Irish authorities recover another 500 Bitcoin from drug dealer Clifton Collins, totaling 1,000 BTC worth $73M this year</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 19:34:24 +0000",
     "fetched_at": "2026-05-21T20:30:09.436931+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Irish BTC seizure reinforces regulated crypto custody legitimacy, neutral price impact.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:07.716419+00:00"
   },
   {
     "id": "4131d25178cbf959",
@@ -2775,16 +3057,27 @@
     "summary_raw": "<p>The proposed $1B organization could shift Ethereum's focus towards financial growth, risking fragmentation and conflicting priorities within the ecosystem.</p>\n<p>The post <a href=\"https://cryptobriefing.com/ethereum-foundation-billion-dollar-price-organization/\">Ethereum Foundation faces calls for new $1B price-focused organization</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 21 May 2026 19:32:46 +0000",
     "fetched_at": "2026-05-21T20:30:09.436938+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Proposed $1B Ethereum price-focused org risks ecosystem fragmentation and conflict.",
+    "signal_direction": {
+      "ETH-USD": -1,
+      "BTC-USD": -1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.35,
+      "BTC-USD": 0.15
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:11.635987+00:00"
   },
   {
     "id": "e5731b66da75d691",
@@ -2795,16 +3088,27 @@
     "summary_raw": "SpaceX\u2019s AI division, which houses the Grok platform, generated $818 million of revenue in its last quarter, resulting in an operating loss of $2.47 billion.",
     "published_at": "Thu, 21 May 2026 19:26:00 GMT",
     "fetched_at": "2026-05-21T20:29:36.965961+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "xAI burning SpaceX cash with $2.47B operating loss despite revenue.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.2,
+      "XLK": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:14.707146+00:00"
   },
   {
     "id": "7377fc0d77439107",
@@ -2815,16 +3119,30 @@
     "summary_raw": "Outspoken billionaire Mark Cuban is disappointed with Bitcoin's performance, and said he's parted ways with most of the BTC in his portfolio.",
     "published_at": "Thu, 21 May 2026 19:23:34 +0000",
     "fetched_at": "2026-05-21T20:30:06.619192+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Mark Cuban sells most Bitcoin holdings, signaling reduced confidence in BTC.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.4,
+      "ETH-USD": 0.25,
+      "SOL-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:17.992457+00:00"
   },
   {
     "id": "05607deba6676c34",
@@ -2835,16 +3153,30 @@
     "summary_raw": "",
     "published_at": "Thu, 21 May 2026 19:10:03 +0000",
     "fetched_at": "2026-05-21T20:30:06.944837+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "LONG",
+    "summary": "Expert claims quantum attack risk on early Bitcoin wallets can be mitigated.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.2,
+      "SOL-USD": 0.15
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:20.840536+00:00"
   },
   {
     "id": "0e607fe3d150c317",
@@ -2855,16 +3187,33 @@
     "summary_raw": "<p>A renewed push to solidify the United States\u2019 foothold in the digital asset market emerged Thursday as lawmakers unveiled legislation to establish a formal strategic Bitcoin reserve and consolidate the federal government's multibillion-dollar cryptocurrency stockpile. Spearheaded by Representative Nick Begich, the American Reserve Modernization Act (ARMA) of 2026 mandates the creation of a secure Bitcoin [&#8230;]</p>\n<p>The post <a href=\"https://cryptoslate.com/us-lawmakers-push-new-strategi",
     "published_at": "Thu, 21 May 2026 19:05:23 +0000",
     "fetched_at": "2026-05-21T20:30:09.268582+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "QQQ"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "US legislation proposes $25B strategic Bitcoin reserve, boosting crypto sentiment.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1,
+      "QQQ": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.78,
+      "ETH-USD": 0.55,
+      "SOL-USD": 0.52,
+      "QQQ": 0.22
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:24.529216+00:00"
   },
   {
     "id": "a9387a7b04ad4270",
@@ -2876,15 +3225,17 @@
     "published_at": "Thu, 21 May 2026 19:05:00 GMT",
     "fetched_at": "2026-05-21T20:29:36.965980+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Annuity payouts rise with high interest rates; limited market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:26.917228+00:00"
   },
   {
     "id": "48e055afc835fa96",
@@ -2895,16 +3246,36 @@
     "summary_raw": "Saudi crude exports have been falling since the US- Iran war began, but the latest slide is no longer just a story of disrupted trade routes. Cargoes scheduled to sail from Saudi Arabia in May are now assessed at roughly 3.9 million b/d (historic lows), while almost every major Saudi buyer \u2013 China, Japan, South Korea, India and Taiwan \u2013 is cutting nominations for the months ahead. China, still Saudi Aramco\u2019s largest customer, is expected to take only about 600,000 b/d of Saudi crude in June, rou",
     "published_at": "Thu, 21 May 2026 19:00:00 -0500",
     "fetched_at": "2026-05-22T11:38:41.225287+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "SPY",
+      "EEM",
+      "FXI"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.78,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Saudi crude exports hit historic lows as Asian buyers slash nominations amid US-Iran war.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "SPY": -1,
+      "EEM": -1,
+      "FXI": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.75,
+      "XLE": 0.7,
+      "SPY": 0.35,
+      "EEM": 0.5,
+      "FXI": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-05-23T08:51:32.018737+00:00"
   },
   {
     "id": "13d67f2e826121c4",
@@ -7647,6 +8018,106 @@
     "nlp_processed": false
   },
   {
+    "id": "b888e38a40fb8a7e",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Bitcoin sinks below $75K with $945M in leveraged bets crushed as Trump weighs Iran strikes",
+    "url": "https://cryptobriefing.com/bitcoin-sinks-below-75k-with-945m-in-leveraged-bets-crushed-as-trump-weighs-iran-strikes/",
+    "summary_raw": "<p>Market volatility may increase as geopolitical tensions influence investor sentiment, potentially impacting global economic stability.</p>\n<p>The post <a href=\"https://cryptobriefing.com/bitcoin-sinks-below-75k-with-945m-in-leveraged-bets-crushed-as-trump-weighs-iran-strikes/\">Bitcoin sinks below $75K with $945M in leveraged bets crushed as Trump weighs Iran strikes</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Sat, 23 May 2026 08:41:06 +0000",
+    "fetched_at": "2026-05-23T08:49:42.092091+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "7a7219127a5daec9",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Iran repudiates US allegations of drone attack on UAE nuclear plant as oil spikes above $105",
+    "url": "https://cryptobriefing.com/iran-denies-uae-nuclear-plant-drone-attack/",
+    "summary_raw": "<p>Heightened geopolitical tensions and scrutiny on Iran's crypto activities may influence international policy and nuclear safety discussions.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-denies-uae-nuclear-plant-drone-attack/\">Iran repudiates US allegations of drone attack on UAE nuclear plant as oil spikes above $105</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Sat, 23 May 2026 08:18:04 +0000",
+    "fetched_at": "2026-05-23T08:49:42.092113+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "71519413590a9541",
+    "source": "Financial Times",
+    "source_type": "macro",
+    "headline": "SpaceX, OpenAI and Anthropic IPOs set to test limits of AI boom",
+    "url": "https://www.ft.com/content/ae9bb47d-bd1d-473c-b4c5-abae0420cc12",
+    "summary_raw": "Elon Musk, Sam Altman and Dario Amodei battle over who can command Wall Street\u2019s deepest pools of capital",
+    "published_at": "Sat, 23 May 2026 08:00:06 GMT",
+    "fetched_at": "2026-05-23T08:49:09.338443+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "592c7220542098bc",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Bitcoin falls below $75,000, triggers $100M in liquidations",
+    "url": "https://cryptobriefing.com/bitcoin-falls-below-75000-triggers-100m-in-liquidations/",
+    "summary_raw": "<p>Bitcoin's drop below $75,000 may trigger broader market volatility, affecting investor sentiment and price stability across cryptocurrencies.</p>\n<p>The post <a href=\"https://cryptobriefing.com/bitcoin-falls-below-75000-triggers-100m-in-liquidations/\">Bitcoin falls below $75,000, triggers $100M in liquidations</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Sat, 23 May 2026 07:54:55 +0000",
+    "fetched_at": "2026-05-23T08:49:42.092122+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "f67fd4b737eb11aa",
+    "source": "NYT World",
+    "source_type": "geopolitics",
+    "headline": "Xi Calls for All-Out Rescue After Coal Mine Explosion Kills at Least 90 in China",
+    "url": "https://www.nytimes.com/2026/05/23/world/asia/xi-coal-mine-explosion-rescue.html",
+    "summary_raw": "The death count rose drastically on Saturday as the Chinese leader, Xi Jinping, called for an investigation and emphasized the need to \u201chold those responsible to account.\u201d",
+    "published_at": "Sat, 23 May 2026 07:13:53 +0000",
+    "fetched_at": "2026-05-23T08:49:09.750445+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "7b82a79067458d2e",
     "source": "Crypto Briefing",
     "source_type": "crypto",
@@ -7755,6 +8226,26 @@
     "summary_raw": "<p>The settlement highlights the increasing legal risks for firms involved in crypto, potentially reshaping industry compliance standards.</p>\n<p>The post <a href=\"https://cryptobriefing.com/fenwick-west-54m-ftx-settlement/\">Fenwick &amp; West agrees to $54M settlement over FTX work</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Sat, 23 May 2026 05:45:23 +0000",
     "fetched_at": "2026-05-23T07:27:09.162149+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "863ed34460f5254e",
+    "source": "NYT World",
+    "source_type": "geopolitics",
+    "headline": "Once Trump\u2019s Co-Pilot Against Iran, Netanyahu Is Now a Mere Passenger",
+    "url": "https://www.nytimes.com/2026/05/23/world/middleeast/israel-trump-iran.html",
+    "summary_raw": "A partner in the war, Israel has been largely left out of the peace talks, a humbling setback for its prime minister with significant risks for the country.",
+    "published_at": "Sat, 23 May 2026 05:43:09 +0000",
+    "fetched_at": "2026-05-23T08:49:09.750334+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -8095,6 +8586,26 @@
     "summary_raw": "<p>The successful stress test of Figure AI's robots suggests a transformative shift in logistics, potentially reducing reliance on human labor.</p>\n<p>The post <a href=\"https://cryptobriefing.com/figure-f03-robot-logistics-stress-test/\">Figure&#8217;s F.03 robot completes 200-hour logistics stress test, sorts 250,000 packages</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Sat, 23 May 2026 03:57:14 +0000",
     "fetched_at": "2026-05-23T07:27:09.162230+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "2d898114acc81598",
+    "source": "NYT World",
+    "source_type": "geopolitics",
+    "headline": "Mob Burns Congo Ebola Center Amid Rare Strain Outbreak",
+    "url": "https://www.nytimes.com/2026/05/22/world/africa/ebola-congo-clinic-burned-protests.html",
+    "summary_raw": "Several hundred people massed at the gates of a hospital to demand the body of a suspected Ebola victim. Violence broke out when staff refused the request.",
+    "published_at": "Sat, 23 May 2026 01:35:27 +0000",
+    "fetched_at": "2026-05-23T08:49:09.750452+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -8655,6 +9166,26 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Kevin Warsh sworn in as Fed chair, as traders forecast rate hikes in 2026\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9rZXZpbi13YXJzaC0yLTMuanBn.jpg\" /></p><p>US President Donald Trump has repeatedly said he wants the Federal Reserve to lower interest rates, but investors forecast no chance of a rate cut in 2026.</p>",
     "published_at": "Fri, 22 May 2026 22:12:01 +0000",
     "fetched_at": "2026-05-23T07:27:06.868730+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "9399902dbb9b2be7",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "I\u2019m selling my $1 million home. Will my agent really charge less than a 6% commission?",
+    "url": "https://www.marketwatch.com/story/im-selling-my-1-million-maui-home-will-my-agent-charge-me-less-than-a-6-commission-ed06c0f1?mod=mw_rss_topstories",
+    "summary_raw": "\u201cI haven\u2019t bought or sold property since the National Association of Realtors ruling that decoupled buyer\u2019s and seller\u2019s agent commissions.\u201d",
+    "published_at": "Fri, 22 May 2026 21:45:00 GMT",
+    "fetched_at": "2026-05-23T08:49:08.698533+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -14815,6 +15346,246 @@
     "summary_raw": "",
     "published_at": "2026-05-22T16:35:09Z",
     "fetched_at": "2026-05-22T17:02:56.069960+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "2878aede1878c786",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Wall Street keeps rising, even as U.S. households keep getting more discouraged",
+    "url": "https://finance.yahoo.com/markets/world-indices/articles/asian-shares-track-wall-street-051857368.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T05:18:57Z",
+    "fetched_at": "2026-05-23T08:49:08.411790+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "8e6824064a35e5a3",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Korea Post eyes AI data centres, real estate investment for higher returns amid mail losses",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/korea-post-eyes-ai-data-051351334.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T05:13:51Z",
+    "fetched_at": "2026-05-23T08:49:08.411783+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "f939f04ce322d084",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Analysis-ECB, banks rift hampers Europe's efforts to loosen reliance on US payments giants",
+    "url": "https://finance.yahoo.com/economy/policy/articles/analysis-ecb-banks-rift-hampers-050939101.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T05:09:39Z",
+    "fetched_at": "2026-05-23T08:49:08.411775+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "7cebc35388d8b4a6",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Europe's AI stocks shine through gloom of Iran war",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/europes-ai-stocks-shine-gloom-050604820.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T05:06:04Z",
+    "fetched_at": "2026-05-23T08:49:08.411768+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "59c89b89b058d584",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Should I Convert Part of My $1.4 Million to a Roth at 63 If I Expect to Live to 100?",
+    "url": "https://finance.yahoo.com/markets/options/articles/expect-live-100-convert-1-100000765.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T05:00:00Z",
+    "fetched_at": "2026-05-23T08:49:08.411754+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "63deb290816e1614",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Lenovo Q4 revenue tops estimates on strong PC sales; shares jump 15%",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lenovo-q4-revenue-tops-estimates-042514266.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:25:14Z",
+    "fetched_at": "2026-05-23T08:49:08.411746+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "8958a748716a69e0",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "India central bank not in favour of rate hikes to defend rupee, prioritises inflation, sources say",
+    "url": "https://finance.yahoo.com/economy/policy/articles/india-central-bank-not-favour-042305780.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:23:05Z",
+    "fetched_at": "2026-05-23T08:49:08.411739+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "b5b5205d2f6cfc13",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Most 401(k) Holders Don\u2019t Seek Help from Plan Advisors (But They Want It)",
+    "url": "https://finance.yahoo.com/markets/options/articles/most-401-k-holders-don-040300593.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:03:00Z",
+    "fetched_at": "2026-05-23T08:49:08.411688+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "76f4607e57590664",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "How TIPS Bridges Can Maximize Social Security Benefits",
+    "url": "https://finance.yahoo.com/markets/options/articles/tips-bridges-maximize-social-security-040200159.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:02:00Z",
+    "fetched_at": "2026-05-23T08:49:08.411732+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "be5e8eee2caeceb5",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Walmart Rattles Investors with Slowing Sales-Growth Forecast",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/walmart-rattles-investors-slowing-sales-040100079.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:01:00Z",
+    "fetched_at": "2026-05-23T08:49:08.411698+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "d0e324bb8f0f022a",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "The \u2018Not Great, But Not Bad\u2019 Retirement Trap",
+    "url": "https://finance.yahoo.com/markets/articles/not-great-not-bad-retirement-040100876.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:01:00Z",
+    "fetched_at": "2026-05-23T08:49:08.411709+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "682ca29af3efed9a",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Pre-IPO, Anthropic Shows Up OpenAI with Surprise Profit Projection",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/pre-ipo-anthropic-shows-openai-040100383.html",
+    "summary_raw": "",
+    "published_at": "2026-05-22T04:01:00Z",
+    "fetched_at": "2026-05-23T08:49:08.411717+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
