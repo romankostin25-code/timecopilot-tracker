@@ -63,13 +63,18 @@ jobs:
       - name: Retrain logistic meta-learner
         run: python main.py --train
 
+      - name: Run TFT inference and save scores cache
+        run: python main.py --tft-scores
+        continue-on-error: true
+
       - name: Commit models and datasets
         run: |
           git config user.name  "Trading Co-Pilot Bot"
           git config user.email "bot@trading-copilot.com"
           git add data/features.parquet data/news_sentiment.parquet \
                   data/training_dataset.parquet data/tft_checkpoint/ \
-                  data/direction_model.pkl data/tft_training_log.json || true
+                  data/direction_model.pkl data/tft_training_log.json \
+                  data/tft_scores_cache.json || true
           if ! git diff --cached --quiet; then
             git commit -m "retrain: weekly ML update $(date -u +'%Y-%m-%d')"
             git pull --rebase -X ours origin main

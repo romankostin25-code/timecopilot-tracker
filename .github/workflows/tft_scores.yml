@@ -3,9 +3,6 @@ on:
   schedule:
     - cron: '30 21 * * 1-5'   # 5:30 PM ET — 30 min before evening forecast run
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/tft_scores.yml']
 
 concurrency:
   group: tft-scores
