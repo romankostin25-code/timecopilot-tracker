@@ -108,18 +108,22 @@ def attach_news(feat_df: pd.DataFrame, ticker: str,
 def build_inference_features(ticker: str, price_arr: np.ndarray,
                               macro: dict | None = None,
                               news_df: pd.DataFrame | None = None,
-                              encoder_len: int = 60) -> pd.DataFrame | None:
+                              encoder_len: int = 60,
+                              decoder_len: int = 90) -> pd.DataFrame | None:
     """Build a feature DataFrame for live TFT inference from a raw price array.
 
+    pytorch-forecasting's TimeSeriesDataSet.from_dataset(..., predict=True) requires
+    future rows covering the decoder window to create valid samples. We append
+    decoder_len dummy rows (forward-filled price, zeroed features) after the last
+    known close so that the DataLoader collation never hits NoneType samples.
+
     price_arr: numpy array of closing prices, oldest first, recent last.
-    Returns a DataFrame with the last encoder_len+1 complete rows, or None
-    if there isn't enough data.
+    Returns a DataFrame ready for TimeSeriesDataSet.from_dataset, or None.
     """
     if len(price_arr) < encoder_len + 20:
         return None
 
     # Build date index (business days ending today)
-    import pandas as pd
     today = pd.Timestamp.today().normalize()
     dates = pd.bdate_range(end=today, periods=len(price_arr))
     price_df = pd.DataFrame({"date": dates.date, "close": price_arr.astype(float)})
@@ -140,6 +144,15 @@ def build_inference_features(ticker: str, price_arr: np.ndarray,
 
     if len(feat) < 30:
         return None
+
+    # Append dummy future rows so the decoder window is satisfied
+    future_dates = pd.bdate_range(start=today + pd.Timedelta(days=1), periods=decoder_len)
+    last_row = feat.iloc[[-1]].copy()
+    future_rows = pd.concat([last_row] * decoder_len, ignore_index=True)
+    future_rows["date"] = [d.date() for d in future_dates]
+    for col in TFT_FEATURE_COLS:
+        future_rows[col] = 0.0  # zeroed — model won't use these as targets
+    feat = pd.concat([feat, future_rows], ignore_index=True)
 
     feat = feat.reset_index(drop=True)
     feat["time_idx"] = feat.index
