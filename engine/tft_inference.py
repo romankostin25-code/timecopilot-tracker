@@ -158,7 +158,21 @@ def precompute_tft_scores(
             predict_ds = TimeSeriesDataSet.from_dataset(
                 template, combined, predict=True, stop_randomization=True
             )
-            loader = DataLoader(predict_ds, batch_size=64, shuffle=False, num_workers=0)
+            print(f"[tft] h{horizon}: dataset size={len(predict_ds)}, "
+                  f"index_len={len(predict_ds.index) if hasattr(predict_ds, 'index') else 'n/a'}")
+
+            # Custom collate that skips None samples (returned when a sample is invalid)
+            def collate_skip_none(batch):
+                batch = [x for x in batch if x is not None]
+                return torch.utils.data.dataloader.default_collate(batch) if batch else None
+
+            loader = DataLoader(predict_ds, batch_size=64, shuffle=False,
+                                num_workers=0, collate_fn=collate_skip_none)
+
+            # Debug first sample
+            if len(predict_ds) > 0:
+                s0 = predict_ds[0]
+                print(f"[tft] h{horizon}: sample[0] type={type(s0)}")
 
             with torch.no_grad():
                 raw_preds = model.predict(loader, return_predictions=True)
