@@ -442,8 +442,7 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "NG=F", "^TNX", "CL=F", "XLE",
-                "ZW=F", "ZC=F", "FXI", "EEM", "EFA"}
+_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "^TNX"}  # true macro-dominated plays only
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
@@ -452,9 +451,10 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
     """Direction signal — TFT when trained, else asset-class weighted ensemble.
 
     Base weights (no TFT):
-      Macro-dom:  macro(80%) + model(20%)   [_VOL_TICKERS]
-      Equities:   model(35%) + tech(30%) + macro(25%) + claude(10%)
-      Default:    model(60%) + macro(25%) + claude(15%)
+      Macro-dom:       macro(80%) + model(20%)                           [_VOL_TICKERS: VIX/UVXY/BIL/TNX]
+      Equities:        model(35%) + tech(30%) + macro(25%) + claude(10%) [EQUITY_ETFS]
+      Commodities/Intl: model(40%) + tech(35%) + macro(20%) + claude(5%) [CL=F, grains, FXI/EEM/EFA etc.]
+      Default:         model(60%) + macro(25%) + claude(15%)
 
     TFT weights adapt to volatility regime:
       Crash  (VIX>30 or backwardation):  tft(30%) + macro(50%) + claude(15%) + model(5%)
@@ -504,6 +504,9 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
     elif ticker in EQUITY_ETFS:
         # RSI + momentum (tech_score) beats ARIMA for short-term equity direction
         combined = 0.35 * model_sc + 0.30 * tech_score + 0.25 * macro_score + 0.10 * claude_score
+    elif ticker in (COMMODITY_TICKS | GRAIN_TICKERS | INTL_ETFS):
+        # Commodities + intl ETFs: price momentum (tech) is more timely than static macro
+        combined = 0.40 * model_sc + 0.35 * tech_score + 0.20 * macro_score + 0.05 * claude_score
     else:
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
@@ -604,7 +607,10 @@ def run_all_forecasts():
             print(f"[{ticker}] signals — ema:{trend_signal} macro:{macro_sc:+.2f} claude:{claude_sc:+.2f} news:{news_sc:+.2f}")
 
             for horizon in HORIZONS:
-                target_date = (datetime.today() + timedelta(days=horizon)).date()
+                # Use business days so target never lands on a weekend
+                target_date = pd.bdate_range(
+                    start=forecast_date + timedelta(days=1), periods=horizon
+                )[-1].date()
                 if freq == "B":
                     h_idx = _bday_h_idx(forecast_date, target_date, len(p50_vals) - 1)
                 else:
