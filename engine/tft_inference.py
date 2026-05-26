@@ -6,20 +6,54 @@ Flow:
      forward pass through the loaded TFT checkpoint.
   3. Returns {ticker: {horizon: P(bullish)}} dict consumed by compute_signals.
 
-Falls back gracefully when checkpoints or pytorch-forecasting are unavailable.
+Falls back gracefully when checkpoints or pytorch-forecasting are unavailable:
+  - If pytorch-forecasting is missing, loads data/tft_scores_cache.json (written by
+    the tft_scores.yml workflow which runs with ML deps before the evening forecast).
+  - Cache is accepted if written today or yesterday (2-day window).
+
 Dataset templates (saved by train_tft.py) are required for proper normalisation.
 """
 
 import os
+import json
 import pickle
 import numpy as np
 import pandas as pd
+from datetime import date, timedelta
+
+CACHE_PATH = "data/tft_scores_cache.json"
 
 CHECKPOINT_DIR = "data/tft_checkpoint"
 
 _MODEL_CACHE: dict = {}
 _TEMPLATE_CACHE: dict = {}
 _CACHE_LOADED: dict = {}
+
+
+def _load_scores_cache(max_age_days: int = 2) -> dict | None:
+    """Load tft_scores_cache.json if it exists and is fresh enough."""
+    if not os.path.exists(CACHE_PATH):
+        return None
+    try:
+        with open(CACHE_PATH) as f:
+            payload = json.load(f)
+        cache_date = date.fromisoformat(payload["date"])
+        if (date.today() - cache_date).days > max_age_days:
+            print(f"[tft] cache is {(date.today() - cache_date).days}d old — too stale, ignoring")
+            return None
+        print(f"[tft] loaded scores cache from {cache_date} ({len(payload['scores'])} tickers)")
+        return payload["scores"]
+    except Exception as e:
+        print(f"[tft] cache load failed: {e}")
+        return None
+
+
+def _save_scores_cache(scores: dict) -> None:
+    os.makedirs("data", exist_ok=True)
+    payload = {"date": date.today().isoformat(), "scores": scores}
+    with open(CACHE_PATH, "w") as f:
+        json.dump(payload, f)
+    print(f"[tft] saved scores cache — {len(scores)} tickers")
 
 
 def _load_model_and_template(horizon: int):
@@ -81,7 +115,13 @@ def precompute_tft_scores(
         from pytorch_forecasting import TimeSeriesDataSet
         from torch.utils.data import DataLoader
     except ImportError:
-        print("[tft] pytorch-forecasting not installed — skipping TFT inference")
+        print("[tft] pytorch-forecasting not installed — trying scores cache")
+        cached = _load_scores_cache()
+        if cached:
+            # Merge cache into results dict (only tickers we're forecasting)
+            for t in tickers:
+                if t in cached:
+                    results[t] = {int(k): v for k, v in cached[t].items()}
         return results
 
     for horizon in horizons:
@@ -141,5 +181,10 @@ def precompute_tft_scores(
 
         except Exception as e:
             print(f"[tft] Batch inference h{horizon} failed: {e}")
+
+    # Persist scores so lightweight runs (no pytorch) can use them
+    non_empty = {t: v for t, v in results.items() if v}
+    if non_empty:
+        _save_scores_cache(non_empty)
 
     return results

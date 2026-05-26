@@ -1,0 +1,42 @@
+name: TFT Scores (pre-evening)
+on:
+  schedule:
+    - cron: '30 21 * * 1-5'   # 5:30 PM ET — 30 min before evening forecast run
+  workflow_dispatch:
+
+concurrency:
+  group: tft-scores
+  cancel-in-progress: true
+
+jobs:
+  tft-scores:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      ASSET_TICKERS: ${{ vars.ASSET_TICKERS || 'SPY,QQQ,IWM,XLE,XLF,XLK,GLD,SLV,TLT,IEF,HYG,LQD,BIL,^TNX,GC=F,SI=F,CL=F,NG=F,HG=F,ZW=F,ZC=F,^VIX,UVXY,DX-Y.NYB,^IRX,BTC-USD,ETH-USD,SOL-USD,EEM,EFA,FXI' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install ML dependencies
+        run: pip install -r requirements-ml.txt
+        timeout-minutes: 25
+
+      - name: Run TFT inference and save cache
+        run: python main.py --tft-scores
+        timeout-minutes: 30
+
+      - name: Commit scores cache
+        run: |
+          git config user.name  "Trading Co-Pilot Bot"
+          git config user.email "bot@trading-copilot.com"
+          git add data/tft_scores_cache.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "data: tft scores cache $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase -X ours origin main
+            git push
+          fi

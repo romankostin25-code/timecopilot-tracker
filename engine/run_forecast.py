@@ -692,5 +692,33 @@ def run_all_forecasts():
     print(f"\n✓ {len(new_df)} new rows. {len(skipped)} skipped: {skipped}")
 
 
+def run_tft_precompute():
+    """Fetch live prices and run TFT inference only — saves data/tft_scores_cache.json.
+    Called by the tft_scores.yml workflow (which has ML deps) before the evening run.
+    """
+    from engine.universe import ALL_TICKERS
+    tickers = [t.strip() for t in os.getenv("ASSET_TICKERS", ",".join(ALL_TICKERS)).split(",") if t.strip()]
+    macro   = _load_macro_signals()
+    news_df = _load_news_sentiment()
+
+    price_arrays: dict = {}
+    for ticker in tickers:
+        try:
+            df = fetch_price_data(ticker)
+            price_arrays[ticker] = df["y"].values
+        except Exception as e:
+            print(f"[{ticker}] fetch failed: {e}")
+
+    from engine.tft_inference import precompute_tft_scores
+    scores = precompute_tft_scores(
+        tickers=list(price_arrays.keys()),
+        price_data=price_arrays,
+        macro=macro,
+        news_df=news_df,
+    )
+    n = sum(len(v) for v in scores.values() if v)
+    print(f"[tft-precompute] done — {n} ticker×horizon scores cached")
+
+
 if __name__ == "__main__":
     run_all_forecasts()

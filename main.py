@@ -29,6 +29,7 @@ def main():
     parser.add_argument("--cot",        action="store_true", help="Fetch CFTC COT positioning data (weekly)")
     parser.add_argument("--pcr",        action="store_true", help="Fetch CBOE equity put/call ratio (daily contrarian signal)")
     parser.add_argument("--ng-storage", action="store_true", help="Fetch EIA weekly natural gas storage signal for NG=F")
+    parser.add_argument("--tft-scores", action="store_true", help="Run TFT inference and save scores cache (requires ML deps)")
     # Legacy v2 flags — still supported
     parser.add_argument("--retrain",    action="store_true", help="Retrain directional classifiers (alias for --train)")
     parser.add_argument("--backtest",   action="store_true", help="[v2] Walk-forward backtest")
@@ -104,6 +105,10 @@ def main():
     if args.train or args.retrain:
         from engine.train_direction_model import train_direction_model
         train_direction_model()
+
+    if getattr(args, "tft_scores", False):
+        from engine.run_forecast import run_tft_precompute
+        run_tft_precompute()
 
     if args.pipeline:
         import subprocess, sys
