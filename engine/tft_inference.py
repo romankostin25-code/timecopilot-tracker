@@ -161,29 +161,28 @@ def precompute_tft_scores(
             print(f"[tft] h{horizon}: dataset size={len(predict_ds)}, "
                   f"index_len={len(predict_ds.index) if hasattr(predict_ds, 'index') else 'n/a'}")
 
-            # Custom collate that skips None samples (returned when a sample is invalid)
-            def collate_skip_none(batch):
+            # pytorch-forecasting returns y=(target_tensor, weight_tensor) where
+            # weight_tensor is None when no sample weights were defined during training.
+            # default_collate can't handle None inside tuples, so we replace None weights
+            # with a ones tensor before collation.
+            def collate_replace_none_weights(batch):
                 batch = [x for x in batch if x is not None]
-                return torch.utils.data.dataloader.default_collate(batch) if batch else None
+                if not batch:
+                    return None
+                fixed = []
+                for item in batch:
+                    if isinstance(item, (tuple, list)) and len(item) >= 2:
+                        x, y = item[0], item[1]
+                        if isinstance(y, (tuple, list)) and len(y) >= 2 and y[1] is None:
+                            n = y[0].shape[0] if hasattr(y[0], "shape") else 1
+                            y = (y[0], torch.ones(n, dtype=torch.float32))
+                        fixed.append((x, y))
+                    else:
+                        fixed.append(item)
+                return torch.utils.data.dataloader.default_collate(fixed)
 
             loader = DataLoader(predict_ds, batch_size=64, shuffle=False,
-                                num_workers=0, collate_fn=collate_skip_none)
-
-            # Debug first sample — find which key holds None
-            if len(predict_ds) > 0:
-                s0 = predict_ds[0]
-                print(f"[tft] h{horizon}: sample[0] type={type(s0)}")
-                if isinstance(s0, tuple) and len(s0) >= 1:
-                    x = s0[0]
-                    if isinstance(x, dict):
-                        for k, v in x.items():
-                            print(f"[tft] h{horizon}: x['{k}'] = {type(v).__name__}"
-                                  f"{'' if v is not None else ' *** NONE ***'}")
-                    y = s0[1] if len(s0) > 1 else None
-                    if isinstance(y, (tuple, list)):
-                        for i, v in enumerate(y):
-                            print(f"[tft] h{horizon}: y[{i}] = {type(v).__name__}"
-                                  f"{'' if v is not None else ' *** NONE ***'}")
+                                num_workers=0, collate_fn=collate_replace_none_weights)
 
             with torch.no_grad():
                 raw_preds = model.predict(loader, return_predictions=True)
