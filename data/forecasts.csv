@@ -1394,97 +1394,97 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-20,2026-05-25,^VIX,5,17.440001,14.834043,17.50702,20.340657,16.59,StatsForecast_B,BULLISH,0.3843,0.0,,,,,,,,,0.91702,5.238,1.0,0.0,2026-05-26T21:06:30.009036,,,,,,,
 2026-05-20,2026-06-19,^VIX,30,17.440001,10.4202,17.50702,24.459925,,StatsForecast_B,BULLISH,0.3843,0.0,,,,,,,,,,,,,,,,,,,,
 2026-05-20,2026-08-18,^VIX,90,17.440001,4.521803,17.50702,27.910556,,StatsForecast_B,BULLISH,0.3843,0.0,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,SPY,5,741.25,740.682299,742.226332,743.770366,,TimeCopilot_Ensemble,BULLISH,0.1317,0.9417,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,SPY,5,741.25,740.682299,742.226332,743.770366,750.590027,TimeCopilot_Ensemble,BULLISH,0.1317,0.9417,,,,,,,,,8.363695,1.1268,0.0,1.0,2026-05-27T11:09:20.502555,,,,,,,
 2026-05-21,2026-06-20,SPY,30,741.25,743.826519,750.49087,757.155221,,TimeCopilot_Ensemble,BULLISH,1.2467,0.9417,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,SPY,90,741.25,749.531583,766.201476,782.871369,,TimeCopilot_Ensemble,BULLISH,3.3661,0.9417,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,QQQ,5,713.150024,711.885857,714.397591,716.909324,,TimeCopilot_Ensemble,BEARISH,0.1749,0.8428,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,QQQ,5,713.150024,711.885857,714.397591,716.909324,730.280029,TimeCopilot_Ensemble,BEARISH,0.1749,0.8428,,,,,,,,,15.882438,2.2232,0.0,0.0,2026-05-27T11:09:19.712641,,,,,,,
 2026-05-21,2026-06-20,QQQ,30,713.150024,711.989803,723.897241,735.80468,,TimeCopilot_Ensemble,BULLISH,1.507,0.8428,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,QQQ,90,713.150024,727.965708,744.896469,761.82723,,TimeCopilot_Ensemble,BULLISH,4.4516,0.8428,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,IWM,5,279.869995,278.122381,279.182139,280.241898,,TimeCopilot_Ensemble,BEARISH,0.2458,0.8986,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,IWM,5,279.869995,278.122381,279.182139,280.241898,290.51001,TimeCopilot_Ensemble,BEARISH,0.2458,0.8986,,,,,,,,,11.327871,4.0575,0.0,0.0,2026-05-27T11:09:19.063217,,,,,,,
 2026-05-21,2026-06-20,IWM,30,279.869995,274.931882,278.479182,282.026482,,TimeCopilot_Ensemble,BEARISH,0.4969,0.8986,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,IWM,90,279.869995,275.026919,279.814021,284.601124,,TimeCopilot_Ensemble,BEARISH,0.02,0.8986,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,XLE,5,59.799999,59.501285,59.747187,59.993088,,TimeCopilot_Ensemble,BEARISH,0.0883,0.9472,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,XLE,5,59.799999,59.501285,59.747187,59.993088,57.849998,TimeCopilot_Ensemble,BEARISH,0.0883,0.9472,,,,,,,,,1.897189,3.1754,0.0,1.0,2026-05-27T11:09:21.220613,,,,,,,
 2026-05-21,2026-06-20,XLE,30,59.799999,58.725615,59.747187,60.768758,,TimeCopilot_Ensemble,BEARISH,0.0883,0.9472,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,XLE,90,59.799999,56.028373,59.747187,63.466,,TimeCopilot_Ensemble,BEARISH,0.0883,0.9472,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,XLF,5,51.66,51.676018,51.748392,51.820767,,TimeCopilot_Ensemble,BULLISH,0.1711,0.9167,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,XLF,5,51.66,51.676018,51.748392,51.820767,51.849998,TimeCopilot_Ensemble,BULLISH,0.1711,0.9167,,,,,,,,,0.101606,0.1963,0.0,1.0,2026-05-27T11:09:21.457721,,,,,,,
 2026-05-21,2026-06-20,XLF,30,51.66,51.548774,52.014455,52.480136,,TimeCopilot_Ensemble,BULLISH,0.6861,0.9167,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,XLF,90,51.66,50.970518,52.503168,54.035817,,TimeCopilot_Ensemble,BULLISH,1.6321,0.9167,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,XLK,5,177.139999,176.600165,177.446044,178.291922,,TimeCopilot_Ensemble,BEARISH,0.1728,0.8223,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,XLK,5,177.139999,176.600165,177.446044,178.291922,185.139999,TimeCopilot_Ensemble,BEARISH,0.1728,0.8223,,,,,,,,,7.693955,4.3359,0.0,0.0,2026-05-27T11:09:21.684252,,,,,,,
 2026-05-21,2026-06-20,XLK,30,177.139999,174.654188,179.883867,185.113546,,TimeCopilot_Ensemble,BULLISH,1.549,0.8223,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,XLK,90,177.139999,184.80306,185.474454,186.145848,,TimeCopilot_Ensemble,BULLISH,4.705,0.8223,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,GLD,5,417.399994,417.438378,418.727854,420.01733,,TimeCopilot_Ensemble,BEARISH,0.3181,0.9311,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,GLD,5,417.399994,417.438378,418.727854,420.01733,414.0,TimeCopilot_Ensemble,BEARISH,0.3181,0.9311,,,,,,,,,4.727854,1.1291,0.0,1.0,2026-05-27T11:09:18.118730,,,,,,,
 2026-05-21,2026-06-20,GLD,30,417.399994,416.350722,422.367446,428.38417,,TimeCopilot_Ensemble,BULLISH,1.1901,0.9311,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,GLD,90,417.399994,424.511926,434.497368,444.48281,,TimeCopilot_Ensemble,BULLISH,4.0962,0.9311,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,SLV,5,68.730003,68.260691,69.148147,70.035604,,TimeCopilot_Ensemble,BEARISH,0.6084,0.7883,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,SLV,5,68.730003,68.260691,69.148147,70.035604,69.720001,TimeCopilot_Ensemble,BEARISH,0.6084,0.7883,,,,,,,,,0.571854,0.827,1.0,0.0,2026-05-27T11:09:20.069583,,,,,,,
 2026-05-21,2026-06-20,SLV,30,68.730003,64.864445,69.561012,74.25758,,TimeCopilot_Ensemble,BULLISH,1.2091,0.7883,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,SLV,90,68.730003,-2.65254,63.318466,129.289473,,TimeCopilot_Ensemble,BEARISH,7.8736,0.7883,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,TLT,5,83.910004,83.665352,83.92875,84.192149,,TimeCopilot_Ensemble,BEARISH,0.0223,0.9153,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,TLT,5,83.910004,83.665352,83.92875,84.192149,85.099998,TimeCopilot_Ensemble,BEARISH,0.0223,0.9153,,,,,,,,,1.171248,1.3955,0.0,0.0,2026-05-27T11:09:20.791233,,,,,,,
 2026-05-21,2026-06-20,TLT,30,83.910004,82.658948,83.72384,84.788733,,TimeCopilot_Ensemble,BEARISH,0.2219,0.9153,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,TLT,90,83.910004,81.415304,83.503183,85.591061,,TimeCopilot_Ensemble,BEARISH,0.4848,0.9153,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,IEF,5,93.739998,93.348102,93.587226,93.826349,,TimeCopilot_Ensemble,BEARISH,0.163,0.9302,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,IEF,5,93.739998,93.348102,93.587226,93.826349,94.279999,TimeCopilot_Ensemble,BEARISH,0.163,0.9302,,,,,,,,,0.692773,0.7402,0.0,0.0,2026-05-27T11:09:18.826349,,,,,,,
 2026-05-21,2026-06-20,IEF,30,93.739998,93.386078,93.646327,93.906576,,TimeCopilot_Ensemble,BEARISH,0.0999,0.9302,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,IEF,90,93.739998,93.085697,93.739966,94.394236,,TimeCopilot_Ensemble,BEARISH,0.0,0.9302,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,HYG,5,79.860001,79.788034,79.89352,79.999005,,TimeCopilot_Ensemble,BEARISH,0.042,0.9613,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,HYG,5,79.860001,79.788034,79.89352,79.999005,80.18,TimeCopilot_Ensemble,BEARISH,0.042,0.9613,,,,,,,,,0.28648,0.3586,0.0,0.0,2026-05-27T11:09:18.525961,,,,,,,
 2026-05-21,2026-06-20,HYG,30,79.860001,80.002021,80.23157,80.461119,,TimeCopilot_Ensemble,BULLISH,0.4653,0.9613,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,HYG,90,79.860001,60.735544,81.288172,101.8408,,TimeCopilot_Ensemble,BULLISH,1.7883,0.9613,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,LQD,5,107.949997,107.82733,107.979115,108.130899,,TimeCopilot_Ensemble,BEARISH,0.027,0.2376,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,LQD,5,107.949997,107.82733,107.979115,108.130899,108.779999,TimeCopilot_Ensemble,BEARISH,0.027,0.2376,,,,,,,,,0.800884,0.7417,0.0,0.0,2026-05-27T11:09:19.299639,,,,,,,
 2026-05-21,2026-06-20,LQD,30,107.949997,107.513529,107.969141,108.424753,,TimeCopilot_Ensemble,BEARISH,0.0177,0.2376,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,LQD,90,107.949997,106.418818,107.969141,109.519463,,TimeCopilot_Ensemble,BEARISH,0.0177,0.2376,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,BIL,5,91.57,91.498767,91.605706,91.712646,,TimeCopilot_Ensemble,BULLISH,0.039,0.9492,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,BIL,5,91.57,91.498767,91.605706,91.712646,91.610001,TimeCopilot_Ensemble,BULLISH,0.039,0.9492,,,,,,,,,0.004295,0.0047,1.0,1.0,2026-05-27T11:09:16.139236,,,,,,,
 2026-05-21,2026-06-20,BIL,30,91.57,91.719393,91.847851,91.97631,,TimeCopilot_Ensemble,BULLISH,0.3034,0.9492,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,BIL,90,91.57,92.25782,92.372031,92.486241,,TimeCopilot_Ensemble,BULLISH,0.8759,0.9492,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,^TNX,5,4.572,4.531187,4.552384,4.573581,,TimeCopilot_Ensemble,BULLISH,0.429,0.9248,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,^TNX,5,4.572,4.531187,4.552384,4.573581,4.493,TimeCopilot_Ensemble,BULLISH,0.429,0.9248,,,,,,,,,0.059384,1.3045,0.0,0.0,2026-05-27T11:09:22.392926,,,,,,,
 2026-05-21,2026-06-20,^TNX,30,4.572,4.410764,4.479435,4.548107,,TimeCopilot_Ensemble,BULLISH,2.0246,0.9248,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,^TNX,90,4.572,4.246635,4.463781,4.680926,,TimeCopilot_Ensemble,BULLISH,2.367,0.9248,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,GC=F,5,4514.100098,4501.547366,4521.699778,4541.85219,,TimeCopilot_Ensemble,BEARISH,0.1684,0.833,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,GC=F,5,4514.100098,4501.547366,4521.699778,4541.85219,4500.399902,TimeCopilot_Ensemble,BEARISH,0.1684,0.833,,,,,,,,,21.299876,0.4711,0.0,1.0,2026-05-27T11:09:17.882536,,,,,,,
 2026-05-21,2026-06-20,GC=F,30,4514.100098,4527.71783,4574.927049,4622.136268,,TimeCopilot_Ensemble,BULLISH,1.3475,0.833,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,GC=F,90,4514.100098,4531.47468,4627.735793,4723.996907,,TimeCopilot_Ensemble,BULLISH,2.5173,0.833,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,SI=F,5,75.275002,74.379463,75.354591,76.32972,,TimeCopilot_Ensemble,BEARISH,0.1057,0.7859,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,SI=F,5,75.275002,74.379463,75.354591,76.32972,76.305,TimeCopilot_Ensemble,BEARISH,0.1057,0.7859,,,,,,,,,0.950409,1.2612,1.0,0.0,2026-05-27T11:09:19.888549,,,,,,,
 2026-05-21,2026-06-20,SI=F,30,75.275002,75.782138,76.53517,77.288202,,TimeCopilot_Ensemble,BULLISH,1.6741,0.7859,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,SI=F,90,75.275002,76.725746,79.315365,81.904984,,TimeCopilot_Ensemble,BULLISH,5.3675,0.7859,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,CL=F,5,100.599998,99.286362,100.544912,101.803461,,TimeCopilot_Ensemble,BEARISH,0.0548,0.7216,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,CL=F,5,100.599998,99.286362,100.544912,101.803461,93.889999,TimeCopilot_Ensemble,BEARISH,0.0548,0.7216,,,,,,,,,6.654913,6.6188,0.0,1.0,2026-05-27T11:09:16.576688,,,,,,,
 2026-05-21,2026-06-20,CL=F,30,100.599998,97.933301,100.71798,103.502658,,TimeCopilot_Ensemble,BEARISH,0.1173,0.7216,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,CL=F,90,100.599998,91.497494,100.718073,109.938653,,TimeCopilot_Ensemble,BEARISH,0.1174,0.7216,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,NG=F,5,3.159,3.026681,3.114805,3.20293,,TimeCopilot_Ensemble,BEARISH,1.399,0.5719,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,NG=F,5,3.159,3.026681,3.114805,3.20293,2.894,TimeCopilot_Ensemble,BEARISH,1.399,0.5719,,,,,,,,,0.220805,7.0889,0.0,1.0,2026-05-27T11:09:19.485617,,,,,,,
 2026-05-21,2026-06-20,NG=F,30,3.159,3.035824,3.249998,3.464172,,TimeCopilot_Ensemble,BULLISH,2.8806,0.5719,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,NG=F,90,3.159,2.948696,3.095746,3.242795,,TimeCopilot_Ensemble,BEARISH,2.0023,0.5719,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,HG=F,5,6.261,6.247691,6.263027,6.278364,,TimeCopilot_Ensemble,BEARISH,0.0324,0.9488,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,HG=F,5,6.261,6.247691,6.263027,6.278364,6.361,TimeCopilot_Ensemble,BEARISH,0.0324,0.9488,,,,,,,,,0.097973,1.5643,0.0,0.0,2026-05-27T11:09:18.298312,,,,,,,
 2026-05-21,2026-06-20,HG=F,30,6.261,6.123262,6.263026,6.402791,,TimeCopilot_Ensemble,BEARISH,0.0324,0.9488,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,HG=F,90,6.261,5.829044,6.263026,6.697008,,TimeCopilot_Ensemble,BEARISH,0.0324,0.9488,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,ZW=F,5,655.75,644.736042,653.405969,662.075896,,TimeCopilot_Ensemble,BEARISH,0.3575,0.9263,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,ZW=F,5,655.75,644.736042,653.405969,662.075896,635.5,TimeCopilot_Ensemble,BEARISH,0.3575,0.9263,,,,,,,,,17.905969,2.7404,0.0,1.0,2026-05-27T11:09:22.038549,,,,,,,
 2026-05-21,2026-06-20,ZW=F,30,655.75,637.285264,652.842675,668.400087,,TimeCopilot_Ensemble,BEARISH,0.4434,0.9263,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,ZW=F,90,655.75,632.309058,658.52683,684.744601,,TimeCopilot_Ensemble,BEARISH,0.4235,0.9263,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,ZC=F,5,464.0,463.739265,464.300414,464.861564,,TimeCopilot_Ensemble,BEARISH,0.0647,0.8441,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,ZC=F,5,464.0,463.739265,464.300414,464.861564,457.5,TimeCopilot_Ensemble,BEARISH,0.0647,0.8441,,,,,,,,,6.800414,1.4647,0.0,1.0,2026-05-27T11:09:21.860305,,,,,,,
 2026-05-21,2026-06-20,ZC=F,30,464.0,458.759069,464.275193,469.791316,,TimeCopilot_Ensemble,BEARISH,0.0593,0.8441,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,ZC=F,90,464.0,455.09483,464.276546,473.458262,,TimeCopilot_Ensemble,BEARISH,0.0596,0.8441,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,^VIX,5,17.610001,17.58257,17.808728,18.034886,,TimeCopilot_Ensemble,BULLISH,1.1285,0.7377,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,^VIX,5,17.610001,17.58257,17.808728,18.034886,17.01,TimeCopilot_Ensemble,BULLISH,1.1285,0.7377,,,,,,,,,0.798728,4.485,0.0,0.0,2026-05-27T11:09:22.569077,,,,,,,
 2026-05-21,2026-06-20,^VIX,30,17.610001,16.450747,18.477869,20.504992,,TimeCopilot_Ensemble,BULLISH,4.9283,0.7377,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,^VIX,90,17.610001,16.644697,20.01474,23.384784,,TimeCopilot_Ensemble,BULLISH,13.6555,0.7377,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,UVXY,5,34.110001,33.621632,34.39989,35.178149,,TimeCopilot_Ensemble,BULLISH,0.8499,0.3379,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,UVXY,5,34.110001,33.621632,34.39989,35.178149,31.41,TimeCopilot_Ensemble,BULLISH,0.8499,0.3379,,,,,,,,,2.98989,8.6916,0.0,0.0,2026-05-27T11:09:20.970954,,,,,,,
 2026-05-21,2026-06-20,UVXY,30,34.110001,31.839194,35.107008,38.374823,,TimeCopilot_Ensemble,BULLISH,2.9229,0.3379,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,UVXY,90,34.110001,23.534698,35.68557,47.836442,,TimeCopilot_Ensemble,BULLISH,4.6191,0.3379,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,DX-Y.NYB,5,99.331001,99.235654,99.403049,99.570445,,TimeCopilot_Ensemble,BULLISH,0.0725,0.9473,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,DX-Y.NYB,5,99.331001,99.235654,99.403049,99.570445,99.150002,TimeCopilot_Ensemble,BULLISH,0.0725,0.9473,,,,,,,,,0.253047,0.2546,0.0,0.0,2026-05-27T11:09:16.752836,,,,,,,
 2026-05-21,2026-06-20,DX-Y.NYB,30,99.331001,99.263491,99.496544,99.729597,,TimeCopilot_Ensemble,BULLISH,0.1667,0.9473,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,DX-Y.NYB,90,99.331001,97.760189,99.350254,100.940319,,TimeCopilot_Ensemble,BULLISH,0.0194,0.9473,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,^IRX,5,3.557,3.540201,3.55071,3.561219,,TimeCopilot_Ensemble,BEARISH,0.1768,0.9049,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,^IRX,5,3.557,3.540201,3.55071,3.561219,3.582,TimeCopilot_Ensemble,BEARISH,0.1768,0.9049,,,,,,,,,0.03129,0.8812,0.0,0.0,2026-05-27T11:09:22.214209,,,,,,,
 2026-05-21,2026-06-20,^IRX,30,3.557,3.520196,3.536256,3.552315,,TimeCopilot_Ensemble,BEARISH,0.5832,0.9049,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,^IRX,90,3.557,3.489939,3.525091,3.560243,,TimeCopilot_Ensemble,BEARISH,0.8971,0.9049,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,BTC-USD,5,77136.390625,76270.573481,77354.684843,78438.796206,,TimeCopilot_Ensemble,BEARISH,0.283,0.9732,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,BTC-USD,5,77136.390625,76270.573481,77354.684843,78438.796206,75825.734375,TimeCopilot_Ensemble,BEARISH,0.283,0.9732,,,,,,,,,1528.950468,1.9765,0.0,1.0,2026-05-27T11:09:16.318645,,,,,,,
 2026-05-21,2026-06-20,BTC-USD,30,77136.390625,13651.461977,76160.8907,138670.319423,,TimeCopilot_Ensemble,BEARISH,1.2646,0.9732,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,BTC-USD,90,77136.390625,72293.166848,76848.617263,81404.067677,,TimeCopilot_Ensemble,BEARISH,0.3731,0.9732,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,ETH-USD,5,2112.439941,2047.932664,2112.440668,2176.948673,,TimeCopilot_Ensemble,BEARISH,0.0,0.8273,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,ETH-USD,5,2112.439941,2047.932664,2112.440668,2176.948673,2070.858154,TimeCopilot_Ensemble,BEARISH,0.0,0.8273,,,,,,,,,41.582514,1.9685,1.0,1.0,2026-05-27T11:09:17.459937,,,,,,,
 2026-05-21,2026-06-20,ETH-USD,30,2112.439941,1900.836398,2183.940058,2467.043718,,TimeCopilot_Ensemble,BULLISH,3.3847,0.8273,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,ETH-USD,90,2112.439941,1712.412302,2149.83288,2587.253459,,TimeCopilot_Ensemble,BULLISH,1.7701,0.8273,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,SOL-USD,5,85.559998,84.339075,85.978874,87.618673,,TimeCopilot_Ensemble,BEARISH,0.4896,0.925,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,SOL-USD,5,85.559998,84.339075,85.978874,87.618673,83.586517,TimeCopilot_Ensemble,BEARISH,0.4896,0.925,,,,,,,,,2.392357,2.7825,0.0,1.0,2026-05-27T11:09:20.245957,,,,,,,
 2026-05-21,2026-06-20,SOL-USD,30,85.559998,77.359827,86.711765,96.063703,,TimeCopilot_Ensemble,BULLISH,1.3462,0.925,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,SOL-USD,90,85.559998,72.600019,85.278976,97.957934,,TimeCopilot_Ensemble,BEARISH,0.3284,0.925,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,EEM,5,65.459999,65.176798,65.452195,65.727593,,TimeCopilot_Ensemble,BEARISH,0.0119,0.8502,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,EEM,5,65.459999,65.176798,65.452195,65.727593,68.400002,TimeCopilot_Ensemble,BEARISH,0.0119,0.8502,,,,,,,,,2.947807,4.5038,0.0,0.0,2026-05-27T11:09:16.979253,,,,,,,
 2026-05-21,2026-06-20,EEM,30,65.459999,63.666991,65.46718,67.26737,,TimeCopilot_Ensemble,BULLISH,0.011,0.8502,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,EEM,90,65.459999,59.429557,63.632429,67.835301,,TimeCopilot_Ensemble,BEARISH,2.7919,0.8502,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,EFA,5,103.620003,102.967557,103.496268,104.02498,,TimeCopilot_Ensemble,BULLISH,0.1194,0.9065,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,EFA,5,103.620003,102.967557,103.496268,104.02498,105.129997,TimeCopilot_Ensemble,BULLISH,0.1194,0.9065,,,,,,,,,1.633729,1.5785,0.0,1.0,2026-05-27T11:09:17.280555,,,,,,,
 2026-05-21,2026-06-20,EFA,30,103.620003,102.571351,103.814341,105.057332,,TimeCopilot_Ensemble,BULLISH,0.1875,0.9065,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,EFA,90,103.620003,102.48933,104.031536,105.573743,,TimeCopilot_Ensemble,BULLISH,0.3972,0.9065,,,,,,,,,,,,,,,,,,,,
-2026-05-21,2026-05-26,FXI,5,36.240002,36.214715,36.279192,36.343669,,TimeCopilot_Ensemble,BEARISH,0.1081,0.909,,,,,,,,,,,,,,,,,,,,
+2026-05-21,2026-05-26,FXI,5,36.240002,36.214715,36.279192,36.343669,35.75,TimeCopilot_Ensemble,BEARISH,0.1081,0.909,,,,,,,,,0.529192,1.4587,0.0,1.0,2026-05-27T11:09:17.678925,,,,,,,
 2026-05-21,2026-06-20,FXI,30,36.240002,35.453431,36.122156,36.790882,,TimeCopilot_Ensemble,BEARISH,0.3252,0.909,,,,,,,,,,,,,,,,,,,,
 2026-05-21,2026-08-19,FXI,90,36.240002,35.705788,36.106691,36.507595,,TimeCopilot_Ensemble,BEARISH,0.3679,0.909,,,,,,,,,,,,,,,,,,,,
 2026-05-22,2026-05-27,SPY,5,742.719971,739.804582,744.021734,748.238887,,TimeCopilot_Ensemble,BULLISH,0.1753,0.8377,,,,,,,,,,,,,,,0.15,,0.0,0.0,,
@@ -1673,3 +1673,96 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-23,2026-05-28,FXI,5,35.52,35.365585,35.545859,35.726134,,TimeCopilot_Ensemble,BEARISH,0.0728,0.8558,,,,,,BULLISH,HIGH,"Alibaba unveils Qwen3.7-Max, its flagship AI model for real-world tasks",,,,,,,-0.1,,0.0,0.0,,1.0
 2026-05-23,2026-06-22,FXI,30,35.52,34.994617,35.528678,36.062739,,TimeCopilot_Ensemble,BEARISH,0.0244,0.8558,,,,,,BULLISH,HIGH,"Alibaba unveils Qwen3.7-Max, its flagship AI model for real-world tasks",,,,,,,-0.1,,0.0,0.0,,1.0
 2026-05-23,2026-08-21,FXI,90,35.52,33.700176,35.528678,37.357179,,TimeCopilot_Ensemble,BEARISH,0.0244,0.8558,,,,,,BULLISH,HIGH,"Alibaba unveils Qwen3.7-Max, its flagship AI model for real-world tasks",,,,,,,-0.1,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,SPY,5,750.590027,750.791505,752.578705,754.365904,,TimeCopilot_Ensemble,BULLISH,0.2649,0.9804,,,,,,BEARISH,HIGH,"How a stock market ‘melt-up’ could carry the S&P 500 to 8,000 or beyond",,,,,,,0.25,,0.0,0.0,,-0.5077
+2026-05-27,2026-07-08,SPY,30,750.590027,756.146427,763.712826,771.279225,,TimeCopilot_Ensemble,BULLISH,1.7483,0.9804,,,,,,BEARISH,HIGH,"How a stock market ‘melt-up’ could carry the S&P 500 to 8,000 or beyond",,,,,,,0.25,,0.0,0.0,,-0.5077
+2026-05-27,2026-09-30,SPY,90,750.590027,770.415997,790.434716,810.453435,,TimeCopilot_Ensemble,BULLISH,5.3084,0.9804,,,,,,BEARISH,HIGH,"How a stock market ‘melt-up’ could carry the S&P 500 to 8,000 or beyond",,,,,,,0.25,,0.0,0.0,,-0.5077
+2026-05-27,2026-06-03,QQQ,5,730.280029,729.182851,733.17944,737.176029,,TimeCopilot_Ensemble,BULLISH,0.397,0.9047,,,,,,NEUTRAL,LOW,Figure signs agreement with Catalyst Brands for humanoid robot rollout in Reno,,,,,,,0.25,,0.0,0.0,,-0.0938
+2026-05-27,2026-07-08,QQQ,30,730.280029,661.41499,744.860002,828.305014,,TimeCopilot_Ensemble,BULLISH,1.9965,0.9047,,,,,,NEUTRAL,LOW,Figure signs agreement with Catalyst Brands for humanoid robot rollout in Reno,,,,,,,0.25,,0.0,0.0,,-0.0938
+2026-05-27,2026-09-30,QQQ,90,730.280029,706.944346,760.168894,813.393441,,TimeCopilot_Ensemble,BULLISH,4.0928,0.9047,,,,,,NEUTRAL,LOW,Figure signs agreement with Catalyst Brands for humanoid robot rollout in Reno,,,,,,,0.25,,0.0,0.0,,-0.0938
+2026-05-27,2026-06-03,IWM,5,290.51001,289.573725,290.512334,291.450944,,TimeCopilot_Ensemble,BULLISH,0.0008,0.8718,,,,,,NEUTRAL,LOW,"How a stock market ‘melt-up’ could carry the S&P 500 to 8,000 or beyond",,,,,,,0.25,,0.0,0.0,,0.0081
+2026-05-27,2026-07-08,IWM,30,290.51001,287.76871,292.840038,297.911366,,TimeCopilot_Ensemble,BULLISH,0.802,0.8718,,,,,,NEUTRAL,LOW,"How a stock market ‘melt-up’ could carry the S&P 500 to 8,000 or beyond",,,,,,,0.25,,0.0,0.0,,0.0081
+2026-05-27,2026-09-30,IWM,90,290.51001,283.978969,295.975805,307.97264,,TimeCopilot_Ensemble,BULLISH,1.8814,0.8718,,,,,,NEUTRAL,LOW,"How a stock market ‘melt-up’ could carry the S&P 500 to 8,000 or beyond",,,,,,,0.25,,0.0,0.0,,0.0081
+2026-05-27,2026-06-03,XLE,5,57.849998,57.678153,57.84709,58.016027,,TimeCopilot_Ensemble,BEARISH,0.005,0.8985,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,-0.24,,0.0,0.0,,0.5299
+2026-05-27,2026-07-08,XLE,30,57.849998,49.797691,59.065502,68.333313,,TimeCopilot_Ensemble,BULLISH,2.1011,0.8985,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,-0.24,,0.0,0.0,,0.5299
+2026-05-27,2026-09-30,XLE,90,57.849998,54.12621,57.792042,61.457873,,TimeCopilot_Ensemble,BEARISH,0.1002,0.8985,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,-0.24,,0.0,0.0,,0.5299
+2026-05-27,2026-06-03,XLF,5,51.849998,51.409718,51.739033,52.068349,,TimeCopilot_Ensemble,BULLISH,0.214,0.8715,,,,,,BEARISH,MEDIUM,"GENIUS Act expands fintech powers, raises concerns for banks",,,,,,,0.05,,0.0,0.0,,-0.3955
+2026-05-27,2026-07-08,XLF,30,51.849998,51.414059,52.269093,53.124127,,TimeCopilot_Ensemble,BULLISH,0.8083,0.8715,,,,,,BEARISH,MEDIUM,"GENIUS Act expands fintech powers, raises concerns for banks",,,,,,,0.05,,0.0,0.0,,-0.3955
+2026-05-27,2026-09-30,XLF,90,51.849998,51.392511,53.302183,55.211856,,TimeCopilot_Ensemble,BULLISH,2.8007,0.8715,,,,,,BEARISH,MEDIUM,"GENIUS Act expands fintech powers, raises concerns for banks",,,,,,,0.05,,0.0,0.0,,-0.3955
+2026-05-27,2026-06-03,XLK,5,185.139999,183.055647,185.684147,188.312647,,TimeCopilot_Ensemble,BULLISH,0.2939,0.8636,,,,,,BULLISH,HIGH,Figure signs agreement with Catalyst Brands for humanoid robot rollout in Reno,,,,,,,0.05,,0.0,0.0,,0.5766
+2026-05-27,2026-07-08,XLK,30,185.139999,179.532747,188.926824,198.3209,,TimeCopilot_Ensemble,BULLISH,2.0454,0.8636,,,,,,BULLISH,HIGH,Figure signs agreement with Catalyst Brands for humanoid robot rollout in Reno,,,,,,,0.05,,0.0,0.0,,0.5766
+2026-05-27,2026-09-30,XLK,90,185.139999,163.476062,185.324327,207.172593,,TimeCopilot_Ensemble,BULLISH,0.0996,0.8636,,,,,,BULLISH,HIGH,Figure signs agreement with Catalyst Brands for humanoid robot rollout in Reno,,,,,,,0.05,,0.0,0.0,,0.5766
+2026-05-27,2026-06-03,GLD,5,414.0,413.280065,414.575411,415.870757,,TimeCopilot_Ensemble,BULLISH,0.139,0.8651,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,0.05,,0.0,0.0,,0.8192
+2026-05-27,2026-07-08,GLD,30,414.0,401.104067,418.152502,435.200938,,TimeCopilot_Ensemble,BULLISH,1.003,0.8651,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,0.05,,0.0,0.0,,0.8192
+2026-05-27,2026-09-30,GLD,90,414.0,403.273378,423.567387,443.861396,,TimeCopilot_Ensemble,BULLISH,2.311,0.8651,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,0.05,,0.0,0.0,,0.8192
+2026-05-27,2026-06-03,SLV,5,69.720001,69.469498,69.722848,69.976198,,TimeCopilot_Ensemble,BULLISH,0.0041,0.7715,,,,,,BULLISH,HIGH,"Israeli military actions in Lebanon continue, impacting peace deal prospects",,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-07-08,SLV,30,69.720001,65.529067,69.041482,72.553897,,TimeCopilot_Ensemble,BULLISH,0.9732,0.7715,,,,,,BULLISH,HIGH,"Israeli military actions in Lebanon continue, impacting peace deal prospects",,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-09-30,SLV,90,69.720001,58.615121,66.299267,73.983414,,TimeCopilot_Ensemble,BEARISH,4.9064,0.7715,,,,,,BULLISH,HIGH,"Israeli military actions in Lebanon continue, impacting peace deal prospects",,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,TLT,5,85.099998,84.706374,85.139533,85.572692,,TimeCopilot_Ensemble,BULLISH,0.0465,0.9339,,,,,,BULLISH,MEDIUM,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,0.2197
+2026-05-27,2026-07-08,TLT,30,85.099998,84.53595,85.27613,86.016311,,TimeCopilot_Ensemble,BULLISH,0.207,0.9339,,,,,,BULLISH,MEDIUM,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,0.2197
+2026-05-27,2026-09-30,TLT,90,85.099998,84.028049,85.394932,86.761815,,TimeCopilot_Ensemble,BULLISH,0.3466,0.9339,,,,,,BULLISH,MEDIUM,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,0.2197
+2026-05-27,2026-06-03,IEF,5,94.279999,94.163987,94.279979,94.395971,,TimeCopilot_Ensemble,BULLISH,0.0,0.9798,,,,,,BEARISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,-0.8422
+2026-05-27,2026-07-08,IEF,30,94.279999,94.132568,94.279979,94.427389,,TimeCopilot_Ensemble,BULLISH,0.0,0.9798,,,,,,BEARISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,-0.8422
+2026-05-27,2026-09-30,IEF,90,94.279999,94.111895,94.344337,94.57678,,TimeCopilot_Ensemble,BULLISH,0.0682,0.9798,,,,,,BEARISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,-0.8422
+2026-05-27,2026-06-03,HYG,5,80.18,80.002233,80.150593,80.298954,,TimeCopilot_Ensemble,BULLISH,0.0367,0.9482,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-07-08,HYG,30,80.18,79.907216,80.525981,81.144747,,TimeCopilot_Ensemble,BULLISH,0.4315,0.9482,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-09-30,HYG,90,80.18,78.864817,80.754865,82.644913,,TimeCopilot_Ensemble,BULLISH,0.717,0.9482,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-06-03,LQD,5,108.779999,108.334776,108.727777,109.120778,,TimeCopilot_Ensemble,BULLISH,0.048,0.9145,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-07-08,LQD,30,108.779999,108.249038,108.730866,109.212694,,TimeCopilot_Ensemble,BEARISH,0.0452,0.9145,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-09-30,LQD,90,108.779999,107.260253,108.730866,110.201478,,TimeCopilot_Ensemble,BEARISH,0.0452,0.9145,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-06-03,BIL,5,91.610001,91.613877,91.688519,91.763162,,TimeCopilot_Ensemble,BEARISH,0.0857,0.9392,,,,,,BULLISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,-0.15,,0.0,0.0,,1.0
+2026-05-27,2026-07-08,BIL,30,91.610001,91.863609,91.98076,92.097911,,TimeCopilot_Ensemble,BEARISH,0.4047,0.9392,,,,,,BULLISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,-0.15,,0.0,0.0,,1.0
+2026-05-27,2026-09-30,BIL,90,91.610001,92.674792,92.722554,92.770315,,TimeCopilot_Ensemble,BULLISH,1.2144,0.9392,,,,,,BULLISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,-0.15,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,^TNX,5,4.493,4.467806,4.488093,4.508381,,TimeCopilot_Ensemble,BULLISH,0.1092,0.9224,,,,,,BULLISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,0.7388
+2026-05-27,2026-07-08,^TNX,30,4.493,4.377844,4.461864,4.545885,,TimeCopilot_Ensemble,BEARISH,0.693,0.9224,,,,,,BULLISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,0.7388
+2026-05-27,2026-09-30,^TNX,90,4.493,4.13455,4.378388,4.622227,,TimeCopilot_Ensemble,BEARISH,2.5509,0.9224,,,,,,BULLISH,HIGH,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,0.7388
+2026-05-27,2026-06-03,GC=F,5,4479.399902,4468.331653,4496.552645,4524.773637,,TimeCopilot_Ensemble,BULLISH,0.3829,0.9093,,,,,,BULLISH,HIGH,"Israel escalates military operations, dims Lebanon diplomatic meeting prospects",,,,,,,0.05,,0.0,0.0,,0.9666
+2026-05-27,2026-07-08,GC=F,30,4479.399902,4488.019419,4543.582516,4599.145614,,TimeCopilot_Ensemble,BULLISH,1.4328,0.9093,,,,,,BULLISH,HIGH,"Israel escalates military operations, dims Lebanon diplomatic meeting prospects",,,,,,,0.05,,0.0,0.0,,0.9666
+2026-05-27,2026-09-30,GC=F,90,4479.399902,4372.16048,4625.268713,4878.376946,,TimeCopilot_Ensemble,BULLISH,3.2564,0.9093,,,,,,BULLISH,HIGH,"Israel escalates military operations, dims Lebanon diplomatic meeting prospects",,,,,,,0.05,,0.0,0.0,,0.9666
+2026-05-27,2026-06-03,SI=F,5,74.629997,73.281222,74.751529,76.221836,,TimeCopilot_Ensemble,BULLISH,0.1628,0.7599,,,,,,BULLISH,MEDIUM,"Israeli military actions in Lebanon continue, impacting peace deal prospects",,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-07-08,SI=F,30,74.629997,74.398963,75.566913,76.734862,,TimeCopilot_Ensemble,BULLISH,1.2554,0.7599,,,,,,BULLISH,MEDIUM,"Israeli military actions in Lebanon continue, impacting peace deal prospects",,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-09-30,SI=F,90,74.629997,69.320859,73.719867,78.118875,,TimeCopilot_Ensemble,BEARISH,1.2195,0.7599,,,,,,BULLISH,MEDIUM,"Israeli military actions in Lebanon continue, impacting peace deal prospects",,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,CL=F,5,90.209999,88.714898,90.210183,91.705468,,TimeCopilot_Ensemble,BEARISH,0.0002,0.7063,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,-0.17,,0.0,0.0,,0.6243
+2026-05-27,2026-07-08,CL=F,30,90.209999,84.379845,90.210183,96.040521,,TimeCopilot_Ensemble,BEARISH,0.0002,0.7063,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,-0.17,,0.0,0.0,,0.6243
+2026-05-27,2026-09-30,CL=F,90,90.209999,79.741474,90.210183,100.678892,,TimeCopilot_Ensemble,BEARISH,0.0002,0.7063,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,-0.17,,0.0,0.0,,0.6243
+2026-05-27,2026-06-03,NG=F,5,3.028,3.001238,3.036264,3.071291,,TimeCopilot_Ensemble,BEARISH,0.2729,0.62,,,,,,BULLISH,HIGH,Canada Strikes Landmark Deal to Export Liquefied Natural Gas to Germany,,,,,,,-0.35,,0.0,0.0,0.0,0.9505
+2026-05-27,2026-07-08,NG=F,30,3.028,2.851658,3.111971,3.372284,,TimeCopilot_Ensemble,BULLISH,2.7731,0.62,,,,,,BULLISH,HIGH,Canada Strikes Landmark Deal to Export Liquefied Natural Gas to Germany,,,,,,,-0.35,,0.0,0.0,0.0,0.9505
+2026-05-27,2026-09-30,NG=F,90,3.028,-1.753833,2.985899,7.725631,,TimeCopilot_Ensemble,BEARISH,1.3904,0.62,,,,,,BULLISH,HIGH,Canada Strikes Landmark Deal to Export Liquefied Natural Gas to Germany,,,,,,,-0.35,,0.0,0.0,0.0,0.9505
+2026-05-27,2026-06-03,HG=F,5,6.3495,6.306882,6.361437,6.415991,,TimeCopilot_Ensemble,BULLISH,0.188,0.8509,,,,,,BULLISH,MEDIUM,US and India sign critical minerals framework to enhance supply chains,,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-07-08,HG=F,30,6.3495,6.141961,6.364225,6.58649,,TimeCopilot_Ensemble,BULLISH,0.2319,0.8509,,,,,,BULLISH,MEDIUM,US and India sign critical minerals framework to enhance supply chains,,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-09-30,HG=F,90,6.3495,6.096713,6.435078,6.773444,,TimeCopilot_Ensemble,BULLISH,1.3478,0.8509,,,,,,BULLISH,MEDIUM,US and India sign critical minerals framework to enhance supply chains,,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,ZW=F,5,626.5,622.012637,627.120385,632.228134,,TimeCopilot_Ensemble,BEARISH,0.099,0.9578,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-07-08,ZW=F,30,626.5,596.418236,627.120385,657.822534,,TimeCopilot_Ensemble,BEARISH,0.099,0.9578,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-09-30,ZW=F,90,626.5,497.21618,627.120385,757.024591,,TimeCopilot_Ensemble,BEARISH,0.099,0.9578,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,,0.0,0.0,,
+2026-05-27,2026-06-03,ZC=F,5,456.25,454.659536,457.840897,461.022258,,TimeCopilot_Ensemble,BEARISH,0.3487,0.877,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,,0.0,0.0,,
+2026-05-27,2026-07-08,ZC=F,30,456.25,446.477586,456.480689,466.483793,,TimeCopilot_Ensemble,BEARISH,0.0506,0.877,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,,0.0,0.0,,
+2026-05-27,2026-09-30,ZC=F,90,456.25,442.653894,456.480821,470.307747,,TimeCopilot_Ensemble,BEARISH,0.0506,0.877,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,,0.0,0.0,,
+2026-05-27,2026-06-03,^VIX,5,16.9,16.728953,17.050391,17.37183,,TimeCopilot_Ensemble,BULLISH,0.8899,0.5425,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,0.0,,0.0,0.0,,0.714
+2026-05-27,2026-07-08,^VIX,30,16.9,16.021989,17.496331,18.970674,,TimeCopilot_Ensemble,BULLISH,3.5286,0.5425,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,0.0,,0.0,0.0,,0.714
+2026-05-27,2026-09-30,^VIX,90,16.9,14.99729,17.827725,20.65816,,TimeCopilot_Ensemble,BULLISH,5.4895,0.5425,,,,,,BULLISH,HIGH,Oil steadies as US-Iran talks progress amid high tensions,,,,,,,0.0,,0.0,0.0,,0.714
+2026-05-27,2026-06-03,UVXY,5,31.41,30.427348,31.341238,32.255129,,TimeCopilot_Ensemble,BULLISH,0.2189,0.6979,,,,,,BULLISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.0,,0.0,0.0,,1.0
+2026-05-27,2026-07-08,UVXY,30,31.41,27.473335,30.964774,34.456214,,TimeCopilot_Ensemble,BEARISH,1.4175,0.6979,,,,,,BULLISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.0,,0.0,0.0,,1.0
+2026-05-27,2026-09-30,UVXY,90,31.41,20.95107,32.668029,44.384988,,TimeCopilot_Ensemble,BULLISH,4.0052,0.6979,,,,,,BULLISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.0,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,DX-Y.NYB,5,99.113998,98.806833,99.15634,99.505846,,TimeCopilot_Ensemble,BULLISH,0.0427,0.9552,,,,,,BULLISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.05,,0.0,0.0,,0.5091
+2026-05-27,2026-07-08,DX-Y.NYB,30,99.113998,98.96474,99.114,99.26326,,TimeCopilot_Ensemble,BULLISH,0.0,0.9552,,,,,,BULLISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.05,,0.0,0.0,,0.5091
+2026-05-27,2026-09-30,DX-Y.NYB,90,99.113998,97.642693,99.156011,100.66933,,TimeCopilot_Ensemble,BULLISH,0.0424,0.9552,,,,,,BULLISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.05,,0.0,0.0,,0.5091
+2026-05-27,2026-06-03,^IRX,5,3.582,3.571526,3.579367,3.587209,,TimeCopilot_Ensemble,BULLISH,0.0735,0.91,,,,,,BULLISH,MEDIUM,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-07-08,^IRX,30,3.582,3.545958,3.570186,3.594414,,TimeCopilot_Ensemble,BEARISH,0.3298,0.91,,,,,,BULLISH,MEDIUM,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-09-30,^IRX,90,3.582,3.381253,3.56705,3.752846,,TimeCopilot_Ensemble,BEARISH,0.4174,0.91,,,,,,BULLISH,MEDIUM,Where to invest in bonds right now after the market’s violent selloff,,,,,,,0.05,,0.0,0.0,,1.0
+2026-05-27,2026-06-03,BTC-USD,5,75843.96875,75183.853089,75927.567483,76671.281878,,TimeCopilot_Ensemble,BULLISH,0.1102,0.8024,,,,,,NEUTRAL,LOW,"0G trains 107B parameter decentralized model with China Mobile, a first for AI above 100 billion parameters",,,,,,,0.05,,0.0,0.0,,0.1864
+2026-05-27,2026-07-08,BTC-USD,30,75843.96875,74211.505022,76978.44686,79745.388697,,TimeCopilot_Ensemble,BULLISH,1.4958,0.8024,,,,,,NEUTRAL,LOW,"0G trains 107B parameter decentralized model with China Mobile, a first for AI above 100 billion parameters",,,,,,,0.05,,0.0,0.0,,0.1864
+2026-05-27,2026-09-30,BTC-USD,90,75843.96875,73569.99976,77648.567483,81727.135207,,TimeCopilot_Ensemble,BULLISH,2.3794,0.8024,,,,,,NEUTRAL,LOW,"0G trains 107B parameter decentralized model with China Mobile, a first for AI above 100 billion parameters",,,,,,,0.05,,0.0,0.0,,0.1864
+2026-05-27,2026-06-03,ETH-USD,5,2078.669922,2033.127995,2078.669531,2124.211068,,TimeCopilot_Ensemble,BULLISH,0.0,0.7546,,,,,,NEUTRAL,LOW,"0G trains 107B parameter decentralized model with China Mobile, a first for AI above 100 billion parameters",,,,,,,0.05,,0.0,0.0,,0.1431
+2026-05-27,2026-07-08,ETH-USD,30,2078.669922,1781.468746,2078.669531,2375.870317,,TimeCopilot_Ensemble,BULLISH,0.0,0.7546,,,,,,NEUTRAL,LOW,"0G trains 107B parameter decentralized model with China Mobile, a first for AI above 100 billion parameters",,,,,,,0.05,,0.0,0.0,,0.1431
+2026-05-27,2026-09-30,ETH-USD,90,2078.669922,1481.20254,2122.910645,2764.618749,,TimeCopilot_Ensemble,BULLISH,2.1283,0.7546,,,,,,NEUTRAL,LOW,"0G trains 107B parameter decentralized model with China Mobile, a first for AI above 100 billion parameters",,,,,,,0.05,,0.0,0.0,,0.1431
+2026-05-27,2026-06-03,SOL-USD,5,83.949997,83.230978,84.664298,86.097618,,TimeCopilot_Ensemble,BULLISH,0.8509,0.9268,,,,,,NEUTRAL,LOW,"Tron surpasses Solana with 4 million daily active users, powered by stablecoin dominance",,,,,,,0.05,,0.0,0.0,,-0.0935
+2026-05-27,2026-07-08,SOL-USD,30,83.949997,74.171558,85.64734,97.123123,,TimeCopilot_Ensemble,BULLISH,2.0219,0.9268,,,,,,NEUTRAL,LOW,"Tron surpasses Solana with 4 million daily active users, powered by stablecoin dominance",,,,,,,0.05,,0.0,0.0,,-0.0935
+2026-05-27,2026-09-30,SOL-USD,90,83.949997,64.650478,84.043698,103.436919,,TimeCopilot_Ensemble,BULLISH,0.1116,0.9268,,,,,,NEUTRAL,LOW,"Tron surpasses Solana with 4 million daily active users, powered by stablecoin dominance",,,,,,,0.05,,0.0,0.0,,-0.0935
+2026-05-27,2026-06-03,EEM,5,68.400002,68.077564,68.266657,68.455749,,TimeCopilot_Ensemble,BULLISH,0.1949,0.8833,,,,,,BEARISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.05,,0.0,0.0,,-0.5504
+2026-05-27,2026-07-08,EEM,30,68.400002,67.438257,69.124923,70.811589,,TimeCopilot_Ensemble,BULLISH,1.0598,0.8833,,,,,,BEARISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.05,,0.0,0.0,,-0.5504
+2026-05-27,2026-09-30,EEM,90,68.400002,67.705475,71.442577,75.179679,,TimeCopilot_Ensemble,BULLISH,4.4482,0.8833,,,,,,BEARISH,HIGH,UN Security Council condemns drone attack on Barakah nuclear power plant in UAE,,,,,,,0.05,,0.0,0.0,,-0.5504
+2026-05-27,2026-06-03,EFA,5,105.129997,104.75078,105.187571,105.624362,,TimeCopilot_Ensemble,BULLISH,0.0548,0.9085,,,,,,BEARISH,MEDIUM,Canada Strikes Landmark Deal to Export Liquefied Natural Gas to Germany,,,,,,,0.15,,0.0,0.0,,-0.2476
+2026-05-27,2026-07-08,EFA,30,105.129997,104.460422,105.755487,107.050551,,TimeCopilot_Ensemble,BULLISH,0.595,0.9085,,,,,,BEARISH,MEDIUM,Canada Strikes Landmark Deal to Export Liquefied Natural Gas to Germany,,,,,,,0.15,,0.0,0.0,,-0.2476
+2026-05-27,2026-09-30,EFA,90,105.129997,106.551316,108.36799,110.184663,,TimeCopilot_Ensemble,BULLISH,3.08,0.9085,,,,,,BEARISH,MEDIUM,Canada Strikes Landmark Deal to Export Liquefied Natural Gas to Germany,,,,,,,0.15,,0.0,0.0,,-0.2476
+2026-05-27,2026-06-03,FXI,5,35.75,35.641698,35.749989,35.858279,,TimeCopilot_Ensemble,BEARISH,0.0,0.952,,,,,,BEARISH,HIGH,"USTR Greer says Chinese firms want Nvidia H200 chips, but Beijing keeps pushing domestic alternatives",,,,,,,0.05,,0.0,0.0,,-1.0
+2026-05-27,2026-07-08,FXI,30,35.75,35.09382,35.505394,35.916968,,TimeCopilot_Ensemble,BEARISH,0.6842,0.952,,,,,,BEARISH,HIGH,"USTR Greer says Chinese firms want Nvidia H200 chips, but Beijing keeps pushing domestic alternatives",,,,,,,0.05,,0.0,0.0,,-1.0
+2026-05-27,2026-09-30,FXI,90,35.75,34.077425,35.749989,37.422552,,TimeCopilot_Ensemble,BEARISH,0.0,0.952,,,,,,BEARISH,HIGH,"USTR Greer says Chinese firms want Nvidia H200 chips, but Beijing keeps pushing domestic alternatives",,,,,,,0.05,,0.0,0.0,,-1.0
