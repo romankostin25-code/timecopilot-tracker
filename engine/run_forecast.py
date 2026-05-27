@@ -510,6 +510,18 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
     else:
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
+    # Structural upward drift: equities/crypto/intl trend up ~55-57% of 5d periods.
+    # Apply a calibrated positive prior so the model doesn't need a negative signal
+    # to cancel before it can call BULLISH — it starts slightly long by default.
+    # Larger for 5d (most mean-reverting), smaller for longer horizons.
+    if ticker in (EQUITY_ETFS | CRYPTO_TICKERS | INTL_ETFS):
+        drift = {5: 0.10, 30: 0.06, 90: 0.04}.get(horizon, 0.06)
+        combined += drift
+    elif ticker in COMMODITY_TICKS | GRAIN_TICKERS:
+        # Commodities have slight upward drift (inflation premium) but weaker
+        drift = {5: 0.04, 30: 0.03, 90: 0.02}.get(horizon, 0.03)
+        combined += drift
+
     direction        = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength  = round(abs(forecast_return) * 100, 4)
     conviction_score = round(max(0, 1 - (band_width / 0.05)), 4)
@@ -667,6 +679,28 @@ def run_all_forecasts():
         except Exception as e:
             print(f"[{ticker}] ✗ {e}")
             skipped.append(ticker)
+
+    # Bearish concentration cap: if >60% of 5d calls are BEARISH, the weakest
+    # conviction BEARISH rows get flipped to BULLISH. Prevents piling on one side
+    # when the signal is weak — a diversified signal is more accurate than a crowded one.
+    h5_rows = [r for r in new_rows if r["horizon"] == 5]
+    if h5_rows:
+        n_bear = sum(1 for r in h5_rows if r["direction"] == "BEARISH")
+        bear_frac = n_bear / len(h5_rows)
+        if bear_frac > 0.60:
+            # Sort BEARISH rows by signal_strength ascending (weakest conviction first)
+            bear_rows = sorted(
+                [r for r in h5_rows if r["direction"] == "BEARISH"],
+                key=lambda r: float(r.get("signal_strength", 0))
+            )
+            # Flip enough to bring bear_frac down to ~55%
+            target_bear = int(0.55 * len(h5_rows))
+            to_flip = n_bear - target_bear
+            flip_tickers = {r["ticker"] for r in bear_rows[:to_flip]}
+            for r in new_rows:
+                if r["horizon"] == 5 and r["ticker"] in flip_tickers:
+                    r["direction"] = "BULLISH"
+            print(f"[cap] Flipped {to_flip} weak BEARISH→BULLISH (was {bear_frac:.0%} bear): {flip_tickers}")
 
     os.makedirs("data", exist_ok=True)
     existing = pd.read_csv(CSV_PATH) if os.path.exists(CSV_PATH) else pd.DataFrame()
