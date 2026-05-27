@@ -371,17 +371,6 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
     elif slope > 0.20 and ticker not in ("^VIX", "UVXY"):
         score += 0.05  # steep contango = calm/complacency, mild bullish
 
-    # S&P 500 5-day momentum cross-asset overlay: broad market trend spills into correlated assets.
-    # sp500_mom is loaded but was previously unused — cap at ±0.20 to not crowd out asset-specific signals.
-    if sp500_mom != 0.0:
-        sp_sc = float(np.clip(sp500_mom / 5.0, -0.20, 0.20))
-        if ticker in EQUITY_ETFS | INTL_ETFS:
-            score += 0.15 * sp_sc
-        elif ticker in COMMODITY_TICKS | GRAIN_TICKERS:
-            score += 0.08 * sp_sc
-        elif ticker in CRYPTO_TICKERS:
-            score += 0.10 * sp_sc
-
     return float(np.clip(score, -1.0, 1.0))
 
 
@@ -531,9 +520,19 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
         drift = {5: 0.10, 30: 0.06, 90: 0.04}.get(horizon, 0.06)
         combined += drift
     elif ticker in COMMODITY_TICKS | GRAIN_TICKERS:
-        # Commodities have slight upward drift (inflation premium) but weaker
         drift = {5: 0.04, 30: 0.03, 90: 0.02}.get(horizon, 0.03)
         combined += drift
+
+    # S&P 500 recent momentum: direct boost applied after weight blending so it has
+    # real magnitude (+2% market → +0.05 direct on equity combined, +0.025 on commodities).
+    # Bypasses macro dilution that reduced the effect to ~0.015.
+    sp500_mom = (macro or {}).get("sp500_5d_chg_pct", 0.0) or 0.0
+    if sp500_mom != 0.0 and tft_score is None:
+        sp_direct = float(np.clip(sp500_mom / 4.0, -0.15, 0.15))
+        if ticker in EQUITY_ETFS | INTL_ETFS:
+            combined += sp_direct
+        elif ticker in COMMODITY_TICKS | GRAIN_TICKERS | CRYPTO_TICKERS:
+            combined += sp_direct * 0.5
 
     direction        = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength  = round(abs(forecast_return) * 100, 4)
