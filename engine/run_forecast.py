@@ -251,14 +251,15 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
     """Asset-class-aware macro signal in [-1, 1]."""
     if not macro:
         return 0.0
-    vix     = macro.get("vix", 20)
-    risk    = macro.get("risk_regime",   "NEUTRAL")
-    dollar  = macro.get("dollar_regime", "NEUTRAL")
-    rate    = macro.get("rate_regime",   "NEUTRAL")
-    slope   = macro.get("vix_term_slope", 0.0) or 0.0
-    oil_mom = macro.get("oil_5d_chg_pct", 0.0) or 0.0
-    month   = datetime.today().month
-    score   = 0.0
+    vix       = macro.get("vix", 20)
+    risk      = macro.get("risk_regime",   "NEUTRAL")
+    dollar    = macro.get("dollar_regime", "NEUTRAL")
+    rate      = macro.get("rate_regime",   "NEUTRAL")
+    slope     = macro.get("vix_term_slope", 0.0) or 0.0
+    oil_mom   = macro.get("oil_5d_chg_pct", 0.0) or 0.0
+    sp500_mom = macro.get("sp500_5d_chg_pct", 0.0) or 0.0
+    month     = datetime.today().month
+    score     = 0.0
 
     # COT contrarian overlay: extreme positioning is mean-reverting
     cot_signal = (cot or {}).get(ticker, 0.0)
@@ -273,10 +274,11 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += 0.60 if rate in ("HAWKISH", "NEUTRAL") else (0.20 if rate == "DOVISH" else -0.20)
     elif ticker == "NG=F":
         # NG is storage/seasonal/weather-driven — risk regime is largely irrelevant
-        # Injection season (Apr-Oct): bearish (storage fills up, demand low)
+        # Injection season (Apr-Oct): mild bearish (storage fills up, demand low)
         # Withdrawal season (Nov-Mar): bullish (heating demand, inventory draws)
+        # Reduced from -0.20 → -0.10: seasonal alone shouldn't override price momentum
         if month in (4, 5, 6, 7, 8, 9, 10):
-            score -= 0.20
+            score -= 0.10
         else:
             score += 0.15
         # Dollar has mild effect on NG (domestic US price, less FX-sensitive)
@@ -368,6 +370,17 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score -= 0.10  # inverted VIX curve signals elevated near-term fear
     elif slope > 0.20 and ticker not in ("^VIX", "UVXY"):
         score += 0.05  # steep contango = calm/complacency, mild bullish
+
+    # S&P 500 5-day momentum cross-asset overlay: broad market trend spills into correlated assets.
+    # sp500_mom is loaded but was previously unused — cap at ±0.20 to not crowd out asset-specific signals.
+    if sp500_mom != 0.0:
+        sp_sc = float(np.clip(sp500_mom / 5.0, -0.20, 0.20))
+        if ticker in EQUITY_ETFS | INTL_ETFS:
+            score += 0.15 * sp_sc
+        elif ticker in COMMODITY_TICKS | GRAIN_TICKERS:
+            score += 0.08 * sp_sc
+        elif ticker in CRYPTO_TICKERS:
+            score += 0.10 * sp_sc
 
     return float(np.clip(score, -1.0, 1.0))
 
@@ -497,8 +510,8 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
             # Normal regime: standard weights
             combined = 0.55 * tft_sc + 0.25 * macro_score + 0.15 * claude_score + 0.05 * model_sc
     elif ticker == "NG=F":
-        # NG: momentum (tech) matters — it trends strongly; model less reliable on NG
-        combined = 0.15 * model_sc + 0.30 * tech_score + 0.55 * macro_score
+        # NG: price momentum is more predictive than static seasonal macro
+        combined = 0.15 * model_sc + 0.45 * tech_score + 0.40 * macro_score
     elif ticker in _VOL_TICKERS:
         combined = 0.20 * model_sc + 0.80 * macro_score
     elif ticker in EQUITY_ETFS:
