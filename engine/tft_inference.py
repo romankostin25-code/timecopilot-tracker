@@ -169,10 +169,21 @@ def precompute_tft_scores(
             loader = DataLoader(predict_ds, batch_size=64, shuffle=False,
                                 num_workers=0, collate_fn=collate_skip_none)
 
-            # Debug first sample
+            # Debug first sample — find which key holds None
             if len(predict_ds) > 0:
                 s0 = predict_ds[0]
                 print(f"[tft] h{horizon}: sample[0] type={type(s0)}")
+                if isinstance(s0, tuple) and len(s0) >= 1:
+                    x = s0[0]
+                    if isinstance(x, dict):
+                        for k, v in x.items():
+                            print(f"[tft] h{horizon}: x['{k}'] = {type(v).__name__}"
+                                  f"{'' if v is not None else ' *** NONE ***'}")
+                    y = s0[1] if len(s0) > 1 else None
+                    if isinstance(y, (tuple, list)):
+                        for i, v in enumerate(y):
+                            print(f"[tft] h{horizon}: y[{i}] = {type(v).__name__}"
+                                  f"{'' if v is not None else ' *** NONE ***'}")
 
             with torch.no_grad():
                 raw_preds = model.predict(loader, return_predictions=True)
