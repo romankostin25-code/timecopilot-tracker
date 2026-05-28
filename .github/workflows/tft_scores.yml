@@ -21,9 +21,12 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
+          cache-dependency-path: requirements-ml.txt
 
-      - name: Install ML dependencies
-        run: pip install -r requirements-ml.txt
+      - name: Install ML dependencies (CPU-only torch to fit runner disk)
+        run: |
+          pip install "torch>=2.1.0,<2.5.0" --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-ml.txt
         timeout-minutes: 25
 
       - name: Run TFT inference and save cache
