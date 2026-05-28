@@ -161,11 +161,18 @@ def precompute_tft_scores(
             print(f"[tft] h{horizon}: dataset size={len(predict_ds)}, "
                   f"index_len={len(predict_ds.index) if hasattr(predict_ds, 'index') else 'n/a'}")
 
-            # pytorch-forecasting returns y=(target_tensor, weight_tensor) where
-            # weight_tensor is None when no sample weights were defined during training.
-            # default_collate can't handle None inside tuples, so we replace None weights
-            # with a ones tensor before collation.
-            def collate_replace_none_weights(batch):
+            # pytorch-forecasting's own collate does key renaming
+            # (e.g. decoder_length → decoder_lengths) that default_collate skips.
+            # Extract it from a temp DataLoader so we can wrap it to patch None weights.
+            try:
+                _pf_collate = predict_ds.to_dataloader(
+                    train=False, batch_size=64, num_workers=0
+                ).collate_fn
+            except Exception:
+                _pf_collate = torch.utils.data.dataloader.default_collate
+
+            def collate_fix_none_weights(batch):
+                """Replace None sample weights before PF's collate sees them."""
                 batch = [x for x in batch if x is not None]
                 if not batch:
                     return None
@@ -174,15 +181,15 @@ def precompute_tft_scores(
                     if isinstance(item, (tuple, list)) and len(item) >= 2:
                         x, y = item[0], item[1]
                         if isinstance(y, (tuple, list)) and len(y) >= 2 and y[1] is None:
-                            n = y[0].shape[0] if hasattr(y[0], "shape") else 1
+                            n = int(y[0].shape[0]) if hasattr(y[0], "shape") and y[0].shape else 1
                             y = (y[0], torch.ones(n, dtype=torch.float32))
                         fixed.append((x, y))
                     else:
                         fixed.append(item)
-                return torch.utils.data.dataloader.default_collate(fixed)
+                return _pf_collate(fixed)
 
             loader = DataLoader(predict_ds, batch_size=64, shuffle=False,
-                                num_workers=0, collate_fn=collate_replace_none_weights)
+                                num_workers=0, collate_fn=collate_fix_none_weights)
 
             with torch.no_grad():
                 raw_preds = model.predict(loader, return_predictions=True)
