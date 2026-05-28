@@ -192,18 +192,26 @@ def precompute_tft_scores(
                                 num_workers=0, collate_fn=collate_fix_none_weights)
 
             with torch.no_grad():
-                raw_preds = model.predict(loader, return_predictions=True)
+                raw_preds = model.predict(loader)
 
-            # raw_preds shape depends on pytorch-forecasting version
-            # Each element is the prediction for one sample
+            # Normalize to numpy — shape varies by PF version:
+            # (n, ) | (n, steps) | (n, steps, classes)
+            if hasattr(raw_preds, "cpu"):
+                raw_arr = raw_preds.cpu().numpy()
+            elif isinstance(raw_preds, np.ndarray):
+                raw_arr = raw_preds
+            else:
+                raw_arr = np.array(raw_preds)
+
             pred_list = []
-            for p in raw_preds:
-                if hasattr(p, "numpy"):
-                    p = p.numpy()
-                if np.ndim(p) == 2:
-                    pred_list.append(float(p[-1, 1]))   # P(bullish) from last step
-                else:
-                    pred_list.append(float(p[-1]))
+            if raw_arr.ndim == 1:
+                pred_list = [float(v) for v in raw_arr]
+            elif raw_arr.ndim == 2:
+                pred_list = [float(row[-1]) for row in raw_arr]
+            elif raw_arr.ndim == 3:
+                pred_list = [float(row[-1, 1]) for row in raw_arr]
+            else:
+                pred_list = [float(raw_arr.flat[i]) for i in range(len(valid_tickers))]
 
             for ticker, p_bullish in zip(valid_tickers, pred_list):
                 results[ticker][horizon] = round(p_bullish, 4)
