@@ -56,6 +56,9 @@ jobs:
         run: python main.py --history
         continue-on-error: true
 
+      - name: Pull latest data (picks up TFT scores cache if committed in parallel)
+        run: git pull --rebase origin main || true
+
       - name: Run forecasts
         run: python main.py --forecast
         timeout-minutes: 90
@@ -98,3 +101,5 @@ jobs:
             git pull --rebase -X ours origin main
             git push
           fi
+
+          
