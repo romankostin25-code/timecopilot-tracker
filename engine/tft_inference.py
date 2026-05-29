@@ -192,10 +192,12 @@ def precompute_tft_scores(
                                 num_workers=0, collate_fn=collate_fix_none_weights)
 
             with torch.no_grad():
-                raw_preds = model.predict(loader)
+                # mode="quantiles" calls CrossEntropy.to_quantiles() → softmax → probabilities
+                # mode="prediction" (default) calls to_prediction() → argmax class label (0/1)
+                # We need probabilities, not class labels.
+                raw_preds = model.predict(loader, mode="quantiles")
 
-            # Normalize to numpy — shape varies by PF version:
-            # (n, ) | (n, steps) | (n, steps, classes)
+            # Normalize to numpy — shape: (n, steps, 2) or (n, 2) for binary classification
             if hasattr(raw_preds, "cpu"):
                 raw_arr = raw_preds.cpu().numpy()
             elif isinstance(raw_preds, np.ndarray):
@@ -203,13 +205,24 @@ def precompute_tft_scores(
             else:
                 raw_arr = np.array(raw_preds)
 
+            print(f"[tft] h{horizon}: raw_arr shape={raw_arr.shape}, sample={raw_arr.flat[:3]}")
+
             pred_list = []
             if raw_arr.ndim == 1:
+                # (n,) — scalar per sample; treat as P(bullish) directly
                 pred_list = [float(v) for v in raw_arr]
             elif raw_arr.ndim == 2:
-                pred_list = [float(row[-1]) for row in raw_arr]
+                if raw_arr.shape[-1] == 2:
+                    # (n, 2) — [P(bearish), P(bullish)] per sample
+                    pred_list = [float(row[1]) for row in raw_arr]
+                else:
+                    pred_list = [float(row[-1]) for row in raw_arr]
             elif raw_arr.ndim == 3:
-                pred_list = [float(row[-1, 1]) for row in raw_arr]
+                if raw_arr.shape[-1] == 2:
+                    # (n, steps, 2) — [P(bearish), P(bullish)]; take last step
+                    pred_list = [float(row[-1, 1]) for row in raw_arr]
+                else:
+                    pred_list = [float(row[-1, -1]) for row in raw_arr]
             else:
                 pred_list = [float(raw_arr.flat[i]) for i in range(len(valid_tickers))]
 
