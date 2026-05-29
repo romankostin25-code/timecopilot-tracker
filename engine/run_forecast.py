@@ -511,6 +511,10 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
     elif ticker in (COMMODITY_TICKS | GRAIN_TICKERS | INTL_ETFS):
         # Commodities + intl ETFs: price momentum (tech) is more timely than static macro
         combined = 0.40 * model_sc + 0.35 * tech_score + 0.20 * macro_score + 0.05 * claude_score
+    elif ticker in BOND_ETFS:
+        # Bonds: categorical rate-regime macro is often stale vs actual yield moves;
+        # add price momentum so a rally in TLT/IEF overrides static HAWKISH bias.
+        combined = 0.35 * model_sc + 0.30 * tech_score + 0.25 * macro_score + 0.10 * claude_score
     else:
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
