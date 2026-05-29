@@ -335,10 +335,12 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += 0.20 if risk == "RISK_ON" else (-0.35 if risk == "RISK_OFF" else 0.0)
         score += -0.15 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker == "EEM":
-        # EM broad: dollar and risk regime dominate for EM
+        # EM broad: dollar and risk regime dominate; sp500_mom captures US market leadership
         score += 0.30 if dollar == "DOLLAR_WEAKNESS" else (-0.35 if dollar == "DOLLAR_STRENGTH" else 0.0)
         score += 0.25 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
         score += -0.10 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
+        # EEM has ~0.75 correlation with SPY on 5d moves — add SPY momentum directly
+        score += float(np.clip(sp500_mom / 5.0, -0.20, 0.20))
     elif ticker == "EFA":
         # EAFE developed ex-US: dollar + risk; less EM sensitivity than EEM
         score += 0.25 if dollar == "DOLLAR_WEAKNESS" else (-0.25 if dollar == "DOLLAR_STRENGTH" else 0.0)
@@ -523,16 +525,30 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
         drift = {5: 0.04, 30: 0.03, 90: 0.02}.get(horizon, 0.03)
         combined += drift
 
-    # S&P 500 recent momentum: direct boost applied after weight blending so it has
-    # real magnitude (+2% market → +0.05 direct on equity combined, +0.025 on commodities).
-    # Bypasses macro dilution that reduced the effect to ~0.015.
+    # S&P 500 recent momentum: direct boost applied after weight blending.
+    # Applied at full weight when no TFT; at half weight with TFT (TFT captures some momentum
+    # already, but sp500_mom reflects today's close which TFT training data also includes).
+    # INTL_ETFS (EEM/EFA/FXI) track SPY ~0.75 correlation — always apply regardless of TFT.
     sp500_mom = (macro or {}).get("sp500_5d_chg_pct", 0.0) or 0.0
-    if sp500_mom != 0.0 and tft_score is None:
+    if sp500_mom != 0.0:
         sp_direct = float(np.clip(sp500_mom / 4.0, -0.15, 0.15))
-        if ticker in EQUITY_ETFS | INTL_ETFS:
-            combined += sp_direct
+        tft_scale = 0.5 if tft_score is not None else 1.0
+        if ticker in INTL_ETFS:
+            combined += sp_direct  # always full weight — EM tracks US markets closely
+        elif ticker in EQUITY_ETFS:
+            combined += sp_direct * tft_scale
         elif ticker in COMMODITY_TICKS | GRAIN_TICKERS | CRYPTO_TICKERS:
-            combined += sp_direct * 0.5
+            combined += sp_direct * 0.5 * tft_scale
+
+    # News sentiment direct overlay: news_sc is in [-1, 1]; only apply when signal is
+    # meaningful (|news_sc| > 0.3) to avoid noise. In the TFT path the LR model is
+    # bypassed so news would otherwise be completely ignored.
+    if abs(news_sc) > 0.3:
+        news_direct = float(np.clip(news_sc, -1.0, 1.0))
+        if ticker in EQUITY_ETFS | INTL_ETFS | CRYPTO_TICKERS:
+            combined += 0.05 * news_direct
+        elif ticker in COMMODITY_TICKS | GRAIN_TICKERS:
+            combined += 0.04 * news_direct
 
     direction        = "BULLISH" if combined >= 0 else "BEARISH"
     signal_strength  = round(abs(forecast_return) * 100, 4)
