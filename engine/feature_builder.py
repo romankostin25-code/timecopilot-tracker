@@ -12,7 +12,19 @@ TFT_FEATURE_COLS = [
     "log_ret_1d", "log_ret_5d", "log_ret_20d", "log_ret_60d",
     "vol_20d", "vol_60d",
     "rsi_14", "macd_signal", "bb_pos", "vol_ratio_20d",
+    # Core macro
     "vix", "yield_10y", "yield_spread", "dxy",
+    # Credit market
+    "ig_spread", "hy_spread",
+    # Yield curve shape
+    "yield_2s10s", "yield_5s30s",
+    # Fama-French systematic factors (daily %)
+    "ff_mkt_rf", "ff_smb", "ff_hml", "ff_mom",
+    # Options market
+    "pcr",
+    # Economic surprise
+    "macro_surprise_ism",
+    # News sentiment
     "sentiment_score", "sentiment_7d_ma", "sentiment_momentum",
 ]
 
@@ -72,10 +84,20 @@ def compute_price_features(price_df: pd.DataFrame, ticker: str = "") -> pd.DataF
 def attach_macro(feat_df: pd.DataFrame, macro: dict) -> pd.DataFrame:
     """Fill macro columns from the macro context dict."""
     feat_df = feat_df.copy()
-    feat_df["vix"]          = float(macro.get("vix", 20.0))
-    feat_df["yield_10y"]    = float(macro.get("yield_10y", 4.0))
-    feat_df["yield_spread"] = float(macro.get("yield_spread", 0.5))
-    feat_df["dxy"]          = float(macro.get("dxy", 104.0))
+    feat_df["vix"]               = float(macro.get("vix", 20.0))
+    feat_df["yield_10y"]         = float(macro.get("yield_10y", 4.0))
+    feat_df["yield_spread"]      = float(macro.get("yield_spread", 0.5))
+    feat_df["dxy"]               = float(macro.get("dxy", 104.0))
+    feat_df["ig_spread"]         = float(macro.get("ig_spread", 1.0))
+    feat_df["hy_spread"]         = float(macro.get("hy_spread", 4.0))
+    feat_df["yield_2s10s"]       = float(macro.get("yield_2s10s", 0.5))
+    feat_df["yield_5s30s"]       = float(macro.get("yield_5s30s", 0.3))
+    feat_df["ff_mkt_rf"]         = float(macro.get("ff_mkt_rf", 0.0))
+    feat_df["ff_smb"]            = float(macro.get("ff_smb", 0.0))
+    feat_df["ff_hml"]            = float(macro.get("ff_hml", 0.0))
+    feat_df["ff_mom"]            = float(macro.get("ff_mom", 0.0))
+    feat_df["pcr"]               = float(macro.get("pcr", 0.625))
+    feat_df["macro_surprise_ism"]= float(macro.get("macro_surprise_ism", 0.0))
     return feat_df
 
 

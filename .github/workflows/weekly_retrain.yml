@@ -2,13 +2,17 @@ name: Weekly ML Retrain
 
 on:
   schedule:
-    - cron: '0 4 * * 0'   # Sunday 04:00 UTC (midnight ET)
+    - cron: '0 4 * * 0'   # Sunday 04:00 UTC (midnight ET) — always uses 1095 days
   workflow_dispatch:
     inputs:
       days_back:
-        description: 'Days of news/feature history to pull (default 1095 = 3yr)'
+        description: 'Days of history to pull (default 1095 = 3yr; use 1095+ for full retrain)'
         required: false
         default: '1095'
+      finetune_only:
+        description: 'Skip Phase 1 training — only fine-tune existing checkpoints on last 90d'
+        required: false
+        default: 'false'
 
 concurrency:
   group: repo-write
@@ -43,13 +47,13 @@ jobs:
           pip install -r requirements-ml.txt
         timeout-minutes: 20
 
-      - name: Pull historical news (Polygon)
+      - name: Pull historical news (Polygon, 3yr)
         run: |
           python scripts/pull_historical_news.py \
             --days ${{ github.event.inputs.days_back || '1095' }}
         timeout-minutes: 60
 
-      - name: Compute price + macro features
+      - name: Compute price + macro features (3yr + Fama-French + credit spreads + PCR)
         run: |
           python scripts/compute_features.py \
             --days ${{ github.event.inputs.days_back || '1095' }}
@@ -59,9 +63,15 @@ jobs:
         run: python scripts/assemble_training_data.py
         timeout-minutes: 10
 
-      - name: Train TFT models (all horizons)
-        run: python engine/train_tft.py --epochs 50
+      - name: Phase 1 — Train TFT models on full 3yr dataset (with early stopping)
+        if: ${{ github.event.inputs.finetune_only != 'true' }}
+        run: python engine/train_tft.py --epochs 30
         timeout-minutes: 200
+
+      - name: Phase 2 — Fine-tune TFT on most recent 90 days
+        run: python engine/train_tft.py --finetune --finetune-days 90
+        timeout-minutes: 60
+        continue-on-error: true
 
       - name: Retrain logistic meta-learner
         run: python main.py --train

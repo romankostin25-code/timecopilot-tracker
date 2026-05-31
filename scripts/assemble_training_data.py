@@ -28,8 +28,18 @@ FEATURE_COLS = [
     "vol_20d", "vol_60d",
     # Technical
     "rsi_14", "macd_signal", "bb_pos", "vol_ratio_20d",
-    # Macro
+    # Core macro
     "vix", "yield_10y", "yield_3m", "yield_spread", "dxy",
+    # Credit market (FRED)
+    "ig_spread", "hy_spread",
+    # Yield curve shape
+    "yield_2s10s", "yield_5s30s",
+    # Fama-French systematic factors
+    "ff_mkt_rf", "ff_smb", "ff_hml", "ff_mom",
+    # Options market
+    "pcr",
+    # Macro surprise
+    "macro_surprise_ism",
     # News (filled after merge)
     "sentiment_score", "article_count", "sentiment_7d_ma", "sentiment_momentum",
     # Targets
