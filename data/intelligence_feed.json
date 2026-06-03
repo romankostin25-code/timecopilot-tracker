@@ -436,6 +436,246 @@
     "nlp_processed_at": "2026-06-01T22:43:35.141409+00:00"
   },
   {
+    "id": "939b6e6d6c9e1627",
+    "source": "Decrypt",
+    "source_type": "crypto",
+    "headline": "As Oil Moves Higher, Bitcoin Sinks to Lowest Price Since March",
+    "url": "https://decrypt.co/369925/oil-moves-higher-bitcoin-sinks-lowest-price-since-march",
+    "summary_raw": "Bitcoin fell to a more than two-month low alongside U.S. stocks after Middle East skirmishes pushed bond yields and oil prices higher.",
+    "published_at": "Wed, 03 Jun 2026 18:25:14 +0000",
+    "fetched_at": "2026-06-03T18:26:52.437902+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "CL=F",
+      "SPY",
+      "QQQ",
+      "TLT",
+      "^TNX",
+      "GLD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.78,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Middle East conflict drives oil higher, crushes Bitcoin and equities.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1,
+      "CL=F": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "TLT": -1,
+      "^TNX": 1,
+      "GLD": 1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.82,
+      "ETH-USD": 0.75,
+      "SOL-USD": 0.72,
+      "CL=F": 0.78,
+      "SPY": 0.65,
+      "QQQ": 0.65,
+      "TLT": 0.7,
+      "^TNX": 0.7,
+      "GLD": 0.6,
+      "^VIX": 0.68
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:00.084729+00:00"
+  },
+  {
+    "id": "cb9b4eefb9213bfb",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Partners Group caps redemptions as private-market liquidity fears trigger sector-wide selloff",
+    "url": "https://cryptobriefing.com/partners-group-redemption-surge-liquidity/",
+    "summary_raw": "<p>The gating of Partners Group's fund highlights systemic liquidity risks in private markets, potentially triggering broader investor caution.</p>\n<p>The post <a href=\"https://cryptobriefing.com/partners-group-redemption-surge-liquidity/\">Partners Group caps redemptions as private-market liquidity fears trigger sector-wide selloff</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Wed, 03 Jun 2026 18:22:59 +0000",
+    "fetched_at": "2026-06-03T18:26:54.341162+00:00",
+    "assets_affected": [
+      "SPY",
+      "IWM",
+      "XLF",
+      "HYG",
+      "LQD",
+      "^VIX",
+      "UVXY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Private market liquidity fears spread as Partners Group gates redemptions sector-wide.",
+    "signal_direction": {
+      "SPY": -1,
+      "IWM": -1,
+      "XLF": -1,
+      "HYG": -1,
+      "LQD": -1,
+      "^VIX": 1,
+      "UVXY": 1
+    },
+    "signal_strength": {
+      "SPY": 0.4,
+      "IWM": 0.45,
+      "XLF": 0.6,
+      "HYG": 0.55,
+      "LQD": 0.45,
+      "^VIX": 0.5,
+      "UVXY": 0.5
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:05.130099+00:00"
+  },
+  {
+    "id": "feb30fc766ee1ad0",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Michael Burry highlights customer concentration risks at Nvidia",
+    "url": "https://cryptobriefing.com/burry-nvidia-customer-concentration-risk/",
+    "summary_raw": "<p>Burry's warning on Nvidia's customer concentration highlights potential volatility in tech markets, echoing past industry downturns.</p>\n<p>The post <a href=\"https://cryptobriefing.com/burry-nvidia-customer-concentration-risk/\">Michael Burry highlights customer concentration risks at Nvidia</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Wed, 03 Jun 2026 18:22:08 +0000",
+    "fetched_at": "2026-06-03T18:26:54.341179+00:00",
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Burry warns Nvidia customer concentration poses significant volatility risk for tech.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "SPY": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.55,
+      "XLK": 0.6,
+      "SPY": 0.35
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:08.546544+00:00"
+  },
+  {
+    "id": "c907318d62126d45",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "About 95% of day traders lose money, but a new rule will make it easier to do so anyway",
+    "url": "https://www.marketwatch.com/story/about-95-of-day-traders-lose-money-but-a-new-rule-will-make-it-easier-to-do-so-anyway-b576498b?mod=mw_rss_topstories",
+    "summary_raw": "The pattern day-trading rule is going away on June 4, but retail investors should understand the risks.",
+    "published_at": "Wed, 03 Jun 2026 18:18:00 GMT",
+    "fetched_at": "2026-06-03T18:26:20.095457+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "^VIX",
+      "UVXY"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Pattern day-trading rule removal may increase retail trading volume and volatility.",
+    "signal_direction": {
+      "SPY": 1,
+      "QQQ": 1,
+      "IWM": 1,
+      "^VIX": 1,
+      "UVXY": 1
+    },
+    "signal_strength": {
+      "SPY": 0.2,
+      "QQQ": 0.2,
+      "IWM": 0.3,
+      "^VIX": 0.25,
+      "UVXY": 0.25
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:12.134383+00:00"
+  },
+  {
+    "id": "11817e64fa76d75e",
+    "source": "Bitcoin Magazine",
+    "source_type": "crypto",
+    "headline": "Bitcoin ATMs: The Canary in the Coal Mine",
+    "url": "https://bitcoinmagazine.com/markets/bitcoin-atms-the-canary-in-the-coal-mine",
+    "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/bitcoinATMban.jpeg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/markets/bitcoin-atms-the-canary-in-the-coal-mine\" rel=\"nofollow\">Bitcoin ATMs: The Canary in the Coal Mine</a></p>\n<p>State regulators have begun quietly implementing regulations to ban or overburden Bitcoin ATM operators. </p>\n<p>This post <a ",
+    "published_at": "Wed, 03 Jun 2026 18:15:58 +0000",
+    "fetched_at": "2026-06-03T18:26:53.192142+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "State regulators quietly implementing bans or burdens on Bitcoin ATM operators.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.45,
+      "ETH-USD": 0.3
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:14.905398+00:00"
+  },
+  {
+    "id": "2d70b7e55eaa93b9",
+    "source": "Bitcoin Magazine",
+    "source_type": "crypto",
+    "headline": "Scott Bessent Backs Strategic Bitcoin Reserve, Urges Senate to Pass Clarity Act",
+    "url": "https://bitcoinmagazine.com/news/scott-bessent-strategic-bitcoin-reserve",
+    "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/Scott-Bessent-Backs-Strategic-Bitcoin-Reserve-Urges-Senate-to-Pass-Clarity-Act.jpg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/scott-bessent-strategic-bitcoin-reserve\" rel=\"nofollow\">Scott Bessent Backs Strategic Bitcoin Reserve, Urges Senate to Pass Clarity Act</a></p>\n<p>Treasury Secretary Scott Bes",
+    "published_at": "Wed, 03 Jun 2026 18:10:09 +0000",
+    "fetched_at": "2026-06-03T18:26:53.192159+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.82,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Treasury Secretary backs Strategic Bitcoin Reserve and crypto clarity legislation.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.85,
+      "ETH-USD": 0.65,
+      "SOL-USD": 0.6
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:18.228358+00:00"
+  },
+  {
     "id": "0ac568faeaafcf26",
     "source": "CryptoSlate",
     "source_type": "crypto",
@@ -1234,16 +1474,42 @@
     "summary_raw": "The administration has settled on a more legally and politically durable way to impose tariffs, but some say the focus on forced labor is merely a pretext for protectionism.",
     "published_at": "Wed, 03 Jun 2026 17:08:47 +0000",
     "fetched_at": "2026-06-03T18:07:20.845318+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "XLF",
+      "EEM",
+      "FXI",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "trump_tariffs",
+    "impact_horizon": "MEDIUM",
+    "summary": "New tariff rationale signals sustained protectionism, weighing on trade-exposed assets.",
+    "signal_direction": {
+      "SPY": -1,
+      "QQQ": -1,
+      "IWM": -1,
+      "XLF": -1,
+      "EEM": -1,
+      "FXI": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "SPY": 0.4,
+      "QQQ": 0.4,
+      "IWM": 0.35,
+      "XLF": 0.35,
+      "EEM": 0.55,
+      "FXI": 0.65,
+      "DX-Y.NYB": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:23.011085+00:00"
   },
   {
     "id": "7a4078fac703f394",
@@ -1254,16 +1520,24 @@
     "summary_raw": "Former Stripe engineer Saikat Chakrabarti lost his bid to succeed Nancy Pelosi in California to a candidate backed by Ripple's Chris Larsen.",
     "published_at": "Wed, 03 Jun 2026 16:53:21 +0000",
     "fetched_at": "2026-06-03T18:07:51.101470+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XRP-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "LONG",
+    "summary": "Ripple-backed candidate wins congressional seat, potentially favorable for XRP.",
+    "signal_direction": {
+      "XRP-USD": 1
+    },
+    "signal_strength": {
+      "XRP-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:25.818041+00:00"
   },
   {
     "id": "66cd075fcc07d8e6",
@@ -1275,15 +1549,17 @@
     "published_at": "Wed, 03 Jun 2026 16:45:19 +0000",
     "fetched_at": "2026-06-03T18:07:20.845225+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Hotel fire in New Delhi has no material impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:27.977549+00:00"
   },
   {
     "id": "69d673e84ac196b9",
@@ -1295,15 +1571,17 @@
     "published_at": "Wed, 03 Jun 2026 16:44:00 GMT",
     "fetched_at": "2026-06-03T18:07:20.095488+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Tom Steyer self-funds California governor campaign with no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:30.349916+00:00"
   },
   {
     "id": "72fa2ae575722539",
@@ -1314,16 +1592,27 @@
     "summary_raw": "Marvell now ranks No. 22 in the Nasdaq-100 with a $269 billion market capitalization that\u2019s higher than those of PepsiCo and T-Mobile.",
     "published_at": "Wed, 03 Jun 2026 16:43:00 GMT",
     "fetched_at": "2026-06-03T18:07:20.095496+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Marvell surges to $269B market cap, boosting Nasdaq-100 weighting.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:33.398531+00:00"
   },
   {
     "id": "953a956d529545eb",
@@ -1334,16 +1623,27 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/Kalshi-Goes-Live-With-Americas-First-Regulated-Bitcoin-Perpetual-Futures.jpg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/kalshi-goes-live-with-americas-first\" rel=\"nofollow\">Kalshi Goes Live With America&#8217;s First Regulated Bitcoin Perpetual Futures</a></p>\n<p>Kalshi announced on X that bitcoin pe",
     "published_at": "Wed, 03 Jun 2026 16:35:58 +0000",
     "fetched_at": "2026-06-03T18:07:51.662468+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "First regulated Bitcoin perpetual futures in US boosts crypto legitimacy.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.7,
+      "ETH-USD": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:36.351046+00:00"
   },
   {
     "id": "f56d5feeab6358fc",
@@ -1354,16 +1654,30 @@
     "summary_raw": "<p>Mt. Gox moved more than $700 million worth of Bitcoin while the market was already under stress, giving traders a familiar reason to ask whether old bankruptcy coins are moving closer to new supply. The estate-linked wallets moved 10,422 BTC on June 2, worth roughly $739 million at the time of the transfer. Most of [&#8230;]</p>\n<p>The post <a href=\"https://cryptoslate.com/mt-gox-linked-wallets-moved-10422-btc-worth-roughly-739-million/\">Mt. Gox-linked wallets moved 10,422 BTC, worth roughly ",
     "published_at": "Wed, 03 Jun 2026 16:35:39 +0000",
     "fetched_at": "2026-06-03T18:07:52.499275+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Mt. Gox moves $739M BTC, raising fears of imminent supply dump.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.75,
+      "ETH-USD": 0.45,
+      "SOL-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:40.587488+00:00"
   },
   {
     "id": "8c37648f9cd8f28e",
@@ -1374,16 +1688,27 @@
     "summary_raw": "With STRC trading under $100, experts are at odds over whether the sale has exposed a \u201cstructural crack\u201d in Strategy\u2019s Bitcoin flywheel.",
     "published_at": "Wed, 03 Jun 2026 16:35:13 +0000",
     "fetched_at": "2026-06-03T18:07:51.101479+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Strategy's BTC flywheel faces structural concerns as STRC trades below $100.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.55,
+      "ETH-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:43.769725+00:00"
   },
   {
     "id": "b62b5cd96738fd79",
@@ -1395,15 +1720,17 @@
     "published_at": "Wed, 03 Jun 2026 16:35:00 GMT",
     "fetched_at": "2026-06-03T18:07:20.095514+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Sports betting liability news unrelated to tracked financial assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:45.890713+00:00"
   },
   {
     "id": "2ebb2e6bbdde3809",
@@ -1414,16 +1741,48 @@
     "summary_raw": "U.S. Treasury yields increased Wednesday as traders await new economic data amid ongoing Middle East tensions.",
     "published_at": "Wed, 03 Jun 2026 16:32:15 GMT",
     "fetched_at": "2026-06-03T18:07:19.900010+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "^TNX",
+      "TLT",
+      "IEF",
+      "SPY",
+      "QQQ",
+      "CL=F",
+      "XLE",
+      "GLD",
+      "BIL"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Strong jobs data and oil rise push 10-year yield toward 4.5%, pressuring bonds.",
+    "signal_direction": {
+      "^TNX": 1,
+      "TLT": -1,
+      "IEF": -1,
+      "SPY": -1,
+      "QQQ": -1,
+      "CL=F": 1,
+      "XLE": 1,
+      "GLD": -1,
+      "BIL": 1
+    },
+    "signal_strength": {
+      "^TNX": 0.7,
+      "TLT": 0.7,
+      "IEF": 0.6,
+      "SPY": 0.45,
+      "QQQ": 0.45,
+      "CL=F": 0.55,
+      "XLE": 0.5,
+      "GLD": 0.35,
+      "BIL": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:51.128708+00:00"
   },
   {
     "id": "f25e1f29a1cc1659",
@@ -1434,16 +1793,36 @@
     "summary_raw": "Private-credit woes are back in focus after a pair of l funds limited redemptions in the second quarter",
     "published_at": "Wed, 03 Jun 2026 16:32:00 GMT",
     "fetched_at": "2026-06-03T18:07:20.095522+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "HYG",
+      "LQD",
+      "XLF",
+      "IWM",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Redemption wave hits private credit, signaling stress in illiquid debt markets.",
+    "signal_direction": {
+      "HYG": -1,
+      "LQD": -1,
+      "XLF": -1,
+      "IWM": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "HYG": 0.6,
+      "LQD": 0.5,
+      "XLF": 0.55,
+      "IWM": 0.45,
+      "^VIX": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:54.931790+00:00"
   },
   {
     "id": "b758fd49a62bf382",
@@ -1454,16 +1833,24 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/Tether-Backed-Adecoagro-to-Launch-Sugarcane-Powered-Bitcoin-Mining-in-Brazil.jpg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/tether-backed-adecoagro-bitcoin-mining\" rel=\"nofollow\">Tether-Backed Adecoagro to Launch Sugarcane-Powered Bitcoin Mining in Brazil</a></p>\n<p>Adecoagro is set to begin Bitcoin ",
     "published_at": "Wed, 03 Jun 2026 16:29:47 +0000",
     "fetched_at": "2026-06-03T18:07:51.662479+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Tether-backed Adecoagro launches sugarcane-powered Bitcoin mining in Brazil.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:27:57.587891+00:00"
   },
   {
     "id": "6793bb267301588c",
@@ -1474,16 +1861,36 @@
     "summary_raw": "Oil exporters seek alternative ways to export, as crucial waterway has been disrupted for over three months",
     "published_at": "Wed, 03 Jun 2026 16:21:58 GMT",
     "fetched_at": "2026-06-03T18:07:20.716466+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "SPY",
+      "GLD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Hormuz disruption spurs pipeline alternatives, signaling prolonged oil supply risk.",
+    "signal_direction": {
+      "CL=F": 1,
+      "XLE": 1,
+      "SPY": -1,
+      "GLD": 1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.7,
+      "XLE": 0.6,
+      "SPY": 0.45,
+      "GLD": 0.5,
+      "^VIX": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:01.587419+00:00"
   },
   {
     "id": "9daed66e51d4769d",
@@ -1494,16 +1901,30 @@
     "summary_raw": "The valuation would make Elon Musk's company the seventh-biggest in the U.S., above Tesla, which has a market cap of about $1.6 trillion.",
     "published_at": "Wed, 03 Jun 2026 16:15:08 GMT",
     "fetched_at": "2026-06-03T18:07:19.899889+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "SPY",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "SpaceX IPO at $1.75T valuation; indirect sentiment boost for tech sector.",
+    "signal_direction": {
+      "QQQ": 1,
+      "SPY": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.2,
+      "SPY": 0.15,
+      "XLK": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:04.891244+00:00"
   },
   {
     "id": "b136f323ebffe795",
@@ -1515,15 +1936,17 @@
     "published_at": "Wed, 03 Jun 2026 16:13:51 +0000",
     "fetched_at": "2026-06-03T18:07:51.257165+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Vague crypto and consumer headline with no actionable market signal.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:07.515582+00:00"
   },
   {
     "id": "0ef934ceddcf00e1",
@@ -1534,16 +1957,33 @@
     "summary_raw": "Investors are also monitoring developments in the U.S.-Iran war after tensions escalated overnight.",
     "published_at": "Wed, 03 Jun 2026 16:10:53 GMT",
     "fetched_at": "2026-06-03T18:07:19.899975+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "EFA",
+      "^VIX",
+      "GLD",
+      "CL=F"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "European stocks fall; U.S.-Iran tensions escalate, boosting safe havens.",
+    "signal_direction": {
+      "EFA": -1,
+      "^VIX": 1,
+      "GLD": 1,
+      "CL=F": 1
+    },
+    "signal_strength": {
+      "EFA": 0.5,
+      "^VIX": 0.6,
+      "GLD": 0.6,
+      "CL=F": 0.65
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:11.711596+00:00"
   },
   {
     "id": "050468d5c2153c7e",
@@ -1554,16 +1994,36 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Bitcoin copying 2022 'almost perfectly' as trader sees key support failing\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS1ob3ctdG8tdG9rZW5pemUtcmVhbC13b3JsZC1hc3NldHMtb24tYml0Y29pbi5qcGc=.jpg\" /></p><p>Bitcoin traders warned of a key BTC price support trend line failing as 2022 bear market history continued to repeat.</p>",
     "published_at": "Wed, 03 Jun 2026 16:09:12 +0000",
     "fetched_at": "2026-06-03T18:07:51.021104+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "^VIX",
+      "UVXY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Bitcoin mirrors 2022 bear pattern as key support trend line fails.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1,
+      "^VIX": 1,
+      "UVXY": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.72,
+      "ETH-USD": 0.65,
+      "SOL-USD": 0.6,
+      "^VIX": 0.3,
+      "UVXY": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:15.645629+00:00"
   },
   {
     "id": "ab2b9a8245e1b58f",
@@ -1575,15 +2035,17 @@
     "published_at": "Wed, 03 Jun 2026 16:04:42 GMT",
     "fetched_at": "2026-06-03T18:07:20.716482+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Private credit fraud allegation against law firm, no broad market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:17.961268+00:00"
   },
   {
     "id": "e884c82d30e37f7b",
@@ -1594,16 +2056,30 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Crypto firms face July 1 EU cutoff as MiCA grace period ends\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS13aHktY3J5cHRvLXJlZnVzZXMtdG8tY29tcGx5LXdpdGgtbWljYS5qcGc=.jpg\" /></p><p>The ESMA says crypto companies without MiCA authorization must stop serving EU clients from July 1, even if their licence applications remain under ",
     "published_at": "Wed, 03 Jun 2026 16:01:06 +0000",
     "fetched_at": "2026-06-03T18:07:51.021113+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "EU MiCA deadline forces unlicensed crypto firms to halt EU client services.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.45,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:21.611989+00:00"
   },
   {
     "id": "4bfc0834fda80e6a",
@@ -1614,16 +2090,27 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Hyperliquid bear turns bullish after losing over $46M shorting HYPE\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS1idWxsLW1hcmtldC12cy1iZWFyLW1hcmtldC13aGF0cy10aGUtZGlmZmVyZW5jZS0xLmpwZw==.jpg\" /></p><p>The whale is now backing Arthur Hayes\u2019 favored HYPE, ZEC and NEAR plays, signaling a sharp pivot toward momentum-led crypto b",
     "published_at": "Wed, 03 Jun 2026 16:00:40 +0000",
     "fetched_at": "2026-06-03T18:07:51.021121+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Major HYPE short squeeze forces bear capitulation, signals crypto momentum shift.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:25.050415+00:00"
   },
   {
     "id": "f257d4fe5a4af3a3",
@@ -1634,16 +2121,30 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Ethereum drops to 14-week lows: Can ETH price hold $1.8K support?\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS13aGF0LWlzLXRoZS1ldGhlcmV1bS1yaW5rZWJ5LXRlc3RuZXQtYS1iZWdpbm5lcnMtZ3VpZGUxMTEuanBn.jpg\" /></p><p>Ethereum price slides to a 14-week low as weakening demand and persistent ETF outflows put the key $1,800 support at ri",
     "published_at": "Wed, 03 Jun 2026 15:32:39 +0000",
     "fetched_at": "2026-06-03T18:07:51.021128+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.78,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Ethereum hits 14-week lows, $1,800 support threatened by ETF outflows.",
+    "signal_direction": {
+      "ETH-USD": -1,
+      "BTC-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.8,
+      "BTC-USD": 0.45,
+      "SOL-USD": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:28.291426+00:00"
   },
   {
     "id": "11220d13b5459ab4",
@@ -1654,16 +2155,45 @@
     "summary_raw": "Bank of Japan has been slowly reducing its bond purchases to speed up quantitative tightening efforts",
     "published_at": "Wed, 03 Jun 2026 15:30:07 GMT",
     "fetched_at": "2026-06-03T18:07:20.716502+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "^TNX",
+      "TLT",
+      "IEF",
+      "DX-Y.NYB",
+      "EEM",
+      "EFA",
+      "GLD",
+      "BTC-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "boj_rate_hike",
+    "impact_horizon": "MEDIUM",
+    "summary": "BoJ may tweak bond purchase plans amid QT acceleration and volatility.",
+    "signal_direction": {
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "DX-Y.NYB": -1,
+      "EEM": -1,
+      "EFA": 1,
+      "GLD": 1,
+      "BTC-USD": -1
+    },
+    "signal_strength": {
+      "TLT": 0.4,
+      "IEF": 0.4,
+      "^TNX": 0.4,
+      "DX-Y.NYB": 0.45,
+      "EEM": 0.3,
+      "EFA": 0.35,
+      "GLD": 0.3,
+      "BTC-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:33.393212+00:00"
   },
   {
     "id": "90fbe3f9f1404301",
@@ -1675,15 +2205,17 @@
     "published_at": "Wed, 03 Jun 2026 15:30:00 +0200",
     "fetched_at": "2026-06-03T18:07:32.708245+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "ECB speech on digital payment freedom, no clear market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:36.143902+00:00"
   },
   {
     "id": "841a6fe5c63071d5",
@@ -1694,16 +2226,24 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/Introducing-Lava-Card-1-scaled.png\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/lava-card-launches-visa-credit-card\" rel=\"nofollow\">Lava Card Launches Secured Visa Credit Card That Pays Bitcoin Rewards on Every Purchase</a></p>\n<p>Lava has launched a secured Visa credit card that lets users fund spendi",
     "published_at": "Wed, 03 Jun 2026 15:18:31 +0000",
     "fetched_at": "2026-06-03T18:07:51.662487+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_rally",
+    "impact_horizon": "LONG",
+    "summary": "Lava Card launches Bitcoin rewards Visa card, boosting BTC adoption narrative.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-03T18:28:38.979459+00:00"
   },
   {
     "id": "e0044a805ef8cfc6",
@@ -18766,6 +19306,126 @@
     "summary_raw": "",
     "published_at": "2026-06-02T09:37:54Z",
     "fetched_at": "2026-06-03T18:07:19.953048+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "62e8440e13ffe03a",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Compass Point Raises Price Target on Applied Digital (APLD) Following Major AI Data Center Lease Agreement",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/compass-point-raises-price-target-093751684.html",
+    "summary_raw": "",
+    "published_at": "2026-06-02T09:37:51Z",
+    "fetched_at": "2026-06-03T18:26:19.793612+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "5dc90415cc0f705d",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "IonQ (IONQ) Reports Record Revenue Growth and Quantum Computing Advances in Q1 2026",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/ionq-ionq-reports-record-revenue-093750536.html",
+    "summary_raw": "",
+    "published_at": "2026-06-02T09:37:50Z",
+    "fetched_at": "2026-06-03T18:26:19.793626+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "56f9682d209349aa",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Symbotic (SYM) Reports Revenue Beat as Software Growth and Automation Expansion Accelerate",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/symbotic-sym-reports-revenue-beat-093748943.html",
+    "summary_raw": "",
+    "published_at": "2026-06-02T09:37:48Z",
+    "fetched_at": "2026-06-03T18:26:19.793605+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "010d311e3448f40b",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Bank of America and New Street Research Maintain Neutral Stance on AST SpaceMobile (ASTS) Amid Launch Delays",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-street-research-maintain-093747679.html",
+    "summary_raw": "",
+    "published_at": "2026-06-02T09:37:47Z",
+    "fetched_at": "2026-06-03T18:26:19.793598+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "53fdee22f7e98a09",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Compass Point Raises Price Target on Nebius Group (NBIS) Following Strong AI Cloud Growth",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/compass-point-raises-price-target-093745745.html",
+    "summary_raw": "",
+    "published_at": "2026-06-02T09:37:45Z",
+    "fetched_at": "2026-06-03T18:26:19.793591+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "e5b9272ae93652ad",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Is Elon Musk Selling 'Hopium' With the $1.8 Trillion SpaceX IPO?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-selling-hopium-1-092700202.html",
+    "summary_raw": "",
+    "published_at": "2026-06-02T09:27:00Z",
+    "fetched_at": "2026-06-03T18:26:19.793619+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
