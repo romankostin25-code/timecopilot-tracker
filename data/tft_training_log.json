@@ -1,14 +1,14 @@
 {
   "5": {
-    "checkpoint": "data/tft_checkpoint/tft_h5.ckpt",
-    "trained_at": "2026-05-31T11:59:51.067024"
+    "finetuned_at": "2026-06-04T21:29:46.830587",
+    "finetune_days": 90
   },
   "30": {
-    "checkpoint": "data/tft_checkpoint/tft_h30.ckpt",
-    "trained_at": "2026-05-31T12:44:39.578889"
+    "finetuned_at": "2026-06-04T21:33:01.249982",
+    "finetune_days": 90
   },
   "90": {
-    "checkpoint": "data/tft_checkpoint/tft_h90.ckpt",
-    "trained_at": "2026-05-31T13:26:05.493015"
+    "finetuned_at": "2026-06-04T21:36:21.170947",
+    "finetune_days": 90
   }
 }
