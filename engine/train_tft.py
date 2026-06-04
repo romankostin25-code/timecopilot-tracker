@@ -144,7 +144,8 @@ def train_horizon(horizon: int, df: pd.DataFrame, epochs: int = 50, batch_size: 
         hidden_continuous_size=32,
         output_size=2,  # binary: [P(bearish), P(bullish)]
         loss=CrossEntropy(),
-        log_interval=10,
+        log_interval=-1,      # disable per-batch plots — CrossEntropy yerr can be negative
+        log_val_interval=-1,  # disable validation plots for same reason
         reduce_on_plateau_patience=4,
     )
     print(f"[TFT] Parameters: {sum(p.numel() for p in tft.parameters()):,}")
@@ -277,6 +278,8 @@ def finetune_horizon(horizon: int, df: pd.DataFrame, finetune_days: int = FINETU
     try:
         model = TemporalFusionTransformer.load_from_checkpoint(ckpt_path)
         model.hparams.learning_rate = lr
+        model.hparams.log_interval     = -1  # suppress plots — CrossEntropy yerr can be negative
+        model.hparams.log_val_interval = -1
         # Reset optimizer by modifying configure_optimizers
         model.configure_optimizers = lambda: torch.optim.Adam(model.parameters(), lr=lr)
     except Exception as e:

@@ -328,6 +328,12 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         if month in (4, 5, 6):
             score -= 0.15
         score += -0.08 if rate == "HAWKISH" else (0.05 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker == "IWM":
+        # Small-caps: more rate-sensitive than large-caps (variable-rate debt, growth premium).
+        score += 0.10
+        score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
+        score += 0.25 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
+        score -= 0.20 if rate == "HAWKISH" else (-0.15 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker in EQUITY_ETFS:
         score += 0.10  # equities have structural upward drift
         score += 0.25 if vix < 15 else (0.10 if vix < 20 else (-0.15 if vix > 25 else (-0.30 if vix > 30 else 0.0)))
@@ -352,17 +358,33 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += 0.25 if dollar == "DOLLAR_WEAKNESS" else (-0.25 if dollar == "DOLLAR_STRENGTH" else 0.0)
         score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
         score += 0.10 if vix < 20 else (-0.15 if vix > 28 else 0.0)
-    elif ticker in BOND_ETFS:
-        # Categorical rate label is sticky and lags market-rate moves by weeks;
-        # halve its weight and add the actual yield trend as a more timely signal.
+    elif ticker in {"TLT", "IEF"}:
+        # Pure rate-duration Treasuries: yield direction dominates.
         if rate == "HAWKISH":
             score -= 0.15
         elif rate in ("DOVISH", "EASING"):
             score += 0.25
-        # Falling yields → bond-bullish; rising yields → bond-bearish.
-        # us10y_5d_chg_pct is the % change in the yield LEVEL (not bps).
         us10y_5d = macro.get("us10y_5d_chg_pct", 0.0) or 0.0
         score += float(np.clip(-us10y_5d / 5.0, -0.35, 0.35))
+    elif ticker in {"HYG", "LQD"}:
+        # Credit bonds: risk sentiment + credit spread are the key drivers, NOT just yields.
+        # In risk-off, credit spreads widen → HYG/LQD fall even if treasuries rally.
+        score += 0.25 if risk == "RISK_ON" else (-0.35 if risk == "RISK_OFF" else 0.0)
+        # SP500 is the best proxy for credit conditions
+        score += float(np.clip(sp500_mom / 3.5, -0.25, 0.25))
+        # Rate regime has a weaker, secondary effect
+        if rate == "HAWKISH":
+            score -= 0.08
+        elif rate in ("DOVISH", "EASING"):
+            score += 0.12
+    elif ticker in BOND_ETFS:
+        # Other bond ETFs (BIL handled above): mild rate sensitivity
+        if rate == "HAWKISH":
+            score -= 0.10
+        elif rate in ("DOVISH", "EASING"):
+            score += 0.20
+        us10y_5d = macro.get("us10y_5d_chg_pct", 0.0) or 0.0
+        score += float(np.clip(-us10y_5d / 6.0, -0.25, 0.25))
     elif ticker == "HG=F":
         # Copper ("Dr. Copper"): leading indicator of global industrial demand
         # Primary drivers: global growth expectations (risk regime) + dollar + rates
@@ -392,6 +414,13 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
     elif ticker in ("^VIX", "UVXY"):
         score += 0.60 if risk == "RISK_OFF" else (-0.60 if risk == "RISK_ON" else 0.0)
         score += 0.20 if vix > 30 else (-0.20 if vix < 15 else 0.0)
+    elif ticker == "^IRX":
+        # 3-month T-bill yield — tracks Fed funds rate with very short lag.
+        # Strong signal: HAWKISH = ^IRX stays elevated/rises; DOVISH = falls.
+        score += 0.50 if rate == "HAWKISH" else (-0.50 if rate in ("DOVISH", "EASING") else 0.0)
+        # dxy_5d as proxy for USD rate pressure
+        dxy_5d = macro.get("dxy_5d_chg_pct", 0.0) or 0.0
+        score += float(np.clip(dxy_5d / 3.0, -0.20, 0.20))
     elif ticker == "DX-Y.NYB":
         score += 0.15 if rate == "HAWKISH" else (-0.15 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.08 if risk == "RISK_OFF" else 0.0
@@ -478,7 +507,7 @@ def _bday_h_idx(forecast_date, target_date, max_idx):
     return min(max(len(bdays) - 1, 0), max_idx)
 
 
-_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "^TNX"}  # true macro-dominated plays only
+_VOL_TICKERS = {"^VIX", "UVXY", "BIL", "^TNX", "^IRX"}  # macro-dominated, model noise suppressed
 
 
 def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
