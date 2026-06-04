@@ -12,6 +12,23 @@ load_dotenv()
 
 FEED_PATH = Path("data/intelligence_feed.json")
 
+_FEED_CACHE: list | None = None
+_FEED_CACHE_MTIME: float = 0.0
+
+
+def _get_cached_articles() -> list:
+    global _FEED_CACHE, _FEED_CACHE_MTIME
+    if not FEED_PATH.exists():
+        return []
+    try:
+        mtime = FEED_PATH.stat().st_mtime
+        if _FEED_CACHE is None or mtime != _FEED_CACHE_MTIME:
+            _FEED_CACHE = json.loads(FEED_PATH.read_text())
+            _FEED_CACHE_MTIME = mtime
+        return _FEED_CACHE
+    except Exception:
+        return []
+
 
 def _get_client():
     return anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY", ""))
@@ -92,7 +109,7 @@ def process_feed(max_batch=20):
     if not FEED_PATH.exists():
         print("[nlp_pipeline] No feed file found.")
         return
-    articles = json.loads(FEED_PATH.read_text())
+    articles = _get_cached_articles()
     unprocessed = [a for a in articles if not a.get("nlp_processed")]
     batch = unprocessed[:max_batch]
     if not batch:
@@ -114,13 +131,16 @@ def process_feed(max_batch=20):
                 articles[i] = match
 
     FEED_PATH.write_text(json.dumps(articles, indent=2, default=str))
+    global _FEED_CACHE, _FEED_CACHE_MTIME
+    _FEED_CACHE = None  # invalidate cache after write
+    _FEED_CACHE_MTIME = 0.0
     print(f"[nlp_pipeline] ✓ {len(batch)} articles processed.")
 
 
 def get_asset_signals_from_news(ticker, max_age_hours=24):
-    if not FEED_PATH.exists():
+    articles = _get_cached_articles()
+    if not articles:
         return {"signal": "NEUTRAL", "confidence": "NO_DATA", "items": []}
-    articles = json.loads(FEED_PATH.read_text())
     cutoff_str = (datetime.now(timezone.utc) - timedelta(hours=max_age_hours)).isoformat()
     relevant = [
         a for a in articles

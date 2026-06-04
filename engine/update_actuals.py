@@ -105,9 +105,8 @@ def fill_actuals_and_grade():
     df.to_csv(CSV_PATH, index=False)
     print(f"✓ Graded {updated} forecasts.")
     _regenerate_scorecard(df)
-    if updated > 0:
-        from engine.train_direction_model import train_direction_model
-        train_direction_model()
+    from engine.train_direction_model import train_direction_model
+    train_direction_model()
 
 
 def _regenerate_scorecard(df):
@@ -161,10 +160,20 @@ def _regenerate_scorecard(df):
     h5 = by_horizon.get("5", {})
     trend = "IMPROVING" if (h5.get("calibration_7d") or 0) > (h5.get("calibration_30d") or 0) else "DECLINING"
 
+    # Aggregate accuracy across all graded horizons
+    all_graded_dir = graded["direction_correct"].dropna()
+    global_dir_7d  = rolling(graded, "direction_correct", 7)
+    global_dir_14d = rolling(graded, "direction_correct", 14)
+    global_dir_30d = rolling(graded, "direction_correct", 30)
+
     scorecard = {
         "generated_at": datetime.now().isoformat(),
         "global": {
             "forecasts_graded_total": len(graded),
+            "directional_accuracy_7d":    global_dir_7d,
+            "directional_accuracy_14d":   global_dir_14d,
+            "directional_accuracy_30d":   global_dir_30d,
+            "directional_accuracy_alltime": round(float(all_graded_dir.mean()), 4) if len(all_graded_dir) else None,
             "trend": trend,
         },
         "by_horizon": by_horizon,

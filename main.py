@@ -23,6 +23,7 @@ def main():
     parser.add_argument("--backfill",   action="store_true", help="Walk-forward backfill: re-run model on past 14 trading days + grade")
     parser.add_argument("--poll",       action="store_true", help="15-min price + news poll (for local testing)")
     parser.add_argument("--regrade",    action="store_true", help="Re-grade direction_correct for all historical rows with corrected baseline")
+    parser.add_argument("--recount",    action="store_true", help="Re-grade all actuals, regenerate scorecard, retrain LR model (full accuracy refresh)")
     parser.add_argument("--train",      action="store_true", help="Train direction meta-learner (logistic regression) on graded history")
     parser.add_argument("--pipeline",   action="store_true", help="Run full ML data pipeline: pull news, compute features, assemble dataset")
     parser.add_argument("--news-update",action="store_true", help="Incremental news + features update (last 3 days, for daily inference)")
@@ -98,9 +99,13 @@ def main():
         from engine.backfill_forecasts import backfill_forecasts
         backfill_forecasts()
 
-    if args.regrade:
+    if args.regrade or args.recount:
         from engine.update_actuals import regrade_direction_correct
         regrade_direction_correct()
+
+    if args.recount:
+        from engine.update_actuals import fill_actuals_and_grade
+        fill_actuals_and_grade()
 
     if args.train or args.retrain:
         from engine.train_direction_model import train_direction_model
@@ -160,6 +165,7 @@ python main.py --cot         Fetch CFTC COT positioning data (weekly)
 python main.py --pcr         Fetch CBOE equity put/call ratio (daily)
 
 [v2 legacy]
+python main.py --recount     Re-grade all actuals, refresh scorecard, retrain LR model
 python main.py --retrain     Retrain directional classifiers
 python main.py --backtest    Walk-forward backtest
 python main.py --aggregator  Run learning aggregator

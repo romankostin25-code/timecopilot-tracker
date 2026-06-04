@@ -49,7 +49,8 @@ def fetch_price_data(ticker, years=3):
     df = close.reset_index()
     df.columns = ["ds", "y"]
     df["unique_id"] = ticker
-    df["ds"] = pd.to_datetime(df["ds"]).dt.tz_localize(None).dt.normalize()
+    _ts = pd.to_datetime(df["ds"], utc=True).dt.tz_convert(None)
+    df["ds"] = _ts.dt.normalize()
     df = df.dropna().sort_values("ds").reset_index(drop=True)
     if len(df) < 60:
         raise ValueError(f"Insufficient data for {ticker}: {len(df)} rows")
@@ -86,7 +87,8 @@ def _ensure_regular_freq(df, freq):
     ts = ts.reindex(idx).ffill().dropna()
     ts.index.name = "ds"
     out = ts.reset_index()[["ds", "y", "unique_id"]]
-    out["ds"] = pd.to_datetime(out["ds"]).dt.tz_localize(None).dt.normalize()
+    _ts2 = pd.to_datetime(out["ds"], utc=True).dt.tz_convert(None)
+    out["ds"] = _ts2.dt.normalize()
     return out
 
 
@@ -212,6 +214,8 @@ def _load_macro_signals():
             "oil_5d_chg_pct":      float(row.get("oil_5d_chg_pct",   0.0) or 0.0),
             "gold_5d_chg_pct":     float(row.get("gold_5d_chg_pct",  0.0) or 0.0),
             "sp500_5d_chg_pct":    float(row.get("sp500_5d_chg_pct", 0.0) or 0.0),
+            "us10y_5d_chg_pct":    float(row.get("us10y_5d_chg_pct", 0.0) or 0.0),
+            "dxy_5d_chg_pct":      float(row.get("dxy_5d_chg_pct",   0.0) or 0.0),
         }
     except Exception:
         return {}
@@ -335,8 +339,10 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += 0.20 if risk == "RISK_ON" else (-0.35 if risk == "RISK_OFF" else 0.0)
         score += -0.15 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
     elif ticker == "EEM":
-        # EM broad: dollar and risk regime dominate; sp500_mom captures US market leadership
-        score += 0.30 if dollar == "DOLLAR_WEAKNESS" else (-0.35 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        # EM broad: dollar and risk regime dominate; sp500_mom captures US market leadership.
+        # Reduced dollar_strength penalty (was -0.35): dollar strength is partly offset by
+        # EM-specific tailwinds (commodity exports, rate differentials).
+        score += 0.30 if dollar == "DOLLAR_WEAKNESS" else (-0.25 if dollar == "DOLLAR_STRENGTH" else 0.0)
         score += 0.25 if risk == "RISK_ON" else (-0.30 if risk == "RISK_OFF" else 0.0)
         score += -0.10 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
         # EEM has ~0.75 correlation with SPY on 5d moves — add SPY momentum directly
@@ -347,13 +353,36 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += 0.20 if risk == "RISK_ON" else (-0.20 if risk == "RISK_OFF" else 0.0)
         score += 0.10 if vix < 20 else (-0.15 if vix > 28 else 0.0)
     elif ticker in BOND_ETFS:
-        score -= 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
+        # Categorical rate label is sticky and lags market-rate moves by weeks;
+        # halve its weight and add the actual yield trend as a more timely signal.
+        if rate == "HAWKISH":
+            score -= 0.15
+        elif rate in ("DOVISH", "EASING"):
+            score += 0.25
+        # Falling yields → bond-bullish; rising yields → bond-bearish.
+        # us10y_5d_chg_pct is the % change in the yield LEVEL (not bps).
+        us10y_5d = macro.get("us10y_5d_chg_pct", 0.0) or 0.0
+        score += float(np.clip(-us10y_5d / 5.0, -0.35, 0.35))
     elif ticker == "HG=F":
         # Copper ("Dr. Copper"): leading indicator of global industrial demand
         # Primary drivers: global growth expectations (risk regime) + dollar + rates
         score += 0.30 if risk == "RISK_ON" else (-0.35 if risk == "RISK_OFF" else 0.0)
         score += -0.30 if dollar == "DOLLAR_STRENGTH" else (0.30 if dollar == "DOLLAR_WEAKNESS" else 0.0)
         score += -0.15 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
+    elif ticker in {"GC=F", "GLD"}:
+        # Gold is a safe-haven and de-dollarization hedge: RISK_OFF is BULLISH,
+        # not bearish. Dollar sensitivity is weaker than other commodities.
+        score += 0.25 if risk == "RISK_OFF" else (-0.05 if risk == "RISK_ON" else 0.0)
+        score += 0.10 if dollar == "DOLLAR_WEAKNESS" else (-0.10 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += -0.10 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
+        score += 0.05  # structural bullish drift: central bank demand + inflation hedge
+    elif ticker in {"SI=F", "SLV"}:
+        # Silver: safe-haven + industrial metal. Follows gold but more volatile.
+        score += 0.20 if risk == "RISK_OFF" else (-0.05 if risk == "RISK_ON" else 0.0)
+        score += 0.12 if dollar == "DOLLAR_WEAKNESS" else (-0.12 if dollar == "DOLLAR_STRENGTH" else 0.0)
+        score += -0.08 if rate == "HAWKISH" else (0.08 if rate in ("DOVISH", "EASING") else 0.0)
+        gold_mom = macro.get("gold_5d_chg_pct", 0.0) or 0.0
+        score += float(np.clip(gold_mom / 6.0, -0.20, 0.20))
     elif ticker in COMMODITY_TICKS:
         score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
         score += 0.15 if risk == "RISK_ON" else (-0.15 if risk == "RISK_OFF" else 0.0)
@@ -364,8 +393,11 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += 0.60 if risk == "RISK_OFF" else (-0.60 if risk == "RISK_ON" else 0.0)
         score += 0.20 if vix > 30 else (-0.20 if vix < 15 else 0.0)
     elif ticker == "DX-Y.NYB":
-        score += 0.20 if rate == "HAWKISH" else (-0.20 if rate in ("DOVISH", "EASING") else 0.0)
-        score += 0.10 if risk == "RISK_OFF" else 0.0
+        score += 0.15 if rate == "HAWKISH" else (-0.15 if rate in ("DOVISH", "EASING") else 0.0)
+        score += 0.08 if risk == "RISK_OFF" else 0.0
+        # Dollar price momentum: DXY trend is highly predictive for short-term direction.
+        dxy_5d = macro.get("dxy_5d_chg_pct", 0.0) or 0.0
+        score += float(np.clip(dxy_5d / 2.0, -0.30, 0.30))
 
     # VIX term structure overlay for risk assets: backwardation = extra bearish pressure
     if slope < -0.15 and ticker not in ("^VIX", "UVXY", "BIL", "^IRX"):
@@ -503,8 +535,16 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
     elif ticker == "NG=F":
         # NG: price momentum is more predictive than static seasonal macro
         combined = 0.15 * model_sc + 0.45 * tech_score + 0.40 * macro_score
-    elif ticker in _VOL_TICKERS:
+    elif ticker in {"^VIX", "UVXY"}:
+        # Volatility instruments: trend/momentum is important (VIX mean-reverts but also trends).
+        # Separate from BIL/^TNX which are genuinely macro-dominated.
+        combined = 0.15 * model_sc + 0.55 * macro_score + 0.30 * tech_score
+    elif ticker in _VOL_TICKERS:  # BIL, ^TNX
         combined = 0.20 * model_sc + 0.80 * macro_score
+    elif ticker == "DX-Y.NYB":
+        # Dollar index: categorical macro labels have poor predictive track record;
+        # price momentum (tech) is a more reliable short-term signal.
+        combined = 0.25 * model_sc + 0.45 * tech_score + 0.30 * macro_score
     elif ticker in EQUITY_ETFS:
         # RSI + momentum (tech_score) beats ARIMA for short-term equity direction
         combined = 0.35 * model_sc + 0.30 * tech_score + 0.25 * macro_score + 0.10 * claude_score
@@ -512,9 +552,8 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
         # Commodities + intl ETFs: price momentum (tech) is more timely than static macro
         combined = 0.40 * model_sc + 0.35 * tech_score + 0.20 * macro_score + 0.05 * claude_score
     elif ticker in BOND_ETFS:
-        # Bonds: categorical rate-regime macro is often stale vs actual yield moves;
-        # add price momentum so a rally in TLT/IEF overrides static HAWKISH bias.
-        combined = 0.35 * model_sc + 0.30 * tech_score + 0.25 * macro_score + 0.10 * claude_score
+        # Yield-trend macro now carries more signal; increase tech weight to catch price reversals.
+        combined = 0.35 * model_sc + 0.35 * tech_score + 0.20 * macro_score + 0.10 * claude_score
     else:
         combined = 0.60 * model_sc + 0.25 * macro_score + 0.15 * claude_score
 
@@ -711,28 +750,6 @@ def run_all_forecasts():
         except Exception as e:
             print(f"[{ticker}] ✗ {e}")
             skipped.append(ticker)
-
-    # Bearish concentration cap: if >60% of 5d calls are BEARISH, the weakest
-    # conviction BEARISH rows get flipped to BULLISH. Prevents piling on one side
-    # when the signal is weak — a diversified signal is more accurate than a crowded one.
-    h5_rows = [r for r in new_rows if r["horizon"] == 5]
-    if h5_rows:
-        n_bear = sum(1 for r in h5_rows if r["direction"] == "BEARISH")
-        bear_frac = n_bear / len(h5_rows)
-        if bear_frac > 0.60:
-            # Sort BEARISH rows by signal_strength ascending (weakest conviction first)
-            bear_rows = sorted(
-                [r for r in h5_rows if r["direction"] == "BEARISH"],
-                key=lambda r: float(r.get("signal_strength", 0))
-            )
-            # Flip enough to bring bear_frac down to ~55%
-            target_bear = int(0.55 * len(h5_rows))
-            to_flip = n_bear - target_bear
-            flip_tickers = {r["ticker"] for r in bear_rows[:to_flip]}
-            for r in new_rows:
-                if r["horizon"] == 5 and r["ticker"] in flip_tickers:
-                    r["direction"] = "BULLISH"
-            print(f"[cap] Flipped {to_flip} weak BEARISH→BULLISH (was {bear_frac:.0%} bear): {flip_tickers}")
 
     os.makedirs("data", exist_ok=True)
     existing = pd.read_csv(CSV_PATH) if os.path.exists(CSV_PATH) else pd.DataFrame()
