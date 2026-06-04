@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T18:28:41.166899",
+  "generated_at": "2026-06-04T00:37:52.397688",
   "events": [
     {
       "event": "FOMC",
@@ -214,24 +214,10 @@
   ],
   "upcoming_7d": [
     {
-      "event": "EIA_OIL",
-      "date": "2026-06-03",
-      "time_utc": "14:30",
-      "days_until": 0,
-      "sensitivity": {
-        "assets": [
-          "CL=F",
-          "NG=F",
-          "XLE"
-        ],
-        "band_widen_pct": 0.15
-      }
-    },
-    {
       "event": "EIA_GAS",
       "date": "2026-06-04",
       "time_utc": "14:30",
-      "days_until": 1,
+      "days_until": 0,
       "sensitivity": {
         "assets": [
           "NG=F",
@@ -244,7 +230,7 @@
       "event": "NFP",
       "date": "2026-06-05",
       "time_utc": "12:30",
-      "days_until": 2,
+      "days_until": 1,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -260,7 +246,7 @@
       "event": "USDA_CROP",
       "date": "2026-06-09",
       "time_utc": "20:00",
-      "days_until": 6,
+      "days_until": 5,
       "sensitivity": {
         "assets": [
           "ZC=F",
@@ -273,7 +259,7 @@
       "event": "CPI",
       "date": "2026-06-10",
       "time_utc": "12:30",
-      "days_until": 7,
+      "days_until": 6,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -289,7 +275,7 @@
       "event": "EIA_OIL",
       "date": "2026-06-10",
       "time_utc": "14:30",
-      "days_until": 7,
+      "days_until": 6,
       "sensitivity": {
         "assets": [
           "CL=F",
@@ -297,6 +283,33 @@
           "XLE"
         ],
         "band_widen_pct": 0.15
+      }
+    },
+    {
+      "event": "EIA_GAS",
+      "date": "2026-06-11",
+      "time_utc": "14:30",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "NG=F",
+          "XLE"
+        ],
+        "band_widen_pct": 0.2
+      }
+    },
+    {
+      "event": "USDA_WASDE",
+      "date": "2026-06-11",
+      "time_utc": "16:00",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "ZC=F",
+          "ZW=F",
+          "SI=F"
+        ],
+        "band_widen_pct": 0.25
       }
     }
   ]
