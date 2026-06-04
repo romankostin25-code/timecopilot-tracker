@@ -3,13 +3,17 @@ on:
   workflow_dispatch:
     inputs:
       days_back:
-        description: 'Trading days to backfill (default 14)'
+        description: 'Trading days to backfill (default 35 covers all ungraded 30d forecasts)'
         required: false
-        default: '14'
+        default: '35'
       force:
-        description: 'Clear old backfill rows and regenerate (true/false)'
+        description: 'Clear ALL non-today rows and regenerate (destructive — loses graded history)'
         required: false
         default: 'false'
+      replace_ungraded:
+        description: 'Drop and re-run ungraded rows in window (safe — preserves all graded data)'
+        required: false
+        default: 'true'
 
 concurrency:
   group: repo-write
@@ -40,8 +44,9 @@ jobs:
           import os
           from engine.backfill_forecasts import backfill_forecasts
           backfill_forecasts(
-              days_back=int('${{ github.event.inputs.days_back }}' or 14),
+              days_back=int('${{ github.event.inputs.days_back }}' or 35),
               force='${{ github.event.inputs.force }}' == 'true',
+              replace_ungraded='${{ github.event.inputs.replace_ungraded }}' != 'false',
           )
           "
         timeout-minutes: 40
