@@ -15,7 +15,7 @@ on:
         default: 'false'
 
 concurrency:
-  group: repo-write
+  group: ml-retrain
   cancel-in-progress: false
 
 jobs:
