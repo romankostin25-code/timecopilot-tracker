@@ -11184,16 +11184,24 @@
     "summary_raw": "<p>A Casascius coin tied to 25 BTC moved this week, converting a 2011 physical Bitcoin artifact into spendable BTC during a broader market selloff. Galaxy Research identified the item as an S1-COIN-25 Casascius physical Bitcoin, a large-denomination piece from the era when Bitcoin could still be handed across a table as a loaded coin. The [&#8230;]</p>\n<p>The post <a href=\"https://cryptoslate.com/a-2011-physical-bitcoin-loaded-with-25-btc-was-just-unlocked-during-the-62k-selloff/\">A 2011 physica",
     "published_at": "Thu, 04 Jun 2026 18:05:18 +0000",
     "fetched_at": "2026-06-04T19:38:52.540421+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Old Bitcoin wallet unlocked during selloff, minor sell pressure signal.",
+    "signal_direction": {
+      "BTC-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:31.160282+00:00"
   },
   {
     "id": "41c092272a7c3aff",
@@ -11204,16 +11212,24 @@
     "summary_raw": "<p>Lido's Staking Router v3 could streamline Ethereum staking, reducing costs and complexity, but execution risks and community alignment are crucial.</p>\n<p>The post <a href=\"https://cryptobriefing.com/lido-staking-router-v3-ethereum/\">Lido unveils Staking Router v3 to enhance Ethereum staking efficiency</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 18:02:22 +0000",
     "fetched_at": "2026-06-04T19:38:52.744915+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Lido Staking Router v3 improves Ethereum staking efficiency and reduces costs.",
+    "signal_direction": {
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:34.603714+00:00"
   },
   {
     "id": "a9bef3da79f41729",
@@ -11224,16 +11240,36 @@
     "summary_raw": "<p>The resolution signals a shift towards legislative checks on executive power, potentially fostering diplomatic solutions over military escalation.</p>\n<p>The post <a href=\"https://cryptobriefing.com/house-passes-resolution-to-limit-trumps-war-powers-against-iran/\">House passes resolution to limit Trump&#8217;s war powers against Iran</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 18:02:04 +0000",
     "fetched_at": "2026-06-04T19:38:52.744923+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "SPY",
+      "GC=F"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.55,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "House limits Trump war powers vs Iran, reducing military escalation risk.",
+    "signal_direction": {
+      "GLD": -1,
+      "GC=F": -1,
+      "CL=F": -1,
+      "^VIX": -1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "GLD": 0.4,
+      "GC=F": 0.4,
+      "CL=F": 0.45,
+      "^VIX": 0.4,
+      "SPY": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:39.309595+00:00"
   },
   {
     "id": "7971c982020a8060",
@@ -11244,16 +11280,30 @@
     "summary_raw": "South America has raised its oil exports more than the U.S. has done so far this year as key producers in the region boosted production and shipments to a world scrambling for crude that\u2019s not dependent on the Strait of Hormuz. Over the past five years, South America\u2019s biggest producer and exporter, Brazil, has started production at several new offshore platforms in the Santos pre-salt fields. Guyana has continuously increased overseas shipments as the Exxon-led consortium starts up developments",
     "published_at": "Thu, 04 Jun 2026 18:00:00 -0500",
     "fetched_at": "2026-06-05T00:12:46.859623+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "EEM"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "South American oil export surge adds supply pressure to global crude markets.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "EEM": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.55,
+      "XLE": 0.45,
+      "EEM": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:42.895663+00:00"
   },
   {
     "id": "3340ceb16b2f15a8",
@@ -11265,15 +11315,17 @@
     "published_at": "Thu, 04 Jun 2026 17:53:00 GMT",
     "fetched_at": "2026-06-04T19:38:14.486213+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Political commentary on Social Security audit with no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:45.329118+00:00"
   },
   {
     "id": "5db88a70770404b7",
@@ -11284,16 +11336,27 @@
     "summary_raw": "<p>Meta's delay in releasing Muse Spark's API highlights execution challenges, impacting developer adoption and investor confidence in AI ventures.</p>\n<p>The post <a href=\"https://cryptobriefing.com/meta-delays-muse-spark-api-release/\">Meta delays Muse Spark AI model API release for developers</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 17:40:29 +0000",
     "fetched_at": "2026-06-04T19:38:52.744931+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Meta API delay signals AI execution risk, weighing on tech sentiment.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.2,
+      "XLK": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:48.329524+00:00"
   },
   {
     "id": "c00968f58cdd0c6c",
@@ -11304,16 +11367,27 @@
     "summary_raw": "<p>Binance's recovery efforts highlight the critical role centralized exchanges play in user asset security, yet transparency on success rates remains crucial.</p>\n<p>The post <a href=\"https://cryptobriefing.com/binance-recovers-8b-mistaken-crypto-transfers/\">Binance recovers over $8B in mistaken crypto transfers since 2021</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 17:39:49 +0000",
     "fetched_at": "2026-06-04T19:38:52.744939+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Binance recovers $8B in mistaken transfers, boosting centralized exchange trust.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.25,
+      "ETH-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:51.177418+00:00"
   },
   {
     "id": "e8acfce1e8266e22",
@@ -11324,16 +11398,33 @@
     "summary_raw": "Elevated convertible bond issuance is, at heart, a response to the market being twitchier than usual",
     "published_at": "Thu, 04 Jun 2026 17:36:12 GMT",
     "fetched_at": "2026-06-04T19:38:15.079720+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "^VIX",
+      "UVXY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.52,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Tech firms exploit AI-driven volatility via elevated convertible bond issuance.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "^VIX": 1,
+      "UVXY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.35,
+      "XLK": 0.35,
+      "^VIX": 0.4,
+      "UVXY": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:54.649706+00:00"
   },
   {
     "id": "b10cfbc94bc41a87",
@@ -11344,16 +11435,36 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Bitcoin bulls' fate rests on $60K support as crypto erases $2T in market cap\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9iaXRjb2luLWxhemVyLWV5ZXMtYW5kLWJ1bGwtcnVuMS5qcGc=.jpg\" /></p><p>Bitcoin continued \"incredible\" 2022 bear market repeat behavior as sellers kept control over BTC price rebound attempts.</p>",
     "published_at": "Thu, 04 Jun 2026 17:30:15 +0000",
     "fetched_at": "2026-06-04T19:38:46.922043+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "^VIX",
+      "UVXY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.82,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Bitcoin tests critical $60K support as crypto market loses $2T in value.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1,
+      "^VIX": 1,
+      "UVXY": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.82,
+      "ETH-USD": 0.75,
+      "SOL-USD": 0.72,
+      "^VIX": 0.45,
+      "UVXY": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:45:58.953348+00:00"
   },
   {
     "id": "c25c96298dc5bd5e",
@@ -11364,16 +11475,27 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Bybit joins Western Union\u2019s new USDPT network as stablecoin expands distribution\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS12aXNhLW1hc3RlcmNhcmQtYW5kLW90aGVycy1hcmUtbWFraW5nLWEtcHVzaC10by1idWlsZC1jcnlwdG8taW5mcmFzdHJ1Y3R1cmUuanBn.jpg\" /></p><p>The exchange integration gives Western Union\u2019s dollar-pegged token access to cry",
     "published_at": "Thu, 04 Jun 2026 17:21:27 +0000",
     "fetched_at": "2026-06-04T19:38:46.922054+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Western Union stablecoin expands via Bybit, boosting crypto mainstream adoption.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.35,
+      "ETH-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:01.952480+00:00"
   },
   {
     "id": "e2dc21cde2ece24b",
@@ -11384,16 +11506,27 @@
     "summary_raw": "Tether investor Christopher Harborne and BitMEX co-founder Ben Delo\u2019s outspent Britain's traditional political donors.",
     "published_at": "Thu, 04 Jun 2026 17:20:39 +0000",
     "fetched_at": "2026-06-04T17:30:16.908442+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "LONG",
+    "summary": "Crypto billionaires fund UK Reform Party, signaling political influence push.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.15
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:06.982963+00:00"
   },
   {
     "id": "2bac328cd4094146",
@@ -11404,16 +11537,27 @@
     "summary_raw": "<p>Reform UK's reliance on crypto donations highlights potential regulatory challenges and raises concerns about donor influence and transparency.</p>\n<p>The post <a href=\"https://cryptobriefing.com/reform-uk-crypto-donors-fundraising/\">Reform UK raises \u00a39.3M as crypto donors dominate funding</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 17:15:28 +0000",
     "fetched_at": "2026-06-04T17:30:18.585436+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.35,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Crypto donors funding Reform UK may invite UK regulatory scrutiny.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:09.713172+00:00"
   },
   {
     "id": "bc17f0386351bc32",
@@ -11424,16 +11568,30 @@
     "summary_raw": "<p>Hayes' exit signals potential volatility and reevaluation in crypto markets, highlighting macroeconomic and geopolitical risks impacting investor sentiment.</p>\n<p>The post <a href=\"https://cryptobriefing.com/arthur-hayes-dumps-hype-near-positions/\">Arthur Hayes dumps entire HYPE and NEAR positions after months of bullish calls</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 17:15:27 +0000",
     "fetched_at": "2026-06-04T17:30:18.585453+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Hayes exits crypto positions, signaling macro risks and potential broad crypto selloff.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.5,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:12.983627+00:00"
   },
   {
     "id": "762a4e719ff7b259",
@@ -11445,15 +11603,17 @@
     "published_at": "Thu, 04 Jun 2026 17:11:56 +0000",
     "fetched_at": "2026-06-04T17:29:47.633748+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Congo Ebola outbreak has no direct impact on tracked financial assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:15.794653+00:00"
   },
   {
     "id": "33d7a7683e949491",
@@ -11464,16 +11624,30 @@
     "summary_raw": "Netflix\u2019s stock has dropped 24% since its last earnings report, with investors worried that competitive pressures may be weighing on growth.",
     "published_at": "Thu, 04 Jun 2026 17:11:00 GMT",
     "fetched_at": "2026-06-04T17:29:46.890478+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "SPY",
+      "XLK"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Netflix drops 24% post-earnings on streaming competition fears from Amazon.",
+    "signal_direction": {
+      "QQQ": -1,
+      "SPY": -1,
+      "XLK": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "SPY": 0.15,
+      "XLK": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:19.321577+00:00"
   },
   {
     "id": "acca1fcbe1d2837c",
@@ -11484,16 +11658,45 @@
     "summary_raw": "The possibility of Iran developing a nuclear weapon is now higher than it was before the United States and Israel first attacked the country in February, the International Atomic Energy Agency has concluded in a report. The conclusion suggests the war has so far resulted in the opposite of what President Trump set out to do, namely, prevent Iran from developing a nuclear weapon. Bloomberg cited the report, which has restricted access, saying that in it, the IAEA had warned its member states that",
     "published_at": "Thu, 04 Jun 2026 17:00:00 -0500",
     "fetched_at": "2026-06-04T22:00:58.040799+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "TLT",
+      "SPY",
+      "GC=F",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran nuclear risk escalation drives safe-haven demand, raises geopolitical uncertainty.",
+    "signal_direction": {
+      "GLD": 1,
+      "GC=F": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "TLT": 1,
+      "SPY": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "GLD": 0.72,
+      "GC=F": 0.72,
+      "CL=F": 0.65,
+      "^VIX": 0.68,
+      "UVXY": 0.65,
+      "TLT": 0.5,
+      "SPY": 0.6,
+      "DX-Y.NYB": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:24.378647+00:00"
   },
   {
     "id": "74b0c8bd91094446",
@@ -11504,16 +11707,27 @@
     "summary_raw": "<p>Bitget Wallet launches a Polymarket World Cup campaign for 90M users as tournament markets surpass $1.2B in volume.</p>\n<p>The post <a href=\"https://cryptobriefing.com/world-cup-prediction-campaign-bitget-polymarket/\">Bitget Wallet launches World Cup prediction campaign with Polymarket</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 16:54:55 +0000",
     "fetched_at": "2026-06-04T16:58:42.405627+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Bitget-Polymarket World Cup campaign drives crypto prediction market engagement.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:27.094219+00:00"
   },
   {
     "id": "22cfc89ccd65d3c8",
@@ -11524,16 +11738,21 @@
     "summary_raw": "Dating was already expensive, but high gas prices have people narrowing their dating-app radius and taking other extreme measures",
     "published_at": "Thu, 04 Jun 2026 16:52:00 GMT",
     "fetched_at": "2026-06-04T16:58:12.939701+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "assets_affected": [
+      "CL=F",
+      "XLE"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Human interest story on high gas prices affecting dating habits.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:30.651612+00:00"
   },
   {
     "id": "de05246493d2d6a1",
@@ -11545,15 +11764,17 @@
     "published_at": "Thu, 04 Jun 2026 16:51:00 GMT",
     "fetched_at": "2026-06-04T16:58:12.939723+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "SpaceX IPO pitch has no direct impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:32.740720+00:00"
   },
   {
     "id": "c8856b19c9d71094",
@@ -11564,16 +11785,27 @@
     "summary_raw": "<p>Apyx's unique collateral model highlights the risks and potential instability of non-fiat-backed stablecoins during market volatility.</p>\n<p>The post <a href=\"https://cryptobriefing.com/apyx-apxusd-stablecoin-depeg-market-volatility/\">Apyx addresses brief depeg of apxUSD stablecoin amid market volatility</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 16:50:32 +0000",
     "fetched_at": "2026-06-04T16:58:42.405649+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Stablecoin depeg highlights risks of non-fiat-backed crypto collateral models.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:35.699342+00:00"
   },
   {
     "id": "5c08cae254c447a6",
@@ -11584,16 +11816,33 @@
     "summary_raw": "Wasted AI budgets at Nvidia, Uber, Microsoft and others sink \u201ctokenmaxxing\u201d and trigger hiring.",
     "published_at": "Thu, 04 Jun 2026 16:49:00 GMT",
     "fetched_at": "2026-06-04T16:58:12.939733+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY",
+      "IWM"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "AI budget waste spurs human hiring, mixed signal for tech and labor markets.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "SPY": 1,
+      "IWM": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.35,
+      "SPY": 0.2,
+      "IWM": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:39.989510+00:00"
   },
   {
     "id": "e89348cb1f5a8f42",
@@ -11604,16 +11853,36 @@
     "summary_raw": "<p>TSMC's strategic price hikes could ripple through tech and crypto sectors, impacting production costs and potentially reshaping market dynamics.</p>\n<p>The post <a href=\"https://cryptobriefing.com/tsmc-ceo-ai-growth-chip-price-hike/\">TSMC CEO bets on AI growth, considers chip price hike</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 16:48:25 +0000",
     "fetched_at": "2026-06-04T16:58:42.405659+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "TSMC chip price hikes may raise costs across tech and crypto sectors.",
+    "signal_direction": {
+      "QQQ": -1,
+      "XLK": -1,
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.35,
+      "XLK": 0.4,
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3,
+      "SOL-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:43.877383+00:00"
   },
   {
     "id": "473171df631e580a",
@@ -11624,16 +11893,42 @@
     "summary_raw": "The new worry on Wall Street is that investors are simply losing patience and demanding higher compensation to lend money to the U.S. government.",
     "published_at": "Thu, 04 Jun 2026 16:46:00 GMT",
     "fetched_at": "2026-06-04T16:58:12.939741+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "TLT",
+      "IEF",
+      "^TNX",
+      "BIL",
+      "SPY",
+      "QQQ",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "us_debt_ceiling",
+    "impact_horizon": "MEDIUM",
+    "summary": "Treasury market under pressure as investors demand higher yields from US debt.",
+    "signal_direction": {
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "BIL": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "DX-Y.NYB": -1
+    },
+    "signal_strength": {
+      "TLT": 0.72,
+      "IEF": 0.65,
+      "^TNX": 0.72,
+      "BIL": 0.45,
+      "SPY": 0.55,
+      "QQQ": 0.55,
+      "DX-Y.NYB": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:48.347923+00:00"
   },
   {
     "id": "ad32aba69071ac25",
@@ -11644,16 +11939,24 @@
     "summary_raw": "Walmart shares have lagged peers and the S&amp;P 500 this year, with some analysts noting that business is still dominated by low-margin grocery sales.",
     "published_at": "Thu, 04 Jun 2026 16:40:00 GMT",
     "fetched_at": "2026-06-04T16:58:12.939754+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Walmart valuation concerns as grocery dominance limits tech-driven upside.",
+    "signal_direction": {
+      "SPY": -1
+    },
+    "signal_strength": {
+      "SPY": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:50.777000+00:00"
   },
   {
     "id": "40e7f30f1b83ee63",
@@ -11664,16 +11967,24 @@
     "summary_raw": "Bernstein is bullish on Bitcoin miners as they increasingly power the AI boom, assigning \u201cOutperform\u201d ratings to TeraWulf and Cipher Digital.",
     "published_at": "Thu, 04 Jun 2026 16:32:52 +0000",
     "fetched_at": "2026-06-04T16:58:40.945266+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "crypto_rally",
+    "impact_horizon": "LONG",
+    "summary": "Bernstein bullish on Bitcoin miners powering AI, expects revenue surge.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T16:46:53.368961+00:00"
   },
   {
     "id": "ec6dd34f13bc25c5",
@@ -16836,6 +17147,46 @@
     "nlp_processed": false
   },
   {
+    "id": "6fdbd6bc1354f564",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "SpaceX to go public next week, potential windfall for employees: WSJ",
+    "url": "https://cryptobriefing.com/spacex-to-go-public-next-week-potential-windfall-for-employees-wsj/",
+    "summary_raw": "<p>SpaceX's IPO could reshape investment dynamics in space tech, influencing market valuations and U.S. space-security policy integration.</p>\n<p>The post <a href=\"https://cryptobriefing.com/spacex-to-go-public-next-week-potential-windfall-for-employees-wsj/\">SpaceX to go public next week, potential windfall for employees: WSJ</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Fri, 05 Jun 2026 16:44:48 +0000",
+    "fetched_at": "2026-06-05T16:45:27.481843+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "62e2b9760cd7366e",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "If the semiconductor rally loses steam, it\u2019s retail investors who could get hurt the most",
+    "url": "https://www.marketwatch.com/story/if-the-semiconductor-rally-loses-steam-its-retail-investors-who-could-get-hurt-the-most-d4cea0c0?mod=mw_rss_topstories",
+    "summary_raw": "May was the strongest month of the year for buying by retail investors, as individuals piled into semiconductor stocks.",
+    "published_at": "Fri, 05 Jun 2026 16:35:00 GMT",
+    "fetched_at": "2026-06-05T16:44:53.940960+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "b495129c63e0a303",
     "source": "Crypto Briefing",
     "source_type": "crypto",
@@ -18384,6 +18735,26 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"JPMorgan, Citi-backed Clearing House plans tokenized deposit network in 2027: WSJ\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS13aGF0LWlzLWEtY3J5cHRvLXZhdWx0LWFuZC1ob3ctZG9lcy1pdC13b3JrLmpwZw==.jpg\" /></p><p>Some of the largest banks are reportedly launching a tokenized deposit network in early 2027 in response to growing com",
     "published_at": "Fri, 05 Jun 2026 12:39:32 +0000",
     "fetched_at": "2026-06-05T14:19:09.402977+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "deae484e43c82fc2",
+    "source": "The Block",
+    "source_type": "crypto",
+    "headline": "Securitize clears SEC registration statement hurdle, sets path to NYSE listing as SECZ",
+    "url": "https://www.theblock.co/post/403842/securitize-clears-sec-registration-statement-hurdle-sets-path-to-nyse-listing-as-secz?utm_source=rss&utm_medium=rss",
+    "summary_raw": "<p>Securitize's SPAC merger is expected to close shortly after a CEPT shareholder vote, if approved, later this month.</p>",
+    "published_at": "Fri, 05 Jun 2026 12:30:52 -0400",
+    "fetched_at": "2026-06-05T16:45:26.576867+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -20616,6 +20987,86 @@
     "nlp_processed": false
   },
   {
+    "id": "382c216ef290032f",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "How much life insurance do I need? A guide for every life stage.",
+    "url": "https://finance.yahoo.com/personal-finance/insurance/article/how-much-life-insurance-do-i-need-162814903.html",
+    "summary_raw": "",
+    "published_at": "2026-06-05T16:28:14Z",
+    "fetched_at": "2026-06-05T16:44:53.716950+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "f2d5b8d6d03959ae",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Dow Jones Hits High, Broadcom, Ciena Slam AI, Chip Stocks, SpaceX IPO Ahead: Weekly Review",
+    "url": "https://www.investors.com/news/dow-jones-hit-highs-nasdaq-broadcom-ciena-ai-stocks-spacex-ipo/?src=A00220&yptr=yahoo",
+    "summary_raw": "",
+    "published_at": "2026-06-05T16:27:42Z",
+    "fetched_at": "2026-06-05T16:44:53.716961+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "d5f70bad3fa74965",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "GitHub rival shuts offices, cuts 100s of workers",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/github-rival-shuts-offices-cuts-161700276.html",
+    "summary_raw": "",
+    "published_at": "2026-06-05T16:17:00Z",
+    "fetched_at": "2026-06-05T16:44:53.716972+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "e42d10750a610ab3",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Billionaire Investor Bill Ackman: Buying Microsoft, Meta, and Amazon Today Could Be Like Adding Buffett\u2019s Berkshire Hathaway 25 Years Ago",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-investor-bill-ackman-buying-161641001.html",
+    "summary_raw": "",
+    "published_at": "2026-06-05T16:16:41Z",
+    "fetched_at": "2026-06-05T16:44:53.717028+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "e6618d3ab8fd5bb0",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -20624,6 +21075,26 @@
     "summary_raw": "",
     "published_at": "2026-06-05T16:10:36Z",
     "fetched_at": "2026-06-05T16:32:46.083161+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "d8ed24d1c8f550a5",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "You just got a $10,000 windfall! Now, where should you put it? Financial experts map out where every dollar should go",
+    "url": "https://finance.yahoo.com/markets/articles/just-got-10-000-windfall-161000150.html",
+    "summary_raw": "",
+    "published_at": "2026-06-05T16:10:00Z",
+    "fetched_at": "2026-06-05T16:44:53.716982+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -21724,6 +22195,26 @@
     "summary_raw": "",
     "published_at": "2026-06-05 11:20:15",
     "fetched_at": "2026-06-05T11:57:20.008546+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "61bb1c40044296c0",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Stock market today: Dow, S&P 500, Nasdaq sink as jobs report fuels Fed hike bets, chip stocks sell off",
+    "url": "https://finance.yahoo.com/markets/live/stock-market-today-dow-sp-500-nasdaq-sink-as-jobs-report-fuels-fed-hike-bets-chip-stocks-sell-off-230134285.html",
+    "summary_raw": "",
+    "published_at": "2026-06-04T23:01:34Z",
+    "fetched_at": "2026-06-05T16:44:53.716917+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
