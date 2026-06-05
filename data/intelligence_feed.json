@@ -11863,16 +11863,33 @@
     "summary_raw": "AI-driven growth in computing is turning data centres into one of the largest new sources of electricity demand \u2013 can renewables keep up?",
     "published_at": "Tue, 02 Jun 2026 08:37:48 +0000",
     "fetched_at": "2026-06-04T16:58:40.764537+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "NG=F",
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "energy_transition",
+    "impact_horizon": "LONG",
+    "summary": "AI data centre power demand surge strains grids, boosts energy sector outlook.",
+    "signal_direction": {
+      "XLE": 1,
+      "NG=F": 1,
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "XLE": 0.55,
+      "NG=F": 0.6,
+      "QQQ": 0.4,
+      "XLK": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:04.665172+00:00"
   },
   {
     "id": "7e275ea4daf7fad6",
@@ -11883,16 +11900,24 @@
     "summary_raw": "OX2 has commenced construction on two renewable energy projects in Poland, following investment decisions for both.",
     "published_at": "Tue, 02 Jun 2026 07:26:55 +0000",
     "fetched_at": "2026-06-04T16:58:40.764544+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "energy_transition",
+    "impact_horizon": "LONG",
+    "summary": "OX2 begins solar and battery construction in Poland, minor renewables signal.",
+    "signal_direction": {
+      "XLE": 1
+    },
+    "signal_strength": {
+      "XLE": 0.1
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:07.376709+00:00"
   },
   {
     "id": "5c9e531cf32a8d2f",
@@ -11903,16 +11928,39 @@
     "summary_raw": "Exchange of letters between the Governor and the Chancellor",
     "published_at": "Thu, 30 Apr 2026 12:00:00 +0100",
     "fetched_at": "2026-06-04T00:35:38.713598+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "TLT",
+      "IEF",
+      "DX-Y.NYB",
+      "^TNX",
+      "EFA"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "cpi_above_target",
+    "impact_horizon": "SHORT",
+    "summary": "UK CPI above target triggers formal BoE Governor-Chancellor exchange.",
+    "signal_direction": {
+      "GLD": 1,
+      "TLT": -1,
+      "IEF": -1,
+      "DX-Y.NYB": -1,
+      "^TNX": 1,
+      "EFA": -1
+    },
+    "signal_strength": {
+      "GLD": 0.3,
+      "TLT": 0.3,
+      "IEF": 0.3,
+      "DX-Y.NYB": 0.3,
+      "^TNX": 0.3,
+      "EFA": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:11.686984+00:00"
   },
   {
     "id": "8534750f258aa3be",
@@ -11923,16 +11971,33 @@
     "summary_raw": "The Bank of England\u2019s Monetary Policy Committee is responsible for making decisions about Bank Rate.",
     "published_at": "Thu, 30 Apr 2026 12:00:00 +0100",
     "fetched_at": "2026-06-04T00:35:38.713605+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "EFA",
+      "DX-Y.NYB",
+      "GLD",
+      "TLT"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.55,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Bank of England holds rate at 3.75%, no policy change signaled.",
+    "signal_direction": {
+      "EFA": 1,
+      "DX-Y.NYB": -1,
+      "GLD": 1,
+      "TLT": 1
+    },
+    "signal_strength": {
+      "EFA": 0.3,
+      "DX-Y.NYB": 0.2,
+      "GLD": 0.2,
+      "TLT": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:15.457036+00:00"
   },
   {
     "id": "24101da6945978a9",
@@ -11943,16 +12008,24 @@
     "summary_raw": "Federal Reserve Board issues enforcement actions with former employee of Atlantic Union Bank and former employee of Frost Bank",
     "published_at": "Thu, 28 May 2026 15:00:00 GMT",
     "fetched_at": "2026-06-04T00:35:37.385220+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLF"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Fed enforcement actions against former bank employees, minimal market impact.",
+    "signal_direction": {
+      "XLF": -1
+    },
+    "signal_strength": {
+      "XLF": 0.05
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:18.255664+00:00"
   },
   {
     "id": "20667a7ba4974e44",
@@ -11964,15 +12037,17 @@
     "published_at": "Thu, 28 May 2026 13:30:00 +0200",
     "fetched_at": "2026-06-04T00:35:38.102637+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.0,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "No actionable market information provided in this headline.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:20.444649+00:00"
   },
   {
     "id": "8336c8cdb8cb3457",
@@ -11983,16 +12058,42 @@
     "summary_raw": "The renewable energy sector is entering a more difficult industrial phase \u2013 critical minerals are becoming a defining constraint on delivery.",
     "published_at": "Thu, 28 May 2026 11:14:49 +0000",
     "fetched_at": "2026-06-04T00:35:59.126061+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "GLD",
+      "SLV",
+      "HG=F",
+      "SI=F",
+      "EEM",
+      "GC=F"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "energy_transition",
+    "impact_horizon": "LONG",
+    "summary": "Critical mineral supply constraints threaten to slow renewable energy deployment globally.",
+    "signal_direction": {
+      "HG=F": 1,
+      "SLV": 1,
+      "SI=F": 1,
+      "GLD": 1,
+      "GC=F": 1,
+      "EEM": 1,
+      "XLE": 1
+    },
+    "signal_strength": {
+      "HG=F": 0.72,
+      "SLV": 0.65,
+      "SI=F": 0.65,
+      "GLD": 0.45,
+      "GC=F": 0.45,
+      "EEM": 0.55,
+      "XLE": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:24.886648+00:00"
   },
   {
     "id": "205f00e51b243d80",
@@ -12003,16 +12104,27 @@
     "summary_raw": "",
     "published_at": "Thu, 28 May 2026 10:30:00 +0200",
     "fetched_at": "2026-06-04T00:35:38.102645+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "LONG",
+    "summary": "ECB official discusses digital money implications for financial system.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:27.705879+00:00"
   },
   {
     "id": "b5289040d198a9dc",
@@ -12023,16 +12135,36 @@
     "summary_raw": "",
     "published_at": "Thu, 28 May 2026 09:10:00 +0200",
     "fetched_at": "2026-06-04T00:35:38.102651+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "EFA",
+      "TLT",
+      "DX-Y.NYB",
+      "^TNX",
+      "GLD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "ecb_rate_cut",
+    "impact_horizon": "MEDIUM",
+    "summary": "Lagarde defends ECB independence amid political and economic pressures.",
+    "signal_direction": {
+      "EFA": 1,
+      "TLT": 1,
+      "DX-Y.NYB": -1,
+      "^TNX": -1,
+      "GLD": 1
+    },
+    "signal_strength": {
+      "EFA": 0.3,
+      "TLT": 0.3,
+      "DX-Y.NYB": 0.25,
+      "^TNX": 0.25,
+      "GLD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:31.800190+00:00"
   },
   {
     "id": "71f8ff80b17ac21f",
@@ -12044,15 +12176,17 @@
     "published_at": "Thu, 21 May 2026 15:00:00 GMT",
     "fetched_at": "2026-06-04T00:35:37.385250+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Fed enforcement action against former Commerce Bank employee, no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:34.325133+00:00"
   },
   {
     "id": "9a2ab70e568920fc",
@@ -12063,16 +12197,33 @@
     "summary_raw": "Stephen I. Miran submits his resignation as a member of the Federal Reserve Board, effective when or shortly before his successor on the Board is sworn in",
     "published_at": "Thu, 14 May 2026 18:00:00 GMT",
     "fetched_at": "2026-06-04T00:35:37.385298+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "SPY",
+      "TLT",
+      "DX-Y.NYB",
+      "^TNX"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.4,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Fed Board member Miran resigns, successor appointment may shift policy outlook.",
+    "signal_direction": {
+      "SPY": 1,
+      "TLT": 1,
+      "DX-Y.NYB": -1,
+      "^TNX": -1
+    },
+    "signal_strength": {
+      "SPY": 0.2,
+      "TLT": 0.2,
+      "DX-Y.NYB": 0.15,
+      "^TNX": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": 0.0,
+    "nlp_processed_at": "2026-06-05T00:13:38.158797+00:00"
   },
   {
     "id": "6a5f44c5d6cb804b",
@@ -12083,16 +12234,35 @@
     "summary_raw": "Federal Reserve Board releases results from two surveys of senior financial officers at banks about their views on discount window operating days and their strategies and practices for managing reserve balances",
     "published_at": "Thu, 14 May 2026 14:00:00 GMT",
     "fetched_at": "2026-06-04T00:35:37.385305+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "TLT",
+      "IEF",
+      "BIL",
+      "^IRX",
+      "^TNX",
+      "XLF"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Fed survey on discount window and reserve management has minimal market impact.",
+    "signal_direction": {
+      "TLT": 1,
+      "IEF": 1,
+      "BIL": 0,
+      "XLF": 1
+    },
+    "signal_strength": {
+      "TLT": 0.1,
+      "IEF": 0.1,
+      "BIL": 0.1,
+      "XLF": 0.1
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:42.383044+00:00"
   },
   {
     "id": "15e3185c839b6528",
@@ -12103,16 +12273,36 @@
     "summary_raw": "",
     "published_at": "Thu, 12 Dec 2024 08:32:00 GMT",
     "fetched_at": "2026-06-04T00:35:24.265182+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "DX-Y.NYB",
+      "EFA",
+      "GLD",
+      "TLT",
+      "^TNX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "ecb_rate_cut",
+    "impact_horizon": "MEDIUM",
+    "summary": "SNB cuts 50bps to 0.5%, Swiss franc weakens, global easing narrative strengthens.",
+    "signal_direction": {
+      "DX-Y.NYB": 1,
+      "EFA": -1,
+      "GLD": 1,
+      "TLT": 1,
+      "^TNX": -1
+    },
+    "signal_strength": {
+      "DX-Y.NYB": 0.45,
+      "EFA": 0.4,
+      "GLD": 0.5,
+      "TLT": 0.45,
+      "^TNX": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:46.621239+00:00"
   },
   {
     "id": "6273989f845ca8c1",
@@ -12123,16 +12313,24 @@
     "summary_raw": "",
     "published_at": "Thu, 12 Dec 2024 08:32:00 GMT",
     "fetched_at": "2026-06-04T00:35:24.265192+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "Dollar strengthens 0.5% against Swiss franc to 0.8890.",
+    "signal_direction": {
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "DX-Y.NYB": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:49.488377+00:00"
   },
   {
     "id": "e0dfa8092d82a307",
@@ -12144,15 +12342,425 @@
     "published_at": "Thu, 07 May 2026 14:00:00 +0100",
     "fetched_at": "2026-06-04T00:35:38.713584+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Bank of England board meeting minutes with no market-moving content.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:52.049531+00:00"
+  },
+  {
+    "id": "3fc66a108db38ec3",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Dimon and Musk launch SpaceX IPO roadshow in New York",
+    "url": "https://cryptobriefing.com/dimon-and-musk-launch-spacex-ipo-roadshow-in-new-york/",
+    "summary_raw": "<p>The SpaceX IPO roadshow could redefine market expectations, highlighting the growing influence of private space ventures on global economies.</p>\n<p>The post <a href=\"https://cryptobriefing.com/dimon-and-musk-launch-spacex-ipo-roadshow-in-new-york/\">Dimon and Musk launch SpaceX IPO roadshow in New York</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:57:09 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245371+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "SpaceX IPO roadshow signals major private space sector market debut.",
+    "signal_direction": {
+      "SPY": 1,
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "SPY": 0.3,
+      "QQQ": 0.4,
+      "XLK": 0.4
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:55.294244+00:00"
+  },
+  {
+    "id": "04ea58c5149760ce",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Ramp achieves $44B valuation in latest funding round",
+    "url": "https://cryptobriefing.com/ramp-44-billion-valuation-series-f/",
+    "summary_raw": "<p>Ramp's soaring valuation underscores the transformative impact of AI in corporate finance, potentially reshaping industry standards and competition.</p>\n<p>The post <a href=\"https://cryptobriefing.com/ramp-44-billion-valuation-series-f/\">Ramp achieves $44B valuation in latest funding round</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:56:26 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245390+00:00",
+    "assets_affected": [],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.2,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Private fintech funding round with no direct impact on tracked assets.",
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:13:57.758615+00:00"
+  },
+  {
+    "id": "7d1f75c2e09a8d49",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Palantir partners with Kirkland & Ellis to develop AI tools for private equity",
+    "url": "https://cryptobriefing.com/palantir-kirkland-ellis-ai-private-equity/",
+    "summary_raw": "<p>The partnership could revolutionize private equity fund management, enhancing efficiency but posing significant risks if AI tools fail in compliance.</p>\n<p>The post <a href=\"https://cryptobriefing.com/palantir-kirkland-ellis-ai-private-equity/\">Palantir partners with Kirkland &amp; Ellis to develop AI tools for private equity</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:55:58 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245399+00:00",
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Palantir-Kirkland AI partnership targets private equity efficiency gains.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.2,
+      "XLK": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:00.678254+00:00"
+  },
+  {
+    "id": "3e3747db38f662e8",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "Asia-Pacific markets set to open subdued after Wall Street's AI-linked stocks slide",
+    "url": "https://www.cnbc.com/2026/06/05/asia-markets-today-nikkei-225-kospi-hang-seng-index-csi-300-nifty50.html",
+    "summary_raw": "Asia-Pacific markets were set to open mixed on Friday as investors assessed a rotation out of chip stocks on Wall Street that lifted the Dow Jones Industrial Average to a record close.",
+    "published_at": "Thu, 04 Jun 2026 23:48:20 GMT",
+    "fetched_at": "2026-06-05T00:12:26.500517+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "XLK",
+      "EEM",
+      "EFA",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "AI/chip stock rotation drags tech lower; Dow hits record amid sector shift.",
+    "signal_direction": {
+      "SPY": 1,
+      "QQQ": -1,
+      "IWM": 1,
+      "XLK": -1,
+      "EEM": -1,
+      "EFA": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "SPY": 0.3,
+      "QQQ": 0.65,
+      "IWM": 0.4,
+      "XLK": 0.65,
+      "EEM": 0.35,
+      "EFA": 0.3,
+      "^VIX": 0.4
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:07.880200+00:00"
+  },
+  {
+    "id": "b739b11f30f4313f",
+    "source": "NYT World",
+    "source_type": "geopolitics",
+    "headline": "Zelensky Mixes Taunts and Peace Talks Offer in Letter to Putin",
+    "url": "https://www.nytimes.com/2026/06/04/world/europe/zelensky-putin-letter.html",
+    "summary_raw": "\u201cAfter 26 years in power, age is beginning to take its toll,\u201d President Volodymyr Zelensky of Ukraine wrote of his Russian counterpart, bragging of a recent strike on St. Petersburg.",
+    "published_at": "Thu, 04 Jun 2026 23:34:45 +0000",
+    "fetched_at": "2026-06-05T00:12:27.933171+00:00",
+    "assets_affected": [
+      "GLD",
+      "CL=F",
+      "^VIX",
+      "UVXY",
+      "EEM"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.4,
+    "event_type": "russia_ukraine",
+    "impact_horizon": "SHORT",
+    "summary": "Zelensky taunts Putin while offering peace talks, mixed signals for conflict resolution.",
+    "signal_direction": {
+      "GLD": 1,
+      "CL=F": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "EEM": -1
+    },
+    "signal_strength": {
+      "GLD": 0.3,
+      "CL=F": 0.2,
+      "^VIX": 0.2,
+      "UVXY": 0.2,
+      "EEM": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:11.823698+00:00"
+  },
+  {
+    "id": "1516f3afb4f0202d",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Reform UK receives \u00a33M donation from crypto billionaire Harborne",
+    "url": "https://cryptobriefing.com/reform-uk-harborne-crypto-donation/",
+    "summary_raw": "<p>Harborne's donations highlight the increasing influence of crypto wealth in politics, raising questions about transparency and regulatory oversight.</p>\n<p>The post <a href=\"https://cryptobriefing.com/reform-uk-harborne-crypto-donation/\">Reform UK receives \u00a33M donation from crypto billionaire Harborne</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:33:34 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245407+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Crypto billionaire donates \u00a33M to UK political party, raising regulatory scrutiny.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:14.657628+00:00"
+  },
+  {
+    "id": "7e8f5f941645e2ba",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "EU exports to US collapse 30% in first quarter as Trump tariffs reshape transatlantic trade",
+    "url": "https://cryptobriefing.com/eu-exports-us-fall-trump-tariffs/",
+    "summary_raw": "<p>The reshaped trade dynamics could strengthen the US dollar, impact euro returns, and challenge crypto's role as a safe haven during market stress.</p>\n<p>The post <a href=\"https://cryptobriefing.com/eu-exports-us-fall-trump-tariffs/\">EU exports to US collapse 30% in first quarter as Trump tariffs reshape transatlantic trade</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:32:00 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245414+00:00",
+    "assets_affected": [
+      "DX-Y.NYB",
+      "EFA",
+      "SPY",
+      "QQQ",
+      "BTC-USD",
+      "ETH-USD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "trump_tariffs",
+    "impact_horizon": "MEDIUM",
+    "summary": "EU exports to US plunge 30% as Trump tariffs disrupt transatlantic trade flows.",
+    "signal_direction": {
+      "DX-Y.NYB": 1,
+      "EFA": -1,
+      "SPY": -1,
+      "QQQ": -1,
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "DX-Y.NYB": 0.6,
+      "EFA": 0.75,
+      "SPY": 0.5,
+      "QQQ": 0.45,
+      "BTC-USD": 0.4,
+      "ETH-USD": 0.4,
+      "^VIX": 0.55
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:19.805259+00:00"
+  },
+  {
+    "id": "7979c5db77305f9d",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Emerging-market funds max out on TSMC, Samsung, and SK Hynix, forcing managers to diversify",
+    "url": "https://cryptobriefing.com/em-funds-max-out-tsmc-samsung-sk-hynix/",
+    "summary_raw": "<p>Emerging-market fund diversification may lead to increased volatility and potential concentration risks in smaller tech stocks.</p>\n<p>The post <a href=\"https://cryptobriefing.com/em-funds-max-out-tsmc-samsung-sk-hynix/\">Emerging-market funds max out on TSMC, Samsung, and SK Hynix, forcing managers to diversify</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:09:05 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245421+00:00",
+    "assets_affected": [
+      "EEM",
+      "FXI",
+      "QQQ"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "EM funds hitting concentration limits in top tech, forcing diversification.",
+    "signal_direction": {
+      "EEM": -1,
+      "FXI": -1,
+      "QQQ": 1
+    },
+    "signal_strength": {
+      "EEM": 0.4,
+      "FXI": 0.3,
+      "QQQ": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:23.224604+00:00"
+  },
+  {
+    "id": "9dc58526209fdacf",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "SpaceX seeks $75B from investors ahead of blockbuster IPO",
+    "url": "https://cryptobriefing.com/spacex-75-billion-ipo-bitcoin-holdings/",
+    "summary_raw": "<p>SpaceX's IPO could reshape market dynamics, spotlighting governance risks and reigniting corporate interest in Bitcoin as a strategic asset.</p>\n<p>The post <a href=\"https://cryptobriefing.com/spacex-75-billion-ipo-bitcoin-holdings/\">SpaceX seeks $75B from investors ahead of blockbuster IPO</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:07:13 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245428+00:00",
+    "assets_affected": [
+      "BTC-USD",
+      "QQQ",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "SpaceX $75B IPO could boost Bitcoin adoption as corporate treasury asset.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "QQQ": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.45,
+      "QQQ": 0.3,
+      "SPY": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:27.081040+00:00"
+  },
+  {
+    "id": "698412331c5f9f03",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Iran demands access to frozen assets in US negotiations over sanctions relief",
+    "url": "https://cryptobriefing.com/iran-frozen-assets-us-sanctions-negotiations/",
+    "summary_raw": "<p>Iran's demand for asset access could set a precedent for other sanctioned nations, impacting global markets and geopolitical dynamics.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-frozen-assets-us-sanctions-negotiations/\">Iran demands access to frozen assets in US negotiations over sanctions relief</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 04 Jun 2026 23:06:50 +0000",
+    "fetched_at": "2026-06-05T00:13:00.245435+00:00",
+    "assets_affected": [
+      "GLD",
+      "CL=F",
+      "DX-Y.NYB",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran-US sanctions talks create geopolitical uncertainty, supporting safe havens.",
+    "signal_direction": {
+      "GLD": 1,
+      "CL=F": 1,
+      "DX-Y.NYB": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "GLD": 0.4,
+      "CL=F": 0.45,
+      "DX-Y.NYB": 0.3,
+      "^VIX": 0.35
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:31.207750+00:00"
+  },
+  {
+    "id": "01d94607e3a34b38",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "This investing strategy digs deeper to find hidden stocks riding the AI wave",
+    "url": "https://www.marketwatch.com/story/this-investing-strategy-digs-deeper-to-find-hidden-stocks-riding-the-ai-wave-2cfcccd9?mod=mw_rss_topstories",
+    "summary_raw": "There are plenty of ways to jump into the generative-AI hardware infrastructure expansion beyond the familiar chip makers and hyperscalers.",
+    "published_at": "Thu, 04 Jun 2026 22:56:00 GMT",
+    "fetched_at": "2026-06-05T00:12:26.951899+00:00",
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Hidden AI infrastructure plays offer broader exposure beyond major chip names.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.35
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:34.031635+00:00"
+  },
+  {
+    "id": "773ace231102dc4e",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "I\u2019m 55, married and want a $1.5 million long-term care policy. Do I get a traditional or hybrid?",
+    "url": "https://www.marketwatch.com/story/im-55-married-and-want-a-1-5-million-long-term-care-policy-do-i-get-a-traditional-or-hybrid-f4338fc5?mod=mw_rss_topstories",
+    "summary_raw": "\u201cI\u2019m not looking for a \u2018don\u2019t do it\u2019 opinion.\u201d",
+    "published_at": "Thu, 04 Jun 2026 22:51:00 GMT",
+    "fetched_at": "2026-06-05T00:12:26.951916+00:00",
+    "assets_affected": [],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.0,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Personal finance question with no market impact.",
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:36.764189+00:00"
   },
   {
     "id": "a8e88d0173beead8",
@@ -12164,15 +12772,17 @@
     "published_at": "Thu, 04 Jun 2026 22:43:04 +0000",
     "fetched_at": "2026-06-04T22:53:48.695387+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Private AI startup funding, no direct impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:39.036977+00:00"
   },
   {
     "id": "2e27b6df1576b881",
@@ -12183,16 +12793,30 @@
     "summary_raw": "<p>Arm's valuation surge underscores the high expectations for future growth in AI-driven markets, highlighting the pressure to meet ambitious revenue targets.</p>\n<p>The post <a href=\"https://cryptobriefing.com/arm-stock-surges-218b-valuation-ai/\">Arm&#8217;s stock surges nearly 100% in weeks, reaching $218B valuation on AI chip demand</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 22:40:36 +0000",
     "fetched_at": "2026-06-04T22:53:48.695415+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Arm surges 100% on AI chip demand, boosting semiconductor and tech sector sentiment.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.65,
+      "XLK": 0.7,
+      "SPY": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:42.250064+00:00"
   },
   {
     "id": "7552af8e2b59c252",
@@ -12203,16 +12827,27 @@
     "summary_raw": "<p>China's suspension of robotaxi licenses highlights the critical need for robust safety protocols, potentially reshaping global autonomous tech standards.</p>\n<p>The post <a href=\"https://cryptobriefing.com/china-pauses-robotaxi-licenses-safety-concerns/\">China pauses robotaxi licenses after Baidu fleet malfunction strands passengers in Wuhan</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 22:40:31 +0000",
     "fetched_at": "2026-06-04T22:53:48.695426+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "FXI",
+      "QQQ"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "China halts robotaxi licenses after Baidu malfunction, pressuring autonomous tech sector.",
+    "signal_direction": {
+      "FXI": -1,
+      "QQQ": -1
+    },
+    "signal_strength": {
+      "FXI": 0.35,
+      "QQQ": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-05T00:14:45.678771+00:00"
   },
   {
     "id": "ac6762b728bef1bd",
@@ -13315,6 +13950,26 @@
     "nlp_processed": false
   },
   {
+    "id": "870fc9bf2dad0d6e",
+    "source": "OilPrice",
+    "source_type": "energy",
+    "headline": "North Dakota Chases A Second Bakken Boom Through Enhanced Recovery",
+    "url": "https://oilprice.com/Energy/Crude-Oil/North-Dakota-Chases-A-Second-Bakken-Boom-Through-Enhanced-Recovery.html",
+    "summary_raw": "North Dakota\u2019s elected officials are pushing hard to deploy Enhanced Oil Recovery (EOR) technologies to boost oil production in the Bakken before Donald Trump's tenure as president expires. The Trump administration has significantly opened up federal lands and offshore waters for oil and gas drilling, rolling back Biden-era conservation rules to mandate more quarterly lease sales. And proposals have been advanced to expand offshore drilling to areas previously restricted, including the federal w",
+    "published_at": "Thu, 04 Jun 2026 19:00:00 -0500",
+    "fetched_at": "2026-06-05T00:12:46.859604+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "8964d7df87a1f893",
     "source": "MarketWatch",
     "source_type": "macro",
@@ -13743,6 +14398,26 @@
     "summary_raw": "<p>The resolution signals a shift towards legislative checks on executive power, potentially fostering diplomatic solutions over military escalation.</p>\n<p>The post <a href=\"https://cryptobriefing.com/house-passes-resolution-to-limit-trumps-war-powers-against-iran/\">House passes resolution to limit Trump&#8217;s war powers against Iran</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Thu, 04 Jun 2026 18:02:04 +0000",
     "fetched_at": "2026-06-04T19:38:52.744923+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "7971c982020a8060",
+    "source": "OilPrice",
+    "source_type": "energy",
+    "headline": "Brazil, Guyana, Venezuela Fuel South America\u2019s Oil Export Boom",
+    "url": "https://oilprice.com/Energy/Crude-Oil/Brazil-Guyana-Venezuela-Fuel-South-Americas-Oil-Export-Boom.html",
+    "summary_raw": "South America has raised its oil exports more than the U.S. has done so far this year as key producers in the region boosted production and shipments to a world scrambling for crude that\u2019s not dependent on the Strait of Hormuz. Over the past five years, South America\u2019s biggest producer and exporter, Brazil, has started production at several new offshore platforms in the Santos pre-salt fields. Guyana has continuously increased overseas shipments as the Exxon-led consortium starts up developments",
+    "published_at": "Thu, 04 Jun 2026 18:00:00 -0500",
+    "fetched_at": "2026-06-05T00:12:46.859623+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -14463,6 +15138,26 @@
     "summary_raw": "Brazil is undertaking a major biofuels experiment that could be majorly disruptive for the global energy landscape if it proves effective. The South American country is filthy rich in biomass, and is seeking to use ethanol in novel applications \u2013 in this case, to power the energy grid. A new ethanol-powered engine designed specifically to provide electricity to the grid was just launched at the Suape II power plant in Pernambuco, in a world first. Brazilian energy company Suape Energia has partn",
     "published_at": "Thu, 04 Jun 2026 16:00:00 -0500",
     "fetched_at": "2026-06-04T21:20:00.458841+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "1488479a6fa9230e",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "Universal Music slumps as Bill Ackman's Pershing Square offloads stake after failed takeovers",
+    "url": "https://www.cnbc.com/2026/06/04/european-stocks-stoxx-cac-iran-war-israel-lebanon-ceasefire.html",
+    "summary_raw": "Tensions between Iran and the U.S. on Wednesday sent Asian stocks lower overnight, as European equity markets struggled for direction in morning trade.",
+    "published_at": "Thu, 04 Jun 2026 15:55:29 GMT",
+    "fetched_at": "2026-06-05T00:12:26.500627+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -17975,6 +18670,26 @@
     "nlp_processed": false
   },
   {
+    "id": "0a987100d5e53bd6",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "SoftBank\u2019s OpenAI bet and rising debt are raising liquidity crunch concerns",
+    "url": "https://www.cnbc.com/2026/06/04/softbank-openai-liquidity-crunch-arm-son.html",
+    "summary_raw": "Analysts warned that the market's renewed optimism on SoftBank is masking mounting balance-sheet risks.",
+    "published_at": "Thu, 04 Jun 2026 05:23:49 GMT",
+    "fetched_at": "2026-06-05T00:12:26.500574+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "661f09bca6187745",
     "source": "CoinTelegraph",
     "source_type": "crypto",
@@ -19275,6 +19990,26 @@
     "nlp_processed": false
   },
   {
+    "id": "869e11f8904cf9a3",
+    "source": "NYT World",
+    "source_type": "geopolitics",
+    "headline": "House Passes Ukraine Aid, Opposing Republican Leaders",
+    "url": "https://www.nytimes.com/2026/06/04/us/politics/house-ukraine-aid-russia-republicans.html",
+    "summary_raw": "Eighteen G.O.P. lawmakers broke with their party and joined Democrats to deliver yet another blow to the president\u2019s foreign policy agenda.",
+    "published_at": "Fri, 05 Jun 2026 00:11:31 +0000",
+    "fetched_at": "2026-06-05T00:12:27.933164+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "5c130fed7017cefa",
     "source": "MarketWatch RT",
     "source_type": "macro",
@@ -19803,6 +20538,26 @@
     "summary_raw": "",
     "published_at": "2026-06-04T03:33:00Z",
     "fetched_at": "2026-06-04T11:45:16.409751+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "e5c7a67c612c7f8c",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Anthropic says AI labs need coordinated plan to halt development if risks rise",
+    "url": "https://www.investing.com/news/stock-market-news/anthropic-says-ai-labs-need-coordinated-plan-to-halt-development-if-risks-rise-4727753",
+    "summary_raw": "",
+    "published_at": "2026-06-04 23:42:48",
+    "fetched_at": "2026-06-05T00:12:36.380934+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -21695,6 +22450,26 @@
     "nlp_processed": false
   },
   {
+    "id": "31cf0a99fca0da88",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Lower Rates Are Helping Home Construction Stocks in the ITB ETF. I Think It\u2019s Time to Move In.",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/lower-rates-helping-home-construction-130002920.html",
+    "summary_raw": "",
+    "published_at": "2026-06-03T13:00:02Z",
+    "fetched_at": "2026-06-05T00:12:26.709442+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "36af38569d35d18f",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -21703,6 +22478,26 @@
     "summary_raw": "",
     "published_at": "2026-06-03T12:45:00Z",
     "fetched_at": "2026-06-03T13:05:55.310079+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "6ae377848c828a9b",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "One million Americans have vanished from the new-car market \u2014 and it\u2019s exposing a chilling US middle-class crisis",
+    "url": "https://finance.yahoo.com/economy/articles/one-million-americans-vanished-car-124500086.html",
+    "summary_raw": "",
+    "published_at": "2026-06-03T12:45:00Z",
+    "fetched_at": "2026-06-05T00:12:26.709405+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -21795,6 +22590,26 @@
     "nlp_processed": false
   },
   {
+    "id": "650c350fd357aad8",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "How Is Zoetis\u2019 Stock Performance Compared to Other Healthcare Stocks?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/zoetis-stock-performance-compared-other-123403071.html",
+    "summary_raw": "",
+    "published_at": "2026-06-03T12:34:03Z",
+    "fetched_at": "2026-06-05T00:12:26.709390+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "d55d5c21dfe2b23d",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -21823,6 +22638,46 @@
     "summary_raw": "",
     "published_at": "2026-06-03T12:30:18Z",
     "fetched_at": "2026-06-03T13:05:55.310143+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "37e46057e0a2d8ad",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Corn Starting Wednesday with a Modest Correction",
+    "url": "https://finance.yahoo.com/markets/commodities/articles/corn-starting-wednesday-modest-correction-122700089.html",
+    "summary_raw": "",
+    "published_at": "2026-06-03T12:27:00Z",
+    "fetched_at": "2026-06-05T00:12:26.709367+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "9c79b0578bef51b4",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Soybeans Popping Back Higher on Wednesday",
+    "url": "https://finance.yahoo.com/markets/commodities/articles/soybeans-popping-back-higher-wednesday-122700752.html",
+    "summary_raw": "",
+    "published_at": "2026-06-03T12:27:00Z",
+    "fetched_at": "2026-06-05T00:12:26.709375+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -21883,6 +22738,26 @@
     "summary_raw": "",
     "published_at": "2026-06-03T12:07:43Z",
     "fetched_at": "2026-06-03T13:05:55.310177+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "ca6ab3163a93e3f9",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "AlphaSense nearly doubles valuation to $7.5 billion in new funding round",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/market-research-firm-alphasense-nearly-120231713.html",
+    "summary_raw": "",
+    "published_at": "2026-06-03T12:02:31Z",
+    "fetched_at": "2026-06-05T00:12:26.709346+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
