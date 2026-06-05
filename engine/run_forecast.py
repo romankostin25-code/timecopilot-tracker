@@ -295,6 +295,9 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
     elif ticker == "^TNX":
         score += 0.50 if risk == "RISK_ON" else (-0.50 if risk == "RISK_OFF" else 0.0)
         score += 0.30 if rate == "HAWKISH" else (-0.30 if rate in ("DOVISH", "EASING") else 0.0)
+        # us10y_5d_chg_pct IS ^TNX's own recent direction — strongest momentum signal available
+        us10y_5d = macro.get("us10y_5d_chg_pct", 0.0) or 0.0
+        score += float(np.clip(us10y_5d / 3.5, -0.40, 0.40))
     elif ticker == "CL=F":
         # Crude: demand regime + dollar + price momentum (trend continuation)
         score += 0.35 if risk == "RISK_ON" else (-0.45 if risk == "RISK_OFF" else 0.0)
@@ -399,18 +402,23 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
         score += -0.10 if rate == "HAWKISH" else (0.10 if rate in ("DOVISH", "EASING") else 0.0)
         score += 0.05  # structural bullish drift: central bank demand + inflation hedge
     elif ticker in {"SI=F", "SLV"}:
-        # Silver: safe-haven + industrial metal. Follows gold but more volatile.
+        # Silver: safe-haven + industrial metal. Follows gold + commodity complex.
         score += 0.20 if risk == "RISK_OFF" else (-0.05 if risk == "RISK_ON" else 0.0)
         score += 0.12 if dollar == "DOLLAR_WEAKNESS" else (-0.12 if dollar == "DOLLAR_STRENGTH" else 0.0)
         score += -0.08 if rate == "HAWKISH" else (0.08 if rate in ("DOVISH", "EASING") else 0.0)
+        # Blended commodity momentum: gold (precious) + oil (industrial) — both drive silver
         gold_mom = macro.get("gold_5d_chg_pct", 0.0) or 0.0
-        score += float(np.clip(gold_mom / 6.0, -0.20, 0.20))
+        oil_mom_s = macro.get("oil_5d_chg_pct", 0.0) or 0.0
+        commodity_mom = gold_mom * 0.65 + oil_mom_s * 0.35  # gold drives silver more than oil
+        score += float(np.clip(commodity_mom / 5.0, -0.30, 0.30))
     elif ticker in COMMODITY_TICKS:
         score += -0.25 if dollar == "DOLLAR_STRENGTH" else (0.25 if dollar == "DOLLAR_WEAKNESS" else 0.0)
         score += 0.15 if risk == "RISK_ON" else (-0.15 if risk == "RISK_OFF" else 0.0)
     elif ticker in CRYPTO_TICKERS:
         score += 0.20 if risk == "RISK_ON" else (-0.25 if risk == "RISK_OFF" else 0.0)
         score -= 0.15 if vix > 25 else 0.0
+        # SP500 momentum: crypto amplifies equity risk-on moves (beta ~1.5-2.0)
+        score += float(np.clip(sp500_mom / 2.5, -0.25, 0.25))
     elif ticker in ("^VIX", "UVXY"):
         score += 0.60 if risk == "RISK_OFF" else (-0.60 if risk == "RISK_ON" else 0.0)
         score += 0.20 if vix > 30 else (-0.20 if vix < 15 else 0.0)
