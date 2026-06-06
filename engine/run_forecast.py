@@ -553,6 +553,12 @@ def compute_signals(p10_d1, p50_d1, p50_target, p90_d1, last_price, horizon,
                 "pcr_signal":      0.0,
                 "news_sc":         news_sc,
             }
+            # Populate ticker one-hot dummies so the LR can apply per-ticker bias corrections
+            if ticker:
+                ticker_col = f"ticker_{ticker}"
+                ticker_dummies = model_store.get("ticker_dummies", [])
+                for td in ticker_dummies:
+                    feat_vals[td] = 1.0 if td == ticker_col else 0.0
             X = [[feat_vals.get(c, 0.0) for c in feat_cols]]
             model_sc = float(pipe.predict_proba(X)[0][1]) * 2 - 1
 
