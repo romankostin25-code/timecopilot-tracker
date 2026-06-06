@@ -93,3 +93,9 @@ jobs:
             git pull --rebase -X ours origin main
             git push
           fi
+
+      - name: Notify Discord — retrain complete
+        if: always()
+        env:
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+        run: pip install requests --quiet && python scripts/notify_discord.py --event retrain

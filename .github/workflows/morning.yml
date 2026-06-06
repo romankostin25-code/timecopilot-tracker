@@ -83,3 +83,7 @@ jobs:
             git pull --rebase -X ours origin main
             git push
           fi
+
+      - name: Notify Discord — morning complete
+        if: always()
+        run: python scripts/notify_discord.py --event morning

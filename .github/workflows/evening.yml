@@ -103,4 +103,6 @@ jobs:
             git push
           fi
 
-          
+      - name: Notify Discord — evening complete
+        if: always()
+        run: python scripts/notify_discord.py --event evening
