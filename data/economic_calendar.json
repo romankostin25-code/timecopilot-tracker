@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T11:51:35.091009",
+  "generated_at": "2026-06-08T17:28:11.119142",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "USDA_CROP",
       "date": "2026-06-09",
       "time_utc": "20:00",
-      "days_until": 3,
+      "days_until": 1,
       "sensitivity": {
         "assets": [
           "ZC=F",
@@ -230,7 +230,7 @@
       "event": "CPI",
       "date": "2026-06-10",
       "time_utc": "12:30",
-      "days_until": 4,
+      "days_until": 2,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -246,7 +246,7 @@
       "event": "EIA_OIL",
       "date": "2026-06-10",
       "time_utc": "14:30",
-      "days_until": 4,
+      "days_until": 2,
       "sensitivity": {
         "assets": [
           "CL=F",
@@ -260,7 +260,7 @@
       "event": "EIA_GAS",
       "date": "2026-06-11",
       "time_utc": "14:30",
-      "days_until": 5,
+      "days_until": 3,
       "sensitivity": {
         "assets": [
           "NG=F",
@@ -273,7 +273,7 @@
       "event": "USDA_WASDE",
       "date": "2026-06-11",
       "time_utc": "16:00",
-      "days_until": 5,
+      "days_until": 3,
       "sensitivity": {
         "assets": [
           "ZC=F",
