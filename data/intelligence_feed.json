@@ -588,6 +588,230 @@
     "nlp_processed_at": "2026-06-08T16:46:07.979114+00:00"
   },
   {
+    "id": "f8a44b70f5f18a12",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "MSCI confirms early index inclusion rules for SpaceX IPO on June 12",
+    "url": "https://cryptobriefing.com/msci-spacex-ipo-early-index-inclusion/",
+    "summary_raw": "<p>SpaceX's rapid index inclusion could trigger significant market volatility and influence institutional investment strategies globally.</p>\n<p>The post <a href=\"https://cryptobriefing.com/msci-spacex-ipo-early-index-inclusion/\">MSCI confirms early index inclusion rules for SpaceX IPO on June 12</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 09 Jun 2026 16:48:44 +0000",
+    "fetched_at": "2026-06-09T16:49:18.165861+00:00",
+    "assets_affected": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "EFA",
+      "EEM"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "SpaceX IPO MSCI inclusion may trigger institutional rebalancing and volatility.",
+    "signal_direction": {
+      "SPY": 1,
+      "QQQ": 1,
+      "IWM": -1,
+      "EFA": -1,
+      "EEM": -1
+    },
+    "signal_strength": {
+      "SPY": 0.3,
+      "QQQ": 0.35,
+      "IWM": 0.2,
+      "EFA": 0.2,
+      "EEM": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:23.495463+00:00"
+  },
+  {
+    "id": "f1611d3effaf88ce",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "China\u2019s trade surplus hits $452B in first five months of 2026 as exports surge",
+    "url": "https://cryptobriefing.com/china-trade-surplus-452b-january-may-2026/",
+    "summary_raw": "<p>China's trade surplus decline, despite export growth, highlights shifting global trade dynamics and potential geopolitical tensions.</p>\n<p>The post <a href=\"https://cryptobriefing.com/china-trade-surplus-452b-january-may-2026/\">China&#8217;s trade surplus hits $452B in first five months of 2026 as exports surge</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 09 Jun 2026 16:48:40 +0000",
+    "fetched_at": "2026-06-09T16:49:18.165887+00:00",
+    "assets_affected": [
+      "FXI",
+      "DX-Y.NYB",
+      "EEM",
+      "CL=F",
+      "HG=F"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.5,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "China trade surplus hits $452B, signaling export strength but geopolitical trade risks.",
+    "signal_direction": {
+      "FXI": 1,
+      "DX-Y.NYB": -1,
+      "EEM": 1,
+      "CL=F": 1,
+      "HG=F": 1
+    },
+    "signal_strength": {
+      "FXI": 0.4,
+      "DX-Y.NYB": 0.3,
+      "EEM": 0.35,
+      "CL=F": 0.3,
+      "HG=F": 0.4
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:27.821664+00:00"
+  },
+  {
+    "id": "8199e1806bcefc18",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "Oil prices are defying a worst-case energy crisis \u2014 but workarounds won\u2019t last forever",
+    "url": "https://www.marketwatch.com/story/oil-prices-are-defying-a-worst-case-energy-crisis-but-workarounds-wont-last-forever-9081cbdc?mod=mw_rss_topstories",
+    "summary_raw": "Experts point to three main reasons for the relatively steady prices but caution that a reckoning is not too far off.",
+    "published_at": "Tue, 09 Jun 2026 16:45:00 GMT",
+    "fetched_at": "2026-06-09T16:48:47.608566+00:00",
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "SPY",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Oil price stability seen as temporary; supply crisis reckoning looms ahead.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "SPY": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.45,
+      "XLE": 0.4,
+      "SPY": 0.3,
+      "^VIX": 0.3
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:31.710680+00:00"
+  },
+  {
+    "id": "13f8d34732153cbe",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Iran shot down US Apache helicopter over Strait of Hormuz: Trump",
+    "url": "https://cryptobriefing.com/iran-shot-down-us-apache-helicopter-over-strait-of-hormuz-trump/",
+    "summary_raw": "<p>Heightened tensions in the Strait of Hormuz could escalate U.S.-Iran conflicts, impacting global security and economic stability.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-shot-down-us-apache-helicopter-over-strait-of-hormuz-trump/\">Iran shot down US Apache helicopter over Strait of Hormuz: Trump</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 09 Jun 2026 16:41:57 +0000",
+    "fetched_at": "2026-06-09T16:49:18.165898+00:00",
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "^VIX",
+      "UVXY",
+      "SPY",
+      "QQQ",
+      "TLT",
+      "DX-Y.NYB",
+      "XLE"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.82,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "Iran-US military clash over Strait of Hormuz spikes oil and risk-off assets.",
+    "signal_direction": {
+      "CL=F": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "XLE": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "TLT": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.85,
+      "GLD": 0.75,
+      "^VIX": 0.8,
+      "UVXY": 0.8,
+      "XLE": 0.65,
+      "SPY": 0.7,
+      "QQQ": 0.65,
+      "TLT": 0.6,
+      "DX-Y.NYB": 0.55
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:38.064026+00:00"
+  },
+  {
+    "id": "ed1f63d430d0f140",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Iran shoots down US helicopter over Strait of Hormuz: Truth Social",
+    "url": "https://cryptobriefing.com/iran-shoots-down-us-helicopter-over-strait-of-hormuz-truth-social/",
+    "summary_raw": "<p>Heightened U.S.-Iran tensions could destabilize regional geopolitics, impacting global markets and increasing military conflict risks.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-shoots-down-us-helicopter-over-strait-of-hormuz-truth-social/\">Iran shoots down US helicopter over Strait of Hormuz: Truth Social</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 09 Jun 2026 16:41:56 +0000",
+    "fetched_at": "2026-06-09T16:49:18.165907+00:00",
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "GC=F",
+      "^VIX",
+      "UVXY",
+      "SPY",
+      "QQQ",
+      "XLE",
+      "TLT",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "US-Iran military incident near Strait of Hormuz spikes oil and safe-haven demand.",
+    "signal_direction": {
+      "CL=F": 1,
+      "GLD": 1,
+      "GC=F": 1,
+      "^VIX": 1,
+      "UVXY": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "XLE": 1,
+      "TLT": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.82,
+      "GLD": 0.75,
+      "GC=F": 0.75,
+      "^VIX": 0.8,
+      "UVXY": 0.8,
+      "SPY": 0.65,
+      "QQQ": 0.6,
+      "XLE": 0.7,
+      "TLT": 0.55,
+      "DX-Y.NYB": 0.5
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:43.600181+00:00"
+  },
+  {
     "id": "145412330af03f8e",
     "source": "CNBC Markets",
     "source_type": "macro",
@@ -1589,16 +1813,30 @@
     "summary_raw": "Kuwait is offering to sell its crude to refiners in Asia for the first time since the Iran war started.",
     "published_at": "Tue, 09 Jun 2026 15:18:38 GMT",
     "fetched_at": "2026-06-09T16:35:43.051848+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "EEM"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "Kuwait re-enters Asian oil market, boosting supply and pressuring crude prices.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "EEM": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.65,
+      "XLE": 0.55,
+      "EEM": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:46.965008+00:00"
   },
   {
     "id": "b08caea46d08021f",
@@ -1610,15 +1848,17 @@
     "published_at": "Tue, 09 Jun 2026 15:09:40 GMT",
     "fetched_at": "2026-06-09T16:35:19.677613+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Private fitness company Whoop valuation story, no market impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:49.168563+00:00"
   },
   {
     "id": "046cb8c044477d31",
@@ -1629,16 +1869,30 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Bitcoin price slips toward $62K local lows as bear-market history keeps repeating\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9jcnlwdG8tcmVkLW1hcmtldC1wcmljZS1hbmFseXNpcy10ZXJtaW5hdG9yLWJlYXIuanBn.jpg\" /></p><p>Bitcoin bear market analysis showed copycat BTC price moves ongoing despite new hopes of a US-Iran peace deal.</p>",
     "published_at": "Tue, 09 Jun 2026 15:05:28 +0000",
     "fetched_at": "2026-06-09T16:35:53.587999+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Bitcoin slips toward $62K as bear-market historical patterns repeat.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.6,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:52.603211+00:00"
   },
   {
     "id": "5bd0997878b818a5",
@@ -1649,16 +1903,27 @@
     "summary_raw": "Investors have recently flocked to ETFs that already have SpaceX exposure. But those funds are about to lose \u201cwhatever scarcity value\u201d they once had, one expert warns.",
     "published_at": "Tue, 09 Jun 2026 15:04:00 GMT",
     "fetched_at": "2026-06-09T16:35:20.145043+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "IWM"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "SpaceX IPO may reduce scarcity premium in ETFs holding pre-IPO stakes.",
+    "signal_direction": {
+      "QQQ": -1,
+      "IWM": -1
+    },
+    "signal_strength": {
+      "QQQ": 0.2,
+      "IWM": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:49:56.051934+00:00"
   },
   {
     "id": "7233042129b7763f",
@@ -1669,16 +1934,27 @@
     "summary_raw": "",
     "published_at": "Tue, 09 Jun 2026 15:03:26 +0000",
     "fetched_at": "2026-06-09T16:35:54.100949+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "TradFi and Web3 firms targeting $650M onchain private credit with AI.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:00.100102+00:00"
   },
   {
     "id": "bbe3446cf7b4ae71",
@@ -1689,16 +1965,27 @@
     "summary_raw": "",
     "published_at": "Tue, 09 Jun 2026 14:54:59 +0000",
     "fetched_at": "2026-06-09T16:35:54.100957+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Janus Henderson backs Ethena, investing in ENA and exploring USDe distribution.",
+    "signal_direction": {
+      "ETH-USD": 1,
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.55,
+      "BTC-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:03.305365+00:00"
   },
   {
     "id": "cdeb2c81a3406deb",
@@ -1709,16 +1996,27 @@
     "summary_raw": "The fund is diversified and has been an excellent performer, highlighting the advantages of a closed-end structure.",
     "published_at": "Tue, 09 Jun 2026 14:54:00 GMT",
     "fetched_at": "2026-06-09T16:35:20.145050+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Closed-end fund offers cheap AI exposure with strong diversified performance.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.2,
+      "XLK": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:06.550786+00:00"
   },
   {
     "id": "843f55b04892e79c",
@@ -1729,16 +2027,30 @@
     "summary_raw": "",
     "published_at": "Tue, 09 Jun 2026 14:53:50 +0000",
     "fetched_at": "2026-06-09T16:35:54.100963+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Analyst suggests crypto markets lack near-term catalysts until fall.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2,
+      "SOL-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:09.953941+00:00"
   },
   {
     "id": "b6242b6c498d3df6",
@@ -1749,16 +2061,33 @@
     "summary_raw": "Eric Trump and Donald Trump Jr. celebrated a deal with Alt5 Sigma that generated roughly $500 million for the Trump family. The company's shares are down 93%.",
     "published_at": "Tue, 09 Jun 2026 14:51:59 GMT",
     "fetched_at": "2026-06-09T16:35:19.677539+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Trump family crypto venture profits while retail investors face 93% losses.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.35,
+      "ETH-USD": 0.35,
+      "SOL-USD": 0.35,
+      "^VIX": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:13.531385+00:00"
   },
   {
     "id": "b85f85edec100309",
@@ -1769,16 +2098,30 @@
     "summary_raw": "The Massachusetts senator highlighted workforce cuts and enforcement changes at the regulator under the Trump administration.",
     "published_at": "Tue, 09 Jun 2026 14:51:09 +0000",
     "fetched_at": "2026-06-09T16:35:53.744816+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Warren scrutinizes CFTC crypto oversight amid Trump-era enforcement rollbacks.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3,
+      "SOL-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:17.066579+00:00"
   },
   {
     "id": "de74479ef46df782",
@@ -1789,16 +2132,27 @@
     "summary_raw": "New BP Plc Chief Executive Officer Meg O'Neill reorganized the energy giant's leadership and reporting structures.",
     "published_at": "Tue, 09 Jun 2026 14:41:46 GMT",
     "fetched_at": "2026-06-09T16:35:43.051870+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "CL=F"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.4,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "BP restructures leadership under new CEO, operational impact uncertain.",
+    "signal_direction": {
+      "XLE": 1,
+      "CL=F": 1
+    },
+    "signal_strength": {
+      "XLE": 0.2,
+      "CL=F": 0.1
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:22.870615+00:00"
   },
   {
     "id": "d99f04cf5014c1ee",
@@ -1809,16 +2163,30 @@
     "summary_raw": "North America added eight rigs week on week, according to Baker Hughes' latest North America rotary rig count.",
     "published_at": "Tue, 09 Jun 2026 14:35:13 GMT",
     "fetched_at": "2026-06-09T16:35:43.051879+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "CL=F",
+      "NG=F"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.5,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Rising rig count signals increased supply, bearish for oil and gas prices.",
+    "signal_direction": {
+      "XLE": -1,
+      "CL=F": -1,
+      "NG=F": -1
+    },
+    "signal_strength": {
+      "XLE": 0.3,
+      "CL=F": 0.35,
+      "NG=F": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:26.160739+00:00"
   },
   {
     "id": "52b0dc89cfccd220",
@@ -1829,16 +2197,30 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Bitcoin bottom? These four charts hint at BTC price dropping to $50K\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS13aHktYml0Y29pbi10cmVhc3VyeS1zdG9ja3MtZmFsbC1mYXN0ZXItdGhhbi10aGUtYXNzZXRzLXRoZXktaG9sZC0xLmpwZw==.jpg\" /></p><p>A $50,000 Bitcoin price target remains in play despite BTC maintaining above $60,000 support for now",
     "published_at": "Tue, 09 Jun 2026 14:33:53 +0000",
     "fetched_at": "2026-06-09T16:35:53.588016+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "macro_other",
+    "impact_horizon": "MEDIUM",
+    "summary": "Technical charts suggest Bitcoin could drop to $50K from current $60K levels.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.65,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:30.416536+00:00"
   },
   {
     "id": "778d178f535e618f",
@@ -1849,16 +2231,27 @@
     "summary_raw": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Blockchain researchers warn HTX sanctions may blur crypto risk signals \" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy1pbWFnZXMuY3RtZWRpYS5pby9tZWRpYS9hcnRpY2xlLWNvdmVycy9oaS1mb3ItdGhlLWNyeXB0by1pbmR1c3RyeS1zdXBwb3J0aW5nLXNhbmN0aW9ucy1pcy1hbi1vcHBvcnR1bml0eS10by1yZWJyYW5kLmpwZw==.jpg\" /></p><p>Researchers say broad HTX tainting could freeze legitimate users and make compliance tool",
     "published_at": "Tue, 09 Jun 2026 14:22:11 +0000",
     "fetched_at": "2026-06-09T16:35:53.588024+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "HTX sanctions risk blurring crypto compliance signals, freezing legitimate users.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:33.750611+00:00"
   },
   {
     "id": "6eafc2fca5398c77",
@@ -1903,16 +2296,36 @@
     "summary_raw": "Limit on Russian crude was set to increase from $44 a barrel to $70 following supply disruption due to Middle East war",
     "published_at": "Tue, 09 Jun 2026 14:04:06 GMT",
     "fetched_at": "2026-06-09T16:35:20.881972+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "SPY",
+      "GLD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "EU may suspend Russian oil cap rise, potentially increasing global supply.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "SPY": 1,
+      "GLD": -1,
+      "^VIX": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.55,
+      "XLE": 0.5,
+      "SPY": 0.3,
+      "GLD": 0.2,
+      "^VIX": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:38.021031+00:00"
   },
   {
     "id": "b83fe9b3bf3fe94a",
@@ -2779,16 +3192,24 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/Pics-49.jpg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/second-launches-bark-on-bitcoin-mainnet\" rel=\"nofollow\">Second Launches Bark on Bitcoin Mainnet, Targeting Self-Custody UX Gap</a></p>\n<p>Second has officially launched Bark \u2014 its implementation of the Ark protocol \u2014 on the Bitcoin mainnet.</p>\n<",
     "published_at": "Tue, 09 Jun 2026 12:59:24 +0000",
     "fetched_at": "2026-06-09T14:15:32.310730+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Bark protocol launches on Bitcoin mainnet, improving self-custody user experience.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:40.453949+00:00"
   },
   {
     "id": "9cf63944dc431cea",
@@ -2799,16 +3220,57 @@
     "summary_raw": "",
     "published_at": "Tue, 09 Jun 2026 12:58:09 +0000",
     "fetched_at": "2026-06-09T14:15:32.001731+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "XLE",
+      "GLD",
+      "TLT",
+      "IEF",
+      "^TNX",
+      "SPY",
+      "QQQ",
+      "CL=F",
+      "NG=F",
+      "BIL",
+      "^VIX",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "cpi_above_target",
+    "impact_horizon": "SHORT",
+    "summary": "Energy shock warning and CPI acceleration signal higher inflation, pressuring bonds and equities.",
+    "signal_direction": {
+      "XLE": 1,
+      "CL=F": 1,
+      "NG=F": 1,
+      "GLD": 1,
+      "TLT": -1,
+      "IEF": -1,
+      "^TNX": 1,
+      "SPY": -1,
+      "QQQ": -1,
+      "BIL": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "XLE": 0.75,
+      "CL=F": 0.72,
+      "NG=F": 0.65,
+      "GLD": 0.6,
+      "TLT": 0.78,
+      "IEF": 0.7,
+      "^TNX": 0.78,
+      "SPY": 0.65,
+      "QQQ": 0.62,
+      "BIL": 0.5,
+      "^VIX": 0.6,
+      "DX-Y.NYB": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:46.608574+00:00"
   },
   {
     "id": "a8c6970df70e9585",
@@ -2819,16 +3281,30 @@
     "summary_raw": "",
     "published_at": "Tue, 09 Jun 2026 12:52:07 +0000",
     "fetched_at": "2026-06-09T14:15:32.001739+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "SHORT",
+    "summary": "Bitcoin retreats to $62,500, breaking momentum for consecutive up days.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.45,
+      "ETH-USD": 0.4,
+      "SOL-USD": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:49.903414+00:00"
   },
   {
     "id": "f03b2f03ea0a2154",
@@ -2839,16 +3315,30 @@
     "summary_raw": "Thoma Bravo founder Orlando Bravo says AI offers an \"enormous tailwind\" for software companies.",
     "published_at": "Tue, 09 Jun 2026 12:50:10 GMT",
     "fetched_at": "2026-06-09T14:14:58.288410+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "PE giant Thoma Bravo sees AI as major growth driver for software sector.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.55,
+      "XLK": 0.6,
+      "SPY": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:53.068853+00:00"
   },
   {
     "id": "30eda83a37443a17",
@@ -2859,16 +3349,45 @@
     "summary_raw": "<p>The prolonged blockade risks escalating economic instability, impacting global oil markets and cryptocurrency valuations, while straining US-Iran relations.</p>\n<p>The post <a href=\"https://cryptobriefing.com/trump-iran-port-blockade-crypto-impact/\">Trump says US will maintain blockade of Iranian ports until deal reached</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
     "published_at": "Tue, 09 Jun 2026 12:48:29 +0000",
     "fetched_at": "2026-06-09T14:15:34.682560+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "^VIX",
+      "XLE",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "US Iran port blockade threatens oil supply and global market stability.",
+    "signal_direction": {
+      "CL=F": 1,
+      "GLD": 1,
+      "XLE": 1,
+      "^VIX": 1,
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.75,
+      "GLD": 0.65,
+      "XLE": 0.6,
+      "^VIX": 0.65,
+      "BTC-USD": 0.5,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.45,
+      "DX-Y.NYB": 0.55
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-09T16:50:58.002652+00:00"
   },
   {
     "id": "0e829b107d0e5465",
@@ -16806,6 +17325,46 @@
     "nlp_processed": false
   },
   {
+    "id": "6c017d07eb3400a7",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Fraud Strategy shifts the burden upstream \u2013 and banks are in the firing line",
+    "url": "https://finance.yahoo.com/economy/policy/articles/fraud-strategy-shifts-burden-upstream-163956784.html",
+    "summary_raw": "",
+    "published_at": "2026-06-09T16:39:56Z",
+    "fetched_at": "2026-06-09T16:48:47.203073+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "387dee1ac1c7a7f5",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "The translation trap: Why AI won\u2019t solve the COBOL crisis",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/translation-trap-why-ai-won-163456060.html",
+    "summary_raw": "",
+    "published_at": "2026-06-09T16:34:56Z",
+    "fetched_at": "2026-06-09T16:48:47.203114+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "435fe6c419ae249e",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -16866,6 +17425,26 @@
     "nlp_processed": false
   },
   {
+    "id": "2250ae7addf500f0",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "I\u2019m 65 with no retirement savings, but my home is paid off, and I get $2,071 in Social Security. Can I actually retire?",
+    "url": "https://finance.yahoo.com/markets/articles/m-65-no-retirement-savings-161500514.html",
+    "summary_raw": "",
+    "published_at": "2026-06-09T16:15:00Z",
+    "fetched_at": "2026-06-09T16:48:47.203056+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "b5bc6a41ac5d11c3",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -16914,6 +17493,26 @@
     "summary_raw": "",
     "published_at": "2026-06-09T15:52:15Z",
     "fetched_at": "2026-06-09T16:35:19.881457+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "47f8ade0c3455411",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Ceasefire Caps Oil Rally as China Demand Weakens",
+    "url": "https://finance.yahoo.com/sectors/energy/articles/ceasefire-caps-oil-rally-china-154500596.html",
+    "summary_raw": "",
+    "published_at": "2026-06-09T15:45:00Z",
+    "fetched_at": "2026-06-09T16:48:47.203122+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -17594,6 +18193,46 @@
     "summary_raw": "",
     "published_at": "2026-06-09T00:55:00Z",
     "fetched_at": "2026-06-09T14:14:58.376167+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "b06e3ec81ade6766",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "BofA maintains Wells Fargo stock Buy rating on ROTCE outlook",
+    "url": "https://www.investing.com/news/stock-market-news/bofa-maintains-wells-fargo-stock-buy-rating-on-rotce-outlook-93CH-4733638",
+    "summary_raw": "",
+    "published_at": "2026-06-09 16:36:55",
+    "fetched_at": "2026-06-09T16:48:56.840326+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "14d0bae6d9f2d6bd",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "TSX falls despite cooling Middle East tensions",
+    "url": "https://www.investing.com/news/stock-market-news/tsx-futures-climb-amid-cooling-middle-east-tensions-4732641",
+    "summary_raw": "",
+    "published_at": "2026-06-09 16:29:57",
+    "fetched_at": "2026-06-09T16:48:56.840375+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
