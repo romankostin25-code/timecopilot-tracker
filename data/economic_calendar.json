@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T16:37:42.994962",
+  "generated_at": "2026-06-10T00:10:42.503730",
   "events": [
     {
       "event": "FOMC",
@@ -214,23 +214,10 @@
   ],
   "upcoming_7d": [
     {
-      "event": "USDA_CROP",
-      "date": "2026-06-09",
-      "time_utc": "20:00",
-      "days_until": 0,
-      "sensitivity": {
-        "assets": [
-          "ZC=F",
-          "ZW=F"
-        ],
-        "band_widen_pct": 0.15
-      }
-    },
-    {
       "event": "CPI",
       "date": "2026-06-10",
       "time_utc": "12:30",
-      "days_until": 1,
+      "days_until": 0,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -246,7 +233,7 @@
       "event": "EIA_OIL",
       "date": "2026-06-10",
       "time_utc": "14:30",
-      "days_until": 1,
+      "days_until": 0,
       "sensitivity": {
         "assets": [
           "CL=F",
@@ -260,7 +247,7 @@
       "event": "EIA_GAS",
       "date": "2026-06-11",
       "time_utc": "14:30",
-      "days_until": 2,
+      "days_until": 1,
       "sensitivity": {
         "assets": [
           "NG=F",
@@ -273,7 +260,7 @@
       "event": "USDA_WASDE",
       "date": "2026-06-11",
       "time_utc": "16:00",
-      "days_until": 2,
+      "days_until": 1,
       "sensitivity": {
         "assets": [
           "ZC=F",
@@ -287,13 +274,30 @@
       "event": "USDA_CROP",
       "date": "2026-06-16",
       "time_utc": "20:00",
-      "days_until": 7,
+      "days_until": 6,
       "sensitivity": {
         "assets": [
           "ZC=F",
           "ZW=F"
         ],
         "band_widen_pct": 0.15
+      }
+    },
+    {
+      "event": "FOMC",
+      "date": "2026-06-17",
+      "time_utc": "18:00",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "QQQ",
+          "TLT",
+          "GC=F",
+          "BTC-USD",
+          "^TNX"
+        ],
+        "band_widen_pct": 0.4
       }
     }
   ]
