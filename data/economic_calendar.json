@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T16:50:28.716601",
+  "generated_at": "2026-06-13T00:24:33.450936",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "USDA_CROP",
       "date": "2026-06-16",
       "time_utc": "20:00",
-      "days_until": 4,
+      "days_until": 3,
       "sensitivity": {
         "assets": [
           "ZC=F",
@@ -230,7 +230,7 @@
       "event": "FOMC",
       "date": "2026-06-17",
       "time_utc": "18:00",
-      "days_until": 5,
+      "days_until": 4,
       "sensitivity": {
         "assets": [
           "SPY",
