@@ -498,6 +498,217 @@
     "nlp_processed_at": "2026-06-15T18:31:23.250273+00:00"
   },
   {
+    "id": "33c2aedcd177647b",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Cura\u00e7ao earns Guinness World Record despite World Cup defeat",
+    "url": "https://cryptobriefing.com/curacao-world-cup-guinness-record-crypto/",
+    "summary_raw": "<p>Curaao's World Cup debut boosts its visibility, potentially enhancing its emerging crypto regulatory framework's appeal to global investors.</p>\n<p>The post <a href=\"https://cryptobriefing.com/curacao-world-cup-guinness-record-crypto/\">Cura\u00e7ao earns Guinness World Record despite World Cup defeat</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 16 Jun 2026 18:29:43 +0000",
+    "fetched_at": "2026-06-16T18:31:47.803107+00:00",
+    "assets_affected": [],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Cura\u00e7ao World Cup debut has negligible market impact on tracked assets.",
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:31:50.142127+00:00"
+  },
+  {
+    "id": "761bfee693773ded",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Rootstock exec highlights concentrated demand in Bitcoin DeFi",
+    "url": "https://cryptobriefing.com/rootstock-bitcoin-defi-concentrated-demand/",
+    "summary_raw": "<p>Rootstock's focus on institutional demand in Bitcoin DeFi highlights potential growth but underscores the niche nature of the current market.</p>\n<p>The post <a href=\"https://cryptobriefing.com/rootstock-bitcoin-defi-concentrated-demand/\">Rootstock exec highlights concentrated demand in Bitcoin DeFi</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 16 Jun 2026 18:26:12 +0000",
+    "fetched_at": "2026-06-16T18:31:47.803130+00:00",
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.35,
+    "event_type": "crypto_rally",
+    "impact_horizon": "LONG",
+    "summary": "Institutional Bitcoin DeFi demand concentrated but signals niche growth potential.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:31:53.175723+00:00"
+  },
+  {
+    "id": "35299bbcafca853b",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Team Vitality\u2019s Sayonara delivers insane 1v3 clutch at VALORANT Masters London",
+    "url": "https://cryptobriefing.com/vitality-sayonara-1v3-clutch-valorant-masters/",
+    "summary_raw": "<p>Sayonara's clutch highlights emerging talent from underrepresented regions, potentially reshaping scouting and recruitment in esports.</p>\n<p>The post <a href=\"https://cryptobriefing.com/vitality-sayonara-1v3-clutch-valorant-masters/\">Team Vitality&#8217;s Sayonara delivers insane 1v3 clutch at VALORANT Masters London</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 16 Jun 2026 18:24:29 +0000",
+    "fetched_at": "2026-06-16T18:31:47.803139+00:00",
+    "assets_affected": [],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.0,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Esports gaming news with no financial market impact.",
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:31:55.339508+00:00"
+  },
+  {
+    "id": "f9d14684091df9c1",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Anthropic CEO Dario Amodei discusses departure from OpenAI",
+    "url": "https://cryptobriefing.com/amodei-discusses-openai-departure/",
+    "summary_raw": "<p>Amodei's departure highlights the growing emphasis on AI safety and alignment, reshaping industry dynamics and investor strategies.</p>\n<p>The post <a href=\"https://cryptobriefing.com/amodei-discusses-openai-departure/\">Anthropic CEO Dario Amodei discusses departure from OpenAI</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 16 Jun 2026 18:24:20 +0000",
+    "fetched_at": "2026-06-16T18:31:47.803148+00:00",
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "Anthropic CEO discusses OpenAI departure, highlighting AI safety industry shifts.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.1,
+      "XLK": 0.1
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:31:57.995336+00:00"
+  },
+  {
+    "id": "4e7c9c9e3e2feab3",
+    "source": "NYT World",
+    "source_type": "geopolitics",
+    "headline": "12 Injured, Possibly by Electricity, at Canadian Water Park",
+    "url": "https://www.nytimes.com/2026/06/16/world/canada/british-columbia-water-park-cultus-lake-injuries.html",
+    "summary_raw": "Ten middle school students and two others sustained serious but not life-threatening injuries at Cultus Lake Waterpark in British Columbia, officials said.",
+    "published_at": "Tue, 16 Jun 2026 18:17:04 +0000",
+    "fetched_at": "2026-06-16T18:31:14.828544+00:00",
+    "assets_affected": [],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Local accident with no material impact on tracked financial assets.",
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:00.114325+00:00"
+  },
+  {
+    "id": "6c190e5a59ea78b1",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Iran, US to begin talks on nuclear program, sanctions after MoU signing",
+    "url": "https://cryptobriefing.com/iran-us-to-begin-talks-on-nuclear-program-sanctions-after-mou-signing/",
+    "summary_raw": "<p>The talks could ease geopolitical tensions, potentially stabilizing global energy markets and fostering improved U.S.-Iran relations.</p>\n<p>The post <a href=\"https://cryptobriefing.com/iran-us-to-begin-talks-on-nuclear-program-sanctions-after-mou-signing/\">Iran, US to begin talks on nuclear program, sanctions after MoU signing</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Tue, 16 Jun 2026 18:16:34 +0000",
+    "fetched_at": "2026-06-16T18:31:47.803156+00:00",
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "SPY"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Iran-US nuclear talks could ease tensions, stabilizing global energy markets.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "GLD": -1,
+      "^VIX": -1,
+      "SPY": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.5,
+      "XLE": 0.45,
+      "GLD": 0.35,
+      "^VIX": 0.4,
+      "SPY": 0.35
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:05.288680+00:00"
+  },
+  {
+    "id": "c9d2cb131c1c6de5",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "What have the U.S. and Iran agreed to? This is what markets are focused on.",
+    "url": "https://www.marketwatch.com/story/what-have-the-u-s-and-iran-agreed-to-this-is-what-markets-are-focused-on-fefbfa08?mod=mw_rss_topstories",
+    "summary_raw": "The Trump administration and Iran have agreed on a framework for a peace deal. As everyone waits for the text of the framework to get released, here is a rundown of what the key points are for markets.",
+    "published_at": "Tue, 16 Jun 2026 18:16:00 GMT",
+    "fetched_at": "2026-06-16T18:31:14.134972+00:00",
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "^VIX",
+      "UVXY",
+      "SPY",
+      "XLE",
+      "GC=F"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "US-Iran peace framework reduces geopolitical risk, pressuring oil and safe havens.",
+    "signal_direction": {
+      "CL=F": -1,
+      "GLD": -1,
+      "GC=F": -1,
+      "^VIX": -1,
+      "UVXY": -1,
+      "SPY": 1,
+      "XLE": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.65,
+      "GLD": 0.5,
+      "GC=F": 0.5,
+      "^VIX": 0.6,
+      "UVXY": 0.6,
+      "SPY": 0.5,
+      "XLE": 0.55
+    },
+    "decay_weight": 1.0,
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:09.831056+00:00"
+  },
+  {
     "id": "9dabe2777743b8b0",
     "source": "Crypto Briefing",
     "source_type": "crypto",
@@ -1320,16 +1531,39 @@
     "summary_raw": "For months, a coalition led by Britain and France has been preparing to send minesweepers and other ships to secure the strait once the fighting ends. That moment may finally be here.",
     "published_at": "Tue, 16 Jun 2026 17:29:57 +0000",
     "fetched_at": "2026-06-16T18:16:07.621268+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "GLD",
+      "^VIX",
+      "SPY",
+      "TLT"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.62,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "MEDIUM",
+    "summary": "Western naval deployment to Hormuz signals stabilization, easing oil supply fears.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "GLD": -1,
+      "^VIX": -1,
+      "SPY": 1,
+      "TLT": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.65,
+      "XLE": 0.55,
+      "GLD": 0.45,
+      "^VIX": 0.5,
+      "SPY": 0.4,
+      "TLT": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:13.876219+00:00"
   },
   {
     "id": "c790dbf43ec63e36",
@@ -1340,16 +1574,36 @@
     "summary_raw": "The launch comes amid growing competition among financial institutions to manage assets backing dollar-pegged stablecoins.",
     "published_at": "Tue, 16 Jun 2026 17:28:40 GMT",
     "fetched_at": "2026-06-16T18:16:36.451102+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD",
+      "BIL",
+      "DX-Y.NYB"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "State Street targets stablecoin reserve management under GENIUS Act framework.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1,
+      "BIL": 1,
+      "DX-Y.NYB": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.4,
+      "ETH-USD": 0.45,
+      "SOL-USD": 0.4,
+      "BIL": 0.5,
+      "DX-Y.NYB": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:17.577415+00:00"
   },
   {
     "id": "4300e7cb8a8826de",
@@ -1360,16 +1614,30 @@
     "summary_raw": "Ripple\u2019s investment in Flutterwave will bring RLUSD, Ripple Payments and XRPL to one of Africa\u2019s largest fintechs as blockchain remittances gain traction.",
     "published_at": "Tue, 16 Jun 2026 17:28:00 GMT",
     "fetched_at": "2026-06-16T18:16:36.451125+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Ripple expands blockchain remittances in Africa via Flutterwave partnership.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3,
+      "SOL-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:20.667772+00:00"
   },
   {
     "id": "1c630b2befdd587f",
@@ -1380,16 +1648,24 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/tn-4.webp\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/business/cardone-capitals-bitcoin-reit-hybrid-targeting-22-32-returns-by-blending-cash-flowing-properties-and-btc-holdings\" rel=\"nofollow\">Cardone Capital&#8217;s Bitcoin-REIT Hybrid: Targeting 22-32% Returns by Blending Cash-Flowing Properties and BTC ",
     "published_at": "Tue, 16 Jun 2026 17:27:53 +0000",
     "fetched_at": "2026-06-16T18:16:37.162271+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.5,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Cardone Capital blends real estate and Bitcoin in hybrid fund targeting high returns.",
+    "signal_direction": {
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:23.135081+00:00"
   },
   {
     "id": "227af26d771bbc98",
@@ -1400,16 +1676,30 @@
     "summary_raw": "AI compute futures could eventually rival some of the world's largest commodity markets, Silicon Data's Carmen Li believes.",
     "published_at": "Tue, 16 Jun 2026 17:20:35 GMT",
     "fetched_at": "2026-06-16T18:16:06.584455+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK",
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "macro_other",
+    "impact_horizon": "LONG",
+    "summary": "AI compute futures market could rival largest global commodity markets.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1,
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.35,
+      "BTC-USD": 0.25
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:26.322010+00:00"
   },
   {
     "id": "71cbc7c58ef965bf",
@@ -1421,15 +1711,17 @@
     "published_at": "Tue, 16 Jun 2026 17:20:18 GMT",
     "fetched_at": "2026-06-16T18:16:06.584481+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "GM and Lockheed defense partnership has no direct tracked asset impact.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:28.530491+00:00"
   },
   {
     "id": "9a7347b6d9975d94",
@@ -1440,16 +1732,27 @@
     "summary_raw": "The all-stock deal would make Cursor a wholly owned SpaceX subsidiary and deepen the company's push into AI following its blockbuster IPO.",
     "published_at": "Tue, 16 Jun 2026 17:19:40 +0000",
     "fetched_at": "2026-06-16T18:16:36.564338+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "QQQ",
+      "XLK"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.4,
+    "event_type": "macro_other",
+    "impact_horizon": "SHORT",
+    "summary": "SpaceX acquires AI startup Cursor for $60B, boosting AI sector sentiment.",
+    "signal_direction": {
+      "QQQ": 1,
+      "XLK": 1
+    },
+    "signal_strength": {
+      "QQQ": 0.3,
+      "XLK": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:31.156208+00:00"
   },
   {
     "id": "8575e897c651978c",
@@ -1460,16 +1763,27 @@
     "summary_raw": "Real-world case studies show how the best crypto swap APIs help wallets, aggregators, and protocols improve onboarding and retention.",
     "published_at": "Tue, 16 Jun 2026 17:02:11 +0000",
     "fetched_at": "2026-06-16T18:16:36.564348+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.3,
+    "event_type": "crypto_rally",
+    "impact_horizon": "LONG",
+    "summary": "Crypto swap API adoption grows across wallets and protocols improving retention.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.2,
+      "ETH-USD": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:34.247500+00:00"
   },
   {
     "id": "3243b8a56a597143",
@@ -1480,16 +1794,27 @@
     "summary_raw": "US-regulated Bitcoin perpetual futures could give retail and institutional traders new ways to access crypto derivatives.",
     "published_at": "Tue, 16 Jun 2026 17:00:00 GMT",
     "fetched_at": "2026-06-16T18:16:36.451136+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "US-regulated Bitcoin perpetuals expand institutional and retail crypto derivatives access.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.55,
+      "ETH-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:37.263728+00:00"
   },
   {
     "id": "02b69e265cbf6e5b",
@@ -1500,16 +1825,33 @@
     "summary_raw": "Britain\u2019s Defense Ministry said it was investigating a report that a Russian vessel fired warning shots near a U.K.-registered yacht in the English Channel on Tuesday.",
     "published_at": "Tue, 16 Jun 2026 16:58:31 +0000",
     "fetched_at": "2026-06-16T18:16:07.621293+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "GLD",
+      "^VIX",
+      "DX-Y.NYB",
+      "CL=F"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.35,
+    "event_type": "russia_ukraine",
+    "impact_horizon": "SHORT",
+    "summary": "Russian naval incident in English Channel raises geopolitical tensions slightly.",
+    "signal_direction": {
+      "GLD": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": 1,
+      "CL=F": 1
+    },
+    "signal_strength": {
+      "GLD": 0.25,
+      "^VIX": 0.2,
+      "DX-Y.NYB": 0.15,
+      "CL=F": 0.2
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:41.041625+00:00"
   },
   {
     "id": "913543bbc27c2ab5",
@@ -1521,15 +1863,17 @@
     "published_at": "Tue, 16 Jun 2026 16:52:12 GMT",
     "fetched_at": "2026-06-16T18:16:07.392465+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.3,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Yum Brands divests Pizza Hut to private equity for $2.7bn.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:43.165850+00:00"
   },
   {
     "id": "27afa536d6b5a771",
@@ -1540,16 +1884,45 @@
     "summary_raw": "Shipping data show that only a fraction of normal tanker volumes are moving through the Strait of Hormuz.",
     "published_at": "Tue, 16 Jun 2026 16:50:00 GMT",
     "fetched_at": "2026-06-16T18:16:06.849973+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "SPY",
+      "QQQ",
+      "GLD",
+      "^VIX",
+      "DX-Y.NYB",
+      "TLT"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.78,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "Oil breaks below $80 despite Hormuz closure, signaling demand destruction fears.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "SPY": -1,
+      "QQQ": -1,
+      "GLD": 1,
+      "^VIX": 1,
+      "DX-Y.NYB": 1,
+      "TLT": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.82,
+      "XLE": 0.78,
+      "SPY": 0.55,
+      "QQQ": 0.5,
+      "GLD": 0.6,
+      "^VIX": 0.65,
+      "DX-Y.NYB": 0.45,
+      "TLT": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:48.500531+00:00"
   },
   {
     "id": "514aa222de1daec0",
@@ -1561,15 +1934,17 @@
     "published_at": "Tue, 16 Jun 2026 16:40:00 GMT",
     "fetched_at": "2026-06-16T18:16:06.849985+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "LONG",
+    "summary": "US fertility rate decline driven by social and economic factors.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:50.527776+00:00"
   },
   {
     "id": "fc8c1bb9a70488e2",
@@ -1580,16 +1955,30 @@
     "summary_raw": "Without specifically calling out a report on Binance\u2019s EU license, the crypto exchange warned that any rejection forcing it to delay activities in the region could \u201cweaken liquidity\u201d and present other potential risks.",
     "published_at": "Tue, 16 Jun 2026 16:26:00 GMT",
     "fetched_at": "2026-06-16T18:16:36.451144+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.6,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "SHORT",
+    "summary": "Binance EU license rejection risk threatens crypto liquidity and market access.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.5,
+      "ETH-USD": 0.5,
+      "SOL-USD": 0.45
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:53.774581+00:00"
   },
   {
     "id": "9bf78b2a5b152bb7",
@@ -1600,16 +1989,36 @@
     "summary_raw": "The question for the market, now that a deal has been reached to reopen Hormuz, is whether Chinese demand for fuels like gasoline will normalize, or whether the rapid transport electrification has permanently dented consumption.",
     "published_at": "Tue, 16 Jun 2026 16:18:14 GMT",
     "fetched_at": "2026-06-16T18:16:25.957321+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "XLE",
+      "FXI",
+      "EEM",
+      "HG=F"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.72,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Chinese refining hits 4-year low, raising structural demand destruction concerns.",
+    "signal_direction": {
+      "CL=F": -1,
+      "XLE": -1,
+      "FXI": -1,
+      "EEM": -1,
+      "HG=F": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.72,
+      "XLE": 0.65,
+      "FXI": 0.45,
+      "EEM": 0.4,
+      "HG=F": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:57.450883+00:00"
   },
   {
     "id": "455e3005b9828175",
@@ -1621,15 +2030,17 @@
     "published_at": "Tue, 16 Jun 2026 16:10:00 GMT",
     "fetched_at": "2026-06-16T18:16:06.850002+00:00",
     "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.1,
+    "event_type": "irrelevant",
+    "impact_horizon": "SHORT",
+    "summary": "Life insurance article with no direct market impact on tracked assets.",
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:32:59.679011+00:00"
   },
   {
     "id": "6c61705bba9a0f9f",
@@ -1640,16 +2051,27 @@
     "summary_raw": "<p>The reported $100 UNI target hinges on tokenized assets leaving closed rails for liquid, composable markets.</p>\n<p>The post <a href=\"https://cryptoslate.com/standard-chartereds-100-uniswap-call-exposes-the-open-defi-problem-wall-street-may-need-to-solve/\">Standard Chartered&#8217;s $100 Uniswap call exposes the open DeFi problem Wall Street may need to solve</a> appeared first on <a href=\"https://cryptoslate.com\">CryptoSlate</a>.</p>",
     "published_at": "Tue, 16 Jun 2026 16:05:28 +0000",
     "fetched_at": "2026-06-16T18:16:38.177600+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "ETH-USD",
+      "BTC-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.52,
+    "event_type": "crypto_rally",
+    "impact_horizon": "LONG",
+    "summary": "Standard Chartered sets $100 UNI target on tokenized asset DeFi migration.",
+    "signal_direction": {
+      "ETH-USD": 1,
+      "BTC-USD": 1
+    },
+    "signal_strength": {
+      "ETH-USD": 0.55,
+      "BTC-USD": 0.35
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:02.662700+00:00"
   },
   {
     "id": "6700d2478e7f983e",
@@ -1660,16 +2082,36 @@
     "summary_raw": "At the Group of Seven Summit, held in France, Europeans have raised a series of questions about what exactly was agreed to before committing to demining missions and patrols.",
     "published_at": "Tue, 16 Jun 2026 15:57:48 GMT",
     "fetched_at": "2026-06-16T18:16:25.957346+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "GLD",
+      "^VIX",
+      "XLE",
+      "EFA"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.45,
+    "event_type": "middle_east_conflict",
+    "impact_horizon": "SHORT",
+    "summary": "European hesitance on Hormuz security raises oil supply disruption risk.",
+    "signal_direction": {
+      "CL=F": 1,
+      "GLD": 1,
+      "^VIX": 1,
+      "XLE": 1,
+      "EFA": -1
+    },
+    "signal_strength": {
+      "CL=F": 0.45,
+      "GLD": 0.35,
+      "^VIX": 0.35,
+      "XLE": 0.4,
+      "EFA": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:06.592963+00:00"
   },
   {
     "id": "8fd5b028410db0d2",
@@ -1680,16 +2122,42 @@
     "summary_raw": "The interim peace agreement between the U.S. and Iran seems to be doing little to answer some of the thornier questions about the Strait of Hormuz, including how much longer it will take for products other than crude to start moving through again.",
     "published_at": "Tue, 16 Jun 2026 15:39:00 GMT",
     "fetched_at": "2026-06-16T18:16:06.850033+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "NG=F",
+      "XLE",
+      "ZW=F",
+      "ZC=F",
+      "GLD",
+      "^VIX"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.68,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "MEDIUM",
+    "summary": "Hormuz bottleneck prioritizes crude, leaving fertilizer and ag supplies stranded.",
+    "signal_direction": {
+      "CL=F": 1,
+      "NG=F": 1,
+      "XLE": 1,
+      "ZW=F": -1,
+      "ZC=F": -1,
+      "GLD": 1,
+      "^VIX": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.65,
+      "NG=F": 0.5,
+      "XLE": 0.55,
+      "ZW=F": 0.6,
+      "ZC=F": 0.6,
+      "GLD": 0.45,
+      "^VIX": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:10.829931+00:00"
   },
   {
     "id": "c4272383aad936f9",
@@ -1700,16 +2168,30 @@
     "summary_raw": "The Norwegian Union of Energy Workers is staging strikes against offshore well services companies after refusing proposals that the union sees as years behind collective bargaining agreements in other parts of the oil and gas industry.",
     "published_at": "Tue, 16 Jun 2026 15:38:51 GMT",
     "fetched_at": "2026-06-16T18:16:25.957356+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "NG=F",
+      "XLE"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "oil_supply_disruption",
+    "impact_horizon": "SHORT",
+    "summary": "Norway offshore strikes threaten oil and gas production, tightening supply.",
+    "signal_direction": {
+      "CL=F": 1,
+      "NG=F": 1,
+      "XLE": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.5,
+      "NG=F": 0.55,
+      "XLE": 0.4
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:14.193842+00:00"
   },
   {
     "id": "b6de8e151f41c055",
@@ -1720,16 +2202,30 @@
     "summary_raw": "Voters in Aberdeen go to the polls with both Conservative and Reform candidates making energy a central issue of their campaigns",
     "published_at": "Tue, 16 Jun 2026 15:36:24 GMT",
     "fetched_at": "2026-06-16T18:16:07.392475+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "CL=F",
+      "NG=F",
+      "XLE"
+    ],
+    "sentiment": "NEUTRAL",
+    "sentiment_confidence": 0.25,
+    "event_type": "energy_transition",
+    "impact_horizon": "LONG",
+    "summary": "UK Aberdeen by-election focuses on oil and gas policy debate.",
+    "signal_direction": {
+      "CL=F": 1,
+      "NG=F": 1,
+      "XLE": 1
+    },
+    "signal_strength": {
+      "CL=F": 0.1,
+      "NG=F": 0.1,
+      "XLE": 0.1
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:17.267572+00:00"
   },
   {
     "id": "6e22baf4db44edfe",
@@ -1740,16 +2236,30 @@
     "summary_raw": "",
     "published_at": "Tue, 16 Jun 2026 15:35:40 +0000",
     "fetched_at": "2026-06-16T18:16:36.832346+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BULLISH",
+    "sentiment_confidence": 0.55,
+    "event_type": "crypto_rally",
+    "impact_horizon": "MEDIUM",
+    "summary": "Ripple expands XRP Ledger payments into Africa via Flutterwave investment.",
+    "signal_direction": {
+      "BTC-USD": 1,
+      "ETH-USD": 1,
+      "SOL-USD": 1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.3,
+      "ETH-USD": 0.3,
+      "SOL-USD": 0.3
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:20.046161+00:00"
   },
   {
     "id": "75e0763e80b46773",
@@ -1760,16 +2270,30 @@
     "summary_raw": "<p><a href=\"https://bitcoinmagazine.com\" rel=\"nofollow\">Bitcoin Magazine</a><br />\n<img src=\"https://bitcoinmagazine.com/wp-content/uploads/2026/06/Binance.jpg\" style=\"display: block; margin: 1em auto;\" /><br />\n<a href=\"https://bitcoinmagazine.com/news/binance-faces-european-union-exit\" rel=\"nofollow\">Binance Reportedly Faces European Union Exit as MiCA License Bid Nears Rejection</a></p>\n<p>Binance could reportedly be forced to exit the European Union as Greece is poised to reject its MiCA lic",
     "published_at": "Tue, 16 Jun 2026 15:26:24 +0000",
     "fetched_at": "2026-06-16T18:16:37.162295+00:00",
-    "assets_affected": [],
-    "sentiment": null,
-    "sentiment_confidence": null,
-    "event_type": null,
-    "impact_horizon": null,
-    "summary": null,
-    "signal_direction": {},
-    "signal_strength": {},
+    "assets_affected": [
+      "BTC-USD",
+      "ETH-USD",
+      "SOL-USD"
+    ],
+    "sentiment": "BEARISH",
+    "sentiment_confidence": 0.65,
+    "event_type": "crypto_regulation",
+    "impact_horizon": "MEDIUM",
+    "summary": "Binance faces EU exit as Greece nears rejection of MiCA license bid.",
+    "signal_direction": {
+      "BTC-USD": -1,
+      "ETH-USD": -1,
+      "SOL-USD": -1
+    },
+    "signal_strength": {
+      "BTC-USD": 0.55,
+      "ETH-USD": 0.55,
+      "SOL-USD": 0.5
+    },
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true,
+    "fed_hawkishness": null,
+    "nlp_processed_at": "2026-06-16T18:33:23.339241+00:00"
   },
   {
     "id": "792f6d87b5407838",
@@ -1932,6 +2456,26 @@
     "nlp_processed": false
   },
   {
+    "id": "40d91b30e605013a",
+    "source": "The Block",
+    "source_type": "crypto",
+    "headline": "Pump.fun activity craters 80% in three months, dragging Solana fees lower as traders rotate into perps",
+    "url": "https://www.theblock.co/post/404806/pump-fun-activity-craters-80-three-months-solana-fees-lower-traders-rotate-perps?utm_source=rss&utm_medium=rss",
+    "summary_raw": "<p>The platform's fall from grace is best reflected in the PUMP token itself, which is down 40% in the last six months alone.</p>",
+    "published_at": "Tue, 16 Jun 2026 14:26:02 -0400",
+    "fetched_at": "2026-06-16T18:31:47.024008+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "b144d73eaff811a2",
     "source": "CoinTelegraph",
     "source_type": "crypto",
@@ -2060,6 +2604,26 @@
     "summary_raw": "<p>Cross-chain platform Squid has integrated Ripple's RLUSD stablecoin, allowing users to swap into and out of RLUSD across chains and assets.</p>",
     "published_at": "Tue, 16 Jun 2026 13:40:27 -0400",
     "fetched_at": "2026-06-16T18:16:37.326111+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "17389241efc4f9ed",
+    "source": "OilPrice",
+    "source_type": "energy",
+    "headline": "Oil Prices Crash as Traders Bet the War Is Over",
+    "url": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Crash-as-Traders-Bet-the-War-Is-Over.html",
+    "summary_raw": "The oil market just did something remarkable. After spending months pricing in tanker attacks, shut-in production, damaged LNG facilities, and the largest supply disruption in modern oil market history, traders are suddenly betting the crisis is ending. Brent crude futures fell below $79 per barrel on Tuesday, its lowest level since March, after the United States and Iran digitally signed a peace agreement that includes the reopening of the Strait of Hormuz and the immediate return of Iranian oi",
+    "published_at": "Tue, 16 Jun 2026 13:30:00 -0500",
+    "fetched_at": "2026-06-16T18:31:35.406700+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -15787,6 +16351,26 @@
     "nlp_processed": false
   },
   {
+    "id": "07df7f342b53516b",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Sigma ends Boots takeover discussions over strategic fit",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sigma-ends-boots-takeover-discussions-090518110.html",
+    "summary_raw": "",
+    "published_at": "2026-06-15T09:05:18Z",
+    "fetched_at": "2026-06-16T18:31:13.985579+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "6d6da7495664b3b4",
     "source": "Yahoo Finance",
     "source_type": "macro",
@@ -15835,6 +16419,26 @@
     "summary_raw": "",
     "published_at": "2026-06-15T08:38:26Z",
     "fetched_at": "2026-06-16T18:16:06.661583+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "1db8603fb5176159",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "A Boring Data Center Stock That Is Set To Deliver On Its 7x Revenue Target By 2028",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/boring-data-center-stock-set-083824068.html",
+    "summary_raw": "",
+    "published_at": "2026-06-15T08:38:24Z",
+    "fetched_at": "2026-06-16T18:31:13.985603+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -15975,6 +16579,26 @@
     "summary_raw": "",
     "published_at": "2026-06-15T08:38:13Z",
     "fetched_at": "2026-06-16T18:16:06.661575+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "980cf5d68617d538",
+    "source": "Yahoo Finance",
+    "source_type": "macro",
+    "headline": "Applied Digital (APLD) Is One Of The AI Stocks That Can Still Skyrocket On The Neo Cloud Boom",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/applied-digital-apld-one-ai-083811569.html",
+    "summary_raw": "",
+    "published_at": "2026-06-15T08:38:11Z",
+    "fetched_at": "2026-06-16T18:31:13.985553+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
