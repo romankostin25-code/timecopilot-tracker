@@ -422,6 +422,8 @@ def _macro_score(ticker, macro, cot: dict | None = None, pcr: float = 0.0, ng_st
     elif ticker in ("^VIX", "UVXY"):
         score += 0.60 if risk == "RISK_OFF" else (-0.60 if risk == "RISK_ON" else 0.0)
         score += 0.20 if vix > 30 else (-0.20 if vix < 15 else 0.0)
+        if ticker == "UVXY":
+            score -= 0.15  # structural decay from VIX futures roll cost (~80%/yr)
     elif ticker == "^IRX":
         # 3-month T-bill yield — tracks Fed funds rate with very short lag.
         # Strong signal: HAWKISH = ^IRX stays elevated/rises; DOVISH = falls.

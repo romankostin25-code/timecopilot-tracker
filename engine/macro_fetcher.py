@@ -124,12 +124,13 @@ def fetch_macro_context() -> dict:
 
     # Override with Fed speech hawkishness signal when strong enough
     fed_hawk = _fed_hawkishness_signal()
+    us10y_5d = macro.get("us10y_5d_chg_pct", 0.0) or 0.0
     macro["fed_hawkishness_avg"] = round(fed_hawk, 4)
-    if fed_hawk > 0.35:
+    if fed_hawk > 0.35 and us10y_5d > -1.5:
         rate_regime = "HAWKISH"
     elif fed_hawk < -0.35:
         rate_regime = "EASING"
-    elif fed_hawk > 0.20 and rate_regime == "NEUTRAL_RATES":
+    elif fed_hawk > 0.20 and rate_regime == "NEUTRAL_RATES" and us10y_5d > -1.5:
         rate_regime = "HAWKISH"
     elif fed_hawk < -0.20 and rate_regime == "NEUTRAL_RATES":
         rate_regime = "DOVISH"
