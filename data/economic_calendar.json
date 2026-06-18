@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T17:00:21.810091",
+  "generated_at": "2026-06-18T00:49:52.272238",
   "events": [
     {
       "event": "FOMC",
@@ -214,33 +214,31 @@
   ],
   "upcoming_7d": [
     {
-      "event": "FOMC",
-      "date": "2026-06-17",
-      "time_utc": "18:00",
-      "days_until": 0,
-      "sensitivity": {
-        "assets": [
-          "SPY",
-          "QQQ",
-          "TLT",
-          "GC=F",
-          "BTC-USD",
-          "^TNX"
-        ],
-        "band_widen_pct": 0.4
-      }
-    },
-    {
       "event": "USDA_CROP",
       "date": "2026-06-23",
       "time_utc": "20:00",
-      "days_until": 6,
+      "days_until": 5,
       "sensitivity": {
         "assets": [
           "ZC=F",
           "ZW=F"
         ],
         "band_widen_pct": 0.15
+      }
+    },
+    {
+      "event": "GDP",
+      "date": "2026-06-25",
+      "time_utc": "12:30",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "QQQ",
+          "DX-Y.NYB",
+          "CL=F"
+        ],
+        "band_widen_pct": 0.2
       }
     }
   ]
