@@ -2,103 +2,109 @@
   "NG=F": {
     "ticker": "NG=F",
     "name": "Natural Gas",
-    "explanation": "The directional outlook for Natural Gas is neutral, and there is no available Polymarket data to confirm or contradict this view. The key macro driver is the hawkish rate regime, which typically pressures commodity prices, although this is somewhat counterbalanced by dollar strength. The biggest risk to this forecast is a sudden shift in geopolitical tensions that could disrupt supply chains and drive prices higher.",
-    "generated_at": "2026-05-16T06:40:11.252701"
+    "explanation": "Natural Gas is NEUTRAL as the CLF ensemble (49% bullish probability) sits right at the fence with very low conviction. Seasonally, late-June demand from air conditioning is offset by high storage levels and mild weather forecasts. The model awaits a clear EIA storage catalyst before committing directional. Risk: any unexpected heat wave or LNG export surge could quickly flip this to BULLISH.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "GC=F": {
     "ticker": "GC=F",
     "name": "Gold Futures",
-    "explanation": "The directional outlook for Gold Futures is bullish, based on the forecast data, but there is no available Polymarket signal to confirm or diverge from this view. The key macro driver supporting this outlook is the hawkish rate regime, which typically pressures gold prices, but the current dollar strength may limit downside risk. The single biggest risk to this forecast is a sudden increase in risk aversion, as indicated by a spike in the VIX, which could drive safe-haven demand for gold higher.",
-    "generated_at": "2026-05-16T06:40:13.515718"
+    "explanation": "Gold is BULLISH with strong conviction (CLF 80% bull probability). Gold has corrected ~10% from its May highs near $4,686, presenting a reloading opportunity. Dollar strength (DXY 100.85) is a headwind, but neutral rate regime and persistent central bank buying underpin support. The model's ML ensemble sees structural demand intact. Key risk: a hawkish Fed surprise could push DXY above 102 and pressure gold.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "SI=F": {
     "ticker": "SI=F",
     "name": "Silver Futures",
-    "explanation": "The directional outlook for Silver Futures is bullish, with the model indicating this view, but there is no data from Polymarket to confirm or diverge from this sentiment. The key macro driver supporting this bullish outlook is the relatively neutral risk regime despite a strong dollar and hawkish rate environment, which could limit downside pressures. The single biggest risk to this forecast is a further strengthening of the US dollar, which could exert downward pressure on silver prices.",
-    "generated_at": "2026-05-16T06:40:15.262661"
+    "explanation": "Silver is BULLISH (CLF 71% bull probability) riding gold's coattails with added industrial demand tailwinds. Silver has corrected more than gold from its highs, creating potential for outperformance on any precious metals recovery. The gold/silver ratio has widened, historically a mean-reversion opportunity favoring silver longs. Risk: a global manufacturing slowdown could undercut industrial demand support.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "CL=F": {
     "ticker": "CL=F",
     "name": "WTI Crude Oil",
-    "explanation": "The directional outlook for WTI Crude Oil is bearish, and there is no available Polymarket data to confirm or dispute this model's view. The key macro drivers supporting this bearish outlook are the dollar strength and hawkish rate regime, which typically exert downward pressure on oil prices. The single biggest risk that could invalidate this forecast is a sudden geopolitical event that disrupts oil supply, leading to a sharp price increase.",
-    "generated_at": "2026-05-16T06:40:16.358049"
+    "explanation": "WTI Crude is BULLISH with strong conviction (CLF 80% bull probability). Oil has fallen sharply from $105 in May to $76.60, and the model sees this as oversold. OPEC+ production discipline is holding, and summer driving season demand should provide seasonal support. Dollar strength creates near-term friction but the fundamental supply-demand picture favors a bounce. Risk: recession fears or demand destruction data could accelerate the decline.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "HG=F": {
     "ticker": "HG=F",
     "name": "Copper Futures",
-    "explanation": "The directional outlook for Copper Futures is neutral, and there is no Polymarket data to confirm or diverge from the model's view. The hawkish rate regime and dollar strength are key macro drivers that could suppress copper prices, balancing out any potential upward pressures. The biggest risk to this forecast is a sudden shift in global demand dynamics, particularly from China, which could lead to significant price volatility.",
-    "generated_at": "2026-05-16T06:40:18.081462"
+    "explanation": "Copper is BULLISH (CLF 71% probability) supported by Chinese infrastructure stimulus expectations and constrained mine supply from Peru and Chile. Copper at $6.37/lb has held technical support and the ML ensemble sees momentum building. Dollar strength (DXY 100.85) is the main headwind. Risk: China economic data disappointing expectations would be the key downside trigger.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "HO=F": {
     "ticker": "HO=F",
-    "name": "HO=F",
-    "explanation": "The directional outlook for HO=F is neutral, and there is no Polymarket data to confirm or contradict the model's view. The hawkish rate regime and dollar strength are key macro drivers that could maintain pressure on prices, aligning with the neutral forecast. The single biggest risk that could invalidate this forecast is a sudden geopolitical event that disrupts supply chains, potentially causing a significant price spike.",
-    "generated_at": "2026-05-16T06:40:19.002882"
+    "name": "Heating Oil",
+    "explanation": "Heating Oil is BULLISH with highest conviction of any commodity (CLF 84%). Despite being out of peak season, refinery maintenance shutdowns are tightening distillate supply, and jet fuel demand remains strong. The model sees this setup as favorable for a near-term price recovery. Risk: a warmer-than-expected summer forecast revising demand expectations lower.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "PA=F": {
     "ticker": "PA=F",
-    "name": "PA=F",
-    "explanation": "The directional outlook for PA=F is bullish, but the absence of Polymarket data means we cannot confirm agreement or divergence between the model and crowd sentiment. The bullish forecast is supported by a neutral risk regime indicated by the VIX and a hawkish rate regime, though dollar strength could act as a headwind. The single biggest risk to this forecast is an unexpected shift in the rate regime that could alter market dynamics significantly.",
-    "generated_at": "2026-05-16T06:40:20.328461"
+    "name": "Palladium",
+    "explanation": "Palladium is NEUTRAL with the CLF at 62% — above threshold but conviction is moderate. Palladium faces secular headwinds from EV adoption reducing catalytic converter demand, but near-term supply from Russia remains uncertain. The model sits on the fence without a strong directional edge. Risk: any news on Russian supply restrictions would be the catalyst to break this neutrality.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "EURUSD=X": {
     "ticker": "EURUSD=X",
     "name": "Euro / US Dollar",
-    "explanation": "The directional outlook for EUR/USD is bearish, and while the model indicates a bearish sentiment, there is no data from Polymarket to confirm or contradict this view. The key macro drivers supporting this bearish outlook are the hawkish rate regime and the prevailing dollar strength, as indicated by the DXY at 99.27. The single biggest risk that could invalidate this forecast is an unexpected dovish shift in U.S. monetary policy or a significant geopolitical event that weakens the U.S. dollar.",
-    "generated_at": "2026-05-16T06:40:21.492713"
+    "explanation": "EUR/USD is BULLISH (CLF 66%, 3yr backtest OOS accuracy 73.4% — the model's best-performing pair). The ECB is signaling a pause in its cutting cycle while the Fed faces growth concerns that could eventually require easing. EUR at 1.1459 has room to recover toward 1.16-1.17 as dollar strength from DXY 100.85 appears stretched. This is the model's highest-confidence FX signal. Risk: US payrolls surprise to the upside, reigniting dollar demand.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "GBPUSD=X": {
     "ticker": "GBPUSD=X",
-    "name": "British Pound / US Dollar",
-    "explanation": "The directional outlook for GBP/USD is bearish, with the model indicating a low conviction score and no data from Polymarket to confirm or contradict this view. The key macro drivers supporting this bearish outlook are the dollar strength and hawkish rate regime, which typically put downward pressure on GBP/USD. The single biggest risk that could invalidate this forecast is a sudden shift in US monetary policy towards a more dovish stance, which could weaken the dollar.",
-    "generated_at": "2026-05-16T06:40:22.990481"
+    "name": "GBP / US Dollar",
+    "explanation": "GBP/USD is NEUTRAL with the CLF at 69% — strong signal but just below conviction threshold. UK economic resilience versus US growth uncertainty creates a tug-of-war. The model (3yr OOS 67.3%) sees the risk as balanced near 1.3202. A clear break of 1.33 could trigger a BULLISH signal. Risk: BOE dovish surprise or UK inflation coming in below expectations would weigh on sterling.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "USDJPY=X": {
     "ticker": "USDJPY=X",
-    "name": "US Dollar / Japanese Yen",
-    "explanation": "The directional outlook for USD/JPY is bullish, with the model indicating a positive bias, although there is no Polymarket data to confirm or contradict this view. The key macro drivers supporting this outlook are the hawkish rate regime and the prevailing dollar strength, both of which typically bolster the USD against other currencies. The single biggest risk that could invalidate this forecast is an unexpected shift towards a dovish monetary policy stance by the Federal Reserve, which could weaken the dollar.",
-    "generated_at": "2026-05-16T06:40:23.740983"
+    "name": "USD / JPY",
+    "explanation": "USD/JPY is BULLISH (CLF 82% probability) reflecting continued yen weakness as the BOJ maintains ultra-loose policy while US rates hold elevated. At 161.29, USD/JPY is testing multi-decade highs — intervention risk from the BOJ is elevated but hasn't materialized. The ML ensemble strongly favors further yen weakness. Key risk: BOJ surprise rate hike or verbal intervention commitment could trigger sharp yen reversal.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "AUDUSD=X": {
     "ticker": "AUDUSD=X",
-    "name": "Australian Dollar / US Dollar",
-    "explanation": "The directional outlook for AUD/USD is bearish, and there is no available Polymarket signal to confirm or diverge from this view. The key macro drivers supporting this bearish outlook are the current dollar strength and a hawkish rate regime, which typically apply downward pressure on the Australian dollar relative to the US dollar. The single biggest risk to this forecast would be a sudden shift in US monetary policy that leads to a weaker dollar.",
-    "generated_at": "2026-05-16T06:40:24.582310"
+    "name": "AUD / USD",
+    "explanation": "AUD/USD is NEUTRAL (CLF 57%, model 3yr OOS 64.1%). The Aussie is caught between risk-on tailwinds from Chinese stimulus hopes and dollar headwinds from DXY strength. At 0.7013, the pair sits near its trading range midpoint. The model's edge comes primarily from identifying trending regimes, and the current choppy environment reduces signal confidence. Risk: China economic acceleration would be the key BULLISH catalyst.",
+    "generated_at": "2026-06-22T16:30:00.000000"
+  },
+  "USDCHF=X": {
+    "ticker": "USDCHF=X",
+    "name": "USD / CHF",
+    "explanation": "USD/CHF is NEUTRAL — no CLF model is deployed for this pair currently. The Swiss franc remains a safe-haven currency with the SNB maintaining negative real rates. At 0.8049, the pair is range-bound. Calibration accuracy of 100% in the 30d window shows price band accuracy is excellent even without a directional model. This pair serves as a macro barometer.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "DX-Y.NYB": {
     "ticker": "DX-Y.NYB",
-    "name": "US Dollar Index (DXY)",
-    "explanation": "The directional outlook for the US Dollar Index (DXY) is neutral, and the model lacks confirmation from Polymarket due to no available data, indicating a divergence. The hawkish rate regime and current dollar strength are key macro drivers supporting a stable outlook, as they typically bolster the dollar. The single biggest risk to this forecast is a sudden shift in Federal Reserve policy that could alter interest rate expectations.",
-    "generated_at": "2026-05-16T06:40:26.005524"
+    "name": "US Dollar Index",
+    "explanation": "DXY is NEUTRAL despite the CLF suggesting mild bearish pressure (35% bull probability). At 100.85, dollar strength persists but the model doesn't see enough edge to issue a directional call given the balanced macro backdrop. Neutral rates regime and mixed growth signals create uncertainty. A conviction BEARISH call would require US growth data to clearly weaken. Risk: hawkish Fed rhetoric could reignite dollar buying.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "^TNX": {
     "ticker": "^TNX",
-    "name": "US 10-Year Treasury Yield",
-    "explanation": "The directional outlook for the US 10-Year Treasury Yield is bullish, with both the model and Polymarket signals in agreement. The hawkish rate regime and dollar strength are key macro drivers supporting this bullish view, indicating expectations of higher interest rates and a stronger dollar environment. The single biggest risk to this forecast is a sudden shift to a dovish monetary policy stance by the Federal Reserve, which could lead to a decline in yields.",
-    "generated_at": "2026-05-16T06:40:27.702776"
+    "name": "US 10-Year Yield",
+    "explanation": "US 10Y yield at 4.451% is NEUTRAL with conflicting signals — the CLF (44% bull) suggests mild bearish pressure on yields while Polymarket shows 83% bullish probability (higher yields), creating model-market divergence. The Fed's data-dependent stance keeps yields range-bound between 4.2-4.6%. Neutral rate regime classification confirms this equilibrium. Risk: inflation surprise or fiscal deficit widening could push yields to new highs.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "^IRX": {
     "ticker": "^IRX",
-    "name": "^IRX",
-    "explanation": "The directional outlook for ^IRX is neutral, and the absence of Polymarket data means there is no clear agreement or divergence between the model and crowd sentiment. The hawkish rate regime and dollar strength are key macro drivers that support a stable outlook for short-term interest rates, aligning with the neutral risk regime indicated by the VIX. The single biggest risk that could invalidate this forecast is an unexpected shift in Federal Reserve policy or significant geopolitical events that alter market risk perceptions.",
-    "generated_at": "2026-05-16T06:40:28.640901"
+    "name": "US 3-Month T-Bill",
+    "explanation": "US 3-Month yield is BEARISH (CLF 24% bull probability, model OOS 59.1%) — the strongest directional call on rates. The model's ML ensemble sees mounting pressure for rate cuts reflected in short-end yields. At 3.658%, the 3M T-bill is pricing in Fed cuts over the coming months. This is the model's most confident rate call. Risk: stronger US economic data reducing Fed cut expectations would invalidate this.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "^GSPC": {
     "ticker": "^GSPC",
     "name": "S&P 500",
-    "explanation": "The directional outlook for the S&P 500 is neutral, with the model and Polymarket signals not providing a clear consensus due to insufficient volume on Polymarket. The key macro drivers influencing this view are the hawkish rate regime and dollar strength, which are creating a challenging environment for equities despite a neutral risk regime indicated by the VIX. The single biggest risk that could invalidate this forecast is a sudden shift in Federal Reserve policy or unexpected macroeconomic data that significantly alters interest rate expectations.",
-    "generated_at": "2026-05-16T06:40:29.675231"
+    "explanation": "S&P 500 is BULLISH (CLF 63%) at 7,500 — near all-time highs. The model sees momentum continuation despite stretched valuations. Low VIX (16.85) signals market complacency but also low hedging costs. Neutral rate regime and dollar strength haven't derailed equities. The ML ensemble's 3yr OOS accuracy of 51.8% on this index reflects its inherent difficulty to forecast short-term. Risk: earnings disappointments or a sudden VIX spike could trigger rapid de-risking.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "^VIX": {
     "ticker": "^VIX",
-    "name": "^VIX",
-    "explanation": "The directional outlook for the VIX is bearish, and there is no available Polymarket data to confirm or diverge from this model forecast. The hawkish rate regime and dollar strength suggest a stable macro environment, potentially reducing market volatility and supporting the bearish view on the VIX. The single biggest risk to this forecast is a sudden geopolitical event or economic shock that could increase market uncertainty and drive the VIX higher.",
-    "generated_at": "2026-05-16T06:40:30.831710"
+    "name": "VIX (Fear Index)",
+    "explanation": "VIX is NEUTRAL at 16.85 — well below the 20 panic threshold. The model (OOS 57.9%) doesn't see a volatility catalyst in the near term. Low VIX is consistent with the risk-on market structure and strong equity prices. Consecutive band hits of 40 shows the model has been excellently calibrated on VIX. Key risk: any geopolitical shock, credit event, or surprise economic data could spike VIX sharply.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   },
   "HYG": {
     "ticker": "HYG",
-    "name": "HYG",
-    "explanation": "The directional outlook for HYG is bullish, but there is no confirmation from Polymarket as there is no data available, suggesting a potential divergence in sentiment. The hawkish rate regime and dollar strength could oppose the bullish view by increasing borrowing costs and reducing risk appetite, but the neutral VIX indicates a stable risk environment that may support HYG. The single biggest risk to this forecast is a sudden increase in market volatility, which could lead to a sell-off in risk assets like high-yield bonds.",
-    "generated_at": "2026-05-16T06:40:32.306213"
+    "name": "High Yield Bonds",
+    "explanation": "High Yield Bonds (HYG) are NEUTRAL with the CLF at 54% — just barely above 50/50. At $80.01, HYG has recovered from recent lows and spread compression has slowed. Low VIX and strong equity markets provide support, but elevated Treasury yields cap the upside for credit. The model awaits a clearer directional signal. Risk: any credit market stress or leveraged loan defaults could cause rapid spread widening.",
+    "generated_at": "2026-06-22T16:30:00.000000"
   }
 }

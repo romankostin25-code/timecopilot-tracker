@@ -1,5 +1,4 @@
 *.py
-*.csv
 *.pkl
 *.joblib
 models/
@@ -10,3 +9,5 @@ engine/
 intelligence/
 polymarket/
 api/
+data/price_history.csv
+data/poly_snapshots.csv

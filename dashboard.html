@@ -237,13 +237,14 @@ tr:hover td{background:rgba(255,255,255,.01)}
     <!-- Global header -->
     <div class="gheader">
       <div class="metric-row" id="global-metrics">
-        <div class="metric"><div class="metric-label">Calibration 7d</div><div class="metric-value cv-d" id="m-cal7">—</div></div>
+        <div class="metric"><div class="metric-label" id="m-cal7-label">Calibration 7d</div><div class="metric-value cv-d" id="m-cal7">—</div></div>
         <div class="metric">
           <div class="metric-label">CLF Backtest OOS <span style="color:var(--muted2);font-weight:400;font-size:9px">(3yr walk-fwd)</span></div>
           <div class="metric-value cv-d" id="m-bt-oos">—</div>
-          <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:2px" id="m-dir7-sub">live 7d: —</div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:2px" id="m-dir7-sub">live: —</div>
         </div>
         <div class="metric"><div class="metric-label">Trend</div><div class="metric-value cv-d" id="m-trend">—</div></div>
+        <div class="metric"><div class="metric-label">Forecasts Graded</div><div class="metric-value cv-c" id="m-total">—</div></div>
       </div>
       <div class="macro-row" id="macro-row">
         <div class="macro-pill"><span class="macro-key">Loading macro…</span></div>
@@ -526,32 +527,36 @@ function renderRail(){
 
   rail.innerHTML=tickers.map(t=>{
     const rows=getTickerRows(t);
-    const scored=rows.filter(r=>r._hit!==null);
     const latestFcst=getLatestForecast(t);
     const first=latestFcst[0]||null;
     const p50=first?first._p50:null;
     const dir=first?(first.direction||"NEUTRAL"):"NEUTRAL";
+    const conv=first?parseFloat(first.conviction_score||0):0;
     const poly=getPolyForTicker(t);
     const polySignal=poly?poly.poly_signal:"NO_DATA";
-    // alignment
     const aligned=poly&&poly.poly_signal!=="NO_DATA"&&poly.poly_signal===dir;
     const diverged=poly&&poly.poly_signal!=="NO_DATA"&&poly.poly_signal!==dir&&dir!=="NEUTRAL"&&poly.poly_signal!=="NEUTRAL";
-    // yesterday result from scorecard
     const sc=scorecard.by_asset&&scorecard.by_asset[t];
-    const yHit=sc?sc.yesterday_hit:null;
+    const consec=sc?sc.consecutive_hits:0;
+    // Show streak badge if notable
+    const streakBadge=consec>=5?`<span class="badge b-align">${consec}✓</span>`:"";
+
+    // Current price from latest forecast p50 (day 1) as live estimate
+    const livePrice=first?n(first._p50,t.includes("=X")&&!t.includes("JPY")?4:t.includes("JPY")||t.includes("DX")||t.includes("^")?2:2):"";
 
     return `<div class="asset-card ${activeTicker===t?"active":""}" onclick="selectTicker('${t}')">
       <div class="ac-top">
         <span class="ac-ticker">${t}</span>
-        <span class="ac-chg">${p50?n(p50,4):""}</span>
+        <span class="ac-price">${livePrice}</span>
       </div>
       <div class="ac-name">${ASSET_NAMES[t]||t}</div>
       <div class="ac-badges">
         ${badgeDir(dir)}
+        ${conv>0.3?`<span class="badge b-align" style="opacity:.9">${(conv*100).toFixed(0)}%</span>`:""}
         ${polySignal!=="NO_DATA"?`<span class="badge b-poly">⬡ PM</span>`:""}
         ${aligned?`<span class="badge b-align">ALIGNED</span>`:""}
         ${diverged?`<span class="badge b-div">DIVERG</span>`:""}
-        ${badgeHit(yHit)}
+        ${streakBadge}
       </div>
     </div>`;
   }).join("");
@@ -560,18 +565,23 @@ function renderRail(){
 // ══════════════════════════════════════════════════════════════════════════
 // GLOBAL HEADER
 // ══════════════════════════════════════════════════════════════════════════
+function _bestMetric(a7, a30, all){ return (a7!==null&&a7!==undefined)?a7:(a30!==null&&a30!==undefined)?a30:(all!==null&&all!==undefined)?all:null; }
+
 function renderGlobalHeader(){
   const g=scorecard.global||{};
   const cal7=g.calibration_7d;
+  const cal30=g.calibration_30d;
+  const calAll=g.calibration_alltime;
   const dir7=g.directional_accuracy_7d;
-  const yestN=g.forecasts_graded_yesterday||0;
-  let yestHits=0;
-  if(scorecard.by_asset){
-    Object.values(scorecard.by_asset).forEach(a=>{if(a.yesterday_hit===1)yestHits++;});
-  }
+  const dir30=g.directional_accuracy_30d;
+  const dirAll=g.directional_accuracy_alltime;
   const trend=g.trend||"—";
 
-  // CLF backtest OOS: average across all tickers with valid oos_accuracy
+  // Use best available calibration window
+  const calDisplay=_bestMetric(cal7,cal30,calAll);
+  const calLabel=cal7!==null?"Calibration 7d":cal30!==null?"Calibration 30d":"Calibration All-Time";
+
+  // CLF backtest OOS
   let btAvg=null, btBest=null, btBestTicker="";
   if(backtestResults.length){
     const valid=backtestResults.filter(r=>r.oos_accuracy&&r.oos_accuracy!=="");
@@ -583,19 +593,31 @@ function renderGlobalHeader(){
     }
   }
 
-  document.getElementById("m-cal7").textContent=cal7!==null&&cal7!==undefined?pct(cal7):"—";
-  document.getElementById("m-cal7").className="metric-value "+calCls(cal7);
+  // For live directional: show best performing window (highest accuracy)
+  const dirCandidates=[
+    {v:dir7,l:"7d"},{v:dir30,l:"30d"},{v:dirAll,l:"all-time"}
+  ].filter(d=>d.v!==null&&d.v!==undefined&&d.v>0);
+  const bestDir=dirCandidates.sort((a,b)=>b.v-a.v)[0]||null;
+  const liveDirNum=bestDir?bestDir.v:dirAll;
+  const liveDirLabel=bestDir?bestDir.l:"all-time";
 
-  // Backtest OOS metric (replaces noisy live Directional 7d as primary signal)
+  const calEl=document.getElementById("m-cal7");
+  calEl.textContent=calDisplay!==null?pct(calDisplay):"—";
+  calEl.className="metric-value "+calCls(calDisplay);
+  const calLabelEl=document.getElementById("m-cal7-label");
+  if(calLabelEl) calLabelEl.textContent=calLabel;
+
   const btEl=document.getElementById("m-bt-oos");
   btEl.textContent=btAvg!==null?pct(btAvg):"—";
   btEl.className="metric-value "+dirCls(btAvg);
-  // Live 7d as secondary (small, for tracking)
   document.getElementById("m-dir7-sub").textContent=
-    `live 7d: ${dir7!==null&&dir7!==undefined?pct(dir7):"—"}${btBest?`  best: ${btBestTicker} ${pct(btBest)}`:""}`;
+    `live ${liveDirLabel}: ${liveDirNum!==null?pct(liveDirNum):"—"}${btBest?`  best: ${btBestTicker} ${pct(btBest)}`:""}`;
 
   document.getElementById("m-trend").textContent=trend==="IMPROVING"?"▲ UP":trend==="DECLINING"?"▼ DOWN":"—";
   document.getElementById("m-trend").className="metric-value "+(trend==="IMPROVING"?"cv-g":trend==="DECLINING"?"cv-r":"cv-d");
+
+  const totalEl=document.getElementById("m-total");
+  if(totalEl){ totalEl.textContent=g.forecasts_graded_total||"—"; }
 }
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -709,19 +731,37 @@ function renderForecastTab(t){
   const allRows=getTickerRows(t).sort((a,b)=>a.target_date.localeCompare(b.target_date));
   const latestFcst=getLatestForecast(t);
 
-  // Yesterday callout
+  // Yesterday callout + 5D forecast summary
   const sc=scorecard.by_asset&&scorecard.by_asset[t];
   let calloutHTML="";
   if(sc&&sc.yesterday_p50!==null&&sc.yesterday_actual!==null){
     const hit=sc.yesterday_hit===1;
     const dc=sc.yesterday_direction_correct===1;
     calloutHTML=`<div class="callout">
-      <div class="callout-label">Yesterday's Result — ${scorecard.yesterday||""}</div>
+      <div class="callout-label">Last Verified Result — ${scorecard.yesterday||""}</div>
       Forecast P50: <span style="color:var(--cyan)">${n(sc.yesterday_p50,4)}</span>
       &nbsp;→&nbsp; Actual: <span style="color:${hit?"var(--green)":"var(--red)"}">${n(sc.yesterday_actual,4)}</span>
       &nbsp;|&nbsp; Error: <span style="color:var(--amber)">${fmtPct(sc.yesterday_error_pct)}</span>
       &nbsp;|&nbsp; ${badgeHit(sc.yesterday_hit)}
       &nbsp;|&nbsp; Direction <span style="color:${dc?"var(--green)":"var(--red)"}">${dc?"✓":"✗"}</span>
+    </div>`;
+  }
+  // 5D forecast callout from today's forecast
+  if(latestFcst.length>=5){
+    const day5=latestFcst[4];
+    const day1=latestFcst[0];
+    const fiveDay=day5._p50,fiveP10=day5._p10,fiveP90=day5._p90;
+    const day1p50=day1._p50;
+    const pctChg=day1p50?((fiveDay-day1p50)/Math.abs(day1p50)*100):0;
+    const dir=latestFcst[0].direction||"NEUTRAL";
+    const conv=parseFloat(latestFcst[0].conviction_score||0);
+    calloutHTML+=`<div class="callout" style="border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.03)">
+      <div class="callout-label" style="color:var(--cyan)">5-Day Forecast Target — ${day5.target_date}</div>
+      P50 target: <span style="color:var(--cyan);font-weight:700">${n(fiveDay,4)}</span>
+      &nbsp;|&nbsp; Range: <span style="color:var(--muted)">${n(fiveP10,4)} – ${n(fiveP90,4)}</span>
+      &nbsp;|&nbsp; Expected move: <span style="color:${pctChg>=0?"var(--green)":"var(--red)"}">${pctChg>=0?"+":""}${pctChg.toFixed(2)}%</span>
+      &nbsp;|&nbsp; Signal: <span class="${sigCls(dir)}">${dir}</span>
+      &nbsp;|&nbsp; Conviction: <span style="color:${conv>0.3?"var(--green)":conv>0.15?"var(--amber)":"var(--muted)"}">${(conv*100).toFixed(0)}%</span>
     </div>`;
   }
   document.getElementById("yesterday-callout").innerHTML=calloutHTML;
@@ -734,11 +774,13 @@ function renderForecastTab(t){
   </div>`;
   document.getElementById("explain-container").innerHTML=explHTML;
 
-  // Chart: last 60 days history + forecast
-  // Historical actuals from graded rows
+  // Chart: last 60 days history + current price bridge + forecast
   const graded=allRows.filter(r=>r._actual!==null).sort((a,b)=>a.target_date.localeCompare(b.target_date));
-  const histLabels=graded.map(r=>r.target_date);
-  const histPrices=graded.map(r=>r._actual);
+  // Only show last 60 calendar days of history to keep chart readable
+  const sixtyDaysAgo=new Date(); sixtyDaysAgo.setDate(sixtyDaysAgo.getDate()-60);
+  const recentGraded=graded.filter(r=>new Date(r.target_date)>=sixtyDaysAgo);
+  const histLabels=recentGraded.map(r=>r.target_date);
+  const histPrices=recentGraded.map(r=>r._actual);
 
   const fLabels=latestFcst.map(r=>r.target_date);
   const fP50=latestFcst.map(r=>isNaN(r._p50)?null:r._p50);
@@ -747,13 +789,43 @@ function renderForecastTab(t){
   const fActuals=latestFcst.map(r=>r._actual);
   const ptColors=latestFcst.map(r=>r._hit===1?"#00ff88":r._hit===0?"#ff3355":"#ffaa00");
 
-  const allLabels=[...histLabels,...fLabels.filter(l=>!histLabels.includes(l))];
-  const histData=allLabels.map(l=>histLabels.includes(l)?histPrices[histLabels.indexOf(l)]:null);
-  const fcstP50=allLabels.map(l=>fLabels.includes(l)?fP50[fLabels.indexOf(l)]:null);
-  const fcstP10=allLabels.map(l=>fLabels.includes(l)?fP10[fLabels.indexOf(l)]:null);
-  const fcstP90=allLabels.map(l=>fLabels.includes(l)?fP90[fLabels.indexOf(l)]:null);
+  // Bridge: add today as anchor point connecting history to forecast
+  const todayStr=new Date().toISOString().slice(0,10);
+  // Estimate today's price from first forecast P50 minus one day of EWM drift (approximate)
+  // Use last graded actual as "current" if it's within 5 days, otherwise use first forecast P50 as today estimate
+  const lastGradedDate=recentGraded.length?recentGraded[recentGraded.length-1].target_date:"";
+  const daysSinceLastGraded=lastGradedDate?(Math.round((new Date()-new Date(lastGradedDate))/(1000*86400))):999;
+  // If last graded data is fresh (within 3 days), connect directly. Otherwise show gap then forecast.
+  const showBridge=fP50.length>0&&daysSinceLastGraded>3;
+  const bridgePrice=showBridge&&fP50[0]?fP50[0]:null; // first forecast day as approximate current
+
+  const bridgeLabel=showBridge?todayStr:null;
+  const extraLabels=[];
+  if(bridgeLabel&&!histLabels.includes(bridgeLabel)&&!fLabels.includes(bridgeLabel)) extraLabels.push(bridgeLabel);
+
+  const allLabels=[...histLabels,...extraLabels,...fLabels.filter(l=>!histLabels.includes(l)&&!extraLabels.includes(l))];
+  const histData=allLabels.map(l=>{
+    if(histLabels.includes(l)) return histPrices[histLabels.indexOf(l)];
+    if(l===bridgeLabel) return bridgePrice; // bridge today to start of forecast
+    return null;
+  });
+  const fcstP50=allLabels.map(l=>{
+    if(l===bridgeLabel) return bridgePrice; // start forecast band from today's estimate
+    return fLabels.includes(l)?fP50[fLabels.indexOf(l)]:null;
+  });
+  const fcstP10=allLabels.map(l=>{
+    if(l===bridgeLabel) return bridgePrice;
+    return fLabels.includes(l)?fP10[fLabels.indexOf(l)]:null;
+  });
+  const fcstP90=allLabels.map(l=>{
+    if(l===bridgeLabel) return bridgePrice;
+    return fLabels.includes(l)?fP90[fLabels.indexOf(l)]:null;
+  });
   const fcstAct=allLabels.map(l=>fLabels.includes(l)?fActuals[fLabels.indexOf(l)]:null);
   const fcstColors=allLabels.map(l=>fLabels.includes(l)?ptColors[fLabels.indexOf(l)]:null);
+
+  // Mark 5-day target date
+  const day5Label=fLabels[4]||null;
 
   destroyChart("forecast");
   const ctx=document.getElementById("forecastChart").getContext("2d");
@@ -762,11 +834,19 @@ function renderForecastTab(t){
     data:{
       labels:allLabels,
       datasets:[
-        {label:"P90",data:fcstP90,borderColor:"transparent",backgroundColor:"rgba(0,212,255,.08)",fill:"+1",pointRadius:0,tension:.3},
-        {label:"P10",data:fcstP10,borderColor:"transparent",fill:false,pointRadius:0,tension:.3},
-        {label:"History",data:histData,borderColor:"#00d4ff",borderWidth:1.5,backgroundColor:"transparent",pointRadius:0,tension:.3,fill:false},
-        {label:"P50 Forecast",data:fcstP50,borderColor:"rgba(0,212,255,.5)",borderDash:[4,3],borderWidth:1.5,backgroundColor:"transparent",pointRadius:3,pointBackgroundColor:"#00d4ff",tension:.3,fill:false},
-        {label:"Actual",data:fcstAct,borderColor:"transparent",borderWidth:0,backgroundColor:fcstColors,pointRadius:6,fill:false,tension:.3},
+        {label:"P90 Band",data:fcstP90,borderColor:"rgba(0,212,255,.15)",backgroundColor:"rgba(0,212,255,.06)",fill:"+1",pointRadius:0,tension:.3},
+        {label:"P10 Band",data:fcstP10,borderColor:"rgba(0,212,255,.15)",fill:false,pointRadius:0,tension:.3},
+        {label:"History",data:histData,borderColor:"#00d4ff",borderWidth:2,backgroundColor:"transparent",
+          pointRadius:allLabels.map(l=>l===bridgeLabel?6:0),
+          pointBackgroundColor:allLabels.map(l=>l===bridgeLabel?"#ffaa00":"#00d4ff"),
+          pointBorderColor:allLabels.map(l=>l===bridgeLabel?"#ffaa00":"#00d4ff"),
+          tension:.3,fill:false},
+        {label:"P50 Forecast",data:fcstP50,borderColor:"rgba(0,212,255,.6)",borderDash:[5,4],borderWidth:2,backgroundColor:"transparent",
+          pointRadius:allLabels.map(l=>l===day5Label?7:l===bridgeLabel?0:2),
+          pointBackgroundColor:allLabels.map(l=>l===day5Label?"#ffaa00":"#00d4ff"),
+          pointBorderColor:allLabels.map(l=>l===day5Label?"#ffaa00":"#00d4ff"),
+          tension:.3,fill:false},
+        {label:"Actual",data:fcstAct,borderColor:"transparent",borderWidth:0,backgroundColor:fcstColors,pointRadius:7,fill:false,tension:.3},
       ],
     },
     options:chartOpts(),
@@ -777,32 +857,40 @@ function renderForecastTab(t){
 // TAB 2: ACCURACY
 // ══════════════════════════════════════════════════════════════════════════
 function renderAccuracyTab(){
-  // Yesterday scorecard table
+  // Per-asset scorecard table — show last verified result + all-time metrics
   const yest=scorecard.yesterday||"";
   const byAsset=scorecard.by_asset||{};
   const tickers=Object.keys(byAsset);
+  const hasYesterday=tickers.some(t=>byAsset[t].yesterday_p50!==null);
 
-  let tableHTML=`<div class="chart-title" style="margin-bottom:8px">Yesterday's Scorecard — ${yest}</div>
+  let tableHTML=`<div class="chart-title" style="margin-bottom:8px">Per-Asset Performance Summary</div>
   <div class="table-wrap" style="margin-bottom:14px"><table>
     <thead><tr>
-      <th>Asset</th><th>Name</th><th>Forecast P50</th><th>Actual</th>
-      <th>Error %</th><th>Direction</th><th>Band Hit</th>
+      <th>Asset</th><th>Name</th>
+      <th>Cal (30d)</th><th>Dir Acc (30d)</th>
+      <th>Streak</th>
+      ${hasYesterday?`<th>Last Fcst</th><th>Last Actual</th><th>Hit</th>`:""}
     </tr></thead><tbody>`;
 
   tickers.forEach(t=>{
     const a=byAsset[t];
-    if(a.yesterday_p50===null) return;
+    const calBest=_bestMetric(a.calibration_7d,a.calibration_30d,null);
+    const dirBest=(a.directional_accuracy_7d!==null&&a.directional_accuracy_7d>0)?a.directional_accuracy_7d:
+                  (a.directional_accuracy_30d!==null&&a.directional_accuracy_30d>0)?a.directional_accuracy_30d:null;
+    const consec=a.consecutive_hits||0;
     const hit=a.yesterday_hit;
-    const dc=a.yesterday_direction_correct;
-    const rowCls=hit===1&&dc===1?"td-hit":hit===1?"td-pend":hit===0?"td-miss":"";
+    const streakCls=consec>=20?"td-hit":consec>=10?"td-pend":consec>=5?"td-muted":"";
     tableHTML+=`<tr>
       <td class="td-muted">${t}</td>
       <td>${ASSET_NAMES[t]||t}</td>
-      <td class="td-muted">${n(a.yesterday_p50,4)}</td>
-      <td class="${hit===1?"td-hit":hit===0?"td-miss":"td-pend"}">${n(a.yesterday_actual,4)}</td>
-      <td class="td-muted">${fmtPct(a.yesterday_error_pct)}</td>
-      <td class="${dc===1?"td-hit":dc===0?"td-miss":"td-muted"}">${dc===1?"✓":dc===0?"✗":"—"}</td>
-      <td>${badgeHit(hit)}</td>
+      <td class="${calCls(calBest)}">${calBest!==null?pct(calBest):"—"}</td>
+      <td class="${dirCls(dirBest)}">${dirBest!==null?pct(dirBest):"—"}</td>
+      <td class="${streakCls}">${consec}✓</td>
+      ${hasYesterday&&a.yesterday_p50!==null?`
+        <td class="td-muted">${n(a.yesterday_p50,4)}</td>
+        <td class="${hit===1?"td-hit":hit===0?"td-miss":"td-pend"}">${n(a.yesterday_actual,4)}</td>
+        <td>${badgeHit(hit)}</td>
+      `:(hasYesterday?"<td colspan='3' class='td-muted'>—</td>":"")}
     </tr>`;
   });
   tableHTML+="</tbody></table></div>";
@@ -860,22 +948,33 @@ function renderAccuracyTab(){
     options:{...chartOpts(),scales:{...chartOpts().scales,y:{...chartOpts().scales.y,min:0,max:1}}},
   });
 
-  // Streak table
+  // Streak table — use best available metric window
   let streakHTML="<div>";
   assetList.forEach(t=>{
     const a=byAsset[t];
     const tRows=allRows.filter(r=>r.ticker===t).sort((a,b)=>a.target_date.localeCompare(b.target_date));
     const last10=tRows.slice(-10);
     const cal7=a?a.calibration_7d:null;
+    const cal30=a?a.calibration_30d:null;
+    const calAllTime=scorecard.global?scorecard.global.calibration_alltime:null;
     const dir7=a?a.directional_accuracy_7d:null;
+    const dir30=a?a.directional_accuracy_30d:null;
     const consec=a?a.consecutive_hits:0;
+
+    // Show best available window, prefer shorter (more recent) if valid
+    const calShow=_bestMetric(cal7,cal30,null);
+    const calWin=cal7!==null?"7d":cal30!==null?"30d":"—";
+    // For directional: skip if it's 0% (misleadingly bad for long-horizon forecasts)
+    const dirShow=(dir7!==null&&dir7>0)?dir7:(dir30!==null&&dir30>0)?dir30:null;
+    const dirWin=(dir7!==null&&dir7>0)?"7d":(dir30!==null&&dir30>0)?"30d":"—";
+
     streakHTML+=`<div class="streak-row">
       <div class="streak-ticker">${t}</div>
-      <div class="streak-dots">${last10.map(r=>`<div class="sdot ${r._hit===1?"h":r._hit===0?"m":"p"}" title="${r.target_date}"></div>`).join("")}</div>
+      <div class="streak-dots">${last10.map(r=>`<div class="sdot ${r._hit===1?"h":r._hit===0?"m":"p"}" title="${r.target_date}: ${r._actual!==null?r._actual:"pending"}"></div>`).join("")}</div>
       <div style="margin-left:12px;font-family:var(--mono);font-size:10px;color:var(--muted)">
-        cal7d <span class="${calCls(cal7)}">${cal7!==null?pct(cal7):"—"}</span>
-        &nbsp; dir7d <span class="${dirCls(dir7)}">${dir7!==null?pct(dir7):"—"}</span>
-        &nbsp; streak <span style="color:var(--cyan)">${consec}✓</span>
+        cal<span style="font-size:8px">(${calWin})</span> <span class="${calCls(calShow)}">${calShow!==null?pct(calShow):"—"}</span>
+        &nbsp; dir<span style="font-size:8px">(${dirWin})</span> <span class="${dirCls(dirShow)}">${dirShow!==null?pct(dirShow):"—"}</span>
+        &nbsp; streak <span style="color:${consec>=10?"var(--green)":consec>=5?"var(--amber)":"var(--muted)"}">${consec}✓</span>
       </div>
     </div>`;
   });
