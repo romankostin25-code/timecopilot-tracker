@@ -8,7 +8,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:19:58.248432"
+    "generated_at": "2026-06-25T00:14:30.561636"
   },
   "QQQ": {
     "ticker": "QQQ",
@@ -19,72 +19,18 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:20:20.422420"
+    "generated_at": "2026-06-25T00:14:30.839903"
   },
   "IWM": {
     "ticker": "IWM",
     "name": "Russell 2000 ETF",
     "analysis": {
-      "summary": "IWM shows near-term bullish momentum over the 5-30 day horizon, supported by Powell's dovish labor market commentary and a neutral rate regime, with the model targeting ~$296 over 30 days. However, the 90-day outlook flips bearish with elevated signal strength (0.83), suggesting macro headwinds \u2014 likely from persistent dollar strength and above-target CPI \u2014 will weigh on small-cap earnings power and credit costs into Q3.",
-      "key_drivers": [
-        {
-          "driver": "Powell labor market commentary reducing rate hike fears",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Dollar strength (DXY 101.4) compressing small-cap margins and import cost dynamics",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "CPI YoY at 4.17% \u2014 well above Fed target, sustaining restrictive financial conditions for leveraged small-caps",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Neutral rate regime limiting both upside from rate cuts and downside from further hikes",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "VIX at 19.49 \u2014 neutral risk regime with no imminent volatility spike, supportive of near-term equity drift",
-          "impact": "BULLISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "FOMC statement neutral, reducing policy uncertainty short-term",
-          "impact": "BULLISH",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "IWM grinds modestly higher toward $296 over 30 days as Powell's labor commentary provides relief and VIX stays contained, before rolling over toward $290-294 range by 90 days as dollar strength and elevated real rates compress small-cap valuations and debt-servicing costs.",
-          "probability": 0.5
-        },
-        "bull": {
-          "narrative": "IWM breaks above $298-300 and sustains gains through 90 days if CPI prints softer-than-expected, the Fed pivots to a more explicitly dovish stance, and DXY weakens materially, unlocking multiple expansion for small-caps with high domestic revenue exposure.",
-          "probability": 0.25,
-          "catalyst": "Softer CPI/PPI data triggering DXY pullback and Fed rate-cut pricing acceleration"
-        },
-        "bear": {
-          "narrative": "IWM sells off sharply toward $289-290 within 90 days if CPI re-accelerates, dollar strength intensifies, and credit spreads widen as small-cap borrowers face refinancing stress at elevated rates, with VIX spiking above 25 into a risk-off regime.",
-          "probability": 0.25,
-          "catalyst": "Hot CPI print re-igniting rate hike fears combined with dollar surge above 104 DXY"
-        }
-      },
-      "key_risks": [
-        "CPI re-acceleration forcing the Fed to resume rate hikes, disproportionately hurting small-cap companies with floating-rate debt exposure",
-        "Sustained dollar strength eroding competitiveness and margins for domestically-focused small-caps while tightening global financial conditions"
-      ],
-      "conviction_narrative": "Model conviction is high (0.84) uniformly across horizons, reflecting strong directional signal consistency in inputs, though the directional flip from bullish near-term to bearish 90-day implies the confidence is in the trajectory of the regime shift rather than a single sustained trend.",
-      "horizon_divergence": "There is a meaningful divergence: the 5-day and 30-day forecasts are BULLISH with $295-296 targets, while the 90-day flips BEARISH with a signal strength of 0.83, implying the model anticipates macro headwinds \u2014 likely dollar strength and sticky inflation \u2014 will overwhelm near-term Fed dovishness and reverse IWM gains by mid-quarter.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signal for IWM (score 0, no data), leaving model forecasts unconfirmed by crowd-sourced probability markets and reducing external validation of either the near-term bull or medium-term bear thesis."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "IWM shows near-term bullish momentum over the 5-30 day horizon, supported by Powell's dovish labor market commentary and a neutral rate regime, with the model targeting ~$296 over 30 days. However, the 90-day outlook flips bearish with elevated signal strength (0.83), suggesting macro headwinds \u2014 likely from persistent dollar strength and above-target CPI \u2014 will weigh on small-cap earnings power and credit costs into Q3.",
-    "generated_at": "2026-06-24T00:20:41.185307"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:30.959101"
   },
   "XLE": {
     "ticker": "XLE",
@@ -95,7 +41,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:21:03.337591"
+    "generated_at": "2026-06-25T00:14:31.068504"
   },
   "XLF": {
     "ticker": "XLF",
@@ -106,77 +52,18 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:21:25.783690"
+    "generated_at": "2026-06-25T00:14:31.180032"
   },
   "XLK": {
     "ticker": "XLK",
     "name": "Technology Select ETF",
     "analysis": {
-      "summary": "XLK is positioned for near-term and 30-day gains driven by quantitative momentum signals, with price targets of ~$185\u2013$188 over those horizons. However, the 90-day outlook flips bearish with wide dispersion ($175\u2013$201), suggesting the near-term rally may fade into a more uncertain macro backdrop.",
-      "key_drivers": [
-        {
-          "driver": "Short and medium-term momentum signals (signal strength 0.45\u20132.20)",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Dollar strength regime (DXY 101.37) pressuring multinational tech earnings",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Elevated CPI (4.17% YoY) sustaining real rate headwinds for growth equities",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Neutral rate regime limiting the severity of near-term rate shock",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Tech-led selloff with investor liquidation noted in recent news flow",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "OpenAI/Altman governance scrutiny adding headline risk to AI-adjacent holdings",
-          "impact": "BEARISH",
-          "weight": "LOW"
-        },
-        {
-          "driver": "VIX at 19.49 \u2014 neutral risk regime, not extreme fear or complacency",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "XLK grinds higher toward ~$188 over the next 30 days as near-term momentum holds and the neutral rate/VIX environment provides a stable backdrop. By the 90-day window, macro headwinds from sticky inflation and dollar strength cap upside, with the index oscillating near current levels with elevated two-way risk.",
-          "probability": 0.5
-        },
-        "bull": {
-          "narrative": "A Fed dovish pivot signal or a material CPI undershoot compresses real yields and weakens the dollar, reigniting multiple expansion in large-cap tech. XLK breaks above $195+ within 90 days as AI-driven earnings revisions accelerate and the 90-day p90 target of $201 is approached.",
-          "probability": 0.25,
-          "catalyst": "CPI print significantly below consensus or Fed signals rate cuts sooner than expected, triggering a rotation back into high-duration growth"
-        },
-        "bear": {
-          "narrative": "Sticky inflation forces the Fed to hold rates higher for longer, the dollar extends its strength, and deteriorating tech earnings visibility \u2014 compounded by AI governance/regulatory risk \u2014 drive a de-rating. XLK tests the 90-day p10 of ~$175, erasing near-term gains.",
-          "probability": 0.25,
-          "catalyst": "Hot CPI or hawkish Fed re-pricing, combined with a broad tech liquidation event similar to the news-flagged selloff, breaching key technical support levels"
-        }
-      },
-      "key_risks": [
-        "Persistent above-target inflation (CPI 4.17%) forces Fed to maintain restrictive policy longer than priced, compressing tech multiples through higher real yields",
-        "Broad tech sector liquidation cascading from macro-driven de-risking or AI governance concerns, amplified by concentrated positioning in mega-cap XLK holdings"
-      ],
-      "conviction_narrative": "Conviction is moderate-to-high (0.802) on the directional call for the near-term and 30-day windows due to consistent quantitative signal strength, but the 90-day bearish flip and wide percentile band substantially limit confidence in the overall trade thesis.",
-      "horizon_divergence": "The 5-day and 30-day models are uniformly BULLISH targeting $185\u2013$188, while the 90-day model flips BEARISH with a wide $175\u2013$201 range, indicating near-term momentum exhaustion and growing macro uncertainty beyond the one-month horizon.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signals for XLK, leaving the model forecast uncorroborated by crowd-sourced macro or event probabilities, which neither confirms nor challenges the quantitative directional view."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "XLK is positioned for near-term and 30-day gains driven by quantitative momentum signals, with price targets of ~$185\u2013$188 over those horizons. However, the 90-day outlook flips bearish with wide dispersion ($175\u2013$201), suggesting the near-term rally may fade into a more uncertain macro backdrop.",
-    "generated_at": "2026-06-24T00:21:47.642953"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:31.389814"
   },
   "GLD": {
     "ticker": "GLD",
@@ -187,202 +74,40 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:22:10.437768"
+    "generated_at": "2026-06-25T00:14:31.500330"
   },
   "SLV": {
     "ticker": "SLV",
     "name": "Silver ETF (SLV)",
     "analysis": {
-      "summary": "SLV faces consistent bearish pressure across all horizons, with the model projecting a decline from current levels toward ~$53 over 90 days driven by dollar strength and elevated real rates. Near-term downside is modest (~0.5-1%), but the distribution widens materially at 90 days with the p10 scenario implying a ~12% drawdown, suggesting asymmetric downside risk.",
-      "key_drivers": [
-        {
-          "driver": "Dollar strength (DXY ~101.4) creating headwinds for USD-denominated commodities",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Elevated US 10Y yield at 4.49% raising opportunity cost of holding non-yielding silver",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Sticky inflation (CPI 4.17%) providing partial floor via silver's inflation-hedge demand",
-          "impact": "BULLISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral VIX regime (19.49) limiting safe-haven silver demand but not triggering risk-off bid",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Industrial silver demand (solar, EV, electronics) providing structural support independent of macro",
-          "impact": "BULLISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral rates regime limiting further rate shock catalyst but sustaining current drag",
-          "impact": "BEARISH",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Dollar remains firm, 10Y yields stay elevated near 4.5%, and silver drifts lower toward $53-55 over 90 days as the macro backdrop discourages speculative positioning. Industrial demand provides a partial buffer preventing a sharper collapse.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "Fed signals an accelerated rate cut path or dollar weakens materially on deteriorating US growth data, reversing the real yield headwind and sparking a silver rally back toward $57-58. Inflation staying elevated also reinforces silver's store-of-value bid.",
-          "probability": 0.2,
-          "catalyst": "Dovish Fed pivot signal or significant DXY breakdown below 99"
-        },
-        "bear": {
-          "narrative": "Dollar strengthens further as global risk-off accelerates, yields spike above 4.75%, and silver breaks key technical support toward $49-50, consistent with the 90-day p10 scenario. A global industrial slowdown cutting photovoltaic/electronics demand amplifies the move.",
-          "probability": 0.25,
-          "catalyst": "US economic resilience keeping the Fed on hold longer while global growth disappoints, or a broad commodity demand destruction event"
-        }
-      },
-      "key_risks": [
-        "Geopolitical escalation or sudden risk-off shock could create a short-term safe-haven bid in silver that contradicts the bearish model signal",
-        "Silver's dual industrial-monetary nature means a rapid shift in green energy policy or solar panel demand could decouple it from traditional macro drivers"
-      ],
-      "conviction_narrative": "Conviction is moderate (0.55) reflecting a genuine bearish lean driven by macro headwinds, but tempered by silver's inflation sensitivity, industrial demand tailwinds, and the absence of a strong directional catalyst in the near term.",
-      "horizon_divergence": "Near-term (5d) and long-term (90d) are directionally aligned as bearish, but the magnitude diverges sharply \u2014 the 90-day p10/p90 spread of ~$7 versus the 5-day spread of ~$1 signals that uncertainty compounds significantly over time, making the medium-term path highly path-dependent.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signals for SLV, offering neither confirmation nor contradiction of the model's bearish directional call, leaving the thesis entirely macro-model driven."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "SLV faces consistent bearish pressure across all horizons, with the model projecting a decline from current levels toward ~$53 over 90 days driven by dollar strength and elevated real rates. Near-term downside is modest (~0.5-1%), but the distribution widens materially at 90 days with the p10 scenario implying a ~12% drawdown, suggesting asymmetric downside risk.",
-    "generated_at": "2026-06-24T00:22:31.421157"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:31.613685"
   },
   "TLT": {
     "ticker": "TLT",
     "name": "20Y+ Treasury ETF",
     "analysis": {
-      "summary": "TLT is positioned for a modest near-term and 30-day rally driven by Powell's dovish labor market commentary and a neutral rate regime, with price targets clustering around $86.20 on the 5-day and 30-day horizons. The 90-day outlook flips bearish, suggesting any rally is likely a counter-trend move within a structurally challenged long-duration environment where elevated CPI and dollar strength will reassert pressure.",
-      "key_drivers": [
-        {
-          "driver": "Powell's dovish signal on labor market not driving inflation",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "CPI YoY at 4.17% \u2014 real rates remain restrictive, limiting duration appeal",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Dollar strength regime (DXY ~101.4) \u2014 historically negative for long-duration Treasuries via foreign demand suppression",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral rate regime \u2014 Fed funds at 3.63% vs 10Y at 4.49% sustains inverted curve pressure",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "VIX at 19.49 \u2014 neutral risk regime implies no significant flight-to-quality bid for TLT",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "FOMC statement sentiment neutral \u2014 no new policy catalyst to drive sustained bond rally",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "TLT grinds modestly higher near-term toward $86.20 on Powell's labor market commentary reducing hawkish tail risk, before facing renewed headwinds from sticky CPI and dollar strength that push prices back toward $85-85.50 by the 90-day horizon.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "Inflation data surprises to the downside over the next 1-2 months, prompting aggressive repricing of Fed cut expectations. TLT breaks above $87.30 (90th percentile) as real yields compress and dollar strength reverses, extending the rally into the 90-day window.",
-          "probability": 0.2,
-          "catalyst": "CPI print significantly below expectations or labor market deterioration accelerating Fed pivot pricing"
-        },
-        "bear": {
-          "narrative": "Sticky inflation and resilient economic data force the market to price out remaining Fed cuts, driving 10Y yields toward 4.75%+. TLT breaks below $85.08 (10th percentile 90d) as dollar strength accelerates and duration selling intensifies.",
-          "probability": 0.25,
-          "catalyst": "Upside CPI surprise or strong NFP print reinforcing higher-for-longer Fed narrative"
-        }
-      },
-      "key_risks": [
-        "Upside inflation surprise (CPI re-acceleration) could rapidly unwind any near-term TLT gains and invalidate the 5-30 day bullish thesis",
-        "Dollar strength regime persistence compresses foreign central bank demand for Treasuries, creating structural supply-demand imbalance at the long end"
-      ],
-      "conviction_narrative": "Model conviction is high at 0.94 across all horizons, but this reflects directional certainty within each window rather than magnitude certainty \u2014 the extremely tight 5-day percentile spread ($86.10-$86.30) signals the model sees very low near-term volatility, which itself may be a risk given the macro backdrop.",
-      "horizon_divergence": "The 5-day and 30-day models signal BULLISH while the 90-day model turns BEARISH, indicating that any near-term Powell-driven relief rally is expected to be temporary and fade as structural inflation and dollar headwinds reassert dominance over the medium term.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signals for TLT, offering neither confirmation nor contradiction of the model's near-term bullish / medium-term bearish divergence, leaving the analysis entirely model- and macro-driven."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "TLT is positioned for a modest near-term and 30-day rally driven by Powell's dovish labor market commentary and a neutral rate regime, with price targets clustering around $86.20 on the 5-day and 30-day horizons. The 90-day outlook flips bearish, suggesting any rally is likely a counter-trend move within a structurally challenged long-duration environment where elevated CPI and dollar strength will reassert pressure.",
-    "generated_at": "2026-06-24T00:22:52.051679"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:31.727798"
   },
   "IEF": {
     "ticker": "IEF",
     "name": "7-10Y Treasury ETF",
     "analysis": {
-      "summary": "IEF shows near-term bullish momentum supported by Powell's dovish labor market commentary and a neutral rate regime, with the 5-day and 30-day forecasts clustering tightly around $94.12\u2013$94.19. However, the 90-day signal flips bearish, suggesting medium-term headwinds from still-elevated CPI (4.17%) and dollar strength that may reassert themselves once the current Fed pause narrative fades.",
-      "key_drivers": [
-        {
-          "driver": "Powell labor market commentary reducing inflation pressure expectations",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "CPI YoY at 4.17% \u2014 well above Fed target, limiting sustained rally",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Dollar strength regime (DXY 101.4) compressing foreign demand for Treasuries",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral rate regime with Fed funds at 3.63% vs 10Y at 4.49% \u2014 positive carry compression",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "VIX at 19.49 indicating neutral risk regime \u2014 limited flight-to-quality bid",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Tight near-term price distribution (p10\u2013p90 range of ~$0.31) signaling low near-term volatility",
-          "impact": "BULLISH",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "IEF drifts modestly higher over 5\u201330 days as the FOMC pause narrative holds and Powell's dovish labor market framing anchors rate expectations. Beyond 30 days, persistent above-target inflation and dollar strength erode the rally, pushing yields back toward 4.5%+ and IEF toward the low $93s by the 90-day horizon.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "A meaningful softening in CPI or a deterioration in labor market data prompts the market to price in earlier Fed cuts, driving a sustained IEF rally through all three horizons with the 90-day bearish flip failing to materialize. Price could test $95+ if rate cut expectations accelerate.",
-          "probability": 0.25,
-          "catalyst": "CPI print below 3.5% YoY or unexpected rise in unemployment rate triggering aggressive Fed easing repricing"
-        },
-        "bear": {
-          "narrative": "Sticky inflation causes the Fed to signal higher-for-longer, the dollar accelerates through 103 DXY, and 10Y yields breach 4.75%, pushing IEF toward the $93 handle well before the 90-day horizon. Near-term bullish signals prove fleeting.",
-          "probability": 0.2,
-          "catalyst": "Upside CPI or PCE surprise combined with hawkish Fed minutes reigniting terminal rate fears"
-        }
-      },
-      "key_risks": [
-        "Inflation re-acceleration: CPI already at 4.17% with core services sticky \u2014 any upside surprise kills the near-term bull case and accelerates the 90-day bearish thesis",
-        "Dollar strength amplification: A sustained DXY move above 103\u2013104 would pressure foreign Treasury demand and widen the basis, adding selling pressure to the 7\u201310Y segment specifically"
-      ],
-      "conviction_narrative": "Model conviction is high at 0.946 across all horizons, likely reflecting consistent signal alignment across the macro factor inputs despite the directional flip at 90 days, suggesting the model has high confidence in both the near-term bid and the medium-term fade.",
-      "horizon_divergence": "The 5-day and 30-day forecasts are BULLISH while the 90-day flips BEARISH, implying the model expects a near-term rally driven by the current Fed pause narrative that ultimately fades against persistent inflation and dollar strength pressure over the medium term.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime data for IEF, offering neither confirmation nor contradiction of the model's bullish near-term / bearish medium-term split, leaving the model signal to stand on its own macro fundamentals."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "IEF shows near-term bullish momentum supported by Powell's dovish labor market commentary and a neutral rate regime, with the 5-day and 30-day forecasts clustering tightly around $94.12\u2013$94.19. However, the 90-day signal flips bearish, suggesting medium-term headwinds from still-elevated CPI (4.17%) and dollar strength that may reassert themselves once the current Fed pause narrative fades.",
-    "generated_at": "2026-06-24T00:23:13.629007"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:31.842247"
   },
   "HYG": {
     "ticker": "HYG",
@@ -393,7 +118,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:23:36.851532"
+    "generated_at": "2026-06-25T00:14:31.955161"
   },
   "LQD": {
     "ticker": "LQD",
@@ -404,7 +129,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:24:00.018376"
+    "generated_at": "2026-06-25T00:14:32.068731"
   },
   "BIL": {
     "ticker": "BIL",
@@ -415,72 +140,18 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:24:23.667560"
+    "generated_at": "2026-06-25T00:14:32.178905"
   },
   "^TNX": {
     "ticker": "^TNX",
     "name": "US 10Y Treasury Yield",
     "analysis": {
-      "summary": "Near-term (5d) pressure points to modest yield compression from current 4.493% toward 4.472% as Powell's labor market commentary dampens inflation premium and reduces rate-hike optionality. Medium-term (90d) the model turns bearish again with yields gravitating toward 4.38%, reflecting expectations of gradual Fed easing as real rates remain restrictive against softening inflation.",
-      "key_drivers": [
-        {
-          "driver": "Powell labor market commentary signaling disinflation trajectory, reducing terminal rate pricing",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "CPI at 4.17% YoY remains materially above Fed target, keeping real rate premium elevated and limiting aggressive rally",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Dollar strength regime (DXY 101.37) reflecting residual safe-haven demand and rate differential support, anchoring long-end yields",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "30d BULLISH forecast divergence with widening p10-p90 band (4.33-4.54) signals transitional regime uncertainty",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral VIX regime (19.49) limits flight-to-quality bond bid, reducing near-term rally fuel",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        },
-        {
-          "driver": "Fed funds at 3.63% with neutral rate regime implies no imminent policy surprise shock to long-end",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Yields grind lower from 4.49% toward 4.38% over 90 days as inflation gradually decelerates, Powell rhetoric reinforces patient easing bias, and real rate restrictiveness eventually catalyzes curve bull-flattening. The 30d bullish blip reflects near-term supply/demand technicals before fundamentals reassert.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "Yields fall sharply toward 4.17% (90d p10) if inflation prints surprise to the downside and the Fed signals a cut cycle sooner than priced, triggering aggressive duration buying and unwind of short positions.",
-          "probability": 0.2,
-          "catalyst": "Consecutive CPI/PCE prints below 3.5% YoY combined with softening payrolls forcing Fed to front-load rate cut guidance"
-        },
-        "bear": {
-          "narrative": "Yields re-test and breach 4.55%+ (90d p90) if inflation proves stickier than Powell's labor market narrative suggests, or if fiscal supply concerns re-emerge alongside a deteriorating fiscal outlook, forcing the market to re-price terminal rates higher.",
-          "probability": 0.25,
-          "catalyst": "Upside CPI surprise (>4.5% YoY) or Treasury announcing larger-than-expected debt issuance amid weak auction demand"
-        }
-      },
-      "key_risks": [
-        "Inflation re-acceleration driven by energy/shelter re-pricing could invalidate the bearish yield narrative and force rapid repricing toward 4.70%+",
-        "Geopolitical shock or credit event triggering simultaneous risk-off dollar strength and bond selling (stagflation proxy) could create a disorderly yield spike decoupled from Fed guidance"
-      ],
-      "conviction_narrative": "Conviction is high at 0.9433 across all horizons because the model's directional signals are reinforced by consistent macro alignment \u2014 restrictive real rates, moderating labor market inflation pressure, and a neutral volatility regime \u2014 though the 30d bullish reversal introduces meaningful path uncertainty.",
-      "horizon_divergence": "The 5d and 90d outlooks both point BEARISH (yields lower), but the 30d window flips BULLISH, suggesting a near-term technical bounce or supply-driven selloff interrupts the medium-term easing trajectory before fundamentals reassert downward yield pressure.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signal for TNX, meaning crowd-sourced probability markets offer no confirmation or contradiction to the model's bearish yield thesis, leaving the analysis entirely model and macro-driven."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "Near-term (5d) pressure points to modest yield compression from current 4.493% toward 4.472% as Powell's labor market commentary dampens inflation premium and reduces rate-hike optionality. Medium-term (90d) the model turns bearish again with yields gravitating toward 4.38%, reflecting expectations of gradual Fed easing as real rates remain restrictive against softening inflation.",
-    "generated_at": "2026-06-24T00:24:46.140495"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:32.382665"
   },
   "GC=F": {
     "ticker": "GC=F",
@@ -491,7 +162,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:25:08.703147"
+    "generated_at": "2026-06-25T00:14:32.493846"
   },
   "SI=F": {
     "ticker": "SI=F",
@@ -502,332 +173,62 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:25:29.227449"
+    "generated_at": "2026-06-25T00:14:32.705917"
   },
   "CL=F": {
     "ticker": "CL=F",
     "name": "WTI Crude Oil",
     "analysis": {
-      "summary": "WTI Crude Oil faces consistent bearish pressure across all three forecast horizons with the model targeting ~$72.95 as the median price, implying modest downside from current levels. Dollar strength, contango structure, and subdued signal strength collectively suggest a drift lower rather than a sharp selloff, with the medium-term risk window ($68.74\u2013$77.16 on the 30-day horizon) reflecting meaningful two-sided uncertainty.",
-      "key_drivers": [
-        {
-          "driver": "Dollar strength (DXY ~101.4) creating headwinds for dollar-denominated commodities",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Futures curve in contango, signaling oversupply or weak near-term demand and incentivizing inventory builds over spot purchases",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Elevated CPI (4.17%) keeping Fed policy restrictive, dampening industrial demand and risk appetite",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral risk regime (VIX ~19.5) limiting panic-driven safe-haven flows into commodities or aggressive de-risking",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral rate regime providing no imminent pivot catalyst to drive oil demand re-rating higher",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Weak signal strength (0.014 across horizons) suggesting no strong momentum or structural driver dominating price action",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "WTI drifts gradually lower toward $71\u201373 over the next 5\u201330 days, weighed down by dollar strength, contango dynamics, and tepid global demand signals. No major supply disruption or policy shift emerges to reverse the trend. Price consolidates in the low-to-mid $70s.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "A dovish Fed pivot signal or material OPEC+ supply cut announcement triggers a short-covering rally, pushing WTI toward the $76\u201377 range. Dollar weakens in response to revised rate expectations, providing additional commodity tailwind.",
-          "probability": 0.2,
-          "catalyst": "Surprise OPEC+ production cut or Fed signals accelerated rate cut timeline"
-        },
-        "bear": {
-          "narrative": "Demand fears escalate on deteriorating global PMI data or a renewed dollar surge, driving WTI through the $69 level. Contango deepens, encouraging further inventory builds and producer hedging pressure. Price tests the $68\u201369 p10 range.",
-          "probability": 0.25,
-          "catalyst": "Weak US/China demand data, DXY breakout above 103, or unexpected inventory surplus"
-        }
-      },
-      "key_risks": [
-        "Geopolitical escalation in Middle East or Russia-Ukraine supply corridor could trigger sharp bullish reversal inconsistent with model bearish bias",
-        "Dollar regime shift\u2014if DXY reverses sharply below 99, commodity tailwinds could invalidate the bearish thesis faster than the model captures"
-      ],
-      "conviction_narrative": "Conviction is moderate (0.608) rather than high because signal strength is very weak (~0.014), the risk regime is neutral rather than clearly recessionary, and the forecast interquartile range remains wide enough (~$6\u20138) to allow meaningful price uncertainty in either direction.",
-      "horizon_divergence": null,
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signal for WTI, meaning crowd-sourced probability markets offer no corroboration or contradiction to the model's bearish directional call, leaving the analysis entirely model-driven."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "WTI Crude Oil faces consistent bearish pressure across all three forecast horizons with the model targeting ~$72.95 as the median price, implying modest downside from current levels. Dollar strength, contango structure, and subdued signal strength collectively suggest a drift lower rather than a sharp selloff, with the medium-term risk window ($68.74\u2013$77.16 on the 30-day horizon) reflecting meaningful two-sided uncertainty.",
-    "generated_at": "2026-06-24T00:25:49.359045"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:32.820562"
   },
   "NG=F": {
     "ticker": "NG=F",
     "name": "Natural Gas",
     "analysis": {
-      "summary": "Near-term (5-day) price action is biased lower toward ~$3.20 with tight distributional range, suggesting modest selling pressure into the week. Medium-term (30-day) flips constructively bullish before the 90-day view reasserts bearish pressure, creating a complex multi-horizon tactical landscape.",
-      "key_drivers": [
-        {
-          "driver": "Futures curve in backwardation signals near-term supply tightness supporting spot but headwinds for deferred contracts",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Dollar strength (DXY ~101.4) creates headwinds for USD-denominated commodities including natural gas exports pricing",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Elevated CPI (4.17% YoY) keeps energy demand robust but also risks demand destruction via Fed policy tightening fears",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "90-day bearish signal with widening p10-p90 spread ($2.81-$3.55) reflects increasing uncertainty and downside tail risk into summer/fall",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Neutral VIX regime (19.49) limits panic-driven volatility premium in energy complex, capping upside surprise potential",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        },
-        {
-          "driver": "Absence of fresh fundamental catalysts (no news flow, no Polymarket regime signal) leaves technicals and curve structure as primary drivers",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Natural gas consolidates near $3.18-$3.20 over the next 5 days before a modest 30-day bounce toward $3.20 median driven by backwardation and seasonal positioning, then drifts lower by 90 days as storage builds and macro headwinds reassert. Dollar strength constrains any sustained rally.",
-          "probability": 0.5
-        },
-        "bull": {
-          "narrative": "Backwardation accelerates as LNG export demand spikes or a weather-driven demand event materializes, propelling prices to the $3.45-$3.55 range over the 30-90 day horizon. Dollar reversal and Fed pivot rhetoric amplify the move.",
-          "probability": 0.25,
-          "catalyst": "Unexpected cold weather event, LNG export surge, or Fed dovish pivot weakening DXY materially below 99"
-        },
-        "bear": {
-          "narrative": "Storage injection season outpaces consensus, supply-demand balance loosens materially, and dollar strength persists \u2014 pulling natural gas toward the $2.81-$2.94 p10 range by the 90-day horizon. Near-term 5-day downside is limited but directionally consistent.",
-          "probability": 0.25,
-          "catalyst": "Warmer-than-seasonal temperatures, higher-than-expected weekly EIA storage builds, or risk-off macro shock compressing commodity demand"
-        }
-      },
-      "key_risks": [
-        "Horizon divergence between 5-day bearish and 30-day bullish signals creates whipsaw risk for position sizing \u2014 premature positioning ahead of the 30-day bounce could face near-term drawdown",
-        "Widening 90-day distributional range ($2.81-$3.55) implies model uncertainty is elevated; a tail break lower toward $2.81 could trigger stop cascades given lack of fundamental news support"
-      ],
-      "conviction_narrative": "Conviction is moderate (0.65) across all horizons because the signal is directionally consistent in magnitude but the conflicting 5d/30d directionality and absence of fresh catalysts or Polymarket confirmation limits high-conviction positioning.",
-      "horizon_divergence": "The 5-day outlook is BEARISH while the 30-day flips BULLISH before the 90-day reasserts BEARISH, indicating a tactical bounce may be embedded within a broader downtrend \u2014 traders must carefully distinguish time-frame exposure.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signal for natural gas, offering zero crowd-sentiment confirmation or contradiction to the model's multi-directional outlook, leaving the analysis purely model and macro-driven."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "Near-term (5-day) price action is biased lower toward ~$3.20 with tight distributional range, suggesting modest selling pressure into the week. Medium-term (30-day) flips constructively bullish before the 90-day view reasserts bearish pressure, creating a complex multi-horizon tactical landscape.",
-    "generated_at": "2026-06-24T00:26:12.137470"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:32.972818"
   },
   "HG=F": {
     "ticker": "HG=F",
     "name": "Copper Futures",
     "analysis": {
-      "summary": "Copper faces near-term bearish pressure with the 5-day forecast centering around $6.14 amid dollar strength and neutral risk regime, while the 90-day outlook reveals meaningful downside tail risk with p10 at $5.65 suggesting potential for a more severe correction if macro headwinds persist. The combination of DOLLAR_STRENGTH regime, elevated real rates, and contango structure in the futures curve points to a sustained bearish lean across all horizons with widening uncertainty as time extends.",
-      "key_drivers": [
-        {
-          "driver": "Dollar strength (DXY 101.37) compressing USD-denominated commodity prices",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Contango futures curve structure signaling weak spot demand relative to deferred supply expectations",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Elevated CPI (4.17%) keeping Fed policy restrictive and dampening industrial demand outlook",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Neutral VIX regime (19.49) limiting extreme risk-off panic selling but offering no bullish impulse",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral rate regime with 10Y at 4.49% \u2014 real yields still positive, reducing copper carry appeal",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Absence of catalytic macro news flow to trigger demand re-rating",
-          "impact": "BEARISH",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Dollar remains elevated, Fed holds restrictive stance, and Chinese industrial demand disappoints, keeping copper in a gradual drift lower toward the $6.00-6.14 range over 30 days before testing $5.80-5.90 support over 90 days. Contango structure persists, discouraging speculative long positioning.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "A sharp dovish pivot signal from the Fed or a major Chinese stimulus package reignites copper demand expectations, breaking above $6.40 and compressing the contango. Dollar reversal from current levels acts as an amplifier, driving a short-covering rally toward $6.50+.",
-          "probability": 0.2,
-          "catalyst": "PBOC large-scale infrastructure stimulus announcement or surprise Fed rate cut signal collapsing the DXY below 99"
-        },
-        "bear": {
-          "narrative": "Global growth fears intensify \u2014 particularly in China and Europe \u2014 triggering a broad commodity selloff. Dollar surges above 103-104 on safe-haven flows, copper breaks below $5.85 near-term and tests the 90-day p10 of $5.65, potentially breaching key technical support levels.",
-          "probability": 0.25,
-          "catalyst": "Significant negative China PMI print combined with US recession signals or escalating trade tariff risk driving DXY higher"
-        }
-      },
-      "key_risks": [
-        "Sudden Chinese policy stimulus reversal \u2014 copper is highly sensitive to PBOC and NDRC announcements; any large-scale infrastructure program could invalidate bearish positioning rapidly",
-        "Dollar regime reversal risk \u2014 if US macro data weakens sufficiently to price in Fed cuts, DXY could fall sharply, providing a strong mechanical tailwind to copper prices against the current bearish model signal"
-      ],
-      "conviction_narrative": "Conviction is high at 0.844 because multiple macro regimes \u2014 dollar strength, positive real rates, and contango structure \u2014 are simultaneously aligned bearishly, with no offsetting bullish catalysts present in news flow or Polymarket signals.",
-      "horizon_divergence": "While the 5-day p50 ($6.14) and 90-day p50 ($6.14) are nearly identical, the 90-day p10 ($5.65 vs $6.11) reveals substantially wider downside tail risk at longer horizons, indicating the model sees near-term stability but growing bear case probability over time.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signals for copper, meaning the crowd offers no confirmation or contradiction of the model's bearish view, leaving the directional call entirely model-driven without sentiment validation."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "Copper faces near-term bearish pressure with the 5-day forecast centering around $6.14 amid dollar strength and neutral risk regime, while the 90-day outlook reveals meaningful downside tail risk with p10 at $5.65 suggesting potential for a more severe correction if macro headwinds persist. The combination of DOLLAR_STRENGTH regime, elevated real rates, and contango structure in the futures curve points to a sustained bearish lean across all horizons with widening uncertainty as time extends.",
-    "generated_at": "2026-06-24T00:26:34.369284"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:33.569885"
   },
   "ZW=F": {
     "ticker": "ZW=F",
     "name": "Wheat Futures",
     "analysis": {
-      "summary": "Wheat futures face near-term selling pressure over the 5-day horizon with bearish conviction near 0.89, while the 30-day window shows a transient bullish bounce before the 90-day trend reasserts downside toward the low 580s. The structural bear case dominates the medium-term outlook, reinforced by dollar strength headwinds and a futures curve in backwardation suggesting spot demand is not driving a sustained rally.",
-      "key_drivers": [
-        {
-          "driver": "Dollar strength (DXY ~101.4) pressuring USD-denominated commodity exports and global wheat demand",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Backwardation in futures curve indicating near-term supply tightness but not a sustained structural bull signal",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Elevated CPI (4.17% YoY) maintaining real commodity demand erosion at the consumer level and central bank hawkishness risk",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral rate regime limiting aggressive carry-driven commodity speculation",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        },
-        {
-          "driver": "Absence of fresh bullish geopolitical or weather catalysts (no news flow, no Polymarket regime signals)",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "90-day p10/p50 distribution skewed meaningfully below current spot (~583 p50 vs ~598 spot), implying net downside drift",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Wheat drifts lower over the next 90 days as dollar strength persists, export competitiveness erodes, and no major supply shock materializes. The 5-day bearish signal resolves into a brief 30-day stabilization or relief rally before the dominant 90-day bear trend pushes prices toward 580\u2013585.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "A geopolitical shock (Black Sea disruption, major crop failure in EU or Argentina) or a sharp USD reversal driven by Fed pivot signals sparks a short-covering rally, lifting wheat back toward 615\u2013620 and invalidating the 90-day bear case.",
-          "probability": 0.2,
-          "catalyst": "Renewed Black Sea supply disruption or surprise Fed dovish pivot weakening DXY below 98"
-        },
-        "bear": {
-          "narrative": "Global demand destruction accelerates as dollar strength compounds with weak Chinese import demand and bumper harvests in Australia/Canada, pushing wheat toward or below the 90-day p10 of ~563, with backwardation collapsing as nearby supply eases.",
-          "probability": 0.25,
-          "catalyst": "USDA surprise upward revision to global wheat production estimates combined with DXY rally above 104"
-        }
-      },
-      "key_risks": [
-        "Unexpected geopolitical escalation in major wheat-exporting regions (Ukraine, Russia, Middle East) could rapidly invalidate the bear thesis with a supply shock spike",
-        "A sudden Fed pivot or weaker-than-expected US economic data triggering a sharp DXY selloff would remove the primary macro headwind and ignite commodity reflation broadly"
-      ],
-      "conviction_narrative": "Conviction is high (0.89) primarily because directional alignment across the 5-day and 90-day horizons is both bearish with consistent signal strength building on the 90-day frame, while macro factors (dollar strength, absence of bullish catalysts, no supportive news flow) corroborate the model signal.",
-      "horizon_divergence": "The 5-day and 90-day outlooks are both bearish but the 30-day window flips to BULLISH, suggesting a short-term mean-reversion bounce interrupts the medium-term downtrend \u2014 traders should be cautious about fading the 30-day signal as a structural trend change.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signals for wheat, meaning crowd-sourced probability markets offer no corroboration or contradiction to the model's bearish thesis, leaving the directional view entirely model- and macro-driven."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "Wheat futures face near-term selling pressure over the 5-day horizon with bearish conviction near 0.89, while the 30-day window shows a transient bullish bounce before the 90-day trend reasserts downside toward the low 580s. The structural bear case dominates the medium-term outlook, reinforced by dollar strength headwinds and a futures curve in backwardation suggesting spot demand is not driving a sustained rally.",
-    "generated_at": "2026-06-24T00:26:56.595807"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:33.682350"
   },
   "ZC=F": {
     "ticker": "ZC=F",
     "name": "Corn Futures",
     "analysis": {
-      "summary": "Corn futures face near-term bearish pressure over the 5-day horizon with the model targeting ~433 cents/bushel at the median, before a brief 30-day bullish rebound, ultimately resolving bearish again at the 90-day horizon with downside skew toward 424. The backwardated curve structure supports spot demand but the dollar strength regime and elevated real rates create persistent headwinds for commodity prices over the medium term.",
-      "key_drivers": [
-        {
-          "driver": "Dollar strength (DXY 101.37) reducing export competitiveness of US corn",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Backwardated futures curve signaling near-term physical tightness and spot demand support",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "US 10Y at 4.49% elevating carry costs and pressure on commodity valuations",
-          "impact": "BEARISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "CPI at 4.17% sustaining inflationary environment that historically supports agricultural commodities",
-          "impact": "BULLISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Neutral VIX regime (19.49) limiting safe-haven flows but not generating risk-off commodity liquidation",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        },
-        {
-          "driver": "Absence of fresh fundamental news catalysts (supply shocks, WASDE revisions, weather disruptions)",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Corn drifts modestly lower over 5 days toward 433 as dollar strength and neutral macro sentiment weigh on prices, sees a technical bounce in the 30-day window supported by backwardation and physical demand, then resumes a gradual downtrend over 90 days as global supply normalizes and the strong dollar constrains export volumes, settling near 433-434 with widening uncertainty bands.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "Backwardation intensifies due to an unexpected supply disruption (weather, export shock, or crop condition downgrades), triggering a short-covering rally that pushes corn toward the p90 target of 443 on the 90-day horizon; CPI persistence forces commodity re-rating higher as inflation hedge demand returns.",
-          "probability": 0.22,
-          "catalyst": "Significant crop condition deterioration in key Corn Belt states or unexpected surge in ethanol/export demand alongside a DXY reversal below 100"
-        },
-        "bear": {
-          "narrative": "Dollar rally extends above 103, global demand outlook deteriorates amid slowing EM growth, and benign weather drives above-trend US corn yields; combined with Fed maintaining restrictive rates, corn breaks below the p10 90-day target of 424 and tests multi-month lows.",
-          "probability": 0.23,
-          "catalyst": "Stronger-than-expected USDA crop progress report combined with DXY breakout above 103 and risk-off EM demand destruction"
-        }
-      },
-      "key_risks": [
-        "USDA WASDE report surprises on production or ending stocks, creating sharp directional repricing inconsistent with model forecasts",
-        "Unexpected reversal in dollar regime (DXY weakening sharply) could invalidate the bearish medium-term thesis and accelerate the 30-day bullish window into a sustained rally"
-      ],
-      "conviction_narrative": "Conviction is moderately high at 0.826 driven by consistent directional alignment across the model's signal outputs and coherent macro headwinds, though the 5d-to-30d directional flip and absence of fresh news catalysts introduce meaningful path uncertainty.",
-      "horizon_divergence": "The 5-day outlook is BEARISH while the 90-day outlook is also BEARISH, but a conflicting 30-day BULLISH signal creates a non-monotonic path suggesting a technical rebound mid-horizon before the medium-term downtrend resumes.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signal for corn futures, leaving the model's directional view unconfirmed or challenged by crowd-sourced probability data, which reduces confidence in tail scenario pricing."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "Corn futures face near-term bearish pressure over the 5-day horizon with the model targeting ~433 cents/bushel at the median, before a brief 30-day bullish rebound, ultimately resolving bearish again at the 90-day horizon with downside skew toward 424. The backwardated curve structure supports spot demand but the dollar strength regime and elevated real rates create persistent headwinds for commodity prices over the medium term.",
-    "generated_at": "2026-06-24T00:27:19.847713"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:33.807342"
   },
   "^VIX": {
     "ticker": "^VIX",
@@ -838,7 +239,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:27:42.515220"
+    "generated_at": "2026-06-25T00:14:33.916368"
   },
   "UVXY": {
     "ticker": "UVXY",
@@ -849,7 +250,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:28:05.389442"
+    "generated_at": "2026-06-25T00:14:34.027815"
   },
   "DX-Y.NYB": {
     "ticker": "DX-Y.NYB",
@@ -860,72 +261,18 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:28:27.009374"
+    "generated_at": "2026-06-25T00:14:34.137856"
   },
   "^IRX": {
     "ticker": "^IRX",
     "name": "13-Week T-Bill Yield",
     "analysis": {
-      "summary": "Near-term (5-30 day) signals point to modest upward drift in the 13-week T-bill yield, anchored near 3.69-3.72%, as the Fed holds rates steady in a neutral regime. The 90-day horizon flips bearish with meaningful dispersion (p10: 3.51%, p90: 4.02%), suggesting growing uncertainty around whether the next Fed move is a cut or a hold-and-hike.",
-      "key_drivers": [
-        {
-          "driver": "Fed funds rate at 3.63% with CPI still elevated at 4.17% \u2014 negative real short rate creating upward yield pressure",
-          "impact": "BULLISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Powell signaling labor market is not a significant inflation source, raising probability of eventual cuts",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "FOMC statement neutral \u2014 no explicit hawkish pivot, limiting near-term upside to bill yields",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Dollar strength regime (DXY 101.37) supports tight financial conditions, keeping short rates elevated",
-          "impact": "BULLISH",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "VIX at 19.49 in neutral risk regime \u2014 no flight-to-safety bid compressing bill yields, nor risk-off spike",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        },
-        {
-          "driver": "US 10Y at 4.493% \u2014 steep positive spread vs IRX implies term premium normalizing, limiting 13W upside",
-          "impact": "BEARISH",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "T-bill yield drifts mildly higher to ~3.72% over 30 days as the Fed remains on hold with CPI above target, then gradually declines toward 3.76% median by 90 days amid growing rate-cut expectations \u2014 wide 90-day dispersion reflects genuine macro uncertainty.",
-          "probability": 0.55
-        },
-        "bull": {
-          "narrative": "Sticky inflation data or a hawkish Fed repricing causes T-bill yields to push toward the 90-day p90 of ~4.02%, with the front-end re-anchoring to a higher-for-longer narrative and dollar strength amplifying the move.",
-          "probability": 0.22,
-          "catalyst": "Hotter-than-expected CPI or PCE print forces markets to price out 2025 rate cuts, repricing Fed funds higher and dragging IRX above 4.0%"
-        },
-        "bear": {
-          "narrative": "Deteriorating labor data or a financial stress event accelerates Fed cut expectations, pulling T-bill yields down toward the 90-day p10 of ~3.51% as the front-end rallies sharply and risk sentiment worsens.",
-          "probability": 0.23,
-          "catalyst": "Surprise spike in unemployment claims or credit market stress event triggers aggressive rate-cut pricing, compressing short yields rapidly"
-        }
-      },
-      "key_risks": [
-        "Inflation re-acceleration (services/shelter) invalidates the Powell dovish pivot narrative and forces a hawkish re-pricing of the entire short-end curve",
-        "Abrupt growth deterioration or labor market softening causes front-end yields to collapse faster than modeled, particularly at the 90-day horizon where dispersion is already extreme"
-      ],
-      "conviction_narrative": "Conviction is high (0.927) because the near-term model output is tightly clustered (5d IQR only ~30bps) and macro inputs \u2014 Fed hold, neutral risk regime, dollar strength \u2014 all coherently point in the same direction, even as medium-term uncertainty widens substantially.",
-      "horizon_divergence": "The 5-day and 30-day signals are BULLISH (yields rising modestly), while the 90-day signal flips BEARISH with a wide distribution, indicating the market expects a Fed easing cycle to emerge within the quarter that would pull short-term yields lower from current levels.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signal for ^IRX (score: 0, no data), meaning crowd prediction markets offer no corroborating or conflicting directional input and the model outlook stands on macro fundamentals alone."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "Near-term (5-30 day) signals point to modest upward drift in the 13-week T-bill yield, anchored near 3.69-3.72%, as the Fed holds rates steady in a neutral regime. The 90-day horizon flips bearish with meaningful dispersion (p10: 3.51%, p90: 4.02%), suggesting growing uncertainty around whether the next Fed move is a cut or a hold-and-hike.",
-    "generated_at": "2026-06-24T00:28:49.616822"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:34.249767"
   },
   "BTC-USD": {
     "ticker": "BTC-USD",
@@ -936,7 +283,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:29:12.360791"
+    "generated_at": "2026-06-25T00:14:34.360093"
   },
   "ETH-USD": {
     "ticker": "ETH-USD",
@@ -947,7 +294,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:29:35.202011"
+    "generated_at": "2026-06-25T00:14:34.473439"
   },
   "SOL-USD": {
     "ticker": "SOL-USD",
@@ -958,72 +305,18 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:29:57.570533"
+    "generated_at": "2026-06-25T00:14:34.633534"
   },
   "EEM": {
     "ticker": "EEM",
     "name": "Emerging Markets ETF",
     "analysis": {
-      "summary": "EEM faces persistent bearish pressure across near-term and medium-term horizons, driven by dollar strength and elevated US real rates compressing EM risk premiums. The 90-day outlook introduces meaningful downside dispersion with the p10 scenario reaching ~66, suggesting tail risk of a sharper correction even as the base case holds near 70-71.",
-      "key_drivers": [
-        {
-          "driver": "Dollar strength (DXY ~101.4) tightening EM financial conditions and pressuring local currency returns",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Elevated US 10Y yield at 4.49% raising the opportunity cost of EM risk assets and widening risk premia",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "Sticky US CPI at 4.17% limiting Fed easing scope, sustaining a hawkish-leaning rate regime for EM",
-          "impact": "BEARISH",
-          "weight": "HIGH"
-        },
-        {
-          "driver": "MSCI retaining South Korea as EM removes an index composition risk but delays any incremental liquidity inflow catalyst",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "VIX at 19.49 in neutral regime \u2014 not signaling acute risk-off, limiting the depth of near-term selling pressure",
-          "impact": "NEUTRAL",
-          "weight": "MEDIUM"
-        },
-        {
-          "driver": "Absence of Polymarket regime signals implies no strong macro event-driven catalyst priced by crowd intelligence",
-          "impact": "NEUTRAL",
-          "weight": "LOW"
-        }
-      ],
-      "scenarios": {
-        "base": {
-          "narrative": "Dollar remains firm, US rates stay elevated, and EEM drifts lower over 5-30 days toward 68.0-68.9 before broader EM headwinds pull the 90-day price toward 70-71 with elevated dispersion. No strong positive catalyst emerges to reverse the bearish structural positioning.",
-          "probability": 0.6
-        },
-        "bull": {
-          "narrative": "A softer US CPI print or unexpected Fed dovish pivot weakens the dollar, compresses real yields, and triggers a relief rally in EM equities. EEM recovers toward the p90 90-day target of ~75.5 as capital flows rotate back into EM risk assets, particularly China and Korea.",
-          "probability": 0.2,
-          "catalyst": "Fed signals accelerated rate cuts or DXY breaks below 99 on weaker US macro data"
-        },
-        "bear": {
-          "narrative": "Dollar strengthens further, US yields spike on sticky inflation, and a risk-off episode (VIX breaking above 25) triggers EM capital outflows. EEM approaches the p10 90-day scenario near 66, with additional pressure from potential Indonesia MSCI downgrade and China macro disappointment.",
-          "probability": 0.2,
-          "catalyst": "Hot US CPI re-accelerates Fed hawkishness, DXY surges above 105, or China growth shock materializes"
-        }
-      },
-      "key_risks": [
-        "Re-acceleration of US inflation forcing Fed to delay cuts, sustaining dollar strength and EM capital outflows beyond the forecast horizon",
-        "MSCI Indonesia downgrade risk crystallizing alongside China macro disappointment, creating a dual index weight headwind for EEM"
-      ],
-      "conviction_narrative": "Conviction is high at 0.926 because the alignment of dollar strength, elevated real US rates, and sticky inflation creates a structurally adverse macro regime for EM assets with no near-term catalyst to disrupt it.",
-      "horizon_divergence": "The 5-day and 30-day horizons show tight bearish conviction centered near 68-69, but the 90-day p10/p90 spread of nearly 9.6 points (66.0 to 75.5) reveals substantially higher uncertainty at the 3-month horizon, where a regime shift in USD or Fed policy could produce sharply divergent outcomes.",
-      "poly_alignment": "NEUTRAL",
-      "poly_alignment_note": "Polymarket provides no active regime signals for EEM, meaning the crowd has not priced a directional macro catalyst, leaving the model's bearish thesis unchallenged but also unconfirmed by event-driven positioning."
+      "summary": "Analysis unavailable.",
+      "key_risks": [],
+      "scenarios": {}
     },
-    "explanation": "EEM faces persistent bearish pressure across near-term and medium-term horizons, driven by dollar strength and elevated US real rates compressing EM risk premiums. The 90-day outlook introduces meaningful downside dispersion with the p10 scenario reaching ~66, suggesting tail risk of a sharper correction even as the base case holds near 70-71.",
-    "generated_at": "2026-06-24T00:30:19.656644"
+    "explanation": "Analysis unavailable.",
+    "generated_at": "2026-06-25T00:14:34.760454"
   },
   "EFA": {
     "ticker": "EFA",
@@ -1034,7 +327,7 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:30:42.915176"
+    "generated_at": "2026-06-25T00:14:34.912203"
   },
   "FXI": {
     "ticker": "FXI",
@@ -1045,6 +338,6 @@
       "scenarios": {}
     },
     "explanation": "Analysis unavailable.",
-    "generated_at": "2026-06-24T00:31:06.532878"
+    "generated_at": "2026-06-25T00:14:35.023865"
   }
 }

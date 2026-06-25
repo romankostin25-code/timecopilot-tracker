@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T16:26:17.209755",
+  "generated_at": "2026-06-25T00:14:29.155590",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "GDP",
       "date": "2026-06-25",
       "time_utc": "12:30",
-      "days_until": 1,
+      "days_until": 0,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -232,7 +232,7 @@
       "event": "PCE",
       "date": "2026-06-26",
       "time_utc": "12:30",
-      "days_until": 2,
+      "days_until": 1,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -247,13 +247,29 @@
       "event": "USDA_CROP",
       "date": "2026-06-30",
       "time_utc": "20:00",
-      "days_until": 6,
+      "days_until": 5,
       "sensitivity": {
         "assets": [
           "ZC=F",
           "ZW=F"
         ],
         "band_widen_pct": 0.15
+      }
+    },
+    {
+      "event": "NFP",
+      "date": "2026-07-02",
+      "time_utc": "12:30",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "QQQ",
+          "TLT",
+          "DX-Y.NYB",
+          "^TNX"
+        ],
+        "band_widen_pct": 0.25
       }
     }
   ]
