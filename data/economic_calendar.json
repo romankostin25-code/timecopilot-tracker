@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T15:57:20.319473",
+  "generated_at": "2026-07-04T00:10:25.599950",
   "events": [
     {
       "event": "FOMC",
@@ -212,5 +212,20 @@
       "time_utc": "20:00"
     }
   ],
-  "upcoming_7d": []
+  "upcoming_7d": [
+    {
+      "event": "USDA_WASDE",
+      "date": "2026-07-11",
+      "time_utc": "16:00",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "ZC=F",
+          "ZW=F",
+          "SI=F"
+        ],
+        "band_widen_pct": 0.25
+      }
+    }
+  ]
 }
