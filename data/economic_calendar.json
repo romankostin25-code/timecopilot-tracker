@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T16:56:35.844209",
+  "generated_at": "2026-07-07T00:21:07.481703",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "USDA_WASDE",
       "date": "2026-07-11",
       "time_utc": "16:00",
-      "days_until": 5,
+      "days_until": 4,
       "sensitivity": {
         "assets": [
           "ZC=F",
@@ -225,6 +225,22 @@
           "SI=F"
         ],
         "band_widen_pct": 0.25
+      }
+    },
+    {
+      "event": "CPI",
+      "date": "2026-07-14",
+      "time_utc": "12:30",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "TLT",
+          "GC=F",
+          "^TNX",
+          "DX-Y.NYB"
+        ],
+        "band_widen_pct": 0.3
       }
     }
   ]
