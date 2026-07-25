@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T23:51:49.387350",
+  "generated_at": "2026-07-25T00:06:59.185582",
   "events": [
     {
       "event": "FOMC",
@@ -214,33 +214,50 @@
   ],
   "upcoming_7d": [
     {
-      "event": "USDA_WASDE",
-      "date": "2026-07-11",
-      "time_utc": "16:00",
-      "days_until": 1,
-      "sensitivity": {
-        "assets": [
-          "ZC=F",
-          "ZW=F",
-          "SI=F"
-        ],
-        "band_widen_pct": 0.25
-      }
-    },
-    {
-      "event": "CPI",
-      "date": "2026-07-14",
-      "time_utc": "12:30",
+      "event": "FOMC",
+      "date": "2026-07-29",
+      "time_utc": "18:00",
       "days_until": 4,
       "sensitivity": {
         "assets": [
           "SPY",
+          "QQQ",
           "TLT",
           "GC=F",
-          "^TNX",
-          "DX-Y.NYB"
+          "BTC-USD",
+          "^TNX"
         ],
-        "band_widen_pct": 0.3
+        "band_widen_pct": 0.4
+      }
+    },
+    {
+      "event": "GDP",
+      "date": "2026-07-30",
+      "time_utc": "12:30",
+      "days_until": 5,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "QQQ",
+          "DX-Y.NYB",
+          "CL=F"
+        ],
+        "band_widen_pct": 0.2
+      }
+    },
+    {
+      "event": "PCE",
+      "date": "2026-07-31",
+      "time_utc": "12:30",
+      "days_until": 6,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "TLT",
+          "^TNX",
+          "GC=F"
+        ],
+        "band_widen_pct": 0.2
       }
     }
   ]
