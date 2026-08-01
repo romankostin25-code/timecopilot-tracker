@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T16:04:58.098411",
+  "generated_at": "2026-08-01T00:06:24.666098",
   "events": [
     {
       "event": "FOMC",
@@ -214,25 +214,10 @@
   ],
   "upcoming_7d": [
     {
-      "event": "PCE",
-      "date": "2026-07-31",
-      "time_utc": "12:30",
-      "days_until": 0,
-      "sensitivity": {
-        "assets": [
-          "SPY",
-          "TLT",
-          "^TNX",
-          "GC=F"
-        ],
-        "band_widen_pct": 0.2
-      }
-    },
-    {
       "event": "NFP",
       "date": "2026-08-07",
       "time_utc": "12:30",
-      "days_until": 7,
+      "days_until": 6,
       "sensitivity": {
         "assets": [
           "SPY",
