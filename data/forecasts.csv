@@ -1399,7 +1399,7 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-07,2026-09-10,BIL,90,91.171646,92.223008,92.303728,92.384448,,StatsForecast_B_backfill,BULLISH,1.2417,0.9953,,,,,,,,,,,,,,,0.6,,0.0,0.0,,
 2026-05-07,2026-05-12,BTC-USD,5,80009.992188,76251.009504,80273.874648,83933.717956,80477.492188,StatsForecast_D,BEARISH,0.3298,0.0209,,,,,,,,,203.61754,0.2537,1.0,0.0,2026-05-20T12:49:53.020557,,,,,,,
 2026-05-07,2026-06-06,BTC-USD,30,80009.992188,70708.56902,81154.447638,89663.7575,60867.414062,StatsForecast_D_backfill,BEARISH,1.4304,0.0202,,,,,,,,,20287.033576,24.9981,0.0,1.0,2026-06-08T17:25:53.368762,,-0.25,,0.0,0.0,,
-2026-05-07,2026-08-05,BTC-USD,90,80009.992188,67184.102188,83274.53399,99427.362188,,StatsForecast_D_backfill,BULLISH,4.0802,0.0202,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
+2026-05-07,2026-08-05,BTC-USD,90,80009.992188,67184.102188,83274.53399,99427.362188,64597.5,StatsForecast_D_backfill,BULLISH,4.0802,0.0202,,,,,,,,,18677.03399,22.4283,0.0,0.0,2026-08-07T01:34:38.513823,,-0.25,,0.0,0.0,,
 2026-05-07,2026-05-12,CL=F,5,94.809998,91.096686,94.810025,98.038824,102.18,StatsForecast_B,BEARISH,0.0,0.098,,,,,,,,,7.369975,7.7734,0.0,0.0,2026-05-20T12:49:53.149432,,,,,,,
 2026-05-07,2026-06-18,CL=F,30,94.809998,83.289538,94.618437,104.475341,76.599998,StatsForecast_B_backfill,BULLISH,0.202,0.0982,,,,,,,,,18.018439,19.0433,0.0,0.0,2026-06-23T16:29:59.076744,,0.1,,0.0,0.0,,
 2026-05-07,2026-09-10,CL=F,90,94.809998,75.485054,94.133788,112.35425,,StatsForecast_B_backfill,BEARISH,0.7132,0.0982,,,,,,,,,,,,,,,0.1,,0.0,0.0,,
@@ -1414,7 +1414,7 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-07,2026-09-10,EFA,90,102.889999,100.24429,107.277681,114.790048,,StatsForecast_B_backfill,BULLISH,4.2644,0.6635,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
 2026-05-07,2026-05-12,ETH-USD,5,2291.107666,2072.104378,2291.113636,2475.471914,2274.643555,StatsForecast_D,BEARISH,0.0003,0.0,,,,,,,,,16.470081,0.7189,1.0,1.0,2026-05-20T12:49:54.691871,,,,,,,
 2026-05-07,2026-06-06,ETH-USD,30,2291.107666,1751.146555,2291.113636,2792.071885,1568.7677,StatsForecast_D_backfill,BEARISH,0.0003,0.0,,,,,,,,,722.345936,31.5282,0.0,1.0,2026-06-08T17:25:53.480163,,-0.25,,0.0,0.0,,
-2026-05-07,2026-08-05,ETH-USD,90,2291.107666,1416.403711,2291.113636,3226.347744,,StatsForecast_D_backfill,BEARISH,0.0003,0.0,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
+2026-05-07,2026-08-05,ETH-USD,90,2291.107666,1416.403711,2291.113636,3226.347744,1906.526001,StatsForecast_D_backfill,BEARISH,0.0003,0.0,,,,,,,,,384.587635,16.7861,1.0,1.0,2026-08-07T01:34:40.057912,,-0.25,,0.0,0.0,,
 2026-05-07,2026-05-12,FXI,5,37.189999,36.2064,37.190029,38.129631,37.330002,StatsForecast_B,BULLISH,0.0001,0.374,,,,,,,,,0.139973,0.3764,1.0,1.0,2026-05-20T12:49:54.837857,,,,,,,
 2026-05-07,2026-06-18,FXI,30,37.189999,34.265985,37.190029,40.130321,33.299999,StatsForecast_B_backfill,BEARISH,0.0001,0.3728,,,,,,,,,3.89003,10.4599,0.0,1.0,2026-06-23T16:29:59.890980,,-0.55,,0.0,0.0,,
 2026-05-07,2026-09-10,FXI,90,37.189999,32.125458,37.190029,43.229334,,StatsForecast_B_backfill,BEARISH,0.0001,0.3728,,,,,,,,,,,,,,,-0.55,,0.0,0.0,,
@@ -1453,7 +1453,7 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-07,2026-09-10,SLV,90,71.599998,56.190373,71.599851,89.325946,,StatsForecast_B_backfill,BEARISH,0.0002,0.0,,,,,,,,,,,,,,,-0.5,,0.0,0.0,,
 2026-05-07,2026-05-12,SOL-USD,5,88.404785,74.513957,88.404785,100.260832,94.284294,StatsForecast_D,BEARISH,0.0,0.0,,,,,,,,,5.879509,6.6507,1.0,0.0,2026-05-20T12:49:57.541551,,,,,,,
 2026-05-07,2026-06-06,SOL-USD,30,88.404785,54.113021,88.642418,121.322808,62.189804,StatsForecast_D_backfill,BEARISH,0.2688,0.0,,,,,,,,,26.452614,29.8419,1.0,1.0,2026-06-08T17:25:53.619148,,-0.25,,0.0,0.0,,
-2026-05-07,2026-08-05,SOL-USD,90,88.404785,35.704473,89.117535,147.799863,,StatsForecast_D_backfill,BULLISH,0.8062,0.0,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
+2026-05-07,2026-08-05,SOL-USD,90,88.404785,35.704473,89.117535,147.799863,73.96138,StatsForecast_D_backfill,BULLISH,0.8062,0.0,,,,,,,,,15.156155,17.0069,1.0,0.0,2026-08-07T01:34:43.946743,,-0.25,,0.0,0.0,,
 2026-05-07,2026-05-12,SPY,5,731.580017,722.809875,733.108699,741.952188,738.179993,StatsForecast_B,BULLISH,0.209,0.6894,,,,,,,,,5.071294,0.6918,1.0,1.0,2026-05-20T12:49:58.725197,,,,,,,
 2026-05-07,2026-06-18,SPY,30,731.580017,717.333127,744.861513,772.194148,746.73999,StatsForecast_B_backfill,BULLISH,1.8155,0.706,,,,,,,,,1.878477,0.2522,1.0,1.0,2026-06-23T16:30:02.110326,,0.0,,0.0,0.0,,
 2026-05-07,2026-09-10,SPY,90,731.580017,723.485278,771.19387,818.624361,,StatsForecast_B_backfill,BULLISH,5.4148,0.706,,,,,,,,,,,,,,,0.0,,0.0,0.0,,
@@ -1492,7 +1492,7 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-08,2026-09-11,BIL,90,91.191589,92.234944,92.320455,92.401293,,StatsForecast_B_backfill,BULLISH,1.2379,0.9953,,,,,,,,,,,,,,,0.6,,0.0,0.0,,
 2026-05-08,2026-05-13,BTC-USD,5,80186.765625,76341.674768,80361.289631,84020.614985,79277.117188,StatsForecast_D,BEARISH,0.2176,0.0298,,,,,,,,,1084.172443,1.3491,1.0,1.0,2026-05-20T12:49:53.021231,,,,,,,
 2026-05-08,2026-06-07,BTC-USD,30,80186.765625,70803.435306,81241.031787,89746.205937,63239.519531,StatsForecast_D_backfill,BEARISH,1.3148,0.0253,,,,,,,,,18001.512256,22.1582,0.0,1.0,2026-06-08T17:25:53.369582,,-0.25,,0.0,0.0,,
-2026-05-08,2026-08-06,BTC-USD,90,80186.765625,67275.91625,83356.346267,99502.662813,,StatsForecast_D_backfill,BULLISH,3.9527,0.0253,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
+2026-05-08,2026-08-06,BTC-USD,90,80186.765625,67275.91625,83356.346267,99502.662813,64406.0,StatsForecast_D_backfill,BULLISH,3.9527,0.0253,,,,,,,,,18950.346267,22.7341,0.0,0.0,2026-08-07T01:34:38.514701,,-0.25,,0.0,0.0,,
 2026-05-08,2026-05-13,CL=F,5,95.419998,91.451829,95.359461,98.558635,101.019997,StatsForecast_B,BEARISH,0.0634,0.0909,,,,,,,,,5.660536,5.936,0.0,0.0,2026-05-20T12:49:53.150127,,,,,,,
 2026-05-08,2026-06-19,CL=F,30,95.419998,83.866502,95.144167,105.003676,74.82,StatsForecast_B_backfill,BEARISH,0.2891,0.0859,,,,,,,,,20.324167,21.3614,0.0,1.0,2026-06-23T16:29:59.078205,,0.1,,0.0,0.0,,
 2026-05-08,2026-09-11,CL=F,90,95.419998,76.068357,94.668893,112.874366,,StatsForecast_B_backfill,BEARISH,0.7872,0.0859,,,,,,,,,,,,,,,0.1,,0.0,0.0,,
@@ -1507,7 +1507,7 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-08,2026-09-11,EFA,90,103.959999,101.383212,108.385379,115.723783,,StatsForecast_B_backfill,BULLISH,4.2568,0.6439,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
 2026-05-08,2026-05-13,ETH-USD,5,2306.972168,2088.067388,2306.972168,2490.687139,2257.576416,StatsForecast_D,BEARISH,0.0,0.0,,,,,,,,,49.395752,2.1412,1.0,1.0,2026-05-20T12:49:54.692556,,,,,,,
 2026-05-08,2026-06-07,ETH-USD,30,2306.972168,1767.257892,2306.972168,2806.911367,1686.39624,StatsForecast_D_backfill,BEARISH,0.0,0.0,,,,,,,,,620.575928,26.9,0.0,1.0,2026-06-08T17:25:53.480932,,-0.25,,0.0,0.0,,
-2026-05-08,2026-08-06,ETH-USD,90,2306.972168,1431.90356,2306.972168,3241.784715,,StatsForecast_D_backfill,BEARISH,0.0,0.0,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
+2026-05-08,2026-08-06,ETH-USD,90,2306.972168,1431.90356,2306.972168,3241.784715,1903.599976,StatsForecast_D_backfill,BEARISH,0.0,0.0,,,,,,,,,403.372192,17.4849,1.0,1.0,2026-08-07T01:34:40.058819,,-0.25,,0.0,0.0,,
 2026-05-08,2026-05-13,FXI,5,37.240002,36.243645,37.240002,38.165577,38.259998,StatsForecast_B,BULLISH,0.0,0.3772,,,,,,,,,1.019996,2.739,0.0,1.0,2026-05-20T12:49:54.838537,,,,,,,
 2026-05-08,2026-06-19,FXI,30,37.240002,34.317968,37.240002,40.163879,33.43,StatsForecast_B_backfill,BEARISH,0.0,0.376,,,,,,,,,3.810002,10.2309,0.0,1.0,2026-06-23T16:29:59.892346,,-0.55,,0.0,0.0,,
 2026-05-08,2026-09-11,FXI,90,37.240002,32.178891,37.240002,43.260723,,StatsForecast_B_backfill,BEARISH,0.0,0.376,,,,,,,,,,,,,,,-0.55,,0.0,0.0,,
@@ -1546,7 +1546,7 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-05-08,2026-09-11,SLV,90,73.010002,57.675709,73.009861,91.079674,,StatsForecast_B_backfill,BULLISH,0.0002,0.0,,,,,,,,,,,,,,,-0.5,,0.0,0.0,,
 2026-05-08,2026-05-13,SOL-USD,5,91.949821,78.063342,91.949821,103.77725,91.085472,StatsForecast_D,BEARISH,0.0,0.0,,,,,,,,,0.864349,0.94,1.0,1.0,2026-05-20T12:49:57.542190,,,,,,,
 2026-05-08,2026-06-07,SOL-USD,30,91.949821,57.669043,92.399326,124.913095,66.310631,StatsForecast_D_backfill,BEARISH,0.4889,0.0,,,,,,,,,26.088695,28.2347,1.0,1.0,2026-06-08T17:25:53.619860,,-0.25,,0.0,0.0,,
-2026-05-08,2026-08-06,SOL-USD,90,91.949821,39.493582,93.398275,151.325871,,StatsForecast_D_backfill,BULLISH,1.5753,0.0,,,,,,,,,,,,,,,-0.25,,0.0,0.0,,
+2026-05-08,2026-08-06,SOL-USD,90,91.949821,39.493582,93.398275,151.325871,72.769997,StatsForecast_D_backfill,BULLISH,1.5753,0.0,,,,,,,,,20.628278,22.0864,1.0,0.0,2026-08-07T01:34:43.947602,,-0.25,,0.0,0.0,,
 2026-05-08,2026-05-13,SPY,5,737.619995,728.413215,738.546494,747.301557,742.309998,StatsForecast_B,BULLISH,0.1256,0.6919,,,,,,,,,3.763504,0.5096,1.0,1.0,2026-05-20T12:49:58.725908,,,,,,,
 2026-05-08,2026-06-19,SPY,30,737.619995,718.7302,750.666697,778.308981,744.390015,StatsForecast_B_backfill,BULLISH,1.7688,0.6903,,,,,,,,,6.276682,0.8361,1.0,1.0,2026-06-23T16:30:02.111687,,0.0,,0.0,0.0,,
 2026-05-08,2026-09-11,SPY,90,737.619995,727.612517,777.452839,825.304827,,StatsForecast_B_backfill,BULLISH,5.4002,0.6903,,,,,,,,,,,,,,,0.0,,0.0,0.0,,
@@ -4557,97 +4557,97 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-06-23,2026-08-04,FXI,30,32.830002,31.63472,32.843686,34.052652,36.310001,TimeCopilot_Ensemble,BEARISH,0.0417,0.8471,,,,,,NEUTRAL,LOW,"China International Supply Chain Expo debuts AI zone featuring Nvidia, Intel, Alibaba",3.466315,10.554,0.0,0.0,2026-08-05T16:04:03.744169,,-0.4,0.5771,0.0,0.0,,-0.0625
 2026-06-23,2026-10-27,FXI,90,32.830002,30.234595,32.843686,35.452776,,TimeCopilot_Ensemble,BEARISH,0.0417,0.8471,,,,,,NEUTRAL,LOW,"China International Supply Chain Expo debuts AI zone featuring Nvidia, Intel, Alibaba",,,,,,,-0.4,0.1957,0.0,0.0,,-0.0625
 2026-06-24,2026-07-01,SPY,5,733.23999,732.299356,735.31292,738.326484,745.76001,TimeCopilot_Ensemble,BULLISH,0.2827,0.9628,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,10.44709,1.4208,0.0,1.0,2026-07-02T16:09:18.264626,,0.2,0.506,0.0,0.0,,-0.1213
-2026-06-24,2026-08-05,SPY,30,733.23999,727.212889,745.372618,763.532346,,TimeCopilot_Ensemble,BULLISH,1.6547,0.9628,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.7335,0.0,0.0,,-0.1213
+2026-06-24,2026-08-05,SPY,30,733.23999,727.212889,745.372618,763.532346,769.789978,TimeCopilot_Ensemble,BULLISH,1.6547,0.9628,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,24.41736,3.2759,0.0,1.0,2026-08-07T01:34:44.438572,,0.2,0.7335,0.0,0.0,,-0.1213
 2026-06-24,2026-10-28,SPY,90,733.23999,755.135543,769.515893,783.896243,,TimeCopilot_Ensemble,BEARISH,4.9473,0.9628,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.1913,0.0,0.0,,-0.1213
 2026-06-24,2026-07-01,QQQ,5,710.619995,711.912721,715.359763,718.806805,725.169983,TimeCopilot_Ensemble,BULLISH,0.667,0.85,,,,,,BEARISH,MEDIUM,Powell says labor market not a source of significant inflation pressure,9.81022,1.3714,0.0,1.0,2026-07-02T16:09:17.457774,,0.2,0.5212,0.0,0.0,,-0.2516
-2026-06-24,2026-08-05,QQQ,30,710.619995,712.602591,726.753999,740.905407,,TimeCopilot_Ensemble,BULLISH,2.2704,0.85,,,,,,BEARISH,MEDIUM,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.6184,0.0,0.0,,-0.2516
+2026-06-24,2026-08-05,QQQ,30,710.619995,712.602591,726.753999,740.905407,717.299988,TimeCopilot_Ensemble,BULLISH,2.2704,0.85,,,,,,BEARISH,MEDIUM,Powell says labor market not a source of significant inflation pressure,9.454011,1.3009,1.0,1.0,2026-08-07T01:34:43.129384,,0.2,0.6184,0.0,0.0,,-0.2516
 2026-06-24,2026-10-28,QQQ,90,710.619995,726.349032,752.807919,779.266805,,TimeCopilot_Ensemble,BEARISH,5.9368,0.85,,,,,,BEARISH,MEDIUM,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.2025,0.0,0.0,,-0.2516
 2026-06-24,2026-07-01,IWM,5,296.690002,294.960157,297.06517,299.170182,299.320007,TimeCopilot_Ensemble,BULLISH,0.1265,0.8992,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,2.254837,0.759,0.0,1.0,2026-07-02T16:09:16.902726,,0.2,0.5057,0.0,0.0,,0.161
-2026-06-24,2026-08-05,IWM,30,296.690002,291.663112,299.018844,306.374575,,TimeCopilot_Ensemble,BULLISH,0.7849,0.8992,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.4677,0.0,0.0,,0.161
+2026-06-24,2026-08-05,IWM,30,296.690002,291.663112,299.018844,306.374575,299.769989,TimeCopilot_Ensemble,BULLISH,0.7849,0.8992,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.751145,0.2512,1.0,1.0,2026-08-07T01:34:42.257659,,0.2,0.4677,0.0,0.0,,0.161
 2026-06-24,2026-10-28,IWM,90,296.690002,293.146646,301.744992,310.343337,,TimeCopilot_Ensemble,BEARISH,1.7038,0.8992,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.2046,0.0,0.0,,0.161
 2026-06-24,2026-07-01,XLE,5,53.57,53.230078,53.437199,53.64432,52.810001,TimeCopilot_Ensemble,BEARISH,0.2479,0.928,,,,,,BEARISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,0.627198,1.1737,0.0,1.0,2026-07-02T16:09:18.737182,,-0.39,0.512,0.0,0.0,,-0.5837
-2026-06-24,2026-08-05,XLE,30,53.57,51.886077,53.539855,55.193632,,TimeCopilot_Ensemble,BEARISH,0.0563,0.928,,,,,,BEARISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,,,,,,,-0.39,0.4605,0.0,0.0,,-0.5837
+2026-06-24,2026-08-05,XLE,30,53.57,51.886077,53.539855,55.193632,57.310001,TimeCopilot_Ensemble,BEARISH,0.0563,0.928,,,,,,BEARISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,3.770146,7.0418,0.0,0.0,2026-08-07T01:34:45.389445,,-0.39,0.4605,0.0,0.0,,-0.5837
 2026-06-24,2026-10-28,XLE,90,53.57,48.847083,53.539855,58.232626,,TimeCopilot_Ensemble,BEARISH,0.0563,0.928,,,,,,BEARISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,,,,,,,-0.39,0.198,0.0,0.0,,-0.5837
 2026-06-24,2026-07-01,XLF,5,53.720001,53.675517,53.80186,53.928204,54.779999,TimeCopilot_Ensemble,BULLISH,0.1524,0.9725,,,,,,BULLISH,MEDIUM,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",0.978139,1.818,0.0,1.0,2026-07-02T16:09:18.903540,,0.0,0.5212,0.0,0.0,,0.2381
-2026-06-24,2026-08-05,XLF,30,53.720001,53.832757,54.307721,54.782686,,TimeCopilot_Ensemble,BULLISH,1.094,0.9725,,,,,,BULLISH,MEDIUM,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",,,,,,,0.0,0.723,0.0,0.0,,0.2381
+2026-06-24,2026-08-05,XLF,30,53.720001,53.832757,54.307721,54.782686,58.0,TimeCopilot_Ensemble,BULLISH,1.094,0.9725,,,,,,BULLISH,MEDIUM,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",3.692279,6.7988,0.0,1.0,2026-08-07T01:34:45.748250,,0.0,0.723,0.0,0.0,,0.2381
 2026-06-24,2026-10-28,XLF,90,53.720001,54.241914,56.131629,58.021345,,TimeCopilot_Ensemble,BEARISH,4.4893,0.9725,,,,,,BULLISH,MEDIUM,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",,,,,,,0.0,0.2026,0.0,0.0,,0.2381
 2026-06-24,2026-07-01,XLK,5,183.050003,183.013745,183.778037,184.542328,185.619995,TimeCopilot_Ensemble,BEARISH,0.3977,0.6869,,,,,,BEARISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,1.841958,1.0023,0.0,0.0,2026-07-02T16:09:19.215633,,0.0,0.5273,0.0,0.0,,-0.3333
-2026-06-24,2026-08-05,XLK,30,183.050003,185.718012,186.916269,188.114527,,TimeCopilot_Ensemble,BULLISH,2.1121,0.6869,,,,,,BEARISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,,,,,,,0.0,0.7305,0.0,0.0,,-0.3333
+2026-06-24,2026-08-05,XLK,30,183.050003,185.718012,186.916269,188.114527,185.910004,TimeCopilot_Ensemble,BULLISH,2.1121,0.6869,,,,,,BEARISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,1.006265,0.5384,1.0,1.0,2026-08-07T01:34:46.118822,,0.0,0.7305,0.0,0.0,,-0.3333
 2026-06-24,2026-10-28,XLK,90,183.050003,171.564625,184.901951,198.239278,,TimeCopilot_Ensemble,BEARISH,1.0117,0.6869,,,,,,BEARISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,,,,,,,0.0,0.194,0.0,0.0,,-0.3333
 2026-06-24,2026-07-01,GLD,5,365.920013,359.523663,367.894688,376.265714,370.600006,TimeCopilot_Ensemble,BULLISH,0.5396,0.7304,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,2.705318,0.7354,1.0,1.0,2026-07-02T16:09:16.168954,,-0.05,0.5101,0.0,0.0,,0.1142
-2026-06-24,2026-08-05,GLD,30,365.920013,354.269543,374.067942,393.86634,,TimeCopilot_Ensemble,BULLISH,2.2267,0.7304,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,-0.05,0.6778,0.0,0.0,,0.1142
+2026-06-24,2026-08-05,GLD,30,365.920013,354.269543,374.067942,393.86634,389.640015,TimeCopilot_Ensemble,BULLISH,2.2267,0.7304,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,15.572073,4.1629,1.0,1.0,2026-08-07T01:34:40.956874,,-0.05,0.6778,0.0,0.0,,0.1142
 2026-06-24,2026-10-28,GLD,90,365.920013,361.291137,388.662507,416.033877,,TimeCopilot_Ensemble,BEARISH,6.2152,0.7304,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,-0.05,0.2043,0.0,0.0,,0.1142
 2026-06-24,2026-07-01,SLV,5,51.779999,50.605065,52.597619,54.590173,53.580002,TimeCopilot_Ensemble,BEARISH,1.579,0.4043,,,,,,BULLISH,MEDIUM,Federal Reserve expands money supply by over $9T under Powell,0.982383,1.8677,1.0,0.0,2026-07-02T16:09:17.947818,,-0.42,0.4919,0.0,0.0,,1.0
-2026-06-24,2026-08-05,SLV,30,51.779999,49.026422,53.147967,57.269513,,TimeCopilot_Ensemble,BEARISH,2.6419,0.4043,,,,,,BULLISH,MEDIUM,Federal Reserve expands money supply by over $9T under Powell,,,,,,,-0.42,0.4828,0.0,0.0,,1.0
+2026-06-24,2026-08-05,SLV,30,51.779999,49.026422,53.147967,57.269513,56.07,TimeCopilot_Ensemble,BEARISH,2.6419,0.4043,,,,,,BULLISH,MEDIUM,Federal Reserve expands money supply by over $9T under Powell,2.922033,5.4979,1.0,0.0,2026-08-07T01:34:43.656732,,-0.42,0.4828,0.0,0.0,,1.0
 2026-06-24,2026-10-28,SLV,90,51.779999,43.326659,51.428477,59.530296,,TimeCopilot_Ensemble,BEARISH,0.6789,0.4043,,,,,,BULLISH,MEDIUM,Federal Reserve expands money supply by over $9T under Powell,,,,,,,-0.42,0.1958,0.0,0.0,,1.0
 2026-06-24,2026-07-01,TLT,5,87.379997,87.115172,87.359776,87.60438,85.519997,TimeCopilot_Ensemble,BULLISH,0.0231,0.9644,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,1.839779,2.106,0.0,0.0,2026-07-02T16:09:18.453268,,0.35,0.5133,0.0,0.0,,-0.0476
-2026-06-24,2026-08-05,TLT,30,87.379997,86.645252,87.359776,88.0743,,TimeCopilot_Ensemble,BULLISH,0.0231,0.9644,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.35,0.6401,0.0,0.0,,-0.0476
+2026-06-24,2026-08-05,TLT,30,87.379997,86.645252,87.359776,88.0743,83.0,TimeCopilot_Ensemble,BULLISH,0.0231,0.9644,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,4.359776,4.9906,0.0,0.0,2026-08-07T01:34:44.809246,,0.35,0.6401,0.0,0.0,,-0.0476
 2026-06-24,2026-10-28,TLT,90,87.379997,85.661134,87.359776,89.058418,,TimeCopilot_Ensemble,BEARISH,0.0231,0.9644,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.35,0.191,0.0,0.0,,-0.0476
 2026-06-24,2026-07-01,IEF,5,94.730003,94.401814,94.729973,95.058132,94.029999,TimeCopilot_Ensemble,BULLISH,0.0,0.8955,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.699974,0.7389,0.0,0.0,2026-07-02T16:09:16.673958,,0.35,0.5029,0.0,0.0,,0.1411
-2026-06-24,2026-08-05,IEF,30,94.730003,94.646988,94.899132,95.151275,,TimeCopilot_Ensemble,BULLISH,0.1785,0.8955,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.35,0.652,0.0,0.0,,0.1411
+2026-06-24,2026-08-05,IEF,30,94.730003,94.646988,94.899132,95.151275,93.309998,TimeCopilot_Ensemble,BULLISH,0.1785,0.8955,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,1.589134,1.6746,0.0,0.0,2026-08-07T01:34:41.916499,,0.35,0.652,0.0,0.0,,0.1411
 2026-06-24,2026-10-28,IEF,90,94.730003,94.009841,94.729973,95.450105,,TimeCopilot_Ensemble,BEARISH,0.0,0.8955,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.35,0.1892,0.0,0.0,,0.1411
 2026-06-24,2026-07-01,HYG,5,79.849998,79.845154,79.975131,80.105108,79.589996,TimeCopilot_Ensemble,BEARISH,0.1567,0.9563,,,,,,BULLISH,HIGH,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,0.385135,0.4816,0.0,1.0,2026-07-02T16:09:16.466256,,-0.25,0.5195,0.0,0.0,,0.7309
-2026-06-24,2026-08-05,HYG,30,79.849998,79.853757,80.27404,80.694322,,TimeCopilot_Ensemble,BULLISH,0.531,0.9563,,,,,,BULLISH,HIGH,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,,,,,,,-0.25,0.693,0.0,0.0,,0.7309
+2026-06-24,2026-08-05,HYG,30,79.849998,79.853757,80.27404,80.694322,79.519997,TimeCopilot_Ensemble,BULLISH,0.531,0.9563,,,,,,BULLISH,HIGH,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,0.754043,0.9393,0.0,0.0,2026-08-07T01:34:41.565935,,-0.25,0.693,0.0,0.0,,0.7309
 2026-06-24,2026-10-28,HYG,90,79.849998,80.353254,81.257914,82.162574,,TimeCopilot_Ensemble,BEARISH,1.7632,0.9563,,,,,,BULLISH,HIGH,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,,,,,,,-0.25,0.1934,0.0,0.0,,0.7309
 2026-06-24,2026-07-01,LQD,5,109.410004,109.29553,109.409345,109.523161,108.459999,TimeCopilot_Ensemble,BEARISH,0.0006,0.9609,,,,,,NEUTRAL,LOW,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,0.949346,0.8677,0.0,1.0,2026-07-02T16:09:17.113215,,-0.25,0.5139,0.0,0.0,,
-2026-06-24,2026-08-05,LQD,30,109.410004,108.79795,109.434362,110.070774,,TimeCopilot_Ensemble,BULLISH,0.0223,0.9609,,,,,,NEUTRAL,LOW,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,,,,,,,-0.25,0.634,0.0,0.0,,
+2026-06-24,2026-08-05,LQD,30,109.410004,108.79795,109.434362,110.070774,106.739998,TimeCopilot_Ensemble,BULLISH,0.0223,0.9609,,,,,,NEUTRAL,LOW,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,2.694364,2.4621,0.0,0.0,2026-08-07T01:34:42.579169,,-0.25,0.634,0.0,0.0,,
 2026-06-24,2026-10-28,LQD,90,109.410004,108.60237,109.685766,110.769162,,TimeCopilot_Ensemble,BEARISH,0.252,0.9609,,,,,,NEUTRAL,LOW,Federal Reserve Board and Federal Open Market Committee release economic projections from the June 16-17 FOMC meeting,,,,,,,-0.25,0.1896,0.0,0.0,,
 2026-06-24,2026-07-01,BIL,5,91.589996,91.498397,91.653391,91.808385,91.400002,TimeCopilot_Ensemble,BEARISH,0.0692,0.9292,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.253389,0.2765,0.0,1.0,2026-07-02T16:09:14.947923,,-0.2,0.5066,0.0,0.0,,-0.1941
-2026-06-24,2026-08-05,BIL,30,91.589996,91.860337,91.960023,92.059709,,TimeCopilot_Ensemble,BEARISH,0.404,0.9292,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,-0.2,0.4418,0.0,0.0,,-0.1941
+2026-06-24,2026-08-05,BIL,30,91.589996,91.860337,91.960023,92.059709,91.43,TimeCopilot_Ensemble,BEARISH,0.404,0.9292,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.530023,0.5764,0.0,1.0,2026-08-07T01:34:38.183619,,-0.2,0.4418,0.0,0.0,,-0.1941
 2026-06-24,2026-10-28,BIL,90,91.589996,92.548754,92.793215,93.037677,,TimeCopilot_Ensemble,BEARISH,1.3137,0.9292,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,-0.2,0.1915,0.0,0.0,,-0.1941
 2026-06-24,2026-07-01,^TNX,5,4.402,4.391708,4.404324,4.41694,4.461,TimeCopilot_Ensemble,BEARISH,0.0528,0.9384,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.056676,1.2868,0.0,0.0,2026-07-02T16:09:19.812798,,-0.4,0.5201,0.0,0.0,,0.1935
-2026-06-24,2026-08-05,^TNX,30,4.402,4.280578,4.364712,4.448845,,TimeCopilot_Ensemble,BEARISH,0.8471,0.9384,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,-0.4,0.6056,0.0,0.0,,0.1935
+2026-06-24,2026-08-05,^TNX,30,4.402,4.280578,4.364712,4.448845,4.617,TimeCopilot_Ensemble,BEARISH,0.8471,0.9384,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.252288,5.7802,0.0,0.0,2026-08-07T01:34:47.316152,,-0.4,0.6056,0.0,0.0,,0.1935
 2026-06-24,2026-10-28,^TNX,90,4.402,4.190413,4.331599,4.472785,,TimeCopilot_Ensemble,BEARISH,1.5993,0.9384,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,-0.4,0.2189,0.0,0.0,,0.1935
 2026-06-24,2026-07-01,GC=F,5,4012.800049,3967.178027,4048.464949,4129.751871,4068.300049,TimeCopilot_Ensemble,BULLISH,0.8888,0.834,,,,,,BULLISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,19.8351,0.4899,1.0,1.0,2026-07-02T16:09:16.051163,,-0.05,0.5127,0.0,0.0,,0.2871
-2026-06-24,2026-08-05,GC=F,30,4012.800049,3953.890914,4107.077944,4260.264974,,TimeCopilot_Ensemble,BULLISH,2.3494,0.834,,,,,,BULLISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,,,,,,,-0.05,0.5719,0.0,0.0,,0.2871
+2026-06-24,2026-08-05,GC=F,30,4012.800049,3953.890914,4107.077944,4260.264974,4245.799805,TimeCopilot_Ensemble,BULLISH,2.3494,0.834,,,,,,BULLISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,138.721861,3.3776,1.0,1.0,2026-08-07T01:34:40.657414,,-0.05,0.5719,0.0,0.0,,0.2871
 2026-06-24,2026-10-28,GC=F,90,4012.800049,3876.745025,4156.911938,4437.078851,,TimeCopilot_Ensemble,BEARISH,3.5913,0.834,,,,,,BULLISH,MEDIUM,Gold extends decline as tech-led selloff prompts investor liquidation,,,,,,,-0.05,0.2039,0.0,0.0,,0.2871
 2026-06-24,2026-07-01,SI=F,5,57.535,55.461888,57.398789,59.335689,60.084999,TimeCopilot_Ensemble,BEARISH,0.2367,0.302,,,,,,NEUTRAL,NO_DATA,,2.68621,4.6799,0.0,0.0,2026-07-02T16:09:17.606951,,-0.42,0.5062,0.0,0.0,,
-2026-06-24,2026-08-05,SI=F,30,57.535,52.644275,57.001242,61.358208,,TimeCopilot_Ensemble,BULLISH,0.9277,0.302,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.42,0.7325,0.0,0.0,,
+2026-06-24,2026-08-05,SI=F,30,57.535,52.644275,57.001242,61.358208,62.098999,TimeCopilot_Ensemble,BULLISH,0.9277,0.302,,,,,,NEUTRAL,NO_DATA,,5.097757,8.9432,0.0,1.0,2026-08-07T01:34:43.367906,,-0.42,0.7325,0.0,0.0,,
 2026-06-24,2026-10-28,SI=F,90,57.535,49.397756,55.378485,61.359213,,TimeCopilot_Ensemble,BEARISH,3.7482,0.302,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.42,0.2027,0.0,0.0,,
 2026-06-24,2026-07-01,CL=F,5,69.860001,67.630335,69.564555,71.498775,68.580002,TimeCopilot_Ensemble,BEARISH,0.4229,0.7924,,,,,,BEARISH,MEDIUM,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,0.984553,1.4153,1.0,1.0,2026-07-02T16:09:15.200723,,-0.5,0.5202,0.0,0.0,,-0.2764
-2026-06-24,2026-08-05,CL=F,30,69.860001,66.597447,69.568811,72.540176,,TimeCopilot_Ensemble,BEARISH,0.4168,0.7924,,,,,,BEARISH,MEDIUM,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,,,,,,,-0.5,0.6956,0.0,0.0,,-0.2764
+2026-06-24,2026-08-05,CL=F,30,69.860001,66.597447,69.568811,72.540176,75.220001,TimeCopilot_Ensemble,BEARISH,0.4168,0.7924,,,,,,BEARISH,MEDIUM,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,5.65119,8.1232,0.0,0.0,2026-08-07T01:34:38.795625,,-0.5,0.6956,0.0,0.0,,-0.2764
 2026-06-24,2026-10-28,CL=F,90,69.860001,66.687563,68.698496,70.709429,,TimeCopilot_Ensemble,BEARISH,1.6626,0.7924,,,,,,BEARISH,MEDIUM,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,,,,,,,-0.5,0.1867,0.0,0.0,,-0.2764
 2026-06-24,2026-07-01,NG=F,5,3.262,3.21231,3.248367,3.284423,3.22,TimeCopilot_Ensemble,BEARISH,0.4179,0.7842,,,,,,BEARISH,MEDIUM,"Strait of Hormuz evacuation plan to begin for ships stranded in Persian Gulf, maritime organization says",0.028367,0.8733,1.0,1.0,2026-07-02T16:09:17.270836,,-0.42,0.5069,0.0,0.0,0.0,-1.0
-2026-06-24,2026-08-05,NG=F,30,3.262,3.08048,3.249589,3.418699,,TimeCopilot_Ensemble,BEARISH,0.3805,0.7842,,,,,,BEARISH,MEDIUM,"Strait of Hormuz evacuation plan to begin for ships stranded in Persian Gulf, maritime organization says",,,,,,,-0.42,0.6576,0.0,0.0,0.0,-1.0
+2026-06-24,2026-08-05,NG=F,30,3.262,3.08048,3.249589,3.418699,2.688,TimeCopilot_Ensemble,BEARISH,0.3805,0.7842,,,,,,BEARISH,MEDIUM,"Strait of Hormuz evacuation plan to begin for ships stranded in Persian Gulf, maritime organization says",0.561589,17.2818,0.0,1.0,2026-08-07T01:34:42.827653,,-0.42,0.6576,0.0,0.0,0.0,-1.0
 2026-06-24,2026-10-28,NG=F,90,3.262,2.726253,3.227897,3.72954,,TimeCopilot_Ensemble,BEARISH,1.0455,0.7842,,,,,,BEARISH,MEDIUM,"Strait of Hormuz evacuation plan to begin for ships stranded in Persian Gulf, maritime organization says",,,,,,,-0.42,0.2048,0.0,0.0,0.0,-1.0
 2026-06-24,2026-07-01,HG=F,5,5.9735,5.880798,5.987139,6.093481,6.1235,TimeCopilot_Ensemble,BEARISH,0.2283,0.6875,,,,,,NEUTRAL,NO_DATA,,0.136361,2.2776,0.0,0.0,2026-07-02T16:09:16.287657,,-0.3,0.5099,0.0,0.0,,
-2026-06-24,2026-08-05,HG=F,30,5.9735,5.799646,5.987139,6.174633,,TimeCopilot_Ensemble,BEARISH,0.2283,0.6875,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5831,0.0,0.0,,
+2026-06-24,2026-08-05,HG=F,30,5.9735,5.799646,5.987139,6.174633,6.703,TimeCopilot_Ensemble,BEARISH,0.2283,0.6875,,,,,,NEUTRAL,NO_DATA,,0.715861,11.9566,0.0,0.0,2026-08-07T01:34:41.236513,,-0.3,0.5831,0.0,0.0,,
 2026-06-24,2026-10-28,HG=F,90,5.9735,5.680812,5.987139,6.293467,,TimeCopilot_Ensemble,BEARISH,0.2283,0.6875,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.2009,0.0,0.0,,
 2026-06-24,2026-07-01,ZW=F,5,595.75,588.020709,595.749382,603.478056,592.0,TimeCopilot_Ensemble,BEARISH,0.0001,0.8787,,,,,,NEUTRAL,NO_DATA,,3.749382,0.6294,1.0,1.0,2026-07-02T16:09:19.438627,,-0.4,0.5059,0.0,0.0,,
-2026-06-24,2026-08-05,ZW=F,30,595.75,566.667579,595.749305,624.831032,,TimeCopilot_Ensemble,BEARISH,0.0001,0.8787,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.4,0.6514,0.0,0.0,,
+2026-06-24,2026-08-05,ZW=F,30,595.75,566.667579,595.749305,624.831032,642.25,TimeCopilot_Ensemble,BEARISH,0.0001,0.8787,,,,,,NEUTRAL,NO_DATA,,46.500695,7.8054,0.0,0.0,2026-08-07T01:34:46.676112,,-0.4,0.6514,0.0,0.0,,
 2026-06-24,2026-10-28,ZW=F,90,595.75,570.256946,595.749305,621.241665,,TimeCopilot_Ensemble,BEARISH,0.0001,0.8787,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.4,0.2096,0.0,0.0,,
 2026-06-24,2026-07-01,ZC=F,5,414.5,412.356391,413.55227,414.74815,421.0,TimeCopilot_Ensemble,BEARISH,0.2286,0.9408,,,,,,NEUTRAL,NO_DATA,,7.44773,1.8009,0.0,0.0,2026-07-02T16:09:19.331424,,-0.55,0.527,0.0,0.0,,
-2026-06-24,2026-08-05,ZC=F,30,414.5,403.260476,413.832703,424.40493,,TimeCopilot_Ensemble,BULLISH,0.161,0.9408,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.55,0.7313,0.0,0.0,,
+2026-06-24,2026-08-05,ZC=F,30,414.5,403.260476,413.832703,424.40493,436.75,TimeCopilot_Ensemble,BULLISH,0.161,0.9408,,,,,,NEUTRAL,NO_DATA,,22.917297,5.5378,0.0,1.0,2026-08-07T01:34:46.378324,,-0.55,0.7313,0.0,0.0,,
 2026-06-24,2026-10-28,ZC=F,90,414.5,405.196583,414.611084,424.025585,,TimeCopilot_Ensemble,BEARISH,0.0268,0.9408,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.55,0.1908,0.0,0.0,,
 2026-06-24,2026-07-01,^VIX,5,19.49,18.06848,18.894261,19.720043,16.59,TimeCopilot_Ensemble,BEARISH,3.0566,0.0,,,,,,BULLISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,2.304261,12.1956,0.0,1.0,2026-07-02T16:09:19.980725,,0.0,0.4934,0.0,0.0,,0.5224
-2026-06-24,2026-08-05,^VIX,30,19.49,17.97155,19.6968,21.422049,,TimeCopilot_Ensemble,BEARISH,1.0611,0.0,,,,,,BULLISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,,,,,,,0.0,0.4608,0.0,0.0,,0.5224
+2026-06-24,2026-08-05,^VIX,30,19.49,17.97155,19.6968,21.422049,15.81,TimeCopilot_Ensemble,BEARISH,1.0611,0.0,,,,,,BULLISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,3.8868,19.7332,0.0,1.0,2026-08-07T01:34:47.717917,,0.0,0.4608,0.0,0.0,,0.5224
 2026-06-24,2026-10-28,^VIX,90,19.49,16.957294,19.995782,23.034271,,TimeCopilot_Ensemble,BEARISH,2.5951,0.0,,,,,,BULLISH,HIGH,Trump claims peace agreement with Iran ends Strait of Hormuz conflict,,,,,,,0.0,0.2048,0.0,0.0,,0.5224
 2026-06-24,2026-07-01,UVXY,5,27.65,24.830154,27.095621,29.361088,25.190001,TimeCopilot_Ensemble,BEARISH,2.005,0.0606,,,,,,BULLISH,HIGH,$170M Ether longs liquidated as crypto market tumbles: Is ETH doomed?,1.90562,7.0329,1.0,1.0,2026-07-02T16:09:18.558941,,-0.15,0.486,0.0,0.0,,1.0
-2026-06-24,2026-08-05,UVXY,30,27.65,16.82699,27.54684,38.266689,,TimeCopilot_Ensemble,BEARISH,0.3731,0.0606,,,,,,BULLISH,HIGH,$170M Ether longs liquidated as crypto market tumbles: Is ETH doomed?,,,,,,,-0.15,0.4511,0.0,0.0,,1.0
+2026-06-24,2026-08-05,UVXY,30,27.65,16.82699,27.54684,38.266689,22.059999,TimeCopilot_Ensemble,BEARISH,0.3731,0.0606,,,,,,BULLISH,HIGH,$170M Ether longs liquidated as crypto market tumbles: Is ETH doomed?,5.486841,19.9182,1.0,1.0,2026-08-07T01:34:45.079324,,-0.15,0.4511,0.0,0.0,,1.0
 2026-06-24,2026-10-28,UVXY,90,27.65,-3.640616,23.487767,50.616151,,TimeCopilot_Ensemble,BEARISH,15.0533,0.0606,,,,,,BULLISH,HIGH,$170M Ether longs liquidated as crypto market tumbles: Is ETH doomed?,,,,,,,-0.15,0.2062,0.0,0.0,,1.0
 2026-06-24,2026-07-01,DX-Y.NYB,5,101.584,101.360798,101.516826,101.672853,101.389999,TimeCopilot_Ensemble,BULLISH,0.0661,0.9519,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,0.126827,0.1249,1.0,0.0,2026-07-02T16:09:15.306598,,0.3,0.5056,0.0,0.0,,-0.0443
-2026-06-24,2026-08-05,DX-Y.NYB,30,101.584,100.89814,101.583991,102.269842,,TimeCopilot_Ensemble,BULLISH,0.0,0.9519,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.3,0.4579,0.0,0.0,,-0.0443
+2026-06-24,2026-08-05,DX-Y.NYB,30,101.584,100.89814,101.583991,102.269842,99.690002,TimeCopilot_Ensemble,BULLISH,0.0,0.9519,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,1.893989,1.8645,0.0,0.0,2026-08-07T01:34:39.086005,,0.3,0.4579,0.0,0.0,,-0.0443
 2026-06-24,2026-10-28,DX-Y.NYB,90,101.584,100.566571,101.281333,101.996094,,TimeCopilot_Ensemble,BEARISH,0.2979,0.9519,,,,,,NEUTRAL,LOW,Powell says labor market not a source of significant inflation pressure,,,,,,,0.3,0.1969,0.0,0.0,,-0.0443
 2026-06-24,2026-07-01,^IRX,5,3.69,3.685225,3.695856,3.706487,3.665,TimeCopilot_Ensemble,BULLISH,0.1587,0.931,,,,,,BEARISH,HIGH,Powell says labor market not a source of significant inflation pressure,0.030856,0.8349,0.0,0.0,2026-07-02T16:09:19.615871,,0.2,0.5118,0.0,0.0,,-0.6208
-2026-06-24,2026-08-05,^IRX,30,3.69,3.686935,3.720915,3.754894,,TimeCopilot_Ensemble,BULLISH,0.8378,0.931,,,,,,BEARISH,HIGH,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.6356,0.0,0.0,,-0.6208
+2026-06-24,2026-08-05,^IRX,30,3.69,3.686935,3.720915,3.754894,3.725,TimeCopilot_Ensemble,BULLISH,0.8378,0.931,,,,,,BEARISH,HIGH,Powell says labor market not a source of significant inflation pressure,0.004085,0.1098,1.0,1.0,2026-08-07T01:34:47.005728,,0.2,0.6356,0.0,0.0,,-0.6208
 2026-06-24,2026-10-28,^IRX,90,3.69,3.638159,3.740702,3.843245,,TimeCopilot_Ensemble,BEARISH,1.374,0.931,,,,,,BEARISH,HIGH,Powell says labor market not a source of significant inflation pressure,,,,,,,0.2,0.1989,0.0,0.0,,-0.6208
 2026-06-24,2026-07-01,BTC-USD,5,60808.011719,60696.691205,60906.494722,61116.298238,60003.757812,TimeCopilot_Ensemble,BULLISH,0.162,0.8928,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",902.73691,1.4822,0.0,0.0,2026-07-02T16:09:15.104859,,-0.25,0.5093,0.0,0.0,,-0.0358
-2026-06-24,2026-08-05,BTC-USD,30,60808.011719,60384.534871,61057.010306,61729.48574,,TimeCopilot_Ensemble,BULLISH,0.4095,0.8928,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",,,,,,,-0.25,0.721,0.0,0.0,,-0.0358
+2026-06-24,2026-08-05,BTC-USD,30,60808.011719,60384.534871,61057.010306,61729.48574,64597.5,TimeCopilot_Ensemble,BULLISH,0.4095,0.8928,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",3540.489694,5.7987,0.0,1.0,2026-08-07T01:34:38.515381,,-0.25,0.721,0.0,0.0,,-0.0358
 2026-06-24,2026-10-28,BTC-USD,90,60808.011719,55102.113681,61418.247708,67734.381734,,TimeCopilot_Ensemble,BEARISH,1.0035,0.8928,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",,,,,,,-0.25,0.2178,0.0,0.0,,-0.0358
 2026-06-24,2026-07-01,ETH-USD,5,1613.709961,1577.547416,1612.145691,1646.743966,1608.960693,TimeCopilot_Ensemble,BEARISH,0.0969,0.9332,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",3.184998,0.1976,1.0,1.0,2026-07-02T16:09:15.756117,,-0.25,0.4914,0.0,0.0,,-0.1041
-2026-06-24,2026-08-05,ETH-USD,30,1613.709961,1519.993591,1613.712548,1707.431504,,TimeCopilot_Ensemble,BEARISH,0.0002,0.9332,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",,,,,,,-0.25,0.437,0.0,0.0,,-0.1041
+2026-06-24,2026-08-05,ETH-USD,30,1613.709961,1519.993591,1613.712548,1707.431504,1906.526001,TimeCopilot_Ensemble,BEARISH,0.0002,0.9332,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",292.813453,18.1453,0.0,0.0,2026-08-07T01:34:40.059500,,-0.25,0.437,0.0,0.0,,-0.1041
 2026-06-24,2026-10-28,ETH-USD,90,1613.709961,1522.102339,1638.695458,1755.288576,,TimeCopilot_Ensemble,BEARISH,1.5483,0.9332,,,,,,NEUTRAL,LOW,"Federal Reserve Board requests public comment on a proposal to establish a ""payment account,"" which legally eligible fin",,,,,,,-0.25,0.1923,0.0,0.0,,-0.1041
 2026-06-24,2026-07-01,SOL-USD,5,67.769997,67.095467,67.899857,68.704247,77.383705,TimeCopilot_Ensemble,BULLISH,0.1916,0.7683,,,,,,NEUTRAL,LOW,Law enforcement groups raise concerns over Clarity Act provisions that could weaken crypto oversight,9.483848,13.9674,0.0,1.0,2026-07-02T16:09:18.066202,,-0.25,0.5061,0.0,0.0,,-0.1596
-2026-06-24,2026-08-05,SOL-USD,30,67.769997,65.652335,68.36591,71.079484,,TimeCopilot_Ensemble,BULLISH,0.8793,0.7683,,,,,,NEUTRAL,LOW,Law enforcement groups raise concerns over Clarity Act provisions that could weaken crypto oversight,,,,,,,-0.25,0.6557,0.0,0.0,,-0.1596
+2026-06-24,2026-08-05,SOL-USD,30,67.769997,65.652335,68.36591,71.079484,73.96138,TimeCopilot_Ensemble,BULLISH,0.8793,0.7683,,,,,,NEUTRAL,LOW,Law enforcement groups raise concerns over Clarity Act provisions that could weaken crypto oversight,5.59547,8.1846,0.0,1.0,2026-08-07T01:34:43.948248,,-0.25,0.6557,0.0,0.0,,-0.1596
 2026-06-24,2026-10-28,SOL-USD,90,67.769997,53.950791,60.180647,66.410503,,TimeCopilot_Ensemble,BEARISH,11.1987,0.7683,,,,,,NEUTRAL,LOW,Law enforcement groups raise concerns over Clarity Act provisions that could weaken crypto oversight,,,,,,,-0.25,0.1967,0.0,0.0,,-0.1596
 2026-06-24,2026-07-01,EEM,5,67.25,67.382206,67.481759,67.581312,66.480003,TimeCopilot_Ensemble,BEARISH,0.3446,0.8653,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",1.001756,1.4845,0.0,1.0,2026-07-02T16:09:15.483245,,-0.45,0.5002,0.0,0.0,,-0.1946
-2026-06-24,2026-08-05,EEM,30,67.25,67.455632,68.083623,68.711614,,TimeCopilot_Ensemble,BEARISH,1.2396,0.8653,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",,,,,,,-0.45,0.4447,0.0,0.0,,-0.1946
+2026-06-24,2026-08-05,EEM,30,67.25,67.455632,68.083623,68.711614,65.720001,TimeCopilot_Ensemble,BEARISH,1.2396,0.8653,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",2.363622,3.4716,0.0,1.0,2026-08-07T01:34:39.418292,,-0.45,0.4447,0.0,0.0,,-0.1946
 2026-06-24,2026-10-28,EEM,90,67.25,65.342789,69.064894,72.786998,,TimeCopilot_Ensemble,BEARISH,2.6987,0.8653,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",,,,,,,-0.45,0.1953,0.0,0.0,,-0.1946
 2026-06-24,2026-07-01,EFA,5,102.260002,102.441844,102.519117,102.596389,103.019997,TimeCopilot_Ensemble,BEARISH,0.2534,0.8827,,,,,,BEARISH,MEDIUM,New data release: ECB wage tracker points to stable negotiated wage pressures in 2026,0.50088,0.4886,0.0,0.0,2026-07-02T16:09:15.640324,,-0.15,0.5291,0.0,0.0,,-0.3468
-2026-06-24,2026-08-05,EFA,30,102.260002,103.52301,103.987604,104.452198,,TimeCopilot_Ensemble,BULLISH,1.6894,0.8827,,,,,,BEARISH,MEDIUM,New data release: ECB wage tracker points to stable negotiated wage pressures in 2026,,,,,,,-0.15,0.6627,0.0,0.0,,-0.3468
+2026-06-24,2026-08-05,EFA,30,102.260002,103.52301,103.987604,104.452198,107.43,TimeCopilot_Ensemble,BULLISH,1.6894,0.8827,,,,,,BEARISH,MEDIUM,New data release: ECB wage tracker points to stable negotiated wage pressures in 2026,3.442396,3.3104,0.0,1.0,2026-08-07T01:34:39.768752,,-0.15,0.6627,0.0,0.0,,-0.3468
 2026-06-24,2026-10-28,EFA,90,102.260002,104.237407,105.880644,107.52388,,TimeCopilot_Ensemble,BEARISH,3.5406,0.8827,,,,,,BEARISH,MEDIUM,New data release: ECB wage tracker points to stable negotiated wage pressures in 2026,,,,,,,-0.15,0.1959,0.0,0.0,,-0.3468
 2026-06-24,2026-07-01,FXI,5,32.360001,32.322607,32.371067,32.419527,31.969999,TimeCopilot_Ensemble,BEARISH,0.0342,0.9131,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",0.401068,1.239,0.0,1.0,2026-07-02T16:09:15.915456,,-0.4,0.5074,0.0,0.0,,-0.0434
-2026-06-24,2026-08-05,FXI,30,32.360001,31.398985,32.371067,33.343149,,TimeCopilot_Ensemble,BEARISH,0.0342,0.9131,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",,,,,,,-0.4,0.5771,0.0,0.0,,-0.0434
+2026-06-24,2026-08-05,FXI,30,32.360001,31.398985,32.371067,33.343149,36.080002,TimeCopilot_Ensemble,BEARISH,0.0342,0.9131,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",3.708935,11.4576,0.0,0.0,2026-08-07T01:34:40.339337,,-0.4,0.5771,0.0,0.0,,-0.0434
 2026-06-24,2026-10-28,FXI,90,32.360001,30.275602,32.371067,34.466532,,TimeCopilot_Ensemble,BEARISH,0.0342,0.9131,,,,,,NEUTRAL,LOW,"MSCI keeps South Korea as emerging market, delays Indonesia review amid downgrade risk",,,,,,,-0.4,0.1957,0.0,0.0,,-0.0434
 2026-07-01,2026-07-08,SPY,5,745.76001,743.134585,746.558213,749.981841,745.400024,TimeCopilot_Ensemble,BULLISH,0.107,0.9208,,,,,,NEUTRAL,NO_DATA,,1.158189,0.1551,1.0,0.0,2026-07-09T23:19:16.566656,,0.2,0.5043,0.0,0.0,,
 2026-07-01,2026-08-12,SPY,30,745.76001,746.537998,756.746127,766.954256,,TimeCopilot_Ensemble,BULLISH,1.4731,0.9208,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.6179,0.0,0.0,,
@@ -5672,190 +5672,190 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-07-28,2026-08-04,FXI,5,35.650002,35.525397,35.791763,36.05813,36.310001,TimeCopilot_Ensemble,BULLISH,0.3976,0.8935,,,,,,NEUTRAL,NO_DATA,,0.518238,1.4479,0.0,1.0,2026-08-05T16:04:03.744905,,-0.15,0.5226,0.0,0.0,,
 2026-07-28,2026-09-08,FXI,30,35.650002,35.099306,35.641457,36.183609,,TimeCopilot_Ensemble,BULLISH,0.024,0.8935,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5398,0.0,0.0,,
 2026-07-28,2026-12-01,FXI,90,35.650002,34.161453,35.09826,36.035066,,TimeCopilot_Ensemble,BULLISH,1.5477,0.8935,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.7144,0.0,0.0,,
-2026-07-29,2026-08-05,SPY,5,729.460022,729.632785,732.691743,735.750701,,TimeCopilot_Ensemble,BULLISH,0.443,0.9435,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5265,0.0,0.0,,
+2026-07-29,2026-08-05,SPY,5,729.460022,729.632785,732.691743,735.750701,769.789978,TimeCopilot_Ensemble,BULLISH,0.443,0.9435,,,,,,NEUTRAL,NO_DATA,,37.098235,5.0633,0.0,1.0,2026-08-07T01:34:44.439287,,0.1,0.5265,0.0,0.0,,
 2026-07-29,2026-09-09,SPY,30,729.460022,724.34205,732.654237,740.966424,,TimeCopilot_Ensemble,BEARISH,0.4379,0.9435,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.3766,0.0,0.0,,
 2026-07-29,2026-12-02,SPY,90,729.460022,721.620534,738.616455,755.612376,,TimeCopilot_Ensemble,BULLISH,1.2552,0.9435,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.6821,0.0,0.0,,
-2026-07-29,2026-08-05,QQQ,5,661.72998,657.63487,663.370904,669.106937,,TimeCopilot_Ensemble,BULLISH,0.248,0.9287,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.4851,0.0,0.0,,
+2026-07-29,2026-08-05,QQQ,5,661.72998,657.63487,663.370904,669.106937,717.299988,TimeCopilot_Ensemble,BULLISH,0.248,0.9287,,,,,,NEUTRAL,NO_DATA,,53.929084,8.1296,0.0,1.0,2026-08-07T01:34:43.130069,,0.1,0.4851,0.0,0.0,,
 2026-07-29,2026-09-09,QQQ,30,661.72998,645.128257,667.9511,690.773942,,TimeCopilot_Ensemble,BULLISH,0.9401,0.9287,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5409,0.0,0.0,,
 2026-07-29,2026-12-02,QQQ,90,661.72998,624.857651,667.136989,709.416328,,TimeCopilot_Ensemble,BULLISH,0.8171,0.9287,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5212,0.0,0.0,,
-2026-07-29,2026-08-05,IWM,5,288.570007,287.216029,289.327263,291.438496,,TimeCopilot_Ensemble,BULLISH,0.2624,0.9683,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5284,0.0,0.0,,
+2026-07-29,2026-08-05,IWM,5,288.570007,287.216029,289.327263,291.438496,299.769989,TimeCopilot_Ensemble,BULLISH,0.2624,0.9683,,,,,,NEUTRAL,NO_DATA,,10.442726,3.6093,0.0,1.0,2026-08-07T01:34:42.258426,,0.0,0.5284,0.0,0.0,,
 2026-07-29,2026-09-09,IWM,30,288.570007,281.567212,288.662163,295.757114,,TimeCopilot_Ensemble,BULLISH,0.0319,0.9683,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5345,0.0,0.0,,
 2026-07-29,2026-12-02,IWM,90,288.570007,271.959081,288.662163,305.365245,,TimeCopilot_Ensemble,BULLISH,0.0319,0.9683,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.7318,0.0,0.0,,
-2026-07-29,2026-08-05,XLE,5,58.650002,58.159374,58.686006,59.212638,,TimeCopilot_Ensemble,BEARISH,0.0614,0.9171,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.29,0.5146,0.0,0.0,,
+2026-07-29,2026-08-05,XLE,5,58.650002,58.159374,58.686006,59.212638,57.310001,TimeCopilot_Ensemble,BEARISH,0.0614,0.9171,,,,,,NEUTRAL,NO_DATA,,1.376005,2.3447,0.0,1.0,2026-08-07T01:34:45.390127,,-0.29,0.5146,0.0,0.0,,
 2026-07-29,2026-09-09,XLE,30,58.650002,57.726398,58.686006,59.645614,,TimeCopilot_Ensemble,BEARISH,0.0614,0.9171,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.29,0.5283,0.0,0.0,,
 2026-07-29,2026-12-02,XLE,90,58.650002,56.570652,58.686006,60.80136,,TimeCopilot_Ensemble,BULLISH,0.0614,0.9171,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.29,0.7609,0.0,0.0,,
-2026-07-29,2026-08-05,XLF,5,56.68,56.607813,56.818714,57.029616,,TimeCopilot_Ensemble,BULLISH,0.2447,0.9555,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.4761,0.0,0.0,,
+2026-07-29,2026-08-05,XLF,5,56.68,56.607813,56.818714,57.029616,58.0,TimeCopilot_Ensemble,BULLISH,0.2447,0.9555,,,,,,NEUTRAL,NO_DATA,,1.181286,2.079,0.0,1.0,2026-08-07T01:34:45.748903,,0.35,0.4761,0.0,0.0,,
 2026-07-29,2026-09-09,XLF,30,56.68,56.703749,57.265812,57.827874,,TimeCopilot_Ensemble,BULLISH,1.0335,0.9555,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.4121,0.0,0.0,,
 2026-07-29,2026-12-02,XLF,90,56.68,55.719854,57.828494,59.937134,,TimeCopilot_Ensemble,BULLISH,2.0263,0.9555,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.6148,0.0,0.0,,
-2026-07-29,2026-08-05,XLK,5,166.570007,165.217287,166.915364,168.61344,,TimeCopilot_Ensemble,BEARISH,0.2073,0.8678,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5074,0.0,0.0,,
+2026-07-29,2026-08-05,XLK,5,166.570007,165.217287,166.915364,168.61344,185.910004,TimeCopilot_Ensemble,BEARISH,0.2073,0.8678,,,,,,NEUTRAL,NO_DATA,,18.99464,11.3798,0.0,0.0,2026-08-07T01:34:46.119499,,-0.3,0.5074,0.0,0.0,,
 2026-07-29,2026-09-09,XLK,30,166.570007,158.975294,165.597883,172.220471,,TimeCopilot_Ensemble,BEARISH,0.5836,0.8678,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.4542,0.0,0.0,,
 2026-07-29,2026-12-02,XLK,90,166.570007,151.562321,164.375676,177.189032,,TimeCopilot_Ensemble,BULLISH,1.3174,0.8678,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.7086,0.0,0.0,,
-2026-07-29,2026-08-05,GLD,5,371.079987,370.903318,372.279708,373.656098,,TimeCopilot_Ensemble,BEARISH,0.3233,0.9015,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.05,0.4777,0.0,0.0,,
+2026-07-29,2026-08-05,GLD,5,371.079987,370.903318,372.279708,373.656098,389.640015,TimeCopilot_Ensemble,BEARISH,0.3233,0.9015,,,,,,NEUTRAL,NO_DATA,,17.360307,4.6632,0.0,0.0,2026-08-07T01:34:40.957581,,-0.05,0.4777,0.0,0.0,,
 2026-07-29,2026-09-09,GLD,30,371.079987,374.203935,377.061821,379.919707,,TimeCopilot_Ensemble,BULLISH,1.612,0.9015,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.05,0.5416,0.0,0.0,,
 2026-07-29,2026-12-02,GLD,90,371.079987,375.218646,388.339959,401.461271,,TimeCopilot_Ensemble,BULLISH,4.6513,0.9015,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.05,0.5931,0.0,0.0,,
-2026-07-29,2026-08-05,SLV,5,51.77,51.182739,51.799713,52.416688,,TimeCopilot_Ensemble,BEARISH,0.0574,0.8632,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.38,0.4886,0.0,0.0,,
+2026-07-29,2026-08-05,SLV,5,51.77,51.182739,51.799713,52.416688,56.07,TimeCopilot_Ensemble,BEARISH,0.0574,0.8632,,,,,,NEUTRAL,NO_DATA,,4.270287,8.2438,0.0,0.0,2026-08-07T01:34:43.657395,,-0.38,0.4886,0.0,0.0,,
 2026-07-29,2026-09-09,SLV,30,51.77,51.567001,52.183005,52.799009,,TimeCopilot_Ensemble,BEARISH,0.7978,0.8632,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.38,0.548,0.0,0.0,,
 2026-07-29,2026-12-02,SLV,90,51.77,49.970253,52.319762,54.66927,,TimeCopilot_Ensemble,BEARISH,1.0619,0.8632,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.38,0.4721,0.0,0.0,,
-2026-07-29,2026-08-05,TLT,5,82.849998,82.716056,83.138576,83.561095,,TimeCopilot_Ensemble,BEARISH,0.3483,0.8521,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0813,0.5054,0.0,0.0,,
+2026-07-29,2026-08-05,TLT,5,82.849998,82.716056,83.138576,83.561095,83.0,TimeCopilot_Ensemble,BEARISH,0.3483,0.8521,,,,,,NEUTRAL,NO_DATA,,0.138576,0.1667,1.0,0.0,2026-08-07T01:34:44.809901,,-0.0813,0.5054,0.0,0.0,,
 2026-07-29,2026-09-09,TLT,30,82.849998,82.362047,83.422655,84.483263,,TimeCopilot_Ensemble,BEARISH,0.6912,0.8521,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0813,0.5027,0.0,0.0,,
 2026-07-29,2026-12-02,TLT,90,82.849998,81.433035,83.445226,85.457418,,TimeCopilot_Ensemble,BULLISH,0.7184,0.8521,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0813,0.7328,0.0,0.0,,
-2026-07-29,2026-08-05,IEF,5,93.169998,93.060607,93.147467,93.234328,,TimeCopilot_Ensemble,BEARISH,0.0242,0.951,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0813,0.4814,0.0,0.0,,
+2026-07-29,2026-08-05,IEF,5,93.169998,93.060607,93.147467,93.234328,93.309998,TimeCopilot_Ensemble,BEARISH,0.0242,0.951,,,,,,NEUTRAL,NO_DATA,,0.162531,0.1745,0.0,0.0,2026-08-07T01:34:41.917239,,-0.0813,0.4814,0.0,0.0,,
 2026-07-29,2026-09-09,IEF,30,93.169998,93.080211,93.130625,93.181039,,TimeCopilot_Ensemble,BEARISH,0.0423,0.951,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0813,0.511,0.0,0.0,,
 2026-07-29,2026-12-02,IEF,90,93.169998,92.688252,93.169337,93.650423,,TimeCopilot_Ensemble,BULLISH,0.0007,0.951,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0813,0.6169,0.0,0.0,,
-2026-07-29,2026-08-05,HYG,5,79.239998,79.282335,79.363948,79.445562,,TimeCopilot_Ensemble,BEARISH,0.1564,0.9118,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.33,0.4717,0.0,0.0,,
+2026-07-29,2026-08-05,HYG,5,79.239998,79.282335,79.363948,79.445562,79.519997,TimeCopilot_Ensemble,BEARISH,0.1564,0.9118,,,,,,NEUTRAL,NO_DATA,,0.156049,0.1966,0.0,0.0,2026-08-07T01:34:41.566638,,-0.33,0.4717,0.0,0.0,,
 2026-07-29,2026-09-09,HYG,30,79.239998,79.678504,79.871727,80.06495,,TimeCopilot_Ensemble,BEARISH,0.7972,0.9118,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.33,0.5389,0.0,0.0,,
 2026-07-29,2026-12-02,HYG,90,79.239998,79.597596,80.539399,81.481202,,TimeCopilot_Ensemble,BULLISH,1.6398,0.9118,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.33,0.7701,0.0,0.0,,
-2026-07-29,2026-08-05,LQD,5,106.220001,106.046286,106.235701,106.425116,,TimeCopilot_Ensemble,BEARISH,0.0148,0.9544,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.33,0.4604,0.0,0.0,,
+2026-07-29,2026-08-05,LQD,5,106.220001,106.046286,106.235701,106.425116,106.739998,TimeCopilot_Ensemble,BEARISH,0.0148,0.9544,,,,,,NEUTRAL,NO_DATA,,0.504297,0.4747,0.0,0.0,2026-08-07T01:34:42.579866,,-0.33,0.4604,0.0,0.0,,
 2026-07-29,2026-09-09,LQD,30,106.220001,105.196811,106.234681,107.272551,,TimeCopilot_Ensemble,BEARISH,0.0138,0.9544,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.33,0.5242,0.0,0.0,,
 2026-07-29,2026-12-02,LQD,90,106.220001,104.293186,106.417069,108.540952,,TimeCopilot_Ensemble,BULLISH,0.1855,0.9544,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.33,0.767,0.0,0.0,,
-2026-07-29,2026-08-05,BIL,5,91.639999,91.635395,91.821299,92.007202,,TimeCopilot_Ensemble,BULLISH,0.1978,0.9118,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.6,0.526,0.0,0.0,,
+2026-07-29,2026-08-05,BIL,5,91.639999,91.635395,91.821299,92.007202,91.43,TimeCopilot_Ensemble,BULLISH,0.1978,0.9118,,,,,,NEUTRAL,NO_DATA,,0.391299,0.4262,0.0,0.0,2026-08-07T01:34:38.184375,,0.6,0.526,0.0,0.0,,
 2026-07-29,2026-09-09,BIL,30,91.639999,91.950634,92.009297,92.067961,,TimeCopilot_Ensemble,BULLISH,0.403,0.9118,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.6,0.54,0.0,0.0,,
 2026-07-29,2026-12-02,BIL,90,91.639999,92.629755,92.9542,93.278645,,TimeCopilot_Ensemble,BULLISH,1.4341,0.9118,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.6,0.6722,0.0,0.0,,
-2026-07-29,2026-08-05,^TNX,5,4.622,4.578138,4.61331,4.648483,,TimeCopilot_Ensemble,BULLISH,0.188,0.8366,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2018,0.4826,0.0,0.0,,
+2026-07-29,2026-08-05,^TNX,5,4.622,4.578138,4.61331,4.648483,4.617,TimeCopilot_Ensemble,BULLISH,0.188,0.8366,,,,,,NEUTRAL,NO_DATA,,0.00369,0.08,1.0,0.0,2026-08-07T01:34:47.316811,,0.2018,0.4826,0.0,0.0,,
 2026-07-29,2026-09-09,^TNX,30,4.622,4.466401,4.58466,4.702918,,TimeCopilot_Ensemble,BULLISH,0.8079,0.8366,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2018,0.5255,0.0,0.0,,
 2026-07-29,2026-12-02,^TNX,90,4.622,4.237873,4.475078,4.712283,,TimeCopilot_Ensemble,BULLISH,3.1788,0.8366,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2018,0.5955,0.0,0.0,,
-2026-07-29,2026-08-05,GC=F,5,4145.899902,4112.149177,4143.928352,4175.707526,,TimeCopilot_Ensemble,BEARISH,0.0476,0.9707,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.05,0.4672,0.0,0.0,,
+2026-07-29,2026-08-05,GC=F,5,4145.899902,4112.149177,4143.928352,4175.707526,4245.799805,TimeCopilot_Ensemble,BEARISH,0.0476,0.9707,,,,,,NEUTRAL,NO_DATA,,101.871453,2.4583,0.0,0.0,2026-08-07T01:34:40.658084,,-0.05,0.4672,0.0,0.0,,
 2026-07-29,2026-09-09,GC=F,30,4145.899902,4175.059307,4217.811513,4260.563719,,TimeCopilot_Ensemble,BEARISH,1.7345,0.9707,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.05,0.411,0.0,0.0,,
 2026-07-29,2026-12-02,GC=F,90,4145.899902,4208.071699,4337.959267,4467.846836,,TimeCopilot_Ensemble,BEARISH,4.6325,0.9707,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.05,0.354,0.0,0.0,,
-2026-07-29,2026-08-05,SI=F,5,58.529999,58.562005,58.806732,59.05146,,TimeCopilot_Ensemble,BEARISH,0.4728,0.9411,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.38,0.5283,0.0,0.0,,
+2026-07-29,2026-08-05,SI=F,5,58.529999,58.562005,58.806732,59.05146,62.098999,TimeCopilot_Ensemble,BEARISH,0.4728,0.9411,,,,,,NEUTRAL,NO_DATA,,3.292267,5.5985,0.0,0.0,2026-08-07T01:34:43.368618,,-0.38,0.5283,0.0,0.0,,
 2026-07-29,2026-09-09,SI=F,30,58.529999,57.524532,58.800283,60.076034,,TimeCopilot_Ensemble,BEARISH,0.4618,0.9411,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.38,0.5242,0.0,0.0,,
 2026-07-29,2026-12-02,SI=F,90,58.529999,57.052358,58.473257,59.894155,,TimeCopilot_Ensemble,BULLISH,0.0969,0.9411,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.38,0.6045,0.0,0.0,,
-2026-07-29,2026-08-05,CL=F,5,84.440002,82.015616,83.929871,85.844126,,TimeCopilot_Ensemble,BEARISH,0.6041,0.4002,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.4608,0.0,0.0,,
+2026-07-29,2026-08-05,CL=F,5,84.440002,82.015616,83.929871,85.844126,75.220001,TimeCopilot_Ensemble,BEARISH,0.6041,0.4002,,,,,,NEUTRAL,NO_DATA,,8.70987,10.3776,0.0,1.0,2026-08-07T01:34:38.796322,,-0.3,0.4608,0.0,0.0,,
 2026-07-29,2026-09-09,CL=F,30,84.440002,77.024544,83.777636,90.530728,,TimeCopilot_Ensemble,BEARISH,0.7844,0.4002,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.4335,0.0,0.0,,
 2026-07-29,2026-12-02,CL=F,90,84.440002,74.127824,83.800189,93.472554,,TimeCopilot_Ensemble,BULLISH,0.7577,0.4002,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.7932,0.0,0.0,,
-2026-07-29,2026-08-05,NG=F,5,2.727,2.6669,2.726427,2.785954,,TimeCopilot_Ensemble,BEARISH,0.021,0.8659,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5257,0.0,0.0,0.0,
+2026-07-29,2026-08-05,NG=F,5,2.727,2.6669,2.726427,2.785954,2.688,TimeCopilot_Ensemble,BEARISH,0.021,0.8659,,,,,,NEUTRAL,NO_DATA,,0.038427,1.4094,1.0,1.0,2026-08-07T01:34:42.828373,,-0.3,0.5257,0.0,0.0,0.0,
 2026-07-29,2026-09-09,NG=F,30,2.727,2.594497,2.787979,2.98146,,TimeCopilot_Ensemble,BEARISH,2.2361,0.8659,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5029,0.0,0.0,0.0,
 2026-07-29,2026-12-02,NG=F,90,2.727,2.483476,2.787978,3.092481,,TimeCopilot_Ensemble,BEARISH,2.2361,0.8659,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5178,0.0,0.0,0.0,
-2026-07-29,2026-08-05,HG=F,5,6.376,6.351913,6.378941,6.40597,,TimeCopilot_Ensemble,BEARISH,0.0461,0.9276,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.4842,0.0,0.0,,
+2026-07-29,2026-08-05,HG=F,5,6.376,6.351913,6.378941,6.40597,6.703,TimeCopilot_Ensemble,BEARISH,0.0461,0.9276,,,,,,NEUTRAL,NO_DATA,,0.324059,5.0801,0.0,0.0,2026-08-07T01:34:41.237203,,-0.15,0.4842,0.0,0.0,,
 2026-07-29,2026-09-09,HG=F,30,6.376,6.273379,6.371593,6.469807,,TimeCopilot_Ensemble,BEARISH,0.0691,0.9276,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5357,0.0,0.0,,
 2026-07-29,2026-12-02,HG=F,90,6.376,6.08747,6.371593,6.655717,,TimeCopilot_Ensemble,BULLISH,0.0691,0.9276,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.586,0.0,0.0,,
-2026-07-29,2026-08-05,ZW=F,5,660.0,653.48721,657.197223,660.907236,,TimeCopilot_Ensemble,BULLISH,0.4247,0.8998,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.08,0.528,0.0,0.0,,
+2026-07-29,2026-08-05,ZW=F,5,660.0,653.48721,657.197223,660.907236,642.25,TimeCopilot_Ensemble,BULLISH,0.4247,0.8998,,,,,,NEUTRAL,NO_DATA,,14.947223,2.2744,0.0,0.0,2026-08-07T01:34:46.676785,,-0.08,0.528,0.0,0.0,,
 2026-07-29,2026-09-09,ZW=F,30,660.0,621.839487,649.502883,677.166279,,TimeCopilot_Ensemble,BEARISH,1.5905,0.8998,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.08,0.5071,0.0,0.0,,
 2026-07-29,2026-12-02,ZW=F,90,660.0,602.94312,645.008861,687.074601,,TimeCopilot_Ensemble,BEARISH,2.2714,0.8998,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.08,0.4699,0.0,0.0,,
-2026-07-29,2026-08-05,ZC=F,5,471.0,467.907495,470.838383,473.769271,,TimeCopilot_Ensemble,BEARISH,0.0343,0.9242,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.08,0.5001,0.0,0.0,,
+2026-07-29,2026-08-05,ZC=F,5,471.0,467.907495,470.838383,473.769271,436.75,TimeCopilot_Ensemble,BEARISH,0.0343,0.9242,,,,,,NEUTRAL,NO_DATA,,34.088383,7.2399,0.0,1.0,2026-08-07T01:34:46.378985,,-0.08,0.5001,0.0,0.0,,
 2026-07-29,2026-09-09,ZC=F,30,471.0,461.691938,470.838383,479.984828,,TimeCopilot_Ensemble,BEARISH,0.0343,0.9242,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.08,0.4614,0.0,0.0,,
 2026-07-29,2026-12-02,ZC=F,90,471.0,451.540457,470.838383,490.136309,,TimeCopilot_Ensemble,BULLISH,0.0343,0.9242,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.08,0.5652,0.0,0.0,,
-2026-07-29,2026-08-05,^VIX,5,20.66,18.291396,19.378317,20.465237,,TimeCopilot_Ensemble,BEARISH,6.2037,0.3993,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.4844,0.0,0.0,,
+2026-07-29,2026-08-05,^VIX,5,20.66,18.291396,19.378317,20.465237,15.81,TimeCopilot_Ensemble,BEARISH,6.2037,0.3993,,,,,,NEUTRAL,NO_DATA,,3.568317,18.414,0.0,1.0,2026-08-07T01:34:47.718618,,0.0,0.4844,0.0,0.0,,
 2026-07-29,2026-09-09,^VIX,30,20.66,17.994106,19.396243,20.798381,,TimeCopilot_Ensemble,BEARISH,6.1169,0.3993,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5338,0.0,0.0,,
 2026-07-29,2026-12-02,^VIX,90,20.66,17.361218,19.573144,21.785069,,TimeCopilot_Ensemble,BEARISH,5.2607,0.3993,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.4372,0.0,0.0,,
-2026-07-29,2026-08-05,UVXY,5,26.940001,23.876404,25.930862,27.98532,,TimeCopilot_Ensemble,BEARISH,3.7459,0.0181,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.4856,0.0,0.0,,
+2026-07-29,2026-08-05,UVXY,5,26.940001,23.876404,25.930862,27.98532,22.059999,TimeCopilot_Ensemble,BEARISH,3.7459,0.0181,,,,,,NEUTRAL,NO_DATA,,3.870863,14.9276,0.0,1.0,2026-08-07T01:34:45.079983,,-0.15,0.4856,0.0,0.0,,
 2026-07-29,2026-09-09,UVXY,30,26.940001,16.394064,27.169202,37.94434,,TimeCopilot_Ensemble,BULLISH,0.8508,0.0181,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5364,0.0,0.0,,
 2026-07-29,2026-12-02,UVXY,90,26.940001,-0.333194,26.179099,52.691393,,TimeCopilot_Ensemble,BEARISH,2.8244,0.0181,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.3113,0.0,0.0,,
-2026-07-29,2026-08-05,DX-Y.NYB,5,100.802002,100.782742,100.904368,101.025994,,TimeCopilot_Ensemble,BULLISH,0.1016,0.9569,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2913,0.5295,0.0,0.0,,
+2026-07-29,2026-08-05,DX-Y.NYB,5,100.802002,100.782742,100.904368,101.025994,99.690002,TimeCopilot_Ensemble,BULLISH,0.1016,0.9569,,,,,,NEUTRAL,NO_DATA,,1.214366,1.2035,0.0,0.0,2026-08-07T01:34:39.086691,,0.2913,0.5295,0.0,0.0,,
 2026-07-29,2026-09-09,DX-Y.NYB,30,100.802002,100.694609,100.807128,100.919646,,TimeCopilot_Ensemble,BULLISH,0.0051,0.9569,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2913,0.5389,0.0,0.0,,
 2026-07-29,2026-12-02,DX-Y.NYB,90,100.802002,99.545252,100.298103,101.050954,,TimeCopilot_Ensemble,BULLISH,0.4999,0.9569,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2913,0.6772,0.0,0.0,,
-2026-07-29,2026-08-05,^IRX,5,3.658,3.62936,3.671298,3.713235,,TimeCopilot_Ensemble,BULLISH,0.3635,0.9422,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.5942,0.4712,0.0,0.0,,
+2026-07-29,2026-08-05,^IRX,5,3.658,3.62936,3.671298,3.713235,3.725,TimeCopilot_Ensemble,BULLISH,0.3635,0.9422,,,,,,NEUTRAL,NO_DATA,,0.053702,1.4628,0.0,1.0,2026-08-07T01:34:47.006422,,0.5942,0.4712,0.0,0.0,,
 2026-07-29,2026-09-09,^IRX,30,3.658,3.578886,3.689725,3.800563,,TimeCopilot_Ensemble,BULLISH,0.8673,0.9422,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.5942,0.3967,0.0,0.0,,
 2026-07-29,2026-12-02,^IRX,90,3.658,3.522799,3.659733,3.796667,,TimeCopilot_Ensemble,BULLISH,0.0474,0.9422,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.5942,0.6877,0.0,0.0,,
-2026-07-29,2026-08-05,BTC-USD,5,63824.988281,63089.892937,63685.956518,64282.020099,,TimeCopilot_Ensemble,BEARISH,0.2178,0.7852,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.4622,0.0,0.0,,
+2026-07-29,2026-08-05,BTC-USD,5,63824.988281,63089.892937,63685.956518,64282.020099,64597.5,TimeCopilot_Ensemble,BEARISH,0.2178,0.7852,,,,,,NEUTRAL,NO_DATA,,911.543482,1.4313,0.0,0.0,2026-08-07T01:34:38.515977,,-0.25,0.4622,0.0,0.0,,
 2026-07-29,2026-09-09,BTC-USD,30,63824.988281,61488.748537,62993.508367,64498.268198,,TimeCopilot_Ensemble,BEARISH,1.3027,0.7852,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.4402,0.0,0.0,,
 2026-07-29,2026-12-02,BTC-USD,90,63824.988281,60244.391214,64113.861328,67983.331442,,TimeCopilot_Ensemble,BULLISH,0.4526,0.7852,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.603,0.0,0.0,,
-2026-07-29,2026-08-05,ETH-USD,5,1901.310059,1890.255977,1904.758378,1919.260779,,TimeCopilot_Ensemble,BEARISH,0.1814,0.9235,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.4943,0.0,0.0,,
+2026-07-29,2026-08-05,ETH-USD,5,1901.310059,1890.255977,1904.758378,1919.260779,1906.526001,TimeCopilot_Ensemble,BEARISH,0.1814,0.9235,,,,,,NEUTRAL,NO_DATA,,1.767623,0.0928,1.0,0.0,2026-08-07T01:34:40.060133,,-0.25,0.4943,0.0,0.0,,
 2026-07-29,2026-09-09,ETH-USD,30,1901.310059,1847.307916,1930.101762,2012.895608,,TimeCopilot_Ensemble,BULLISH,1.5143,0.9235,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5326,0.0,0.0,,
 2026-07-29,2026-12-02,ETH-USD,90,1901.310059,1884.091478,1923.953263,1963.815049,,TimeCopilot_Ensemble,BULLISH,1.1909,0.9235,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.6457,0.0,0.0,,
-2026-07-29,2026-08-05,SOL-USD,5,73.410004,72.879232,73.102385,73.325538,,TimeCopilot_Ensemble,BULLISH,0.419,0.88,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5263,0.0,0.0,,
+2026-07-29,2026-08-05,SOL-USD,5,73.410004,72.879232,73.102385,73.325538,73.96138,TimeCopilot_Ensemble,BULLISH,0.419,0.88,,,,,,NEUTRAL,NO_DATA,,0.858995,1.1751,0.0,1.0,2026-08-07T01:34:43.948856,,-0.25,0.5263,0.0,0.0,,
 2026-07-29,2026-09-09,SOL-USD,30,73.410004,71.620272,72.921932,74.223592,,TimeCopilot_Ensemble,BEARISH,0.6649,0.88,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5462,0.0,0.0,,
 2026-07-29,2026-12-02,SOL-USD,90,73.410004,66.848533,71.747478,76.646424,,TimeCopilot_Ensemble,BULLISH,2.2647,0.88,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.7183,0.0,0.0,,
-2026-07-29,2026-08-05,EEM,5,61.07,60.912814,61.25887,61.604925,,TimeCopilot_Ensemble,BEARISH,0.3093,0.9143,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.4992,0.0,0.0,,
+2026-07-29,2026-08-05,EEM,5,61.07,60.912814,61.25887,61.604925,65.720001,TimeCopilot_Ensemble,BEARISH,0.3093,0.9143,,,,,,NEUTRAL,NO_DATA,,4.461131,7.2824,0.0,0.0,2026-08-07T01:34:39.418960,,-0.3,0.4992,0.0,0.0,,
 2026-07-29,2026-09-09,EEM,30,61.07,60.635938,60.935396,61.234855,,TimeCopilot_Ensemble,BEARISH,0.2204,0.9143,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5375,0.0,0.0,,
 2026-07-29,2026-12-02,EEM,90,61.07,59.829942,61.176462,62.522983,,TimeCopilot_Ensemble,BULLISH,0.1743,0.9143,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.7547,0.0,0.0,,
-2026-07-29,2026-08-05,EFA,5,103.370003,103.518811,103.713837,103.908862,,TimeCopilot_Ensemble,BEARISH,0.3326,0.9663,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5047,0.0,0.0,,
+2026-07-29,2026-08-05,EFA,5,103.370003,103.518811,103.713837,103.908862,107.43,TimeCopilot_Ensemble,BEARISH,0.3326,0.9663,,,,,,NEUTRAL,NO_DATA,,3.716163,3.5831,0.0,0.0,2026-08-07T01:34:39.769435,,0.1,0.5047,0.0,0.0,,
 2026-07-29,2026-09-09,EFA,30,103.370003,103.086653,104.206566,105.326478,,TimeCopilot_Ensemble,BEARISH,0.8093,0.9663,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5403,0.0,0.0,,
 2026-07-29,2026-12-02,EFA,90,103.370003,101.314411,104.367338,107.420264,,TimeCopilot_Ensemble,BULLISH,0.9648,0.9663,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.7219,0.0,0.0,,
-2026-07-29,2026-08-05,FXI,5,36.119999,36.050231,36.10974,36.169249,,TimeCopilot_Ensemble,BEARISH,0.0284,0.9072,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5226,0.0,0.0,,
+2026-07-29,2026-08-05,FXI,5,36.119999,36.050231,36.10974,36.169249,36.080002,TimeCopilot_Ensemble,BEARISH,0.0284,0.9072,,,,,,NEUTRAL,NO_DATA,,0.029738,0.0824,1.0,1.0,2026-08-07T01:34:40.339981,,-0.15,0.5226,0.0,0.0,,
 2026-07-29,2026-09-09,FXI,30,36.119999,35.927304,36.173063,36.418822,,TimeCopilot_Ensemble,BEARISH,0.1469,0.9072,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5398,0.0,0.0,,
 2026-07-29,2026-12-02,FXI,90,36.119999,34.909753,36.10974,37.309727,,TimeCopilot_Ensemble,BULLISH,0.0284,0.9072,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.7144,0.0,0.0,,
-2026-07-30,2026-08-06,SPY,5,741.690002,741.193419,742.314692,743.435966,,TimeCopilot_Ensemble,BULLISH,0.0842,0.9521,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5265,0.0,0.0,,
+2026-07-30,2026-08-06,SPY,5,741.690002,741.193419,742.314692,743.435966,768.559998,TimeCopilot_Ensemble,BULLISH,0.0842,0.9521,,,,,,NEUTRAL,NO_DATA,,26.245306,3.5356,0.0,1.0,2026-08-07T01:34:44.439901,,0.1,0.5265,0.0,0.0,,
 2026-07-30,2026-09-10,SPY,30,741.690002,731.311018,743.452452,755.593887,,TimeCopilot_Ensemble,BEARISH,0.2376,0.9521,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.3766,0.0,0.0,,
 2026-07-30,2026-12-03,SPY,90,741.690002,733.321791,757.644881,781.96797,,TimeCopilot_Ensemble,BULLISH,2.1512,0.9521,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.6821,0.0,0.0,,
-2026-07-30,2026-08-06,QQQ,5,683.549988,678.362676,684.724485,691.086295,,TimeCopilot_Ensemble,BULLISH,0.1718,0.9266,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.4851,0.0,0.0,,
+2026-07-30,2026-08-06,QQQ,5,683.549988,678.362676,684.724485,691.086295,714.650024,TimeCopilot_Ensemble,BULLISH,0.1718,0.9266,,,,,,NEUTRAL,NO_DATA,,29.925539,4.3704,0.0,1.0,2026-08-07T01:34:43.130708,,0.1,0.4851,0.0,0.0,,
 2026-07-30,2026-09-10,QQQ,30,683.549988,681.742829,692.931979,704.12113,,TimeCopilot_Ensemble,BULLISH,1.3725,0.9266,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5409,0.0,0.0,,
 2026-07-30,2026-12-03,QQQ,90,683.549988,660.499818,693.71248,726.925142,,TimeCopilot_Ensemble,BULLISH,1.4867,0.9266,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5212,0.0,0.0,,
-2026-07-30,2026-08-06,IWM,5,292.589996,291.33376,292.509753,293.685746,,TimeCopilot_Ensemble,BULLISH,0.0274,0.8808,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5284,0.0,0.0,,
+2026-07-30,2026-08-06,IWM,5,292.589996,291.33376,292.509753,293.685746,298.25,TimeCopilot_Ensemble,BULLISH,0.0274,0.8808,,,,,,NEUTRAL,NO_DATA,,5.740247,1.9624,0.0,1.0,2026-08-07T01:34:42.259090,,0.0,0.5284,0.0,0.0,,
 2026-07-30,2026-09-10,IWM,30,292.589996,286.77571,292.509753,298.243796,,TimeCopilot_Ensemble,BULLISH,0.0274,0.8808,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5345,0.0,0.0,,
 2026-07-30,2026-12-03,IWM,90,292.589996,283.986854,292.509753,301.032652,,TimeCopilot_Ensemble,BULLISH,0.0274,0.8808,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.7318,0.0,0.0,,
-2026-07-30,2026-08-06,XLE,5,58.959999,58.686015,58.970438,59.25486,,TimeCopilot_Ensemble,BULLISH,0.0177,0.9132,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.19,0.5146,0.0,0.0,,
+2026-07-30,2026-08-06,XLE,5,58.959999,58.686015,58.970438,59.25486,58.16,TimeCopilot_Ensemble,BULLISH,0.0177,0.9132,,,,,,NEUTRAL,NO_DATA,,0.810438,1.3743,0.0,0.0,2026-08-07T01:34:45.390749,,-0.19,0.5146,0.0,0.0,,
 2026-07-30,2026-09-10,XLE,30,58.959999,57.661762,58.970438,60.279114,,TimeCopilot_Ensemble,BULLISH,0.0177,0.9132,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.19,0.5283,0.0,0.0,,
 2026-07-30,2026-12-03,XLE,90,58.959999,56.083628,58.970438,61.857248,,TimeCopilot_Ensemble,BULLISH,0.0177,0.9132,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.19,0.7609,0.0,0.0,,
-2026-07-30,2026-08-06,XLF,5,57.0,56.962279,57.072657,57.183034,,TimeCopilot_Ensemble,BULLISH,0.1275,0.9589,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.4761,0.0,0.0,,
+2026-07-30,2026-08-06,XLF,5,57.0,56.962279,57.072657,57.183034,57.810001,TimeCopilot_Ensemble,BULLISH,0.1275,0.9589,,,,,,NEUTRAL,NO_DATA,,0.737344,1.2919,0.0,1.0,2026-08-07T01:34:45.749555,,0.35,0.4761,0.0,0.0,,
 2026-07-30,2026-09-10,XLF,30,57.0,57.253082,57.710778,58.168473,,TimeCopilot_Ensemble,BULLISH,1.247,0.9589,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.4121,0.0,0.0,,
 2026-07-30,2026-12-03,XLF,90,57.0,57.108169,58.436164,59.764159,,TimeCopilot_Ensemble,BULLISH,2.5196,0.9589,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.6148,0.0,0.0,,
-2026-07-30,2026-08-06,XLK,5,175.729996,175.05347,176.076519,177.099567,,TimeCopilot_Ensemble,BULLISH,0.1972,0.8141,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.5074,0.0,0.0,,
+2026-07-30,2026-08-06,XLK,5,175.729996,175.05347,176.076519,177.099567,185.330002,TimeCopilot_Ensemble,BULLISH,0.1972,0.8141,,,,,,NEUTRAL,NO_DATA,,9.253483,5.2554,0.0,1.0,2026-08-07T01:34:46.120134,,-0.3,0.5074,0.0,0.0,,
 2026-07-30,2026-09-10,XLK,30,175.729996,173.969734,178.926745,183.883756,,TimeCopilot_Ensemble,BEARISH,1.8191,0.8141,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.4542,0.0,0.0,,
 2026-07-30,2026-12-03,XLK,90,175.729996,169.798898,181.175896,192.552894,,TimeCopilot_Ensemble,BULLISH,3.099,0.8141,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.3,0.7086,0.0,0.0,,
-2026-07-30,2026-08-06,GLD,5,377.160004,377.930623,378.685758,379.440892,,TimeCopilot_Ensemble,BULLISH,0.4045,0.8871,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.4777,0.0,0.0,,
+2026-07-30,2026-08-06,GLD,5,377.160004,377.930623,378.685758,379.440892,389.670013,TimeCopilot_Ensemble,BULLISH,0.4045,0.8871,,,,,,NEUTRAL,NO_DATA,,10.984255,2.9006,0.0,1.0,2026-08-07T01:34:40.958232,,0.05,0.4777,0.0,0.0,,
 2026-07-30,2026-09-10,GLD,30,377.160004,382.266305,384.115052,385.963799,,TimeCopilot_Ensemble,BULLISH,1.8441,0.8871,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.5416,0.0,0.0,,
 2026-07-30,2026-12-03,GLD,90,377.160004,391.020178,397.509161,403.998144,,TimeCopilot_Ensemble,BULLISH,5.3954,0.8871,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.5931,0.0,0.0,,
-2026-07-30,2026-08-06,SLV,5,53.5,53.507584,53.753084,53.998585,,TimeCopilot_Ensemble,BEARISH,0.4731,0.9277,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2252,0.4886,0.0,0.0,,
+2026-07-30,2026-08-06,SLV,5,53.5,53.507584,53.753084,53.998585,55.849998,TimeCopilot_Ensemble,BEARISH,0.4731,0.9277,,,,,,NEUTRAL,NO_DATA,,2.096914,3.901,0.0,0.0,2026-08-07T01:34:43.657995,,-0.2252,0.4886,0.0,0.0,,
 2026-07-30,2026-09-10,SLV,30,53.5,53.120449,53.890857,54.661265,,TimeCopilot_Ensemble,BULLISH,0.7306,0.9277,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2252,0.548,0.0,0.0,,
 2026-07-30,2026-12-03,SLV,90,53.5,51.064562,54.942142,58.819722,,TimeCopilot_Ensemble,BEARISH,2.6956,0.9277,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2252,0.4721,0.0,0.0,,
-2026-07-30,2026-08-06,TLT,5,82.800003,82.588697,82.805571,83.022445,,TimeCopilot_Ensemble,BULLISH,0.0067,0.9033,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0031,0.5054,0.0,0.0,,
+2026-07-30,2026-08-06,TLT,5,82.800003,82.588697,82.805571,83.022445,82.519997,TimeCopilot_Ensemble,BULLISH,0.0067,0.9033,,,,,,NEUTRAL,NO_DATA,,0.285574,0.3449,0.0,0.0,2026-08-07T01:34:44.810532,,0.0031,0.5054,0.0,0.0,,
 2026-07-30,2026-09-10,TLT,30,82.800003,82.638806,83.18056,83.722314,,TimeCopilot_Ensemble,BULLISH,0.4596,0.9033,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0031,0.5027,0.0,0.0,,
 2026-07-30,2026-12-03,TLT,90,82.800003,82.537093,82.976493,83.415892,,TimeCopilot_Ensemble,BULLISH,0.2132,0.9033,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0031,0.7328,0.0,0.0,,
-2026-07-30,2026-08-06,IEF,5,93.209999,92.891673,93.090548,93.289423,,TimeCopilot_Ensemble,BEARISH,0.1282,0.9065,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0031,0.4814,0.0,0.0,,
+2026-07-30,2026-08-06,IEF,5,93.209999,92.891673,93.090548,93.289423,92.949997,TimeCopilot_Ensemble,BEARISH,0.1282,0.9065,,,,,,NEUTRAL,NO_DATA,,0.140551,0.151,1.0,1.0,2026-08-07T01:34:41.917864,,0.0031,0.4814,0.0,0.0,,
 2026-07-30,2026-09-10,IEF,30,93.209999,93.024212,93.198597,93.372982,,TimeCopilot_Ensemble,BULLISH,0.0122,0.9065,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0031,0.511,0.0,0.0,,
 2026-07-30,2026-12-03,IEF,90,93.209999,92.891473,93.198597,93.505722,,TimeCopilot_Ensemble,BULLISH,0.0122,0.9065,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0031,0.6169,0.0,0.0,,
-2026-07-30,2026-08-06,HYG,5,79.470001,79.380163,79.541166,79.702169,,TimeCopilot_Ensemble,BEARISH,0.0895,0.9428,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1087,0.4717,0.0,0.0,,
+2026-07-30,2026-08-06,HYG,5,79.470001,79.380163,79.541166,79.702169,79.459999,TimeCopilot_Ensemble,BEARISH,0.0895,0.9428,,,,,,NEUTRAL,NO_DATA,,0.081167,0.102,1.0,1.0,2026-08-07T01:34:41.567306,,-0.1087,0.4717,0.0,0.0,,
 2026-07-30,2026-09-10,HYG,30,79.470001,79.376209,79.82457,80.272931,,TimeCopilot_Ensemble,BULLISH,0.4462,0.9428,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1087,0.5389,0.0,0.0,,
 2026-07-30,2026-12-03,HYG,90,79.470001,79.108221,80.677413,82.246605,,TimeCopilot_Ensemble,BULLISH,1.5193,0.9428,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1087,0.7701,0.0,0.0,,
-2026-07-30,2026-08-06,LQD,5,106.410004,106.192617,106.440977,106.689337,,TimeCopilot_Ensemble,BEARISH,0.0291,0.929,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1087,0.4604,0.0,0.0,,
+2026-07-30,2026-08-06,LQD,5,106.410004,106.192617,106.440977,106.689337,106.360001,TimeCopilot_Ensemble,BEARISH,0.0291,0.929,,,,,,NEUTRAL,NO_DATA,,0.080976,0.0761,1.0,1.0,2026-08-07T01:34:42.580559,,-0.1087,0.4604,0.0,0.0,,
 2026-07-30,2026-09-10,LQD,30,106.410004,106.250092,106.650427,107.050762,,TimeCopilot_Ensemble,BULLISH,0.2259,0.929,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1087,0.5242,0.0,0.0,,
 2026-07-30,2026-12-03,LQD,90,106.410004,106.131796,106.8999,107.668005,,TimeCopilot_Ensemble,BULLISH,0.4604,0.929,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1087,0.767,0.0,0.0,,
-2026-07-30,2026-08-06,BIL,5,91.650002,91.64633,91.834395,92.022461,,TimeCopilot_Ensemble,BULLISH,0.2012,0.9096,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.6,0.526,0.0,0.0,,
+2026-07-30,2026-08-06,BIL,5,91.650002,91.64633,91.834395,92.022461,91.449997,TimeCopilot_Ensemble,BULLISH,0.2012,0.9096,,,,,,NEUTRAL,NO_DATA,,0.384398,0.4186,0.0,0.0,2026-08-07T01:34:38.185002,,0.6,0.526,0.0,0.0,,
 2026-07-30,2026-09-10,BIL,30,91.650002,91.968243,92.020829,92.073416,,TimeCopilot_Ensemble,BULLISH,0.4046,0.9096,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.6,0.54,0.0,0.0,,
 2026-07-30,2026-12-03,BIL,90,91.650002,92.67312,92.955475,93.23783,,TimeCopilot_Ensemble,BULLISH,1.4244,0.9096,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.6,0.6722,0.0,0.0,,
-2026-07-30,2026-08-06,^TNX,5,4.663,4.614216,4.649972,4.685728,,TimeCopilot_Ensemble,BEARISH,0.2794,0.8509,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0813,0.4826,0.0,0.0,,
+2026-07-30,2026-08-06,^TNX,5,4.663,4.614216,4.649972,4.685728,4.67,TimeCopilot_Ensemble,BEARISH,0.2794,0.8509,,,,,,NEUTRAL,NO_DATA,,0.020028,0.4307,1.0,0.0,2026-08-07T01:34:47.317452,,0.0813,0.4826,0.0,0.0,,
 2026-07-30,2026-09-10,^TNX,30,4.663,4.482444,4.60478,4.727116,,TimeCopilot_Ensemble,BULLISH,1.2486,0.8509,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0813,0.5255,0.0,0.0,,
 2026-07-30,2026-12-03,^TNX,90,4.663,4.258011,4.513272,4.768534,,TimeCopilot_Ensemble,BULLISH,3.211,0.8509,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0813,0.5955,0.0,0.0,,
-2026-07-30,2026-08-06,GC=F,5,4169.399902,4137.066508,4174.62126,4212.176012,,TimeCopilot_Ensemble,BULLISH,0.1252,0.8671,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.4672,0.0,0.0,,
+2026-07-30,2026-08-06,GC=F,5,4169.399902,4137.066508,4174.62126,4212.176012,4302.799805,TimeCopilot_Ensemble,BULLISH,0.1252,0.8671,,,,,,NEUTRAL,NO_DATA,,128.178545,3.0704,0.0,1.0,2026-08-07T01:34:40.658698,,0.05,0.4672,0.0,0.0,,
 2026-07-30,2026-09-10,GC=F,30,4169.399902,4197.774188,4245.081074,4292.387961,,TimeCopilot_Ensemble,BEARISH,1.8152,0.8671,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.411,0.0,0.0,,
 2026-07-30,2026-12-03,GC=F,90,4169.399902,4259.736852,4414.184629,4568.632406,,TimeCopilot_Ensemble,BEARISH,5.871,0.8671,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.354,0.0,0.0,,
-2026-07-30,2026-08-06,SI=F,5,59.34,58.241317,59.123744,60.006171,,TimeCopilot_Ensemble,BEARISH,0.3644,0.8048,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2252,0.5283,0.0,0.0,,
+2026-07-30,2026-08-06,SI=F,5,59.34,58.241317,59.123744,60.006171,61.93,TimeCopilot_Ensemble,BEARISH,0.3644,0.8048,,,,,,NEUTRAL,NO_DATA,,2.806256,4.7464,0.0,0.0,2026-08-07T01:34:43.369265,,-0.2252,0.5283,0.0,0.0,,
 2026-07-30,2026-09-10,SI=F,30,59.34,56.227795,58.443479,60.659162,,TimeCopilot_Ensemble,BEARISH,1.5108,0.8048,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2252,0.5242,0.0,0.0,,
 2026-07-30,2026-12-03,SI=F,90,59.34,52.896892,56.386168,59.875443,,TimeCopilot_Ensemble,BULLISH,4.9778,0.8048,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2252,0.6045,0.0,0.0,,
-2026-07-30,2026-08-06,CL=F,5,83.989998,81.499671,83.588032,85.676394,,TimeCopilot_Ensemble,BEARISH,0.4786,0.5552,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,0.4608,0.0,0.0,,
+2026-07-30,2026-08-06,CL=F,5,83.989998,81.499671,83.588032,85.676394,78.019997,TimeCopilot_Ensemble,BEARISH,0.4786,0.5552,,,,,,NEUTRAL,NO_DATA,,5.568035,6.6613,0.0,1.0,2026-08-07T01:34:38.796940,,-0.1,0.4608,0.0,0.0,,
 2026-07-30,2026-09-10,CL=F,30,83.989998,79.30101,82.883853,86.466697,,TimeCopilot_Ensemble,BEARISH,1.317,0.5552,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,0.4335,0.0,0.0,,
 2026-07-30,2026-12-03,CL=F,90,83.989998,79.368187,82.849948,86.33171,,TimeCopilot_Ensemble,BULLISH,1.3574,0.5552,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,0.7932,0.0,0.0,,
-2026-07-30,2026-08-06,NG=F,5,2.746,2.708703,2.762814,2.816925,,TimeCopilot_Ensemble,BULLISH,0.6123,0.6874,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5257,0.0,0.0,0.0,
+2026-07-30,2026-08-06,NG=F,5,2.746,2.708703,2.762814,2.816925,2.623,TimeCopilot_Ensemble,BULLISH,0.6123,0.6874,,,,,,NEUTRAL,NO_DATA,,0.139814,5.0606,0.0,0.0,2026-08-07T01:34:42.828999,,-0.25,0.5257,0.0,0.0,0.0,
 2026-07-30,2026-09-10,NG=F,30,2.746,2.725446,2.80534,2.885235,,TimeCopilot_Ensemble,BULLISH,2.161,0.6874,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5029,0.0,0.0,0.0,
 2026-07-30,2026-12-03,NG=F,90,2.746,2.327203,2.80534,3.283477,,TimeCopilot_Ensemble,BULLISH,2.161,0.6874,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5178,0.0,0.0,0.0,
-2026-07-30,2026-08-06,HG=F,5,6.505,6.433502,6.485549,6.537596,,TimeCopilot_Ensemble,BULLISH,0.299,0.9113,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.4842,0.0,0.0,,
+2026-07-30,2026-08-06,HG=F,5,6.505,6.433502,6.485549,6.537596,6.719,TimeCopilot_Ensemble,BULLISH,0.299,0.9113,,,,,,NEUTRAL,NO_DATA,,0.233451,3.5996,0.0,1.0,2026-08-07T01:34:41.237822,,0.15,0.4842,0.0,0.0,,
 2026-07-30,2026-09-10,HG=F,30,6.505,6.311051,6.485549,6.660047,,TimeCopilot_Ensemble,BULLISH,0.299,0.9113,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.5357,0.0,0.0,,
 2026-07-30,2026-12-03,HG=F,90,6.505,6.108259,6.485549,6.86284,,TimeCopilot_Ensemble,BULLISH,0.299,0.9113,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.586,0.0,0.0,,
-2026-07-30,2026-08-06,ZW=F,5,663.5,653.148088,661.801124,670.454161,,TimeCopilot_Ensemble,BULLISH,0.256,0.9258,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.32,0.528,0.0,0.0,,
+2026-07-30,2026-08-06,ZW=F,5,663.5,653.148088,661.801124,670.454161,629.25,TimeCopilot_Ensemble,BULLISH,0.256,0.9258,,,,,,NEUTRAL,NO_DATA,,32.551124,4.9186,0.0,0.0,2026-08-07T01:34:46.677440,,0.32,0.528,0.0,0.0,,
 2026-07-30,2026-09-10,ZW=F,30,663.5,624.64259,651.452113,678.261636,,TimeCopilot_Ensemble,BULLISH,1.8158,0.9258,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.32,0.5071,0.0,0.0,,
 2026-07-30,2026-12-03,ZW=F,90,663.5,611.05034,651.583794,692.117247,,TimeCopilot_Ensemble,BULLISH,1.796,0.9258,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.32,0.4699,0.0,0.0,,
-2026-07-30,2026-08-06,ZC=F,5,468.5,464.194689,467.753108,471.311527,,TimeCopilot_Ensemble,BULLISH,0.1594,0.8617,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.32,0.5001,0.0,0.0,,
+2026-07-30,2026-08-06,ZC=F,5,468.5,464.194689,467.753108,471.311527,462.5,TimeCopilot_Ensemble,BULLISH,0.1594,0.8617,,,,,,NEUTRAL,NO_DATA,,5.253108,1.1231,0.0,0.0,2026-08-07T01:34:46.379635,,0.32,0.5001,0.0,0.0,,
 2026-07-30,2026-09-10,ZC=F,30,468.5,461.04574,467.434428,473.823116,,TimeCopilot_Ensemble,BULLISH,0.2274,0.8617,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.32,0.4614,0.0,0.0,,
 2026-07-30,2026-12-03,ZC=F,90,468.5,450.42967,468.087413,485.745156,,TimeCopilot_Ensemble,BULLISH,0.0881,0.8617,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.32,0.5652,0.0,0.0,,
-2026-07-30,2026-08-06,^VIX,5,17.09,17.004027,17.381439,17.758851,,TimeCopilot_Ensemble,BULLISH,1.7053,0.6775,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.4844,0.0,0.0,,
+2026-07-30,2026-08-06,^VIX,5,17.09,17.004027,17.381439,17.758851,15.15,TimeCopilot_Ensemble,BULLISH,1.7053,0.6775,,,,,,NEUTRAL,NO_DATA,,2.231439,12.8381,0.0,0.0,2026-08-07T01:34:47.719281,,0.0,0.4844,0.0,0.0,,
 2026-07-30,2026-09-10,^VIX,30,17.09,16.892551,17.684791,18.477031,,TimeCopilot_Ensemble,BULLISH,3.4803,0.6775,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5338,0.0,0.0,,
 2026-07-30,2026-12-03,^VIX,90,17.09,16.62719,17.702445,18.7777,,TimeCopilot_Ensemble,BEARISH,3.5836,0.6775,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.4372,0.0,0.0,,
-2026-07-30,2026-08-06,UVXY,5,24.299999,21.963018,24.338259,26.7135,,TimeCopilot_Ensemble,BEARISH,0.1574,0.0,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.4856,0.0,0.0,,
+2026-07-30,2026-08-06,UVXY,5,24.299999,21.963018,24.338259,26.7135,21.559999,TimeCopilot_Ensemble,BEARISH,0.1574,0.0,,,,,,NEUTRAL,NO_DATA,,2.77826,11.4152,0.0,1.0,2026-08-07T01:34:45.080608,,-0.15,0.4856,0.0,0.0,,
 2026-07-30,2026-09-10,UVXY,30,24.299999,13.734725,23.448496,33.162268,,TimeCopilot_Ensemble,BEARISH,3.5041,0.0,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5364,0.0,0.0,,
 2026-07-30,2026-12-03,UVXY,90,24.299999,-3.005462,22.402546,47.810554,,TimeCopilot_Ensemble,BEARISH,7.8084,0.0,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.3113,0.0,0.0,,
-2026-07-30,2026-08-06,DX-Y.NYB,5,99.969002,99.187228,99.974479,100.76173,,TimeCopilot_Ensemble,BEARISH,0.0055,0.9716,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5295,0.0,0.0,,
+2026-07-30,2026-08-06,DX-Y.NYB,5,99.969002,99.187228,99.974479,100.76173,99.957001,TimeCopilot_Ensemble,BEARISH,0.0055,0.9716,,,,,,NEUTRAL,NO_DATA,,0.017478,0.0175,1.0,1.0,2026-08-07T01:34:39.087327,,-0.15,0.5295,0.0,0.0,,
 2026-07-30,2026-09-10,DX-Y.NYB,30,99.969002,99.672667,99.969826,100.266985,,TimeCopilot_Ensemble,BULLISH,0.0008,0.9716,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5389,0.0,0.0,,
 2026-07-30,2026-12-03,DX-Y.NYB,90,99.969002,99.603415,99.810497,100.01758,,TimeCopilot_Ensemble,BULLISH,0.1586,0.9716,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.6772,0.0,0.0,,
-2026-07-30,2026-08-06,^IRX,5,3.675,3.651135,3.690457,3.729779,,TimeCopilot_Ensemble,BULLISH,0.4206,0.7935,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.4712,0.0,0.0,,
+2026-07-30,2026-08-06,^IRX,5,3.675,3.651135,3.690457,3.729779,3.732,TimeCopilot_Ensemble,BULLISH,0.4206,0.7935,,,,,,NEUTRAL,NO_DATA,,0.041543,1.1257,0.0,1.0,2026-08-07T01:34:47.007071,,0.3,0.4712,0.0,0.0,,
 2026-07-30,2026-09-10,^IRX,30,3.675,3.653456,3.708781,3.764106,,TimeCopilot_Ensemble,BEARISH,0.9192,0.7935,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.3967,0.0,0.0,,
 2026-07-30,2026-12-03,^IRX,90,3.675,3.610314,3.703214,3.796113,,TimeCopilot_Ensemble,BULLISH,0.7677,0.7935,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.6877,0.0,0.0,,
-2026-07-30,2026-08-06,BTC-USD,5,64868.261719,65019.065137,65218.435354,65417.805571,,TimeCopilot_Ensemble,BULLISH,0.5398,0.912,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.4622,0.0,0.0,,
+2026-07-30,2026-08-06,BTC-USD,5,64868.261719,65019.065137,65218.435354,65417.805571,64406.0,TimeCopilot_Ensemble,BULLISH,0.5398,0.912,,,,,,NEUTRAL,NO_DATA,,812.435354,1.2457,0.0,0.0,2026-08-07T01:34:38.516744,,-0.0402,0.4622,0.0,0.0,,
 2026-07-30,2026-09-10,BTC-USD,30,64868.261719,64743.739797,65807.773438,66871.807078,,TimeCopilot_Ensemble,BULLISH,1.4483,0.912,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.4402,0.0,0.0,,
 2026-07-30,2026-12-03,BTC-USD,90,64868.261719,62341.973355,67053.962891,71765.952426,,TimeCopilot_Ensemble,BULLISH,3.3694,0.912,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.603,0.0,0.0,,
-2026-07-30,2026-08-06,ETH-USD,5,1926.680054,1902.413026,1926.679146,1950.945265,,TimeCopilot_Ensemble,BULLISH,0.0,0.8924,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.4943,0.0,0.0,,
+2026-07-30,2026-08-06,ETH-USD,5,1926.680054,1902.413026,1926.679146,1950.945265,1903.599976,TimeCopilot_Ensemble,BULLISH,0.0,0.8924,,,,,,NEUTRAL,NO_DATA,,23.07917,1.1979,1.0,0.0,2026-08-07T01:34:40.060873,,-0.0402,0.4943,0.0,0.0,,
 2026-07-30,2026-09-10,ETH-USD,30,1926.680054,1866.090065,1943.06543,2020.040795,,TimeCopilot_Ensemble,BULLISH,0.8504,0.8924,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.5326,0.0,0.0,,
 2026-07-30,2026-12-03,ETH-USD,90,1926.680054,1849.745803,1926.679146,2003.612489,,TimeCopilot_Ensemble,BULLISH,0.0,0.8924,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.6457,0.0,0.0,,
-2026-07-30,2026-08-06,SOL-USD,5,74.669998,73.776759,74.733807,75.690854,,TimeCopilot_Ensemble,BULLISH,0.0855,0.717,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.5263,0.0,0.0,,
+2026-07-30,2026-08-06,SOL-USD,5,74.669998,73.776759,74.733807,75.690854,72.769997,TimeCopilot_Ensemble,BULLISH,0.0855,0.717,,,,,,NEUTRAL,NO_DATA,,1.96381,2.6277,0.0,0.0,2026-08-07T01:34:43.949655,,-0.0402,0.5263,0.0,0.0,,
 2026-07-30,2026-09-10,SOL-USD,30,74.669998,70.769043,74.90567,79.042297,,TimeCopilot_Ensemble,BULLISH,0.3156,0.717,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.5462,0.0,0.0,,
 2026-07-30,2026-12-03,SOL-USD,90,74.669998,62.956759,73.075367,83.193975,,TimeCopilot_Ensemble,BULLISH,2.1356,0.717,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0402,0.7183,0.0,0.0,,
-2026-07-30,2026-08-06,EEM,5,63.59,63.24595,63.454643,63.663337,,TimeCopilot_Ensemble,BULLISH,0.2129,0.82,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1799,0.4992,0.0,0.0,,
+2026-07-30,2026-08-06,EEM,5,63.59,63.24595,63.454643,63.663337,65.019997,TimeCopilot_Ensemble,BULLISH,0.2129,0.82,,,,,,NEUTRAL,NO_DATA,,1.565354,2.4669,0.0,1.0,2026-08-07T01:34:39.419608,,0.1799,0.4992,0.0,0.0,,
 2026-07-30,2026-09-10,EEM,30,63.59,62.572557,63.484699,64.39684,,TimeCopilot_Ensemble,BULLISH,0.1656,0.82,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1799,0.5375,0.0,0.0,,
 2026-07-30,2026-12-03,EEM,90,63.59,62.952618,64.680877,66.409136,,TimeCopilot_Ensemble,BULLISH,1.7155,0.82,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1799,0.7547,0.0,0.0,,
-2026-07-30,2026-08-06,EFA,5,106.239998,105.176654,106.158956,107.141259,,TimeCopilot_Ensemble,BULLISH,0.0763,0.9303,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.5047,0.0,0.0,,
+2026-07-30,2026-08-06,EFA,5,106.239998,105.176654,106.158956,107.141259,107.360001,TimeCopilot_Ensemble,BULLISH,0.0763,0.9303,,,,,,NEUTRAL,NO_DATA,,1.201045,1.1314,0.0,1.0,2026-08-07T01:34:39.770070,,0.35,0.5047,0.0,0.0,,
 2026-07-30,2026-09-10,EFA,30,106.239998,105.667207,106.254413,106.841619,,TimeCopilot_Ensemble,BULLISH,0.0136,0.9303,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.5403,0.0,0.0,,
 2026-07-30,2026-12-03,EFA,90,106.239998,104.893669,107.338805,109.783942,,TimeCopilot_Ensemble,BULLISH,1.0343,0.9303,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.7219,0.0,0.0,,
-2026-07-30,2026-08-06,FXI,5,36.52,36.212068,36.5105,36.808932,,TimeCopilot_Ensemble,BULLISH,0.026,0.9368,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.5226,0.0,0.0,,
+2026-07-30,2026-08-06,FXI,5,36.52,36.212068,36.5105,36.808932,35.950001,TimeCopilot_Ensemble,BULLISH,0.026,0.9368,,,,,,NEUTRAL,NO_DATA,,0.560499,1.5352,0.0,0.0,2026-08-07T01:34:40.340588,,0.2,0.5226,0.0,0.0,,
 2026-07-30,2026-09-10,FXI,30,36.52,36.376313,36.744989,37.113665,,TimeCopilot_Ensemble,BULLISH,0.6161,0.9368,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.5398,0.0,0.0,,
 2026-07-30,2026-12-03,FXI,90,36.52,35.836815,36.5105,37.184185,,TimeCopilot_Ensemble,BULLISH,0.026,0.9368,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.7144,0.0,0.0,,
 2026-07-31,2026-08-07,SPY,5,747.030029,743.274013,748.695889,754.117764,,TimeCopilot_Ensemble,BULLISH,0.223,0.9743,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.5265,0.0,0.0,,
@@ -6230,3 +6230,96 @@ forecast_date,target_date,ticker,horizon,last_price,p10,p50,p90,actual,model_use
 2026-08-05,2026-08-12,FXI,5,36.080002,35.95827,36.084747,36.211223,,TimeCopilot_Ensemble,BULLISH,0.0132,0.922,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.25,0.5226,0.0,0.0,,
 2026-08-05,2026-09-16,FXI,30,36.080002,36.020468,36.192028,36.363587,,TimeCopilot_Ensemble,BULLISH,0.3105,0.922,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.25,0.5398,0.0,0.0,,
 2026-08-05,2026-12-09,FXI,90,36.080002,35.061576,36.084747,37.107918,,TimeCopilot_Ensemble,BULLISH,0.0132,0.922,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.25,0.7144,0.0,0.0,,
+2026-08-07,2026-08-14,SPY,5,768.559998,768.768442,770.811979,772.855517,,TimeCopilot_Ensemble,BULLISH,0.293,0.9421,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.5265,0.0,0.0,,
+2026-08-07,2026-09-18,SPY,30,768.559998,763.285921,778.552287,793.818654,,TimeCopilot_Ensemble,BULLISH,1.3001,0.9421,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.3766,0.0,0.0,,
+2026-08-07,2026-12-11,SPY,90,768.559998,755.44313,801.486722,847.530314,,TimeCopilot_Ensemble,BULLISH,4.2842,0.9421,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.6821,0.0,0.0,,
+2026-08-07,2026-08-14,QQQ,5,714.650024,716.518637,717.135286,717.751936,,TimeCopilot_Ensemble,BULLISH,0.3478,0.9243,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.4851,0.0,0.0,,
+2026-08-07,2026-09-18,QQQ,30,714.650024,721.430156,728.679549,735.928942,,TimeCopilot_Ensemble,BULLISH,1.9631,0.9243,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.5409,0.0,0.0,,
+2026-08-07,2026-12-11,QQQ,90,714.650024,718.900398,740.655068,762.409738,,TimeCopilot_Ensemble,BULLISH,3.6389,0.9243,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.15,0.5212,0.0,0.0,,
+2026-08-07,2026-08-14,IWM,5,298.25,297.483097,298.282177,299.081256,,TimeCopilot_Ensemble,BULLISH,0.0108,0.9731,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.5284,0.0,0.0,,
+2026-08-07,2026-09-18,IWM,30,298.25,297.476054,298.436031,299.396008,,TimeCopilot_Ensemble,BULLISH,0.0624,0.9731,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.5345,0.0,0.0,,
+2026-08-07,2026-12-11,IWM,90,298.25,295.308407,297.561966,299.815525,,TimeCopilot_Ensemble,BULLISH,0.2307,0.9731,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.05,0.7318,0.0,0.0,,
+2026-08-07,2026-08-14,XLE,5,58.16,57.581709,58.159957,58.738205,,TimeCopilot_Ensemble,BULLISH,0.0001,0.9477,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.14,0.5146,0.0,0.0,,
+2026-08-07,2026-09-18,XLE,30,58.16,57.697507,58.159957,58.622407,,TimeCopilot_Ensemble,BULLISH,0.0001,0.9477,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.14,0.5283,0.0,0.0,,
+2026-08-07,2026-12-11,XLE,90,58.16,55.480728,58.159957,60.839186,,TimeCopilot_Ensemble,BULLISH,0.0001,0.9477,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.14,0.7609,0.0,0.0,,
+2026-08-07,2026-08-14,XLF,5,57.810001,57.854713,57.974634,58.094555,,TimeCopilot_Ensemble,BULLISH,0.2848,0.9438,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.4,0.4761,0.0,0.0,,
+2026-08-07,2026-09-18,XLF,30,57.810001,58.086795,58.797535,59.508276,,TimeCopilot_Ensemble,BULLISH,1.7082,0.9438,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.4,0.4121,0.0,0.0,,
+2026-08-07,2026-12-11,XLF,90,57.810001,59.302896,60.334702,61.366509,,TimeCopilot_Ensemble,BULLISH,4.3672,0.9438,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.4,0.6148,0.0,0.0,,
+2026-08-07,2026-08-14,XLK,5,185.330002,184.294249,186.002376,187.710504,,TimeCopilot_Ensemble,BULLISH,0.3628,0.7515,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.5074,0.0,0.0,,
+2026-08-07,2026-09-18,XLK,30,185.330002,185.782398,189.27195,192.761501,,TimeCopilot_Ensemble,BULLISH,2.127,0.7515,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.4542,0.0,0.0,,
+2026-08-07,2026-12-11,XLK,90,185.330002,184.575825,195.249856,205.923886,,TimeCopilot_Ensemble,BULLISH,5.3525,0.7515,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.25,0.7086,0.0,0.0,,
+2026-08-07,2026-08-14,GLD,5,389.670013,389.422614,391.008082,392.593551,,TimeCopilot_Ensemble,BULLISH,0.3434,0.9329,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.4777,0.0,0.0,,
+2026-08-07,2026-09-18,GLD,30,389.670013,395.6947,397.255341,398.815983,,TimeCopilot_Ensemble,BULLISH,1.9466,0.9329,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5416,0.0,0.0,,
+2026-08-07,2026-12-11,GLD,90,389.670013,400.19421,408.411521,416.628832,,TimeCopilot_Ensemble,BULLISH,4.8096,0.9329,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.5931,0.0,0.0,,
+2026-08-07,2026-08-14,SLV,5,55.849998,55.417964,55.92065,56.423336,,TimeCopilot_Ensemble,BULLISH,0.1265,0.9478,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2797,0.4886,0.0,0.0,,
+2026-08-07,2026-09-18,SLV,30,55.849998,52.993465,55.770033,58.546601,,TimeCopilot_Ensemble,BULLISH,0.1432,0.9478,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2797,0.548,0.0,0.0,,
+2026-08-07,2026-12-11,SLV,90,55.849998,52.142931,55.821815,59.500698,,TimeCopilot_Ensemble,BULLISH,0.0505,0.9478,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2797,0.4721,0.0,0.0,,
+2026-08-07,2026-08-14,TLT,5,82.519997,82.503026,82.527776,82.552526,,TimeCopilot_Ensemble,BEARISH,0.0094,0.9323,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0784,0.5054,0.0,0.0,,
+2026-08-07,2026-09-18,TLT,30,82.519997,82.05035,82.677694,83.305037,,TimeCopilot_Ensemble,BEARISH,0.1911,0.9323,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0784,0.5027,0.0,0.0,,
+2026-08-07,2026-12-11,TLT,90,82.519997,81.731709,83.124234,84.51676,,TimeCopilot_Ensemble,BULLISH,0.7322,0.9323,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0784,0.7328,0.0,0.0,,
+2026-08-07,2026-08-14,IEF,5,92.949997,92.879975,92.947698,93.01542,,TimeCopilot_Ensemble,BEARISH,0.0025,0.9353,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0784,0.4814,0.0,0.0,,
+2026-08-07,2026-09-18,IEF,30,92.949997,92.680103,92.983113,93.286123,,TimeCopilot_Ensemble,BULLISH,0.0356,0.9353,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0784,0.511,0.0,0.0,,
+2026-08-07,2026-12-11,IEF,90,92.949997,92.605556,92.947698,93.289839,,TimeCopilot_Ensemble,BULLISH,0.0025,0.9353,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.0784,0.6169,0.0,0.0,,
+2026-08-07,2026-08-14,HYG,5,79.459999,79.512894,79.603664,79.694435,,TimeCopilot_Ensemble,BULLISH,0.1808,0.9777,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.22,0.4717,0.0,0.0,,
+2026-08-07,2026-09-18,HYG,30,79.459999,79.585787,79.923526,80.261266,,TimeCopilot_Ensemble,BULLISH,0.5833,0.9777,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.22,0.5389,0.0,0.0,,
+2026-08-07,2026-12-11,HYG,90,79.459999,79.926632,80.879057,81.831482,,TimeCopilot_Ensemble,BULLISH,1.7859,0.9777,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.22,0.7701,0.0,0.0,,
+2026-08-07,2026-08-14,LQD,5,106.360001,106.311925,106.49678,106.681635,,TimeCopilot_Ensemble,BEARISH,0.1286,0.9541,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.22,0.4604,0.0,0.0,,
+2026-08-07,2026-09-18,LQD,30,106.360001,105.724825,106.432792,107.140759,,TimeCopilot_Ensemble,BULLISH,0.0684,0.9541,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.22,0.5242,0.0,0.0,,
+2026-08-07,2026-12-11,LQD,90,106.360001,105.304378,106.52618,107.747981,,TimeCopilot_Ensemble,BULLISH,0.1562,0.9541,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.22,0.767,0.0,0.0,,
+2026-08-07,2026-08-14,BIL,5,91.449997,91.378215,91.512439,91.646663,,TimeCopilot_Ensemble,BULLISH,0.0683,0.9344,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.65,0.526,0.0,0.0,,
+2026-08-07,2026-09-18,BIL,30,91.449997,91.674109,91.821305,91.9685,,TimeCopilot_Ensemble,BULLISH,0.406,0.9344,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.65,0.54,0.0,0.0,,
+2026-08-07,2026-12-11,BIL,90,91.449997,92.536039,92.60886,92.68168,,TimeCopilot_Ensemble,BULLISH,1.2672,0.9344,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.65,0.6722,0.0,0.0,,
+2026-08-07,2026-08-14,^TNX,5,4.67,4.631179,4.651284,4.671389,,TimeCopilot_Ensemble,BULLISH,0.4008,0.9365,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3191,0.4826,0.0,0.0,,
+2026-08-07,2026-09-18,^TNX,30,4.67,4.485898,4.604634,4.723369,,TimeCopilot_Ensemble,BULLISH,1.3997,0.9365,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3191,0.5255,0.0,0.0,,
+2026-08-07,2026-12-11,^TNX,90,4.67,4.209872,4.507164,4.804456,,TimeCopilot_Ensemble,BULLISH,3.4869,0.9365,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3191,0.5955,0.0,0.0,,
+2026-08-07,2026-08-14,GC=F,5,4301.0,4275.255113,4295.024438,4314.793763,,TimeCopilot_Ensemble,BULLISH,0.1389,0.9081,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.4672,0.0,0.0,,
+2026-08-07,2026-09-18,GC=F,30,4301.0,4353.42534,4384.181219,4414.937098,,TimeCopilot_Ensemble,BULLISH,1.934,0.9081,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.411,0.0,0.0,,
+2026-08-07,2026-12-11,GC=F,90,4301.0,4471.09453,4553.412577,4635.730624,,TimeCopilot_Ensemble,BEARISH,5.8687,0.9081,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.1,0.354,0.0,0.0,,
+2026-08-07,2026-08-14,SI=F,5,61.93,61.742344,62.007728,62.273112,,TimeCopilot_Ensemble,BULLISH,0.1255,0.9044,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2797,0.5283,0.0,0.0,,
+2026-08-07,2026-09-18,SI=F,30,61.93,60.522759,62.388589,64.254419,,TimeCopilot_Ensemble,BULLISH,0.7405,0.9044,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2797,0.5242,0.0,0.0,,
+2026-08-07,2026-12-11,SI=F,90,61.93,57.725412,62.25388,66.782348,,TimeCopilot_Ensemble,BULLISH,0.523,0.9044,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2797,0.6045,0.0,0.0,,
+2026-08-07,2026-08-14,CL=F,5,77.980003,74.3269,77.731368,81.135836,,TimeCopilot_Ensemble,BULLISH,0.3188,0.5528,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.03,0.4608,0.0,0.0,,
+2026-08-07,2026-09-18,CL=F,30,77.980003,73.390788,78.078182,82.765577,,TimeCopilot_Ensemble,BEARISH,0.1259,0.5528,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.03,0.4335,0.0,0.0,,
+2026-08-07,2026-12-11,CL=F,90,77.980003,74.1371,78.084967,82.032833,,TimeCopilot_Ensemble,BULLISH,0.1346,0.5528,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.03,0.7932,0.0,0.0,,
+2026-08-07,2026-08-14,NG=F,5,2.624,2.585312,2.665243,2.745174,,TimeCopilot_Ensemble,BULLISH,1.5718,0.5506,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2,0.5257,0.0,0.0,0.0,
+2026-08-07,2026-09-18,NG=F,30,2.624,2.497983,2.690473,2.882963,,TimeCopilot_Ensemble,BULLISH,2.5333,0.5506,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2,0.5029,0.0,0.0,0.0,
+2026-08-07,2026-12-11,NG=F,90,2.624,2.461854,2.690473,2.919092,,TimeCopilot_Ensemble,BULLISH,2.5333,0.5506,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.2,0.5178,0.0,0.0,0.0,
+2026-08-07,2026-08-14,HG=F,5,6.7185,6.658208,6.716951,6.775693,,TimeCopilot_Ensemble,BULLISH,0.0231,0.8441,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.4842,0.0,0.0,,
+2026-08-07,2026-09-18,HG=F,30,6.7185,6.639331,6.726139,6.812948,,TimeCopilot_Ensemble,BULLISH,0.1137,0.8441,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.5357,0.0,0.0,,
+2026-08-07,2026-12-11,HG=F,90,6.7185,6.366503,6.716951,7.067398,,TimeCopilot_Ensemble,BULLISH,0.0231,0.8441,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.2,0.586,0.0,0.0,,
+2026-08-07,2026-08-14,ZW=F,5,629.25,620.731431,624.399994,628.068557,,TimeCopilot_Ensemble,BULLISH,0.7708,0.8138,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.37,0.528,0.0,0.0,,
+2026-08-07,2026-09-18,ZW=F,30,629.25,591.283705,608.923318,626.562932,,TimeCopilot_Ensemble,BULLISH,3.2303,0.8138,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.37,0.5071,0.0,0.0,,
+2026-08-07,2026-12-11,ZW=F,90,629.25,581.88653,603.839359,625.792188,,TimeCopilot_Ensemble,BULLISH,4.0382,0.8138,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.37,0.4699,0.0,0.0,,
+2026-08-07,2026-08-14,ZC=F,5,462.5,454.332974,461.950076,469.567178,,TimeCopilot_Ensemble,BULLISH,0.1189,0.636,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.37,0.5001,0.0,0.0,,
+2026-08-07,2026-09-18,ZC=F,30,462.5,450.991588,461.950076,472.908564,,TimeCopilot_Ensemble,BULLISH,0.1189,0.636,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.37,0.4614,0.0,0.0,,
+2026-08-07,2026-12-11,ZC=F,90,462.5,424.179344,445.392184,466.605025,,TimeCopilot_Ensemble,BULLISH,3.699,0.636,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.37,0.5652,0.0,0.0,,
+2026-08-07,2026-08-14,^VIX,5,15.15,14.945935,15.526237,16.106538,,TimeCopilot_Ensemble,BULLISH,2.4834,0.5037,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.4844,0.0,0.0,,
+2026-08-07,2026-09-18,^VIX,30,15.15,15.085556,16.405187,17.724818,,TimeCopilot_Ensemble,BULLISH,8.2851,0.5037,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.5338,0.0,0.0,,
+2026-08-07,2026-12-11,^VIX,90,15.15,14.456226,16.776885,19.097544,,TimeCopilot_Ensemble,BEARISH,10.7385,0.5037,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.0,0.4372,0.0,0.0,,
+2026-08-07,2026-08-14,UVXY,5,21.559999,19.30868,21.71903,24.129379,,TimeCopilot_Ensemble,BEARISH,0.7376,0.0,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.4856,0.0,0.0,,
+2026-08-07,2026-09-18,UVXY,30,21.559999,10.920336,21.053214,31.186093,,TimeCopilot_Ensemble,BEARISH,2.3506,0.0,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.5364,0.0,0.0,,
+2026-08-07,2026-12-11,UVXY,90,21.559999,-6.353588,19.473629,45.300846,,TimeCopilot_Ensemble,BEARISH,9.677,0.0,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.15,0.3113,0.0,0.0,,
+2026-08-07,2026-08-14,DX-Y.NYB,5,99.956001,99.921416,99.987289,100.053163,,TimeCopilot_Ensemble,BULLISH,0.0313,0.9855,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,0.5295,0.0,0.0,,
+2026-08-07,2026-09-18,DX-Y.NYB,30,99.956001,99.704587,99.972767,100.240946,,TimeCopilot_Ensemble,BULLISH,0.0168,0.9855,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,0.5389,0.0,0.0,,
+2026-08-07,2026-12-11,DX-Y.NYB,90,99.956001,99.340134,99.955988,100.571842,,TimeCopilot_Ensemble,BULLISH,0.0,0.9855,,,,,,NEUTRAL,NO_DATA,,,,,,,,-0.1,0.6772,0.0,0.0,,
+2026-08-07,2026-08-14,^IRX,5,3.732,3.730461,3.740444,3.750427,,TimeCopilot_Ensemble,BULLISH,0.2263,0.9181,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.4712,0.0,0.0,,
+2026-08-07,2026-09-18,^IRX,30,3.732,3.713937,3.774119,3.834301,,TimeCopilot_Ensemble,BEARISH,1.1286,0.9181,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.3967,0.0,0.0,,
+2026-08-07,2026-12-11,^IRX,90,3.732,3.674614,3.797167,3.91972,,TimeCopilot_Ensemble,BULLISH,1.7462,0.9181,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.35,0.6877,0.0,0.0,,
+2026-08-07,2026-08-14,BTC-USD,5,64383.578125,64260.10801,64452.454524,64644.801039,,TimeCopilot_Ensemble,BULLISH,0.107,0.9193,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.4622,0.0,0.0,,
+2026-08-07,2026-09-18,BTC-USD,30,64383.578125,64012.484268,64567.787109,65123.089951,,TimeCopilot_Ensemble,BULLISH,0.2861,0.9193,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.4402,0.0,0.0,,
+2026-08-07,2026-12-11,BTC-USD,90,64383.578125,60926.201125,63636.507812,66346.8145,,TimeCopilot_Ensemble,BULLISH,1.1603,0.9193,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.603,0.0,0.0,,
+2026-08-07,2026-08-14,ETH-USD,5,1903.25,1899.580827,1905.321514,1911.062201,,TimeCopilot_Ensemble,BULLISH,0.1088,0.7228,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.4943,0.0,0.0,,
+2026-08-07,2026-09-18,ETH-USD,30,1903.25,1896.498314,1903.250164,1910.002013,,TimeCopilot_Ensemble,BULLISH,0.0,0.7228,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.5326,0.0,0.0,,
+2026-08-07,2026-12-11,ETH-USD,90,1903.25,1765.928794,1903.250164,2040.571534,,TimeCopilot_Ensemble,BULLISH,0.0,0.7228,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.6457,0.0,0.0,,
+2026-08-07,2026-08-14,SOL-USD,5,72.760002,72.05808,72.615965,73.173851,,TimeCopilot_Ensemble,BULLISH,0.198,0.8723,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.5263,0.0,0.0,,
+2026-08-07,2026-09-18,SOL-USD,30,72.760002,71.10546,71.946655,72.787851,,TimeCopilot_Ensemble,BULLISH,1.1178,0.8723,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.5462,0.0,0.0,,
+2026-08-07,2026-12-11,SOL-USD,90,72.760002,66.642784,70.402672,74.16256,,TimeCopilot_Ensemble,BULLISH,3.2399,0.8723,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.3,0.7183,0.0,0.0,,
+2026-08-07,2026-08-14,EEM,5,65.019997,64.795543,65.018386,65.241228,,TimeCopilot_Ensemble,BULLISH,0.0025,0.8874,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.45,0.4992,0.0,0.0,,
+2026-08-07,2026-09-18,EEM,30,65.019997,64.18272,65.616745,67.05077,,TimeCopilot_Ensemble,BULLISH,0.9178,0.8874,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.45,0.5375,0.0,0.0,,
+2026-08-07,2026-12-11,EEM,90,65.019997,61.321551,65.492778,69.664005,,TimeCopilot_Ensemble,BULLISH,0.7271,0.8874,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.45,0.7547,0.0,0.0,,
+2026-08-07,2026-08-14,EFA,5,107.360001,107.212157,107.420591,107.629024,,TimeCopilot_Ensemble,BULLISH,0.0564,0.993,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.4,0.5047,0.0,0.0,,
+2026-08-07,2026-09-18,EFA,30,107.360001,107.322424,108.434783,109.547142,,TimeCopilot_Ensemble,BULLISH,1.0011,0.993,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.4,0.5403,0.0,0.0,,
+2026-08-07,2026-12-11,EFA,90,107.360001,108.164132,110.84004,113.515949,,TimeCopilot_Ensemble,BULLISH,3.2415,0.993,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.4,0.7219,0.0,0.0,,
+2026-08-07,2026-08-14,FXI,5,35.950001,35.903913,35.953883,36.003853,,TimeCopilot_Ensemble,BULLISH,0.0108,0.947,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.25,0.5226,0.0,0.0,,
+2026-08-07,2026-09-18,FXI,30,35.950001,35.685021,35.950007,36.214994,,TimeCopilot_Ensemble,BULLISH,0.0,0.947,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.25,0.5398,0.0,0.0,,
+2026-08-07,2026-12-11,FXI,90,35.950001,35.225889,35.950007,36.674125,,TimeCopilot_Ensemble,BULLISH,0.0,0.947,,,,,,NEUTRAL,NO_DATA,,,,,,,,0.25,0.7144,0.0,0.0,,

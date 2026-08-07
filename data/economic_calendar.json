@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T23:50:40.266962",
+  "generated_at": "2026-08-07T02:25:48.800188",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "NFP",
       "date": "2026-08-07",
       "time_utc": "12:30",
-      "days_until": 2,
+      "days_until": 0,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -233,7 +233,7 @@
       "event": "CPI",
       "date": "2026-08-12",
       "time_utc": "12:30",
-      "days_until": 7,
+      "days_until": 5,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -249,7 +249,7 @@
       "event": "USDA_WASDE",
       "date": "2026-08-12",
       "time_utc": "16:00",
-      "days_until": 7,
+      "days_until": 5,
       "sensitivity": {
         "assets": [
           "ZC=F",
