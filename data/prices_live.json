@@ -1,107 +1,107 @@
 {
   "SPY": {
-    "price": 768.719971,
+    "price": 769.099976,
     "prev_close": 767.450012,
-    "change_pct": 0.1655,
+    "change_pct": 0.215,
     "name": "S&P 500 ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:48.839229+00:00"
+    "fetched_at": "2026-08-19T20:02:33.168934+00:00"
   },
   "QQQ": {
-    "price": 715.789978,
+    "price": 716.080017,
     "prev_close": 717.51001,
-    "change_pct": -0.2397,
+    "change_pct": -0.1993,
     "name": "Nasdaq 100 ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:48.986434+00:00"
+    "fetched_at": "2026-08-19T20:02:33.485656+00:00"
   },
   "IWM": {
-    "price": 301.584991,
+    "price": 301.720001,
     "prev_close": 300.230011,
-    "change_pct": 0.4513,
+    "change_pct": 0.4963,
     "name": "Russell 2000 ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:49.159923+00:00"
+    "fetched_at": "2026-08-19T20:02:33.721859+00:00"
   },
   "XLE": {
-    "price": 63.465,
+    "price": 63.566101,
     "prev_close": 63.68,
-    "change_pct": -0.3376,
+    "change_pct": -0.1789,
     "name": "Energy Select ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:49.333953+00:00"
+    "fetched_at": "2026-08-19T20:02:33.958307+00:00"
   },
   "XLF": {
-    "price": 57.485001,
+    "price": 57.494999,
     "prev_close": 57.84,
-    "change_pct": -0.6138,
+    "change_pct": -0.5965,
     "name": "Financials Select ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:49.529506+00:00"
+    "fetched_at": "2026-08-19T20:02:34.224385+00:00"
   },
   "XLK": {
-    "price": 183.509995,
+    "price": 183.630005,
     "prev_close": 185.619995,
-    "change_pct": -1.1367,
+    "change_pct": -1.0721,
     "name": "Technology Select ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:49.682668+00:00"
+    "fetched_at": "2026-08-19T20:02:34.807983+00:00"
   },
   "GLD": {
-    "price": 413.820007,
+    "price": 413.829987,
     "prev_close": 398.549988,
-    "change_pct": 3.8314,
+    "change_pct": 3.8339,
     "name": "Gold ETF (GLD)",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:49.797922+00:00"
+    "fetched_at": "2026-08-19T20:02:34.984591+00:00"
   },
   "SLV": {
-    "price": 59.994999,
+    "price": 60.009998,
     "prev_close": 57.439999,
-    "change_pct": 4.4481,
+    "change_pct": 4.4742,
     "name": "Silver ETF (SLV)",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:49.961881+00:00"
+    "fetched_at": "2026-08-19T20:02:35.273615+00:00"
   },
   "TLT": {
-    "price": 82.885002,
+    "price": 83.019997,
     "prev_close": 81.660004,
-    "change_pct": 1.5001,
+    "change_pct": 1.6654,
     "name": "20Y+ Treasury ETF",
     "class": "fixed_income",
-    "fetched_at": "2026-08-19T19:49:50.145555+00:00"
+    "fetched_at": "2026-08-19T20:02:35.618026+00:00"
   },
   "IEF": {
-    "price": 93.323997,
+    "price": 93.379997,
     "prev_close": 92.93,
-    "change_pct": 0.424,
+    "change_pct": 0.4842,
     "name": "7-10Y Treasury ETF",
     "class": "fixed_income",
-    "fetched_at": "2026-08-19T19:49:50.373038+00:00"
+    "fetched_at": "2026-08-19T20:02:35.877654+00:00"
   },
   "HYG": {
-    "price": 79.669998,
+    "price": 79.709999,
     "prev_close": 79.529999,
-    "change_pct": 0.176,
+    "change_pct": 0.2263,
     "name": "High Yield Bond ETF",
     "class": "fixed_income",
-    "fetched_at": "2026-08-19T19:49:50.577263+00:00"
+    "fetched_at": "2026-08-19T20:02:36.162998+00:00"
   },
   "LQD": {
-    "price": 106.522797,
+    "price": 106.584999,
     "prev_close": 105.839996,
-    "change_pct": 0.6451,
+    "change_pct": 0.7039,
     "name": "Investment Grade Bond ETF",
     "class": "fixed_income",
-    "fetched_at": "2026-08-19T19:49:50.773348+00:00"
+    "fetched_at": "2026-08-19T20:02:36.432603+00:00"
   },
   "BIL": {
-    "price": 91.559998,
+    "price": 91.566101,
     "prev_close": 91.559998,
-    "change_pct": 0.0,
+    "change_pct": 0.0067,
     "name": "1-3 Month T-Bill ETF",
     "class": "fixed_income",
-    "fetched_at": "2026-08-19T19:49:50.969160+00:00"
+    "fetched_at": "2026-08-19T20:02:36.678283+00:00"
   },
   "^TNX": {
     "price": 4.653,
@@ -109,47 +109,47 @@
     "change_pct": -1.1262,
     "name": "US 10Y Treasury Yield",
     "class": "rates",
-    "fetched_at": "2026-08-19T19:49:51.072282+00:00"
+    "fetched_at": "2026-08-19T20:02:36.969388+00:00"
   },
   "GC=F": {
-    "price": 4563.700195,
+    "price": 4568.899902,
     "prev_close": 4366.0,
-    "change_pct": 4.5282,
+    "change_pct": 4.6473,
     "name": "Gold Futures",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:51.185366+00:00"
+    "fetched_at": "2026-08-19T20:02:37.164538+00:00"
   },
   "SI=F": {
-    "price": 66.445,
+    "price": 66.480003,
     "prev_close": 63.941002,
-    "change_pct": 3.9161,
+    "change_pct": 3.9709,
     "name": "Silver Futures",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:51.351338+00:00"
+    "fetched_at": "2026-08-19T20:02:37.341602+00:00"
   },
   "CL=F": {
-    "price": 83.989998,
+    "price": 84.110001,
     "prev_close": 84.940002,
-    "change_pct": -1.1184,
+    "change_pct": -0.9772,
     "name": "WTI Crude Oil",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:51.514575+00:00"
+    "fetched_at": "2026-08-19T20:02:37.529378+00:00"
   },
   "NG=F": {
-    "price": 2.775,
+    "price": 2.777,
     "prev_close": 2.776,
-    "change_pct": -0.036,
+    "change_pct": 0.036,
     "name": "Natural Gas",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:51.619990+00:00"
+    "fetched_at": "2026-08-19T20:02:37.736612+00:00"
   },
   "HG=F": {
-    "price": 6.4925,
+    "price": 6.495,
     "prev_close": 6.4825,
-    "change_pct": 0.1543,
+    "change_pct": 0.1928,
     "name": "Copper Futures",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:51.774171+00:00"
+    "fetched_at": "2026-08-19T20:02:37.923105+00:00"
   },
   "ZW=F": {
     "price": 696.5,
@@ -157,7 +157,7 @@
     "change_pct": 4.8157,
     "name": "Wheat Futures",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:51.982193+00:00"
+    "fetched_at": "2026-08-19T20:02:38.130033+00:00"
   },
   "ZC=F": {
     "price": 498.25,
@@ -165,31 +165,31 @@
     "change_pct": 7.5553,
     "name": "Corn Futures",
     "class": "commodity",
-    "fetched_at": "2026-08-19T19:49:52.106383+00:00"
+    "fetched_at": "2026-08-19T20:02:38.412309+00:00"
   },
   "^VIX": {
-    "price": 14.94,
+    "price": 15.07,
     "prev_close": 15.84,
-    "change_pct": -5.6818,
+    "change_pct": -4.8611,
     "name": "CBOE Volatility Index",
     "class": "volatility",
-    "fetched_at": "2026-08-19T19:49:52.229598+00:00"
+    "fetched_at": "2026-08-19T20:02:38.597450+00:00"
   },
   "UVXY": {
-    "price": 19.674999,
+    "price": 19.59,
     "prev_close": 20.5,
-    "change_pct": -4.0244,
+    "change_pct": -4.439,
     "name": "ProShares Ultra VIX ETF",
     "class": "volatility",
-    "fetched_at": "2026-08-19T19:49:52.352764+00:00"
+    "fetched_at": "2026-08-19T20:02:38.851001+00:00"
   },
   "DX-Y.NYB": {
-    "price": 98.828003,
+    "price": 98.807999,
     "prev_close": 99.650002,
-    "change_pct": -0.8249,
+    "change_pct": -0.845,
     "name": "US Dollar Index",
     "class": "macro",
-    "fetched_at": "2026-08-19T19:49:52.546580+00:00"
+    "fetched_at": "2026-08-19T20:02:39.111320+00:00"
   },
   "^IRX": {
     "price": 3.7,
@@ -197,54 +197,54 @@
     "change_pct": -0.1349,
     "name": "13-Week T-Bill Yield",
     "class": "rates",
-    "fetched_at": "2026-08-19T19:49:52.662005+00:00"
+    "fetched_at": "2026-08-19T20:02:39.341781+00:00"
   },
   "BTC-USD": {
-    "price": 68358.25,
+    "price": 68392.789062,
     "prev_close": 64680.710938,
-    "change_pct": 5.6857,
+    "change_pct": 5.7391,
     "name": "Bitcoin",
     "class": "crypto",
-    "fetched_at": "2026-08-19T19:49:52.815437+00:00"
+    "fetched_at": "2026-08-19T20:02:39.558327+00:00"
   },
   "ETH-USD": {
-    "price": 2097.669922,
+    "price": 2103.830078,
     "prev_close": 1916.459595,
-    "change_pct": 9.4555,
+    "change_pct": 9.7769,
     "name": "Ethereum",
     "class": "crypto",
-    "fetched_at": "2026-08-19T19:49:52.929241+00:00"
+    "fetched_at": "2026-08-19T20:02:39.806341+00:00"
   },
   "SOL-USD": {
-    "price": 82.269997,
+    "price": 82.309998,
     "prev_close": 77.031204,
-    "change_pct": 6.8009,
+    "change_pct": 6.8528,
     "name": "Solana",
     "class": "crypto",
-    "fetched_at": "2026-08-19T19:49:53.035097+00:00"
+    "fetched_at": "2026-08-19T20:02:40.003235+00:00"
   },
   "EEM": {
-    "price": 66.050003,
+    "price": 66.110001,
     "prev_close": 65.339996,
-    "change_pct": 1.0866,
+    "change_pct": 1.1785,
     "name": "Emerging Markets ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:53.191400+00:00"
+    "fetched_at": "2026-08-19T20:02:40.504446+00:00"
   },
   "EFA": {
-    "price": 107.605598,
+    "price": 107.690002,
     "prev_close": 107.269997,
-    "change_pct": 0.3129,
+    "change_pct": 0.3915,
     "name": "EAFE Developed Mkts ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:53.386134+00:00"
+    "fetched_at": "2026-08-19T20:02:40.741156+00:00"
   },
   "FXI": {
-    "price": 35.685001,
+    "price": 35.700001,
     "prev_close": 35.060001,
-    "change_pct": 1.7827,
+    "change_pct": 1.8254,
     "name": "China Large-Cap ETF",
     "class": "equity_etf",
-    "fetched_at": "2026-08-19T19:49:53.621031+00:00"
+    "fetched_at": "2026-08-19T20:02:40.978626+00:00"
   }
 }
