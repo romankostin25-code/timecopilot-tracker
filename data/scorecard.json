@@ -1,57 +1,57 @@
 {
-  "generated_at": "2026-09-16T00:05:50.366662",
+  "generated_at": "2026-09-16T18:01:47.995889",
   "global": {
     "forecasts_graded_total": 5439,
-    "directional_accuracy_7d": 0.4988,
-    "directional_accuracy_14d": 0.5473,
-    "directional_accuracy_30d": 0.5608,
-    "directional_accuracy_alltime": 0.5657,
+    "directional_accuracy_7d": 0.5179,
+    "directional_accuracy_14d": 0.5575,
+    "directional_accuracy_30d": 0.5658,
+    "directional_accuracy_alltime": 0.5672,
     "trend": "DECLINING"
   },
   "by_horizon": {
     "5": {
-      "calibration_7d": 0.1129,
-      "calibration_14d": 0.1815,
-      "calibration_30d": 0.2062,
-      "calibration_alltime": 0.3917,
-      "directional_accuracy_7d": 0.371,
-      "directional_accuracy_14d": 0.4355,
-      "directional_accuracy_30d": 0.4501,
-      "directional_accuracy_alltime": 0.509,
+      "calibration_7d": 0.129,
+      "calibration_14d": 0.1895,
+      "calibration_30d": 0.2095,
+      "calibration_alltime": 0.3924,
+      "directional_accuracy_7d": 0.379,
+      "directional_accuracy_14d": 0.4395,
+      "directional_accuracy_30d": 0.4517,
+      "directional_accuracy_alltime": 0.5094,
       "forecasts_graded": 2719
     },
     "30": {
-      "calibration_7d": 0.1548,
-      "calibration_14d": 0.1411,
-      "calibration_30d": 0.1663,
-      "calibration_alltime": 0.4775,
-      "directional_accuracy_7d": 0.5161,
-      "directional_accuracy_14d": 0.5282,
-      "directional_accuracy_30d": 0.5906,
-      "directional_accuracy_alltime": 0.6168,
+      "calibration_7d": 0.1742,
+      "calibration_14d": 0.1532,
+      "calibration_30d": 0.1737,
+      "calibration_alltime": 0.479,
+      "directional_accuracy_7d": 0.5419,
+      "directional_accuracy_14d": 0.5444,
+      "directional_accuracy_30d": 0.6005,
+      "directional_accuracy_alltime": 0.6188,
       "forecasts_graded": 2046
     },
     "90": {
-      "calibration_7d": 0.5857,
-      "calibration_14d": 0.6993,
-      "calibration_30d": 0.7405,
-      "calibration_alltime": 0.7478,
-      "directional_accuracy_7d": 0.5929,
-      "directional_accuracy_14d": 0.6608,
-      "directional_accuracy_30d": 0.6529,
-      "directional_accuracy_alltime": 0.6395,
+      "calibration_7d": 0.6714,
+      "calibration_14d": 0.7413,
+      "calibration_30d": 0.7603,
+      "calibration_alltime": 0.7656,
+      "directional_accuracy_7d": 0.6143,
+      "directional_accuracy_14d": 0.6713,
+      "directional_accuracy_30d": 0.6579,
+      "directional_accuracy_alltime": 0.6439,
       "forecasts_graded": 674
     }
   },
   "by_asset": {
     "BIL": {
-      "calibration_7d": 0.75,
-      "calibration_14d": 0.375,
-      "calibration_30d": 0.7,
-      "directional_accuracy_7d": 0.75,
-      "directional_accuracy_14d": 0.375,
-      "directional_accuracy_30d": 0.7,
-      "consecutive_hits": 0
+      "calibration_7d": 1.0,
+      "calibration_14d": 0.5,
+      "calibration_30d": 0.75,
+      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_30d": 0.75,
+      "consecutive_hits": 4
     },
     "BTC-USD": {
       "calibration_7d": 0.25,
@@ -243,21 +243,21 @@
       "consecutive_hits": 0
     },
     "UVXY": {
-      "calibration_7d": 0.5,
-      "calibration_14d": 0.75,
-      "calibration_30d": 0.7,
-      "directional_accuracy_7d": 0.25,
-      "directional_accuracy_14d": 0.625,
-      "directional_accuracy_30d": 0.85,
-      "consecutive_hits": 0
+      "calibration_7d": 0.75,
+      "calibration_14d": 0.875,
+      "calibration_30d": 0.75,
+      "directional_accuracy_7d": 0.0,
+      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_30d": 0.8,
+      "consecutive_hits": 2
     },
     "XLE": {
       "calibration_7d": 0.25,
       "calibration_14d": 0.125,
       "calibration_30d": 0.05,
-      "directional_accuracy_7d": 0.75,
-      "directional_accuracy_14d": 0.75,
-      "directional_accuracy_30d": 0.6,
+      "directional_accuracy_7d": 1.0,
+      "directional_accuracy_14d": 0.875,
+      "directional_accuracy_30d": 0.65,
       "consecutive_hits": 0
     },
     "XLF": {
