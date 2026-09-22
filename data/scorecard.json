@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-21T19:08:26.135078",
+  "generated_at": "2026-09-22T00:42:38.038658",
   "global": {
-    "forecasts_graded_total": 5678,
-    "directional_accuracy_7d": 0.4974,
-    "directional_accuracy_14d": 0.5266,
-    "directional_accuracy_30d": 0.5443,
-    "directional_accuracy_alltime": 0.5643,
+    "forecasts_graded_total": 5737,
+    "directional_accuracy_7d": 0.4845,
+    "directional_accuracy_14d": 0.5167,
+    "directional_accuracy_30d": 0.5416,
+    "directional_accuracy_alltime": 0.5634,
     "trend": "IMPROVING"
   },
   "by_horizon": {
@@ -21,26 +21,26 @@
       "forecasts_graded": 2812
     },
     "30": {
-      "calibration_7d": 0.1935,
-      "calibration_14d": 0.1685,
-      "calibration_30d": 0.1613,
-      "calibration_alltime": 0.4706,
-      "directional_accuracy_7d": 0.5806,
+      "calibration_7d": 0.1532,
+      "calibration_14d": 0.1613,
+      "calibration_30d": 0.1525,
+      "calibration_alltime": 0.4647,
+      "directional_accuracy_7d": 0.5484,
       "directional_accuracy_14d": 0.5376,
-      "directional_accuracy_30d": 0.5548,
-      "directional_accuracy_alltime": 0.6181,
-      "forecasts_graded": 2108
+      "directional_accuracy_30d": 0.5513,
+      "directional_accuracy_alltime": 0.6166,
+      "forecasts_graded": 2139
     },
     "90": {
-      "calibration_7d": 0.6929,
-      "calibration_14d": 0.7143,
-      "calibration_30d": 0.7661,
-      "calibration_alltime": 0.7599,
-      "directional_accuracy_7d": 0.5786,
-      "directional_accuracy_14d": 0.6393,
-      "directional_accuracy_30d": 0.661,
-      "directional_accuracy_alltime": 0.6412,
-      "forecasts_graded": 758
+      "calibration_7d": 0.6143,
+      "calibration_14d": 0.6536,
+      "calibration_30d": 0.7427,
+      "calibration_alltime": 0.7417,
+      "directional_accuracy_7d": 0.5714,
+      "directional_accuracy_14d": 0.6107,
+      "directional_accuracy_30d": 0.6505,
+      "directional_accuracy_alltime": 0.6336,
+      "forecasts_graded": 786
     }
   },
   "by_asset": {
