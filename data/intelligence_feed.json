@@ -3660,6 +3660,26 @@
     "nlp_processed": true
   },
   {
+    "id": "7b094cf058fd78d7",
+    "source": "WashPost World",
+    "source_type": "geopolitics",
+    "headline": "Another U.S. service member dies amid Iran war, Pentagon tally shows",
+    "url": "https://www.washingtonpost.com/politics/2026/09/22/pentagon-adds-one-death-tally-troop-fatalities-amid-iran-war/",
+    "summary_raw": "The Defense Department\u2019s disclosed total stands at 19 fatalities, though U.S. officials say the actual number is higher.",
+    "published_at": "Wed, 23 Sep 2026 14:44:03 +0000",
+    "fetched_at": "2026-09-24T18:17:47.598354+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": "irrelevant",
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true
+  },
+  {
     "id": "9a190afe04d5573a",
     "source": "CryptoSlate",
     "source_type": "crypto",
@@ -3711,13 +3731,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "350194ec8c74b585",
@@ -3731,13 +3751,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "d245db74b1fb6740",
@@ -4171,13 +4191,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "edd27acfd611f587",
@@ -4271,13 +4291,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "8da1908178957ed5",
@@ -4291,13 +4311,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "308d26279b0471e6",
@@ -4311,13 +4331,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "347ce70e73109c45",
@@ -4331,13 +4351,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "1ae809c1e059d883",
@@ -4351,13 +4371,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "80290fe2f9797a31",
@@ -4371,13 +4391,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "7252b9ce4f61715a",
@@ -4391,13 +4411,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "f6d758265bc0f1cd",
@@ -4411,13 +4431,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "7e332c4d23680ec0",
@@ -4431,13 +4451,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "d54ff82fb1f721e3",
@@ -4451,13 +4471,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "1d1df597265043b7",
@@ -4471,13 +4491,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "f3a2c459f75be3b4",
@@ -4491,13 +4511,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "ee8d5c52a23ca397",
@@ -4511,13 +4531,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "acdcd2b7891c9900",
@@ -4531,13 +4551,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "cd6a87e151133426",
@@ -4551,13 +4571,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "beaf15ac0114047e",
@@ -4571,13 +4591,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "0ae529d4ca120cb0",
@@ -4591,13 +4611,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "9b8beee2fd5264a1",
@@ -4611,13 +4631,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "20eae290da8cb333",
@@ -4631,13 +4651,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "2b4fe54868837c07",
@@ -4651,13 +4671,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "697505938c4e996d",
@@ -4671,13 +4691,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "eb2958afe27a34ee",
@@ -4691,13 +4711,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "64bb4eaf145a5a7a",
@@ -4711,13 +4731,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "180d72358087e4bd",
@@ -4731,13 +4751,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "8fd26563bf367bcd",
@@ -4751,13 +4771,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "bc0822c1f5220a76",
@@ -4771,13 +4791,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "1eb6a43c3aee6b11",
@@ -8980,6 +9000,26 @@
     "nlp_processed": false
   },
   {
+    "id": "0253577c48024dc6",
+    "source": "Bank of England",
+    "source_type": "central_bank",
+    "headline": "Foreign Currency Reserves 2026 \u2013 Market Notice 22 September 2026",
+    "url": "https://www.bankofengland.co.uk/markets/market-notices/2026/september/foreign-currency-reserves-2026-market-notice-22-september-2026",
+    "summary_raw": "Not for distribution, directly or indirectly, in or into the United States, Canada, Australia, Japan or any other jurisdiction where it is unlawful to distribute this announcement",
+    "published_at": "Tue, 22 Sep 2026 16:30:00 +0100",
+    "fetched_at": "2026-09-24T18:17:50.095811+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "69bcf0d5d9e91139",
     "source": "OilPrice",
     "source_type": "energy",
@@ -9208,6 +9248,66 @@
     "summary_raw": "Bank of England statement",
     "published_at": "Thu, 27 Aug 2026 14:16:29 +0100",
     "fetched_at": "2026-09-23T23:42:06.111741+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "78302ba747e172b4",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "65% of Deribit\u2019s Solana options open interest is set to expire on September 25",
+    "url": "https://cryptobriefing.com/deribit-solana-options-september-25-expiry/",
+    "summary_raw": "<p>The impending Solana options expiry could amplify market volatility, influencing broader crypto sentiment amid significant Bitcoin and Ethereum settlements.</p>\n<p>The post <a href=\"https://cryptobriefing.com/deribit-solana-options-september-25-expiry/\">65% of Deribit&#8217;s Solana options open interest is set to expire on September 25</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Thu, 24 Sep 2026 18:07:16 +0000",
+    "fetched_at": "2026-09-24T18:18:04.357824+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "d7d526301585203c",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "Here are 3 alternatives for investors looking to dodge the bond-market beatdown",
+    "url": "https://www.marketwatch.com/story/here-are-3-alternatives-for-investors-looking-to-dodge-the-bond-market-beatdown-ec8fda43?mod=mw_rss_topstories",
+    "summary_raw": "U.S. stocks have kept chugging higher this year, but bonds haven\u2019t been able to shake off a five-year slump. That has sent some investors interested in a diversified portfolio searching for alternatives.",
+    "published_at": "Thu, 24 Sep 2026 18:07:00 GMT",
+    "fetched_at": "2026-09-24T18:17:37.688070+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "f40611a00350768a",
+    "source": "CNBC Markets",
+    "source_type": "macro",
+    "headline": "Pete Hegseth reports at least $3.1 million in cash, investments and Bitcoin",
+    "url": "https://www.cnbc.com/2026/09/24/pete-hegseth-financial-disclosure-cash-investments-bitcoin.html",
+    "summary_raw": "Defense Secretary Pete Hegseth reported at least $3.1 million in assets as he faces an impeachment push in Congress over his handling of the Iran war.",
+    "published_at": "Thu, 24 Sep 2026 18:05:37 GMT",
+    "fetched_at": "2026-09-24T18:17:37.321021+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -9888,6 +9988,26 @@
     "summary_raw": "Cox analysts said Ford and General Motors are seeing sales lag because they don't have many hybrid vehicles.",
     "published_at": "Thu, 24 Sep 2026 16:33:15 GMT",
     "fetched_at": "2026-09-24T18:03:52.302137+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "86e2299be508536d",
+    "source": "MarketWatch",
+    "source_type": "macro",
+    "headline": "Social Security overpaid my 82-year-old mother by $20,000. What else is hiding in her finances?",
+    "url": "https://www.marketwatch.com/story/she-gave-a-neighbor-2-000-social-security-overpaid-my-mother-82-by-20-000-what-else-is-hiding-in-her-finances-1b54977f?mod=mw_rss_topstories",
+    "summary_raw": "\u201cMy mother has a pension, Social Security, investments and a house probably worth over $1 million.\u201d",
+    "published_at": "Thu, 24 Sep 2026 16:30:00 GMT",
+    "fetched_at": "2026-09-24T18:17:37.688123+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -14828,6 +14948,106 @@
     "summary_raw": "",
     "published_at": "Fri, 01 Mar 2024 14:47:00 GMT",
     "fetched_at": "2026-09-23T18:19:29.697267+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "72459e4f56220ca4",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Everpure options activity points to bullish positioning with long-dated upside bets",
+    "url": "https://www.investing.com/news/stock-market-news/everpure-options-activity-points-to-bullish-positioning-with-longdated-upside-bets-93CH-4916002",
+    "summary_raw": "",
+    "published_at": "2026-09-24 18:13:27",
+    "fetched_at": "2026-09-24T18:17:47.942084+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "c81fa41d3db58d40",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "OpenAI\u2019s former head of data centers joins Nvidia",
+    "url": "https://www.investing.com/news/stock-market-news/openais-former-head-of-data-centers-joins-nvidia-4915998",
+    "summary_raw": "",
+    "published_at": "2026-09-24 18:11:47",
+    "fetched_at": "2026-09-24T18:17:47.942104+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "0563c47ba30b587d",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "US energy secretary seeks refiners\u2019 help amid narrow options to curb diesel price",
+    "url": "https://www.investing.com/news/stock-market-news/us-energy-secretary-seeks-refiners-help-amid-narrow-options-to-curb-diesel-price-4915993",
+    "summary_raw": "",
+    "published_at": "2026-09-24 18:06:48",
+    "fetched_at": "2026-09-24T18:17:47.942112+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "6e50a40f7eab088c",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Oracle, Facebook lead market cap stock movers on Thursday",
+    "url": "https://www.investing.com/news/stock-market-news/oracle-facebook-lead-market-cap-stock-movers-on-thursday-93CH-4915997",
+    "summary_raw": "",
+    "published_at": "2026-09-24 18:05:48",
+    "fetched_at": "2026-09-24T18:17:47.942119+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "4f0fca4aae5defaf",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Durable goods orders highlight economic data due Friday",
+    "url": "https://www.investing.com/news/stock-market-news/durable-goods-orders-highlight-economic-data-due-friday-93CH-4915994",
+    "summary_raw": "",
+    "published_at": "2026-09-24 18:00:38",
+    "fetched_at": "2026-09-24T18:17:47.942126+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
