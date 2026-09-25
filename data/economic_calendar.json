@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T18:18:08.342569",
+  "generated_at": "2026-09-25T01:22:26.856050",
   "events": [
     {
       "event": "FOMC",
@@ -212,5 +212,22 @@
       "time_utc": "20:00"
     }
   ],
-  "upcoming_7d": []
+  "upcoming_7d": [
+    {
+      "event": "NFP",
+      "date": "2026-10-02",
+      "time_utc": "12:30",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "QQQ",
+          "TLT",
+          "DX-Y.NYB",
+          "^TNX"
+        ],
+        "band_widen_pct": 0.25
+      }
+    }
+  ]
 }
