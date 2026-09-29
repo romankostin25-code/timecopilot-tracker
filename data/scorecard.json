@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-28T20:26:32.325182",
+  "generated_at": "2026-09-29T01:38:53.119945",
   "global": {
-    "forecasts_graded_total": 6122,
-    "directional_accuracy_7d": 0.6351,
-    "directional_accuracy_14d": 0.5709,
-    "directional_accuracy_30d": 0.5691,
-    "directional_accuracy_alltime": 0.5694,
+    "forecasts_graded_total": 6181,
+    "directional_accuracy_7d": 0.6216,
+    "directional_accuracy_14d": 0.5745,
+    "directional_accuracy_30d": 0.5706,
+    "directional_accuracy_alltime": 0.5698,
     "trend": "DECLINING"
   },
   "by_horizon": {
@@ -21,26 +21,26 @@
       "forecasts_graded": 2967
     },
     "30": {
-      "calibration_7d": 0.1745,
-      "calibration_14d": 0.1832,
-      "calibration_30d": 0.1656,
-      "calibration_alltime": 0.451,
-      "directional_accuracy_7d": 0.6242,
-      "directional_accuracy_14d": 0.6044,
-      "directional_accuracy_30d": 0.5773,
-      "directional_accuracy_alltime": 0.6185,
-      "forecasts_graded": 2257
+      "calibration_7d": 0.1879,
+      "calibration_14d": 0.1868,
+      "calibration_30d": 0.1714,
+      "calibration_alltime": 0.4484,
+      "directional_accuracy_7d": 0.5705,
+      "directional_accuracy_14d": 0.5861,
+      "directional_accuracy_30d": 0.5714,
+      "directional_accuracy_alltime": 0.6167,
+      "forecasts_graded": 2288
     },
     "90": {
-      "calibration_7d": 0.7143,
-      "calibration_14d": 0.7036,
-      "calibration_30d": 0.7357,
-      "calibration_alltime": 0.7528,
-      "directional_accuracy_7d": 0.7214,
-      "directional_accuracy_14d": 0.65,
-      "directional_accuracy_30d": 0.6748,
-      "directional_accuracy_alltime": 0.6537,
-      "forecasts_graded": 898
+      "calibration_7d": 0.7071,
+      "calibration_14d": 0.7071,
+      "calibration_30d": 0.733,
+      "calibration_alltime": 0.7505,
+      "directional_accuracy_7d": 0.7357,
+      "directional_accuracy_14d": 0.6786,
+      "directional_accuracy_30d": 0.6783,
+      "directional_accuracy_alltime": 0.6566,
+      "forecasts_graded": 926
     }
   },
   "by_asset": {
