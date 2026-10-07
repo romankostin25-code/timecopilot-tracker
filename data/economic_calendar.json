@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T19:22:46.338074",
+  "generated_at": "2026-10-07T02:19:34.836641",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "USDA_WASDE",
       "date": "2026-10-09",
       "time_utc": "16:00",
-      "days_until": 3,
+      "days_until": 2,
       "sensitivity": {
         "assets": [
           "ZC=F",
@@ -231,7 +231,7 @@
       "event": "CPI",
       "date": "2026-10-13",
       "time_utc": "12:30",
-      "days_until": 7,
+      "days_until": 6,
       "sensitivity": {
         "assets": [
           "SPY",
