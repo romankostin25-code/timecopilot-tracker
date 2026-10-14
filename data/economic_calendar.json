@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T20:09:00.750127",
+  "generated_at": "2026-10-14T01:01:40.314108",
   "events": [
     {
       "event": "FOMC",
@@ -212,22 +212,5 @@
       "time_utc": "20:00"
     }
   ],
-  "upcoming_7d": [
-    {
-      "event": "CPI",
-      "date": "2026-10-13",
-      "time_utc": "12:30",
-      "days_until": 0,
-      "sensitivity": {
-        "assets": [
-          "SPY",
-          "TLT",
-          "GC=F",
-          "^TNX",
-          "DX-Y.NYB"
-        ],
-        "band_widen_pct": 0.3
-      }
-    }
-  ]
+  "upcoming_7d": []
 }
