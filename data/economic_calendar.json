@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T18:26:06.042355",
+  "generated_at": "2026-10-21T00:31:26.904509",
   "events": [
     {
       "event": "FOMC",
@@ -212,5 +212,23 @@
       "time_utc": "20:00"
     }
   ],
-  "upcoming_7d": []
+  "upcoming_7d": [
+    {
+      "event": "FOMC",
+      "date": "2026-10-28",
+      "time_utc": "18:00",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "QQQ",
+          "TLT",
+          "GC=F",
+          "BTC-USD",
+          "^TNX"
+        ],
+        "band_widen_pct": 0.4
+      }
+    }
+  ]
 }
