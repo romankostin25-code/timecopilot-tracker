@@ -3420,6 +3420,46 @@
     "nlp_processed": true
   },
   {
+    "id": "072d53504945317d",
+    "source": "ECB",
+    "source_type": "central_bank",
+    "headline": "Piero Cipollone: Pontes and Appia: unlocking opportunities for banks",
+    "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261021_1~d190f2c349.en.pdf",
+    "summary_raw": "",
+    "published_at": "Wed, 21 Oct 2026 10:00:00 +0200",
+    "fetched_at": "2026-10-23T18:09:42.631339+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": "irrelevant",
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true
+  },
+  {
+    "id": "13ed2942e024e407",
+    "source": "Energy Monitor",
+    "source_type": "energy",
+    "headline": "EBRD arranges $265m loan for 1.2GW Nefer Minya project in Egypt",
+    "url": "https://www.energymonitor.ai/news/ebrd-265m-loan-nefer-minya/",
+    "summary_raw": "The EBRD is providing up to $265m in syndicated loans to fund the construction of Nefer Minya solar power project located in Minya, Egypt.",
+    "published_at": "Wed, 21 Oct 2026 09:54:40 +0000",
+    "fetched_at": "2026-10-23T18:09:55.506807+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": "irrelevant",
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true
+  },
+  {
     "id": "21a435f5ddbcd3b3",
     "source": "OilPrice",
     "source_type": "energy",
@@ -3448,6 +3488,26 @@
     "summary_raw": "Robust crude oil flows out of the Middle East in recent weeks have started to pressure the key metric of strength for physical supply out of the region. The premium of Oman crude over Dubai, the measure of Middle East\u2019s market strength, has slumped this week to the lowest level since the end of July, to $4.22 per barrel, according to data by General Index cited by Bloomberg. The Oman-Dubai crude differential had soared to as high as $65 in March when the Strait of Hormuz was at a virtual closure",
     "published_at": "Wed, 21 Oct 2026 09:30:00 -0500",
     "fetched_at": "2026-10-21T18:28:23.195586+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": "irrelevant",
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": true
+  },
+  {
+    "id": "9d0c3f7fb6db288c",
+    "source": "ECB",
+    "source_type": "central_bank",
+    "headline": "Philip R. Lane: Euro liquidity lines and the international monetary system",
+    "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261021~401d6c4b70.en.html",
+    "summary_raw": "",
+    "published_at": "Wed, 21 Oct 2026 06:15:00 +0200",
+    "fetched_at": "2026-10-23T18:09:42.631348+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -3971,13 +4031,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "4362fad6e26cf1b2",
@@ -3991,13 +4051,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "67d4d1717f2a9627",
@@ -4011,13 +4071,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "0cc17227e82a8278",
@@ -4031,13 +4091,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "70fdc0d9fac25f37",
@@ -4051,13 +4111,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "521f854bfd917206",
@@ -4071,13 +4131,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "17af857ee127f39b",
@@ -4091,13 +4151,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "da14a9f180a882da",
@@ -4111,13 +4171,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "8f5f76ec85a3704e",
@@ -4131,13 +4191,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "fdc8f5f374447baa",
@@ -4151,13 +4211,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "045b5f009300acef",
@@ -4171,13 +4231,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "f162c9b4414ee68e",
@@ -4191,13 +4251,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "d13942a9c8770c31",
@@ -4211,13 +4271,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "52ad7d2b827c89ec",
@@ -4231,13 +4291,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "6e20e281f16f6fdd",
@@ -4251,13 +4311,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "16539c5320cfd765",
@@ -4271,13 +4331,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "f970853c5c1b8813",
@@ -4291,13 +4351,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "8345f9715165891c",
@@ -4311,13 +4371,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "6a4cbbd543f6929d",
@@ -4331,13 +4391,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "7cf66c979499fc2d",
@@ -4351,13 +4411,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "3e192f4d5c272a1e",
@@ -4371,13 +4431,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "98fb438ba0fb39f8",
@@ -4391,13 +4451,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "349826c6cbb2ddcc",
@@ -4411,13 +4471,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "c8f08fa6ad70b886",
@@ -4431,13 +4491,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "e9839ef1cd47acd1",
@@ -4451,13 +4511,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "32bcf314a83319f8",
@@ -4471,13 +4531,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "daf751739f784e8a",
@@ -4491,13 +4551,13 @@
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
-    "event_type": null,
+    "event_type": "irrelevant",
     "impact_horizon": null,
     "summary": null,
     "signal_direction": {},
     "signal_strength": {},
     "decay_weight": 1.0,
-    "nlp_processed": false
+    "nlp_processed": true
   },
   {
     "id": "4c7493ba804cd822",
@@ -10720,6 +10780,26 @@
     "nlp_processed": false
   },
   {
+    "id": "afda222839edb0b5",
+    "source": "Energy Monitor",
+    "source_type": "energy",
+    "headline": "Norfund, Impact Fund Denmark agree to invest in Ixus Bugallon project",
+    "url": "https://www.energymonitor.ai/news/norfund-impact-fund-invest-ixus-bugallon/",
+    "summary_raw": "Norfund and Impact Fund Denmark have agreed to invest a combined 49% equity interest in Vena Energy\u2019s Ixus Bugallon Solar Power facility.",
+    "published_at": "Mon, 19 Oct 2026 10:07:36 +0000",
+    "fetched_at": "2026-10-23T18:09:55.506822+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
     "id": "dedf0e854ffb2f37",
     "source": "Energy Monitor",
     "source_type": "energy",
@@ -10828,6 +10908,26 @@
     "summary_raw": "The Market Participants Group (MPG) is a senior-level forum for financial market participants to share their views on relevant themes and narratives in financial markets with members of the Bank of England\u2019s Monetary Policy Committee.",
     "published_at": "Fri, 25 Sep 2026 07:30:00 +0100",
     "fetched_at": "2026-10-22T00:33:09.505407+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "4db9559fab0dcffa",
+    "source": "Crypto Briefing",
+    "source_type": "crypto",
+    "headline": "Frax CEO says businesses will drive next wave of stablecoin adoption as firm tests lending product",
+    "url": "https://cryptobriefing.com/frax-ceo-says-businesses-will-drive-next-wave-of-stablecoin-adoption-as-firm-tests-lending-product/",
+    "summary_raw": "<p>Frax CEO Sam Kazemian outlines plans for receivables financing, business payments and stablecoin lending through FraxNet.</p>\n<p>The post <a href=\"https://cryptobriefing.com/frax-ceo-says-businesses-will-drive-next-wave-of-stablecoin-adoption-as-firm-tests-lending-product/\">Frax CEO says businesses will drive next wave of stablecoin adoption as firm tests lending product</a> appeared first on <a href=\"https://cryptobriefing.com\">Crypto Briefing</a>.</p>",
+    "published_at": "Fri, 23 Oct 2026 18:05:09 +0000",
+    "fetched_at": "2026-10-23T18:09:56.587048+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
@@ -15648,6 +15748,46 @@
     "summary_raw": "",
     "published_at": "Fri, 01 Mar 2024 14:47:00 GMT",
     "fetched_at": "2026-10-22T00:32:57.893389+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "29a80a0bacbb06e1",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Economic data and Treasury auctions highlight Monday\u2019s schedule",
+    "url": "https://www.investing.com/news/stock-market-news/economic-data-and-treasury-auctions-highlight-mondays-schedule-93CH-4970204",
+    "summary_raw": "",
+    "published_at": "2026-10-23 18:00:34",
+    "fetched_at": "2026-10-23T18:09:41.078684+00:00",
+    "assets_affected": [],
+    "sentiment": null,
+    "sentiment_confidence": null,
+    "event_type": null,
+    "impact_horizon": null,
+    "summary": null,
+    "signal_direction": {},
+    "signal_strength": {},
+    "decay_weight": 1.0,
+    "nlp_processed": false
+  },
+  {
+    "id": "e7c0cd117b98b64d",
+    "source": "Investing.com Stocks",
+    "source_type": "equities",
+    "headline": "Investing.com\u2019s stocks of the week",
+    "url": "https://www.investing.com/news/stock-market-news/investingcoms-stocks-of-the-week-4970198",
+    "summary_raw": "",
+    "published_at": "2026-10-23 17:59:33",
+    "fetched_at": "2026-10-23T18:09:41.078703+00:00",
     "assets_affected": [],
     "sentiment": null,
     "sentiment_confidence": null,
