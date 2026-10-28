@@ -1,46 +1,46 @@
 {
-  "generated_at": "2026-10-27T19:17:46.362733",
+  "generated_at": "2026-10-28T01:05:33.407727",
   "global": {
-    "forecasts_graded_total": 7701,
-    "directional_accuracy_7d": 0.5108,
-    "directional_accuracy_14d": 0.4669,
-    "directional_accuracy_30d": 0.4769,
-    "directional_accuracy_alltime": 0.5504,
+    "forecasts_graded_total": 7763,
+    "directional_accuracy_7d": 0.6022,
+    "directional_accuracy_14d": 0.4892,
+    "directional_accuracy_30d": 0.4851,
+    "directional_accuracy_alltime": 0.5516,
     "trend": "DECLINING"
   },
   "by_horizon": {
     "5": {
       "calibration_7d": null,
-      "calibration_14d": 0.129,
+      "calibration_14d": 0.1398,
       "calibration_30d": 0.2051,
       "calibration_alltime": 0.354,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.4355,
+      "directional_accuracy_14d": 0.3978,
       "directional_accuracy_30d": 0.4263,
       "directional_accuracy_alltime": 0.4963,
       "forecasts_graded": 3401
     },
     "30": {
-      "calibration_7d": 0.2258,
-      "calibration_14d": 0.2097,
-      "calibration_30d": 0.1964,
-      "calibration_alltime": 0.4008,
-      "directional_accuracy_7d": 0.5242,
-      "directional_accuracy_14d": 0.4879,
-      "directional_accuracy_30d": 0.4577,
-      "directional_accuracy_alltime": 0.5868,
-      "forecasts_graded": 2812
+      "calibration_7d": 0.2177,
+      "calibration_14d": 0.2137,
+      "calibration_30d": 0.1945,
+      "calibration_alltime": 0.3982,
+      "directional_accuracy_7d": 0.621,
+      "directional_accuracy_14d": 0.5161,
+      "directional_accuracy_30d": 0.471,
+      "directional_accuracy_alltime": 0.5881,
+      "forecasts_graded": 2843
     },
     "90": {
-      "calibration_7d": 0.2581,
-      "calibration_14d": 0.2765,
-      "calibration_30d": 0.4441,
-      "calibration_alltime": 0.6304,
-      "directional_accuracy_7d": 0.4839,
-      "directional_accuracy_14d": 0.4608,
-      "directional_accuracy_30d": 0.5322,
-      "directional_accuracy_alltime": 0.6055,
-      "forecasts_graded": 1488
+      "calibration_7d": 0.1613,
+      "calibration_14d": 0.2304,
+      "calibration_30d": 0.4251,
+      "calibration_alltime": 0.6188,
+      "directional_accuracy_7d": 0.5645,
+      "directional_accuracy_14d": 0.4977,
+      "directional_accuracy_30d": 0.5395,
+      "directional_accuracy_alltime": 0.607,
+      "forecasts_graded": 1519
     }
   },
   "by_asset": {
@@ -55,7 +55,7 @@
     },
     "BTC-USD": {
       "calibration_7d": null,
-      "calibration_14d": 0.25,
+      "calibration_14d": 0.3333,
       "calibration_30d": 0.2857,
       "directional_accuracy_7d": null,
       "directional_accuracy_14d": 0.0,
@@ -67,16 +67,16 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.4286,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.75,
+      "directional_accuracy_14d": 0.6667,
       "directional_accuracy_30d": 0.5714,
       "consecutive_hits": 0
     },
     "DX-Y.NYB": {
       "calibration_7d": null,
-      "calibration_14d": 0.25,
+      "calibration_14d": 0.0,
       "calibration_30d": 0.0714,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.75,
+      "directional_accuracy_14d": 0.6667,
       "directional_accuracy_30d": 0.9286,
       "consecutive_hits": 0
     },
@@ -91,10 +91,10 @@
     },
     "EFA": {
       "calibration_7d": null,
-      "calibration_14d": 0.25,
+      "calibration_14d": 0.3333,
       "calibration_30d": 0.1429,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_14d": 0.6667,
       "directional_accuracy_30d": 0.3571,
       "consecutive_hits": 0
     },
@@ -109,7 +109,7 @@
     },
     "FXI": {
       "calibration_7d": null,
-      "calibration_14d": 0.25,
+      "calibration_14d": 0.3333,
       "calibration_30d": 0.0714,
       "directional_accuracy_7d": null,
       "directional_accuracy_14d": 1.0,
@@ -118,10 +118,10 @@
     },
     "GC=F": {
       "calibration_7d": null,
-      "calibration_14d": 0.5,
+      "calibration_14d": 0.6667,
       "calibration_30d": 0.2857,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_14d": 0.3333,
       "directional_accuracy_30d": 0.4286,
       "consecutive_hits": 2
     },
@@ -130,25 +130,25 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.0714,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.75,
+      "directional_accuracy_14d": 0.6667,
       "directional_accuracy_30d": 0.5,
       "consecutive_hits": 0
     },
     "HG=F": {
       "calibration_7d": null,
-      "calibration_14d": 0.25,
+      "calibration_14d": 0.3333,
       "calibration_30d": 0.2143,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.25,
+      "directional_accuracy_14d": 0.0,
       "directional_accuracy_30d": 0.0714,
       "consecutive_hits": 0
     },
     "HYG": {
       "calibration_7d": null,
-      "calibration_14d": 0.5,
+      "calibration_14d": 0.3333,
       "calibration_30d": 0.2143,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.25,
+      "directional_accuracy_14d": 0.0,
       "directional_accuracy_30d": 0.2857,
       "consecutive_hits": 0
     },
@@ -157,7 +157,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.2857,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_14d": 0.6667,
       "directional_accuracy_30d": 0.5714,
       "consecutive_hits": 0
     },
@@ -181,10 +181,10 @@
     },
     "NG=F": {
       "calibration_7d": null,
-      "calibration_14d": 0.5,
+      "calibration_14d": 0.6667,
       "calibration_30d": 0.2143,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_14d": 0.3333,
       "directional_accuracy_30d": 0.2143,
       "consecutive_hits": 2
     },
@@ -202,7 +202,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.1429,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.25,
+      "directional_accuracy_14d": 0.3333,
       "directional_accuracy_30d": 0.4286,
       "consecutive_hits": 0
     },
@@ -211,7 +211,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.2143,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.75,
+      "directional_accuracy_14d": 0.6667,
       "directional_accuracy_30d": 0.5714,
       "consecutive_hits": 0
     },
@@ -229,7 +229,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.1429,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.25,
+      "directional_accuracy_14d": 0.0,
       "directional_accuracy_30d": 0.5,
       "consecutive_hits": 0
     },
@@ -238,7 +238,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.1429,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.75,
+      "directional_accuracy_14d": 1.0,
       "directional_accuracy_30d": 0.6429,
       "consecutive_hits": 0
     },
@@ -247,7 +247,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.5714,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.25,
+      "directional_accuracy_14d": 0.0,
       "directional_accuracy_30d": 0.5,
       "consecutive_hits": 0
     },
@@ -298,7 +298,7 @@
     },
     "^IRX": {
       "calibration_7d": null,
-      "calibration_14d": 0.25,
+      "calibration_14d": 0.3333,
       "calibration_30d": 0.1429,
       "directional_accuracy_7d": null,
       "directional_accuracy_14d": 1.0,
@@ -319,7 +319,7 @@
       "calibration_14d": 0.0,
       "calibration_30d": 0.2143,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.5,
+      "directional_accuracy_14d": 0.3333,
       "directional_accuracy_30d": 0.2143,
       "consecutive_hits": 0
     }
