@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-02T22:40:54.135693",
+  "generated_at": "2026-11-03T03:24:50.609916",
   "global": {
     "forecasts_graded_total": 7918,
     "directional_accuracy_7d": 0.4977,
-    "directional_accuracy_14d": 0.5046,
+    "directional_accuracy_14d": 0.5037,
     "directional_accuracy_30d": 0.4772,
     "directional_accuracy_alltime": 0.549,
     "trend": "DECLINING"
@@ -33,11 +33,11 @@
     },
     "90": {
       "calibration_7d": 0.2903,
-      "calibration_14d": 0.2516,
+      "calibration_14d": 0.2742,
       "calibration_30d": 0.3763,
       "calibration_alltime": 0.6168,
       "directional_accuracy_7d": 0.4032,
-      "directional_accuracy_14d": 0.4581,
+      "directional_accuracy_14d": 0.4435,
       "directional_accuracy_30d": 0.501,
       "directional_accuracy_alltime": 0.5974,
       "forecasts_graded": 1550
