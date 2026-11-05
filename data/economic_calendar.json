@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T20:44:51.817556",
+  "generated_at": "2026-11-05T02:06:59.829123",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "NFP",
       "date": "2026-11-06",
       "time_utc": "12:30",
-      "days_until": 2,
+      "days_until": 1,
       "sensitivity": {
         "assets": [
           "SPY",
@@ -227,6 +227,22 @@
           "^TNX"
         ],
         "band_widen_pct": 0.25
+      }
+    },
+    {
+      "event": "CPI",
+      "date": "2026-11-12",
+      "time_utc": "12:30",
+      "days_until": 7,
+      "sensitivity": {
+        "assets": [
+          "SPY",
+          "TLT",
+          "GC=F",
+          "^TNX",
+          "DX-Y.NYB"
+        ],
+        "band_widen_pct": 0.3
       }
     }
   ]
