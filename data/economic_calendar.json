@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T01:47:26.184864",
+  "generated_at": "2026-11-09T23:22:19.184083",
   "events": [
     {
       "event": "FOMC",
@@ -217,7 +217,7 @@
       "event": "CPI",
       "date": "2026-11-12",
       "time_utc": "12:30",
-      "days_until": 5,
+      "days_until": 3,
       "sensitivity": {
         "assets": [
           "SPY",
