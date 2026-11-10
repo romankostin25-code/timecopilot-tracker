@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-09T23:21:39.555867",
+  "generated_at": "2026-11-10T04:03:17.492594",
   "global": {
-    "forecasts_graded_total": 8197,
-    "directional_accuracy_7d": 0.3477,
-    "directional_accuracy_14d": 0.4133,
-    "directional_accuracy_30d": 0.4409,
-    "directional_accuracy_alltime": 0.5421,
+    "forecasts_graded_total": 8228,
+    "directional_accuracy_7d": 0.3677,
+    "directional_accuracy_14d": 0.4213,
+    "directional_accuracy_30d": 0.4438,
+    "directional_accuracy_alltime": 0.5422,
     "trend": "DECLINING"
   },
   "by_horizon": {
@@ -32,15 +32,15 @@
       "forecasts_graded": 3122
     },
     "90": {
-      "calibration_7d": 0.2903,
-      "calibration_14d": 0.2903,
-      "calibration_30d": 0.2854,
-      "calibration_alltime": 0.5983,
-      "directional_accuracy_7d": 0.5269,
-      "directional_accuracy_14d": 0.4774,
-      "directional_accuracy_30d": 0.4615,
-      "directional_accuracy_alltime": 0.5934,
-      "forecasts_graded": 1643
+      "calibration_7d": 0.2823,
+      "calibration_14d": 0.2849,
+      "calibration_30d": 0.2834,
+      "calibration_alltime": 0.592,
+      "directional_accuracy_7d": 0.5323,
+      "directional_accuracy_14d": 0.4892,
+      "directional_accuracy_30d": 0.4677,
+      "directional_accuracy_alltime": 0.5926,
+      "forecasts_graded": 1674
     }
   },
   "by_asset": {
