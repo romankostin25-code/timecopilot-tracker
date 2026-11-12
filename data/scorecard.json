@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-11T21:08:05.490999",
+  "generated_at": "2026-11-12T02:49:25.102123",
   "global": {
-    "forecasts_graded_total": 8290,
-    "directional_accuracy_7d": 0.4135,
-    "directional_accuracy_14d": 0.4231,
-    "directional_accuracy_30d": 0.4491,
-    "directional_accuracy_alltime": 0.5422,
+    "forecasts_graded_total": 8352,
+    "directional_accuracy_7d": 0.4545,
+    "directional_accuracy_14d": 0.4364,
+    "directional_accuracy_30d": 0.4573,
+    "directional_accuracy_alltime": 0.5425,
     "trend": "DECLINING"
   },
   "by_horizon": {
@@ -21,26 +21,26 @@
       "forecasts_graded": 3432
     },
     "30": {
-      "calibration_7d": 0.1677,
-      "calibration_14d": 0.2194,
-      "calibration_30d": 0.2224,
-      "calibration_alltime": 0.3825,
-      "directional_accuracy_7d": 0.3419,
-      "directional_accuracy_14d": 0.4,
-      "directional_accuracy_30d": 0.4482,
-      "directional_accuracy_alltime": 0.5687,
-      "forecasts_graded": 3153
+      "calibration_7d": 0.1548,
+      "calibration_14d": 0.2097,
+      "calibration_30d": 0.2226,
+      "calibration_alltime": 0.381,
+      "directional_accuracy_7d": 0.4194,
+      "directional_accuracy_14d": 0.4097,
+      "directional_accuracy_30d": 0.4597,
+      "directional_accuracy_alltime": 0.5697,
+      "forecasts_graded": 3184
     },
     "90": {
-      "calibration_7d": 0.2903,
+      "calibration_7d": 0.2645,
       "calibration_14d": 0.3011,
-      "calibration_30d": 0.286,
-      "calibration_alltime": 0.5871,
-      "directional_accuracy_7d": 0.5226,
-      "directional_accuracy_14d": 0.4946,
-      "directional_accuracy_30d": 0.4688,
-      "directional_accuracy_alltime": 0.5906,
-      "forecasts_graded": 1705
+      "calibration_30d": 0.2882,
+      "calibration_alltime": 0.5829,
+      "directional_accuracy_7d": 0.5355,
+      "directional_accuracy_14d": 0.5161,
+      "directional_accuracy_30d": 0.4753,
+      "directional_accuracy_alltime": 0.5887,
+      "forecasts_graded": 1736
     }
   },
   "by_asset": {
