@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-21T03:04:36.878171",
+  "generated_at": "2026-11-24T01:32:43.669277",
   "global": {
     "forecasts_graded_total": 8786,
     "directional_accuracy_7d": 0.4229,
-    "directional_accuracy_14d": 0.4822,
-    "directional_accuracy_30d": 0.4612,
+    "directional_accuracy_14d": 0.4785,
+    "directional_accuracy_30d": 0.4507,
     "directional_accuracy_alltime": 0.5381,
     "trend": "DECLINING"
   },
@@ -23,21 +23,21 @@
     "30": {
       "calibration_7d": 0.0726,
       "calibration_14d": 0.1577,
-      "calibration_30d": 0.2043,
+      "calibration_30d": 0.2003,
       "calibration_alltime": 0.3661,
       "directional_accuracy_7d": 0.2823,
       "directional_accuracy_14d": 0.4229,
-      "directional_accuracy_30d": 0.4332,
+      "directional_accuracy_30d": 0.4109,
       "directional_accuracy_alltime": 0.5563,
       "forecasts_graded": 3401
     },
     "90": {
       "calibration_7d": null,
-      "calibration_14d": 0.3226,
+      "calibration_14d": 0.3387,
       "calibration_30d": 0.3065,
       "calibration_alltime": 0.5745,
       "directional_accuracy_7d": null,
-      "directional_accuracy_14d": 0.5355,
+      "directional_accuracy_14d": 0.5323,
       "directional_accuracy_30d": 0.5065,
       "directional_accuracy_alltime": 0.5884,
       "forecasts_graded": 1798
